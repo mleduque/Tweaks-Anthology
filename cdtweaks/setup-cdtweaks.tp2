@@ -14516,7 +14516,8 @@ REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu o
 
 ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
-COPY_EXISTING_REGEXP "^%tutu_scriptbg%xan[0-9]*.cre$" "override"
+COPY_EXISTING_REGEXP "^%tutu_scriptbg%xan.cre$" "override"
+                     "^_?xan[0-9]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
   BUT_ONLY_IF_IT_CHANGES
 
@@ -14554,7 +14555,8 @@ REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu o
 
 ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
-COPY_EXISTING_REGEXP "^%tutu_scriptbg%xzar[0-9]*.cre$" "override"
+COPY_EXISTING_REGEXP "^%tutu_scriptbg%xzar.cre$" "override"
+                     "^_?xzar[0-9]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
   BUT_ONLY_IF_IT_CHANGES
 
