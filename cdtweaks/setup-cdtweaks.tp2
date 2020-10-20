@@ -14514,9 +14514,9 @@ BEGIN @413000 DESIGNATED 4130
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
 
-ACTION_INCLUDE "cdtweaks/random/make_generalist.tpa"
+ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
-COPY_EXISTING_REGEXP "^_?xan[0-9]*.cre$" "override"
+COPY_EXISTING_REGEXP "^%tutu_scriptbg%xan[0-9]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
   BUT_ONLY_IF_IT_CHANGES
 
@@ -14533,7 +14533,7 @@ BEGIN @413100 DESIGNATED 4131
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
 
-ACTION_INCLUDE "cdtweaks/random/make_generalist.tpa"
+ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
 COPY_EXISTING_REGEXP "^_?dynahe[0-9]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
@@ -14552,9 +14552,9 @@ BEGIN @413200 DESIGNATED 4132
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
 
-ACTION_INCLUDE "cdtweaks/random/make_generalist.tpa"
+ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
-COPY_EXISTING_REGEXP "^_?xzar[0-9]*.cre$" "override"
+COPY_EXISTING_REGEXP "^%tutu_scriptbg%xzar[0-9]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
   BUT_ONLY_IF_IT_CHANGES
 
@@ -14571,7 +14571,7 @@ BEGIN @413300 DESIGNATED 4133
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bg2 tob bgt eet bgee bg2ee~ @25 // All BG games
 
-ACTION_INCLUDE "cdtweaks/random/make_generalist.tpa"
+ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
 COPY_EXISTING_REGEXP "^_?edwin[0-9]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
