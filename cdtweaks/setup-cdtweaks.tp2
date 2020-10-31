@@ -7270,7 +7270,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~mxsplsrc.2da~ THEN BEGIN
       END  
   END
 
-  ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~75~) BEGIN
+  ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
     ACTION_FOR_EACH sorc_table IN ~mxsplsrc~ ~mxspldd~ BEGIN
       COPY_EXISTING ~%sorc_table%.2da~ ~override~
         COUNT_2DA_COLS cols
@@ -7316,7 +7316,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
 COPY ~cdtweaks/2da/un_mxsplwiz.2da~ ~override/mxsplwiz.2da~
 
-ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~75~) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
   COPY_EXISTING ~mxsplwiz.2da~ ~override~
     COUNT_2DA_COLS cols
     READ_2DA_ENTRIES_NOW rows cols
@@ -7423,7 +7423,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
 COPY ~cdtweaks/2da/mxsplwiz.2da~ ~override~
 
-ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~75~) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
   COPY_EXISTING ~mxsplwiz.2da~ ~override~
     COUNT_2DA_COLS cols
     READ_2DA_ENTRIES_NOW rows cols
@@ -7472,7 +7472,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
 COPY ~cdtweaks/2da/un_mxsplbrd.2da~ ~override/mxsplbrd.2da~
 
-ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~75~) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
   COPY_EXISTING ~mxsplbrd.2da~ ~override~
     COUNT_2DA_COLS cols
     READ_2DA_ENTRIES_NOW rows cols
@@ -7499,7 +7499,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
 COPY ~cdtweaks/2da/mxsplbrd.2da~ ~override~
 
-ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~75~) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
   COPY_EXISTING ~mxsplbrd.2da~ ~override~
     COUNT_2DA_COLS cols
     READ_2DA_ENTRIES_NOW rows cols
