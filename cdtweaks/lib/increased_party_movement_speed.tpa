@@ -95,6 +95,9 @@ BEGIN
     ACTION_DEFINE_ASSOCIATIVE_ARRAY cre_defs BEGIN
       // CRE resref => CRE script name
       ~a7afaaq~ => ~a7afaaq~
+      ~c#bran01~ => ~c#brandock~
+      ~c#grey02~ => ~c#grey~
+      ~c#sola12~ => ~c#solaufein~
     END
     ACTION_PHP_EACH cre_defs AS resref => name BEGIN
       ACTION_IF (FILE_EXISTS_IN_GAME ~%resref%.cre~) BEGIN
@@ -221,6 +224,9 @@ BEGIN
       ~famquas~ => ~famquas~
       ~famrab~ => ~famrab~
       ~a7afaaq~ => ~a7afaaq~
+      ~c#bran01~ => ~c#brandock~
+      ~c#grey02~ => ~c#grey~
+      ~c#sola12~ => ~c#solaufein~
     END
     ACTION_PHP_EACH cre_defs AS resref => name BEGIN
       ACTION_IF (FILE_EXISTS_IN_GAME ~%resref%.cre~) BEGIN
