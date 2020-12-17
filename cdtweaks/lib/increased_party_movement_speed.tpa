@@ -91,11 +91,41 @@ BEGIN
         resource = ~A7_WLK1~
       END
 
-    LAF A7_ADD_GLOBAL_SCRIPT
-      INT_VAR extend_top = 1
-      STR_VAR script_file = ~cdtweaks/baf/a7#haste_splstate.baf~
+    // Apply to selected familiar-type followers
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cre_defs BEGIN
+      // CRE resref => CRE script name
+      ~a7afaaq~ => ~a7afaaq~
+    END
+    ACTION_PHP_EACH cre_defs AS resref => name BEGIN
+      ACTION_IF (FILE_EXISTS_IN_GAME ~%resref%.cre~) BEGIN
+        COPY ~cdtweaks/baf/a7#haste_splstate_special.baf~ ~cdtweaks/baf/a7#haste_splstate_special.baf~
+          READ_ASCII 0 script (BUFFER_LENGTH)
+        BUT_ONLY
+        OUTER_TEXT_SPRINT suffix ~%name%~
+        LAF A7_ADD_GLOBAL_SCRIPT
+          INT_VAR extend_top = 1
+          STR_VAR script
+        END
+      END
     END
 
+    // Apply to party members and familiar
+    OUTER_FOR (i = 7; i >= 1; --i) BEGIN
+      ACTION_IF (i = 7) BEGIN
+        OUTER_TEXT_SPRINT suffix ~F~
+        OUTER_TEXT_SPRINT player ~Familiar~
+      END ELSE BEGIN
+        OUTER_TEXT_SPRINT suffix ~P%i%~
+        OUTER_TEXT_SPRINT player ~Player%i%~
+      END
+      COPY ~cdtweaks/baf/a7#haste_splstate.baf~ ~cdtweaks/baf/a7#haste_splstate.baf~
+        READ_ASCII 0 script (BUFFER_LENGTH)
+      BUT_ONLY
+      LAF A7_ADD_GLOBAL_SCRIPT
+        INT_VAR extend_top = 1
+        STR_VAR script
+      END
+    END
 
     // Give Player1 ability to control auto-haste via innate ability
     LAM __A7_INSTALL_ABILITY
@@ -179,11 +209,44 @@ BEGIN
         timing = 1
       END
 
-    LAF A7_ADD_GLOBAL_SCRIPT
-      INT_VAR extend_top = 1
-      STR_VAR script_file = ~cdtweaks/baf/a7#haste_sectype.baf~
+    // Apply to familiars and selected familiar-type followers
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cre_defs BEGIN
+      // CRE resref => CRE script name
+      ~famcat~ => ~famcat~
+      ~famdust~ => ~famdust~
+      ~famfair~ => ~famfair~
+      ~famfer~ => ~famfer~
+      ~famimp~ => ~famimp~
+      ~fampsd~ => ~fampsd~
+      ~famquas~ => ~famquas~
+      ~famrab~ => ~famrab~
+      ~a7afaaq~ => ~a7afaaq~
+    END
+    ACTION_PHP_EACH cre_defs AS resref => name BEGIN
+      ACTION_IF (FILE_EXISTS_IN_GAME ~%resref%.cre~) BEGIN
+        COPY ~cdtweaks/baf/a7#haste_sectype_special.baf~ ~cdtweaks/baf/a7#haste_sectype_special.baf~
+          READ_ASCII 0 script (BUFFER_LENGTH)
+        BUT_ONLY
+        OUTER_TEXT_SPRINT suffix ~%name%~
+        LAF A7_ADD_GLOBAL_SCRIPT
+          INT_VAR extend_top = 1
+          STR_VAR script
+        END
+      END
     END
 
+    // Apply to party members
+    OUTER_FOR (i = 6; i >= 1; --i) BEGIN
+      OUTER_TEXT_SPRINT suffix ~P%i%~
+      OUTER_TEXT_SPRINT player ~Player%i%~
+      COPY ~cdtweaks/baf/a7#haste_sectype.baf~ ~cdtweaks/baf/a7#haste_sectype.baf~
+        READ_ASCII 0 script (BUFFER_LENGTH)
+      BUT_ONLY
+      LAF A7_ADD_GLOBAL_SCRIPT
+        INT_VAR extend_top = 1
+        STR_VAR script
+      END
+    END
 
     // Give Player1 ability to control auto-haste via innate ability
     LAM __A7_INSTALL_ABILITY
