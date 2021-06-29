@@ -5,39 +5,38 @@
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-     @0 = ~NPC Tweaks~
-     @1 = ~This step may take a few moments ...~
-     @2 = ~The Add Bags of Holding to BG is required for this component.~
-//     @3 = ~Requires 'Allow Arcane Spellcasting in Armor' component~
-     @4 = ~Convenience Tweaks/Cheats~
-     @5 = ~The Exotic Item Pack is required for this component.~
-//     @6 = ~Requires 'Allow Stealth and Thieving Abilities in Heavy Armor' component~
-     @7 = ~This component is not available in your language.~
-//     @8 = ~This component is only for BGT.~
-     @9 = ~Rule Changes~
-//    @10 = ~This component is not available for Tutu.~
-    @11 = ~Cosmetic Changes~
-//    @12 = ~Throne of Bhaal is required for this component.~
-    @13 = ~Content Changes~
-//    @14 = ~This component is only for Tutu or BGT or Baldur's Gate: Enhanced Edition.~
-//    @15 = ~This component is only for Tutu.~
-    @16 = ~The functionality of this component is either already included
-            or superceded by one of your already installed mods.~
-    @17 = ~Requires the Make +x/+y Weapons Consistent component to be installed.~
-    @18 = ~This component has been deprecated.~
-//    @19 = ~Cam's House Rules~
-//    @20 = ~View the readme?
-//  a) Yes
-//  b) No~
-    @21 = ~Requires the 'Change Experience Point Cap: Remove Experience Cap' component.~
-    @22 = ~This component is not available for Baldur's Gate: Enhanced Edition.~
-    @23 = ~This component is only for Tutu or Baldur's Gate: Enhanced Edition.~
-    @24 = ~This component is incompatible with another mod already installed.~
-    @25 = ~This component is not available for your game.~
-    @26 = ~Using values from the cdtweaks.txt config file for this component...~
-    @27 = ~Modmerge is required before mods can be installed on this game. Check the readme for more information and a link to download Modmerge.~
-    @28 = ~There are not enough free spell state or secondary type slots available to install this component.~
-    
+@0 = ~NPC Tweaks~
+@1 = ~This step may take a few moments...~
+@2 = ~The Add Bags of Holding to BG is required for this component.~
+//@3 = ~Requires 'Allow Arcane Spellcasting in Armor' component~
+@4 = ~Convenience Tweaks/Cheats~
+@5 = ~The Exotic Item Pack is required for this component.~
+//@6 = ~Requires 'Allow Stealth and Thieving Abilities in Heavy Armor' component~
+@7 = ~This component is not available in your language.~
+//@8 = ~This component is only for BGT.~
+@9 = ~Rule Changes~
+//@10 = ~This component is not available for Tutu.~
+@11 = ~Cosmetic Changes~
+//@12 = ~Throne of Bhaal is required for this component.~
+@13 = ~Content Changes~
+//@14 = ~This component is only for Tutu or BGT or Baldur's Gate: Enhanced Edition.~
+//@15 = ~This component is only for Tutu.~
+@16 = ~The functionality of this component is either already included
+         or superceded by one of your already installed mods.~
+@17 = ~Requires the Make +x/+y Weapons Consistent component to be installed.~
+@18 = ~This component has been deprecated.~
+//@19 = ~Cam's House Rules~
+//@20 = ~View the readme?
+//a) Yes
+//b) No~
+@21 = ~Requires the 'Change Experience Point Cap: Remove Experience Cap' component.~
+@22 = ~This component is not available for Baldur's Gate: Enhanced Edition.~
+@23 = ~This component is only for Tutu or Baldur's Gate: Enhanced Edition.~
+@24 = ~This component is incompatible with another mod already installed.~
+@25 = ~This component is not available for your game.~
+@26 = ~Using values from the cdtweaks.txt config file for this component...~
+@27 = ~Modmerge is required before mods can be installed on this game. Check the readme for more information and a link to download Modmerge.~
+@28 = ~There are not enough free spell state or secondary type slots available to install this component.~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -45,282 +44,275 @@
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-  @1000 = ~Remove Helmet Animations~
-  @2000 = ~Change Imoen's Avatar to Mage~
-  @3000 = ~Change Nalia's Avatar to Thief~
-  @4000 = ~Change Viconia's Skin Color to Dark Blue~
-  @5000 = ~Avatar Morphing Script~
-  @5001 = ~AVATAR MORPHING SCRIPT:~
-  @5002 = ~This script lets the user have control over the avatar of the character. Press 'S' to activate the avatar selection screen. (<script>)~
-  @6000 = ~Weapon Animation Tweaks~
-  @7000 = ~Icewind Dale Casting Graphics (Andyr)~
-  @7020 = ~Baldur's Gate Casting Graphics (Andyr)~
-  @8000 = ~Restore SoA Load Screen Logo (ToB Only)~
-  
-  @8020 = ~Restore IWD Loading Screens~
-  @9000 = ~Disable Portrait Icons Added by Equipped Items~
- @10000 = ~Commoners Use Drab Colors~
- @11000 = ~Icon Improvements~
- @12000 = ~Change Avatar When Wearing Robes or Armor (Galactygon)~
- @13000 = ~Force All Dialogue to Pause Game~
- @14000 = ~Fix Boo's Squeak~
- 
- @15000 = ~Alter Name of Unique Items~
- @15001 = ~Use Unique Name (i.e. Kondar)~
- @15100 = ~Use Unique Name +x (i.e. Kondar +1)~
- @15200 = ~Use Generic Name (i.e. Bastard Sword +1, +3 vs. Shapeshifters)~
- 
- @16000 = ~Make Magic Shields Glow (plainab/grogerson)~
- 
- @17000 = ~Unique Icons~
- 
- @18000 = ~Unique Containers~
- @18001 = ~Arcana Archives~
- @18002 = ~Sio'chaire~
- @18003 = ~Sio'chaire's Shop~
- @18004 = ~Ikert's Wares~
- @18005 = ~Jayes's Goods~
- @18006 = ~Galoomp's Books~
- @18007 = ~Kich's Goods~
- @18008 = ~Min's Merchandise~
- @18009 = ~Wallace's Wares~
- @18010 = ~Joluv's Wares~
- @18011 = ~Deidre's Wares~
- @18012 = ~Deli's Supplies~
- @18013 = ~Carnival Magic Items~
- @18014 = ~Lucky Aello's Discount Store~
- @18015 = ~Carnival Ranged Weapons~
- @18016 = ~Carnival Armor~
- @18017 = ~Carnival Magic Weapons~
- @18018 = ~Fixes only~
- @18019 = ~This component is not relevant for BG1.~
- @18020 = ~Unique icons and names~
- @18021 = ~Unique icons only~
- @18022 = ~BG2 colors for BG1/Tutu NPCs~
- @18023 = ~This component is not relevant for BG2.~
- @18024 = ~Mira's Merchandise~
- @18025 = ~Black Lily's Shop~
- @18026 = ~Perter's Products~
- @18027 = ~a locker~
- @18028 = ~a safe place~
- @18029 = ~the bag~
- @18030 = ~this bag~
- @18031 = ~the duffle~
- @18032 = ~the trunk~
- @18033 = ~this trunk~
- @18034 = ~Selence Hillstar's Fenced Goods~
- @18100 = ~Bronze Gem Bag~
- @18101 = ~Black-Green Gem Bag~
- @18102 = ~Green Gem Bag~
- @18103 = ~Turquoise Gem Bag~
- @18104 = ~Indigo Gem Bag~
- @18105 = ~Purple Gem Bag~
- @18106 = ~Black-Gold Gem Bag~
- @18107 = ~Blue Gem Bag~
- @18108 = ~Black Gem Bag~
- @18109 = ~Black-Red Gem Bag~
- @18110 = ~Burgundy Gem Bag~
- @18111 = ~Silver Gem Bag~
- @18112 = ~Copper Gem Bag~
- @18113 = ~Gold Gem Bag~
- @18114 = ~Red Gem Bag~
- @18115 = ~Orcskin Gem Bag~
- @18116 = ~Brown Gem Bag~
- @18117 = ~Red-Gold Gem Bag~
- @18118 = ~Red-Violet Gem Bag~
- @18119 = ~Velvet Gem Bag~
- @18120 = ~Old Gem Bag~
- @18121 = ~Cyan Gem Bag~
- @18122 = ~Gold-Red Gem Bag~
- @18123 = ~Argent Gem Bag~
- @18124 = ~Darkfire Gem Bag~
- @18125 = ~Sea Green Gem Bag~
- @18126 = ~Drow Gem Bag~
- @18127 = ~Emerald Gem Bag~
- @18128 = ~Dark Gem Bag~
- @18200 = ~Bronze Scroll Case~
- @18201 = ~Black-Green Scroll Case~
- @18202 = ~Green Scroll Case~
- @18203 = ~Turquoise Scroll Case~
- @18204 = ~Indigo Scroll Case~
- @18205 = ~Purple Scroll Case~
- @18206 = ~Black Scroll Case~
- @18207 = ~Blue Scroll Case~
- @18208 = ~Black-Red Scroll Case~
- @18209 = ~Silver Scroll Case~
- @18210 = ~Copper Scroll Case~
- @18211 = ~Gold Scroll Case~
- @18212 = ~Red Scroll Case~
- @18213 = ~Brass Scroll Case~
- @18214 = ~Burgundy Scroll Case~
- @18215 = ~Ruby Scroll Case~
- @18216 = ~Brown Scroll Case~
- @18217 = ~Amethyst Scroll Case~
- @18218 = ~Antique Scroll Case~
- @18219 = ~Old Scroll Case~
- @18220 = ~Argent Scroll Case~
- @18221 = ~Darkfire Scroll Case~
- @18222 = ~Sea Green Scroll Case~
- @18223 = ~Drow Scroll Case~
- @18224 = ~Emerald Scroll Case~
- @18225 = ~Red Book Bag~
- @18226 = ~Orange Book Bag~
- @18227 = ~Golden Book Bag~
- @18228 = ~Green Book Bag~
- @18229 = ~Teal Book Bag~
- @18230 = ~Blue Book Bag~
- @18231 = ~Indigo Book Bag~
- @18232 = ~Violet Book Bag~
- @18233 = ~Black Book Bag~
- @18234 = ~Red Scroll Tube~
- @18235 = ~Copper Scroll Tube~
- @18236 = ~Gold Scroll Tube~
- @18237 = ~Green Scroll Tube~
- @18238 = ~Teal Scroll Tube~
- @18239 = ~Blue Scroll Tube~
- @18240 = ~Indigo Scroll Tube~
- @18241 = ~Violet Scroll Tube~
- @18242 = ~Black Scroll Tube~
- @18243 = ~Dark Scroll Case~
- @18300 = ~Bronze Bag of Holding~
- @18301 = ~Malachite Bag of Holding~
- @18302 = ~Green Bag of Holding~
- @18303 = ~Turquoise Bag of Holding~
- @18304 = ~Indigo Bag of Holding~
- @18305 = ~Purple Bag of Holding~
- @18306 = ~Silver Bag of Holding~
- @18307 = ~Orange Bag of Holding~
- @18308 = ~Burgundy Bag of Holding~
- @18309 = ~Brown Bag of Holding~
- @18310 = ~Garnet Bag of Holding~
- @18311 = ~Black Bag of Holding~
- @18312 = ~Gold Bag of Holding~
- @18313 = ~Red Bag of Holding~
- @18314 = ~Copper Bag of Holding~
- @18315 = ~Orcskin Bag of Holding~
- @18316 = ~Twilight Bag of Holding~
- @18317 = ~Camping Gear~
- @18318 = ~Brown-Blue Bag of Holding~
- @18319 = ~Brown-Green Bag of Holding~
- @18320 = ~Brown-Red Bag of Holding~
- @18321 = ~Brown-Gold Bag of Holding~
- @18322 = ~Green-Red Bag of Holding~
- @18323 = ~Red-Green Bag of Holding~
- @18324 = ~Black-Red Bag of Holding~
- @18325 = ~Black-Gold Bag of Holding~
- @18326 = ~Blue-Green Bag of Holding~
- @18327 = ~Blue-Gold Bag of Holding~
- @18328 = ~Gold-Blue Bag of Holding~
- @18329 = ~Gold-Green Bag of Holding~
- @18330 = ~Gold-Red Bag of Holding~
- @18331 = ~Green-Gold Bag of Holding~
- @18332 = ~Silver-Green Bag of Holding~
- @18333 = ~Silver-Red Bag of Holding~
- @18334 = ~Silver-Gold Bag of Holding~
- @18335 = ~Blue-Violet Bag of Holding~
- @18336 = ~Blue Bag of Holding~
- @18337 = ~Argent Bag of Holding~
- @18338 = ~Darkfire Bag of Holding~
- @18339 = ~Sea Green Bag of Holding~
- @18340 = ~Drow Bag of Holding~
- @18341 = ~Emerald Bag of Holding~
- @18342 = ~Dark Bag of Holding~
- @18346 = ~Silver-Blue Bag of Holding~
- @18347 = ~Silver-Blue Bag of Holding~ // dupe string for the lazy win!
- @18400 = ~White-Gold Ammo Belt~
- @18401 = ~Red-Black Ammo Belt~
- @18402 = ~Silver-Black Ammo Belt~
- @18403 = ~Turquoise Ammo Belt~
- @18404 = ~Blue Ammo Belt~
- @18405 = ~Purple Ammo Belt~
- @18406 = ~Blue-Black Ammo Belt~
- @18407 = ~Forester's Ammo Belt~
- @18408 = ~Silvery Ammo Belt~
- @18409 = ~Fiery Ammo Belt~
- @18410 = ~Green Ammo Belt~
- @18411 = ~Ruby Ammo Belt~
- @18412 = ~Golden Ammo Belt~
- @18413 = ~Leather Ammo Belt~
- @18414 = ~Rustic Ammo Belt~
- @18415 = ~Argent Ammo Belt~
- @18416 = ~Darkfire Ammo Belt~
- @18417 = ~Sea Green Ammo Belt~
- @18418 = ~Drow Ammo Belt~
- @18419 = ~Emerald Ammo Belt~
- @18420 = ~Red Quiver~
- @18421 = ~Brown Quiver~
- @18422 = ~Golden Quiver~
- @18423 = ~Green Quiver~
- @18424 = ~Teal Quiver~
- @18425 = ~Blue Quiver~
- @18426 = ~Indigo Quiver~
- @18427 = ~Violet Quiver~
- @18428 = ~Black Quiver~
- @18429 = ~Red Bolt Quiver~
- @18430 = ~Brown Bolt Quiver~
- @18431 = ~Golden Bolt Quiver~
- @18432 = ~Green Bolt Quiver~
- @18433 = ~Teal Bolt Quiver~
- @18434 = ~Blue Bolt Quiver~
- @18435 = ~Indigo Bolt Quiver~
- @18436 = ~Violet Bolt Quiver~
- @18437 = ~Black Bolt Quiver~
- @18438 = ~Red Iron Ammo Belt~
- @18439 = ~Bronze Iron Ammo Belt~
- @18440 = ~Gold Iron Ammo Belt~
- @18441 = ~Green Iron Ammo Belt~
- @18442 = ~Teal Iron Ammo Belt~
- @18443 = ~Blue Iron Ammo Belt~
- @18444 = ~Indigo Iron Ammo Belt~
- @18445 = ~Violet Iron Ammo Belt~
- @18446 = ~Black Iron Ammo Belt~
- @18447 = ~Dark Ammo Belt~
- @18500 = ~Copper Potion Case~
- @18501 = ~Black-Green Potion Case~
- @18502 = ~Green Potion Case~
- @18503 = ~Turquoise Potion Case~
- @18504 = ~Indigo Potion Case~
- @18505 = ~Purple Potion Case~
- @18506 = ~Black Potion Case~
- @18507 = ~Midnight Potion Case~
- @18508 = ~Green-Gold Potion Case~
- @18509 = ~Rust Potion Case~
- @18510 = ~Ruby Potion Case~
- @18511 = ~Gold Potion Case~
- @18512 = ~Red Potion Case~
- @18513 = ~Black-Gold Potion Case~
- @18514 = ~Pink Potion Case~
- @18515 = ~White Potion Case~
- @18516 = ~Rustic Potion Case~
- @18517 = ~Old Potion Case~
- @18518 = ~Argent Potion Case~
- @18519 = ~Darkfire Potion Case~
- @18520 = ~Sea Green Potion Case~
- @18521 = ~Drow Potion Case~
- @18522 = ~Emerald Potion Case~
- @18523 = ~Red-Fringed Potion Bag~
- @18524 = ~Bronze-Fringed Potion Bag~
- @18525 = ~Gold-Fringed Potion Bag~
- @18526 = ~Green-Fringed Potion Bag~
- @18527 = ~Teal-Fringed Potion Bag~
- @18528 = ~Blue-Fringed Potion Bag~
- @18529 = ~Indigo-Fringed Potion Bag~
- @18530 = ~Violet-Fringed Potion Bag~
- @18531 = ~Black-Fringed Potion Bag~
- @18532 = ~Dark Potion Case~
- @19000 = ~For all shields and helmets~
- @19001 = ~Use Character Colors Instead of Item Colors~
- @19100 = ~For non-magical shields and helmets~
- @19200 = ~For all helmets~
- @19300 = ~For non-magical helmets~
- @19400 = ~For all shields~
- @19500 = ~For non-magical shields~
- 
- @20000 = ~Remove Blur Effect from Items, e.g. Cloak of Displacement~
- @20001 = ~Remove Annoying Visual Effects from Equipped Items~
- @20100 = ~Remove Blur and Reflection Effects from Items (Daeros Trollkiller)~
- 
- @21000 = ~Separate Resist Fire/Cold Icon into Separate Icons (Angel)~
+@1000 = ~Remove Helmet Animations~
+@2000 = ~Change Imoen's Avatar to Mage~
+@3000 = ~Change Nalia's Avatar to Thief~
+@4000 = ~Change Viconia's Skin Color to Dark Blue~
+@5000 = ~Avatar Morphing Script~
+@5001 = ~AVATAR MORPHING SCRIPT:~
+@5002 = ~This script lets the user have control over the avatar of the character. Press 'S' to activate the avatar selection screen. (<script>)~
+@6000 = ~Weapon Animation Tweaks~
+@7000 = ~Icewind Dale Casting Graphics (Andyr)~
+@7020 = ~Baldur's Gate Casting Graphics (Andyr)~
+@8000 = ~Restore SoA Load Screen Logo (ToB Only)~
+@8020 = ~Restore IWD Loading Screens~
+@9000 = ~Disable Portrait Icons Added by Equipped Items~
+@10000 = ~Commoners Use Drab Colors~
+@11000 = ~Icon Improvements~
+@12000 = ~Change Avatar When Wearing Robes or Armor (Galactygon)~
+@13000 = ~Force All Dialogue to Pause Game~
+@14000 = ~Fix Boo's Squeak~
+@15000 = ~Alter Name of Unique Items~
+@15001 = ~Use Unique Name (i.e. Kondar)~
+@15100 = ~Use Unique Name +x (i.e. Kondar +1)~
+@15200 = ~Use Generic Name (i.e. Bastard Sword +1, +3 vs. Shapeshifters)~
+@16000 = ~Make Magic Shields Glow (plainab/grogerson)~
+@17000 = ~Unique Icons~
+@18000 = ~Unique Containers~
+@18001 = ~Arcana Archives~
+@18002 = ~Sio'chaire~
+@18003 = ~Sio'chaire's Shop~
+@18004 = ~Ikert's Wares~
+@18005 = ~Jayes's Goods~
+@18006 = ~Galoomp's Books~
+@18007 = ~Kich's Goods~
+@18008 = ~Min's Merchandise~
+@18009 = ~Wallace's Wares~
+@18010 = ~Joluv's Wares~
+@18011 = ~Deidre's Wares~
+@18012 = ~Deli's Supplies~
+@18013 = ~Carnival Magic Items~
+@18014 = ~Lucky Aello's Discount Store~
+@18015 = ~Carnival Ranged Weapons~
+@18016 = ~Carnival Armor~
+@18017 = ~Carnival Magic Weapons~
+@18018 = ~Fixes only~
+@18019 = ~This component is not relevant for BG1.~
+@18020 = ~Unique icons and names~
+@18021 = ~Unique icons only~
+@18022 = ~BG2 colors for BG1/Tutu NPCs~
+@18023 = ~This component is not relevant for BG2.~
+@18024 = ~Mira's Merchandise~
+@18025 = ~Black Lily's Shop~
+@18026 = ~Perter's Products~
+@18027 = ~a locker~
+@18028 = ~a safe place~
+@18029 = ~the bag~
+@18030 = ~this bag~
+@18031 = ~the duffle~
+@18032 = ~the trunk~
+@18033 = ~this trunk~
+@18034 = ~Selence Hillstar's Fenced Goods~
+@18100 = ~Bronze Gem Bag~
+@18101 = ~Black-Green Gem Bag~
+@18102 = ~Green Gem Bag~
+@18103 = ~Turquoise Gem Bag~
+@18104 = ~Indigo Gem Bag~
+@18105 = ~Purple Gem Bag~
+@18106 = ~Black-Gold Gem Bag~
+@18107 = ~Blue Gem Bag~
+@18108 = ~Black Gem Bag~
+@18109 = ~Black-Red Gem Bag~
+@18110 = ~Burgundy Gem Bag~
+@18111 = ~Silver Gem Bag~
+@18112 = ~Copper Gem Bag~
+@18113 = ~Gold Gem Bag~
+@18114 = ~Red Gem Bag~
+@18115 = ~Orcskin Gem Bag~
+@18116 = ~Brown Gem Bag~
+@18117 = ~Red-Gold Gem Bag~
+@18118 = ~Red-Violet Gem Bag~
+@18119 = ~Velvet Gem Bag~
+@18120 = ~Old Gem Bag~
+@18121 = ~Cyan Gem Bag~
+@18122 = ~Gold-Red Gem Bag~
+@18123 = ~Argent Gem Bag~
+@18124 = ~Darkfire Gem Bag~
+@18125 = ~Sea Green Gem Bag~
+@18126 = ~Drow Gem Bag~
+@18127 = ~Emerald Gem Bag~
+@18128 = ~Dark Gem Bag~
+@18200 = ~Bronze Scroll Case~
+@18201 = ~Black-Green Scroll Case~
+@18202 = ~Green Scroll Case~
+@18203 = ~Turquoise Scroll Case~
+@18204 = ~Indigo Scroll Case~
+@18205 = ~Purple Scroll Case~
+@18206 = ~Black Scroll Case~
+@18207 = ~Blue Scroll Case~
+@18208 = ~Black-Red Scroll Case~
+@18209 = ~Silver Scroll Case~
+@18210 = ~Copper Scroll Case~
+@18211 = ~Gold Scroll Case~
+@18212 = ~Red Scroll Case~
+@18213 = ~Brass Scroll Case~
+@18214 = ~Burgundy Scroll Case~
+@18215 = ~Ruby Scroll Case~
+@18216 = ~Brown Scroll Case~
+@18217 = ~Amethyst Scroll Case~
+@18218 = ~Antique Scroll Case~
+@18219 = ~Old Scroll Case~
+@18220 = ~Argent Scroll Case~
+@18221 = ~Darkfire Scroll Case~
+@18222 = ~Sea Green Scroll Case~
+@18223 = ~Drow Scroll Case~
+@18224 = ~Emerald Scroll Case~
+@18225 = ~Red Book Bag~
+@18226 = ~Orange Book Bag~
+@18227 = ~Golden Book Bag~
+@18228 = ~Green Book Bag~
+@18229 = ~Teal Book Bag~
+@18230 = ~Blue Book Bag~
+@18231 = ~Indigo Book Bag~
+@18232 = ~Violet Book Bag~
+@18233 = ~Black Book Bag~
+@18234 = ~Red Scroll Tube~
+@18235 = ~Copper Scroll Tube~
+@18236 = ~Gold Scroll Tube~
+@18237 = ~Green Scroll Tube~
+@18238 = ~Teal Scroll Tube~
+@18239 = ~Blue Scroll Tube~
+@18240 = ~Indigo Scroll Tube~
+@18241 = ~Violet Scroll Tube~
+@18242 = ~Black Scroll Tube~
+@18243 = ~Dark Scroll Case~
+@18300 = ~Bronze Bag of Holding~
+@18301 = ~Malachite Bag of Holding~
+@18302 = ~Green Bag of Holding~
+@18303 = ~Turquoise Bag of Holding~
+@18304 = ~Indigo Bag of Holding~
+@18305 = ~Purple Bag of Holding~
+@18306 = ~Silver Bag of Holding~
+@18307 = ~Orange Bag of Holding~
+@18308 = ~Burgundy Bag of Holding~
+@18309 = ~Brown Bag of Holding~
+@18310 = ~Garnet Bag of Holding~
+@18311 = ~Black Bag of Holding~
+@18312 = ~Gold Bag of Holding~
+@18313 = ~Red Bag of Holding~
+@18314 = ~Copper Bag of Holding~
+@18315 = ~Orcskin Bag of Holding~
+@18316 = ~Twilight Bag of Holding~
+@18317 = ~Camping Gear~
+@18318 = ~Brown-Blue Bag of Holding~
+@18319 = ~Brown-Green Bag of Holding~
+@18320 = ~Brown-Red Bag of Holding~
+@18321 = ~Brown-Gold Bag of Holding~
+@18322 = ~Green-Red Bag of Holding~
+@18323 = ~Red-Green Bag of Holding~
+@18324 = ~Black-Red Bag of Holding~
+@18325 = ~Black-Gold Bag of Holding~
+@18326 = ~Blue-Green Bag of Holding~
+@18327 = ~Blue-Gold Bag of Holding~
+@18328 = ~Gold-Blue Bag of Holding~
+@18329 = ~Gold-Green Bag of Holding~
+@18330 = ~Gold-Red Bag of Holding~
+@18331 = ~Green-Gold Bag of Holding~
+@18332 = ~Silver-Green Bag of Holding~
+@18333 = ~Silver-Red Bag of Holding~
+@18334 = ~Silver-Gold Bag of Holding~
+@18335 = ~Blue-Violet Bag of Holding~
+@18336 = ~Blue Bag of Holding~
+@18337 = ~Argent Bag of Holding~
+@18338 = ~Darkfire Bag of Holding~
+@18339 = ~Sea Green Bag of Holding~
+@18340 = ~Drow Bag of Holding~
+@18341 = ~Emerald Bag of Holding~
+@18342 = ~Dark Bag of Holding~
+@18346 = ~Silver-Blue Bag of Holding~
+@18347 = ~Silver-Blue Bag of Holding~ // dupe string for the lazy win!
+@18400 = ~White-Gold Ammo Belt~
+@18401 = ~Red-Black Ammo Belt~
+@18402 = ~Silver-Black Ammo Belt~
+@18403 = ~Turquoise Ammo Belt~
+@18404 = ~Blue Ammo Belt~
+@18405 = ~Purple Ammo Belt~
+@18406 = ~Blue-Black Ammo Belt~
+@18407 = ~Forester's Ammo Belt~
+@18408 = ~Silvery Ammo Belt~
+@18409 = ~Fiery Ammo Belt~
+@18410 = ~Green Ammo Belt~
+@18411 = ~Ruby Ammo Belt~
+@18412 = ~Golden Ammo Belt~
+@18413 = ~Leather Ammo Belt~
+@18414 = ~Rustic Ammo Belt~
+@18415 = ~Argent Ammo Belt~
+@18416 = ~Darkfire Ammo Belt~
+@18417 = ~Sea Green Ammo Belt~
+@18418 = ~Drow Ammo Belt~
+@18419 = ~Emerald Ammo Belt~
+@18420 = ~Red Quiver~
+@18421 = ~Brown Quiver~
+@18422 = ~Golden Quiver~
+@18423 = ~Green Quiver~
+@18424 = ~Teal Quiver~
+@18425 = ~Blue Quiver~
+@18426 = ~Indigo Quiver~
+@18427 = ~Violet Quiver~
+@18428 = ~Black Quiver~
+@18429 = ~Red Bolt Quiver~
+@18430 = ~Brown Bolt Quiver~
+@18431 = ~Golden Bolt Quiver~
+@18432 = ~Green Bolt Quiver~
+@18433 = ~Teal Bolt Quiver~
+@18434 = ~Blue Bolt Quiver~
+@18435 = ~Indigo Bolt Quiver~
+@18436 = ~Violet Bolt Quiver~
+@18437 = ~Black Bolt Quiver~
+@18438 = ~Red Iron Ammo Belt~
+@18439 = ~Bronze Iron Ammo Belt~
+@18440 = ~Gold Iron Ammo Belt~
+@18441 = ~Green Iron Ammo Belt~
+@18442 = ~Teal Iron Ammo Belt~
+@18443 = ~Blue Iron Ammo Belt~
+@18444 = ~Indigo Iron Ammo Belt~
+@18445 = ~Violet Iron Ammo Belt~
+@18446 = ~Black Iron Ammo Belt~
+@18447 = ~Dark Ammo Belt~
+@18500 = ~Copper Potion Case~
+@18501 = ~Black-Green Potion Case~
+@18502 = ~Green Potion Case~
+@18503 = ~Turquoise Potion Case~
+@18504 = ~Indigo Potion Case~
+@18505 = ~Purple Potion Case~
+@18506 = ~Black Potion Case~
+@18507 = ~Midnight Potion Case~
+@18508 = ~Green-Gold Potion Case~
+@18509 = ~Rust Potion Case~
+@18510 = ~Ruby Potion Case~
+@18511 = ~Gold Potion Case~
+@18512 = ~Red Potion Case~
+@18513 = ~Black-Gold Potion Case~
+@18514 = ~Pink Potion Case~
+@18515 = ~White Potion Case~
+@18516 = ~Rustic Potion Case~
+@18517 = ~Old Potion Case~
+@18518 = ~Argent Potion Case~
+@18519 = ~Darkfire Potion Case~
+@18520 = ~Sea Green Potion Case~
+@18521 = ~Drow Potion Case~
+@18522 = ~Emerald Potion Case~
+@18523 = ~Red-Fringed Potion Bag~
+@18524 = ~Bronze-Fringed Potion Bag~
+@18525 = ~Gold-Fringed Potion Bag~
+@18526 = ~Green-Fringed Potion Bag~
+@18527 = ~Teal-Fringed Potion Bag~
+@18528 = ~Blue-Fringed Potion Bag~
+@18529 = ~Indigo-Fringed Potion Bag~
+@18530 = ~Violet-Fringed Potion Bag~
+@18531 = ~Black-Fringed Potion Bag~
+@18532 = ~Dark Potion Case~
+@19000 = ~For all shields and helmets~
+@19001 = ~Use Character Colors Instead of Item Colors~
+@19100 = ~For non-magical shields and helmets~
+@19200 = ~For all helmets~
+@19300 = ~For non-magical helmets~
+@19400 = ~For all shields~
+@19500 = ~For non-magical shields~
+@20000 = ~Remove Blur Effect from Items, e.g. Cloak of Displacement~
+@20001 = ~Remove Annoying Visual Effects from Equipped Items~
+@20100 = ~Remove Blur and Reflection Effects from Items (Daeros Trollkiller)~
+@21000 = ~Separate Resist Fire/Cold Icon into Separate Icons (Angel)~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -478,12 +470,12 @@ Weight: 2~
 @109012 = ~Katana
 The katana is a single-edged, slightly curved sword that ends with a chisel point. The katana is perhaps one of the finest swords ever made, the steps to its creation a long and secret process, that is more art form than anything else. This blade is an important facet of Kara-Tur culture. To touch or wield a samurai's katana is to insult the samurai and to incite his wrath. For a gaijin, or foreigner, to own such a blade is a rare occurrence. Either the gaijin is a greatly honored friend of an important minister, or the gaijin has murdered a samurai.
 STATISTICS:
-Damage:  1D10
-Damage type:  slashing
-Weight:  6
+Damage: 1D10
+Damage type: slashing
+Weight: 6
 Speed Factor: 4
 Proficiency Type: Katana
-Type:  1-handed
+Type: 1-handed
 Requires: 6 Strength
 Not Usable By:
  Druid
@@ -495,12 +487,12 @@ Not Usable By:
 Tsu-O-Shi, also known as the Coveted Blade, was forged in the nation of Wa more than five centuries ago, by the sword smith Murakaken Shinji, whose skill was so great he was rumored to be able to awaken the very spirit of the metal. Tsu-O-Shi passed through the hands of the various heirs of the otherwise unremarkable Kasune family, until the powerful daimyo and well-known sword lover Fushima Takagi saw it. Takagi became obsessed with the sword and made many frustrated attempts to acquire the blade. Finally, he hired a clan of ninja to steal the blade for him, covering its loss with the burning of the Kasune family compound. When the ninja presented the blade to their employer, it was used to cut them down, forever removing any link between Takagi and the sword's legitimate owners. Takagi hid the sword, often withdrawing to its hiding place to gaze upon its beauty and perfection. On the day Takagi died, his spirit refused to depart the earth and leave the sword behind, so he stayed with Tsu-O-Shi, becoming one with it. From that day forth, any who wield the mighty Tsu-O-Shi must beware of the spirit of Fushima Takagi, who drinks the life essence of those who touch the weapon, in order to remain on Toril with the object of his desire. As a result, this cursed blade has a chance to drain the wielder every time it is used.
 STATISTICS:
 THAC0: +2 bonus
-Damage:  1D10 + 2
-Damage type:  slashing
-Weight:  4
+Damage: 1D10 + 2
+Damage type: slashing
+Weight: 4
 Speed Factor: 2
 Proficiency Type: Katana
-Type:  1-handed
+Type: 1-handed
 Requires: 6 Strength
 Chance to permanently drain life or attributes from wielder when used
 Not Usable By:
@@ -517,28 +509,28 @@ Beast Master~
 @109021 = ~Strength Modification~
 @109022 = ~Gullykin Temple~
 @109023 = ~Ioun Stone~
-@109024 = ~This is a small stone that floats in an orbit around the owner's head.  Simply equip the stone to set it in its orbit.  These obviously magical stones have different properties depending on their color.~
+@109024 = ~This is a small stone that floats in an orbit around the owner's head. Simply equip the stone to set it in its orbit. These obviously magical stones have different properties depending on their color.~
 @109025 = ~Katana
 The katana is a single-edged, slightly curved sword that ends with a chisel point. The katana is perhaps one of the finest swords ever made, the steps to its creation a long and secret process, that is more art form than anything else. This blade is an important facet of Kara-Tur culture. To touch or wield a samurai's katana is to insult the samurai and to incite his wrath. For a gaijin, or foreigner, to own such a blade is a rare occurrence. Either the gaijin is a greatly honored friend of an important minister, or the gaijin has murdered a samurai.
 STATISTICS:
-Damage:  1D10
-Damage type:  slashing
-Weight:  6
+Damage: 1D10
+Damage type: slashing
+Weight: 6
 Speed Factor: 4
 Proficiency Type: Katana
-Type:  1-handed
+Type: 1-handed
 Requires: 6 Strength
 ~
 @109026 = ~Katana +2, Tsu-O-Shi
 Tsu-O-Shi, also known as the Coveted Blade, was forged in the nation of Wa more than five centuries ago, by the sword smith Murakaken Shinji, whose skill was so great he was rumored to be able to awaken the very spirit of the metal. Tsu-O-Shi passed through the hands of the various heirs of the otherwise unremarkable Kasune family, until the powerful daimyo and well-known sword lover Fushima Takagi saw it. Takagi became obsessed with the sword and made many frustrated attempts to acquire the blade. Finally, he hired a clan of ninja to steal the blade for him, covering its loss with the burning of the Kasune family compound. When the ninja presented the blade to their employer, it was used to cut them down, forever removing any link between Takagi and the sword's legitimate owners. Takagi hid the sword, often withdrawing to its hiding place to gaze upon its beauty and perfection. On the day Takagi died, his spirit refused to depart the earth and leave the sword behind, so he stayed with Tsu-O-Shi, becoming one with it. From that day forth, any who wield the mighty Tsu-O-Shi must beware of the spirit of Fushima Takagi, who drinks the life essence of those who touch the weapon, in order to remain on Toril with the object of his desire. As a result, this cursed blade has a chance to drain the wielder every time it is used.
 STATISTICS:
 THAC0: +2 bonus
-Damage:  1D10 + 2
-Damage type:  slashing
-Weight:  4
+Damage: 1D10 + 2
+Damage type: slashing
+Weight: 4
 Speed Factor: 2
 Proficiency Type: Katana
-Type:  1-handed
+Type: 1-handed
 Requires: 6 Strength
 Chance to permanently drain life or attributes from wielder when used
 ~
@@ -694,32 +686,32 @@ Saving Throw: None
 This spell allows the caster to summon forth and control two 20 HD Bearweres. The bears will respond to the caster's every whim for the duration of the spell. Bearweres are slower than Greater Wolfweres but they are tougher as well. Bearweres are resistant to elemental and magical attacks and regenerate rapidly.~
 @115002 = ~Greater Bearwere~
 @115003 = ~Bearwere~
-@115004 = ~This symbolic paw represents a Shapeshifter Druid's control over lycanthropy. While the paw is wielded the Shapeshifter becomes a Werewolf.  When the paw is removed, the Shapeshifter returns to human form. The paws of a Werewolf count as +2 weapons.
+@115004 = ~This symbolic paw represents a Shapeshifter Druid's control over lycanthropy. While the paw is wielded the Shapeshifter becomes a Werewolf. When the paw is removed, the Shapeshifter returns to human form. The paws of a Werewolf count as +2 weapons.
 STATISTICS:
-Attributes:  19 STR, 16 DEX, 15 CON
-Base Armor Class:  1
-Resistances:  20% magic resistance, immunity to non-magical weapons
-Attacks Per Round:  2
-Damage:  1D12
-Damage type:  slashing
-Speed Factor:  3
-Proficiency Type:  Dagger 
-Type:  1-handed
+Attributes: 19 STR, 16 DEX, 15 CON
+Base Armor Class: 1
+Resistances: 20% magic resistance, immunity to non-magical weapons
+Attacks Per Round: 2
+Damage: 1D12
+Damage type: slashing
+Speed Factor: 3
+Proficiency Type: Dagger 
+Type: 1-handed
 ~
 @115005 = ~This symbolic paw represents a Shapeshifter Druid's ultimate control over lycanthropy. While the paw is wielded the Shapeshifter becomes a Greater Werewolf. When the paw is removed, the Shapeshifter returns to human form. The paws of a Greater Werewolf count as +3 weapons.
 STATISTICS:
-Attributes:  21 STR, 20 DEX, 25 CON
-Base Armor Class:  -6
-Base Saving Throws:  1/1/1/2/1
-Resistances:  40% magic resistance, 50% elemental resistance, immunity to non-magical weapons
-Regeneration:  3 hit points per second
-Attacks Per Round:  3
-Base Paw THAC0:  6 
-Damage:  2D8
-Damage type:  slashing
-Speed Factor:  3
-Proficiency Type:  Dagger 
-Type:  1-handed
+Attributes: 21 STR, 20 DEX, 25 CON
+Base Armor Class: -6
+Base Saving Throws: 1/1/1/2/1
+Resistances: 40% magic resistance, 50% elemental resistance, immunity to non-magical weapons
+Regeneration: 3 hit points per second
+Attacks Per Round: 3
+Base Paw THAC0: 6 
+Damage: 2D8
+Damage type: slashing
+Speed Factor: 3
+Proficiency Type: Dagger 
+Type: 1-handed
 ~
 @115006 = ~Shapeshift: Werewolf
 Strength: 19 
@@ -729,7 +721,7 @@ Base Armor Class: 1
 Number of Attacks: 2
 Attack Damage: 1d12 (slashing), strikes as +2 weapon
 Special Abilities:
-Ã¢â‚¬â€œ Magic Resistance: 20%
+- Magic Resistance: 20%
 - Immune to non-magical weapons~
 @115007 = ~Shapeshift: Greater Werewolf
 Strength: 21
@@ -739,11 +731,11 @@ Base Armor Class: -6
 Number of Attacks: 3
 Attack Damage: 2d8 (slashing)
 Special Abilities:
-Ã¢â‚¬â€œ Fire Resistance: 50%
-Ã¢â‚¬â€œ Cold Resistance: 50%
-Ã¢â‚¬â€œ Electricity Resistance: 50%
-Ã¢â‚¬â€œ Acid Resistance: 50%
-Ã¢â‚¬â€œ Magic Resistance: 40%
+- Fire Resistance: 50%
+- Cold Resistance: 50%
+- Electricity Resistance: 50%
+- Acid Resistance: 50%
+- Magic Resistance: 40%
 - Immune to non-magical weapons~
 @115008 = ~Werewolf Paw~
 @115009 = ~Greater Werewolf Paw~
@@ -762,7 +754,7 @@ Special Abilities:
 @116012 = ~It would be an honor. I accept, and will do my best to be here for the village.~
 @116013 = ~Sorry mayor, not interested. I expect to be paid!~
 @116014 = ~I'll admit I am disappointed but I understand the hardships of your profession, <CHARNAME>. I do not envy you on your chosen path.~
-@116015 = ~You, my <LADYLORD>, are a true friend of the land. The land could be restored with the steady hand of one such as you.~ 
+@116015 = ~You, my <LADYLORD>, are a true friend of the land. The land could be restored with the steady hand of one such as you.~
 @116016 = ~Can you guide this grove during this time of rebirth?~
 @116017 = ~I will do my best to restore balance to this land.~
 @116018 = ~This land has suffered, and I will strive to undo the damage wrought by Faldorn's actions.~
@@ -777,7 +769,6 @@ Special Abilities:
 @119000 = ~Romance Bug Fixes~
 @120000 = ~Imoen ToB Dialogue Fix~
 @121000 = ~Use BG Walking Speeds (BETA)~
-    
 @122000 = ~Allow Cromwell to Upgrade Watcher's Keep Items~
 @122001 = ~Ah, a Case of Plenty. I can enchant this to produce even stronger bolts, but it'll cost ye. 5,000 gold it is.~
 @122002 = ~Well, let's see what else ye got.~
@@ -798,7 +789,7 @@ Special Abilities:
 @122017 = ~Ach, now this is a real protection cloak.~
 @122018 = ~With scrolls of invisibility and improved haste, this can be made even better.~
 @122019 = ~We can use those invisibility and improved haste scrolls to make this cloak even better. It's a tricky process and'll cost you 20,000 gold.~
-@122020 = ~Aye, scales from a white wyrm.  I can make a suit of armor from yon scales, if ye like, for only 5,000 gold.~
+@122020 = ~Aye, scales from a white wyrm. I can make a suit of armor from yon scales, if ye like, for only 5,000 gold.~
 @122021 = ~Now this is some fine elven chain, even by dwarven standards.~
 @122022 = ~But there's still some dwarven tricks they don't yet ken. With a scroll of protection from normal weapons, it'll take something magic to get past it.~
 @122023 = ~With that scroll of protection from normal weapons, we can enchant the armor to resist anything but a magical blade. It's not easy adding dwarven magic to elven chain, and it'll cost ye 40,000 gold.~
@@ -818,12 +809,12 @@ Special Abilities:
 @122037 = ~Ah, now this is a Dagger of the Star.~
 @122038 = ~If we combine this with five star sapphires, we can increase its enchantment further.~
 @122039 = ~With five of those star sapphires and 5,000 gold we can make it even more effective.~
-@122040 = ~You gots three heads there...I can adds poison and electric heads to it at once.  So five heads, you know? 10,000 gp and I can do it.  You wants?~
+@122040 = ~You gots three heads there... I can adds poison and electric heads to it at once. So five heads, you know? 10,000 gp and I can do it. You wants?~
 @122041 = ~Could you just attach the electric head for now? We'll give you 5,000 gold.~
 @122042 = ~Could you just attach the poison head for now? We'll give you 5,000 gold.~
-@122043 = ~I knows recipes for two heads for Flail of Ages.  You can adds poison head... or you adds electricity head.  Only recipes I have, sorry.~
-@122044 = ~You gots three heads there... I can adds electric heads to it.  So four heads, you know?  5,000 gp and I can do it.  You wants?~
-@122045 = ~Ooo!  You gots four heads and I can add the final head.  Real pestilent, that one.  5,000 gp and I do it okay.  You want?~
+@122043 = ~I knows recipes for two heads for Flail of Ages. You can adds poison head... or you adds electricity head. Only recipes I have, sorry.~
+@122044 = ~You gots three heads there... I can adds electric heads to it. So four heads, you know? 5,000 gp and I can do it. You wants?~
+@122045 = ~Ooo! You gots four heads and I can add the final head. Real pestilent, that one. 5,000 gp and I do it okay. You want?~
 @122046 = ~This is a gnomish sling. I've got a few tricks up my sleeve that can make it more accurate.~
 @122047 = ~If ye come across a Ring of Energy, I can get ye fixed right up.~
 @122048 = ~Give me yon Ring of Energy and 5,000 gold and we can get started.~
@@ -834,9 +825,9 @@ Special Abilities:
 @123000 = ~Allow Cespenar to Use Cromwell Recipes~
 @123001 = ~Oh, shiny red scales is it? I make good scale armor, protect from fire real good.~
 @123002 = ~What's whis pile of shiny? Ooh, illitium!~
-@123003 = ~Make nice shiny coating for disruption maces. Come backs if you find one.~  
-@123004 = ~Oh, and a mace of disruption! Make mace even more scary for just 7,500 gp!~    
-@123005 = ~Ugh. You needs to wash this bag.~        
+@123003 = ~Make nice shiny coating for disruption maces. Come backs if you find one.~
+@123004 = ~Oh, and a mace of disruption! Make mace even more scary for just 7,500 gp!~
+@123005 = ~Ugh. You needs to wash this bag.~
 @123006 = ~Wow, lots of shiny shiny silver.~
 @123007 = ~Ow! Sharp, shiny silver. Need hilt and I can makes nice shiny silver sword.~
 @123008 = ~Nice, shiny hilt, but you needs the pointy bit.~
@@ -874,19 +865,19 @@ Special Abilities:
 @125002 = ~Off with you, halfling, I have no patience for your chattering!~
 @125003 = ~As a matter of fact, yes, I am. Why did you ask?~
 @125004 = ~I've been to the ruins already, and I must say that they are overrated.~
-@125005 = ~Wait till you hear what I have to say. These ruins, they are ripe for the pickin' and will be pretty good takin's with none too many bruises.  Maybe we should work together. Stayin' with my aunt here and all, I know this place pretty good, know a few secrets and how to pick a lock or find a booby trap. Could be fun.  What say you?~
-@125006 = ~A splendid idea!  Welcome aboard.~
+@125005 = ~Wait till you hear what I have to say. These ruins, they are ripe for the pickin' and will be pretty good takin's with none too many bruises. Maybe we should work together. Stayin' with my aunt here and all, I know this place pretty good, know a few secrets and how to pick a lock or find a booby trap. Could be fun. What say you?~
+@125006 = ~A splendid idea! Welcome aboard.~
 @125007 = ~I really am sorry but we've all we need.~
-@125008 = ~Laughable!  What do I need you for? You took up enough of my time, now get lost!~
-@125009 = ~Well!  There's no need to be rude about it!  Hmph!  Never meet nice people in this line of work!  No wonder people hate adventurers!  Goodbye!~
-@125010 = ~Double good and done!  Oh, it's great fun having someone from the trade to talk to! I'm here stayin' with my aunt, to mend my ways and all, but I'm growin' just a little bit bored. Maybe we should work together. I know this place pretty good; know a few secrets, how to pick a lock or find a booby trap.  Could be fun.  What say you?~
-@125011 = ~Holy Kitty Cacophony, overrated?! Now this *is* exciting!  We should. . .we should work together!  Yeah!  I could use the help. . .uh.  .I mean, we could just help each other a little bit.  I can scout out the pretties for you. You can even keep most of it! Whatcha say?~
-@125012 = ~Friends we are, and nice ones too!  One for all and things like that!  Fun for all of us, I just *know* it!~
-@125013 = ~Ah well, easy go I guess.  Never get to make any friends in this biz.  Specially the nice ones.  Bye, I guess.~
+@125008 = ~Laughable! What do I need you for? You took up enough of my time, now get lost!~
+@125009 = ~Well! There's no need to be rude about it! Hmph! Never meet nice people in this line of work! No wonder people hate adventurers! Goodbye!~
+@125010 = ~Double good and done! Oh, it's great fun having someone from the trade to talk to! I'm here stayin' with my aunt, to mend my ways and all, but I'm growin' just a little bit bored. Maybe we should work together. I know this place pretty good; know a few secrets, how to pick a lock or find a booby trap. Could be fun. What say you?~
+@125011 = ~Holy Kitty Cacophony, overrated?! Now this *is* exciting! We should... we should work together! Yeah! I could use the help... uh... I mean, we could just help each other a little bit. I can scout out the pretties for you. You can even keep most of it! Whatcha say?~
+@125012 = ~Friends we are, and nice ones too! One for all and things like that! Fun for all of us, I just *know* it!~
+@125013 = ~Ah well, easy go I guess. Never get to make any friends in this biz. Specially the nice ones. Bye, I guess.~
 @125014 = ~I guess I'll just mope around here 'till you come back to your senses and come back for me.~
 @125015 = ~Well if your gonna be puppy-doggin after me all <DAYNIGHT>, maybe we should work together.~
 @125016 = ~No, I have no interest in ruins.~
-@125017 = ~Hey, you're not from around here!  Yeesh! There's no polish on yer boots, no snap in yer suspenders. You're not merchants.  They're always so much more presentable. Aww nutbunnies, adventurers in Gullykin! Yer gonna loot them Firewine ruins?~
+@125017 = ~Hey, you're not from around here! Yeesh! There's no polish on yer boots, no snap in yer suspenders. You're not merchants. They're always so much more presentable. Aww nutbunnies, adventurers in Gullykin! Yer gonna loot them Firewine ruins?~
 @125100 = ~Move NPCs to Convenient Locations: Move Alora to Gullykin~
 @125200 = ~Move NPCs to Convenient Locations: Move Eldoth to the Coast Way~
 @125300 = ~Move NPCs to Convenient Locations: Move Quayle to the Nashkel Carnival~
@@ -894,12 +885,12 @@ Special Abilities:
 @125500 = ~Move NPCs to Convenient Locations: Move Tiax to Beregost~
 @125600 = ~Move NPCs to Convenient Locations: Move Viconia to South Beregost Road~
 @126000 = ~Bardic Reputation Adjustment~
-@126001  = ~Lake Poet Sam~
-@126002  = ~Sam~
-@126003  = ~Lake Poet Rob~
-@126004  = ~Rob~
-@126005  = ~Lake Poet Willy~
-@126006  = ~Willy~
+@126001 = ~Lake Poet Sam~
+@126002 = ~Sam~
+@126003 = ~Lake Poet Rob~
+@126004 = ~Rob~
+@126005 = ~Lake Poet Willy~
+@126006 = ~Willy~
 @127000 = ~Change Cloakwood Mine Chapter End Change Trigger to Non-TotSC Behavior (plainab) (BETA)~
 @128000 = ~Game ends when the main character dies~
 @129000 = ~NPCs respond to the main character, not to whichever character talks to them~
@@ -915,7 +906,6 @@ Special Abilities:
 @134500 = ~Make the Noble Order of the Radiant Heart Stronghold Available to All Classes~
 @134600 = ~Make the Druid Grove Stronghold Available to All Classes~
 @134700 = ~Make the Imnesvale Cabin Stronghold Available to All Classes~
-
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -951,7 +941,7 @@ Special Abilities:
 @210000 = ~Allow Thieving and Stealth in Heavy Armor~
 // Moved from thieving_descripts.tpa
 // Typical weight line for an item, used for a search matching the whole line
-@210001  = ~\(Weight:[ %TAB%]*[0-9]+\)~
+@210001 = ~\(Weight:[ %TAB%]*[0-9]+\)~
 // Typical lock picking penalty line in original armors
 @210002 = ~^\([ %TAB%]*Lock Picking:.+\)\|\([ %TAB%]*.?.?.?[ %TAB%]*Open Locks:.+\)$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 // Title for lock picking added after Weight line, penalty is added after this text
@@ -997,32 +987,32 @@ Thieving Abilities in Heavy Armor' Component~
 @215100 = ~No Restrictions~
 @215200 = ~Allow Armor Plus One Protection Item (Angel)~
 @216000 = ~Rebalanced Weapon Proficiencies~
-@216001 = ~SHORT SWORD/NINJA-TO:  The preferred weapon of many a thief and halfling, short swords and ninja-tos are light but useful weapons.
+@216001 = ~SHORT SWORD/NINJA-TO: The preferred weapon of many a thief and halfling, short swords and ninja-tos are light but useful weapons.
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216002 = ~KATANA/WAKIZASHI:  Katanas and wakizashis are the finest examples of the swordsmith's craft, and require great care to use.  As skill develops, the wielder and blade become a single being, dedicated completely to the art of warfare.  These weapons are hard to find Outside of Kara-Tur, so care must be taken when considering this proficiency.  After all, skill with katanas and wakizashis is only helpful if you can find one.
-WARNING:  Magical katanas are very rare outside of Kara-Tur!
+@216002 = ~KATANA/WAKIZASHI: Katanas and wakizashis are the finest examples of the swordsmith's craft, and require great care to use. As skill develops, the wielder and blade become a single being, dedicated completely to the art of warfare. These weapons are hard to find Outside of Kara-Tur, so care must be taken when considering this proficiency. After all, skill with katanas and wakizashis is only helpful if you can find one.
+WARNING: Magical katanas are very rare outside of Kara-Tur!
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216003 = ~SCIMITAR:  This weapon class allows the character to use curved, bladed weapons such as scimitars.
+@216003 = ~SCIMITAR: This weapon class allows the character to use curved, bladed weapons such as scimitars.
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216004 = ~FLAIL: Flails are blunt weapons used to knock your enemies senseless.  They are difficult to use but with skill and practice these weapons are very useful.
+@216004 = ~FLAIL: Flails are blunt weapons used to knock your enemies senseless. They are difficult to use but with skill and practice these weapons are very useful.
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216005 = ~MACE/MORNINGSTAR:  The mace is most often associated with clerics.  It is a powerful blunt weapon, similar to the club, but designed to do more damage. A morningstar is similar to a mace, typically with spikes instead of flanges.
+@216005 = ~MACE/MORNINGSTAR: The mace is most often associated with clerics. It is a powerful blunt weapon, similar to the club, but designed to do more damage. A morningstar is similar to a mace, typically with spikes instead of flanges.
 <DOTS1>
 <DOTS2>
 <DOTS3>
@@ -1045,7 +1035,7 @@ WARNING:  Magical katanas are very rare outside of Kara-Tur!
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216303 = ~LARGE SWORD: This weapon class allows the character to use Broad Swords, Long Swords, and Scimitars.  The Thief is able to take this weapon class, but he is only allowed to use the Long Sword. The Druid is able to select this class, but is limited to Scimitars alone.
+@216303 = ~LARGE SWORD: This weapon class allows the character to use Broad Swords, Long Swords, and Scimitars. The Thief is able to take this weapon class, but he is only allowed to use the Long Sword. The Druid is able to select this class, but is limited to Scimitars alone.
 <DOTS1>
 <DOTS2>
 <DOTS3>
@@ -1196,7 +1186,7 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 // translators - the next three strings are used to replace game text, so they need to be copied from the game itself
 // get @244001 and @244002 from strref 9588 in bgee/bg2ee/iwdee
 @244001 = ~\* All extra attacks are only available to warrior classes.~ // last line; if there's a * included then add \ in front of it
-@244002 = ~Proficiency Slot Table:~                                     // line before <DOTS1>, exclude the * if present
+@244002 = ~Proficiency Slot Table:~ // line before <DOTS1>, exclude the * if present
 // get @244003 from string 32117 (bg2ee/iwdee) or 24220 (bgee)
 @244003 = ~(for warriors only)~
 @245000 = ~Enforce PnP Proficiency Rules on Dual-Classed Characters~
@@ -1469,7 +1459,7 @@ Use Baldur.lua options: a7_interval_ini
 @412000 = ~Give Coran A Legal Dexterity Score of 19~
 @413000 = ~Make Xan a Generalist Mage (Mike1072)~
 @413100 = ~Make Dynaheir a Generalist Mage (Angel)~
-@413200 = ~Make Xzar a Generalist Mage (Angel)~ 
+@413200 = ~Make Xzar a Generalist Mage (Angel)~
 @413300 = ~Make Edwin a Generalist Mage (Angel)~
 @414000 = ~Don't Auto-Assign Advanced AI Scripting to Party~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
