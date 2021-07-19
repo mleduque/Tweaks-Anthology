@@ -1477,32 +1477,3 @@ Use Baldur.lua options: a7_interval_ini
 @504000 = ~Allow Yeslick to use axes~
 @505000 = ~Ensure Shar-Teel doesn't die in the original challenge~
 @506000 = ~Remove animation from the Cloak of Mirroring (leave it for other spells and effects that use the same graphic)~
-@507001 = ~Make the starting dungeon slightly harder~
-@507002 = ~Make the bard stronghold available to all classes~
-@507003 = ~Make the cleric stronghold available to all classes~
-@507004 = ~Make the druid stronghold available to all classes~
-@507005 = ~Make the fighter stronghold available to all classes~
-@507006 = ~Make the paladin stronghold available to all classes~
-@507007 = ~Make the ranger stronghold available to all classes~
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// Ex-SCS components                                \\\\\
-///// Automatically copied over from SCS TRA files     \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@500000 = ~Stackable ankheg shells, winterwolf pelts and wyvern heads~
-@501000 = ~Allow NPC pairs to separate~
-@502000 = ~Make party members less likely to die irreversibly~
-@503000 = ~Move Boo into Minsc's pack~
-@504000 = ~Allow Yeslick to use axes~
-@505000 = ~Ensure Shar-Teel doesn't die in the original challenge~
-@506000 = ~Remove animation from the Cloak of Mirroring (leave it for other spells and effects that use the same graphic)~
-@507001 = ~Make the bard stronghold available to all classes~
-@507002 = ~Make the cleric stronghold available to all classes~
-@507003 = ~Make the druid stronghold available to all classes~
-@507004 = ~Make the fighter stronghold available to all classes~
-@507005 = ~Make the paladin stronghold available to all classes~
-@507007 = ~Make the ranger stronghold available to all classes~
-@507008 = ~Make the thief stronghold available to all classes~
