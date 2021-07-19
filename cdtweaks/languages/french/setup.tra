@@ -1382,7 +1382,7 @@ Indiquez un pourcentage entre 20 et 500 : ~
 @321013 = ~CHARISME minimum :~
 @321014 = ~Aucun changement choisi ! Choisissez de nouveau.~
 @322000 = ~Points d'entree de carte plus judicieux~
-@322001 = ~Atta Girl~
+@322001 = ~Fifille~
 @322002 = ~Ange~
 @323000 = ~Taerum fabrique une armure d'Ankheg supplementaire (Icendoan/grogerson)~
 @324000 = ~Butin aleatoire sympathique~
@@ -1521,6 +1521,23 @@ Utiliser les parametres de Baldur.lua :      a7_interval_ini
 @412000 = ~Donner a Coran une valeur reglementaire de 19 en dexterite~
 @413000 = ~Transformer Xan en mage generaliste (Mike1072)~
 @414000 = ~Ne pas attribuer automatiquement un script IA avance au groupe~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Ex-SCS components                                \\\\\
+///// Automatically copied over from SCS TRA files     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@500000 = ~Carapaces d'ankhegs, peaux de loup des glaces et tetes de wivernes empilables~
+@501000 = ~Permettre de separer les couples de PNJ~
+@502000 = ~Rendre les membres du groupe moins susceptibles de 
+mourir de facon permanente~
+@503000 = ~Deplacer Bouh dans le sac de Minsc~
+@504000 = ~Permettre a Yeslick d'utiliser les haches~
+@505000 = ~S'assurer que Shar-Teel ne meurt pas lors du defi originel~
+@506000 = ~Retirer l'animation de la Cape de renvoi (la laisser
+pour les sorts et effets donnant le meme graphisme)~
 // WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"
 @-1001= "composants optionnels distincts.
@@ -1618,63 +1635,3 @@ Utilisation de"
 @-1063= "INSTALLATION ABANDONNEE"
 @-1064= "Abandon de l'installation de ["
 @-1065= "], retour a l'etat anterieur"
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// Ex-SCS components                                \\\\\
-///// Automatically copied over from SCS TRA files     \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@500000 = ~Carapaces d'ankhegs, peaux de loup des glaces et tetes de wivernes empilables~
-@501000 = ~Permettre de separer les couples de PNJ~
-@502000 = ~Rendre les membres du groupe moins susceptibles de 
-mourir de facon permanente~
-@503000 = ~Deplacer Bouh dans le sac de Minsc~
-@504000 = ~Permettre a Yeslick d'utiliser les haches~
-@505000 = ~S'assurer que Shar-Teel ne meurt pas lors du defi originel~
-@506000 = ~Retirer l'animation de la Cape de renvoi (la laisser
-pour les sorts et effets donnant le meme graphisme)~
-@507001 = ~Rendre le debut du donjon d'Irenicus legerement plus
-difficile~
-@507002 = ~Rendre la forteresse du barde accessible a toutes les
-classes~
-@507003 = ~Rendre la forteresse du pretre accessible a toutes les
-classes~
-@507004 = ~Rendre la forteresse du druide accessible a toutes les
-classes~
-@507005 = ~Rendre la forteresse du combattant accessible a toutes
-les classes~
-@507006 = ~Rendre la forteresse du paladin accessible a toutes les classes~
-@507007 = ~Rendre la forteresse du rodeur accessible a toutes les
-classes~
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// Ex-SCS components                                \\\\\
-///// Automatically copied over from SCS TRA files     \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@500000 = ~Carapaces d'ankhegs, peaux de loup des glaces et tetes de wivernes empilables~
-@501000 = ~Permettre de separer les couples de PNJ~
-@502000 = ~Rendre les membres du groupe moins susceptibles de 
-mourir de facon permanente~
-@503000 = ~Deplacer Bouh dans le sac de Minsc~
-@504000 = ~Permettre a Yeslick d'utiliser les haches~
-@505000 = ~S'assurer que Shar-Teel ne meurt pas lors du defi originel~
-@506000 = ~Retirer l'animation de la Cape de renvoi (la laisser
-pour les sorts et effets donnant le meme graphisme)~
-@507001 = ~Rendre la forteresse du barde accessible a toutes les
-classes~
-@507002 = ~Rendre la forteresse du pretre accessible a toutes les
-classes~
-@507003 = ~Rendre la forteresse du druide accessible a toutes les
-classes~
-@507004 = ~Rendre la forteresse du combattant accessible a toutes
-les classes~
-@507005 = ~Rendre la forteresse du paladin accessible a toutes les classes~
-@507007 = ~Rendre la forteresse du rodeur accessible a toutes les
-classes~
-@507008 = ~Rendre la forteresse du voleur accessible a toutes les
-classes~
