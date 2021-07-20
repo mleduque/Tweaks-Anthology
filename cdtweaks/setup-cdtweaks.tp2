@@ -80,7 +80,7 @@ LANGUAGE
   ~cdtweaks/languages/english/description_updates.tra~
   ~cdtweaks/languages/english/setup.tra~
 LANGUAGE
-  ~Czech (Translation by Razfallow and Vlas·k)~
+  ~Czech (Translation by Razfallow and Vlas√°k)~
   ~czech~
   ~cdtweaks/languages/english/setup.tra~
   ~cdtweaks/languages/czech/setup.tra~
@@ -4871,7 +4871,7 @@ ACTION_IF NOT GAME_IS ~totsc~ THEN BEGIN
           REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
         END
       END ELSE
-      PATCH_IF GAME_IS ~bgt eet~ BEGIN
+      PATCH_IF GAME_IS ~bgt~ BEGIN
         PATCH_FOR_EACH string IN 
           74951 74952 74953 74954 74955 74956 74957 74958 74959 74960 74961 74962 74963
           74964 74965 74966 74967 74968 74969 74970 74971 74972 74973 74974 74975 74976
@@ -4885,7 +4885,12 @@ ACTION_IF NOT GAME_IS ~totsc~ THEN BEGIN
         PATCH_FOR_EACH string IN 27047 27046 27060 27059 26829 27455 27173 BEGIN
           REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
         END
-      END 
+      END ELSE
+      PATCH_IF GAME_IS ~eet~ BEGIN
+        PATCH_FOR_EACH string IN 227047 227046 227060 227059 226829 227455 227173 BEGIN
+          REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
+        END
+      END
     END
     BUT_ONLY
 
