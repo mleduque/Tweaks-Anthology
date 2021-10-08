@@ -1,0 +1,46 @@
+// Script block: Undo explored area whenever the party enters UnderSigil (PST/PSTEE)
+<<<<<<<< .../cdtweaks-inlined/undersigil_fow/script.baf
+IF
+  !Global("Current_Area","GLOBAL",2000)
+  NearLocation(Player1,%location%,50)
+THEN
+  RESPONSE #100
+    UndoExplore()
+    ExploreMapChunk([%x%.%y%],0,400)
+    Continue()
+END
+>>>>>>>>
+
+// Getting area script name and collecting entrance coordinates
+OUTER_TEXT_SPRINT script_resref ~AR2000~
+OUTER_SET entrances = 0
+COPY_EXISTING ~AR2000.ARE~ ~override~
+  READ_LONG 0x68 ofs_entrances
+  READ_LONG 0x6c num_entrances
+  FOR (i = 0; i < num_entrances; ++i) BEGIN
+    READ_ASCII 0x94 are_script (8) NULL
+    PATCH_IF (STRING_LENGTH ~%are_script%~ > 0 &&
+              FILE_EXISTS_IN_GAME ~%are_script%.BCS~) BEGIN
+      TEXT_SPRINT script_resref ~%are_script%~
+    END ELSE BEGIN
+      WRITE_ASCIIE 0x94 ~%script_resref%~ (8)
+    END
+    SET ofs = ofs_entrances + i * 104
+    READ_SHORT (ofs + 0x20) x
+    READ_SHORT (ofs + 0x22) y
+    SET $entrances(~%entrances%~ ~x~) = x
+    SET $entrances(~%entrances%~ ~y~) = y
+    SET entrances += 1
+  END
+BUT_ONLY IF_EXISTS
+
+OUTER_FOR (i = 0; i < entrances; ++i) BEGIN
+  OUTER_SET x = $entrances(~%i%~ ~x~)
+  OUTER_SET y = $entrances(~%i%~ ~y~)
+  ACTION_IF (GAME_IS ~pst~) BEGIN
+    OUTER_TEXT_SPRINT location ~[%x%.%y%]~
+  END ELSE BEGIN
+    OUTER_TEXT_SPRINT location ~%x%,%y%~
+  END
+  EXTEND_TOP ~%script_resref%.BCS~ ~.../cdtweaks-inlined/undersigil_fow/script.baf~ EVAL
+END
