@@ -80,7 +80,7 @@ LANGUAGE
   ~cdtweaks/languages/english/description_updates.tra~
   ~cdtweaks/languages/english/setup.tra~
 LANGUAGE
-  ~Czech (Translation by Razfallow and Vlas·k)~
+  ~Czech (Translation by Razfallow and Vlas√°k)~
   ~czech~
   ~cdtweaks/languages/english/setup.tra~
   ~cdtweaks/languages/czech/setup.tra~
@@ -4871,7 +4871,7 @@ ACTION_IF NOT GAME_IS ~totsc~ THEN BEGIN
           REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
         END
       END ELSE
-      PATCH_IF GAME_IS ~bgt eet~ BEGIN
+      PATCH_IF GAME_IS ~bgt~ BEGIN
         PATCH_FOR_EACH string IN 
           74951 74952 74953 74954 74955 74956 74957 74958 74959 74960 74961 74962 74963
           74964 74965 74966 74967 74968 74969 74970 74971 74972 74973 74974 74975 74976
@@ -4885,7 +4885,12 @@ ACTION_IF NOT GAME_IS ~totsc~ THEN BEGIN
         PATCH_FOR_EACH string IN 27047 27046 27060 27059 26829 27455 27173 BEGIN
           REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
         END
-      END 
+      END ELSE
+      PATCH_IF GAME_IS ~eet~ BEGIN
+        PATCH_FOR_EACH string IN 227047 227046 227060 227059 226829 227455 227173 BEGIN
+          REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
+        END
+      END
     END
     BUT_ONLY
 
@@ -13212,13 +13217,14 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// Increase party movement speed outside combat    \\\\\
+///// Increase party movement speed and/or casting     \\\\\
+///// speed outside of combat                          \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 /////                                                  \\\\\
-///// By 50 percent                                    \\\\\
+///// Movement speed by 50 percent                     \\\\\
 /////                                                  \\\\\
 
 BEGIN @333001 DESIGNATED 3340
@@ -13229,7 +13235,10 @@ SUBCOMPONENT @333000
 INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
 
 LAF A7_INSTALL_AUTOHASTE
-  INT_VAR speed_percent = 150
+  INT_VAR
+    casting_speed = 0
+    movement_speed = 1
+    speed_percent = 150
   RET success
 END
 
@@ -13238,7 +13247,7 @@ ACTION_IF (NOT success) BEGIN
 END
 
 /////                                                  \\\\\
-///// By 100 percent                                   \\\\\
+///// Movement speed by 100 percent                    \\\\\
 /////                                                  \\\\\
 
 BEGIN @333002 DESIGNATED 3341
@@ -13249,7 +13258,10 @@ SUBCOMPONENT @333000
 INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
 
 LAF A7_INSTALL_AUTOHASTE
-  INT_VAR speed_percent = 200
+  INT_VAR
+    casting_speed = 0
+    movement_speed = 1
+    speed_percent = 200
   RET success
 END
 
@@ -13258,7 +13270,7 @@ ACTION_IF (NOT success) BEGIN
 END
 
 /////                                                  \\\\\
-///// By 150 percent                                   \\\\\
+///// Movement speed by 150 percent                    \\\\\
 /////                                                  \\\\\
 
 BEGIN @333003 DESIGNATED 3342
@@ -13269,7 +13281,101 @@ SUBCOMPONENT @333000
 INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
 
 LAF A7_INSTALL_AUTOHASTE
-  INT_VAR speed_percent = 250
+  INT_VAR
+    casting_speed = 0
+    movement_speed = 1
+    speed_percent = 250
+  RET success
+END
+
+ACTION_IF (NOT success) BEGIN
+  ABORT @28
+END
+
+/////                                                  \\\\\
+///// Movement speed by 50 percent and casting speed   \\\\\
+/////                                                  \\\\\
+
+BEGIN @333004 DESIGNATED 3343
+GROUP @4
+REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
+SUBCOMPONENT @333000
+
+INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
+
+LAF A7_INSTALL_AUTOHASTE
+  INT_VAR
+    casting_speed = 1
+    movement_speed = 1
+    speed_percent = 150
+  RET success
+END
+
+ACTION_IF (NOT success) BEGIN
+  ABORT @28
+END
+
+/////                                                  \\\\\
+///// Movement speed by 100 percent and casting speed  \\\\\
+/////                                                  \\\\\
+
+BEGIN @333005 DESIGNATED 3344
+GROUP @4
+REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
+SUBCOMPONENT @333000
+
+INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
+
+LAF A7_INSTALL_AUTOHASTE
+  INT_VAR
+    casting_speed = 1
+    movement_speed = 1
+    speed_percent = 200
+  RET success
+END
+
+ACTION_IF (NOT success) BEGIN
+  ABORT @28
+END
+
+/////                                                  \\\\\
+///// Movement speed by 150 percent and casting speed  \\\\\
+/////                                                  \\\\\
+
+BEGIN @333006 DESIGNATED 3345
+GROUP @4
+REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
+SUBCOMPONENT @333000
+
+INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
+
+LAF A7_INSTALL_AUTOHASTE
+  INT_VAR
+    casting_speed = 1
+    movement_speed = 1
+    speed_percent = 250
+  RET success
+END
+
+ACTION_IF (NOT success) BEGIN
+  ABORT @28
+END
+
+/////                                                  \\\\\
+///// Casting speed only                               \\\\\
+/////                                                  \\\\\
+
+BEGIN @333007 DESIGNATED 3346
+GROUP @4
+REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
+SUBCOMPONENT @333000
+
+INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
+
+LAF A7_INSTALL_AUTOHASTE
+  INT_VAR
+    casting_speed = 1
+    movement_speed = 0
   RET success
 END
 
@@ -13486,6 +13592,20 @@ LAF a7_auto_save
     feedback    = interval_save_feedback
     use_ini     = interval_save_ini
 END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Reset UnderSigil Fog of War                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @336000 DESIGNATED 3360
+GROUP @4
+REQUIRE_PREDICATE (GAME_IS ~pst pstee~) @25
+
+INCLUDE ~cdtweaks/lib/undersigil_fow.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

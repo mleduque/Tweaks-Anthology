@@ -334,7 +334,7 @@
         in the game. The component has two options: open up the first area only (with
         the lodge and Aldeth Sashenstar) or open up all four wilderness areas, leaving
         just the mines themselves inaccessible until after the Bandit Camp. </p>
-      <p>This functionality is also available from the BG1 NPC Project.</p>
+      <p>This functionality was also available from the BG1 NPC Project until v24.</p>
       <p><strong>Improved Athkatlan City Guard</strong><br />
         <em> BG2EE,  EET,  BG2, BGT</em></p>
       <p> The Amnish guards aren't really tough enough to keep the peace in the cities,
@@ -1575,13 +1575,17 @@
       <p><strong>Make party members less likely to die irreversibly</strong><br />
         <em>BGEE,   BG2EE, EET,   BG2, BGT, Tutu</em></p>
       <p>This component tries to prevent &quot;chunking&quot;, the annoying permanent death of your          character when you're reduced below -10 <acronym title="Hit Points">hp</acronym>.          Characters who get reduced to 0 <acronym title="Hit Points">hp</acronym> or          below just die in the usual fashion and can be resurrected. It   isn't possible          to prevent quite all forms of chunking (massive damage from   fire, in particular, still seems to cause chunking fairly reliably), but   this component should make it          a rarer occurrence. This may be useful in the later stages of   the game,          when melee opponents often do 30-40 <acronym title="Hit Points">hp</acronym> damage          per blow - that 10 <acronym title="Hit Points">hp</acronym> safety margin          starts to feel slender. </p>
-      <p><strong>Increase party movement speed outside combat (argent77)</strong><br />
+      <p><strong>Increase party movement speed and/or casting speed outside of combat (argent77)</strong><br />
         <em>BGEE, BG2EE, IWDEE, EET, BG2 (requires TobEx), BGT (requires TobEx), Tutu (requires TobEx), IWD-in-BG2</em></p>
-      <p>This tweak allows your party members to walk around at increased speed as long as no hostile creatures are within their visual range. The protagonist will also receive a special ability that can be used to toggle speed bonus on or off. The following options are available:</p>
+      <p>This tweak allows your party members and familiars to walk around and/or cast spells at increased speed as long as no hostile creatures are within their visual range. The protagonist will also receive a special ability that can be used to toggle speed bonuses on or off. The following options are available:</p>
       <ul>
         <li>Increase movement speed by 50 percent</li>
         <li>Increase movement speed by 100 percent (same speed as with Boots of Speed)</li>
         <li>Increase movement speed by 150 percent</li>
+        <li>Increase movement speed by 50 percent and casting speed</li>
+        <li>Increase movement speed by 100 percent and casting speed</li>
+        <li>Increase movement speed by 150 percent and casting speed</li>
+        <li>Increase casting speed only</li>
       </ul>
       <p><strong>Create interval saves (argent77)</strong><br />
         <em>BGEE, BG2EE, IWDEE, EET, PSTEE</em></p>
@@ -1605,6 +1609,10 @@
       <p>It is also possible to allow creating interval saves during combat with the following Baldur.lua option:</p>
       <div class="code">SetPrivateProfileString('Script','IntervalSaveCombat','0')</div>
       <p>Set it to 1 to allow creation of interval saves during combat. The option is turned off by default. For games prior to patch 2.0 you have to set a game variable with following console command instead: <em style="white-space:nowrap;">C:SetGlobal("A7-IntervalSaveCombat","GLOBAL",0)</em></p>
+      <p><strong>Reset UnderSigil Fog of War</strong><br />
+        <em>PST, PSTEE</em></p>
+      <p>UnderSigil is known as <em>the</em> map for grinding loot and experience. Since monsters are spawned randomly every time the area is revisited, the exploration state of the map can help to keep track of which parts have already been cleared.</p>
+      <p>This tweak resets the exploration state of UnderSigil every time the party reenters the area. Other changes, such as containers or items, are not affected by the tweak.</p>
     </div>
     <div class="ribbon_rectangle_h3">
       <h3>Joinable NPC Tweaks </h3>
