@@ -1,6 +1,0 @@
-COPY_EXISTING ~%item%.itm~ ~override~
-              ~%item%.sto~ ~override~
-  PATCH_IF SOURCE_SIZE > 0x71 BEGIN
-    SAY 0x0c @REPLACE_ME
-  END
-  BUT_ONLY

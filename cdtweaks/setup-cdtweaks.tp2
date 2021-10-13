@@ -914,8 +914,7 @@ REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm 
 
 OUTER_SET names = 0 // don't set names
 INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes 
-INCLUDE ~cdtweaks/lib/unique_containers_default.tpa~ // external array of items => icons in case this expands to different platforms
-INCLUDE ~cdtweaks/lib/unique_containers.tpa~ // does the actual work
+INCLUDE ~cdtweaks/lib/unique_containers_v2.tpa~ // do the thing
 
 /////                                                  \\\\\
 ///// fixes, icons, names                              \\\\\
@@ -925,18 +924,11 @@ BEGIN @18020 DESIGNATED 182
 SUBCOMPONENT @18000
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd_in_bg2~ @25
-REQUIRE_PREDICATE (("%LANGUAGE%" STRING_COMPARE_CASE "english" = 0) OR
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "french" = 0) OR
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "german" = 0) OR
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "italian" = 0) OR
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "russian" = 0) OR
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "schinese" = 0) OR // schinese language supported
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "spanish" = 0)) @7 // english/french/german/italian/russian/spanish/schinese only
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/unique_containers.tra~ @7
 
 OUTER_SET names = 1 // set names
 INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes
-INCLUDE ~cdtweaks/lib/unique_containers_default.tpa~ // external array of items => icons in case this expands to different platforms
-INCLUDE ~cdtweaks/lib/unique_containers.tpa~ // does the actual work
+INCLUDE ~cdtweaks/lib/unique_containers_v2.tpa~ // do the thing
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
