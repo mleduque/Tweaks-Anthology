@@ -1459,6 +1459,7 @@ Use custom save name:   a7_interval_custom
 Show feedback message:  a7_interval_feedback
 Use Baldur.lua options: a7_interval_ini
 ~
+@336000 = ~Reset UnderSigil Fog of War~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
