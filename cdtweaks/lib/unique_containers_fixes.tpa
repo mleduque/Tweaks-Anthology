@@ -38,7 +38,7 @@ COPY_EXISTING ~type2.sto~ ~override~ //Adventurers' Mart
   PATCH_IF SOURCE_SIZE > 0x9b BEGIN
     REMOVE_STORE_ITEM ~scrl7a~ //Invalid item
   END
-BUT_ONLY
+BUT_ONLY IF_EXISTS
 
 ACTION_IF FILE_EXISTS_IN_GAME ~_toblack.sto~ BEGIN //Tutu
   COPY_EXISTING ~_toblack.sto~ ~override~ //Unnamed Store
