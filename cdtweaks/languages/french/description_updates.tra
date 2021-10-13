@@ -13,15 +13,15 @@ On dit que ce gourdin enchanté existe depuis la chute de Netheril et la naissanc
 PARAMÈTRES :
 
 Toujours considéré comme ayant un enchantement de +3 pour déterminer ce qu'il peut toucher.
-TAC0 :  +1, +3 contre les créatures surnaturelles
-Dégâts :  1D6 +1, +3 contre les créatures surnaturelles +1 dégâts de l'acide
-Type de dégâts :  contondant
+TAC0 : +1, +3 contre les créatures surnaturelles
+Dégâts : 1d6 +1, +3 contre les créatures surnaturelles +1 dégâts de l'acide
+Type de dégâts : contondant
 Poids : 3
-Facteur de Vitesse : 3
+Facteur de vitesse : 3
 Type de compétence : gourdin
 Type : arme à 1 main
-Force nécessaire : 5
-Inutilisable par:
+Nécessite : 5 en Force
+Inutilisable par :
  Mage~
 @99052 = ~Massue d'os +2, +3 contre les morts-vivants
 Cette redoutable massue aurait été créée il y a des centaines d'années par un chaman avide de vengeance. Sa famille avait été massacrée par des morts-vivants, et sa rage était telle qu'il se trancha une jambe et se servit de son propre fémur pour façonner cette arme. Des runes magiques lui confèrent ses pouvoirs, même s'il est probable que la force de sa haine aurait pu y suffire.
@@ -30,49 +30,49 @@ PARAMÈTRES :
 
 Toujours considéré comme ayant un enchantement de +3 pour déterminer ce qu'il peut toucher.
 TAC0 : +2, +3 contre les morts-vivants
-Dégâts : 1D6 +2, +3 contre les morts-vivants
-Type de dégât : contondant
+Dégâts : 1d6 +2, +3 contre les morts-vivants
+Type de dégâts : contondant
 Poids : 3
 Facteur de vitesse : 4
 Type de compétence : gourdin
 Type : arme à 1 main
-Force nécessaire : 5
+Nécessite : 5 en Force
 Inutilisable par :
  Mage~
-@99053 = ~Marteau de Guerre +1, +4 contre Humanoïdes Géants:
-Le Casse-genou, ou "Le Casseur", comme les nains le nomment affectueusement, est censé avoir été forgé par Clangeddin lui-même. Il l'a donné à un petit clan de nains sans foyer afin qu'ils puissent se tailler une place dans une région foisonnant de géants et d'ogres. Le marteau est passé de héros en héros, même parfois entre les mains de non-nains.
+@99053 = ~Marteau de guerre +1, +4 contre les humanoïdes géants :
+Le Casse-genou, ou « Le Casseur », comme les nains le nomment affectueusement, est censé avoir été forgé par Clangeddin lui-même. Il l'a donné à un petit clan de nains sans foyer afin qu'ils puissent se tailler une place dans une région foisonnant de géants et d'ogres. Le marteau est passé de héros en héros, même parfois entre les mains de non-nains.
 
 PARAMÈTRES :
 
 Toujours considéré comme ayant un enchantement de +4 pour déterminer ce qu'il peut toucher.
-TAC0 :  +1, +4 contre géants
-Dégâts :  1D4 + 2, +5 contre géants
-Type de dégâts :  contondant
+TAC0 : +1, +4 contre les humanoïdes géants
+Dégâts : 1d4 + 2, +5 contre les humanoïdes géants
+Type de dégâts : contondant
 Poids : 8
-Facteur de Vitesse : 2
-Type de compétence : Marteau de Guerre
+Facteur de vitesse : 2
+Type de compétence : Marteau de guerre
 Type : arme à 1 main
-Force nécessaire : 10
+Nécessite : 10 en Force
 Non utilisable par :
  Druide
  Mage 
  Voleur
  Moine
  Belluaire~
-@99054 = ~Epée bâtarde +1, +3 contre les métamorphes : "Kondar"
+@99054 = ~Epée bâtarde +1, +3 contre les métamorphes : « Kondar »
 En apparence, cette épée n'a rien de particulier. Toutefois, en présence d'une créature qui a le pouvoir de changer de forme, la lame s'échauffe et son pouvoir s'éveille. Kondar était le premier propriétaire de cette arme dont l'histoire, depuis longtemps oubliée, était un tissu de traîtrises et de duperies. Des rumeurs d'après lesquelles il aurait payé sa lame une fortune persistent. Mais cette lame lui permettait de révéler la véritable identité de ceux qui cherchaient à le tromper. L'histoire a cependant oublié depuis longtemps leurs noms et leurs crimes.
 
 PARAMÈTRES :
 
 Toujours considérée comme ayant un enchantement de +3 pour déterminer ce qu'elle peut toucher.
-Dégâts : 2D4 +1, +3 contre les métamorphes
+Dégâts : 2d4 +1, +3 contre les métamorphes
 TAC0 : +1
 Type de dégâts : tranchant
 Poids : 8
 Facteur de vitesse : 7
 Type de compétence : épée bâtarde
 Type : arme à 1 main 
-Force nécessaire : 11
+Nécessite : 11 en Force
 Inutilisable par :
  Druide
  Clerc
@@ -80,49 +80,48 @@ Inutilisable par :
  Voleur
  Belluaire~
 @99055 = ~Lame-soleil : Étoile du jour
-
 Qu'elle ait été créée spécialement pour servir Torm ou qu'elle ait été acquise au cours de la longue histoire de l'église, l'Étoile du jour a longtemps été utilisée par ses paladins dans leur lutte contre les morts-vivants. Elle a reçu, par la magie ou la bénédiction, le pouvoir du rayon solaire, une force d'énergie vitale si puissante qu'elle détruit les vivants et les non-vivants.
 
 PARAMÈTRES :
 Capacités spéciale (une fois par jour) :
 Rayon solaire
-Dégâts : 3D6 (jet de sauvegarde contre les sorts sous peine d'être aveuglé 	pendant 10 rounds)
-Mort-vivant : 1D6 de dégâts supplémentaires par niveau du lanceur (jet de sauvegarde contre les sorts sous peine d'être détruit)
+Dégâts : 3d6 (jet de sauvegarde contre les sorts sous peine d'être aveuglé 	pendant 10 rounds)
+Mort-vivant : 1d6 de dégâts supplémentaires par niveau du lanceur (jet de sauvegarde contre les sorts sous peine d'être détruit)
 Portée : 6 mètres
 Zone d'effet : 6 mètres de rayon
 
 Toujours considérée comme ayant un enchantement de +4 pour déterminer ce qu'elle peut toucher.
 TAC0 : +2, +4 contre les créatures mauvaises
-Dégâts : 1D8 +2, +4 contre les créatures mauvaises, double dégâts contre les morts-vivants
-Type de dégât : tranchant
+Dégâts : 1d8 +2, +4 contre les créatures mauvaises, double dégâts contre les morts-vivants
+Type de dégâts : tranchant
 Poids : 2
 Facteur de vitesse : 3
 Type de compétence : épée longue
 Type : arme à 1 main
-Force nécessaire : 6
+Nécessite : 6 en Force
 Inutilisable par :
  Druide
  Clerc
  Mage
  Belluaire~
-@99056 = ~Epée longue : l'Egaliseur
-L'âge de cette arme est si élevé que personne ne saurait le deviner, mais des indices de fabrication suggèrent qu'elle a pu être forgée au service de Heaum. Egalement appelée "Epée de Neutralité", elle semble avoir été conçue pour l'équilibre et l'élimination des extrêmes. Plus le comportement d'une cible est éloigné de la neutralité, plus les dégâts infligés sont importants.
+@99056 = ~Epée longue : l'Égaliseur
+L'âge de cette arme est si élevé que personne ne saurait le deviner, mais des indices de fabrication suggèrent qu'elle a pu être forgée au service de Heaum. Également appelée « Épée de Neutralité », elle semble avoir été conçue pour l'équilibre et l'élimination des extrêmes. Plus le comportement d'une cible est éloigné de la neutralité, plus les dégâts infligés sont importants.
 
 PARAMÈTRES :
 
 Toujours considérée comme ayant un enchantement de +3 pour déterminer ce qu'elle peut toucher.
 TAC0 et dégâts :
-Contre Neutre : +0 au toucher / +0 aux dégâts
+Contre Neutre : +0 au toucher, +0 aux dégâts
 Contre Chaotique Neutre, Loyal Neutre : +1 au toucher, +2 aux dégâts
 Contre Neutre Bon, Neutre Mauvais : +2 au toucher, +4 aux dégâts.
 Contre autres alignements : +3 au toucher, +6 aux dégâts
-Type de dommages : tranchant
-Capacités si portée : immunité au Charme et à la Confusion
+Type de dégâts : tranchant
+Capacités d'équipement : immunité au Charme et à la Confusion
 Poids : 3
 Facteur de vitesse : 3
 Type de compétence : épée longue
 Type : arme à 1 main
-Force nécessaire : 6
+Nécessite : 6 en Force
 Inutilisable par :
  Druide
  Clerc
@@ -136,16 +135,16 @@ On dit que ce gourdin enchanté existe depuis la chute de Netheril et la naissanc
 PARAMÈTRES :
 
 Toujours considéré comme ayant un enchantement de +3 pour déterminer ce qu'il peut toucher.
-TAC0 :  +1, +3 contre les créatures surnaturelles
-Dégâts :  1D6 +1, +3 contre les créatures surnaturelles +1 dégâts de l'acide
-Type de dégâts :  contondant et acide
+TAC0 : +1, +3 contre les créatures surnaturelles
+Dégâts : 1d6 +1, +3 contre les créatures surnaturelles +1 dégâts de l'acide
+Type de dégâts : contondant et acide
 Poids : 3
-Facteur de Vitesse : 3
+Facteur de vitesse : 3
 Type de compétence : gourdin
 Type : arme à 1 main
-Caractéristiques nécessaires :
-- 8 en Force
-- 6 en Dextérité
+Nécessite :
+ 8 en Force
+ 6 en Dextérité
 Utilisable par :
  Tous~
 @99058 = ~Massue d'os +2, +3 contre les morts-vivants
@@ -155,99 +154,97 @@ PARAMÈTRES :
 
 Toujours considéré comme ayant un enchantement de +3 pour déterminer ce qu'il peut toucher.
 TAC0 : +2, +3 contre les morts-vivants
-Dégâts : 1D6 +2, +3 contre les morts-vivants
-Type de dégât : contondant
+Dégâts : 1d6 +2, +3 contre les morts-vivants
+Type de dégâts : contondant
 Poids : 3
 Facteur de vitesse : 4
 Type de compétence : gourdin
 Type : arme à 1 main
-Caractéristiques nécessaires :
-- 8 en Force
-- 6 en Dextérité
+Nécessite :
+ 8 en Force
+ 6 en Dextérité
 Utilisable par :
  Tous~
-@99059 = ~Marteau de Guerre +1, +4 contre Humanoïdes Géants:
-Le Casse-genou, ou "Le Casseur", comme les nains le nomment affectueusement, est censé avoir été forgé par Clangeddin lui-même. Il l'a donné à un petit clan de nains sans foyer afin qu'ils puissent se tailler une place dans une région foisonnant de géants et d'ogres. Le marteau est passé de héros en héros, même parfois entre les mains de non-nains.
+@99059 = ~Marteau de guerre +1, +4 contre les humanoïdes géants :
+Le Casse-genou, ou « Le Casseur », comme les nains le nomment affectueusement, est censé avoir été forgé par Clangeddin lui-même. Il l'a donné à un petit clan de nains sans foyer afin qu'ils puissent se tailler une place dans une région foisonnant de géants et d'ogres. Le marteau est passé de héros en héros, même parfois entre les mains de non-nains.
 
 PARAMÈTRES :
 
 Toujours considéré comme ayant un enchantement de +4 pour déterminer ce qu'il peut toucher.
-TAC0 :  +1, +4 contre géants
-Dégâts :  1D6 + 2, +5 contre géants
-Type de dégâts :  contondant
+TAC0 : +1, +4 contre les humanoïdes géants
+Dégâts : 1d6 + 2, +5 contre les humanoïdes géants
+Type de dégâts : contondant
 Poids : 8
-Facteur de Vitesse : 2
-Type de compétence : Marteau de Guerre
+Facteur de vitesse : 2
+Type de compétence : Marteau de guerre
 Type : arme à 1 main
-Caractéristiques nécessaires :
-- 12 en Force
-- 6 en Dextérité
+Nécessite :
+ 12 en Force
+ 6 en Dextérité
 Utilisable par :
  Tous~
-@99060 = ~Epée bâtarde +1, +3 contre les métamorphes : "Kondar"
+@99060 = ~Epée bâtarde +1, +3 contre les métamorphes : « Kondar »
 En apparence, cette épée n'a rien de particulier. Toutefois, en présence d'une créature qui a le pouvoir de changer de forme, la lame s'échauffe et son pouvoir s'éveille. Kondar était le premier propriétaire de cette arme dont l'histoire, depuis longtemps oubliée, était un tissu de traîtrises et de duperies. Des rumeurs d'après lesquelles il aurait payé sa lame une fortune persistent. Mais cette lame lui permettait de révéler la véritable identité de ceux qui cherchaient à le tromper. L'histoire a cependant oublié depuis longtemps leurs noms et leurs crimes.
 
 PARAMÈTRES :
 
 Toujours considérée comme ayant un enchantement de +3 pour déterminer ce qu'elle peut toucher.
-Dégâts : 2D4 +1, +3 contre les métamorphes
+Dégâts : 2d4 +1, +3 contre les métamorphes
 TAC0 : +1
 Type de dégâts : tranchant
 Poids : 8
 Facteur de vitesse : 7
 Type de compétence : épée bâtarde
 Type : arme à 1 main 
-Caractéristiques nécessaires :
-- 13 en Force
-- 8 en Dextérité
+Nécessite :
+ 13 en Force
+ 8 en Dextérité
 Inutilisable par :
  Belluaire~
 @99061 = ~Lame-soleil : Étoile du jour
-
 Qu'elle ait été créée spécialement pour servir Torm ou qu'elle ait été acquise au cours de la longue histoire de l'église, l'Étoile du jour a longtemps été utilisée par ses paladins dans leur lutte contre les morts-vivants. Elle a reçu, par la magie ou la bénédiction, le pouvoir du rayon solaire, une force d'énergie vitale si puissante qu'elle détruit les vivants et les non-vivants.
 
 PARAMÈTRES :
 Capacités spéciale (une fois par jour) :
 Rayon solaire
-Dégâts : 3D6 (jet de sauvegarde contre les sorts sous peine d'être aveuglé 	pendant 10 rounds)
-Mort-vivant : 1D6 de dégâts supplémentaires par niveau du lanceur (jet de sauvegarde contre les sorts sous peine d'être détruit)
+Dégâts : 3d6 (jet de sauvegarde contre les sorts sous peine d'être aveuglé 	pendant 10 rounds)
+Mort-vivant : 1d6 de dégâts supplémentaires par niveau du lanceur (jet de sauvegarde contre les sorts sous peine d'être détruit)
 Portée : 6 mètres
 Zone d'effet : 6 mètres de rayon
 
 Toujours considérée comme ayant un enchantement de +4 pour déterminer ce qu'elle peut toucher.
 TAC0 : +2, +4 contre les créatures mauvaises
-Dégâts : 1D8 +2, +4 contre les créatures mauvaises, double dégâts contre les morts-vivants
-Type de dégât : tranchant
+Dégâts : 1d8 +2, +4 contre les créatures mauvaises, double dégâts contre les morts-vivants
+Type de dégâts : tranchant
 Poids : 2
 Facteur de vitesse : 3
 Type de compétence : épée longue
 Type : arme à 1 main
-Caractéristiques nécessaires :
-- 11 en Force
-- 8 en Dextérité
+Nécessite :
+ 11 en Force
+ 8 en Dextérité
 Inutilisable par :
  Belluaire~
-@99062 = ~Epée longue : l'Egaliseur
-L'âge de cette arme est si élevé que personne ne saurait le deviner, mais des indices de fabrication suggèrent qu'elle a pu être forgée au service de Heaum. Egalement appelée "Epée de Neutralité", elle semble avoir été conçue pour l'équilibre et l'élimination des extrêmes. Plus le comportement d'une cible est éloigné de la neutralité, plus les dégâts infligés sont importants.
+@99062 = ~Epée longue : l'Égaliseur
+L'âge de cette arme est si élevé que personne ne saurait le deviner, mais des indices de fabrication suggèrent qu'elle a pu être forgée au service de Heaum. Également appelée « Épée de Neutralité », elle semble avoir été conçue pour l'équilibre et l'élimination des extrêmes. Plus le comportement d'une cible est éloigné de la neutralité, plus les dégâts infligés sont importants.
 
 PARAMÈTRES :
 
 Toujours considérée comme ayant un enchantement de +3 pour déterminer ce qu'elle peut toucher.
 TAC0 et dégâts :
-Contre Neutre : +0 au toucher / +0 aux dégâts
+Contre Neutre : +0 au toucher, +0 aux dégâts
 Contre Chaotique Neutre, Loyal Neutre : +1 au toucher, +2 aux dégâts
 Contre Neutre Bon, Neutre Mauvais : +2 au toucher, +4 aux dégâts.
 Contre autres alignements : +3 au toucher, +6 aux dégâts
-Type de dommages : tranchant
-Capacités si portée : immunité au Charme et à la Confusion
+Type de dégâts : tranchant
+Capacités d'équipement : immunité au Charme et à la Confusion
 Poids : 3
 Facteur de vitesse : 3
 Type de compétence : épée longue
 Type : arme à 1 main
-Caractéristiques nécessaires :
-- 11 en Force
-- 8 en Dextérité
-Force nécessaire : 6
+Nécessite :
+ 11 en Force
+ 8 en Dextérité
 Inutilisable par :
  Belluaire~
 // Pour gourdins universels
@@ -258,14 +255,14 @@ On dit que ce gourdin enchanté existe depuis la chute de Netheril et la naissanc
 PARAMÈTRES :
 
 Toujours considéré comme ayant un enchantement de +3 pour déterminer ce qu'il peut toucher.
-TAC0 :  +1, +3 contre les créatures surnaturelles
-Dégâts :  1D6 +1, +3 contre les créatures surnaturelles +1 dégâts de l'acide
-Type de dégâts :  contondant et acide
+TAC0 : +1, +3 contre les créatures surnaturelles
+Dégâts : 1d6 +1, +3 contre les créatures surnaturelles +1 dégâts de l'acide
+Type de dégâts : contondant et acide
 Poids : 3
-Facteur de Vitesse : 3
+Facteur de vitesse : 3
 Type de compétence : gourdin
 Type : arme à 1 main
-Force nécessaire : 5~
+Nécessite : 5 en Force~
 @99064 = ~Massue d'os +2, +3 contre les morts-vivants
 Cette redoutable massue aurait été créée il y a des centaines d'années par un chaman avide de vengeance. Sa famille avait été massacrée par des morts-vivants, et sa rage était telle qu'il se trancha une jambe et se servit de son propre fémur pour façonner cette arme. Des runes magiques lui confèrent ses pouvoirs, même s'il est probable que la force de sa haine aurait pu y suffire.
 
@@ -273,10 +270,10 @@ PARAMÈTRES :
 
 Toujours considéré comme ayant un enchantement de +3 pour déterminer ce qu'il peut toucher.
 TAC0 : +2, +3 contre les morts-vivants
-Dégâts : 1D6 +2, +3 contre les morts-vivants
-Type de dégât : contondant
+Dégâts : 1d6 +2, +3 contre les morts-vivants
+Type de dégâts : contondant
 Poids : 3
 Facteur de vitesse : 4
 Type de compétence : gourdin
 Type : arme à 1 main
-Force nécessaire : 5~
+Nécessite : 5 en Force~
