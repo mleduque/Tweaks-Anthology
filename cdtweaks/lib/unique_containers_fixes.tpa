@@ -69,7 +69,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~_toblack.sto~ BEGIN //Tutu
   BUT_ONLY
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~uhmer02.sto~ AND NOT FILE_EXISTS_IN_GAME ~_toblack.sto~ BEGIN //SoA
+ACTION_IF FILE_EXISTS_IN_GAME ~uhmer02.sto~ BEGIN //SoA
   COPY_EXISTING ~bshop02.cre~ ~override~ //Storekeep
     PATCH_IF SOURCE_SIZE > 0x2d3 BEGIN
       SAY 0x8 @18002 //Sio'chaire
@@ -141,7 +141,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~uhmer02.sto~ AND NOT FILE_EXISTS_IN_GAME ~_toblac
   BUT_ONLY
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~wmart2.sto~ AND NOT FILE_EXISTS_IN_GAME ~_tocheap.sto~ BEGIN //BG2 Extras
+ACTION_IF FILE_EXISTS_IN_GAME ~wmart2.sto~ BEGIN //BG2 Extras
   COPY_EXISTING ~wmart1.sto~ ~override~ //Shop
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       SAY 0xc @18010 //Joluv's Wares
@@ -238,7 +238,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~bhperk.sto~ BEGIN //Bone Hill
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag06~ ~bag03g~ ~bag02~ //Already in other stores
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 END  
 
 ACTION_IF FILE_EXISTS_IN_GAME ~bhxspell.sto~ BEGIN
@@ -307,7 +307,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cbhl3631.sto~ BEGIN //CtB
       END
       WRITE_LONG 0x30 nc //New item count
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~cbtentbd.itm~ ~override/cbtentcg.itm~
     SAY 0x8 @18317 //Camping Gear
@@ -320,7 +320,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cbhl3631.sto~ BEGIN //CtB
       REMOVE_CRE_ITEM ~cbtentbd~ //Campsite Equipment
       ADD_CRE_ITEM ~cbtentcg~ #0 #0 #0 ~NONE~ ~INV~ //Camping Gear
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~cmmerc06.sto~ BEGIN //Dark Horizons
@@ -410,7 +410,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~sgammo.itm~ BEGIN //Munchmod
       REMOVE_STORE_ITEM ~sgpotion~ ~sgammo2~ ~sgammo~ ~sgplat1~
       ADD_STORE_ITEM ~sgammo2~ AFTER ~sgring3~ #0 #0 #0 ~IDENTIFIED~ #1
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~spin446.spl~ BEGIN //NEJ
@@ -432,7 +432,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~vpgenbag.itm~ BEGIN //NEJ Merchant League Bank
       REMOVE_STORE_ITEM ~vpgenbag~ //Cloth Sack
       ADD_STORE_ITEM ~vpgenbag~ AFTER ~vpambelt~ #0 #0 #0 ~IDENTIFIED~ #1 //Remove "unlimited" flag
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~kusmith.sto~ BEGIN //NEJ v6.02 cumulative patch
@@ -456,19 +456,19 @@ ACTION_IF FILE_EXISTS_IN_GAME ~bremen1.sto~ BEGIN //RoT
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag03g~ ~bag02g~ //Already in 25spell.sto and garlena.sto
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~arlax3.sto~ ~override~ //Merchant
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag03h~ //Already in hgkar01.sto
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~arlax5.sto~ ~override~ //Lower level spell store
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag03i~ //Already in amcler02.sto
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~bag04.itm~ ~override/bag04rot.itm~
                 ~bag04.sto~ ~override/bag04rot.sto~
@@ -479,7 +479,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~bremen1.sto~ BEGIN //RoT
       REMOVE_STORE_ITEM ~bag04rot~ ~bag04b~
       ADD_STORE_ITEM ~bag04rot~ LAST #0 #0 #0 ~IDENTIFIED~ #1
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~cbslence.sto~ BEGIN //SOS or MTS Crappack
@@ -554,7 +554,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~bag04c.sto~ BEGIN //SPItems
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       SAY 0xc #56862 //Bag of Holding
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~wardwizs.sto~ BEGIN //TDD
@@ -562,19 +562,19 @@ ACTION_IF FILE_EXISTS_IN_GAME ~wardwizs.sto~ BEGIN //TDD
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag03~ //Already in bernard.sto
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~3314frge.sto~ ~override~ //Merchant
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag03c~ //Already in dshop01.sto
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~barheal.sto~ ~override~ //Store
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag03~ //Already in bernard.sto
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~wardwizs.sto~ ~override~ //Store
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
@@ -600,7 +600,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~sackgr04.itm~ BEGIN //Undying or DoS
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag03~ //Already in bernard.sto
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~sackgr04.itm~ ~override~ //Bag of Illusionary Dust
     PATCH_IF SOURCE_SIZE > 0x71 BEGIN
@@ -616,14 +616,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~sackgr04.itm~ BEGIN //Undying or DoS
         REMOVE_STORE_ITEM ~cmgr03~ ~cmgr02~ ~cmgr01~
       END
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   ACTION_IF NOT FILE_EXISTS_IN_GAME ~coma04.itm~ BEGIN //Armor of Valor
     COPY_EXISTING ~temhelm.sto~ ~override~ //Dark Maiden's Wares
       PATCH_IF SOURCE_SIZE > 0x9b BEGIN
         REMOVE_STORE_ITEM ~coma04~ //Invalid item
       END
-    BUT_ONLY
+    BUT_ONLY IF_EXISTS
   END
 END
 
@@ -632,13 +632,13 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cmtus01.sto~ BEGIN //Undying
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag03b~ //Already in scrolls.sto
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~cmninast.sto~ ~override~ //The Goods
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag02j~ ~bag02d~ //Already in kindast.sto and arled.sto
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~cmtus01.sto~ ~override~ //Merchant's Market
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
@@ -651,7 +651,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cmtus01.sto~ BEGIN //Undying
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       REMOVE_STORE_ITEM ~bag03b~ ~bag02~ //Already in scrolls.sto and ribald.sto
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 END
 
 /////                                                  \\\\\
@@ -680,20 +680,20 @@ ACTION_IF FILE_EXISTS_IN_GAME ~swbag02.itm~ AND NOT FILE_EXISTS_IN_GAME ~t-bgem0
     PATCH_IF SOURCE_SIZE > 0x2d3 BEGIN
       REMOVE_CRE_ITEM ~swbag02~ ~swbag06~ //Gem Bag & Potion Case
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~%tsu%inn3304.sto~ ~override~ //Jovial Juggler
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       ADD_STORE_ITEM ~t-bgem01~ LAST #0 #0 #0 ~IDENTIFIED~ #1
       ADD_STORE_ITEM ~t-bptn01~ LAST #0 #0 #0 ~IDENTIFIED~ #1
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~%tsu%davaeo.cre~ ~override~ //Davaeorn
     PATCH_IF SOURCE_SIZE > 0x2d3 BEGIN
       REMOVE_CRE_ITEM ~swbag19~ //Bag of Holding
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   EXTEND_BOTTOM ~%cm4%.bcs~ ~cdtweaks/baf/t-ar1803.baf~ //Cloakwood Mines L4
     EVALUATE_BUFFER
@@ -702,38 +702,38 @@ ACTION_IF FILE_EXISTS_IN_GAME ~swbag02.itm~ AND NOT FILE_EXISTS_IN_GAME ~t-bgem0
     PATCH_IF SOURCE_SIZE > 0x2d3 BEGIN
       REMOVE_CRE_ITEM ~swbag03c~ //Scroll Case
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~%tsu%prism.cre~ ~override~ //Prism
     PATCH_IF SOURCE_SIZE > 0x2d3 BEGIN
       REMOVE_CRE_ITEM ~swbag06b~ //Potion Case
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~%tsu%tem4003.sto~ ~override~ //Gullykin Temple
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       ADD_STORE_ITEM ~t-bptn02~ LAST #0 #0 #0 ~IDENTIFIED~ #1
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~%tsu%vax.cre~ ~override~ //Vax
     PATCH_IF SOURCE_SIZE > 0x2d3 BEGIN
       REMOVE_CRE_ITEM ~swbag05~ ~swbag05b~ //Ammo Belt
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~%tsu%zal.cre~ ~override~ //Zal
     PATCH_IF SOURCE_SIZE > 0x2d3 BEGIN
       REPLACE_CRE_ITEM ~t-bamm02~ #0 #0 #0 ~NONE~ ~BELT~
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~%tss%tocheap.sto~ ~override~ //General Store
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       SAY 0xc @18014 //Lucky Aello's Discount Store
       ADD_STORE_ITEM ~t-bamm03~ LAST #0 #0 #0 ~IDENTIFIED~ #1
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   EXTEND_BOTTOM ~%nsh%.bcs~ ~cdtweaks/baf/t-ar4800.baf~ //Nashkel
     EVALUATE_BUFFER
@@ -743,7 +743,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~swbag02.itm~ AND NOT FILE_EXISTS_IN_GAME ~t-bgem0
       SAY 0xc @18016 //Carnival Armor
       ADD_STORE_ITEM ~%tsu%leat10~ AFTER ~%tsu%leat04~ #0 #0 #0 ~IDENTIFIED~ #1 //Hide Armor
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~%tsu%sto4906.sto~ ~override~ //Unnamed Shop
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
@@ -752,14 +752,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~swbag02.itm~ AND NOT FILE_EXISTS_IN_GAME ~t-bgem0
       ADD_STORE_ITEM ~%tsu%dart03~ LAST #5 #0 #0 ~IDENTIFIED~ #1 //Dart of Stunning
       ADD_STORE_ITEM ~t-bscr02~ LAST #0 #0 #0 ~IDENTIFIED~ #1 //Black-Green Scroll Case
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~%tsu%sto4909.sto~ ~override~ //Carnival Shop
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       SAY 0xc @18015 //Carnival Ranged Weapons
       ADD_STORE_ITEM ~t-bamm01~ LAST #0 #0 #0 ~IDENTIFIED~ #1 //Ammo Belt
     END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 END
 
 // extra fix from old t-bag_holding_icons.tpa
@@ -792,7 +792,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cblocker.itm~ BEGIN
         END
       END
     END
-    BUT_ONLY
+    BUT_ONLY IF_EXISTS
 
   STRING_SET_EVALUATE ~%d1%~ ~%dc%~
 
