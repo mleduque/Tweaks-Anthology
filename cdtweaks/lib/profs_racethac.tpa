@@ -1,0 +1,51 @@
+ACTION_IF FILE_EXISTS_IN_GAME ~racethac.2da~ BEGIN // EEs
+
+  OUTER_SET cd_do_the_racethac_thing = 0
+  
+  COPY_EXISTING ~racethac.2da~ ~override~
+    COUNT_2DA_ROWS 9 rows
+    FOR (index = 0 ; index < rows ; ++index) BEGIN
+      READ_2DA_ENTRY index 0 9 prof
+      FOR (index2 = 2 ; index2 < 9 ; ++index2) BEGIN
+        READ_2DA_ENTRY index index2 9 pips
+        PATCH_IF pips BEGIN
+          SET cd_do_the_racethac_thing = 1
+          SET_2DA_ENTRY index index2 9 0 // zero entry
+          PATCH_IF index2 = 2 BEGIN SET race = 1 END ELSE // human
+          PATCH_IF index2 = 3 BEGIN SET race = 4 END ELSE // dwarf
+          PATCH_IF index2 = 4 BEGIN SET race = 2 END ELSE // elf
+          PATCH_IF index2 = 5 BEGIN SET race = 6 END ELSE // gnome
+          PATCH_IF index2 = 6 BEGIN SET race = 3 END ELSE // halfelf
+          PATCH_IF index2 = 7 BEGIN SET race = 5 END ELSE // halfling
+          PATCH_IF index2 = 8 BEGIN SET race = 7 END      // halforc
+          DEFINE_ASSOCIATIVE_ARRAY ~cd_racethac_%prof%~ BEGIN ~%race%~ => ~%pips%~ END
+        END  
+      END // end row loop
+    END // end column loop
+    BUT_ONLY
+
+  ACTION_IF cd_do_the_racethac_thing BEGIN
+  
+    COPY ~cdtweaks/eff/cdgthac0.eff~ ~override~
+    COPY ~cdtweaks/eff/cdgthac0.eff~ ~override/cdbthac0.eff~
+      WRITE_LONG 0x1c "-1"
+    
+    COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+      READ_BYTE 0x31 prof
+      PATCH_IF ((prof > 88) AND (prof < 135)) BEGIN
+        PATCH_PHP_EACH ~cd_racethac_%prof%~ AS race => pips BEGIN
+          SPRINT eff cdgthac0
+          PATCH_IF pips < 0 BEGIN  
+            SPRINT eff cdbthac0
+            SET pips = (pips * "-1")
+          END  
+          FOR (index = 0 ; index < pips ; ++index) BEGIN
+            LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 177 target = 1 parameter1 = race parameter2 = 4 timing = 2 STR_VAR resource = EVAL ~%eff%~ END
+          END
+        END
+      END
+      BUT_ONLY
+
+  END
+  
+END  

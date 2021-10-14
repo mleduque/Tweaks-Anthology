@@ -6401,6 +6401,7 @@ GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
 
+INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
 INCLUDE ~cdtweaks/lib/profs_common.tpa~
 INCLUDE ~cdtweaks/lib/rebalanced_profs.tpa~
 
@@ -6414,6 +6415,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
 
 OUTER_SET "tb#tutu_realloc_style" = 0
+INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
 INCLUDE ~cdtweaks/lib/profs_common.tpa~
 INCLUDE ~cdtweaks/lib/bg_style_profs.tpa~
 
@@ -6427,6 +6429,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
 
 OUTER_SET "tb#tutu_realloc_style" = 1
+INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
 INCLUDE ~cdtweaks/lib/profs_common.tpa~
 INCLUDE ~cdtweaks/lib/bg_style_profs.tpa~
 
@@ -6440,6 +6443,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
 
 OUTER_SET "tb#tutu_realloc_style" = 0
+INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
 INCLUDE ~cdtweaks/lib/profs_common.tpa~
 INCLUDE ~cdtweaks/lib/iwd_style_profs.tpa~
 
@@ -6453,6 +6457,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
 
 OUTER_SET "tb#tutu_realloc_style" = 1
+INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
 INCLUDE ~cdtweaks/lib/profs_common.tpa~
 INCLUDE ~cdtweaks/lib/iwd_style_profs.tpa~
 
