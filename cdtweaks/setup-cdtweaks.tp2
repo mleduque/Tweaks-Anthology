@@ -9524,9 +9524,14 @@ ACTION_IF ((FILE_EXISTS_IN_GAME ~lightb.pro~) OR (FILE_EXISTS_IN_GAME ~idpro40.p
 
   COPY_EXISTING ~idpro40.pro~ ~override~ // iwdee lightning bolt
                 ~lightb.pro~  ~override~ // bgee/bg2ee lightning bolt
-    WRITE_LONG  0x02c (THIS BAND `BIT0)  // remove bounce from walls flag
-    WRITE_SHORT 0x200 (THIS BAND `BIT4)  // remove secondary projectile flag
-    WRITE_SHORT 0x214 0                  // blank secondary projectile reference
+    READ_SHORT 0x21a bounce
+    PATCH_IF bounce // if bounce projectile set (basically 2.6+)
+      WRITE_SHORT 0x21a 0 // blank bounce projectile
+    END ELSE BEGIN  // if no bounce projectile (2.5 or earlier)
+      WRITE_LONG  0x02c (THIS BAND `BIT0)  // remove bounce from walls flag
+      WRITE_SHORT 0x200 (THIS BAND `BIT4)  // remove secondary projectile flag
+      WRITE_SHORT 0x214 0                  // blank secondary projectile reference
+    END  
     BUT_ONLY IF_EXISTS
 
     OUTER_SET cdlightb = 40
