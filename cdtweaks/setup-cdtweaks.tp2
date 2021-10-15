@@ -8455,6 +8455,41 @@ BEGIN @236000 DESIGNATED 2360
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // ToB required
 GROUP @9
 
+ACTION_CLEAR_ARRAY cd_new_anims
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_new_anims BEGIN
+  6001, 6501, CEMC, CEMM => monk_male_elf       // clone cleric animations into monk animations
+  6002, 6502, CDMC, CDMM => monk_male_dwarf 
+  6003, 6503, CIMC, CIMM => monk_male_halfling 
+  6004, 6504, CGMC, CGMM => monk_male_gnome 
+  6005, 6505, COMC, COMM => monk_male_halforc 
+  6011, 6511, CEFC, CEFM => monk_female_elf 
+  6012, 6512, CDFC, CDFM => monk_female_dwarf 
+  6013, 6513, CIFC, CIFM => monk_female_halfling 
+  6014, 6514, CIFC, CIFM => monk_female_gnome 
+  6015, 6515, COFC, COFM => monk_female_halforc 
+  6003, 6203, CIMC, CIMW => mage_male_halfling   // clone cleric animations into mage animations (halflings only)
+  6013, 6213, CIFC, CIFW => mage_female_halfling 
+END
+  
+ACTION_PHP_EACH cd_new_anims AS anims => entry BEGIN
+      
+  APPEND ~animate.ids~ ~0x%anims_1% %entry%~ UNLESS ~^0x%anims_1%~
+
+  ACTION_IF GAME_IS ~bgee bg2ee iwdee eet~ BEGIN
+
+    COPY_EXISTING ~%anims_0%.ini~ ~override/%anims_1%.ini~
+      REPLACE_TEXTUALLY ~^\(// [A-Z]+[ %TAB%]\)cleric_[a-z]+_[a-z]+$~ ~\1%entry%~
+    
+  END ELSE BEGIN
+  
+    COPY_EXISTING_REGEXP GLOB ~^%anims_2%\(.+\)\.bam$~ ~override/%anims_3%\1.bam~
+                              ~^%anims_2%\(.+\)\.plt$~ ~override/%anims_3%\1.plt~
+      IF_EXISTS // in case there are no plts
+  
+  END
+
+END  
+
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
   FOR (row = 0 ; row < rows ; ++row) BEGIN
@@ -8469,7 +8504,7 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
               ("%entry%" STRING_COMPARE_CASE "DRUID"     = 0) OR
               ("%entry%" STRING_COMPARE_CASE "RANGER"    = 0) OR
               ("%entry%" STRING_COMPARE_CASE "SORCERER"  = 0) OR
-//              ("%entry%" STRING_COMPARE_CASE "MONK"      = 0) OR // keep monks as human only
+              ("%entry%" STRING_COMPARE_CASE "MONK"      = 0) OR
               ("%entry%" STRING_COMPARE_CASE "SHAMAN"    = 0)) BEGIN
       FOR (col = 2; col < 8 ; ++col) BEGIN
         SET_2DA_ENTRY row col 8 1
@@ -8622,14 +8657,18 @@ COPY_EXISTING ~mgsrcreq.2da~ ~override~
   END
   PRETTY_PRINT_2DA
   BUT_ONLY
+  
+ACTION_FOR_EACH class IN sh mn BEGIN // shaman, monk
 
-ACTION_IF FILE_EXISTS_IN_GAME k_sh_h.2da BEGIN // shaman
+  ACTION_IF FILE_EXISTS_IN_GAME ~k_%class%_h.2da~ BEGIN // shaman
 
-  ACTION_FOR_EACH race IN d e g he hl ho BEGIN
+    ACTION_FOR_EACH race IN d e g he hl ho BEGIN
 
-    ACTION_IF NOT FILE_EXISTS_IN_GAME ~k_sh_%race%.2da~ THEN BEGIN
+      ACTION_IF NOT FILE_EXISTS_IN_GAME ~k_%class%_%race%.2da~ THEN BEGIN
 
-      COPY_EXISTING ~k_sh_h.2da~ ~override/k_sh_%race%.2da~
+        COPY_EXISTING ~k_%class%_h.2da~ ~override/k_%class%_%race%.2da~
+
+      END
 
     END
 
@@ -8642,7 +8681,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   FOR (row = 0 ; row < rows ; ++row) BEGIN
     READ_2DA_ENTRY row 0 9 kitno
     READ_2DA_ENTRY row 8 9 class
-    PATCH_IF ((IS_AN_INT class) AND (kitno != 30) AND (kitno != 31)) BEGIN // this is to screen out header junk and barbarians and wild mages
+    PATCH_IF (IS_AN_INT class) BEGIN // this is to screen out header junk
       SPRINT letter this_is_a_fake // just in case none of these match
       PATCH_IF class =  2 BEGIN SPRINT letter  f END
       PATCH_IF class =  6 BEGIN SPRINT letter  p END
@@ -8653,7 +8692,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
       PATCH_IF class =  3 BEGIN SPRINT letter  c END
       PATCH_IF class =  1 BEGIN SPRINT letter  m END
       PATCH_IF class = 19 BEGIN SPRINT letter  s END
-//      PATCH_IF class = 20 BEGIN SPRINT letter mn END
+      PATCH_IF class = 20 BEGIN SPRINT letter mn END
       PATCH_IF class = 21 BEGIN SPRINT letter sh END
       SET available = 0
       PATCH_FOR_EACH race IN d e g h he hl ho BEGIN // first loop is to check and see if the kit is available to any race so we don't expose internal mod kits
