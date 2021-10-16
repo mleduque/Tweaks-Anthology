@@ -1,0 +1,142 @@
+COPY_EXISTING ~clsrcreq.2da~ ~override~
+  COUNT_2DA_ROWS 8 rows
+  FOR (row = 0 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 0 8 entry
+    PATCH_IF NOT (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "MAGE"                = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "FIGHTER"             = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "BARBARIAN"           = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "CLERIC"              = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "THIEF"               = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "BARD"                = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "PALADIN"             = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "DRUID"               = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "RANGER"              = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "SORCERER"            = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "MONK"                = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "SHAMAN"              = 0) OR
+                  ("%entry%" STRING_COMPARE_CASE "DUALCLASS"           = 0)) BEGIN
+      FOR (col = 1; col < 8 ; ++col) BEGIN
+        SET_2DA_ENTRY row col 8 1
+      END
+    END
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
+OUTER_SET col_start = 0
+ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ BEGIN // ee has an extra column at the front
+  OUTER_SET col_start = 1
+END
+
+COPY_EXISTING ~mgsrcreq.2da~ ~override~
+  COUNT_2DA_ROWS (col_start + 8) rows
+  FOR (row = 1 ; row < rows ; ++row) BEGIN
+    FOR (col = (col_start + 1); col < (col_start + 8) ; ++col) BEGIN
+      PATCH_IF (col = (col_start + 6)) BEGIN SET col += 1 END // skip gnome column
+      SET_2DA_ENTRY row col (col_start + 8) 1
+    END
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
+ACTION_FOR_EACH class IN sh mn BEGIN // shaman, monk
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~k_%class%_h.2da~ BEGIN // shaman
+
+    ACTION_FOR_EACH race IN d e g he hl ho BEGIN
+
+      ACTION_IF NOT FILE_EXISTS_IN_GAME ~k_%class%_%race%.2da~ THEN BEGIN
+
+        COPY_EXISTING ~k_%class%_h.2da~ ~override/k_%class%_%race%.2da~
+
+      END
+
+    END
+
+  END
+
+END
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS 9 rows
+  FOR (row = 0 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 0 9 kitno
+    READ_2DA_ENTRY row 8 9 class
+    PATCH_IF (IS_AN_INT class) BEGIN // this is to screen out header junk
+      SPRINT letter this_is_a_fake // just in case none of these match
+      PATCH_IF class =  2 BEGIN SPRINT letter  f END
+      PATCH_IF class =  6 BEGIN SPRINT letter  p END
+      PATCH_IF class = 12 BEGIN SPRINT letter  r END
+      PATCH_IF class =  4 BEGIN SPRINT letter  t END
+      PATCH_IF class =  5 BEGIN SPRINT letter  b END
+      PATCH_IF class = 11 BEGIN SPRINT letter  d END
+      PATCH_IF class =  3 BEGIN SPRINT letter  c END
+      PATCH_IF class =  1 BEGIN SPRINT letter  m END
+      PATCH_IF class = 19 BEGIN SPRINT letter  s END
+      PATCH_IF class = 20 BEGIN SPRINT letter mn END
+      PATCH_IF class = 21 BEGIN SPRINT letter sh END
+      SET available = 0
+      PATCH_FOR_EACH race IN d e g h he hl ho BEGIN // first loop is to check and see if the kit is available to any race so we don't expose internal mod kits
+        PATCH_IF FILE_EXISTS_IN_GAME ~k_%letter%_%race%.2da~ BEGIN
+          INNER_ACTION BEGIN
+
+            COPY_EXISTING ~k_%letter%_%race%.2da~ ~override~
+              COUNT_2DA_ROWS 2 rows_inner
+              FOR (row_inner = 0 ; row_inner < rows_inner ; ++row_inner) BEGIN
+                READ_2DA_ENTRY row_inner 0 2 index
+                READ_2DA_ENTRY row_inner 1 2 kitcheck
+                PATCH_IF IS_AN_INT kitcheck BEGIN // sanity check
+                  PATCH_IF kitcheck = kitno BEGIN
+                    SET available = 1
+                    SET row_inner = rows_inner // kill loop
+                  END
+                END
+              END
+              BUT_ONLY
+
+          END
+        END
+      END
+      PATCH_IF available = 1 THEN BEGIN // only if it actually is available do we add it to all races
+        PATCH_FOR_EACH race IN d e g h he hl ho BEGIN
+          PATCH_IF ((FILE_EXISTS_IN_GAME ~k_%letter%_%race%.2da~) AND
+                    (~k_%letter%_%race%~ STRING_COMPARE_CASE ~k_m_g~)) BEGIN // skip gnome mages
+            INNER_ACTION BEGIN
+
+              COPY_EXISTING ~k_%letter%_%race%.2da~ ~override~
+                SET added = 0
+                COUNT_2DA_ROWS 2 rows_inner
+                FOR (row_inner = 0 ; row_inner < rows_inner ; ++row_inner) BEGIN
+                  READ_2DA_ENTRY row_inner 0 2 index
+                  READ_2DA_ENTRY row_inner 1 2 kitcheck
+                  PATCH_IF IS_AN_INT kitcheck BEGIN // sanity check
+                    PATCH_IF kitcheck = kitno BEGIN
+                      SET added = 1
+                      SET row_inner = rows_inner // kill loop
+                    END
+                  END
+                END
+                BUT_ONLY
+    
+              ACTION_IF added = 0 THEN BEGIN
+                OUTER_SET index += 1
+                APPEND ~k_%letter%_%race%.2da~ ~%index% %kitno%~
+              END
+  
+            END
+          END
+        END
+      END
+    END
+  END
+  BUT_ONLY

@@ -95,3 +95,11 @@ OUTER_SET interval_save_feedback = 1
 // Set this value to 0 to enforce using game variables to control interval save creation.
 // This value is only considered for games patched to version 2.0 or later. Default: 1
 OUTER_SET interval_save_ini = 1
+
+
+
+
+// The following variables will be used for "Remove Racial Restrictions for Single Classes"
+// Set this to 1 to change the INT penalty for half-orcs to -1 to allow for easier dual-classing 
+// into mages, which also requires the "Alter Dual-class Restrictions" component to be installed
+OUTER_SET halforc_dual_to_mage = 0

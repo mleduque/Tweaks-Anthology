@@ -1,0 +1,113 @@
+ACTION_IF enhanced_edition BEGIN // ee has an extra column at the front
+  OUTER_SET col_start = 1
+  OUTER_SET loop_start = gnome_base
+END ELSE BEGIN
+  OUTER_SET col_start = 0
+  OUTER_SET loop_start = 0 // makes no difference on oBG2, so always set mage line =1
+END 
+
+COPY_EXISTING ~mgsrcreq.2da~ ~override~
+  PATCH_IF gnome_kits BEGIN
+    COUNT_2DA_ROWS (col_start + 8) rows // do whole things if all kits
+  END ELSE BEGIN 
+    SET rows = 1                        // otherwise just do first, class row
+  END  
+  FOR (row = loop_start ; row < rows ; ++row) BEGIN
+    SET_2DA_ENTRY row (col_start + 6) (col_start + 8) 1
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
+ACTION_IF !gnome_base BEGIN
+
+  COPY_EXISTING ~k_m_g.2da~ ~override~ // insert base class in table
+    REPLACE_TEXTUALLY ~^\(1[ %TAB%]+\)~ ~0 0
+\1~
+    REPLACE_EVALUATE ~^\([0-9]+\)[ %TAB%]+~ BEGIN
+      SET index = MATCH1 + 1
+    END ~%index% ~  
+
+END
+
+ACTION_IF gnome_kits BEGIN
+
+  COPY_EXISTING ~kitlist.2da~ ~override~
+    SPRINT letter m // only doing mages
+    COUNT_2DA_ROWS 9 rows
+    FOR (row = 0 ; row < rows ; ++row) BEGIN
+      READ_2DA_ENTRY row 0 9 kitno
+      READ_2DA_ENTRY row 8 9 class
+      PATCH_IF ((IS_AN_INT class) AND (class =  1)) BEGIN // this is to screen out header junk
+        SET available = 0
+        PATCH_FOR_EACH race IN d e g h he hl ho BEGIN // first loop is to check and see if the kit is available to any race so we don't expose internal mod kits
+          PATCH_IF FILE_EXISTS_IN_GAME ~k_%letter%_%race%.2da~ BEGIN
+            INNER_ACTION BEGIN
+
+              COPY_EXISTING ~k_%letter%_%race%.2da~ ~override~
+                COUNT_2DA_ROWS 2 rows_inner
+                FOR (row_inner = 0 ; row_inner < rows_inner ; ++row_inner) BEGIN
+                  READ_2DA_ENTRY row_inner 0 2 index
+                  READ_2DA_ENTRY row_inner 1 2 kitcheck
+                  PATCH_IF IS_AN_INT kitcheck BEGIN // sanity check
+                    PATCH_IF kitcheck = kitno BEGIN
+                      SET available = 1
+                      SET row_inner = rows_inner // kill loop
+                    END
+                  END
+                END
+                BUT_ONLY
+
+            END
+          END
+        END
+        PATCH_IF available = 1 THEN BEGIN // only if it actually is available do we add it to all races
+          READ_2DA_ENTRY row 1 9 kitname
+          SPRINT race g 
+          PATCH_IF (FILE_EXISTS_IN_GAME ~k_%letter%_%race%.2da~) BEGIN
+            INNER_ACTION BEGIN
+
+              COPY_EXISTING ~k_%letter%_%race%.2da~ ~override~
+                SET added = 0
+                COUNT_2DA_ROWS 2 rows_inner
+                FOR (row_inner = 0 ; row_inner < rows_inner ; ++row_inner) BEGIN
+                  READ_2DA_ENTRY row_inner 0 2 index
+                  READ_2DA_ENTRY row_inner 1 2 kitcheck
+                  PATCH_IF IS_AN_INT kitcheck BEGIN // sanity check
+                    PATCH_IF kitcheck = kitno BEGIN
+                      SET added = 1
+                      SET row_inner = rows_inner // kill loop
+                    END
+                  END
+                END
+                BUT_ONLY
+                
+              COPY_EXISTING ~clsrcreq.2da~ ~override~
+                REPLACE_TEXTUALLY ~^\(%kitname%[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+\)[^ %TAB%]+~ ~\11~
+                BUT_ONLY
+    
+              ACTION_IF added = 0 THEN BEGIN
+                OUTER_SET index += 1
+                APPEND ~k_%letter%_%race%.2da~ ~%index% %kitno%~
+              END
+  
+            END
+          END
+        END
+      END
+    END
+    BUT_ONLY
+    
+  ACTION_IF gnome_base BEGIN    
+
+    COPY_EXISTING ~mgsrcreq.2da~ ~override~
+      REPLACE_EVALUATE ~^\([0-9x]+[ %TAB%]+ILLUSIONIST[ %TAB%]+.+[%MNL%%LNL%%WNL%]+\)~ BEGIN
+        SPRINT cd_ill ~%MATCH1%~
+      END ~~
+      REPLACE_TEXTUALLY~^\([0-9x]+[ %TAB%]+MAGE[ %TAB%]+.+\)[%MNL%%LNL%%WNL%]+~ ~\1
+%cd_ill%~
+      PRETTY_PRINT_2DA
+      BUT_ONLY
+
+  END
+  
+END 

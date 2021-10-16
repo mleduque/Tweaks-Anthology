@@ -976,6 +976,7 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @237000 = ~Alter Dual-class Restrictions~
 @237001 = ~Humans can no longer dual-class~
 @237100 = ~Allow non-humans to dual-class~
+@237200 = ~Both options: *only* non-humans can dual-class~
 @238000 = ~Remove Racial Restrictions for Kits~
 @239000 = ~Paladins Use Icewind Dale-Heart of Winter Spell Tables (grogerson)~
 @240000 = ~Rangers Use Icewind Dale-Heart of Winter Spell Tables (grogerson)~
@@ -997,6 +998,11 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @252000 = ~Allow Mages to Use Bucklers and Thieves to Use Small Shields (Angel)~
 @253000 = ~Lightning Bolts Don't Bounce (Angel)~
 @254000 = ~Speed Up de'Arnise Keep Stronghold Quests~
+@255000 = ~Alter Gnome Mage Kit/Multiclass Options~
+@255001 = ~Keep Gnome Illusionist Multiclass, Enable All Kits for Single-Class~
+@255100 = ~Generic Mage Multiclass, Keep Only Illusionist Kit for Single-Class~
+@255200 = ~Generic Mage Multiclass, Enable All Kits for Single-Class~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

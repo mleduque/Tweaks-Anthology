@@ -5,67 +5,10 @@ AUTO_EVAL_STRINGS
 ALWAYS
 
   ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @27 END // Modmerge check
-
   ACTION_IF NOT VARIABLE_IS_SET bg2_chapter THEN BEGIN // check to make this happen only once per install
-    
-    ACTION_IF GAME_IS ~eet~ BEGIN
-      OUTER_SET bg2_chapter = 12
-    END ELSE BEGIN
-      OUTER_SET bg2_chapter = 0
-    END
-    OUTER_FOR (i=1; i<=10; i=i+1) BEGIN
-      OUTER_SET bg2_chapter = bg2_chapter + 1
-      OUTER_SPRINT name_source ~bg2_chapter_%i%~
-      OUTER_SET EVAL ~%name_source%~ = bg2_chapter
-    END
-
-    ACTION_IF FILE_EXISTS ~cdtweaks/cdtweaks.txt~ THEN BEGIN
-      
-      INCLUDE ~cdtweaks/cdtweaks.txt~ // config file
-    
-      ACTION_IF !VARIABLE_IS_SET romance_speed_use_config_values THEN BEGIN OUTER_SET romance_speed_use_config_values = 0 END
-      ACTION_IF !VARIABLE_IS_SET minimum_stats_use_config_values THEN BEGIN OUTER_SET minimum_stats_use_config_values = 0 END
-      ACTION_IF !VARIABLE_IS_SET romance_use_config_values       THEN BEGIN OUTER_SET romance_use_config_values = 0 END
-
-    END ELSE BEGIN
-    
-      OUTER_SET romance_speed_use_config_values = 0
-      OUTER_SET minimum_stats_use_config_values = 0
-      OUTER_SET romance_use_config_values = 0
-    
-    END
-
-    ACTION_IF GAME_IS ~bg1 totsc tutu tutu_totsc bgt bgee eet~ THEN BEGIN
-
-      INCLUDE ~cdtweaks/lib/g3_cpmvars_master.tpa~ // sets bg/bgee/bgt/eet/tutu vars, cd_extend_bg_area_script macro 
-
-    END
-
-    ACTION_IF GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ THEN BEGIN
-
-      ACTION_FOR_EACH file IN iplot01k.itm iplot04g.itm iplot04h.itm iplot04i.itm xr2400.are xr2600.are BEGIN
-        DISABLE_FROM_KEY "%file%"
-      END
-
-    END
-
-    // convert strings to UTF-8 for BGEE/BG2EE
-    ACTION_DEFINE_ARRAY cdreload BEGIN setup END
-    ACTION_DEFINE_ARRAY cdnoconvert BEGIN ee END // List of tra files that contain ONLY strings for the WeiDU installer and NOT game content
-    LAF HANDLE_CHARSETS INT_VAR infer_charsets = 1 STR_VAR tra_path = ~cdtweaks/languages~ noconvert_array = cdnoconvert reload_array = cdreload END
-    
-    // fix tokens if an EE game using schinese
-    ACTION_IF (GAME_IS ~bgee bg2ee eet~) AND (~%LANGUAGE%~ STR_EQ ~schinese~) BEGIN
-      COPY ~%MOD_FOLDER%/languages/schinese/dw_components.tra~ ~%MOD_FOLDER%/languages/schinese/dw_components.tra~
-        REPLACE_TEXTUALLY ~<\([A-Z_]+\)>_~ ~<\1>~
-      LOAD_TRA ~%MOD_FOLDER%/languages/schinese/dw_components.tra~
-      
-      // and always load ANSI strings for WeiDU installer
-      LOAD_TRA ~%MOD_FOLDER%/languages/schinese_prompts/setup-%WEIDU_OS%.tra~
-    END
-
+    INCLUDE ~cdtweaks/lib/always.tpa~
   END
-
+  
 END
 
 VERSION ~v9~
@@ -1756,7 +1699,7 @@ COPY_EXISTING ~cdbrak2.spl~ ~override/cdbrak12.spl~  // shield
   WRITE_LONG  0xce 9
   WRITE_ASCII 0xde ~misc57~ #8
 
-ACTION_IF !((GAME_IS ~bgee bg2ee eet~) OR (MOD_IS_INSTALLED ~TOBEX/TOBEX.TP2~ ~0~)) BEGIN // if no critical hit aversion from tobex, script to remove broken helm item
+ACTION_IF !((GAME_IS ~bgee bg2ee eet~) OR (MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) BEGIN // if no critical hit aversion from tobex, script to remove broken helm item
 
   EXTEND_TOP ~baldur.bcs~ ~cdtweaks/baf/break.baf~
   
@@ -8242,7 +8185,7 @@ END
 /////                                                            \\\\\
 
 BEGIN @235001 DESIGNATED 2350
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // ToB required
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
 
@@ -8271,7 +8214,7 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
 /////                                                            \\\\\
 
 BEGIN @235100 DESIGNATED 2351
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // ToB required
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
 
@@ -8311,7 +8254,7 @@ DEPRECATED @18
 /////                                                            \\\\\
 
 BEGIN @235300 DESIGNATED 2353
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // ToB required
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
 
@@ -8364,7 +8307,7 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
 /////                                                            \\\\\
 
 BEGIN @235200 DESIGNATED 2357
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // ToB required
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
 
@@ -8395,7 +8338,7 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
 /////                                                            \\\\\
 
 BEGIN @235800 DESIGNATED 2358
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // ToB required
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
 
@@ -8452,88 +8395,71 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @236000 DESIGNATED 2360
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // ToB required
 GROUP @9
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 
-ACTION_CLEAR_ARRAY cd_new_anims
-ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_new_anims BEGIN
-  6001, 6501, CEMC, CEMM => monk_male_elf       // clone cleric animations into monk animations
-  6002, 6502, CDMC, CDMM => monk_male_dwarf 
-  6003, 6503, CIMC, CIMM => monk_male_halfling 
-  6004, 6504, CGMC, CGMM => monk_male_gnome 
-  6005, 6505, COMC, COMM => monk_male_halforc 
-  6011, 6511, CEFC, CEFM => monk_female_elf 
-  6012, 6512, CDFC, CDFM => monk_female_dwarf 
-  6013, 6513, CIFC, CIFM => monk_female_halfling 
-  6014, 6514, CIFC, CIFM => monk_female_gnome 
-  6015, 6515, COFC, COFM => monk_female_halforc 
-  6003, 6203, CIMC, CIMW => mage_male_halfling   // clone cleric animations into mage animations (halflings only)
-  6013, 6213, CIFC, CIFW => mage_female_halfling 
-END
+INCLUDE ~cdtweaks/lib/class-race_removal.tpa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Remove Racial Restrictions for Kits                        \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
   
-ACTION_PHP_EACH cd_new_anims AS anims => entry BEGIN
-      
-  APPEND ~animate.ids~ ~0x%anims_1% %entry%~ UNLESS ~^0x%anims_1%~
+BEGIN @238000 DESIGNATED 2380
+GROUP @9
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 
-  ACTION_IF GAME_IS ~bgee bg2ee iwdee eet~ BEGIN
+INCLUDE ~cdtweaks/lib/kit-race_removal.tpa~
 
-    COPY_EXISTING ~%anims_0%.ini~ ~override/%anims_1%.ini~
-      REPLACE_TEXTUALLY ~^\(// [A-Z]+[ %TAB%]\)cleric_[a-z]+_[a-z]+$~ ~\1%entry%~
-    
-  END ELSE BEGIN
-  
-    COPY_EXISTING_REGEXP GLOB ~^%anims_2%\(.+\)\.bam$~ ~override/%anims_3%\1.bam~
-                              ~^%anims_2%\(.+\)\.plt$~ ~override/%anims_3%\1.plt~
-      IF_EXISTS // in case there are no plts
-  
-  END
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Alter Gnome Mage Kit/Multiclass Options                    \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-END  
+/////                                                            \\\\\
+///// Keep Illusionist Multi, Enable All Kits for Single-Class   \\\\\
+/////                                                            \\\\\
 
-COPY_EXISTING ~clsrcreq.2da~ ~override~
-  COUNT_2DA_ROWS 8 rows
-  FOR (row = 0 ; row < rows ; ++row) BEGIN
-    READ_2DA_ENTRY row 0 8 entry
-    PATCH_IF (("%entry%" STRING_COMPARE_CASE "MAGE"      = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "FIGHTER"   = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "BARBARIAN" = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "CLERIC"    = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "THIEF"     = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "BARD"      = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "PALADIN"   = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "DRUID"     = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "RANGER"    = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "SORCERER"  = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "MONK"      = 0) OR
-              ("%entry%" STRING_COMPARE_CASE "SHAMAN"    = 0)) BEGIN
-      FOR (col = 2; col < 8 ; ++col) BEGIN
-        SET_2DA_ENTRY row col 8 1
-      END
-    END
-  END
-  PRETTY_PRINT_2DA
-  BUT_ONLY
+BEGIN @255001 DESIGNATED 2550
+GROUP @9
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+//SUBCOMPONENT @255000
 
-OUTER_SET col_start = 0
-ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ BEGIN // ee has an extra column at the front
-  OUTER_SET col_start = 1
-END
+OUTER_SET gnome_base = 1
+OUTER_SET gnome_kits = 1
+INCLUDE ~cdtweaks/lib/kit-gnome.tpa~
 
-COPY_EXISTING ~mgsrcreq.2da~ ~override~
-  FOR (col = (col_start + 1); col < (col_start + 8) ; ++col) BEGIN
-    SET_2DA_ENTRY 0 col (col_start + 8) 1
-  END
-  PRETTY_PRINT_2DA
-  BUT_ONLY 
+/////                                                            \\\\\
+///// Generic Mage Multi, Keep Only Illusionist Kit for Single   \\\\\
+/////                                                            \\\\\
 
-// let dwarves get 17 CHR to be paladins
-COPY_EXISTING ~abracead.2da~ ~override~
-  READ_2DA_ENTRY 1 6 7 foo
-  PATCH_IF (foo < "-1") THEN BEGIN
-    SET_2DA_ENTRY  1 6 7 "-1"
-  END
-  PRETTY_PRINT_2DA
-  BUT_ONLY
+BEGIN @255100 DESIGNATED 2551
+GROUP @9
+REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
+SUBCOMPONENT @255000
+
+OUTER_SET gnome_base = 0
+OUTER_SET gnome_kits = 0
+INCLUDE ~cdtweaks/lib/kit-gnome.tpa~
+
+/////                                                            \\\\\
+///// Generic Mage Multiclass, Enable All Kits for Single-Class  \\\\\
+/////                                                            \\\\\
+
+BEGIN @255200 DESIGNATED 2552
+GROUP @9
+REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
+SUBCOMPONENT @255000
+
+OUTER_SET gnome_base = 0
+OUTER_SET gnome_kits = 1
+INCLUDE ~cdtweaks/lib/kit-gnome.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -8544,27 +8470,13 @@ COPY_EXISTING ~abracead.2da~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 /////                                                            \\\\\
-///// Humans can no longer dual-class                            \\\\\
-/////                                                            \\\\\
-
-BEGIN @237001 DESIGNATED 2370
-GROUP @9
-REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (NOT FILE_EXISTS ~tobex_ini/tobextweak.ini~)) @25 // tobex has no option for this unfortunately
-SUBCOMPONENT @237000 // Higher HP on Level Up
-
-COPY_EXISTING ~clsrcreq.2da~ ~override~
-  REPLACE_TEXTUALLY ~^DUALCLASS[ %TAB%]+1~ ~DUALCLASS 0~
-  PRETTY_PRINT_2DA
-  BUT_ONLY
-
-/////                                                            \\\\\
 ///// Allow Non-Humans to Dual-Class                             \\\\\
 /////                                                            \\\\\
 
 BEGIN @237100 DESIGNATED 2371
-REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) OR (FILE_EXISTS ~tobex_ini/tobextweak.ini~)) @25 // ToB required
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx
 GROUP @9
-SUBCOMPONENT @237000 // Higher HP on Level Up
+SUBCOMPONENT @237000 // Alter Dual-class Restrictions
 
 ACTION_IF FILE_EXISTS ~tobex_ini/tobextweak.ini~ THEN BEGIN
 
@@ -8582,171 +8494,31 @@ END ELSE BEGIN
 END
 
 /////                                                            \\\\\
-///// Allow both                                                 \\\\\
+///// Humans can no longer dual-class                            \\\\\
 /////                                                            \\\\\
 
-BEGIN @235200 DESIGNATED 2372
-REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (NOT FILE_EXISTS ~tobex_ini/tobextweak.ini~)) @25 // tobex has no option for this unfortunately
+BEGIN @237001 DESIGNATED 2370
 GROUP @9
-SUBCOMPONENT @237000 // Higher HP on Level Up
+REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
+SUBCOMPONENT @237000 // Alter Dual-class Restrictions
+
+COPY_EXISTING ~clsrcreq.2da~ ~override~
+  REPLACE_TEXTUALLY ~^DUALCLASS[ %TAB%]+1~ ~DUALCLASS 0~
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+
+/////                                                            \\\\\
+///// Change both                                                 \\\\\
+/////                                                            \\\\\
+
+BEGIN @237200 DESIGNATED 2372
+REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
+GROUP @9
+SUBCOMPONENT @237000 // Alter Dual-class Restrictions
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   REPLACE_TEXTUALLY ~^\(DUALCLASS[ %TAB%]+\).+$~ ~\1 0 1 1 1 1 1 1~
   PRETTY_PRINT_2DA
-  BUT_ONLY
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                            \\\\\
-///// open all kits to all races                                 \\\\\
-/////                                                            \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
-BEGIN @238000 DESIGNATED 2380
-GROUP @9
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // ToB required
-
-COPY_EXISTING ~clsrcreq.2da~ ~override~
-  COUNT_2DA_ROWS 8 rows
-  FOR (row = 0 ; row < rows ; ++row) BEGIN
-    READ_2DA_ENTRY row 0 8 entry
-    PATCH_IF NOT (("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE"        = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "FIGHTER_CLERIC"      = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "FIGHTER_THIEF"       = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_THIEF"  = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "MAGE_THIEF"          = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "CLERIC_MAGE"         = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "CLERIC_THIEF"        = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "FIGHTER_DRUID"       = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "FIGHTER_MAGE_CLERIC" = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "CLERIC_RANGER"       = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "MAGE"                = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "FIGHTER"             = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "BARBARIAN"           = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "CLERIC"              = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "THIEF"               = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "BARD"                = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "PALADIN"             = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "DRUID"               = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "RANGER"              = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "SORCERER"            = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "MONK"                = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "SHAMAN"              = 0) OR
-                  ("%entry%" STRING_COMPARE_CASE "DUALCLASS"           = 0)) BEGIN
-      FOR (col = 1; col < 8 ; ++col) BEGIN
-        SET_2DA_ENTRY row col 8 1
-      END
-    END
-  END
-  PRETTY_PRINT_2DA
-  BUT_ONLY
-  
-OUTER_SET col_start = 0
-ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ BEGIN // ee has an extra column at the front
-  OUTER_SET col_start = 1
-END
-
-COPY_EXISTING ~mgsrcreq.2da~ ~override~
-  COUNT_2DA_ROWS (col_start + 8) rows
-  FOR (row = 1 ; row < rows ; ++row) BEGIN
-    FOR (col = (col_start + 1); col < (col_start + 8) ; ++col) BEGIN
-      PATCH_IF col = (col_start + 6) BEGIN SET col += 1 END // skip gnome column
-      SET_2DA_ENTRY row col (col_start + 8) 1
-    END
-  END
-  PRETTY_PRINT_2DA
-  BUT_ONLY
-  
-ACTION_FOR_EACH class IN sh mn BEGIN // shaman, monk
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~k_%class%_h.2da~ BEGIN // shaman
-
-    ACTION_FOR_EACH race IN d e g he hl ho BEGIN
-
-      ACTION_IF NOT FILE_EXISTS_IN_GAME ~k_%class%_%race%.2da~ THEN BEGIN
-
-        COPY_EXISTING ~k_%class%_h.2da~ ~override/k_%class%_%race%.2da~
-
-      END
-
-    END
-
-  END
-
-END
-
-COPY_EXISTING ~kitlist.2da~ ~override~
-  COUNT_2DA_ROWS 9 rows
-  FOR (row = 0 ; row < rows ; ++row) BEGIN
-    READ_2DA_ENTRY row 0 9 kitno
-    READ_2DA_ENTRY row 8 9 class
-    PATCH_IF (IS_AN_INT class) BEGIN // this is to screen out header junk
-      SPRINT letter this_is_a_fake // just in case none of these match
-      PATCH_IF class =  2 BEGIN SPRINT letter  f END
-      PATCH_IF class =  6 BEGIN SPRINT letter  p END
-      PATCH_IF class = 12 BEGIN SPRINT letter  r END
-      PATCH_IF class =  4 BEGIN SPRINT letter  t END
-      PATCH_IF class =  5 BEGIN SPRINT letter  b END
-      PATCH_IF class = 11 BEGIN SPRINT letter  d END
-      PATCH_IF class =  3 BEGIN SPRINT letter  c END
-      PATCH_IF class =  1 BEGIN SPRINT letter  m END
-      PATCH_IF class = 19 BEGIN SPRINT letter  s END
-      PATCH_IF class = 20 BEGIN SPRINT letter mn END
-      PATCH_IF class = 21 BEGIN SPRINT letter sh END
-      SET available = 0
-      PATCH_FOR_EACH race IN d e g h he hl ho BEGIN // first loop is to check and see if the kit is available to any race so we don't expose internal mod kits
-        PATCH_IF FILE_EXISTS_IN_GAME ~k_%letter%_%race%.2da~ BEGIN
-          INNER_ACTION BEGIN
-
-            COPY_EXISTING ~k_%letter%_%race%.2da~ ~override~
-              COUNT_2DA_ROWS 2 rows_inner
-              FOR (row_inner = 0 ; row_inner < rows_inner ; ++row_inner) BEGIN
-                READ_2DA_ENTRY row_inner 0 2 index
-                READ_2DA_ENTRY row_inner 1 2 kitcheck
-                PATCH_IF IS_AN_INT kitcheck BEGIN // sanity check
-                  PATCH_IF kitcheck = kitno BEGIN
-                    SET available = 1
-                    SET row_inner = rows_inner // kill loop
-                  END
-                END
-              END
-              BUT_ONLY
-
-          END
-        END
-      END
-      PATCH_IF available = 1 THEN BEGIN // only if it actually is available do we add it to all races
-        PATCH_FOR_EACH race IN d e g h he hl ho BEGIN
-          PATCH_IF FILE_EXISTS_IN_GAME ~k_%letter%_%race%.2da~ BEGIN
-            INNER_ACTION BEGIN
-
-              COPY_EXISTING ~k_%letter%_%race%.2da~ ~override~
-                SET added = 0
-                COUNT_2DA_ROWS 2 rows_inner
-                FOR (row_inner = 0 ; row_inner < rows_inner ; ++row_inner) BEGIN
-                  READ_2DA_ENTRY row_inner 0 2 index
-                  READ_2DA_ENTRY row_inner 1 2 kitcheck
-                  PATCH_IF IS_AN_INT kitcheck BEGIN // sanity check
-                    PATCH_IF kitcheck = kitno BEGIN
-                      SET added = 1
-                      SET row_inner = rows_inner // kill loop
-                    END
-                  END
-                END
-                BUT_ONLY
-    
-              ACTION_IF added = 0 THEN BEGIN
-                OUTER_SET index += 1
-                APPEND ~k_%letter%_%race%.2da~ ~%index% %kitno%~
-              END
-  
-            END
-          END
-        END
-      END
-    END
-  END
   BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
