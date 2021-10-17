@@ -13534,6 +13534,11 @@ BEGIN @402000 DESIGNATED 4020
 GROUP @0
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 iwd how totlm pst pstee~ @25 // no joinables in iwd/iwd2; at least possible in iwdee/iwd-in-bg2; pst only uses one creature file per
 
+MKDIR ~weidu_external/cdtweaks~
+
+<<<<<<<<./inlined/tob_lookup.txt
+>>>>>>>>
+
 // load patch macro
 INCLUDE ~cdtweaks/lib/tob_style_npcs.tpa~
 
@@ -13545,7 +13550,7 @@ COPY_EXISTING ~pdialog.2da~ ~override~
     DEFINE_ASSOCIATIVE_ARRAY cd_dv_array BEGIN "cdtob_%curdv%" => "%curdv%" END
     INNER_ACTION BEGIN
     
-      COPY ~cdtweaks/lib/tob_lookup.txt~ ~override/cdtob_%curdv%.txt~
+      COPY ~./inlined/tob_lookup.txt~ ~weidu_external/cdtweaks/cdtob_%curdv%.txt~
 
     END
   END
@@ -13562,7 +13567,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
         READ_LONG 0x018 xp
         READ_BYTE 0x273 class
         INNER_ACTION BEGIN
-          APPEND ~%file%.txt~ ~%SOURCE_RES% %xp% %class%~
+          APPEND_OUTER ~weidu_external/cdtweaks/%file%.txt~ ~%SOURCE_RES% %xp% %class%~
         END
       END
     END
@@ -13572,7 +13577,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 // for creatuers like imoen, split files for cre files with same dv but different classes
 ACTION_PHP_EACH cd_dv_array AS file => dv BEGIN
 
-  COPY_EXISTING ~%file%.txt~ ~override~
+  COPY ~weidu_external/cdtweaks/%file%.txt~ ~weidu_external/cdtweaks/%file%.txt~
     SET split = 0
     COUNT_2DA_ROWS 3 rows
     PATCH_IF (rows > 1) BEGIN // don't bother if only one creature
@@ -13596,7 +13601,7 @@ ACTION_PHP_EACH cd_dv_array AS file => dv BEGIN
     
         ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_dv_array BEGIN "%dest_file%" => "%dv%" END
 
-        COPY_EXISTING ~%file%.txt~ ~override/%dest_file%.txt~
+        COPY ~weidu_external/cdtweaks/%file%.txt~ ~weidu_external/cdtweaks/%dest_file%.txt~
           COUNT_2DA_ROWS 3 rows
           FOR (index = 0 ; index < rows ; ++index) BEGIN
             READ_2DA_ENTRY index 2 3 class_check
@@ -13604,13 +13609,14 @@ ACTION_PHP_EACH cd_dv_array AS file => dv BEGIN
               SET_2DA_ENTRY index 2 3 999
             END
           END
+          REPLACE_TEXTUALLY ~^.+999[%LNL%%MNL%%WNL%]+~ ~~
           BUT_ONLY
 
       END
 
     END
 
-    COPY_EXISTING ~%file%.txt~ ~override~
+    COPY ~weidu_external/cdtweaks/%file%.txt~ ~weidu_external/cdtweaks/%file%.txt~
       COUNT_2DA_ROWS 3 rows
       READ_2DA_ENTRY 0 2 3 class_check
       FOR (index = 1 ; index < rows ; ++index) BEGIN
@@ -13619,6 +13625,7 @@ ACTION_PHP_EACH cd_dv_array AS file => dv BEGIN
           SET_2DA_ENTRY index 2 3 999
         END
       END
+      REPLACE_TEXTUALLY ~^.+999[%LNL%%MNL%%WNL%]+~ ~~
       BUT_ONLY
   
     END
@@ -13627,50 +13634,38 @@ END
 
 ACTION_PHP_EACH cd_dv_array AS file => dv BEGIN
 
-  COPY_EXISTING ~%file%.txt~ ~override~
+  COPY ~weidu_external/cdtweaks/%file%.txt~ ~weidu_external/cdtweaks/%file%.txt~
     COUNT_2DA_ROWS 3 rows
     PATCH_IF (rows > 1) BEGIN // don't bother if only one creature
-      SET xp = "-1"
-      FOR (index = 0 ; index < rows ; ++index) BEGIN
-        READ_2DA_ENTRY index 2 3 sanity
-        PATCH_IF sanity != 999 BEGIN
-          PATCH_IF (xp < 0) BEGIN
-            READ_2DA_ENTRY index 1 2 xp
-            READ_2DA_ENTRY index 0 2 orig
-          END ELSE BEGIN
-            READ_2DA_ENTRY index 1 2 xp_test
-            PATCH_IF (xp_test < xp) BEGIN
-              READ_2DA_ENTRY index 0 2 orig
-              SET xp = xp_test
-            END
-          END
+      READ_2DA_ENTRY 0 1 2 xp   // take first row as comparison point
+      READ_2DA_ENTRY 0 0 2 orig
+      FOR (index = 1 ; index < rows ; ++index) BEGIN
+        READ_2DA_ENTRY index 1 2 xp_test
+        PATCH_IF (xp_test < xp) BEGIN   // if lower XP creature, use it as comparison instead
+          READ_2DA_ENTRY index 0 2 orig
+          SET xp = xp_test
         END
       END
       FOR (index = 0 ; index < rows ; ++index) BEGIN
-        READ_2DA_ENTRY index 2 3 sanity
-        PATCH_IF sanity != 999 BEGIN
-          READ_2DA_ENTRY index 0 2 dest
-          INNER_ACTION BEGIN
+        READ_2DA_ENTRY index 0 2 dest
+        INNER_ACTION BEGIN
 
-            ACTION_IF ((FILE_EXISTS_IN_GAME ~%orig%.cre~) AND (FILE_EXISTS_IN_GAME ~%dest%.cre~)) THEN BEGIN
-    
-              COPY_EXISTING ~%orig%.cre~ ~override/%dest%.cre~
-                PATCH_PRINT " -- copying %orig% to %dest%..."
-                LAUNCH_PATCH_MACRO ~tob_style_npcs~
-                BUT_ONLY
-    
-            END
-            
+          ACTION_IF (((FILE_EXISTS_IN_GAME ~%orig%.cre~) AND (FILE_EXISTS_IN_GAME ~%dest%.cre~)) AND // both exist
+                      (~%orig%~ STRING_COMPARE_CASE ~%dest%~)) THEN BEGIN                            // skip self-copy 
+  
+            COPY_EXISTING ~%orig%.cre~ ~override/%dest%.cre~
+              PATCH_PRINT " -- copying %orig% to %dest%..."
+              LAUNCH_PATCH_MACRO ~tob_style_npcs~
+              BUT_ONLY
+  
           END
+          
         END
       END
     END
     BUT_ONLY
 
-  MOVE ~override/%file%.txt~ ~cdtweaks/lib~
-
 END
-
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

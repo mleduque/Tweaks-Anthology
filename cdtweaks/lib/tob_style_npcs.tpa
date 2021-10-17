@@ -3,6 +3,7 @@ DEFINE_PATCH_MACRO ~tob_style_npcs~ BEGIN
   SET "orig_xp" = 0
 
   INNER_PATCH_FILE ~%DEST_FILE%~ BEGIN // read info from file about to be overwritten
+    PATCH_PRINT ~checking destination, %DEST_FILE%~
     READ_LONG  0x2a0 "orig_known_off"
     READ_LONG  0x2a4 "orig_known_num"
     READ_LONG  0x2a8 "orig_meminfo_off"
@@ -25,6 +26,7 @@ DEFINE_PATCH_MACRO ~tob_style_npcs~ BEGIN
   END
 
   PATCH_IF (("%orig_xp%" != 0) AND (SOURCE_SIZE > 0x2d3)) BEGIN // only true if read from destination file is successful and source exists
+    PATCH_PRINT ~checking source, %SOURCE_FILE%~
     WRITE_LONG             0x18 "%orig_xp%"
     WRITE_SHORT            0x28 "%orig_anim%"
     WRITE_EVALUATED_ASCII  0x34 "%orig_portraits%" #16
