@@ -4369,6 +4369,12 @@ REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 REQUIRE_PREDICATE !FILE_EXISTS ~override/X#AloraMove.G3~ @16 // bg1 npc does these separately
 
+COPY_EXISTING ~%ALORA_BCS%.bcs~ ~override~ // catching and updating area variables
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~,"%WBaldursGate_HallofWonders%",~ ~,"%Gullykin%",~
+  END
+  BUT_ONLY      
+
 ACTION_IF GAME_IS ~bg1 totsc~ THEN BEGIN
 
   INCLUDE ~cdtweaks/lib/BG1areacheck_emulation.tpa~ // clever bit of code from Zed that allows us to check areas; should also work on IWD
@@ -4434,6 +4440,7 @@ REQUIRE_PREDICATE !FILE_EXISTS ~override/X#EldothMove.G3~ @16 // bg1 npc does th
 
 COPY_EXISTING ~%ELDOTH_BCS%.bcs~ ~override~ // bg1npc compat
   DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~,"%CloakwoodDruids%",~ ~,"%CoastWay%",~ // catching and updating area variables
     REPLACE_TEXTUALLY ~!Global("X#SkieLeftEldoth","GLOBAL",1)~ ~OR(2) !Global("X#SkieLeftEldoth","GLOBAL",1) !Global("EldothMove","GLOBAL",0)~
   END
   BUT_ONLY_IF_IT_CHANGES
@@ -4476,6 +4483,12 @@ REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 REQUIRE_PREDICATE !FILE_EXISTS ~override/X#QuayleMove.G3~ @16 // bg1 npc does these separately
 
+COPY_EXISTING ~%QUAYLE_BCS%.bcs~ ~override~ // catching and updating area variables
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~,"%WyrmsCrossing%",~ ~,"%NashkelCarnival%",~
+  END
+  BUT_ONLY      
+
 ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
 
   COPY_EXISTING ~baldur.gam~ ~override~
@@ -4513,6 +4526,13 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 //REQUIRE_PREDICATE !FILE_EXISTS ~override/X#QuayleMove.G3~ @16 // bg1 npc doesn't move her
+
+COPY_EXISTING ~%SHARTEEL_BCS%.bcs~ ~override~ // catching and updating area variables
+              ~shartel2.bcs~       ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~,"%MutaminsGarden%",~ ~,"%NorthNashkelRoad%",~
+  END
+  BUT_ONLY      
 
 ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
 
@@ -4570,6 +4590,12 @@ REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 REQUIRE_PREDICATE !FILE_EXISTS ~override/X#TiaxMove.G3~ @16 // bg1 npc does these separately
 
+COPY_EXISTING ~%TIAX_BCS%.bcs~ ~override~ // catching and updating area variables
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~,"%SWBaldursGate%",~ ~,"%Beregost_FeldepostsInn_L1%",~
+  END
+  BUT_ONLY      
+
 ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
 
   COPY_EXISTING ~baldur.gam~ ~override~
@@ -4607,6 +4633,12 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 //REQUIRE_PREDICATE !FILE_EXISTS ~override/X#QuayleMove.G3~ @16 // bg1 npc doesn't move her
+
+COPY_EXISTING ~%VICONIA_BCS%.bcs~ ~override~ // catching and updating area variables
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~,"%Peldvale%",~ ~,"%SouthBeregostRoad%",~
+  END
+  BUT_ONLY      
 
 ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
 
