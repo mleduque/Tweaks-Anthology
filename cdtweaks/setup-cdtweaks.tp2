@@ -8429,7 +8429,7 @@ INCLUDE ~cdtweaks/lib/kit-race_removal.tpa~
 BEGIN @255001 DESIGNATED 2550
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
-//SUBCOMPONENT @255000
+SUBCOMPONENT @255000
 
 OUTER_SET gnome_base = 1
 OUTER_SET gnome_kits = 1
