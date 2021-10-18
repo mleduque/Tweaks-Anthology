@@ -56,3 +56,14 @@
 @20837 = ~Okay - I guess this sort of thing is part of what adventurers do too, though it doesn't sound interesting...~
 @20838 = ~A chance for a little luxury and a rest from the road? I shan't turn it down.~
 @20840 = ~Certainly! I have several days worth of reading that I should be catching up with. I do look forward to when we can travel together again, though!~
+@20841 = ~Fine! When you're ready to apologize, you can find me there.~
+@20842 = ~Hmmph. If you change your mind, I shall be there.~
+@20843 = ~Very well. If you ever wish to learn more about the Sun Soul, please do not hesitate to come speak with me.~
+@20844 = ~Seriously? After all we've been through, <CHARNAME>? Obviously, I had the wrong idea about our friendship.~ // 28125, minus the destination
+@20845 = ~Hrmm. You shouldn't make a habit of committing mistakes like this. They add up.~ // 28392 minus the FAI part
+@20846 = ~As the full moon wanes and disappears, so too does our association come to an end. I pray that it will one day wax again, and we shall travel the realms side by side. If you ever wish to learn more about the Sun Soul, please do not hesitate to come speak with me.~ // 29019 minus Nashkel
+@20847 = ~Make your way to Nashkel. It's not far, and if you hide in the farms across the river, you probably won't be discovered and killed. Probably.~
+@20848 = ~Make your way to Beregost. It's not far, and if you hide behind Feldpost's Inn, you probably won't be discovered and killed. Probably.~
+@20849 = ~Make your way to Baldur's Gate. It's not far, and if you hide behind Sorcerous Sundries, you probably won't be discovered and killed. Probably.~
+@20850 = ~Just stay here and lay low. You probably won't be discovered and killed. Probably.~
+@20851 = ~Fine! But I'll be waiting. Don't let me die at the hands of pale-skinned barbarians!~

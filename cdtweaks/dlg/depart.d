@@ -1,62 +1,62 @@
-EXTEND_BOTTOM ~dmwwscriptname~ dmwwstatenumber
+EXTEND_BOTTOM ~%postdialogue%~ %state1% %state2%
 IF ~Global("EnteredArmInn","GLOBAL",1)
     !Global("IslandTravel","GLOBAL",1) // not on Werewolf Isle
     !Global("teth","GLOBAL",1) // not trapped under Candlekeep AR2613, 2615, 2619, 5506
     !Global("teth","GLOBAL",2)
-    !Global("Z!EmulAreaCheck","GLOBAL","0506") // Chess Board
-    !Global("Z!EmulAreaCheck","GLOBAL","0507") // Ice Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0508") // Fire Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0509") // Air Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0510") // Earth Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0512") // Lower 3
-    !Global("Z!EmulAreaCheck","GLOBAL","0513") // Lower 4
-    !Global("Z!EmulAreaCheck","GLOBAL","0514") // Lower 5
-    !Global("Z!EmulAreaCheck","GLOBAL","0515") // Statue Room
-    !Global("Z!EmulAreaCheck","GLOBAL","0516") // Demon Knight
-    !Global("Z!EmulAreaCheck","GLOBAL","1008") // ice isle surface
-    !Global("Z!EmulAreaCheck","GLOBAL","1009") // ice isle cavern 1
-    !Global("Z!EmulAreaCheck","GLOBAL","1010") // ice isle cavern 2
-    !Global("Z!EmulAreaCheck","GLOBAL","2301")~ // not in the area where the NPC will be sent
+    !AreaCheck("%DurlagsTower_Chessboard%")          // Chess Board
+    !AreaCheck("%DurlagsTower_IceChamber%")          // Ice Node
+    !AreaCheck("%DurlagsTower_FireChamber%")         // Fire Node
+    !AreaCheck("%DurlagsTower_AirChamber%")          // Air Node
+    !AreaCheck("%DurlagsTower_EarthChamber%")        // Earth Node
+    !AreaCheck("%DurlagsTower_D2%")                  // Lower 3
+    !AreaCheck("%DurlagsTower_D3%")                  // Lower 4
+    !AreaCheck("%DurlagsTower_D4%")                  // Lower 5
+    !AreaCheck("%DurlagsTower_CompassRoom%")         // Statue Room
+    !AreaCheck("%DurlagsTower_DemonknightsChamber%") // Demon Knight
+    !AreaCheck("%IceIsland%")                        // ice isle surface
+    !AreaCheck("%IceIslandMaze_L1%")                 // ice isle cavern 1
+    !AreaCheck("%IceIslandMaze_L2%")                 // ice isle cavern 2
+    !AreaCheck("%FriendlyArmInn_L1%")~               // not in the area where the NPC will be sent
 THEN REPLY @107501 GOTO dmww_fai
 
 IF ~Global("EnteredBeregost","GLOBAL",1)
     !Global("IslandTravel","GLOBAL",1)
     !Global("teth","GLOBAL",1)
     !Global("teth","GLOBAL",2)
-    !Global("Z!EmulAreaCheck","GLOBAL","0506") // Chess Board
-    !Global("Z!EmulAreaCheck","GLOBAL","0507") // Ice Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0508") // Fire Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0509") // Air Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0510") // Earth Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0512") // Lower 3
-    !Global("Z!EmulAreaCheck","GLOBAL","0513") // Lower 4
-    !Global("Z!EmulAreaCheck","GLOBAL","0514") // Lower 5
-    !Global("Z!EmulAreaCheck","GLOBAL","0515") // Statue Room
-    !Global("Z!EmulAreaCheck","GLOBAL","0516") // Demon Knight
-    !Global("Z!EmulAreaCheck","GLOBAL","1008") // ice isle surface
-    !Global("Z!EmulAreaCheck","GLOBAL","1009") // ice isle cavern 1
-    !Global("Z!EmulAreaCheck","GLOBAL","1010") // ice isle cavern 2
-    !Global("Z!EmulAreaCheck","GLOBAL","3304")~ // not in the area where the NPC will be sent
+    !AreaCheck("%DurlagsTower_Chessboard%")          // Chess Board
+    !AreaCheck("%DurlagsTower_IceChamber%")          // Ice Node
+    !AreaCheck("%DurlagsTower_FireChamber%")         // Fire Node
+    !AreaCheck("%DurlagsTower_AirChamber%")          // Air Node
+    !AreaCheck("%DurlagsTower_EarthChamber%")        // Earth Node
+    !AreaCheck("%DurlagsTower_D2%")                  // Lower 3
+    !AreaCheck("%DurlagsTower_D3%")                  // Lower 4
+    !AreaCheck("%DurlagsTower_D4%")                  // Lower 5
+    !AreaCheck("%DurlagsTower_CompassRoom%")         // Statue Room
+    !AreaCheck("%DurlagsTower_DemonknightsChamber%") // Demon Knight
+    !AreaCheck("%IceIsland%")                        // ice isle surface
+    !AreaCheck("%IceIslandMaze_L1%")                 // ice isle cavern 1
+    !AreaCheck("%IceIslandMaze_L2%")                 // ice isle cavern 2
+    !AreaCheck("%Beregost_JovialJuggler_L1%")~       // not in the area where the NPC will be sent
 THEN REPLY @107502  GOTO dmww_beregost
 
 IF ~GlobalGT("Chapter","GLOBAL",1)
     !Global("IslandTravel","GLOBAL",1)
     !Global("teth","GLOBAL",1)
     !Global("teth","GLOBAL",2)
-    !Global("Z!EmulAreaCheck","GLOBAL","0506") // Chess Board
-    !Global("Z!EmulAreaCheck","GLOBAL","0507") // Ice Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0508") // Fire Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0509") // Air Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0510") // Earth Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0512") // Lower 3
-    !Global("Z!EmulAreaCheck","GLOBAL","0513") // Lower 4
-    !Global("Z!EmulAreaCheck","GLOBAL","0514") // Lower 5
-    !Global("Z!EmulAreaCheck","GLOBAL","0515") // Statue Room
-    !Global("Z!EmulAreaCheck","GLOBAL","0516") // Demon Knight
-    !Global("Z!EmulAreaCheck","GLOBAL","1008") // ice isle surface
-    !Global("Z!EmulAreaCheck","GLOBAL","1009") // ice isle cavern 1
-    !Global("Z!EmulAreaCheck","GLOBAL","1010") // ice isle cavern 2
-    !Global("Z!EmulAreaCheck","GLOBAL","4801")~ // not in the area where the NPC will be sent
+    !AreaCheck("%DurlagsTower_Chessboard%")          // Chess Board
+    !AreaCheck("%DurlagsTower_IceChamber%")          // Ice Node
+    !AreaCheck("%DurlagsTower_FireChamber%")         // Fire Node
+    !AreaCheck("%DurlagsTower_AirChamber%")          // Air Node
+    !AreaCheck("%DurlagsTower_EarthChamber%")        // Earth Node
+    !AreaCheck("%DurlagsTower_D2%")                  // Lower 3
+    !AreaCheck("%DurlagsTower_D3%")                  // Lower 4
+    !AreaCheck("%DurlagsTower_D4%")                  // Lower 5
+    !AreaCheck("%DurlagsTower_CompassRoom%")         // Statue Room
+    !AreaCheck("%DurlagsTower_DemonknightsChamber%") // Demon Knight
+    !AreaCheck("%IceIsland%")                        // ice isle surface
+    !AreaCheck("%IceIslandMaze_L1%")                 // ice isle cavern 1
+    !AreaCheck("%IceIslandMaze_L2%")                 // ice isle cavern 2
+    !AreaCheck("%Nashkel_Inn%")~                     // not in the area where the NPC will be sent
 THEN REPLY @107503  GOTO dmww_nash
 
 IF ~!Global("Chapter","GLOBAL",7)   // you're not wanted in the Gate for murder
@@ -64,52 +64,52 @@ IF ~!Global("Chapter","GLOBAL",7)   // you're not wanted in the Gate for murder
     !Global("IslandTravel","GLOBAL",1)
     !Global("teth","GLOBAL",1)
     !Global("teth","GLOBAL",2)
-    !Global("Z!EmulAreaCheck","GLOBAL","0506") // Chess Board
-    !Global("Z!EmulAreaCheck","GLOBAL","0507") // Ice Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0508") // Fire Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0509") // Air Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0510") // Earth Node
-    !Global("Z!EmulAreaCheck","GLOBAL","0512") // Lower 3
-    !Global("Z!EmulAreaCheck","GLOBAL","0513") // Lower 4
-    !Global("Z!EmulAreaCheck","GLOBAL","0514") // Lower 5
-    !Global("Z!EmulAreaCheck","GLOBAL","0515") // Statue Room
-    !Global("Z!EmulAreaCheck","GLOBAL","0516") // Demon Knight
-    !Global("Z!EmulAreaCheck","GLOBAL","1008") // ice isle surface
-    !Global("Z!EmulAreaCheck","GLOBAL","1009") // ice isle cavern 1
-    !Global("Z!EmulAreaCheck","GLOBAL","1010") // ice isle cavern 2
-    !Global("Z!EmulAreaCheck","GLOBAL","0705")~ // not in the area where the NPC will be sent
+    !AreaCheck("%DurlagsTower_Chessboard%")          // Chess Board
+    !AreaCheck("%DurlagsTower_IceChamber%")          // Ice Node
+    !AreaCheck("%DurlagsTower_FireChamber%")         // Fire Node
+    !AreaCheck("%DurlagsTower_AirChamber%")          // Air Node
+    !AreaCheck("%DurlagsTower_EarthChamber%")        // Earth Node
+    !AreaCheck("%DurlagsTower_D2%")                  // Lower 3
+    !AreaCheck("%DurlagsTower_D3%")                  // Lower 4
+    !AreaCheck("%DurlagsTower_D4%")                  // Lower 5
+    !AreaCheck("%DurlagsTower_CompassRoom%")         // Statue Room
+    !AreaCheck("%DurlagsTower_DemonknightsChamber%") // Demon Knight
+    !AreaCheck("%IceIsland%")                        // ice isle surface
+    !AreaCheck("%IceIslandMaze_L1%")                 // ice isle cavern 1
+    !AreaCheck("%IceIslandMaze_L2%")                 // ice isle cavern 2
+    !AreaCheck("%EBaldursGate_ElfsongTavern_L1%")~       // not in the area where the NPC will be sent
 THEN REPLY @107504  GOTO dmww_elfsong
 END
 
-APPEND ~dmwwscriptname~
+APPEND ~%postdialogue%~
 IF ~~ THEN BEGIN dmww_fai
-  SAY @dmwwresponse
+  SAY @%dmwwresponse%
   IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("AR2301","z!deathvariable",dmwwfailoc)~
+  Face(0) MoveGlobal("%FriendlyArmInn_L1%","%npc%",[%friendly_xloc%.%friendly_yloc%])~
 EXIT
 END
 
 IF
   ~~ THEN BEGIN dmww_beregost
-  SAY @dmwwresponse
+  SAY @%dmwwresponse%
   IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("AR3304","z!deathvariable",dmwwbereloc)~
+  Face(0) MoveGlobal("%Beregost_JovialJuggler_L1%","%npc%",[%beregost_xloc%.%beregost_yloc%])~
 EXIT
 END
 
 IF
   ~~ THEN BEGIN dmww_nash
-  SAY @dmwwresponse
+  SAY @%dmwwresponse%
   IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("AR4801","z!deathvariable",dmwwnashloc)~
+  Face(0) MoveGlobal("%Nashkel_Inn%","%npc%",[%nashkel_xloc%.%nashkel_yloc%])~
 EXIT
 END
 
 IF
   ~~ THEN BEGIN dmww_elfsong
-  SAY @dmwwresponse
+  SAY @%dmwwresponse%
   IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("AR0705","z!deathvariable",dmwwelfloc)~
+  Face(0) MoveGlobal("%EBaldursGate_ElfsongTavern_L1%","%npc%",[%elfsong_xloc%.%elfsong_yloc%])~
 EXIT
 END
 
