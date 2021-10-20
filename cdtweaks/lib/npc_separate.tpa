@@ -1,0 +1,84 @@
+<<<<<<<< ./inlined/npc_data.2da
+entry                  bgee          tutu           bgt                 eet
+jaheira_loc            5             0              78                  5
+khalid_loc             5             1              5                   5
+minsc_loc              4             0              14                  4
+dynaheir_loc           4             0              4                   4
+montaron_loc           5             1              5                   5
+xzar_loc               5             1              5                   5
+eldoth_loc             4             0              4                   4
+skie_loc               4             0              4                   4
+jaheira_stay           6             6              999                 6
+khalid_stay            6             6              6                   6
+minsc_stay             999           999            13                  999
+dynaheir_stay          6             6              6                   6
+montaron_stay          7             7              7                   7
+xzar_stay              6             6              6                   6
+eldoth_stay            8             8              8                   8
+skie_stay              6             6              6                   6
+kicked_out_variable    KickedOut     KickedOut      IWasKickedOut       KickedOut
+>>>>>>>>
+
+ACTION_IF GAME_IS bgee BEGIN
+  OUTER_SET column = 1
+END ELSE
+ACTION_IF GAME_IS bgt BEGIN
+  OUTER_SET column = 3
+END ELSE
+ACTION_IF GAME_IS ~tutu tutu_totsc~ BEGIN
+  OUTER_SET column = 2
+END ELSE
+ACTION_IF GAME_IS eet BEGIN
+  OUTER_SET column = 4
+END ELSE BEGIN
+ FAIL "unidentified game at crossplatform"
+END
+
+COPY ~./inlined/npc_data.2da~ ~./inlined/npc_data.2da~
+  COUNT_2DA_ROWS 5 row_num
+  FOR (index = 1 ; index < row_num ; ++index) BEGIN
+    READ_2DA_ENTRY index      0 5 var
+    READ_2DA_ENTRY index column 5 val
+    SPRINT ~%var%~ ~%val%~ // use row header as variable name
+  END
+  BUT_ONLY
+
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/pairsep.d~
+
+  <<<<<<<< pairsep2.d
+  ALTER_TRANS ~%dlg%~ BEGIN ~%staynum%~ END BEGIN 0 END BEGIN "ACTION" "" END
+  >>>>>>>>
+    
+ ACTION_CLEAR_ARRAY npc_data
+ ACTION_DEFINE_ASSOCIATIVE_ARRAY npc_data BEGIN
+    KHALID=>jaheira
+    JAHEIRA=>khalid
+    XZAR=>montaron
+    MONTARON=>xzar
+    ELDOTH=>skie
+    SKIE=>eldoth
+    MINSC=>dynaheir
+    DYNAHEIR=>minsc
+ END
+ 
+ ACTION_PHP_EACH npc_data AS script=>ally BEGIN
+  OUTER_SPRINT dlg EVALUATE_BUFFER ~%%script%_POST%~
+  COPY_EXISTING ~%dlg%.dlg~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~[ %TAB%%LNL%%MNL%%WNL%]Dead("%ally%")~ ~ OR(3) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%")~
+      REPLACE_TEXTUALLY ~!Dead("%ally%")~ ~!Dead("%ally%") !InParty("%ally%") InMyArea("%ally%")~
+      REPLACE_TEXTUALLY ~ActionOverride("%ally%",LeaveParty())~ ~ActionOverride("%ally%",LeaveParty()) ActionOverride("%ally%",SetGlobal("%kicked_out_variable%","LOCALS",1))~
+      REPLACE_TEXTUALLY ~ActionOverride("%ally%",JoinParty())~  ~ActionOverride("%ally%",JoinParty())  ActionOverride("%ally%",SetGlobal("%kicked_out_variable%","LOCALS",0))~
+      // minsc special
+      REPLACE_TEXTUALLY ~OR(2)[ %TAB%%LNL%%MNL%%WNL%]+OR(3) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%")[ %TAB%%LNL%%MNL%%WNL%]+!BeenInParty("%ally%")~
+                        ~OR(4) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%") !BeenInParty("%ally%")~
+    END
+  OUTER_SPRINT npc ~%script%~
+  ACTION_TO_LOWER npc
+  OUTER_SPRINT staynum EVALUATE_BUFFER ~%%npc%_stay%~
+  ACTION_IF !(staynum=999) BEGIN
+    COPY pairsep2.d "weidu_external/cdtweaks/pairsep2_%script%.d" EVALUATE_BUFFER
+    COMPILE EVALUATE_BUFFER "weidu_external/cdtweaks/pairsep2_%script%.d"
+  END
+
+END

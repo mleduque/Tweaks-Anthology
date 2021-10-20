@@ -1821,7 +1821,7 @@ ACTION_IF GAME_IS "totsc" BEGIN
    INCLUDE ~cdtweaks/lib/BG1areacheck_emulation.tpa~ // clever bit of code from Zed that allows us to check areas; should also work on IWD
    INCLUDE ~cdtweaks/lib/inns.tpa~
 END ELSE BEGIN
-  WITH_TRA ~cdtweaks/languages/%LANGUAGE%/dw_components.tra~ BEGIN
+    WITH_TRA "cdtweaks/languages/english/dw_components.tra" "cdtweaks/languages/%LANGUAGE%/dw_components.tra" BEGIN
     INCLUDE ~cdtweaks/lib/inns_nonbg.tpa~
   END  
 END
@@ -13709,12 +13709,11 @@ GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 
 ACTION_IF !GAME_IS ~bg1 totsc~ BEGIN // originally modified a bunch of junk here, but easier just to do original bg1 as a one-off
-  WITH_SCOPE BEGIN // isolate DW-coded components from the rest of the mod, in case we have incompatible variables or something
-    WITH_TRA "cdtweaks/languages/english/dw_components.tra" "cdtweaks/languages/%LANGUAGE%/dw_components.tra" BEGIN
-     INCLUDE "cdtweaks/dw_components/always_lite.tpa"
-     LAF run STR_VAR file="npc_separate" END
-    END
+
+  WITH_TRA "cdtweaks/languages/english/dw_components.tra" "cdtweaks/languages/%LANGUAGE%/dw_components.tra" BEGIN
+    INCLUDE ~cdtweaks/lib/npc_separate.tpa~
   END
+  
 END ELSE BEGIN
   
   APPEND ~state.ids~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~^0x80101FEF[ %TAB]+CD_STATE_NOTVALID[ %TAB%%LNL%%MNL%%WNL%]~
