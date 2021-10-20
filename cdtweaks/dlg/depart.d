@@ -59,7 +59,9 @@ IF ~GlobalGT("Chapter","GLOBAL",1)
     !AreaCheck("%Nashkel_Inn%")~                     // not in the area where the NPC will be sent
 THEN REPLY @107503  GOTO dmww_nash
 
-IF ~!Global("Chapter","GLOBAL",7)   // you're not wanted in the Gate for murder
+IF ~OR(2)
+      !Global("Chapter","GLOBAL",7)     // you're not wanted in the Gate for murder
+      GlobalGT("DukeThanks","GLOBAL",0) // or you've been cleared by the Duke
     Global("EnteredBaldursGate","GLOBAL",1)
     !Global("IslandTravel","GLOBAL",1)
     !Global("teth","GLOBAL",1)
