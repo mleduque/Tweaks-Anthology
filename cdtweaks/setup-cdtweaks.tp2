@@ -9506,6 +9506,60 @@ COPY_EXISTING ~cut32b.bcs~   ~override~
   END
   BUT_ONLY
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Allow Monks to Wear Helmets                                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @256000 DESIGNATED 2560
+GROUP @9
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet bgee iwdee tutu tutu_totsc~ @25
+
+// monks generally not listed in unusability block, so skip description updates for oBG2
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  READ_SHORT 0x1c type
+  PATCH_IF type = 7 BEGIN // headgear
+    READ_LONG 0x1e flags
+    PATCH_IF (((flags & BIT7) = 0) AND ((flags & BIT11) = 0)) BEGIN // if usable by single-class clerics and fighters
+      WRITE_LONG 0x1e (flags BAND `BIT29) // removes monk flag
+    END
+  END
+  BUT_ONLY
+
+ACTION_IF !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~10~ THEN BEGIN // skip if 'no helmet animations' installed
+
+  // helmets don't work on monk animation, so replace with cleric animation
+  ACTION_CLEAR_ARRAY cd_new_anims
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_new_anims BEGIN
+    6000, 6500, CHMB, CHMM => monk_male_human    // clone cleric animations into monk animations
+    6010, 6510, CHFB, CHFM => monk_female_human 
+  END
+    
+  ACTION_PHP_EACH cd_new_anims AS anims => entry BEGIN
+        
+    APPEND ~animate.ids~ ~0x%anims_1% %entry%~ UNLESS ~^0x%anims_1%~
+
+    ACTION_IF enhanced_edition BEGIN
+
+      COPY_EXISTING ~%anims_0%.ini~ ~override/%anims_1%.ini~
+        REPLACE_TEXTUALLY ~^\(//[ %TAB%]+[A-Z]+[ %TAB%]+\)cleric_[a-z]+_[a-z]+[ %TAB%]*~ ~\1%entry%~
+      
+    END ELSE BEGIN
+    
+      COPY_EXISTING_REGEXP GLOB ~^%anims_2%\(.+\)\.bam$~ ~override/%anims_3%\1.bam~
+                                ~^%anims_2%\(.+\)\.plt$~ ~override/%anims_3%\1.plt~
+        IF_EXISTS // in case there are no plts
+    
+    END
+
+  END  
+  
+END
+    
+
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -12294,34 +12348,19 @@ COPY_EXISTING ~telanis.cre~ ~override/cdrandom.cre~
   REPLACE_CRE_ITEM ~gopoof~ #0 #0 #0 ~NONE~ ~RRING~
   ADD_CRE_ITEM ~mring1~ #0 #0 #0 ~NONE~ ~INV1~
 
-ACTION_IF ((GAME_IS ~iwdee~) OR (MOD_IS_INSTALLED ~ub_iwd/setup-ub_iwd.tp2~ ~1500~)) THEN BEGIN // if restored random drops from UB
-
-  // problem is that restored random drops uses some of these as weapons--don't want to replace active weapon with tokens
+ACTION_IF enhanced_edition THEN BEGIN
 
   // add unused random drop to one of yxonmei's champions (halberd or 2h axe); see also ar4005.are patch; replaces generic yuan-ti halberd
   COPY_EXISTING ~cdyucham.cre~ ~override~
     ADD_CRE_ITEM ~u2hAx3a~ #0 #0 #0 ~UNDROPPABLE~ ~WEAPON1~ EQUIP TWOHANDED // give undroppable axe, push token to inventory
-    IF_EXISTS
   
   // replace generic composite long bow with long bow +3: repeater or long bow +3: defender
   COPY_EXISTING ~kelly.cre~ ~override~
     ADD_CRE_ITEM ~uLBow4a~ #0 #0 #0 ~UNDROPPABLE~ ~WEAPON1~ EQUIP TWOHANDED // give undroppable bow, push token to inventory
 
-  ACTION_IF MOD_IS_INSTALLED ~ub_iwd/setup-ub_iwd.tp2~ ~1500~ THEN BEGIN // if restored random drops from UB (iwdee places this elsewhere)
-    
-    // replace mstar+1 with unused random drop of mace+1, hammer+1, sanctified hammer+1, mstar of confusion+1, lesser static star +1
-    COPY_EXISTING ~lysan.cre~ ~override~
-      ADD_CRE_ITEM ~uMstr2b~ #0 #0 #0 ~UNDROPPABLE~ ~WEAPON1~ EQUIP // give undroppable mstar, push token to inventory
-  
-  END
-
-  ACTION_IF NOT GAME_IS ~iwd~ THEN BEGIN // how, totlm items
-
-    // add unused random drop to one of alpheus (choice of two mage staves)
-    COPY_EXISTING ~alpheus.cre~  ~override~
-      ADD_CRE_ITEM ~quost~ #0 #0 #0 ~UNDROPPABLE~ ~WEAPON1~ EQUIP TWOHANDED // give undroppable staff, push token to inventory
-      
-  END
+  // add unused random drop to one of alpheus (choice of two mage staves)
+  COPY_EXISTING ~alpheus.cre~  ~override~
+    ADD_CRE_ITEM ~quost~ #0 #0 #0 ~UNDROPPABLE~ ~WEAPON1~ EQUIP TWOHANDED // give undroppable staff, push token to inventory
 
 END
 

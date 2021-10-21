@@ -1002,6 +1002,7 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @255001 = ~Keep Gnome Illusionist Multiclass, Enable All Kits for Single-Class~
 @255100 = ~Generic Mage Multiclass, Keep Only Illusionist Kit for Single-Class~
 @255200 = ~Generic Mage Multiclass, Enable All Kits for Single-Class~
+@256000 = ~Allow Monks to Wear Helmets~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
