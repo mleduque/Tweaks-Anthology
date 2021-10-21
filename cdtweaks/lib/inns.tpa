@@ -1,6 +1,6 @@
 COMPILE ~cdtweaks/dlg/jaheij-fix.d~ //Bug correction in JAHEIJ.DLG from original BG1
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Ajantis
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Ajantis
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~ajantp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~AJANTIS~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~0~
@@ -9,9 +9,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Ajantis
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[824.961]~ // Beregost
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[602.463]~ // Nashkel
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[537.704]~ // Elfsong
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Imoen
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Imoen
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~imoenp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~Imoen~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~2~
@@ -20,9 +20,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Imoen
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[812.980]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[573.436]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[598.737]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Kagain
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Kagain
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~kagaip~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~KAGAIN~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~2~
@@ -31,9 +31,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Kagain
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[800.1000]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[247.431]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[661.726]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Edwin
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Edwin
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~edwinp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~Edwin~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~0~
@@ -42,9 +42,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Edwin
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[788.1020]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[284.454]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[692.664]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Branwen
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Branwen
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~branwp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~BRANWEN~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~0~
@@ -53,9 +53,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Branwen
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[776.1040]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[461.394]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[637.621]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Safana
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Safana
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~safanp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~SAFANA~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~2~
@@ -64,9 +64,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Safana
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[764.1060]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[429.411]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[783.732]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Garrick
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Garrick
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~garrip~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~GARRICK~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~2~
@@ -75,9 +75,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Garrick
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[752.1080]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[367.580]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[837.783]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Coran
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Coran
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~coranp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~CORAN~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~0~
@@ -86,9 +86,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Coran
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[740.1100]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[402.613]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[772.853]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Kivan
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Kivan
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~kivanp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~KIVAN~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~2~
@@ -97,9 +97,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Kivan
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[730.1128]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[260.307]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[686.843]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Yeslick
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Yeslick
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~yeslip~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~yeslick~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~0~
@@ -108,9 +108,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Yeslick
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[820.1110]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[251.351]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[653.782]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Xan
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Xan
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~xanp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~xan~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~2~
@@ -119,9 +119,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Xan
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[860.965]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[531.392]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[702.736]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Alora
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Alora
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~alorap~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~alora~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~0~
@@ -130,9 +130,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Alora
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[850.985]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[525.428]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[806.455]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Faldorn
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Faldorn
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~faldop~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~FALDORN~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~0~
@@ -141,9 +141,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Faldorn
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[840.1005]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[448.423]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[825.517]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Quayle
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Quayle
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~quaylp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~QUAYLE~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~2~
@@ -152,9 +152,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Quayle
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[830.1025]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[440.473]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[875.538]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Shar-Teel
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Shar-Teel
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~shartp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~sharteel~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~2~
@@ -163,9 +163,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Shar-Teel
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[820.1045]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[515.550]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[921.525]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Tiax
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Tiax
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~tiaxp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~TIAX~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~2~
@@ -174,9 +174,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Tiax
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[810.1065]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[480.525]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[1004.605]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Viconia
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Viconia
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~viconp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~VICONIA~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~2~
@@ -185,11 +185,11 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Viconia
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[800.1085]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[444.505]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[745.674]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
 //now the pairs. This isn't the most efficient way to do it, but it works
 
-COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~ // Jaheira
+COPY ~cdtweaks/dlg/depart2.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Jaheira
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~jaheip~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~jaheira~
   REPLACE_TEXTUALLY ~z!deathvariabl2~ ~Khalid~
@@ -203,9 +203,9 @@ COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~ // Jaheira
   REPLACE_TEXTUALLY ~dmwwberelo2~ ~[808.1138]~
   REPLACE_TEXTUALLY ~dmwwnashlo2~ ~[729.199]~
   REPLACE_TEXTUALLY ~dmwwelflo2~ ~[471.690]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~jaheip~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~jaheira~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~5~
@@ -214,9 +214,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[790.1105]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[669.161]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[440.713]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Khalid
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Khalid
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~khalip~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~Khalid~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~4~
@@ -225,9 +225,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Khalid
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[808.1138]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[729.199]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[471.690]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~
+COPY ~cdtweaks/dlg/depart2.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~khalip~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~Khalid~
   REPLACE_TEXTUALLY ~z!deathvariabl2~ ~jaheira~
@@ -241,9 +241,9 @@ COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwberelo2~ ~[790.1105]~
   REPLACE_TEXTUALLY ~dmwwnashlo2~ ~[669.161]~
   REPLACE_TEXTUALLY ~dmwwelflo2~ ~[440.713]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~ // Dynaheir
+COPY ~cdtweaks/dlg/depart2.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Dynaheir
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~dynahp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~Dynaheir~
   REPLACE_TEXTUALLY ~z!deathvariabl2~ ~Minsc~
@@ -257,9 +257,9 @@ COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~ // Dynaheir
   REPLACE_TEXTUALLY ~dmwwberelo2~ ~[882.990]~
   REPLACE_TEXTUALLY ~dmwwnashlo2~ ~[839.318]~
   REPLACE_TEXTUALLY ~dmwwelflo2~ ~[617.507]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~dynahp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~Dynaheir~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~5~
@@ -268,9 +268,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[894.970]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[850.277]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[595.476]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~ // Minsc
+COPY ~cdtweaks/dlg/depart2.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Minsc
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~minscp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~Minsc~
   REPLACE_TEXTUALLY ~z!deathvariabl2~ ~Dynaheir~
@@ -284,9 +284,9 @@ COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~ // Minsc
   REPLACE_TEXTUALLY ~dmwwberelo2~ ~[894.970]~
   REPLACE_TEXTUALLY ~dmwwnashlo2~ ~[850.277]~
   REPLACE_TEXTUALLY ~dmwwelflo2~ ~[595.476]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~minscp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~Minsc~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~5~
@@ -295,10 +295,10 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[882.990]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[839.318]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[617.507]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Xzar
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Xzar
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~xzarp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~xzar~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~4~
@@ -307,9 +307,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Xzar
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[870.1010]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[747.362]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[692.421]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~
+COPY ~cdtweaks/dlg/depart2.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~xzarp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~xzar~
   REPLACE_TEXTUALLY ~z!deathvariabl2~ ~montaron~
@@ -323,9 +323,9 @@ COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwberelo2~ ~[855.1030]~
   REPLACE_TEXTUALLY ~dmwwnashlo2~ ~[706.396]~
   REPLACE_TEXTUALLY ~dmwwelflo2~ ~[734.397]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Montaron
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Montaron
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~montap~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~montaron~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~4~
@@ -334,9 +334,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~ // Montaron
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[855.1030]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[706.396]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[734.397]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~
+COPY ~cdtweaks/dlg/depart2.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~montap~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~montaron~
   REPLACE_TEXTUALLY ~z!deathvariabl2~ ~xzar~
@@ -350,9 +350,9 @@ COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwberelo2~ ~[870.1010]~
   REPLACE_TEXTUALLY ~dmwwnashlo2~ ~[747.362]~
   REPLACE_TEXTUALLY ~dmwwelflo2~ ~[692.421]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~ // Skie
+COPY ~cdtweaks/dlg/depart2.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Skie
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~skiep~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~SKIE~
   REPLACE_TEXTUALLY ~z!deathvariabl2~ ~ELDOTH~
@@ -366,9 +366,9 @@ COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~ // Skie
   REPLACE_TEXTUALLY ~dmwwberelo2~ ~[834.1070]~
   REPLACE_TEXTUALLY ~dmwwnashlo2~ ~[535.278]~
   REPLACE_TEXTUALLY ~dmwwelflo2~ ~[873.377]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~skiep~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~SKIE~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~5~
@@ -377,9 +377,9 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[846.1050]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[583.260]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[822.355]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~ // Eldoth
+COPY ~cdtweaks/dlg/depart2.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~ // Eldoth
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~eldotp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~ELDOTH~
   REPLACE_TEXTUALLY ~z!deathvariabl2~ ~SKIE~
@@ -393,9 +393,9 @@ COPY ~cdtweaks/dlg/depart2.d~ ~cdtweaks/dlg/depart-tmp.d~ // Eldoth
   REPLACE_TEXTUALLY ~dmwwberelo2~ ~[846.1050]~
   REPLACE_TEXTUALLY ~dmwwnashlo2~ ~[583.260]~
   REPLACE_TEXTUALLY ~dmwwelflo2~ ~[822.355]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
 
-COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~
+COPY ~cdtweaks/dlg/depart_obg.d~ ~weidu_external/cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwscriptname~ ~eldotp~
   REPLACE_TEXTUALLY ~z!deathvariable~ ~ELDOTH~
   REPLACE_TEXTUALLY ~dmwwstatenumber~ ~5~
@@ -404,4 +404,4 @@ COPY ~cdtweaks/dlg/depart.d~ ~cdtweaks/dlg/depart-tmp.d~
   REPLACE_TEXTUALLY ~dmwwbereloc~ ~[834.1070]~
   REPLACE_TEXTUALLY ~dmwwnashloc~ ~[535.278]~
   REPLACE_TEXTUALLY ~dmwwelfloc~ ~[873.377]~
-COMPILE ~cdtweaks/dlg/depart-tmp.d~
+COMPILE ~weidu_external/cdtweaks/dlg/depart-tmp.d~
