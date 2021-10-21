@@ -12180,7 +12180,7 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
     PATCH_IF FILE_EXISTS_IN_GAME ~%area%.are~ BEGIN
       INNER_ACTION BEGIN
 
-        COPY_EXISTING ~weidu_external/cdtweaks/random/rndtres.2da~ ~weidu_external/cdtweaks/random/rndtres.2da~
+        COPY_EXISTING ~%table%.2da~ ~override~
           REPLACE_EVALUATE CASE_INSENSITIVE ~^\(%item%[ %TAB%]\)\(.+\)\([ %TAB%]*\)$~
           BEGIN SPRINT "list" "%MATCH2%" END ~%MATCH1%%MATCH2%%MATCH3%~
           BUT_ONLY
@@ -12245,12 +12245,15 @@ COPY_EXISTING ~de1tres.itm~ ~override~
   SAY 0x54 @324103
   WRITE_ASCII 0x3a ~cdtokeni~
   WRITE_ASCII 0x44 ~gtreas01~
+  
+COPY ~cdtweaks/random/cdrandom.d~   ~weidu_external/cdtweaks/random/cdrandom.d~
+COPY ~cdtweaks/random/cdrandom.baf~ ~weidu_external/cdtweaks/random/cdrandom.baf~
 
 ACTION_IF GAME_IS ~iwdee iwd_in_bg2~ THEN BEGIN // if modern engine
 
   ACTION_IF GAME_IS ~iwd_in_bg2~ THEN BEGIN // if IWD-in-BG2 instead of true IWD...
 
-    COPY ~cdtweaks/random/cdrandom.d~ ~cdtweaks/random/cdrandom.d~
+    COPY ~weidu_external/cdtweaks/random/cdrandom.d~ ~weidu_external/cdtweaks/random/cdrandom.d~
       REPLACE_TEXTUALLY ~SAY #288~ ~SAY #74388~ // normally we'd replace_eval, but only one replacement
 
     COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
@@ -12261,7 +12264,7 @@ ACTION_IF GAME_IS ~iwdee iwd_in_bg2~ THEN BEGIN // if modern engine
 
   END
 
-  COPY ~cdtweaks/random/cdrandom.baf~ ~cdtweaks/random/cdrandom.baf~
+  COPY ~weidu_external/cdtweaks/random/cdrandom.baf~ ~weidu_external/cdtweaks/random/cdrandom.baf~
     REPLACE_TEXTUALLY ~EquipItem("gopoof",1)~ ~DestroyItem("gopoof")~
     REPLACE_TEXTUALLY ~EquipItem("mring1",0)~ ~EquipItem("mring1")~
     REPLACE_TEXTUALLY ~SetDialogueRange(300)[ %TAB%%LNL%%MNL%%WNL]+Dialogue(~ ~StartDialogueNoSet(~
@@ -12290,8 +12293,6 @@ COPY_EXISTING ~telanis.cre~ ~override/cdrandom.cre~
   END
   REPLACE_CRE_ITEM ~gopoof~ #0 #0 #0 ~NONE~ ~RRING~
   ADD_CRE_ITEM ~mring1~ #0 #0 #0 ~NONE~ ~INV1~
-
-COPY ~cdtweaks/bam/cdtokeni.bam~ ~override~
 
 ACTION_IF ((GAME_IS ~iwdee~) OR (MOD_IS_INSTALLED ~ub_iwd/setup-ub_iwd.tp2~ ~1500~)) THEN BEGIN // if restored random drops from UB
 
@@ -12364,7 +12365,7 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
 
         COPY_EXISTING ~de1tres.itm~ ~override/%token_item%.itm~
 
-        COPY ~cdtweaks/random/cdrandom.d~ ~cdtweaks/random/cdrandom.d~
+        COPY ~weidu_external/cdtweaks/random/cdrandom.d~ ~weidu_external/cdtweaks/random/cdrandom.d~
           REPLACE_TEXTUALLY ~insert_reply~ ~~
           REPLACE_TEXTUALLY ~~~~~insert_state~~~~~ ~~~~~
 IF ~PartyHasItem("%token_item%")~ THEN BEGIN CDState%token_item% SAY @324104
@@ -12373,12 +12374,14 @@ END
 insert_state
 ~~~~~
 
-        COPY ~cdtweaks/random/template2.tpa~ ~cdtweaks/random/%item%.tpa~
+        COPY ~cdtweaks/random/template2.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
           REPLACE_TEXTUALLY ~replacemelist~ ~%list%~ //EVALUATE_BUFFER
 //          REPLACE_TEXTUALLY ~drop~ ~drop%item%~ EVALUATE_BUFFER
           REPLACE_TEXTUALLY ~\([ %TAB%]+\*\)*~ ~~
+          REPLACE_TEXTUALLY ~multiply~ ~*~
+          REPLACE_TEXTUALLY ~percentage~ ~%~
 
-        INCLUDE ~cdtweaks/random/%item%.tpa~
+        INCLUDE ~weidu_external/cdtweaks/random/%item%.tpa~
           
         COPY_EXISTING ~%area%.are~ ~override~
           WRITE_ASCIIE 0x94 ~%area%~ #8
@@ -12390,12 +12393,12 @@ insert_state
   END
   BUT_ONLY
 
-COPY ~cdtweaks/random/cdrandom.d~ ~cdtweaks/random/cdrandom.d~
+COPY ~weidu_external/cdtweaks/random/cdrandom.d~ ~weidu_external/cdtweaks/random/cdrandom.d~
   REPLACE_TEXTUALLY ~insert_state~ ~~
   REPLACE_TEXTUALLY ~insert_reply~ ~~
 
-COMPILE ~cdtweaks/random/cdrandom.d~
-        ~cdtweaks/random/cdrandom.baf~
+COMPILE ~weidu_external/cdtweaks/random/cdrandom.d~
+        ~weidu_external/cdtweaks/random/cdrandom.baf~
 
 ACTION_IF GAME_IS ~iwd_in_bg2~ BEGIN
 
