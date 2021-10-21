@@ -12,6 +12,8 @@ REPLACE_ACTION_TEXT ~baelothp~ ~EscapeAreaMove("AR2300",4721,3045,S)~ ~~
 // more or less copied from depart.d, but using custom replies since he's not quite going to the same places
 EXTEND_BOTTOM baelothp 0
 IF ~Global("EnteredArmInn","GLOBAL",1)
+    Global("cd_no_travel_fai_all","GLOBAL",0)
+    Global("cd_no_travel_fai_baeloth","GLOBAL",0)
     !Global("IslandTravel","GLOBAL",1) // not on Werewolf Isle
     !Global("teth","GLOBAL",1) // not trapped under Candlekeep AR2613, 2615, 2619, 5506
     !Global("teth","GLOBAL",2)
@@ -32,6 +34,8 @@ IF ~Global("EnteredArmInn","GLOBAL",1)
 THEN REPLY #31931 GOTO dmww_fai
 
 IF ~Global("EnteredBeregost","GLOBAL",1)
+    Global("cd_no_travel_jugg_all","GLOBAL",0)
+    Global("cd_no_travel_jugg_baeloth","GLOBAL",0)
     !Global("IslandTravel","GLOBAL",1)
     !Global("teth","GLOBAL",1)
     !Global("teth","GLOBAL",2)
@@ -52,6 +56,8 @@ IF ~Global("EnteredBeregost","GLOBAL",1)
 THEN REPLY @20848  GOTO dmww_beregost
 
 IF ~GlobalGT("Chapter","GLOBAL",1)
+    Global("cd_no_travel_nashi_all","GLOBAL",0)
+    Global("cd_no_travel_nashi_baeloth","GLOBAL",0)
     !Global("IslandTravel","GLOBAL",1)
     !Global("teth","GLOBAL",1)
     !Global("teth","GLOBAL",2)
@@ -74,6 +80,8 @@ THEN REPLY @20847  GOTO dmww_nash
 IF ~OR(2)
       !Global("Chapter","GLOBAL",7)     // you're not wanted in the Gate for murder
       GlobalGT("DukeThanks","GLOBAL",0) // or you've been cleared by the Duke
+    Global("cd_no_travel_esong_all","GLOBAL",0)
+    Global("cd_no_travel_esong_baeloth","GLOBAL",0)
     Global("EnteredBaldursGate","GLOBAL",1)
     !Global("IslandTravel","GLOBAL",1)
     !Global("teth","GLOBAL",1)

@@ -1,5 +1,8 @@
 EXTEND_BOTTOM ~dmwwscriptname~ dmwwstatenumber
 IF ~Global("EnteredArmInn","GLOBAL",1)
+    Global("cd_no_travel_fai_all","GLOBAL",0)
+    Global("cd_no_travel_fai_z!deathvariable","GLOBAL",0)
+    Global("cd_no_travel_fai_z!deathvariabl2","GLOBAL",0)
     !Global("IslandTravel","GLOBAL",1) // not on Werewolf Isle
     !Global("teth","GLOBAL",1) // not trapped under Candlekeep AR2613, 2615, 2619, 5506
     !Global("teth","GLOBAL",2)
@@ -24,6 +27,9 @@ IF ~Global("EnteredArmInn","GLOBAL",1)
 THEN REPLY @107501 GOTO dmww_fai
 
 IF ~Global("EnteredBeregost","GLOBAL",1)
+    Global("cd_no_travel_jugg_all","GLOBAL",0)
+    Global("cd_no_travel_jugg_z!deathvariable","GLOBAL",0)
+    Global("cd_no_travel_jugg_z!deathvariabl2","GLOBAL",0)
     !Global("IslandTravel","GLOBAL",1)
     !Global("teth","GLOBAL",1)
     !Global("teth","GLOBAL",2)
@@ -48,6 +54,9 @@ IF ~Global("EnteredBeregost","GLOBAL",1)
 THEN REPLY @107502  GOTO dmww_beregost
 
 IF ~GlobalGT("Chapter","GLOBAL",1)
+    Global("cd_no_travel_nashi_all","GLOBAL",0)
+    Global("cd_no_travel_nashi_z!deathvariable","GLOBAL",0)
+    Global("cd_no_travel_nashi_z!deathvariabl2","GLOBAL",0)
     !Global("IslandTravel","GLOBAL",1)
     !Global("teth","GLOBAL",1)
     !Global("teth","GLOBAL",2)
@@ -72,6 +81,9 @@ IF ~GlobalGT("Chapter","GLOBAL",1)
 THEN REPLY @107503  GOTO dmww_nash
 
 IF ~!Global("Chapter","GLOBAL",7)   // you're not wanted in the Gate for murder
+    Global("cd_no_travel_esong_all","GLOBAL",0)
+    Global("cd_no_travel_esong_z!deathvariable","GLOBAL",0)
+    Global("cd_no_travel_esong_z!deathvariabl2","GLOBAL",0)
     Global("EnteredBaldursGate","GLOBAL",1)
     !Global("IslandTravel","GLOBAL",1)
     !Global("teth","GLOBAL",1)
