@@ -1,0 +1,20 @@
+OUTER_SPRINT old @237002 // text to be removed
+ACTION_GET_STRREF 9550 text // human description
+OUTER_INNER_PATCH_SAVE text ~%text%~ BEGIN
+  REPLACE_TEXTUALLY ~%old%~ ~~ // delete text if found
+END
+STRING_SET_EVALUATE 9550 ~%text%~
+
+OUTER_SPRINT old @237003 // text to be removed
+ACTION_GET_STRREF 10811 text // general dual-class help string
+OUTER_INNER_PATCH_SAVE text ~%text%~ BEGIN
+  REPLACE_TEXTUALLY ~%old%~ ~~ // delete text if found
+END
+STRING_SET_EVALUATE 10811 ~%text%~
+
+OUTER_SPRINT old @237004 // text to be removed
+ACTION_GET_STRREF 32540 text // bgee/sod dialogue from monktu4.dlg
+OUTER_INNER_PATCH_SAVE text ~%text%~ BEGIN
+  REPLACE_TEXTUALLY ~%old%~ ~~ // delete text if found
+END
+STRING_SET_EVALUATE 32540 ~%text%~

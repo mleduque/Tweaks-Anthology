@@ -1,0 +1,6 @@
+OUTER_SPRINT old @235002 // text to be removed
+ACTION_GET_STRREF 9550 text // human description
+OUTER_INNER_PATCH_SAVE text ~%text%~ BEGIN
+  REPLACE_TEXTUALLY ~%old%~ ~~ // delete text if found
+END
+STRING_SET_EVALUATE 9550 ~%text%~

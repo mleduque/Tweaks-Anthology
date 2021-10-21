@@ -8238,6 +8238,8 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
   END
   PRETTY_PRINT_2DA
   BUT_ONLY
+  
+INCLUDE ~cdtweaks/lib/multiclass_text.tpa~
 
 /////                                                            \\\\\
 ///// Allow non-humans every multi-class combo                   \\\\\
@@ -8362,6 +8364,8 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
   END
   PRETTY_PRINT_2DA
   BUT_ONLY
+  
+INCLUDE ~cdtweaks/lib/multiclass_text.tpa~
 
 /////                                                            \\\\\
 ///// multiclass semimadness                                     \\\\\
@@ -8415,6 +8419,8 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
   END
   PRETTY_PRINT_2DA
   BUT_ONLY
+  
+INCLUDE ~cdtweaks/lib/multiclass_text.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -8523,6 +8529,8 @@ END ELSE BEGIN
 
 END
 
+INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class
+
 /////                                                            \\\\\
 ///// Humans can no longer dual-class                            \\\\\
 /////                                                            \\\\\
@@ -8537,6 +8545,8 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
   PRETTY_PRINT_2DA
   BUT_ONLY
 
+INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class
+
 /////                                                            \\\\\
 ///// Change both                                                 \\\\\
 /////                                                            \\\\\
@@ -8550,6 +8560,8 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
   REPLACE_TEXTUALLY ~^\(DUALCLASS[ %TAB%]+\).+$~ ~\1 0 1 1 1 1 1 1~
   PRETTY_PRINT_2DA
   BUT_ONLY
+
+INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

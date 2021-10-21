@@ -968,6 +968,11 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @234000 = ~Remove Summoning Cap for Celestials (Ardanis/GeN1e)~
 @235000 = ~Alter Multiclass Restrictions~
 @235001 = ~Allow humans to multiclass~
+
+// the next string should match content TO BE REMOVED from the racial description of humans and the help reference for dual-classing
+@235002 = ~Humans may not multi-class.~ // from strref #9550
+
+
 @235100 = ~Allow non-humans access to all multiclass combinations~
 @235200 = ~Install options one and two (everyone can multiclass anything)~
 @235300 = ~Allow non-humans access to a multiclasses only if they can access the single-classes~
@@ -975,6 +980,13 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @236000 = ~Remove Racial Restrictions for Single Classes~
 @237000 = ~Alter Dual-class Restrictions~
 @237001 = ~Humans can no longer dual-class~
+
+// the next two strings should match content TO BE REMOVED from the racial description of humans and the help reference for dual-classing
+// you may need to check the EEs, as oBG2 doesn't mention dual-classing in #9550 or #32540
+@237002 = ~ and are also the only race that can dual-class~ // from strref #9550
+@237003 = ~Dual-classing is an ability that only humans have. ~ // from strref #10811
+@237004 = ~, if your character is human~ // BG tutorial monk dialogue monktu4 - 32540 in BGEE/SoD 
+
 @237100 = ~Allow non-humans to dual-class~
 @237200 = ~Both options: *only* non-humans can dual-class~
 @238000 = ~Remove Racial Restrictions for Kits~
