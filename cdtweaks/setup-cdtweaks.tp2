@@ -3183,7 +3183,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @112500 DESIGNATED 1125
+BEGIN @112500 DESIGNATED 1125 DEPRECATED @18
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
 
@@ -6854,7 +6854,7 @@ END ELSE BEGIN
     ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_mc_gm BEGIN ~%index%~ => ~%index%~ END // bogstandard multis
   END  
 
-  ACTION_IF GAME_IS ~bgee bg2ee iwdee eet~ BEGIN // only bother checking for MC kits on EE games
+  ACTION_IF enhanced_edition BEGIN // only bother checking for MC kits on EE games
 
     COPY_EXISTING ~kitlist.2da~ ~override~
       COUNT_2DA_ROWS 9 rows
@@ -6870,11 +6870,13 @@ END ELSE BEGIN
   END      
         
   COPY_EXISTING ~weapprof.2da~  ~override~
-    PATCH_IF GAME_IS ~bgee bg2ee iwdee eet~ BEGIN // only bother checking for MC kits on EE games
+    COUNT_2DA_COLS col_count
+    SET col_check = col_count - 1
+    PATCH_IF enhanced_edition BEGIN // only bother checking for MC kits on EE games
       COUNT_2DA_COLS col_count
       PATCH_PHP_EACH cd_mc_kitnames AS match_name => foo BEGIN
-        FOR (column = 50; column < (col_count - 1); ++column) BEGIN
-          READ_2DA_ENTRY 0 column 50 name
+        FOR (column = 50; column < col_check; ++column) BEGIN
+          READ_2DA_ENTRY 0 column col_check name
           PATCH_IF ("%name%" STRING_COMPARE_CASE "%match_name%" = 0) BEGIN
             SET column += 1 // row with names has an empty entry for the first column
             DEFINE_ASSOCIATIVE_ARRAY cd_mc_gm BEGIN ~%column%~ => ~%column%~ END
@@ -6884,14 +6886,13 @@ END ELSE BEGIN
       END
     END
     PATCH_PHP_EACH cd_mc_gm AS column => foo BEGIN
-      FOR (row = 11; row < 31; row = row + 1) BEGIN
-        READ_2DA_ENTRY row column 1 stars
+      FOR (row = 8; row < 28; ++row) BEGIN
+        READ_2DA_ENTRY row column col_count stars
         PATCH_IF (stars > 1) BEGIN
-          SET_2DA_ENTRY_LATER ~multigrand~ row column ~1~
+          SET_2DA_ENTRY row column col_count 5
         END
       END
     END
-    SET_2DA_ENTRIES_NOW ~multigrand~ 1
     PRETTY_PRINT_2DA
     BUT_ONLY
 
@@ -14611,13 +14612,9 @@ END
 
 BEGIN @504000 DESIGNATED 4160
 GROUP @0
-REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
+REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // BG content games
 
-
-WITH_SCOPE BEGIN // isolate DW-coded components from the rest of the mod, in case we have incompatible variables or something
-     INCLUDE "cdtweaks/dw_components/always_lite.tpa"
-     LAF run STR_VAR file="yeslick_axes" END
-END
+INCLUDE ~cdtweaks/lib/yeslick_axes.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
