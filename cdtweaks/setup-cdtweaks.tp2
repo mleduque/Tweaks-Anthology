@@ -12447,6 +12447,8 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
 
 END
 
+COPY ~cdtweaks/random/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm1.d~
+
 COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
   COUNT_2DA_ROWS 3 "rows"
   FOR (index = 1 ; index < rows ; ++index) BEGIN
@@ -12458,17 +12460,19 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
         BEGIN SPRINT "list" "%MATCH2%" END ~%MATCH1%%MATCH2%%MATCH3%~
         BUT_ONLY
 
-      COPY ~cdtweaks/random/template3.tpa~ ~cdtweaks/random/%item%.tpa~
+      COPY ~cdtweaks/random/template3.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
         REPLACE_TEXTUALLY ~replacemelist~ ~%list%~ //EVALUATE_BUFFER
         REPLACE_TEXTUALLY ~\([ %TAB%]+\*\)*~ ~~
+        REPLACE_TEXTUALLY ~multiply~ ~*~
+        REPLACE_TEXTUALLY ~percentage~ ~%~
 
-      INCLUDE ~cdtweaks/random/%item%.tpa~
+      INCLUDE ~weidu_external/cdtweaks/random/%item%.tpa~
 
     END
   END
   BUT_ONLY
 
-COPY ~cdtweaks/random/cdrndm1.d~ ~cdtweaks/random/cdrndm1.d~
+COPY ~weidu_external/cdtweaks/random/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm1.d~
   REPLACE_TEXTUALLY ~insert_eof~ ~END~
 
 ACTION_IF NOT GAME_IS ~iwd~ THEN BEGIN // add lonelywood merchant
@@ -12490,17 +12494,17 @@ ACTION_IF NOT GAME_IS ~iwd~ THEN BEGIN // add lonelywood merchant
 
   EXTEND_BOTTOM ~ar9100.bcs~ ~cdtweaks/random/ar9100.baf~
 
-  COPY ~cdtweaks/random/cdrndm1.d~ ~cdtweaks/random/cdrndm2.d~
+  COPY ~weidu_external/cdtweaks/random/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm2.d~
     REPLACE_TEXTUALLY ~31426\([0-9]\)~ ~31428\1~
     REPLACE_TEXTUALLY ~CDRNDM1~ ~CDRNDM3~
     REPLACE_TEXTUALLY ~CDRNDM2~ ~CDRNDM1~
     REPLACE_TEXTUALLY ~CDRNDM3~ ~CDRNDM2~
 
-  COMPILE ~cdtweaks/random/cdrndm2.d~
+  COMPILE ~weidu_external/cdtweaks/random/cdrndm2.d~
 
 END
 
-COMPILE ~cdtweaks/random/cdrndm1.d~
+COMPILE ~weidu_external/cdtweaks/random/cdrndm1.d~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
