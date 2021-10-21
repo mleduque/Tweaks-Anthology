@@ -1,4 +1,4 @@
-COPY ~cdtweaks/random/random.2da~ ~cdtweaks/random/random.2da~
+COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
   REPLACE_TEXTUALLY ~DE1Tres~  ~RNDTRE07~ // SnakeIdol
   REPLACE_TEXTUALLY ~DE2Tres~  ~RNDTRE08~ // AltarThingy
   REPLACE_TEXTUALLY ~DE3Tres~  ~RNDTRE09~ // Pileo'Stuff

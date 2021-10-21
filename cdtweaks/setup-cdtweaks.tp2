@@ -10560,12 +10560,7 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob 
 SUBCOMPONENT @312000
 
 // stop rep complaints
-COPY_EXISTING ~happy.2da~ ~override~
-  REPLACE_EVALUATE ~-\([0-9]+\)~ BEGIN
-    PATCH_IF ("%MATCH1%" > 160) BEGIN SET new = 160 END ELSE BEGIN SET new = "%MATCH1%" END
-  END ~-%new%~
-  PRETTY_PRINT_2DA
-  BUT_ONLY
+COPY ~cdtweaks/2da/happy.2da~ ~override~
 
 // bg1 npc can let shar-teel leave anyway
 COPY_EXISTING ~sharteel.bcs~ ~override~
@@ -12173,7 +12168,7 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
 
 END
 
-COPY ~cdtweaks/random/random.2da~ ~cdtweaks/random/random.2da~
+COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
   PATCH_IF NOT GAME_IS ~iwd how~ BEGIN
     REPLACE_TEXTUALLY ~ShadowedElvenPriest~ ~Priest_0~ // dv changes with totlm installed
   END
@@ -12185,29 +12180,31 @@ COPY ~cdtweaks/random/random.2da~ ~cdtweaks/random/random.2da~
     PATCH_IF FILE_EXISTS_IN_GAME ~%area%.are~ BEGIN
       INNER_ACTION BEGIN
 
-        COPY_EXISTING ~%table%.2da~ ~override~
+        COPY_EXISTING ~weidu_external/cdtweaks/random/rndtres.2da~ ~weidu_external/cdtweaks/random/rndtres.2da~
           REPLACE_EVALUATE CASE_INSENSITIVE ~^\(%item%[ %TAB%]\)\(.+\)\([ %TAB%]*\)$~
           BEGIN SPRINT "list" "%MATCH2%" END ~%MATCH1%%MATCH2%%MATCH3%~
           BUT_ONLY
 
-        COPY ~cdtweaks/random/areabottom.baf~ ~cdtweaks/random/%item%.baf~
+        COPY ~cdtweaks/random/areabottom.baf~ ~weidu_external/cdtweaks/random/%item%.baf~
 
-        COPY ~cdtweaks/random/template.tpa~ ~cdtweaks/random/%item%.tpa~
+        COPY ~cdtweaks/random/template.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
           REPLACE_TEXTUALLY ~replacemelist~ ~%list%~ EVALUATE_BUFFER
           REPLACE_TEXTUALLY ~drop~ ~drop%item%~ EVALUATE_BUFFER
           REPLACE_TEXTUALLY ~\([ %TAB%]+\*\)*~ ~~
+          REPLACE_TEXTUALLY ~multiply~ ~*~
+          REPLACE_TEXTUALLY ~percentage~ ~%~
       
-        INCLUDE ~cdtweaks/random/%item%.tpa~
+        INCLUDE ~weidu_external/cdtweaks/random/%item%.tpa~
 
         COPY_EXISTING ~%area%.are~ ~override~
           WRITE_ASCIIE 0x94 ~%area%~ #8
           BUT_ONLY
       
-        COPY ~cdtweaks/random/%item%.baf~ ~cdtweaks/random/%item%.baf~
+        COPY ~weidu_external/cdtweaks/random/%item%.baf~ ~weidu_external/cdtweaks/random/%item%.baf~
           REPLACE_TEXTUALLY ~replaceme[12]~ ~~
       
         EXTEND_TOP    ~%area%.bcs~ ~cdtweaks/random/areatop.baf~ EVALUATE_BUFFER
-        EXTEND_BOTTOM ~%area%.bcs~ ~cdtweaks/random/%item%.baf~  EVALUATE_BUFFER
+        EXTEND_BOTTOM ~%area%.bcs~ ~weidu_external/cdtweaks/random/%item%.baf~  EVALUATE_BUFFER
 
       END
 
@@ -12256,7 +12253,7 @@ ACTION_IF GAME_IS ~iwdee iwd_in_bg2~ THEN BEGIN // if modern engine
     COPY ~cdtweaks/random/cdrandom.d~ ~cdtweaks/random/cdrandom.d~
       REPLACE_TEXTUALLY ~SAY #288~ ~SAY #74388~ // normally we'd replace_eval, but only one replacement
 
-    COPY ~cdtweaks/random/random.2da~ ~cdtweaks/random/random.2da~
+    COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
 
   END ELSE BEGIN
 
@@ -12327,7 +12324,7 @@ ACTION_IF ((GAME_IS ~iwdee~) OR (MOD_IS_INSTALLED ~ub_iwd/setup-ub_iwd.tp2~ ~150
 
 END
 
-COPY ~cdtweaks/random/random.2da~ ~cdtweaks/random/random.2da~
+COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
   COUNT_2DA_ROWS 3 "rows"
   FOR (index = 1 ; index < rows ; ++index) BEGIN
     READ_2DA_ENTRY index 0 3 "area"
@@ -12447,7 +12444,7 @@ ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
 
 END
 
-COPY ~cdtweaks/random/random.2da~ ~cdtweaks/random/random.2da~
+COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
   COUNT_2DA_ROWS 3 "rows"
   FOR (index = 1 ; index < rows ; ++index) BEGIN
     READ_2DA_ENTRY index 1 3 "item"
