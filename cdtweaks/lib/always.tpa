@@ -1,4 +1,4 @@
-ACTION_IF GAME_IS ~bgee bg2ee iwdee eet~ BEGIN // ee games
+ACTION_IF GAME_IS ~bgee bg2ee iwdee eet pstee~ BEGIN // ee games
 
   OUTER_SET enhanced_edition = 1 // re-using David's variables
 

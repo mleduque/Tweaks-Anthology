@@ -1066,7 +1066,21 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
   LPF cd_apply_batch STR_VAR array_name = cd_fire_icons END
   BUT_ONLY
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Enhanced Overlays for Colorblind Players                   \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+BEGIN @22000 DESIGNATED 220
+GROUP @11
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet pstee~ @25
+
+COPY ~cdtweaks/bam/stortint.bam~ ~override~ // red, unusable
+     ~cdtweaks/bam/stortin2.bam~ ~override~ // blue, needs ID
+     ~cdtweaks/bam/stortin3.bam~ ~override~ // green, learnable scroll
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
