@@ -2,7 +2,7 @@ COPY_KIT REPLACE_ME_KIT_NAME CD_NEW_KIT_NAME (
 WEAPPROF ~CD_NEW_KIT_NAME 2 2 2 2 2 2 2 2 prof_fgt_9 prof_fgt_10 prof_fgt_11 prof_fgt_12 prof_fgt_13 prof_fgt_14 prof_fgt_15 prof_fgt_16 prof_fgt_17 prof_fgt_18 prof_fgt_19 prof_fgt_20 prof_fgt_21 prof_fgt_22 prof_fgt_23 prof_fgt_24 prof_fgt_25 prof_fgt_26 prof_fgt_27 prof_fgt_28 prof_fgt_29 prof_fgt_30 prof_fgt_31 prof_fgt_32 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
 )
 
-ACTION_IF GAME_IS ~bgee bg2ee iwdee eet~ THEN BEGIN
+ACTION_IF enhanced_edition THEN BEGIN
 
   ACTION_IF FILE_CONTAINS_EVALUATED(~clastext.2da~ ~^REPLACE_ME_KIT_NAME[ %TAB%]~) THEN BEGIN
 

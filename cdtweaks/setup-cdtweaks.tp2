@@ -4,8 +4,8 @@ AUTO_EVAL_STRINGS
 
 ALWAYS
 
-  ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @27 END // Modmerge check
-  ACTION_IF NOT VARIABLE_IS_SET bg2_chapter THEN BEGIN // check to make this happen only once per install
+  ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @27 END // DLC Merger check
+  ACTION_IF NOT VARIABLE_IS_SET enhanced_edition THEN BEGIN // check to make this happen only once per install
     INCLUDE ~cdtweaks/lib/always.tpa~
   END
   
@@ -92,7 +92,7 @@ BEGIN @1000 DESIGNATED 10
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
 
-ACTION_IF GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd_in_bg2 bgee bg2ee eet iwdee~ BEGIN
+ACTION_IF enhanced_edition OR game_includes_soa OR game_is_ca OR tutu_gen OR game_is_iwd-in-bg2 BEGIN
   OUTER_SET check_anim = 1
 END ELSE BEGIN
   OUTER_SET check_anim = 0
@@ -216,7 +216,7 @@ COPY ~cdtweaks/cre/ikmorph.cre~  ~override~
 BEGIN @6000 DESIGNATED 60
 GROUP @11
 
-ACTION_IF GAME_IS ~bg1 totsc iwd how totlm iwd2 pst~ THEN BEGIN // exlcude pstee
+ACTION_IF original_bg1 OR original_iwd OR game_is_iwd2 OR game_is_pst THEN BEGIN // exclude pstee
   OUTER_SET use_type = 1
 END ELSE BEGIN
   OUTER_SET use_type = 0
@@ -283,7 +283,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ // animation adjustments
 
 BEGIN @7000 DESIGNATED 70
 GROUP @11
-REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd_in_bg2 iwd2 pst pstee~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 
 ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
 
@@ -314,7 +314,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_map_casting BEGIN
   necrocg => cgnecrom // necromancy
 END
 
-ACTION_IF GAME_IS ~iwd_in_bg2~ THEN BEGIN
+ACTION_IF game_is_iwd-in-bg2 THEN BEGIN
 
   ACTION_PHP_EACH cd_map_casting AS iwd => bg2 BEGIN
     
@@ -396,7 +396,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 
 BEGIN @10000 DESIGNATED 100
 GROUP @11 
-REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwdee iwd how totlm iwd_in_bg2 iwd2 pst pstee~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 
 COPY_EXISTING ~randcolr.2da~ ~override~
   REPLACE_TEXTUALLY ~HairSet1~ ~CD_DELETE_ME HairSet1~
@@ -604,7 +604,7 @@ END
 
 BEGIN @14000 DESIGNATED 140
 GROUP @11 // 
-REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd_in_bg2 iwd2 pst pstee~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 
 COPY ~cdtweaks/wav/gam_48.wav~ ~override~
 /*
@@ -622,7 +622,7 @@ COPY ~cdtweaks/wav/gam_48.wav~ ~override~
 
 BEGIN @15001 DESIGNATED 150
 SUBCOMPONENT @15000
-GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd_in_bg2 iwd2 pst pstee ca~ @25
+GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/unique.tra~ @7 // skip if tra file for language not available
 
 LOAD_TRA ~cdtweaks/languages/%LANGUAGE%/unique.tra~
@@ -635,7 +635,7 @@ INCLUDE ~cdtweaks/lib/unique.tpa~
 
 BEGIN @15100 DESIGNATED 151
 SUBCOMPONENT @15000
-GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd_in_bg2 iwd2 pst pstee ca~ @25
+GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/uniqueplus.tra~ @7 // skip if tra file for language not available
 
 LOAD_TRA ~cdtweaks/languages/%LANGUAGE%/uniqueplus.tra~
@@ -648,7 +648,7 @@ INCLUDE ~cdtweaks/lib/unique.tpa~
 
 BEGIN @15200 DESIGNATED 152
 SUBCOMPONENT @15000
-GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd_in_bg2 iwd2 pst pstee ca~ @25
+GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/uniquegeneric.tra~ @7 // skip if tra file for language not available
 
 LOAD_TRA ~cdtweaks/languages/%LANGUAGE%/uniquegeneric.tra~
@@ -677,7 +677,7 @@ OUTER_SET tertiary   = 32
 OUTER_SET quaternary = 36
 OUTER_SET quinary    = 33
 
-ACTION_IF GAME_IS ~iwd how totlm~ THEN BEGIN // swap primary/secondary for iwd
+ACTION_IF original_iwd THEN BEGIN // swap primary/secondary for iwd
 
   OUTER_SET primary    = 37 // doubles as pulse location
   OUTER_SET secondary  = 34
@@ -762,13 +762,13 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 
 BEGIN @17000 DESIGNATED 170
 GROUP @11
-REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd_in_bg2 soa tob bg2ee eet bgt ca~ @25
+REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2 soa tob bg2ee eet bgt ca~ @25
 
 
 ACTION_CLEAR_ARRAY cd_unique_icons
 ACTION_CLEAR_ARRAY cd_unique_anims
 
-ACTION_IF GAME_IS ~iwdee iwd how totlm iwd_in_bg2~ THEN BEGIN
+ACTION_IF game_includes_iwd THEN BEGIN
 
   INCLUDE ~cdtweaks/lib/unique_icons_iwd.tpa~ // loads arrays
 
@@ -842,7 +842,7 @@ END
 BEGIN @18018 DESIGNATED 180
 SUBCOMPONENT @18000
 GROUP @11
-REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd-in-bg2~ @25
 
 INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes
 
@@ -853,7 +853,7 @@ INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes
 BEGIN @18021 DESIGNATED 181
 SUBCOMPONENT @18000
 GROUP @11
-REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd-in-bg2~ @25
 
 OUTER_SET names = 0 // don't set names
 INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes 
@@ -866,7 +866,7 @@ INCLUDE ~cdtweaks/lib/unique_containers_v2.tpa~ // do the thing
 BEGIN @18020 DESIGNATED 182
 SUBCOMPONENT @18000
 GROUP @11
-REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd-in-bg2~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/unique_containers.tra~ @7
 
 OUTER_SET names = 1 // set names
@@ -1192,7 +1192,7 @@ BEGIN @103000 DESIGNATED 1030
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 
-ACTION_IF ((FILE_EXISTS_IN_GAME ~cdbehbla.pro~) OR (GAME_IS ~bg2ee eet~)) THEN BEGIN // easy fix if fixed worldmap present
+ACTION_IF ((FILE_EXISTS_IN_GAME ~cdbehbla.pro~) OR (enhanced_edition)) THEN BEGIN // easy fix if fixed worldmap present
 
   COPY_EXISTING ~worldmap.wmp~ ~override~
     READ_LONG 0x30 "area_num"
@@ -1499,7 +1499,7 @@ REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 EXTEND_BOTTOM ~ar2500.bcs~ ~cdtweaks/baf/ar2500.baf~
 EXTEND_BOTTOM ~baldur.bcs~ ~cdtweaks/baf/baldur.baf~
 
-ACTION_IF ((FILE_EXISTS_IN_GAME ~baldur25.bcs~) AND NOT (GAME_IS ~eet~)) THEN BEGIN // extend ToB game script if present
+ACTION_IF ((FILE_EXISTS_IN_GAME ~baldur25.bcs~) AND NOT (game_is_eet)) THEN BEGIN // extend ToB game script if present
 
   EXTEND_BOTTOM ~baldur25.bcs~ ~cdtweaks/baf/baldur.baf~
 
@@ -1603,11 +1603,7 @@ BEGIN @106000 DESIGNATED 1060
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgee eet~ @25 // tutu, BGEE only
 
-OUTER_SET game_is_totsc = 0
-
-ACTION_IF GAME_IS ~totsc~ BEGIN // bg1 does this differently since there's no effect-on-hit opcode
-
-  OUTER_SET game_is_totsc = 1
+ACTION_IF game_is_totsc BEGIN // bg1 does this differently since there's no effect-on-hit opcode
 
   //PHASE #1 - adds opcode to selected armor/shield/helm, which change stat TRACKING (unused in original game) to 1,2,4 respectively, while equipped. So we can tell the scripts, if the non-magic armor part is equipped. With disposable in BG1 script's triggers we can only check, if the person has the item, but not, if the item is equipped or just in inventory. Opcode "store local variable" is not so good, because local variable is set permanently while an item is equipping, and doesn't return to 0 itself, if the item is unequipped.
 
@@ -1678,7 +1674,7 @@ END
 COPY_EXISTING ~misc59.itm~ ~override/cddelhlm.itm~
 
 // bgee freaks out with misc items in shield/armor/helmet slots
-ACTION_IF GAME_IS ~bgee eet~ BEGIN // bgee
+ACTION_IF enhanced_edition BEGIN // bgee, eet
 
   COPY_EXISTING ~misc57.itm~ ~override~ // broken shield
     WRITE_SHORT 0x1c 12
@@ -1713,7 +1709,7 @@ COPY_EXISTING ~cdbrak2.spl~ ~override/cdbrak12.spl~  // shield
   WRITE_LONG  0xce 9
   WRITE_ASCII 0xde ~misc57~ #8
 
-ACTION_IF !((GAME_IS ~bgee bg2ee eet~) OR (MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) BEGIN // if no critical hit aversion from tobex, script to remove broken helm item
+ACTION_IF !((enhanced_edition) OR (MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) BEGIN // if no critical hit aversion from tobex, script to remove broken helm item
 
   EXTEND_TOP ~baldur.bcs~ ~cdtweaks/baf/break.baf~
   
@@ -1781,9 +1777,9 @@ END
 
 BEGIN @107000 DESIGNATED 1070
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~totsc soa tob bgt bgee bg2ee iwdee eet tutu tutu_totsc ca iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~totsc soa tob bgt bgee bg2ee iwdee eet tutu tutu_totsc ca iwd-in-bg2~ @25
 
-ACTION_IF GAME_IS ~totsc~ BEGIN // old IE engines - can be extended to IWD?
+ACTION_IF game_is_totsc BEGIN // old IE engines - can be extended to IWD?
 
   INCLUDE ~cdtweaks/lib/BG1areacheck_emulation.tpa~ // clever bit of code from Zed that allows us to check areas; should also work on IWD
   COMPILE ~cdtweaks/dlg/multi_bg.d~ // adds FAI, Nashkel, BG, Beregost options
@@ -1793,17 +1789,17 @@ END ELSE BEGIN // bg2-based engines
   COMPILE ~cdtweaks/dlg/multi_base.d~ // basic kick out/re-join/wait here framework
 
   // now add additional 'go to x' options for various games
-  ACTION_IF GAME_IS ~bgt bg2ee soa tob eet~ THEN BEGIN
+  ACTION_IF game_is_bgt OR game_is_bg2ee OR original_bg2 OR game_is_eet THEN BEGIN
 
     COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/multi_bg2.d~ // adds copper coronet, pocket plane options
 
   END
 
-  ACTION_IF GAME_IS ~bgee bgt eet tutu tutu_totsc~ THEN BEGIN
+  ACTION_IF game_is_bgee OR game_is_bgt OR game_is_eet OR tutu_gen THEN BEGIN
 
     COMPILE ~cdtweaks/dlg/multi_bgee.d~ EVALUATE_BUFFER // adds FAI, Nashkel, BG, Beregost options
 
-    ACTION_IF GAME_IS ~bgt eet~ THEN BEGIN
+    ACTION_IF game_is_bgt OR game_is_eet THEN BEGIN
 
       COMPILE ~cdtweaks/dlg/multi_bgt.d~ // adds EndOfBG var checks
 
@@ -1811,7 +1807,7 @@ END ELSE BEGIN // bg2-based engines
 
   END
 
-  ACTION_IF GAME_IS ~iwdee iwd_in_bg2~ THEN BEGIN
+  ACTION_IF game_is_iwdee OR game_is_iwd-in-bg2 THEN BEGIN
 
     COMPILE ~cdtweaks/dlg/multi_iwdee.d~ // adds winter's cradle, whistling gallows, root tavern cellar options
 
@@ -1831,7 +1827,7 @@ BEGIN @107500 DESIGNATED 1075
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgt bgee eet~ @25
 
-ACTION_IF GAME_IS "totsc" BEGIN
+ACTION_IF game_is_totsc BEGIN
    INCLUDE ~cdtweaks/lib/BG1areacheck_emulation.tpa~ // clever bit of code from Zed that allows us to check areas; should also work on IWD
    INCLUDE ~cdtweaks/lib/inns.tpa~
 END ELSE BEGIN
@@ -1850,11 +1846,11 @@ END
 
 BEGIN @108000 DESIGNATED 1080
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc soa tob bgt bgee bg2ee eet how totlm iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc soa tob bgt bgee bg2ee eet how totlm iwd-in-bg2~ @25
 
-ACTION_IF GAME_IS ~how totlm iwd_in_bg2~ THEN BEGIN
+ACTION_IF game_is_how OR game_is_totlm OR game_is_iwd-in-bg2 THEN BEGIN
 
-  ACTION_IF GAME_IS ~how totlm~ THEN BEGIN
+  ACTION_IF !game_is_iwd-in-bg2 THEN BEGIN
   
     OUTER_SET stor_off = 0x9c // for bottomless bags
   
@@ -1891,7 +1887,7 @@ ACTION_IF GAME_IS ~how totlm iwd_in_bg2~ THEN BEGIN
 
   END
 
-  ACTION_IF GAME_IS ~totlm iwd_in_bg2~ THEN BEGIN // if totl installed, clone existing boh and add fourth ammo belt
+  ACTION_IF game_is_totlm OR game_is_iwd-in-bg2 THEN BEGIN // if totl installed, clone existing boh and add fourth ammo belt
 
     // first, make existing BoHs take everything
     COPY_EXISTING ~bagh01.sto~ ~override~
@@ -2002,7 +1998,7 @@ END ELSE BEGIN
     COPY ~cdtweaks/bam/ibag05.bam~ ~override~
          ~cdtweaks/bam/ibag06.bam~ ~override~
   
-    ACTION_IF GAME_IS BGEE THEN BEGIN
+    ACTION_IF game_is_bgee THEN BEGIN
 
       COPY ~cdtweaks/bmp/pbag05.bmp~ ~override~
            ~cdtweaks/bmp/pbag06.bmp~ ~override~
@@ -2051,7 +2047,7 @@ END ELSE BEGIN
 
   END
   
-  ACTION_IF NOT GAME_IS ~bgee~ BEGIN // non-BGEE
+  ACTION_IF NOT game_is_bgee BEGIN // non-BGEE
   
     COPY_EXISTING ~roger.sto~   ~override~ // roger
                   ~murcrag.sto~ ~override~ // Cragmoon
@@ -2091,7 +2087,7 @@ END ELSE BEGIN
   END
   
   // if BGT, BGEE, or Tutu game, add bags to BG portion
-  ACTION_IF GAME_IS ~tutu tutu_totsc bgt bgee eet~ THEN BEGIN
+  ACTION_IF game_includes_bg1 THEN BEGIN
   
     COPY_EXISTING ~cdammo.itm~   ~override/c!ammo.itm~   // ammo belt
                   ~cdammo.sto~   ~override/c!ammo.sto~
@@ -2102,7 +2098,7 @@ END ELSE BEGIN
                   ~bag03g.itm~   ~override/c!bag03.itm~  // scroll case
                   ~bag03g.sto~   ~override/c!bag03.sto~
 
-    ACTION_IF GAME_IS ~bgee~ BEGIN // missing bgee resources
+    ACTION_IF game_is_bgee BEGIN // missing bgee resources
     
       COPY ~cdtweaks/itm/bag04.itm~ ~override/c!bag04.itm~
            ~cdtweaks/sto/bag04.sto~ ~override/c!bag04.sto~
@@ -2364,9 +2360,9 @@ OUTER_SET generic_kat_desc  = 35963
 OUTER_SET generic_ioun_name = 8181
 OUTER_SET generic_ioun_desc = 5770
 
-ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN // BGEE, eet
+ACTION_IF enhanced_edition THEN BEGIN // BGEE, eet
 
-  ACTION_IF GAME_IS ~bgee~ THEN BEGIN // BGEE - different strrefs for unidentified ioun, katana strings
+  ACTION_IF game_is_bgee THEN BEGIN // BGEE - different strrefs for unidentified ioun, katana strings
   
     OUTER_SET generic_kat_name  = 26711
     OUTER_SET generic_kat_desc  = 34130
@@ -2602,9 +2598,9 @@ END
 
 BEGIN @110000 DESIGNATED 1100
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgee pst pstee iwdee iwd_in_bg2 iwd how totlm bgt~ @25
+REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgee pst pstee iwdee iwd-in-bg2 iwd how totlm bgt~ @25
 
-ACTION_IF GAME_IS ~pst pstee~ THEN BEGIN
+ACTION_IF game_includes_pst THEN BEGIN
 
   ACTION_FOR_EACH file IN 0100tear 0600malm ar0101 ar0300 ar0500 ar0700 ar1101 0200strk 1500gul9 ar0109 ar0400 ar0501 BEGIN
     
@@ -2614,7 +2610,7 @@ ACTION_IF GAME_IS ~pst pstee~ THEN BEGIN
 
 END
 
-ACTION_IF GAME_IS ~iwdee iwd_in_bg2 iwd how totlm~ THEN BEGIN
+ACTION_IF game_includes_iwd THEN BEGIN
   
   ACTION_FOR_EACH file IN
     ~AR1000~ // EASTHAVEN (PROLOGUE)
@@ -2638,7 +2634,7 @@ ACTION_IF GAME_IS ~iwdee iwd_in_bg2 iwd how totlm~ THEN BEGIN
 
 END
 
-ACTION_IF GAME_IS ~bg1 totsc tutu tutu_totsc bgee bgt~ THEN BEGIN
+ACTION_IF game_includes_bg1 THEN BEGIN
 
   COPY_EXISTING ~%NEBaldursGate_BCS%.bcs~ ~override~
     DECOMPILE_BCS_TO_BAF
@@ -2764,7 +2760,7 @@ END
 
 BEGIN @111000 DESIGNATED 1110
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc iwd_in_bg2~ @25 // tutu only
+REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc iwd-in-bg2~ @25 // tutu only
 
 /*
 Note Color key:
@@ -2778,7 +2774,7 @@ Dk Blue - People
 Lt Gray - Stores
 */
 
-ACTION_IF GAME_IS ~iwd_in_bg2~ THEN BEGIN
+ACTION_IF game_is_iwd-in-bg2 THEN BEGIN
 
   COPY_EXISTING ~ar1000.are~ ~override~ //easthaven
     ADD_MAP_NOTE #3050  #224 ~violet~    @111102
@@ -3418,9 +3414,9 @@ INCLUDE ~cdtweaks/lib/lore.tpa~
 
 BEGIN @115000 DESIGNATED 1150
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~bgee tutu tutu_totsc eet bgt bg2ee soa tob iwd_in_bg2 ca iwdee~ @25
+REQUIRE_PREDICATE GAME_IS ~bgee tutu tutu_totsc eet bgt bg2ee soa tob iwd-in-bg2 ca iwdee~ @25
 
-ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN // Tutu
+ACTION_IF tutu_gen THEN BEGIN // Tutu
 
   COPY_EXISTING ~_b1-3.itm~    ~override~ // adds magical flag to misc weapons
                 ~_b2-16.itm~   ~override~
@@ -3469,7 +3465,7 @@ ACTION_FOR_EACH spell IN spcl643 spcl644 BEGIN // grab existing strrefs
 
 END
 
-ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ BEGIN // since descript actually matters in EE innates
+ACTION_IF enhanced_edition BEGIN // since descript actually matters in EE innates
 
   COPY_EXISTING ~spcl643.spl~ ~override~
     SAY 0x50 @115006
@@ -3607,7 +3603,7 @@ SUBCOMPONENT @116000 // multi strongholds
 REQUIRE_PREDICATE ((GAME_IS ~soa tob bgt bg2ee eet~) OR
                    ((MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~10~) AND (FILE_EXISTS ~thecalling/baf/cheat2.baf~))) @25
 
-ACTION_IF GAME_IS ~soa tob bgt bg2ee eet~ BEGIN
+ACTION_IF game_includes_soa BEGIN
   
   COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
                           ~cdtweaks/dlg/stronghold_cabin_choice.d~     // allows choice for ranger stronghold
@@ -3657,7 +3653,7 @@ SUBCOMPONENT @116000 // multi strongholds
 REQUIRE_PREDICATE ((GAME_IS ~soa tob bgt bg2ee eet~) OR
                    ((MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~10~) AND (FILE_EXISTS ~thecalling/baf/cheat1.baf~))) @25
 
-ACTION_IF GAME_IS ~soa tob bgt bg2ee eet~ BEGIN
+ACTION_IF game_includes_soa BEGIN
 
   COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
                           ~cdtweaks/dlg/stronghold_cabin_choice.d~     // allows choice for ranger stronghold
@@ -3832,7 +3828,7 @@ BEGIN @118000 DESIGNATED 1180
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 
-ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+ACTION_IF enhanced_edition THEN BEGIN
 
   COPY ~cdtweaks/bmp/royo4_330.bmp~ ~override/royo4l.bmp~
        ~cdtweaks/bmp/royo4_266.bmp~ ~override/royo4m.bmp~
@@ -3962,7 +3958,7 @@ COPY_EXISTING ~viconia.bcs~ ~override~
   COMPILE_BAF_TO_BCS
 
 // If ToB installed, patch ToB BCS files:
-ACTION_IF GAME_IS ~tob bg2ee~ THEN BEGIN
+ACTION_IF game_is_tob THEN BEGIN
 
   COPY_EXISTING ~anom25.bcs~ ~override~
     DECOMPILE_BCS_TO_BAF
@@ -4008,7 +4004,7 @@ BEGIN @121000 DESIGNATED 1210
 GROUP @13 
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 
-ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ THEN BEGIN // in ee, can adjust the animation speed directly
+ACTION_IF enhanced_edition THEN BEGIN // in ee, can adjust the animation speed directly
    
   COPY_EXISTING_REGEXP GLOB ~^[56][012345][01][0-9]\.ini$~ ~override~ 
     REPLACE_TEXTUALLY ~^move_scale=9~ ~move_scale=7~
@@ -4120,6 +4116,7 @@ END ELSE BEGIN
     BUT_ONLY
 
 END
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -4192,7 +4189,7 @@ SUBCOMPONENT @122500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 
-ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
+ACTION_IF enhanced_edition BEGIN
 
   COPY_EXISTING ~cromwell.bcs~ ~override~
     DECOMPILE_AND_PATCH BEGIN
@@ -4211,7 +4208,7 @@ SUBCOMPONENT @122500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 
-ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+ACTION_IF enhanced_edition THEN BEGIN
 
   COPY_EXISTING ~cromwell.bcs~ ~override~
     DECOMPILE_AND_PATCH BEGIN
@@ -4243,7 +4240,7 @@ SUBCOMPONENT @122500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 
-ACTION_IF GAME_IS ~soa tob bgt~ THEN BEGIN
+ACTION_IF !enhanced_edition THEN BEGIN
 
   OUTER_FOR (index = 0 ; index < 24 ; ++index) BEGIN
  
@@ -4386,7 +4383,7 @@ COPY_EXISTING ~%ALORA_BCS%.bcs~ ~override~ // catching and updating area variabl
   END
   BUT_ONLY      
 
-ACTION_IF GAME_IS ~bg1 totsc~ THEN BEGIN
+ACTION_IF original_bg1 THEN BEGIN
 
   INCLUDE ~cdtweaks/lib/BG1areacheck_emulation.tpa~ // clever bit of code from Zed that allows us to check areas; should also work on IWD
 
@@ -4411,7 +4408,7 @@ COPY_EXISTING ~%WBaldursGate_HallofWonders_BCS%.bcs~ ~override~
     COMPILE_BAF_TO_BCS
   BUT_ONLY_IF_IT_CHANGES
 
-ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
+ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
 
   COPY_EXISTING ~baldur.gam~ ~override~
     READ_LONG 0x30 npc_off
@@ -4456,7 +4453,7 @@ COPY_EXISTING ~%ELDOTH_BCS%.bcs~ ~override~ // bg1npc compat
   END
   BUT_ONLY_IF_IT_CHANGES
 
-ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
+ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
 
   COPY_EXISTING ~baldur.gam~ ~override~
     READ_LONG 0x30 npc_off
@@ -4500,7 +4497,7 @@ COPY_EXISTING ~%QUAYLE_BCS%.bcs~ ~override~ // catching and updating area variab
   END
   BUT_ONLY      
 
-ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
+ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
 
   COPY_EXISTING ~baldur.gam~ ~override~
     READ_LONG 0x30 npc_off
@@ -4545,7 +4542,7 @@ COPY_EXISTING ~%SHARTEEL_BCS%.bcs~ ~override~ // catching and updating area vari
   END
   BUT_ONLY      
 
-ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
+ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
 
   COPY_EXISTING ~baldur.gam~ ~override~
     READ_LONG 0x30 npc_off
@@ -4560,7 +4557,7 @@ ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
     END
     BUT_ONLY_IF_IT_CHANGES
     
-  ACTION_IF GAME_IS ~bgee eet~ BEGIN // her joining combat script is in the area script
+  ACTION_IF enhanced_edition BEGIN // her joining combat script is in the area script
 
     COPY_EXISTING ~shartel2.bcs~ ~override~ // shar-teel's combat script for the initial fight
       DECOMPILE_AND_PATCH BEGIN
@@ -4607,7 +4604,7 @@ COPY_EXISTING ~%TIAX_BCS%.bcs~ ~override~ // catching and updating area variable
   END
   BUT_ONLY      
 
-ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
+ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
 
   COPY_EXISTING ~baldur.gam~ ~override~
     READ_LONG 0x30 npc_off
@@ -4651,7 +4648,7 @@ COPY_EXISTING ~%VICONIA_BCS%.bcs~ ~override~ // catching and updating area varia
   END
   BUT_ONLY      
 
-ACTION_IF NOT GAME_IS ~bgt~ THEN BEGIN // all other platforms use GAM file
+ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
 
   COPY_EXISTING ~baldur.gam~ ~override~
     READ_LONG 0x30 npc_off
@@ -4840,16 +4837,16 @@ ACTION_IF !FILE_EXISTS_IN_GAME ~endch4.bcs~ THEN BEGIN
 END
 
 // non-bg games also purge journal strings here
-ACTION_IF NOT GAME_IS ~totsc~ THEN BEGIN
+ACTION_IF !game_is_totsc THEN BEGIN
 
   COPY_EXISTING ~endch4.bcs~ ~override~
     DECOMPILE_AND_PATCH BEGIN
-      PATCH_IF GAME_IS ~tutu tutu_totsc~ BEGIN
+      PATCH_IF tutu_gen BEGIN
         PATCH_FOR_EACH string IN 78162 85754 85767 80561 80565 86317 86297 85810 85824 85868 BEGIN
           REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
         END
       END ELSE
-      PATCH_IF GAME_IS ~bgt~ BEGIN
+      PATCH_IF game_is_bgt BEGIN
         PATCH_FOR_EACH string IN 
           74951 74952 74953 74954 74955 74956 74957 74958 74959 74960 74961 74962 74963
           74964 74965 74966 74967 74968 74969 74970 74971 74972 74973 74974 74975 74976
@@ -4859,12 +4856,12 @@ ACTION_IF NOT GAME_IS ~totsc~ THEN BEGIN
           REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
         END
       END ELSE
-      PATCH_IF GAME_IS ~bgee~ BEGIN
+      PATCH_IF game_is_bgee BEGIN
         PATCH_FOR_EACH string IN 27047 27046 27060 27059 26829 27455 27173 BEGIN
           REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
         END
       END ELSE
-      PATCH_IF GAME_IS ~eet~ BEGIN
+      PATCH_IF game_is_eet BEGIN
         PATCH_FOR_EACH string IN 227047 227046 227060 227059 226829 227455 227173 BEGIN
           REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
         END
@@ -4884,16 +4881,14 @@ END
 
 BEGIN @128000 DESIGNATED 1280
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~iwdee iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~iwdee iwd-in-bg2~ @25
 
-ACTION_IF GAME_IS ~iwd_in_bg2~ THEN BEGIN // easy solution!
+ACTION_IF game_is_iwd-in-bg2 THEN BEGIN // easy solution!
 
   COPY ~TobEx_ini/TobExTweak.ini~ ~TobEx_ini~
     REPLACE_TEXTUALLY ~Engine:Disable End On Player1 Dead=1~ ~Engine:Disable End On Player1 Dead=0~
 
-END
-
-ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+END ELSE BEGIN // iwdee
 
   COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
     WRITE_BYTE 0x14 (THIS & `BIT4) // remove 'player1 can die' bit from all alreas
@@ -4911,7 +4906,7 @@ END
 
 BEGIN @129000 DESIGNATED 1290
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 
 ACTION_FOR_EACH file IN
   daccalia dalbion daldwin dambere damelia dangaar dapsel darden darundel dbaldemr dbandoth dbeorn dcallard
@@ -4947,11 +4942,11 @@ END
 
 BEGIN @130000 DESIGNATED 1300
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~iwdee how totlm iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~iwdee how totlm iwd-in-bg2~ @25
 
 COPY_EXISTING ~dhjollde.dlg~ ~override~
   DECOMPILE_DLG_TO_D
-    REPLACE_TEXTUALLY ~LevelPartyGT(8)~      ~True()~  // iwd_in_bg2, also converts inverse to !True
+    REPLACE_TEXTUALLY ~LevelPartyGT(8)~      ~True()~  // iwd-in-bg2, also converts inverse to !True
     REPLACE_TEXTUALLY ~CheckPartyLevel(9)~   ~True()~  // iwd; also converts inverse check to !True
     REPLACE_TEXTUALLY ~XPLT(Player1,250000)~ ~False()~ // iwdee
     REPLACE_TEXTUALLY ~XPGT(Player1,249999)~ ~True()~  // iwdee
@@ -4967,7 +4962,7 @@ COPY_EXISTING ~dhjollde.dlg~ ~override~
 
 BEGIN @131000 DESIGNATED 1310
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~iwd-in-bg2~ @25
 
 //LAF make_label STR_VAR label=~i#bg2spells~ END
 
@@ -5083,7 +5078,7 @@ COMPILE ~cdtweaks/dlg/iib_famil.d~ // disables BG2 advice from familiars
 /*
 BEGIN @132000 DESIGNATED 1320
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~iwd-in-bg2~ @25
 
 INCLUDE ~cdtweaks/lib/journal_entries.tpa~
 LAM ~journal_data~
@@ -5101,7 +5096,7 @@ LAF residual_journal_hacks END
 
 BEGIN @133000 DESIGNATED 1330
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd_in_bg2 bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
   PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_CASE "ar0028") BEGIN
@@ -5130,11 +5125,10 @@ BEGIN @202000 DESIGNATED 2020
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 
-ACTION_IF GAME_IS ~bg1 totsc iwd how totlm~ THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
-ACTION_IF GAME_IS ~eet~ THEN BEGIN OUTER_SET game_is_eet = 1 END ELSE BEGIN OUTER_SET game_is_eet = 0 END
+ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
 
-ACTION_IF GAME_IS ~iwd how totlm~ THEN BEGIN
+ACTION_IF original_iwd THEN BEGIN
 
   LAUNCH_ACTION_FUNCTION 2h_weapons INT_VAR bg1_type = 57 END // diff item type in iwd
 
@@ -5175,7 +5169,7 @@ ACTION_IF ((game_is_eet = 0) AND ((FILE_EXISTS_IN_GAME ~_sw1h01.spl~) OR (FILE_E
 
 END
 
-ACTION_IF GAME_IS ~bgt~ BEGIN
+ACTION_IF game_is_bgt BEGIN
 
   OUTER_SPRINT ref ~c!bs1~
 
@@ -5192,7 +5186,6 @@ ACTION_IF GAME_IS ~bgt~ BEGIN
     BUT_ONLY
 
 END
-
 
 // cespenar can use alternate items for upgrades
 ACTION_IF FILE_EXISTS_IN_GAME botsmith.dlg THEN BEGIN
@@ -5212,8 +5205,7 @@ BEGIN @203000 DESIGNATED 2030
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 
-ACTION_IF GAME_IS ~bg1 totsc iwd how totlm~ THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
-ACTION_IF GAME_IS ~eet~ THEN BEGIN OUTER_SET game_is_eet = 1 END ELSE BEGIN OUTER_SET game_is_eet = 0 END
+ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
 
 LAUNCH_ACTION_FUNCTION 2h_weapons // defaults are bastard sword settings
@@ -5238,7 +5230,7 @@ ACTION_IF ((game_is_eet = 0) AND (FILE_EXISTS_IN_GAME ~sw1h43.spl~)) THEN BEGIN
 
 END
 
-ACTION_IF GAME_IS ~bgt~ BEGIN
+ACTION_IF game_is_bgt BEGIN
 
   OUTER_SPRINT ref ~c!kt1~
 
@@ -5275,8 +5267,7 @@ BEGIN @203500 DESIGNATED 2035
 GROUP @9 
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 
-ACTION_IF GAME_IS ~bg1 totsc iwd how totlm~ THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
-ACTION_IF GAME_IS ~eet~ THEN BEGIN OUTER_SET game_is_eet = 1 END ELSE BEGIN OUTER_SET game_is_eet = 0 END
+ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
 
 LAUNCH_ACTION_FUNCTION 2h_weapons // defaults are bastard sword settings
@@ -5323,7 +5314,7 @@ ACTION_IF ((game_is_eet = 0) AND ((FILE_EXISTS_IN_GAME ~_ax1h01.spl~) OR (FILE_E
 
 END
 
-ACTION_IF GAME_IS ~bgt~ BEGIN
+ACTION_IF game_is_bgt BEGIN
 
   OUTER_SPRINT ref ~c!ax1~
 
@@ -5377,10 +5368,10 @@ REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 OUTER_SET type_match = 0
 OUTER_SET modify_descript = 0
 
-ACTION_IF NOT GAME_IS ~bgee bg2ee iwdee eet~ BEGIN
+ACTION_IF !enhanced_edition BEGIN
 
-  ACTION_IF GAME_IS ~bg1 totsc iwd how totlm iwd2~ THEN BEGIN
-    ACTION_IF GAME_IS ~iwd how totlm~ THEN BEGIN
+  ACTION_IF original_bg1 OR original_iwd OR game_is_iwd2 THEN BEGIN
+    ACTION_IF original_iwd THEN BEGIN
       OUTER_SET type_match = 44
     END ELSE BEGIN
       OUTER_SET type_match = 17
@@ -5778,7 +5769,7 @@ END
 
 BEGIN @209100 DESIGNATED 2091
 GROUP @9
-REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd_in_bg2 iwd2 pst pstee~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 SUBCOMPONENT @209000 // change xp cap
 
 COPY ~cdtweaks/2da/xplevel20.2da~ ~override/xplevel.2da~
@@ -5790,7 +5781,7 @@ INCLUDE ~cdtweaks/lib/xp_common.tpa~
 
 BEGIN @209200 DESIGNATED 2092
 GROUP @9
-REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd_in_bg2 iwd2 pst pstee~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 SUBCOMPONENT @209000 // change xp cap
 
 COPY ~cdtweaks/2da/xplevel30.2da~ ~override/xplevel.2da~
@@ -5814,7 +5805,7 @@ INCLUDE ~cdtweaks/lib/thieving_to_50.tpa~     // extend bard, ranger pickpocketi
 // to get unarmored bonuses to work, bonuses are added in the race bonus tables
 // all non-robe armor offsets these
 COPY_EXISTING ~skillrac.2da~ ~override~
-  PATCH_IF (GAME_IS ~bg1 totsc iwd how totlm pst pstee~) BEGIN // games that use stealth
+  PATCH_IF original_bg1 OR original_iwd OR game_is_pst OR game_is_pstee BEGIN // games that use stealth
     SET use_stealth = 1
     SET penalty_hide = 255 // forces patch to skip HiS adjustments; needed below
     SET max_col = 5
@@ -6848,7 +6839,7 @@ BEGIN @220000 DESIGNATED 2200
 GROUP @9 
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 
-ACTION_IF GAME_IS ~bg1 totsc iwd how totlm~ THEN BEGIN
+ACTION_IF original_bg1 OR original_iwd THEN BEGIN
 
   COPY_EXISTING ~profsmax.2da~  ~override~
     SET_2DA_ENTRY_LATER ~profsmax~  9 2 ~5~ // fm
@@ -6978,7 +6969,7 @@ BEGIN @222000 DESIGNATED 2220
 GROUP @9 
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
 
-ACTION_IF GAME_IS ~bgee tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd_in_bg2 ca~ BEGIN
+ACTION_IF enhanced_edition OR tutu_gen OR game_is_bgt OR original_bg2 OR game_is_iwd-in-bg2 OR game_is_ca BEGIN
   OUTER_SET check_255 = 1
 END ELSE BEGIN
   OUTER_SET check_255 = 0
@@ -7209,7 +7200,7 @@ REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY ~cdtweaks/2da/iwd2_thac0.2da~ ~override~
 
@@ -7333,7 +7324,7 @@ ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
     IF_EXISTS BUT_ONLY
 END
 
-ACTION_IF GAME_IS ~tob bgt bg2ee eet~ THEN BEGIN
+ACTION_IF game_includes_tob THEN BEGIN
 
   // add mage alchemy, scribe scrolls
   COPY_EXISTING ~lucm0.2da~ ~override~
@@ -7526,7 +7517,7 @@ REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY ~cdtweaks/2da/un_mxsplprs.2da~ ~override/mxsplclr.2da~
 
@@ -7536,7 +7527,7 @@ END ELSE BEGIN
 
 END
 
-ACTION_IF GAME_IS ~tob bgt bg2ee eet~ THEN BEGIN
+ACTION_IF game_includes_tob THEN BEGIN
 
   // add clerical alchemy, scribe scrolls
   COPY_EXISTING ~lucl0.2da~ ~override~
@@ -7615,7 +7606,7 @@ SUBCOMPONENT @228000 // alter cleric progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxsplclr.2da~) OR (FILE_EXISTS_IN_GAME ~mxsplprs.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY ~cdtweaks/2da/mxsplprs.2da~ ~override/mxsplclr.2da~
 
@@ -7646,7 +7637,7 @@ REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY ~cdtweaks/2da/un_mxspldru.2da~ ~override/mxspldrd.2da~
 
@@ -7666,7 +7657,7 @@ SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY ~cdtweaks/2da/mxsplprs.2da~ ~override/mxspldrd.2da~
 
@@ -7699,7 +7690,7 @@ SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY ~cdtweaks/2da/un_mxspldru.2da~ ~override/mxspldrd.2da~
 
@@ -7722,7 +7713,7 @@ SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY ~cdtweaks/2da/mxsplprs.2da~ ~override/mxspldrd.2da~
 
@@ -7745,7 +7736,7 @@ SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY_EXISTING ~mxsplclr.2da~ ~override/mxspldrd.2da~
 
@@ -7768,7 +7759,7 @@ SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY ~cdtweaks/2da/un_mxsplprs.2da~ ~override/mxspldrd.2da~
 
@@ -8587,7 +8578,7 @@ INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only huma
 
 BEGIN @239000 DESIGNATED 2390
 GROUP @9
-REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd_in_bg2~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 
 COPY ~cdtweaks/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
 
@@ -8601,9 +8592,9 @@ COPY ~cdtweaks/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
 
 BEGIN @240000 DESIGNATED 2400
 GROUP @9
-REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd_in_bg2~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY ~cdtweaks/2da/iwd_mxsplran.2da~ ~override/mxsplrgr.2da~
 
@@ -8747,7 +8738,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   BUT_ONLY_IF_IT_CHANGES
 
 COPY_EXISTING ~clasweap.2da~ ~override~
-  PATCH_IF GAME_IS ~iwd how totlm~ BEGIN
+  PATCH_IF original_iwd BEGIN
     SET col_num = 16
   END ELSE BEGIN
     SET col_num = 9
@@ -8852,7 +8843,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   BUT_ONLY
 
 COPY_EXISTING ~clasweap.2da~ ~override~
-  PATCH_IF GAME_IS ~iwd how totlm~ BEGIN
+  PATCH_IF original_iwd BEGIN
     SET col_num = 16
   END ELSE BEGIN
     SET col_num = 9
@@ -8942,7 +8933,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   BUT_ONLY
 
 COPY_EXISTING ~clasweap.2da~ ~override~
-  PATCH_IF GAME_IS ~iwd how totlm~ BEGIN
+  PATCH_IF original_iwd BEGIN
     SET col_num = 16
   END ELSE BEGIN
     SET col_num = 9
@@ -9026,7 +9017,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_prof_strings BEGIN
   dots5 => 32120 // default iwdee/bg2ee grandmastery string
 END
 
-ACTION_IF NOT GAME_IS ~iwdee bg2ee eet~ BEGIN // override dots2-5 for bgee, sod
+ACTION_IF NOT (game_is_iwdee OR game_is_bg2ee OR game_is_eet) BEGIN // override dots2-5 for bgee, sod
 
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_prof_strings BEGIN
     dots2 => 24220 // default iwdee/bg2ee specialization string
@@ -9303,7 +9294,7 @@ COPY_EXISTING ~strmodex.2da~ ~override~
 
 BEGIN @251000 DESIGNATED 2510
 GROUP @9
-REQUIRE_PREDICATE GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd_in_bg2 bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -9345,7 +9336,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 
 BEGIN @252000 DESIGNATED 2520
 GROUP @9
-REQUIRE_PREDICATE GAME_IS ~soa tob bg1 totsc iwd how totlm tutu tutu_totsc bgt ca iwd_in_bg2 bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bg1 totsc iwd how totlm tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
 
 COPY + ~cdtweaks/2da/common_armor_list.2da~ ~cdtweaks/2da/common_armor_list.2da~
   COUNT_2DA_ROWS 10 rows
@@ -9441,7 +9432,7 @@ ACTION_IF ((FILE_EXISTS_IN_GAME ~lightb.pro~) OR (FILE_EXISTS_IN_GAME ~idpro40.p
 
 END ELSE BEGIN
 
-  ACTION_IF GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd_in_bg2~ BEGIN // engines that support pro files
+  ACTION_IF original_bg2 OR tutu_gen OR game_is_bgt OR game_is_ca OR game_is_iwd-in-bg2 BEGIN // engines that support pro files
 
     ADD_PROJECTILE ~cdtweaks/pro/cdlightb.pro~ // lightning bolt w/o bouncing
 
@@ -10047,7 +10038,7 @@ BEGIN @301001 DESIGNATED 3010 // maximum hp for npcs
 GROUP @4
 SUBCOMPONENT @301000 // all npcs
 
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+ACTION_IF game_is_iwd2 THEN BEGIN
 
   COPY_EXISTING_REGEXP ~^.*\.cre$~ ~override~
     SET "maxhp" = 0
@@ -10102,8 +10093,6 @@ GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 iwd how totlm~ @25 // no joinables in iwd/iwd2; at least possible in iwdee/iwd-in-bg2
 SUBCOMPONENT @301000 // all npcs
 
-ACTION_IF GAME_IS ~pst pstee~ BEGIN OUTER_SET game_is_pst = 1 END ELSE BEGIN  OUTER_SET game_is_pst = 0 END
-
 // load patch macro
 INCLUDE ~cdtweaks/lib/max_hp_creatures.tpa~
 
@@ -10114,7 +10103,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
       READ_SHORT 0x24  "currenthp" ELSE 0
       READ_SHORT 0x26  "maxhp"     ELSE 0
       SET joinable = 0
-      PATCH_IF (game_is_pst = 1) BEGIN
+      PATCH_IF (game_includes_pst = 1) BEGIN
         PATCH_IF ((~%SOURCE_RES%~ STRING_COMPARE_CASE ~annah~ = 0) OR
                   (~%SOURCE_RES%~ STRING_COMPARE_CASE ~morte~ = 0) OR
                   (~%SOURCE_RES%~ STRING_COMPARE_CASE ~nordom~ = 0) OR
@@ -10146,8 +10135,6 @@ GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 iwd how totlm~ @25 // no joinables in iwd/iwd2; at least possible in iwdee/iwd-in-bg2
 SUBCOMPONENT @301000 // all npcs
 
-ACTION_IF GAME_IS ~pst pstee~ BEGIN OUTER_SET game_is_pst = 1 END ELSE BEGIN  OUTER_SET game_is_pst = 0 END
-
 // load patch macro
 INCLUDE ~cdtweaks/lib/max_hp_creatures.tpa~
 
@@ -10158,7 +10145,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
       READ_SHORT 0x24  "currenthp" ELSE 0
       READ_SHORT 0x26  "maxhp"     ELSE 0
       SET joinable = 0
-      PATCH_IF (game_is_pst = 1) BEGIN
+      PATCH_IF (game_includes_pst = 1) BEGIN
         PATCH_IF ((~%SOURCE_RES%~ STRING_COMPARE_CASE ~annah~ = 0) OR
                   (~%SOURCE_RES%~ STRING_COMPARE_CASE ~morte~ = 0) OR
                   (~%SOURCE_RES%~ STRING_COMPARE_CASE ~nordom~ = 0) OR
@@ -10220,14 +10207,14 @@ END
 // i've learned that GAME_IS checks in a regexp copy are very slooooow, so...
 OUTER_SET itm_off_are = 0x078 // are v1.0
 OUTER_SET itm_off_cre = 0x2bc // cre v1.0
-ACTION_IF GAME_IS ~pst~ BEGIN // pstee uses v1.0
+ACTION_IF game_is_pst BEGIN // pstee uses v1.0
   OUTER_SET itm_off_cre = 0x360 // creV1.2
 END
-ACTION_IF GAME_IS ~iwd2~ BEGIN          // V2.2 cre, v9.1 are
+ACTION_IF game_is_iwd2 BEGIN          // V2.2 cre, v9.1 are
   OUTER_SET itm_off_cre = 0x616 // cre v2.2
   OUTER_SET itm_off_are = 0x88  // are v9.1
 END
-ACTION_IF GAME_IS ~iwd how totlm~ BEGIN // V9.0
+ACTION_IF original_iwd BEGIN // V9.0
   OUTER_SET itm_off_cre = 0x324 // cre v9.0
 END
 
@@ -10269,7 +10256,7 @@ COPY_EXISTING ~intmod.2da~ ~override~
   SET_2DA_ENTRIES_NOW ~intmod~ 1
   BUT_ONLY
 
-ACTION_IF GAME_IS ~iwd~ THEN BEGIN // allows player to learn lev8-9 spells in non-HoW games
+ACTION_IF game_is_iwd THEN BEGIN // allows player to learn lev8-9 spells in non-HoW games
 
   INCLUDE ~cdtweaks/lib/learn_all.tpa~
 
@@ -10294,7 +10281,7 @@ COPY_EXISTING ~intmod.2da~ ~override~
   SET_2DA_ENTRIES_NOW ~intmod~ 1
   BUT_ONLY
 
-ACTION_IF GAME_IS ~iwd~ THEN BEGIN // allows player to learn lev8-9 spells in non-HoW games
+ACTION_IF game_is_iwd THEN BEGIN // allows player to learn lev8-9 spells in non-HoW games
 
   INCLUDE ~cdtweaks/lib/learn_all.tpa~
 
@@ -10312,7 +10299,12 @@ BEGIN @304000 DESIGNATED 3040
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd pst~ @25
 
-ACTION_IF GAME_IS ~how totlm iwd2~ BEGIN OUTER_SET type_check = 4 OUTER_SET stor_off = 0x9c END ELSE BEGIN OUTER_SET type_check = 5 OUTER_SET stor_off = 0x22 END
+OUTER_SET type_check = 5 
+OUTER_SET stor_off = 0x22
+ACTION_IF game_is_how OR game_is_totlm OR game_is_iwd2 BEGIN 
+  OUTER_SET type_check = 4 
+  OUTER_SET stor_off = 0x9c 
+END
 
 PRINT @1
 COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
@@ -10643,7 +10635,7 @@ DEPRECATED @18 // already covered by gem/jewelry
 
 BEGIN @312001 DESIGNATED 3120
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd_in_bg2 ca~ @25
+REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd-in-bg2 ca~ @25
 SUBCOMPONENT @312000
 
 // stop rep complaints
@@ -10653,7 +10645,7 @@ COPY_EXISTING ~happy.2da~ ~override~
   BUT_ONLY
   
 // bg1 npc can let shar-teel leave anyway
-ACTION_IF GAME_IS ~bg1 totsc tutu tutu_totsc bgt bgee eet~ THEN BEGIN
+ACTION_IF game_includes_bg1 THEN BEGIN
   INCLUDE ~cdtweaks/lib/happy_sharteel.tpa~
 END
 
@@ -10663,7 +10655,7 @@ END
 
 BEGIN @312100 DESIGNATED 3121
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd_in_bg2 ca~ @25
+REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd-in-bg2 ca~ @25
 SUBCOMPONENT @312000
 
 // stop rep complaints
@@ -10675,7 +10667,7 @@ COPY_EXISTING ~happy.2da~ ~override~
   BUT_ONLY
   
 // bg1 npc can let shar-teel leave anyway
-ACTION_IF GAME_IS ~bg1 totsc tutu tutu_totsc bgt bgee eet~ THEN BEGIN
+ACTION_IF game_includes_bg1 THEN BEGIN
   INCLUDE ~cdtweaks/lib/happy_sharteel.tpa~
 END
 
@@ -10685,7 +10677,7 @@ END
 
 BEGIN @312200 DESIGNATED 3122
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd_in_bg2 ca~ @25
+REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd-in-bg2 ca~ @25
 SUBCOMPONENT @312000
 
 // stop rep complaints
@@ -10699,7 +10691,7 @@ COPY_EXISTING ~happy.2da~ ~override~
   BUT_ONLY
   
 // bg1 npc can let shar-teel leave anyway
-ACTION_IF GAME_IS ~bg1 totsc tutu tutu_totsc bgt bgee eet~ THEN BEGIN
+ACTION_IF game_includes_bg1 THEN BEGIN
   INCLUDE ~cdtweaks/lib/happy_sharteel.tpa~
 END
 
@@ -10748,7 +10740,7 @@ EXTEND_TOP ~haerdali.bcs~ ~cdtweaks/baf/haerdali.baf~
 
 BEGIN @312500 DESIGNATED 3125 // happy neutrals
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd_in_bg2 ca~ @25
+REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd-in-bg2 ca~ @25
 
 COPY_EXISTING ~happy.2da~ ~override~
   FOR (row = 6; row < 12; row = row + 1) BEGIN
@@ -10767,7 +10759,7 @@ COPY_EXISTING ~happy.2da~ ~override~
 BEGIN @313000 DESIGNATED 3130
 GROUP @4
 
-ACTION_IF GAME_IS ~iwd2~ BEGIN OUTER_SET off = 0x10 END ELSE BEGIN OUTER_SET off = 0 END // outside of this, patch works for v1.0 and v9.1 areas
+ACTION_IF game_is_iwd2 BEGIN OUTER_SET off = 0x10 END ELSE BEGIN OUTER_SET off = 0 END // outside of this, patch works for v1.0 and v9.1 areas
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
   READ_SHORT (0x5a + off) trig_num
@@ -10870,12 +10862,37 @@ COPY ~cdtweaks/bam/spmagglo.bam~ ~override~
 
 BEGIN @506000 DESIGNATED 3150
 GROUP @4
-REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwd how totlm iwd2 pst pstee~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 
-WITH_SCOPE BEGIN
-     INCLUDE "cdtweaks/dw_components/always_lite.tpa"
-     LAF run STR_VAR file="mirror_cloak_ease" END
-END
+COPY_EXISTING_REGEXP GLOB ~^.+\itm$~ ~override~
+  SET blocked = 0
+  READ_LONG  0x6a fx_off
+  READ_SHORT 0x6e fx_idx
+  READ_SHORT 0x70 fx_num
+  FOR (index = 0 ; index < fx_num ; ++index) BEGIN
+    READ_BYTE  (fx_off + 0x0d + ((index + fx_idx) * 0x30)) timing
+    PATCH_IF timing = 2 BEGIN
+      READ_SHORT (fx_off + 0x00 + ((index + fx_idx) * 0x30)) opcode
+      PATCH_IF ((opcode = 197) OR (opcode = 198) OR ((opcode > 200) AND (opcode < 206)) OR (opcode = 207) OR (opcode = 223) OR ((opcode > 225) AND (opcode < 229)) OR (opcode = 259)) BEGIN
+        READ_ASCII   (fx_off + 0x00 + ((index + fx_idx) * 0x30)) copy (48)
+        INSERT_BYTES (fx_off + 0x00 + ((index + fx_idx) * 0x30)) 0x30
+        WRITE_ASCIIE (fx_off + 0x00 + ((index + fx_idx) * 0x30)) ~%copy%~ #48
+        WRITE_SHORT  (fx_off + 0x00 + ((index + fx_idx) * 0x30)) 291
+        WRITE_LONG   (fx_off + 0x08 + ((index + fx_idx) * 0x30)) 1
+        SET blocked = 1
+        SET index = fx_num // kill loop
+      END
+    END
+  END  
+  PATCH_IF blocked BEGIN
+    WRITE_SHORT 0x70 fx_num + blocked
+    READ_LONG  0x64 abil_off
+    READ_SHORT 0x68 abil_num
+    FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+      WRITE_SHORT (abil_off + 0x20 + (index * 0x38)) THIS + blocked // adjust indices
+    END  
+  END
+  BUT_ONLY  
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -10887,7 +10904,7 @@ END
 
 BEGIN @316000 DESIGNATED 3160
 GROUP @4
-REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd_in_bg2 iwd2 pst pstee ca~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
 
 COPY_EXISTING ~baldur.bcs~ ~override~
   DECOMPILE_BCS_TO_BAF
@@ -10905,7 +10922,7 @@ COPY_EXISTING ~baldur.bcs~ ~override~
 
 BEGIN @317000 DESIGNATED 3170
 GROUP @4
-REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd_in_bg2 iwd2 pst pstee ca~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
 
 COPY_EXISTING ~ar2102.bcs~ ~override~
   DECOMPILE_BCS_TO_BAF
@@ -11036,7 +11053,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_romances BEGIN
   Viconia => vico25
 END
 
-ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+ACTION_IF enhanced_edition THEN BEGIN
 
   // add bg2ee npcs
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_romances BEGIN
@@ -11056,7 +11073,7 @@ ACTION_IF ((romance_use_config_values = 1) AND NOT // sanity check; if no change
            (remove_romance_gender_requirements != 1) AND 
            (romance_multiple != 1) AND
            ((romance_nothing_kills != 1) OR (romance_multiple != 1)) AND
-           ((romance_starts_in_ToB != 1) OR (!GAME_IS ~soa~))))  THEN BEGIN
+           ((romance_starts_in_ToB != 1) OR (!game_is_soa))))  THEN BEGIN
 
   // print mini-summary for debug
   PRINT @26
@@ -11073,7 +11090,7 @@ ACTION_IF ((romance_use_config_values = 1) AND NOT // sanity check; if no change
       PRINT @318308
     END
   END
-  ACTION_IF NOT GAME_IS ~soa~ THEN BEGIN
+  ACTION_IF NOT game_is_soa THEN BEGIN
     ACTION_IF romance_starts_in_ToB = 1 THEN BEGIN
       PRINT @318312
     END
@@ -11108,7 +11125,7 @@ END ELSE BEGIN
         ACTION_READLN romance_nothing_kills
       END
     END
-    ACTION_IF NOT GAME_IS ~soa~ THEN BEGIN // tob
+    ACTION_IF NOT game_is_soa THEN BEGIN // tob
       OUTER_WHILE ((!IS_AN_INT romance_starts_in_ToB) OR ((romance_starts_in_ToB != 1) AND (romance_starts_in_ToB != 2))) BEGIN
         PRINT @318311
         ACTION_READLN romance_starts_in_ToB
@@ -11159,7 +11176,7 @@ ACTION_IF (romance_starts_in_ToB = 1) THEN BEGIN
 
   EXTEND_TOP ~aeri25.bcs~ ~cdtweaks/baf/aeri25_start_tob.baf~
 
-  ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+  ACTION_IF enhanced_edition THEN BEGIN
     COMPILE ~cdtweaks/dlg/rom_start_tob_bg2ee.d~ // order is different
   END ELSE BEGIN
     COMPILE ~cdtweaks/dlg/rom_start_tob.d~
@@ -11283,7 +11300,7 @@ ACTION_IF (romance_multiple = 1) THEN BEGIN
       END
       BUT_ONLY
 
-    ACTION_IF GAME_IS ~tob bg2ee eet~ THEN BEGIN
+    ACTION_IF game_includes_tob THEN BEGIN
     
       COPY_EXISTING ~%tob%.bcs~ ~override~
         DECOMPILE_AND_PATCH BEGIN
@@ -11317,7 +11334,7 @@ END
 BEGIN @319000 DESIGNATED 3190
 GROUP @4
 
-ACTION_IF GAME_IS ~pst~ BEGIN
+ACTION_IF game_is_pst BEGIN
 
   COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
     WRITE_BYTE 0x14 (THIS | BIT1) // this bit is called "Tutorial" in NI, but is really the can_not_sleep one.
@@ -11325,7 +11342,7 @@ ACTION_IF GAME_IS ~pst~ BEGIN
 
 END ELSE BEGIN
 
-  ACTION_IF GAME_IS ~pstee~ BEGIN
+  ACTION_IF game_is_pstee BEGIN
 
     COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
       WRITE_LONG 0x14 ((THIS & `BIT7) & `BIT8) // removes can't rest, too dangerous to rest flags
@@ -11555,9 +11572,9 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN
   35 => 0 // wands
 END
 
-ACTION_IF GAME_IS ~pst pstee~ THEN BEGIN
+ACTION_IF game_includes_pst THEN BEGIN
 
-  ACTION_IF GAME_IS ~pst~ THEN BEGIN
+  ACTION_IF game_is_pst THEN BEGIN
   
     OUTER_SET store_match = "-1" // no containers in PsT
   
@@ -11600,7 +11617,7 @@ END ELSE BEGIN // non-pst
     34 => 0 // gems
   END
 
-  ACTION_IF GAME_IS ~iwd how totlm iwd2~ THEN BEGIN
+  ACTION_IF original_iwd OR game_is_iwd2 THEN BEGIN
 
     OUTER_SET store_match = 4 // container type in iwd/iwd2
     ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN // iwd & iwd2
@@ -11619,7 +11636,7 @@ END ELSE BEGIN // non-pst
 //      58 => 1 // bags
     END
 
-    ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+    ACTION_IF game_is_iwd2 THEN BEGIN
 
       ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN // iwd2 but not iwd
         50 => 0 // notes
@@ -11654,7 +11671,7 @@ END ELSE BEGIN // non-pst
       12 => 0 // shields
     END
 
-    ACTION_IF NOT GAME_IS ~bg1 totsc~ BEGIN
+    ACTION_IF NOT (original_bg1) BEGIN
 
       ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN // common to all but bg1
          8 => 0 // keys
@@ -11664,7 +11681,7 @@ END ELSE BEGIN // non-pst
 //        38 => 1 // familiars (bg2)
       END
 
-      ACTION_IF GAME_IS ~bgee eet~ BEGIN
+      ACTION_IF game_is_bgee OR game_is_eet BEGIN
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN
           39 => 0 // bandit scalps
@@ -11680,7 +11697,7 @@ END ELSE BEGIN // non-pst
       
       END
 
-      ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
+      ACTION_IF game_is_bg2ee OR game_is_eet BEGIN
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN
 //          45 => 1 // female bodies
@@ -11689,7 +11706,7 @@ END ELSE BEGIN // non-pst
       
       END
 
-      ACTION_IF GAME_IS ~iwdee eet~ BEGIN
+      ACTION_IF game_is_iwdee OR game_is_eet BEGIN
 
         ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN
           74 => 0 // broken junk
@@ -11902,9 +11919,9 @@ BEGIN @322000 DESIGNATED 3220
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt soa tob~ @25
 
-ACTION_IF GAME_IS ~bg1 totsc tutu tutu_totsc bgt~ THEN BEGIN // BGT/Tutu/BGEE changes
+ACTION_IF game_includes_bg1 THEN BEGIN // BGT/Tutu/BGEE changes
 
-  ACTION_IF GAME_IS ~bgt~ THEN BEGIN // BGT
+  ACTION_IF game_is_bgt THEN BEGIN // BGT
     
     COPY_EXISTING ~%Beregost%.are~ ~override~ // only change for BGT is to move the east beregost entrance
       LPF ALTER_AREA_ENTRANCE INT_VAR x_coord = 4950 y_coord = 3085 orient = 4 STR_VAR entrance_name = "Exit9300" END
@@ -12042,7 +12059,7 @@ ACTION_IF GAME_IS ~bg1 totsc tutu tutu_totsc bgt~ THEN BEGIN // BGT/Tutu/BGEE ch
 
 END
 
-ACTION_IF (GAME_IS ~bgt soa tob~) THEN BEGIN // BG2/BGT; skip for bg2ee
+ACTION_IF game_includes_soa THEN BEGIN // BG2/BGT; skip for bg2ee
 
   DECOMPRESS_BIFF AREA090A.BIF
 
@@ -12241,7 +12258,7 @@ BEGIN @323000 DESIGNATED 3230
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt~ @25
 
-ACTION_IF NOT GAME_IS ~bg1 totsc~ THEN BEGIN // change fenten/taerom to only take one shell at a time
+ACTION_IF NOT (original_bg1) THEN BEGIN // change fenten/taerom to only take one shell at a time
   COMPILE ~cdtweaks/dlg/ankheg.d~ EVALUATE_BUFFER // use TakePartyItemNum when we can
 END ELSE BEGIN
   COMPILE ~cdtweaks/dlg/ankheg_bg1.d~ // otherwise stuck with TakePartyItem
@@ -12263,19 +12280,19 @@ EXTEND_TOP ~%tutu_var%taerom.bcs~ ~cdtweaks/baf/taerom.baf~ EVALUATE_BUFFER // r
 
 BEGIN @324001 DESIGNATED 3240
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
 
 INCLUDE ~cdtweaks/random/random_common.tpa~ // ar9200 fix, UB detection
 
-ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+ACTION_IF enhanced_edition THEN BEGIN
 
   INCLUDE ~cdtweaks/random/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema
 
 END
 
 COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
-  PATCH_IF NOT GAME_IS ~iwd how~ BEGIN
+  PATCH_IF NOT (game_is_iwd OR game_is_how) BEGIN
     REPLACE_TEXTUALLY ~ShadowedElvenPriest~ ~Priest_0~ // dv changes with totlm installed
   END
   COUNT_2DA_ROWS 3 "rows"
@@ -12318,7 +12335,7 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
   END
   BUT_ONLY
 
-ACTION_IF GAME_IS ~iwd_in_bg2~ BEGIN
+ACTION_IF game_is_iwd-in-bg2 BEGIN
   
   COPY_EXISTING ~ar3501.bcs~ ~override~
                 ~ar3502.bcs~ ~override~
@@ -12338,7 +12355,7 @@ END
 
 BEGIN @324100 DESIGNATED 3241
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
 
 INCLUDE ~cdtweaks/random/random_common.tpa~ // ar9200 fix, UB detection
@@ -12355,9 +12372,9 @@ COPY_EXISTING ~de1tres.itm~ ~override~
 COPY ~cdtweaks/random/cdrandom.d~   ~weidu_external/cdtweaks/random/cdrandom.d~
 COPY ~cdtweaks/random/cdrandom.baf~ ~weidu_external/cdtweaks/random/cdrandom.baf~
 
-ACTION_IF GAME_IS ~iwdee iwd_in_bg2~ THEN BEGIN // if modern engine
+ACTION_IF game_is_iwdee OR game_is_iwd-in-bg2 THEN BEGIN // if modern engine
 
-  ACTION_IF GAME_IS ~iwd_in_bg2~ THEN BEGIN // if IWD-in-BG2 instead of true IWD...
+  ACTION_IF game_is_iwd-in-bg2 THEN BEGIN // if IWD-in-BG2 instead of true IWD...
 
     COPY ~weidu_external/cdtweaks/random/cdrandom.d~ ~weidu_external/cdtweaks/random/cdrandom.d~
       REPLACE_TEXTUALLY ~SAY #288~ ~SAY #74388~ // normally we'd replace_eval, but only one replacement
@@ -12375,12 +12392,7 @@ ACTION_IF GAME_IS ~iwdee iwd_in_bg2~ THEN BEGIN // if modern engine
     REPLACE_TEXTUALLY ~EquipItem("mring1",0)~ ~EquipItem("mring1")~
     REPLACE_TEXTUALLY ~SetDialogueRange(300)[ %TAB%%LNL%%MNL%%WNL]+Dialogue(~ ~StartDialogueNoSet(~
 
-  OUTER_SET game_is_iwdee = 1
   OUTER_SET rand_num = 1
-
-END ELSE BEGIN
-
-  OUTER_SET game_is_iwdee = 0
 
 END
 
@@ -12388,7 +12400,7 @@ COPY_EXISTING ~telanis.cre~ ~override/cdrandom.cre~
   SAY 0x08 @324101
   SAY 0x0c @324101
   WRITE_ASCII 0x248 ~cdrandom~ #8
-  PATCH_IF GAME_IS ~iwd how totlm~ BEGIN
+  PATCH_IF original_iwd BEGIN
     WRITE_BYTE  0x2d9 1 // undead > humanoid
     WRITE_ASCII 0x2e8 ~cdrandom~ #32
     WRITE_ASCII 0x334 ~cdrandom~ #8
@@ -12491,7 +12503,7 @@ COPY ~weidu_external/cdtweaks/random/cdrandom.d~ ~weidu_external/cdtweaks/random
 COMPILE ~weidu_external/cdtweaks/random/cdrandom.d~
         ~weidu_external/cdtweaks/random/cdrandom.baf~
 
-ACTION_IF GAME_IS ~iwd_in_bg2~ BEGIN
+ACTION_IF game_is_iwd-in-bg2 BEGIN
 
   COPY_EXISTING ~ar3501.bcs~ ~override~
                 ~ar3502.bcs~ ~override~
@@ -12511,7 +12523,7 @@ END
 
 BEGIN @324200 DESIGNATED 3242
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd_in_bg2~ @25
+REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
 
 INCLUDE ~cdtweaks/random/random_common.tpa~ // ar9200 fix, UB detection
@@ -12521,7 +12533,7 @@ COPY_EXISTING ~katown1.cre~ ~override/cdrndm1.cre~
   SAY 0x0c @324202
   WRITE_ASCII 0x248 ~eftwnchk~ #8
   WRITE_ASCII 0x250 ~kuatkfle~ #32 // add script, blank other fields
-  PATCH_IF GAME_IS ~iwd how totlm~ BEGIN
+  PATCH_IF original_iwd BEGIN
     WRITE_BYTE  0x270 0 // make visible
     WRITE_ASCII 0x2e8 ~cdrndm1~ #32 // dv
     WRITE_ASCII 0x334 ~cdrndm1~ #8  // dialogue
@@ -12532,7 +12544,7 @@ COPY_EXISTING ~katown1.cre~ ~override/cdrndm1.cre~
 
 EXTEND_BOTTOM ~ar2100.bcs~ ~cdtweaks/random/ar2100.baf~
 
-ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+ACTION_IF game_is_iwdee THEN BEGIN
 
   INCLUDE ~cdtweaks/random/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema in random.2da
 
@@ -12566,7 +12578,7 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
 COPY ~weidu_external/cdtweaks/random/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm1.d~
   REPLACE_TEXTUALLY ~insert_eof~ ~END~
 
-ACTION_IF NOT GAME_IS ~iwd~ THEN BEGIN // add lonelywood merchant
+ACTION_IF NOT game_is_iwd THEN BEGIN // add lonelywood merchant
 
   COPY_EXISTING ~cdrndm1.cre~ ~override/cdrndm2.cre~
     SAY 0x08 @324203
@@ -12574,7 +12586,7 @@ ACTION_IF NOT GAME_IS ~iwd~ THEN BEGIN // add lonelywood merchant
     WRITE_ASCII 0x248 ~efpikwrn~ #8
     WRITE_ASCII 0x250 ~eftwnchk~ #8
     WRITE_ASCII 0x258 ~efflee00~ #24
-    PATCH_IF GAME_IS ~iwd how totlm~ BEGIN
+    PATCH_IF original_iwd BEGIN
       WRITE_ASCII 0x2e8 ~cdrndm2~ #32 // dv
       WRITE_ASCII 0x334 ~cdrndm2~ #8  // dialogue
       WRITE_BYTE  0x270 0 // make visible
@@ -12607,7 +12619,7 @@ COMPILE ~weidu_external/cdtweaks/random/cdrndm1.d~
 
 BEGIN @325000 DESIGNATED 3250
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~iwd how totlm iwd_in_bg2~ @25 // functionality built into iwdee already
+REQUIRE_PREDICATE GAME_IS ~iwd how totlm iwd-in-bg2~ @25 // functionality built into iwdee already
 
 COMPILE ~cdtweaks/dlg/orrickadd.d~
 
@@ -13112,7 +13124,7 @@ END
 
 BEGIN @331000 DESIGNATED 3310
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~soa tob iwd2 pstee bg1 totsc iwd how totlm tutu tutu_totsc bgt ca iwd_in_bg2 bgee bg2ee eet iwdee~ @25   
+REQUIRE_PREDICATE GAME_IS ~soa tob iwd2 pstee bg1 totsc iwd how totlm tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25   
 
 COPY_EXISTING ~baldur.gam~   ~override~ // all others
               ~icewind.gam~  ~override~ // iwd
@@ -13146,11 +13158,28 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
 
 BEGIN @502000 DESIGNATED 3330
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu  tutu_totsc bgt ca bgee bg2ee eet~ @25 // requires op 295, so EEs or bg2 only
+REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt ca bgee bg2ee eet~ @25 // requires op 295, so EEs or bg2 only
 
-WITH_SCOPE BEGIN // isolate DW-coded components from the rest of the mod, in case we have incompatible variables or something
-     INCLUDE "cdtweaks/dw_components/always_lite.tpa"
-     LAF run STR_VAR file="no_chunk" END
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  READ_LONG 0x1cc bio
+  PATCH_IF bio >= 0 BEGIN // don't bother if no bio
+    LPF ADD_CRE_EFFECT INT_VAR opcode = 295 parameter2 = 1 target = 1 timing = 9 END
+  END
+  BUT_ONLY
+  
+ACTION_IF game_includes_soa BEGIN
+
+  COPY_EXISTING ~spin770.spl~ ~override~
+    LPF ALTER_EFFECT INT_VAR check_globals = 0 timing = 4 duration = 1 END
+    BUT_ONLY
+    
+  COPY_EXISTING ~ar2904.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~ReallyForceSpell(\([^,]+\),HELL_EXPLODE)~
+        ~ReallyForceSpell(\1,HELL_EXPLODE)ActionOverride(\1,LeaveParty())Wait(1)~
+    END
+    BUT_ONLY
+  
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -13803,7 +13832,7 @@ BEGIN @501000 DESIGNATED 4025
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 
-ACTION_IF !GAME_IS ~bg1 totsc~ BEGIN // originally modified a bunch of junk here, but easier just to do original bg1 as a one-off
+ACTION_IF !original_bg1 BEGIN // originally modified a bunch of junk here, but easier just to do original bg1 as a one-off
 
   WITH_TRA "cdtweaks/languages/english/dw_components.tra" "cdtweaks/languages/%LANGUAGE%/dw_components.tra" BEGIN
     INCLUDE ~cdtweaks/lib/npc_separate.tpa~
@@ -13881,7 +13910,7 @@ COPY_EXISTING_REGEXP GLOB ~^_?jahei.*\.cre$~ ~override~
   END
   BUT_ONLY
 
-ACTION_IF ((FILE_EXISTS_IN_GAME misc5x.itm) AND (NOT GAME_IS ~eet bg2ee~)) BEGIN // ee restricts this with 319
+ACTION_IF ((FILE_EXISTS_IN_GAME misc5x.itm) AND (!enhanced_edition)) BEGIN // ee restricts this with 319
 
   COPY_EXISTING ~misc5x.itm~ ~override~ // harper pin
     WRITE_BYTE 0x2c 14 // min dex
@@ -13905,7 +13934,7 @@ COPY_EXISTING_REGEXP GLOB ~^_?jahei.*\.cre$~ ~override~
   END
   BUT_ONLY
 
-ACTION_IF ((FILE_EXISTS_IN_GAME misc5x.itm) AND (NOT GAME_IS ~eet bg2ee~)) BEGIN // ee restricts this with 319
+ACTION_IF ((FILE_EXISTS_IN_GAME misc5x.itm) AND (!enhanced_edition)) BEGIN // ee restricts this with 319
 
   COPY_EXISTING ~misc5x.itm~ ~override~ // harper pin
     WRITE_BYTE 0x2c 17 // min dex
@@ -13936,7 +13965,7 @@ COPY_EXISTING_REGEXP GLOB ~^_?jahei.*\.cre$~ ~override~
 ACTION_IF FILE_EXISTS_IN_GAME misc5x.itm BEGIN
 
   COPY_EXISTING ~misc5x.itm~ ~override~ // harper pin
-    PATCH_IF GAME_IS ~eet bg2ee~ BEGIN
+    PATCH_IF GAME_IS enhanced_edition BEGIN
       WRITE_LONG 0x1e 0 // nukes all flags since 319 is in effect; shouldn't have any anyway
     END ELSE BEGIN
       READ_BYTE  0x1e "use1"
@@ -14089,7 +14118,7 @@ BEGIN @408000 DESIGNATED 4080
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 
-ACTION_IF GAME_IS ~bg1 totsc~ BEGIN
+ACTION_IF original_bg1 BEGIN
 
   COPY_EXISTING ~khalid.cre~  ~override~
                 ~khalid2.cre~ ~override~
@@ -14255,7 +14284,7 @@ END ELSE BEGIN // tutu, bgt, bgee
   
   COMPILE ~cdtweaks/dlg/p#khalid.d~ EVALUATE_BUFFER
 
-  ACTION_IF GAME_IS ~bgee eet~ BEGIN
+  ACTION_IF GAME_IS enhanced_edition BEGIN
   
     COPY_EXISTING ~%KHALID_BCS%.bcs~ ~override~
       DECOMPILE_AND_PATCH BEGIN
@@ -14386,7 +14415,7 @@ COPY ~cdtweaks/cre/_montar.cre~  ~override/%tutu_var%montar.cre~
   WRITE_ASCIIE 0x268 ~%tutu_var%dplayer~ #8   // default Script
   WRITE_ASCII  0x280 ~montaron~ #18           // Death Variable
   WRITE_ASCIIE 0x2cc ~%tutu_var%montar~ #8    // Dialogue file
-  PATCH_IF GAME_IS ~tutu tutu_totsc~ BEGIN
+  PATCH_IF tutu_gen BEGIN
     WRITE_ASCII 0x3c ~_ontarl~   // large portrait
   END ELSE BEGIN
     WRITE_ASCII 0x3c  ~montarm~ #8   // large portrait
@@ -14646,11 +14675,48 @@ BEGIN @503000 DESIGNATED 4150
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bg2 tob bgt eet bgee bg2ee~ @25 // All BG games
 
+COPY_EXISTING_REGEXP ~^%tutu_var%minsc.*\.cre$~ ~override~
+  SET boo = "-1"
+  READ_LONG 0x2bc item_off
+  READ_LONG 0x2c0 item_num
+  FOR (index = 0 ; index < item_num ; ++index) BEGIN
+    READ_ASCII (item_off + 0x00 + (index * 0x14)) item
+    PATCH_IF ("%item%" STRING_COMPARE_CASE "misc84" = 0) BEGIN
+      SET boo = index
+      SET index = item_num // kill loop
+    END
+  END
+  PATCH_IF boo >= 0 BEGIN
+    READ_LONG 0x2b8 slot_off
+    FOR (index = 0 ; index < 37 ; ++index) BEGIN
+      READ_SHORT (slot_off + (index * 0x02)) item_idx
+      PATCH_IF item_idx = boo BEGIN
+        WRITE_SHORT (slot_off + (index * 0x02)) "-1" // delete all existing boo references
+      END
+    END    
+    FOR (index = 21 ; index < 37 ; ++index) BEGIN  
+      READ_SHORT (slot_off + (index * 0x02)) item_idx
+      PATCH_IF item_idx = 0xffff BEGIN              // if empty slot...
+        WRITE_SHORT (slot_off + (index * 0x02)) boo // add boo
+        SET index = 37 // kill loop
+      END
+    END    
+  END
+  BUT_ONLY  
 
-WITH_SCOPE BEGIN // isolate DW-coded components from the rest of the mod, in case we have incompatible variables or something
-     INCLUDE "cdtweaks/dw_components/always_lite.tpa"
-     LAF run STR_VAR file="move_boo" END
+// bg2 ub compat
+ACTION_FOR_EACH spell IN wwboo wwfboo wwnoboo BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%spell%.spl~ BEGIN
+  
+    COPY_EXISTING "%spell%.spl" override
+      LPF ALTER_EFFECT STR_VAR check_globals = 0 match_opcode = 143 opcode = 122 parameter1 = 0 END
+      BUT_ONLY
+
+  END
+
 END
+
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -14680,22 +14746,15 @@ BEGIN @505000 DESIGNATED 4170
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
 
-ACTION_IF GAME_IS ~tutu tutu_totsc bgt eet bgee~ BEGIN
-
-  WITH_SCOPE BEGIN // isolate DW-coded components from the rest of the mod, in case we have incompatible variables or something
-       INCLUDE "cdtweaks/dw_components/always_lite.tpa"
-       LAF run STR_VAR file="protect_sharteel" END
-  END
-  
-END ELSE BEGIN // original bg - no min hp effect, so overcharge her HP and end fight when she's back to her normal HP
-
-  COPY_EXISTING ~sharte.cre~  ~override~
-                ~sharte4.cre~ ~override~
-                ~sharte6.cre~ ~override~
-    WRITE_BYTE 0x24 ((THIS * 3) / 2) // increase by 50%
-    WRITE_BYTE 0x26 ((THIS * 3) / 2) // increase by 50%
+ACTION_IF original_bg1 BEGIN // original bg - no min hp effect, so overcharge her HP and end fight when she's back to her normal HP
     
   ADD_SPELL ~cdtweaks/spl/cdshart.spl~ 3 1 CD_SHARTEEL_HP_REDUCTION 
+  
+  COPY_EXISTING ~shartel2.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~HPPercentLT(Myself,50)~ ~HPPercentLT(Myself,66)~
+      REPLACE_TEXTUALLY ~HPPercentLT(Myself,75)~ ~HPPercentLT(Myself,90)~
+    END
   
   <<<<<<<< ./inline/cdsharteel.baf
     IF
@@ -14707,16 +14766,32 @@ END ELSE BEGIN // original bg - no min hp effect, so overcharge her HP and end f
         SetGlobal("CD_SHARTEEL_HP_REDUCTION","GLOBAL",1)
     END
   >>>>>>>>
-
-  EXTEND_TOP ~sharteel.bcs~ ~./inline/cdsharteel.baf~
   
-  COPY_EXISTING ~shartel2.bcs~ ~override~
-    DECOMPILE_AND_PATCH BEGIN
-      REPLACE_TEXTUALLY ~HPPercentLT(Myself,50)~ ~HPPercentLT(Myself,66)~
-      REPLACE_TEXTUALLY ~HPPercentLT(Myself,75)~ ~HPPercentLT(Myself,90)~
+END ELSE BEGIN 
+
+  <<<<<<<< ./inline/cdsharteel.baf
+    IF
+      InParty(Myself)
+      HasItem("monhp1",Myself)
+    THEN
+      RESPONSE #100
+        DestroyItem("monhp1")
     END
+  >>>>>>>>
 
 END   
+
+COPY_EXISTING ~%tutu_var%sharte.cre~  ~override~
+              ~%tutu_var%sharte4.cre~ ~override~
+              ~%tutu_var%sharte6.cre~ ~override~
+  PATCH_IF original_bg1 BEGIN
+    WRITE_BYTE 0x24 ((THIS * 3) / 2) // increase by 50%
+    WRITE_BYTE 0x26 ((THIS * 3) / 2) // increase by 50%
+  END ELSE BEGIN    
+    ADD_CRE_ITEM monhp1 #0 #0 #0 none ~RRING LRING AMULET BELT BOOTS CLOAK GLOVES ARMOR HELMET~
+  END  
+  
+EXTEND_TOP ~%tutu_scripts%harteel.bcs~ ~./inline/cdsharteel.baf~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

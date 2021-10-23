@@ -1,6 +1,0 @@
-DEFINE_ACTION_FUNCTION mirror_cloak_ease BEGIN
-
-    COPY_EXISTING "clck26.itm" override
-         LPF ADD_ITEM_EQEFFECT INT_VAR opcode=291 timing=2 target=1 parameter2=1 insert_point=0 END
-    BUT_ONLY IF_EXISTS
-END

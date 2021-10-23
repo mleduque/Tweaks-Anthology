@@ -45,7 +45,7 @@ COPY ~./inline/inn_data.2da~ ~./inline/inn_data.2da~
       SPRINT state1 ~%state_ee%~
       SPRINT state2 ~%state_ee2%~
     END ELSE BEGIN
-      PATCH_IF GAME_IS bgt BEGIN
+      PATCH_IF game_is_bgt BEGIN
         SPRINT state1 ~%state_bgt%~
         SPRINT state2 ~%state_bgt2%~
       END ELSE BEGIN

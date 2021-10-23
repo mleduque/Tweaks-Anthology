@@ -22,50 +22,90 @@ DEFINE_ACTION_FUNCTION 2h_weapons
 BEGIN
 
   ACTION_IF use_type THEN BEGIN OUTER_SET prof_check = bg1_type END
+  
+  ACTION_CLEAR_ARRAY cd_bastard // this array used to give item charges
+  ACTION_CLEAR_ARRAY cd_2hweap  // used to rpevent dupe entries
 
   // lookup table
-  ACTION_IF !FILE_EXISTS ~weidu_external/cdtweaks/2da/%2da_file%.2da~ BEGIN
+  ACTION_IF FILE_EXISTS ~weidu_external/cdtweaks/2da/%2da_file%_final.2da~ BEGIN
+    COPY ~weidu_external/cdtweaks/2da/%2da_file%_final.2da~ ~weidu_external/cdtweaks/2da/%2da_file%.2da~
+  END ELSE BEGIN
     COPY ~cdtweaks/2da/%2da_file%.2da~ ~weidu_external/cdtweaks/2da/%2da_file%.2da~
-  END
+  END  
+  
+  COPY ~weidu_external/cdtweaks/2da/%2da_file%.2da~ ~weidu_external/cdtweaks/2da/%2da_file%.2da~
+    COUNT_2DA_ROWS 3 cd_count
+    FOR (row = 0 ; row < cd_count ; ++row) BEGIN // skip header
+      READ_2DA_ENTRY row 0 3 item
+      TO_LOWER item
+      SET $cd_2hweap("%item%") = 1
+    END  
   
   // this array used to give item charges
   ACTION_CLEAR_ARRAY cd_bastard
   
   // search for items and push them into lookup table if not already listed
   COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-    PATCH_IF (use_type = 1) BEGIN
+    SET prof_check_passed = 0
+    PATCH_IF (use_type = 1) BEGIN // only used for bastard swords & axes on oBG, so add extra checks
       READ_SHORT 0x1c prof
+      PATCH_IF (prof = prof_check) BEGIN
+        PATCH_IF (prof_check = 25) BEGIN // axes are fine with simple check
+          SET prof_check_passed = 1 
+        END ELSE BEGIN                   // bastard swords need further checks
+          READ_LONG 0x08 gen_name
+          PATCH_IF gen_name = 6646 BEGIN // generic name is "bastard sword"
+            SET prof_check_passed = 1 
+          END ELSE BEGIN
+            PATCH_IF ((gen_name != 2893) AND (gen_name != 11052)) BEGIN // only proceed to usability check if generic name is not "Long Sword" or "Scimitar"
+              READ_LONG 0x1e usability
+              PATCH_IF (((usability & BIT22) = BIT22) AND    // unusable by thieves (excludes long swords)
+                        ((usability & BIT30) = BIT30)) BEGIN // unusable by druids (excludes scimitars)
+                SET prof_check_passed = 1 
+              END // usability check
+            END // gen_name != scimitar or long sword
+          END // gen_name = bastard
+        END // axe or bastard sword  
+      END // prof = prof_check
     END ELSE BEGIN
       READ_BYTE 0x31 prof
+      PATCH_IF prof = prof_check BEGIN SET prof_check_passed = 1 END
     END
-    READ_BYTE 0x18 flags
-    SET melee = 0
-    READ_LONG  0x64 abil_off
-    READ_SHORT 0x68 abil_num
-    FOR (index = 0 ; index < abil_num ; ++index) BEGIN
-      READ_SHORT (abil_off +        (index * 0x38)) type
-      PATCH_IF (type = 1) BEGIN
-        SET melee = 1
-      END
-      PATCH_IF (type = 2) BEGIN
-        SET melee = 0
-        SET index = abil_num // kills loop, prevents patching if ranged item
-      END
-    END
-    PATCH_IF ((melee = 1) AND (prof = prof_check) AND ((flags & 0b00000110) = BIT2) AND  // correct prof, droppable, 1-handed, only if it has melee ability w/o ranged
-              (!FILE_CONTAINS_EVALUATED (~%2da_file%.2da~ ~^%SOURCE_RES% ~))) BEGIN      // and not already in file
-      INNER_ACTION BEGIN
-  
-        OUTER_SET cd_count += 1
-        APPEND_OUTER ~weidu_external/cdtweaks/2da/%2da_file%.2da~ ~%SOURCE_RES%  cd%prefix%%cd_count%  c!%prefix%%cd_count%~
+    PATCH_IF prof_check_passed BEGIN
+      SPRINT item ~%SOURCE_RES%~
+      TO_LOWER item
+      PATCH_IF !VARIABLE_IS_SET $cd_2hweap("%item%") BEGIN // make sure not in array already
+        READ_BYTE 0x18 flags
+        PATCH_IF ((flags & 0b00000110) = BIT2) BEGIN // if droppable and one-handed
+          SET melee = 0
+          READ_LONG  0x64 abil_off
+          READ_SHORT 0x68 abil_num
+          FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+            READ_SHORT (abil_off +        (index * 0x38)) type
+            PATCH_IF (type = 1) BEGIN
+              SET melee = 1
+            END
+            PATCH_IF (type = 2) BEGIN
+              SET melee = 0
+              SET index = abil_num // kills loop, prevents patching if ranged item
+            END
+          END
+          PATCH_IF melee BEGIN // if actual melee weapon
+            INNER_ACTION BEGIN
+        
+              OUTER_SET cd_count += 1
+              APPEND_OUTER ~weidu_external/cdtweaks/2da/%2da_file%.2da~ ~%item%  cd%prefix%%cd_count%  c!%prefix%%cd_count%~
 
-      END
-    END
+            END // inner_action
+          END // melee check
+        END // droppable/one-handed check
+      END // not already in array check
+    END // prof check      
     BUT_ONLY
   
-  // copy lookup table back w/o backup--this means further (re-)installs will
+  // copy lookup table w/o backup--this means further (re-)installs will
   // keep the existing file names and prevent save breakage
-  COPY + ~weidu_external/cdtweaks/2da/%2da_file%.2da~ ~weidu_external/cdtweaks/2da/%2da_file%.2da~
+  COPY ~weidu_external/cdtweaks/2da/%2da_file%.2da~ ~weidu_external/cdtweaks/2da/%2da_file%.2da~
     COUNT_2DA_ROWS 3 rows
     FOR (index = 0 ; index < rows ; ++index) BEGIN
       READ_2DA_ENTRY index 0 3 orig
@@ -76,18 +116,27 @@ BEGIN
         ACTION_IF FILE_EXISTS_IN_GAME ~%orig%.itm~ THEN BEGIN
   
           COPY_EXISTING ~%orig%.itm~ ~override~ // &$^*# CoM item names
-            PATCH_IF (use_type = 1) BEGIN
-              READ_SHORT 0x1c prof // use type
+            SET prof_check_passed = 0
+            PATCH_IF (use_type = 1) BEGIN // only used for bastard swords & axes on oBG, so add extra checks
+              READ_SHORT 0x1c prof
+              PATCH_IF (prof_check = 25) BEGIN // axes
+                PATCH_IF (prof = prof_check) BEGIN
+                  SET prof_check_passed = 1 
+                END  
+              END ELSE BEGIN                   // bastard swords need further checks
+                READ_LONG 0x1e usability
+                PATCH_IF ((prof = prof_check) AND              // right type (large swords, 20)
+                          ((usability & BIT22) = BIT22) AND    // unusable by thieves (excludes long swords)
+                          ((usability & BIT30) = BIT30)) BEGIN // unusable by druids (excludes scimitars)
+                  SET prof_check_passed = 1 
+                END
+              END  
             END ELSE BEGIN
               READ_BYTE 0x31 prof
-            END
-            PATCH_IF (prof = prof_check) BEGIN // bg2/ee bastard prof
-              SET proceed = 1
-            END ELSE BEGIN
-              SET proceed = 0
+              PATCH_IF prof = prof_check BEGIN SET prof_check_passed = 1 END
             END
           
-          ACTION_IF proceed = 1 THEN BEGIN
+          ACTION_IF prof_check_passed = 1 THEN BEGIN
   
             COPY_EXISTING ~%orig%.itm~ ~override~
               READ_SHORT  0x42 lore
@@ -264,4 +313,6 @@ BEGIN
     END
     BUT_ONLY
 
+  COPY + ~weidu_external/cdtweaks/2da/%2da_file%.2da~ ~weidu_external/cdtweaks/2da/%2da_file%_final.2da~
+  
 END

@@ -1,15 +1,15 @@
 OUTER_SET alleg_off = 0x270 // cre v1.0
 OUTER_SET rest_offr = 0x0c0 // are v1.0
 
-ACTION_IF GAME_IS ~pst~ BEGIN // pstee uses cre v1
+ACTION_IF game_is_pst BEGIN // pstee uses cre v1
   OUTER_SET alleg_off = 0x314 // cre v1.2
 END
 
-ACTION_IF GAME_IS ~iwd how totlm~ BEGIN
+ACTION_IF original_iwd BEGIN
   OUTER_SET alleg_off = 0x2d8 // cre v9.0
 END
 
-ACTION_IF GAME_IS ~iwd2~ BEGIN
+ACTION_IF game_is_iwd2 BEGIN
   OUTER_SET alleg_off = 0x384 // cre v2.2
   OUTER_SET rest_offr = 0x0d0 // are v9.1
 END

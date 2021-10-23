@@ -19,16 +19,16 @@ skie_stay              6             6              6                   6
 kicked_out_variable    KickedOut     KickedOut      IWasKickedOut       KickedOut
 >>>>>>>>
 
-ACTION_IF GAME_IS bgee BEGIN
+ACTION_IF game_is_bgee BEGIN
   OUTER_SET column = 1
 END ELSE
-ACTION_IF GAME_IS bgt BEGIN
+ACTION_IF game_is_bgt BEGIN
   OUTER_SET column = 3
 END ELSE
-ACTION_IF GAME_IS ~tutu tutu_totsc~ BEGIN
+ACTION_IF tutu_gen BEGIN
   OUTER_SET column = 2
 END ELSE
-ACTION_IF GAME_IS eet BEGIN
+ACTION_IF game_is_eet BEGIN
   OUTER_SET column = 4
 END ELSE BEGIN
  FAIL "unidentified game at crossplatform"

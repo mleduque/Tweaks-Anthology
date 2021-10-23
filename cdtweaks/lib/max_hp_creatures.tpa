@@ -1,15 +1,15 @@
 // i've learned that GAME_IS checks in a regexp copy are very slooooow, so...
 OUTER_SET class_off = 0x273 // cre v1.0
 
-ACTION_IF GAME_IS ~pst~ BEGIN // pstee uses v1.0
+ACTION_IF game_is_pst BEGIN // pstee uses v1.0
   OUTER_SET class_off = 0x317
 END
 
-ACTION_IF GAME_IS ~iwd how totlm~ BEGIN
+ACTION_IF original_iwd BEGIN
   OUTER_SET class_off = 0x2db // cre v9.0
 END
 
-ACTION_IF NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ BEGIN
+ACTION_IF NOT (original_bg1 OR original_iwd OR game_is_iwd2 OR game_includes_pst) BEGIN
   OUTER_SET check_kit = 1
 END ELSE BEGIN
   OUTER_SET check_kit = 0

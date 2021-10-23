@@ -37,7 +37,7 @@ BUT_ONLY IF_EXISTS
 OUTER_FOR (i = 0; i < entrances; ++i) BEGIN
   OUTER_SET x = $entrances(~%i%~ ~x~)
   OUTER_SET y = $entrances(~%i%~ ~y~)
-  ACTION_IF (GAME_IS ~pst~) BEGIN
+  ACTION_IF (game_is_pst) BEGIN
     OUTER_TEXT_SPRINT location ~[%x%.%y%]~
   END ELSE BEGIN
     OUTER_TEXT_SPRINT location ~%x%,%y%~

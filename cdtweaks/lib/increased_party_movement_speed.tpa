@@ -9,7 +9,7 @@ RET
 BEGIN
   OUTER_SET success = 0
 
-  ACTION_IF (GAME_IS ~bgee bg2ee iwdee eet~ && FILE_EXISTS ~engine.lua~) BEGIN
+  ACTION_IF (enhanced_edition && FILE_EXISTS ~engine.lua~) BEGIN
     LAF A7_INSTALL_AUTOHASTE_SPLSTATE
       INT_VAR casting_speed movement_speed speed_percent
       RET success
@@ -212,7 +212,7 @@ BEGIN
     BUT_ONLY IF_EXISTS
 
     ACTION_IF (slot_autohaste >= 0 && slot_autohaste <= 255) BEGIN
-        OUTER_SET strref_speed_off = (GAME_IS ~bgee bg2ee iwdee eet~) ? "-1" : RESOLVE_STR_REF(@333070) // Movement speed bonus removed
+        OUTER_SET strref_speed_off = (enhanced_edition) ? "-1" : RESOLVE_STR_REF(@333070) // Movement speed bonus removed
       APPEND ~msectype.2da~ ~A7_AUTOHASTE     %strref_speed_off%~
 
       OUTER_FOR (idx = 1; idx <= 2; ++idx) BEGIN

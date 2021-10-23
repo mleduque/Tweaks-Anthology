@@ -1,4 +1,4 @@
-ACTION_IF NOT GAME_IS ~iwd how totlm pst bg1 totsc~ THEN BEGIN // no TakePartyItemNum action
+ACTION_IF NOT (original_iwd OR original_bg1 OR game_is_pst) THEN BEGIN // no TakePartyItemNum action
 
   COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
     DECOMPILE_AND_PATCH BEGIN

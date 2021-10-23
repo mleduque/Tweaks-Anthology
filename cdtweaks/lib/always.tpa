@@ -1,4 +1,33 @@
-ACTION_IF GAME_IS ~bgee bg2ee iwdee eet pstee~ BEGIN // ee games
+MKDIR ~weidu_external/cdtweaks~
+
+<<<<<<<< ./inline/always_checks.tpa
+ACTION_IF %check% %gamecheck% BEGIN
+  OUTER_SET ~%var%_%gamecheck%~ = 1
+END ELSE BEGIN
+  OUTER_SET ~%var%_%gamecheck%~ = 0
+END
+>>>>>>>>
+
+OUTER_SPRINT check ~GAME_IS~
+OUTER_SPRINT var ~game_is~
+ACTION_FOR_EACH gamecheck IN bg1 totsc soa tob iwd how totlm iwd2 pst bgee bg2ee iwdee pstee tutu tutu_totsc bgt eet ca iwd-in-bg2 BEGIN
+  COPY ~./inline/always_checks.tpa~ ~weidu_external/cdtweaks/always_checks.tpa~ EVALUATE_BUFFER
+  REINCLUDE ~weidu_external/cdtweaks/always_checks.tpa~
+END
+ 
+OUTER_SPRINT check ~GAME_INCLUDES~
+OUTER_SPRINT var ~game_includes~
+ACTION_FOR_EACH gamecheck IN bg1 totsc soa tob iwd how totlm iwd2 pst ca sod BEGIN
+  COPY ~./inline/always_checks.tpa~ ~weidu_external/cdtweaks/always_checks.tpa~ EVALUATE_BUFFER
+  REINCLUDE ~weidu_external/cdtweaks/always_checks.tpa~
+END
+
+ACTION_IF game_is_iwd  OR game_is_how OR game_is_totlm BEGIN OUTER_SET original_iwd = 1 END ELSE BEGIN OUTER_SET original_iwd = 0 END 
+ACTION_IF game_is_bg1  OR game_is_totsc                BEGIN OUTER_SET original_bg1 = 1 END ELSE BEGIN OUTER_SET original_bg1 = 0 END 
+ACTION_IF game_is_soa  OR game_is_tob                  BEGIN OUTER_SET original_bg2 = 1 END ELSE BEGIN OUTER_SET original_bg2 = 0 END 
+ACTION_IF game_is_tutu OR game_is_tutu_totsc           BEGIN OUTER_SET tutu_gen     = 1 END ELSE BEGIN OUTER_SET tutu_gen     = 0 END 
+
+ACTION_IF game_is_bgee OR game_is_bg2ee OR game_is_iwdee OR game_is_eet OR game_is_pstee BEGIN // ee games
 
   OUTER_SET enhanced_edition = 1 // re-using David's variables
 
@@ -21,7 +50,7 @@ END ELSE BEGIN
 
   OUTER_SET enhanced_edition = 0
 
-  ACTION_IF GAME_IS ~soa tob bgt ca tutu tutu_totsc iwd_in_bg2~ THEN BEGIN
+  ACTION_IF game_is_soa OR game_is_tob OR game_is_bgt OR game_is_ca OR game_is_tutu OR game_is_tutu_totsc OR game_is_iwd-in-bg2 THEN BEGIN
 
     ACTION_FOR_EACH file IN iplot01k.itm iplot04g.itm iplot04h.itm iplot04i.itm xr2400.are xr2600.are BEGIN
       DISABLE_FROM_KEY "%file%"
@@ -31,7 +60,7 @@ END ELSE BEGIN
 
 END  
 
-ACTION_IF GAME_IS ~bg1 totsc tutu tutu_totsc bgt bgee eet~ THEN BEGIN
+ACTION_IF game_includes_bg1 THEN BEGIN
 
   INCLUDE ~cdtweaks/lib/g3_cpmvars_master.tpa~ // sets bg/bgee/bgt/eet/tutu vars, cd_extend_bg_area_script macro 
 
@@ -39,7 +68,7 @@ END
 
 ACTION_IF MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~0~ THEN BEGIN OUTER_SET is_tobex = 1 END ELSE BEGIN OUTER_SET is_tobex = 0 END // TobEx
   
-ACTION_IF GAME_IS ~eet~ BEGIN
+ACTION_IF game_is_eet BEGIN
   OUTER_SET bg2_chapter = 12
 END ELSE BEGIN
   OUTER_SET bg2_chapter = 0

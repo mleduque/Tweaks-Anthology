@@ -19,7 +19,7 @@ ADD_KIT ~D5FIGHT~
   SAY #9556
   //___________________________________________________________________________________
   
-ACTION_IF GAME_IS ~bgee bg2ee iwdee eet~ THEN BEGIN
+ACTION_IF enhanced_edition THEN BEGIN
   LAF fl#add_kit_ee
     INT_VAR
 //      briefdesc = 102492
@@ -47,7 +47,7 @@ COPY_EXISTING ~CLABRN01.2da~ ~override/CLABRN01.2da~
   SAY #10173
   SAY #9557
 
-ACTION_IF GAME_IS ~bgee bg2ee iwdee eet~ THEN BEGIN
+ACTION_IF enhanced_edition THEN BEGIN
   LAF fl#add_kit_ee
     INT_VAR
 //      briefdesc = 102496

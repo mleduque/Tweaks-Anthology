@@ -45,7 +45,7 @@ OUTER_SET check_cre_fx_type = 1
 OUTER_SET itm_min_size = 0x72
 OUTER_SET spl_min_size = 0x72
 
-ACTION_IF GAME_IS ~pst~ BEGIN
+ACTION_IF game_is_pst BEGIN
 
   OUTER_SET cre_counter_offset_off = 0x036c
   OUTER_SET cre_fx_off_off  = 0x368
@@ -54,7 +54,7 @@ ACTION_IF GAME_IS ~pst~ BEGIN
 
 END
 
-ACTION_IF GAME_IS ~iwd2~ BEGIN  
+ACTION_IF game_is_iwd2 BEGIN  
 
   OUTER_SET cre_counter_offset_off = 0x0622
   OUTER_SET cre_fx_off_off  = 0x61e
@@ -66,7 +66,7 @@ ACTION_IF GAME_IS ~iwd2~ BEGIN
 
 END
 
-ACTION_IF GAME_IS ~iwd~ BEGIN
+ACTION_IF original_iwd BEGIN
 
   OUTER_SET cre_counter_offset_off = 0x330
   OUTER_SET cre_fx_off_off  = 0x32c

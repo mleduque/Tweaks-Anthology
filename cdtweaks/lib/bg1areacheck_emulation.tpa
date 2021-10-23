@@ -35,7 +35,7 @@ ACTION_IF NOT VARIABLE_IS_SET cd_BG1TriggerEmulation THEN BEGIN
   END
   >>>>>>>>
   
-  ACTION_IF GAME_IS ~bg1 totsc~ THEN BEGIN
+  ACTION_IF original_bg1 THEN BEGIN
   
     COPY_EXISTING  ~AR2612.ARE~ ~override~ // two areas in BG1 have wrong flag "Outdoor"
                    ~AR3317.ARE~ ~override~

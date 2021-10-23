@@ -1,4 +1,4 @@
-ACTION_IF GAME_IS ~soa tob bg2ee eet bgt tutu tutu_totsc~ BEGIN
+ACTION_IF (tutu_gen OR game_includes_soa) BEGIN
 
   // from the original ALWAYS block
   ACTION_IF FILE_EXISTS_IN_GAME ~fw0125.are~ BEGIN //Tutu

@@ -34,7 +34,7 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
   BUT_ONLY
   
 OUTER_SET col_start = 0
-ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ BEGIN // ee has an extra column at the front
+ACTION_IF GAME_IS enhanced_edition BEGIN // ee has an extra column at the front
   OUTER_SET col_start = 1
 END
 

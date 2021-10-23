@@ -28,7 +28,7 @@ ACTION_GET_STRREF  9401 spiked
 ACTION_GET_STRREF  9403 prof_missile
 ACTION_GET_STRREF 11052 scimitar
 
-ACTION_IF GAME_IS ~bgee~ BEGIN // ee has different strrefs for eastern stuff
+ACTION_IF game_is_bgee BEGIN // ee has different strrefs for eastern stuff
   ACTION_GET_STRREF 26716 waki
   ACTION_GET_STRREF 26711 katana
   ACTION_GET_STRREF 26721 ninjato

@@ -6,7 +6,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~misc9q.itm~ THEN BEGIN // ToB
 
 END
 
-ACTION_IF GAME_IS ~tob bg2ee eet~ THEN BEGIN // ToB
+ACTION_IF game_includes_tob THEN BEGIN // ToB
 
   COPY_EXISTING ~sw1h66.itm~ ~override~
     WRITE_ASCII 0x22 "ss" #2

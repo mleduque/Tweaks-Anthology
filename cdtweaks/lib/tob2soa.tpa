@@ -1,4 +1,4 @@
-ACTION_IF GAME_IS ~soa~ THEN BEGIN
+ACTION_IF game_is_soa THEN BEGIN
 
   // adding all ToB actions to action.ids unless already present
   APPEND ~ACTION.IDS~ ~31 SpellRES(S:RES*,O:Target*)~

@@ -1,6 +1,6 @@
-ACTION_IF GAME_IS ~pst pstee~ THEN BEGIN
+ACTION_IF game_includes_pst THEN BEGIN
 
-  ACTION_IF GAME_IS ~pst~ THEN BEGIN // pst but not pstee
+  ACTION_IF game_is_pst THEN BEGIN // pst but not pstee
   
     ACTION_IF stack > 255 BEGIN OUTER_SET stack = 255 END
   
@@ -23,7 +23,7 @@ END
 
 ACTION_CLEAR_ARRAY cd_stackables
 
-ACTION_IF GAME_IS ~iwd how totlm bg1 totsc~ THEN BEGIN // old engines need a header to be able to stack items
+ACTION_IF (original_iwd OR original_bg1) THEN BEGIN // old engines need a header to be able to stack items
   OUTER_SET needs_header = 1
 END ELSE BEGIN
   OUTER_SET needs_header = 0

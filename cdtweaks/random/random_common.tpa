@@ -36,7 +36,7 @@ ar9100   EXTRES3  Alpheus~
   
 END
 
-ACTION_IF GAME_IS ~iwdee~ THEN BEGIN // iwdee uses slightly different placement for TG4/5Tres from ub's restored random drops
+ACTION_IF game_is_iwdee THEN BEGIN // iwdee uses slightly different placement for TG4/5Tres from ub's restored random drops
 
   APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~
 ~ar3602   TG4Tres  AR3602Chest3
@@ -48,7 +48,7 @@ ar9100   EXTRES3  Alpheus~
 END
 
 // first, a couple of areas have random drops in non-uniquely named containers
-ACTION_IF NOT GAME_IS ~iwdee iwd_in_bg2~ THEN BEGIN
+ACTION_IF NOT (game_is_iwdee OR game_is_iwd-in-bg2) THEN BEGIN
 
   OUTER_SPRINT KT1Tres_ref "KT1Tres"
   OUTER_SPRINT KT2Tres_ref "KT2Tres"

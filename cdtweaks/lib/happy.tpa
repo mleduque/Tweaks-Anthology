@@ -1,5 +1,5 @@
 // bogstandard bg2 conflicts; don't bother if Tutu/BGEE game
-ACTION_IF GAME_IS ~soa tob bgt bg2ee eet~ THEN BEGIN
+ACTION_IF game_includes_soa THEN BEGIN
 
   //anomen-keldorn
   COPY_EXISTING ~anomen.bcs~  ~override~
@@ -55,7 +55,7 @@ ACTION_IF GAME_IS ~soa tob bgt bg2ee eet~ THEN BEGIN
   // removes korgan-aerie grumpiness
   EXTEND_TOP ~korgan.bcs~ ~cdtweaks/baf/korgan.baf~
 
-  ACTION_IF GAME_IS ~bg2ee~ THEN BEGIN // for new npcs
+  ACTION_IF enhanced_edition THEN BEGIN // for new npcs
 
     // anomen-dorn
     COPY_EXISTING ~anomen.bcs~ ~override~
@@ -110,9 +110,7 @@ ACTION_IF GAME_IS ~soa tob bgt bg2ee eet~ THEN BEGIN
 END
 
 // bg fights
-ACTION_IF GAME_IS ~bgee bg1 totsc tutu tutu_totsc bgt eet~ THEN BEGIN
-
-  INCLUDE ~cdtweaks/lib/g3_bg_cpmvars.tpa~
+ACTION_IF game_includes_bg1 THEN BEGIN
 
   EXTEND_TOP ~%EDWIN_BCS%.bcs~    ~cdtweaks/baf/edwin.baf~
   EXTEND_TOP ~%MINSC_BCS%.bcs~    ~cdtweaks/baf/edwin.baf~
@@ -130,7 +128,7 @@ ACTION_IF GAME_IS ~bgee bg1 totsc tutu tutu_totsc bgt eet~ THEN BEGIN
   EXTEND_TOP ~%TIAX_BCS%.bcs~     ~cdtweaks/baf/tiax.baf~
   EXTEND_TOP ~%QUAYLE_BCS%.bcs~   ~cdtweaks/baf/tiax.baf~
   
-  ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+  ACTION_IF enhanced_edition THEN BEGIN
 
     // %*&#( dorn fights with everyone... sigh
     EXTEND_TOP ~dorn.bcs~ ~cdtweaks/baf/dorndorn.baf~

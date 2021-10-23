@@ -18,7 +18,7 @@ ACTION_PHP_EACH cd_new_anims AS anims => entry BEGIN
       
   APPEND ~animate.ids~ ~0x%anims_1% %entry%~ UNLESS ~^0x%anims_1%~
 
-  ACTION_IF GAME_IS ~bgee bg2ee iwdee eet~ BEGIN
+  ACTION_IF enhanced_edition BEGIN
 
     COPY_EXISTING ~%anims_0%.ini~ ~override/%anims_1%.ini~
       REPLACE_TEXTUALLY ~^\(// [A-Z]+[ %TAB%]\)cleric_[a-z]+_[a-z]+$~ ~\1%entry%~
@@ -58,7 +58,7 @@ COPY_EXISTING ~clsrcreq.2da~ ~override~
   BUT_ONLY
 
 OUTER_SET col_start = 0
-ACTION_IF GAME_IS ~bgee bg2ee eet iwdee~ BEGIN // ee has an extra column at the front
+ACTION_IF enhanced_edition BEGIN // ee has an extra column at the front
   OUTER_SET col_start = 1
 END
 

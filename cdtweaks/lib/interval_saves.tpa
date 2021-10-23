@@ -151,7 +151,7 @@ END
 
     // Feedback message
     ACTION_IF (feedback) BEGIN
-      ACTION_IF (NOT GAME_IS ~pstee~ &&
+      ACTION_IF (NOT game_is_pstee &&
                  FILE_EXISTS_IN_GAME ~util.lua~ &&
                  FILE_CONTAINS_EVALUATED(~util.lua~ ~function[ %TAB%]+highlightString~)) BEGIN
         OUTER_TEXT_SPRINT colorBegin ~^0xFF007F00~  // dark green
