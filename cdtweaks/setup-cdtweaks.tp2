@@ -284,12 +284,29 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ // animation adjustments
 BEGIN @7000 DESIGNATED 70
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~10~ @16
+LABEL ~cd_tweaks_iwd_casting_graphics~
 
-ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
+ACTION_IF enhanced_edition BEGIN
 
-  COPY ~cdtweaks/bam/%file%.bam~ ~override~
+  ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
 
-END
+    COPY ~cdtweaks/bam/%file%_ee.bam~ ~override/%file%.bam~
+         ~cdtweaks/pro/%file%.pro~    ~override~
+         
+  END
+
+END ELSE BEGIN
+
+  ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
+
+    COPY ~cdtweaks/bam/%file%.bam~ ~override~
+         
+  END
+
+END  
+
+LAF HANDLE_AUDIO STR_VAR audio_path = ~cdtweaks/wav/casting~ oggdec_path = ~cdtweaks/wav~ END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -397,6 +414,8 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BEGIN @10000 DESIGNATED 100
 GROUP @11 
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~20~ @16
+LABEL ~cd_tweaks_drab_commoners~
 
 COPY_EXISTING ~randcolr.2da~ ~override~
   REPLACE_TEXTUALLY ~HairSet1~ ~CD_DELETE_ME HairSet1~
@@ -2354,6 +2373,7 @@ BEGIN @109000 DESIGNATED 1090
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25 // Tutu, bgee or BGT only
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~40~ @16 // already installed by the calling
+LABEL ~cd_the_calling_exotic_items~
 
 OUTER_SET generic_kat_name  = 7523
 OUTER_SET generic_kat_desc  = 35963
@@ -7451,6 +7471,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_bard_spell_progression_unnerfed~
 
 COPY ~cdtweaks/2da/un_mxsplbrd.2da~ ~override/mxsplbrd.2da~
 
@@ -8579,6 +8600,8 @@ INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only huma
 BEGIN @239000 DESIGNATED 2390
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~160~ @16
+LABEL ~cd_tweaks_paladin_spell_progression_iwd~
 
 COPY ~cdtweaks/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
 
@@ -8593,6 +8616,8 @@ COPY ~cdtweaks/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
 BEGIN @240000 DESIGNATED 2400
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~170~ @16
+LABEL ~cd_tweaks_ranger_spell_progression_iwd~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
