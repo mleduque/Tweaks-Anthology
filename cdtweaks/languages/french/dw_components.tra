@@ -56,3 +56,14 @@
 @20837 = ~D'accord, je suppose que les aventuriers font aussi ce genre de choses, bien que ça n'ait pas l'air intéressant...~
 @20838 = ~Une chance d'avoir un peu de luxe et de se reposer de la route ? Je ne la gâcherai pas.~
 @20840 = ~Certainement ! J'ai quelques jours à passer en lecture. Cependant, j'attends avec impatience le moment où nous pourrons voyager à nouveau ensemble !~
+@20841 = ~Très bien ! Quand vous serez prêt à présenter vos excuses, vous me trouverez ici.~ ~Très bien ! Quand vous serez prête à présenter vos excuses, vous me trouverez ici.~
+@20842 = ~Hmmph. Si vous changez d'avis, je serai là.~
+@20843 = ~Très bien. Si un jour vous avez envie d'en savoir plus sur la conscience solaire, n'hésitez pas à venir en discuter avec moi.~
+@20844 = ~Sérieusement, <CHARNAME> ? Après tout ce que nous avons vécu ensemble ? Apparemment je me faisais desidées sur notre amitié.~ // 28125, minus the destination
+@20845 = ~Hrmm. Vousne devriez pas prendre l'habitude de commettre ce genre d'erreurs. Elles se cumulent.~ // 28392 minus the FAI part
+@20846 = ~Comme la pleine lune qui décroit et disparait, notre association touche à sa fin. Je prie pour qu'elle croisse à nouveau,que nous parcourions à nouveau les royaumes côté à côte. Si un jour vous avez envie d'en savoir plus sur la conscience solaire, n'hésitez pas à venir en discuter avec moi.~ // 29019 minus Nashkel
+@20847 = ~Rejoignez Nashkel. Ce n'est pas loin et si vous vous cachez dans les fermes de l'autre côté de la rivière, personne ne vous trouvera ni ne vous tuera. Probablement pas.~
+@20848 = ~Rejoignez Beregost. Ce n'est pas loin et si vous vous cachez derrière l'auberge de Feldpost, personne ne vous trouvera ni ne vous tuera. Probablement pas.~
+@20849 = ~Rejoignez les Portes de Baldur.Ce n'est pas loin et si vous vous cachez derrière la boutique d'objets magiques, personne ne vous trouvera ni ne vous tuera. Probablement pas.~
+@20850 = ~Restez ici et faites profil bas, personne ne vous trouvera ni ne vous tuera. Probablement pas.~
+@20851 = ~D'accord ! Mais je vous attends. Ne me laissez pas mourir aux mains d'un barbare à la peau pâle !~

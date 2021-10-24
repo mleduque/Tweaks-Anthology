@@ -37,6 +37,10 @@ ou rendues obsoletes par un autre mod deja installe.~
 @26 = ~Utilisation des valeurs du fichier de config cdtweaks.txt pour ce composant...~
 @27 = ~Il est necessaire d'utiliser Modmerge avant d'installer des mods pour ce jeu. Consultez le readme pour plus d'informations et pour trouver un lien pour telecharger Modmerge.~
 @28 = ~Nombre d'emplacements disponibles de "spellstates" ou d'ecoles de magie secondaire insuffisant pour installer ce composant (trop de mods installes).~
+
+@100 = ~installateur automatisé~
+@101 = ~Fichier d'installation automatisée non trouvé, ignoré...~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -80,8 +84,12 @@ ou rendues obsoletes par un autre mod deja installe.~
 @19300 = ~Pour tous les casques non magiques~
 @19400 = ~Pour tous les boucliers~
 @19500 = ~Pour tous les boucliers non magiques~
-@20000 = ~Retirer l'effet de Flou des objets, par exemple la Cape de deplacement~
+@20000 = ~Retirer les effets de Flou~
+@20002 = ~Retirer les effets de Flou et de réflexion~
+@20003 = ~Retirer tout ce qui précède~
+@20101 = ~Installer les deux~
 @21000 = ~Separer l'icone de resistance au feu/froid en icones distinctes (Angel)~
+@22000 = ~Surcouches améliorées pour les joueurs daltoniens (Fouinto)~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -332,7 +340,16 @@ ou rendues obsoletes par un autre mod deja installe.~
 @236000 = ~Suppression des restrictions raciales pour les mono-classes~
 @237000 = ~Alterer les restrictions de jumelage~
 @237001 = ~Les humains ne peuvent plus se jumeler~
-@237100 = ~Autoriser les non-humains a se jumeler~
+
+// the next two strings should match content TO BE REMOVED from the racial description of humans and the help reference for dual-classing
+// you may need to check the EEs, as oBG2 doesn't mention dual-classing in #9550 or #32540
+@237002 = ~. Ils sont aussi la seule race à pouvoir prétendre à une classe jumelée~ // from strref #9550
+@237003 = ~Seuls les humains peuvent profiter du principe de classe jumelée. ~ // from strref #10811
+// TODO - there is no translation for this part yet
+@237004 = ~, if your character is human~ // BG tutorial monk dialogue monktu4 - 32540 in BGEE/SoD 
+
+@237100 = ~Autoriser les non-humains à se jumeler~
+@237200 = ~Les deux options: *seuls* les non-humains peuvent se jumeler~
 @238000 = ~Suppression des restrictions raciales pour les kits~
 @239000 = ~Les paladins utilisent les tables de sort d'Icewind Dale - Heart of Winter (grogerson)~
 @240000 = ~Les rodeurs utilisent les tables de sort d'Icewind Dale - Heart of Winter (grogerson)~
@@ -351,6 +368,17 @@ ou rendues obsoletes par un autre mod deja installe.~
 @252000 = ~Permettre aux mages d'utiliser une targe et les voleurs d'utiliser une rondache (Angel)~
 @253000 = ~Les eclairs ne rebondissent pas (Angel)~
 @254000 = ~Accelerer les quetes de forteresse du chateau d'Arnise~
+@245000 = ~Imposer les regles de competences du jeu Papier pour les personnages jumeles~
+@250000 = ~Modification de la limite de poids de la force exceptionnelle~
+@251000 = ~Parchemins de sort avec restriction de niveau (Angel)~
+@252000 = ~Permettre aux mages d'utiliser une targe et les voleurs d'utiliser une rondache (Angel)~
+@253000 = ~Les eclairs ne rebondissent pas (Angel)~
+@254000 = ~Accelerer les quetes de forteresse du chateau d'Arnise~
+@255000 = ~Modifier les options de kits/multiclassage des Gnomes~
+@255001 = ~Conserver le multiclassage Illusioniste des Gnomes, autoriser tous les kits pour les monoclasses~
+@255100 = ~Multiclassage standard pour les mages, ne conserver que l'illusionniste pour les monoclasses~
+@255200 = ~Multiclassage standard pour les mages, autoriser tous les kits pour les monoclasses~
+@256000 = ~Autoriser les moines à porter des casques~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -495,20 +523,14 @@ Indiquez un pourcentage entre 20 et 500 : ~
 @330000 = ~Focus camera en cas de mort~
 @331000 = ~Demarrer les nouvelles parties avec l'IA de groupe desactivee~
 @332000 = ~Pas de depreciation dans les magasins~
-@333000 = ~Augmenter la vitesse de deplacement du groupe en dehors des combats~
+@333000 = ~Augmenter la vitesse de deplacement du groupe et/ou la vitesse d'incantation en dehors des combats~
 @333001 = ~De 50 pour cent~
 @333002 = ~De 100 pour cent~
 @333003 = ~De 150 pour cent~
-@333010 = ~Désactiver la Hâte automatique~
-@333011 = ~Désactiver la Hâte automatique
-
-Cette compétence permet aux membres du groupe de se déplacer plus rapidement en dehors des combats. Cliquez sur la compétence pour la désactiver.~
-
-@333012 = ~Activer la Hâte automatique~
-@333013 = ~Activer la Hâte automatique
-
-Cette compétence permet aux membres du groupe de se déplacer plus rapidement en dehors des combats. Cliquez sur la compétence pour l'activer.~
-@333020 = ~Bonus de vitesse de déplacement désactivé~
+@333004 = ~De 50 pour cent plus la vitesse d'incantation~
+@333005 = ~De 100 pour cent plus la vitesse d'incantation~
+@333006 = ~De 150 pour cent plus la vitesse d'incantation~
+@333007 = ~Seulement la vitesse d'incantation~
 @335000 = ~Creer des sauvegardes periodiques~
 @335001 = ~Toutes les 15 minutes (un emplacement de sauvegarde seulement)~
 @335002 = ~Toutes les 30 minutes (un emplacement de sauvegarde seulement)~
@@ -528,6 +550,7 @@ Utiliser un nom de sauvegarde personnalise : a7_interval_custom
 Afficher le message d'information :          a7_interval_feedback
 Utiliser les parametres de Baldur.lua :      a7_interval_ini
 ~
+@336000 = ~Réinitialiser le brouillard de guerre du sous-sol de Sigil~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -562,13 +585,12 @@ Utiliser les parametres de Baldur.lua :      a7_interval_ini
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 @500000 = ~Carapaces d'ankhegs, peaux de loup des glaces et tetes de wivernes empilables~
 @501000 = ~Permettre de separer les couples de PNJ~
-@502000 = ~Rendre les membres du groupe moins susceptibles de 
-mourir de facon permanente~
+@502000 = ~Rendre les membres du groupe moins susceptibles de mourir de facon permanente~
 @503000 = ~Deplacer Bouh dans le sac de Minsc~
 @504000 = ~Permettre a Yeslick d'utiliser les haches~
 @505000 = ~S'assurer que Shar-Teel ne meurt pas lors du defi originel~
-@506000 = ~Retirer l'animation de la Cape de renvoi (la laisser
-pour les sorts et effets donnant le meme graphisme)~
+//@506000 = ~Retirer l'animation de la Cape de renvoi (la laisser pour les sorts et effets donnant le meme graphisme)~
+
 //WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"
 @-1001= "composants optionnels distincts.
