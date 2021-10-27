@@ -140,6 +140,7 @@ AT_EXIT ~%exe% --language %lang% --force-install-list %component_list% --noautou
 BEGIN @1000 DESIGNATED 10
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_remove_helmets~
 
 ACTION_IF enhanced_edition OR game_includes_soa OR game_is_ca OR tutu_gen OR game_is_iwd-in-bg2 BEGIN
   OUTER_SET check_anim = 1
@@ -172,6 +173,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BEGIN @2000 DESIGNATED 20
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~bgt eet bg2ee soa tob~ @25
+LABEL ~cd_tweaks_imoen_avatar_change~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Imoen animation adjustments
   READ_LONG   0x08 name  ELSE 0
@@ -193,6 +195,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Imoen animation adjustments
 BEGIN @3000 DESIGNATED 30
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~bgt eet bg2ee soa tob~ @25
+LABEL ~cd_tweaks_nalia_avatar_change~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Nalia animation adjustments
   READ_LONG   0x08 name  ELSE 0
@@ -214,6 +217,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Nalia animation adjustments
 BEGIN @4000 DESIGNATED 40
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
+LABEL ~cd_tweaks_viconia_skin_color~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Viconia skin color change
   READ_LONG 0x08 "name" ELSE 0
@@ -234,6 +238,7 @@ BEGIN @5000 DESIGNATED 50
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~1pp/1pp.tp2~ ~113~ @24 // don't install if 1pp smart avatar/armor switching installed
+LABEL ~cd_tweaks_avatar_morphing_script~
 
 COMPILE ~cdtweaks/baf/0ikmorph.baf~
         ~cdtweaks/baf/ikmorph.baf~
@@ -261,6 +266,7 @@ COPY ~cdtweaks/cre/ikmorph.cre~  ~override~
 
 BEGIN @6000 DESIGNATED 60
 GROUP @11
+LABEL ~cd_tweaks_weapon_animation_tweaks~
 
 ACTION_IF original_bg1 OR original_iwd OR game_is_iwd2 OR game_is_pst THEN BEGIN // exclude pstee
   OUTER_SET use_type = 1
@@ -366,6 +372,7 @@ LAF HANDLE_AUDIO STR_VAR audio_path = ~cdtweaks/wav/casting~ oggdec_path = ~cdtw
 BEGIN @7020 DESIGNATED 72
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob ca pst pstee~ @25
+LABEL ~cd_tweaks_bg_casting_graphics~
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_map_casting BEGIN
   abjurcg => cgabjura // abjuration
@@ -424,6 +431,7 @@ LAF HANDLE_AUDIO STR_VAR audio_path = ~cdtweaks/wav/casting_bg~ oggdec_path = ~c
 BEGIN @8000 DESIGNATED 80
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~tob~ @25
+LABEL ~cd_tweaks_restore_soa_loading_screen~
 
 //Force the game to use the SoA files in the biffs
 MOVE ~override/loadcntr.bam~ ~cdtweaks/backup~
@@ -443,6 +451,7 @@ MOVE ~override/loadcntr.bam~ ~cdtweaks/backup~
 BEGIN @8020 DESIGNATED 82
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~how totlm~   @25 // HoW required
+LABEL ~cd_tweaks_restore_iwd_loading_screen~
 
 COPY ~cdtweaks/mos/gprogbar.mos~ ~override~
      ~cdtweaks/mos/gtrbpbar.mos~ ~override~
@@ -461,6 +470,7 @@ COPY ~cdtweaks/mos/gprogbar.mos~ ~override~
 
 BEGIN @9000 DESIGNATED 90
 GROUP @11
+LABEL ~cd_tweaks_remove_portrait_icons~
 
 PRINT @1
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
@@ -538,6 +548,7 @@ COPY_EXISTING ~randcolr.2da~ ~override~
 BEGIN @11000 DESIGNATED 110
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_icon_improvements~
 
 COPY ~cdtweaks/bam/cdgchan.bam~  ~override~
      ~cdtweaks/bam/cdgelchn.bam~ ~override~
@@ -643,6 +654,7 @@ DEPRECATED @18
 
 BEGIN @13000 DESIGNATED 130
 GROUP @11 
+LABEL ~cd_tweaks_force_all_dialogue_to_pause~
 
 PRINT @1
 COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
@@ -691,6 +703,7 @@ END
 BEGIN @14000 DESIGNATED 140
 GROUP @11 // 
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_fix_boo_squeak~
 
 COPY ~cdtweaks/wav/gam_48.wav~ ~override~
 /*
@@ -753,6 +766,7 @@ INCLUDE ~cdtweaks/lib/unique.tpa~
 BEGIN @16000 DESIGNATED 160
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_glowing_magical_shields~
 
 OUTER_SET column = 4
 INCLUDE ~cdtweaks/lib/mpalette.tpa~
@@ -849,7 +863,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BEGIN @17000 DESIGNATED 170
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2 soa tob bg2ee eet bgt ca~ @25
-
+LABEL ~cd_tweaks_unique_icons~
 
 ACTION_CLEAR_ARRAY cd_unique_icons
 ACTION_CLEAR_ARRAY cd_unique_anims
@@ -929,6 +943,7 @@ BEGIN @18018 DESIGNATED 180
 SUBCOMPONENT @18000
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd-in-bg2~ @25
+LABEL ~cd_tweaks_unique_containers_fixes_only~
 
 INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes
 
@@ -940,6 +955,7 @@ BEGIN @18021 DESIGNATED 181
 SUBCOMPONENT @18000
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd-in-bg2~ @25
+LABEL ~cd_tweaks_unique_containers_fixes_and_icons~
 
 OUTER_SET names = 0 // don't set names
 INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes 
@@ -954,6 +970,7 @@ SUBCOMPONENT @18000
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd-in-bg2~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/unique_containers.tra~ @7
+LABEL ~cd_tweaks_unique_containers_full~
 
 OUTER_SET names = 1 // set names
 INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes
@@ -975,6 +992,7 @@ BEGIN @19000 DESIGNATED 190
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_char_colors_all_helms_shields~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -995,6 +1013,7 @@ BEGIN @19100 DESIGNATED 191
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_char_colors_normal_helms_shields~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1016,6 +1035,7 @@ BEGIN @19200 DESIGNATED 192
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_char_colors_all_helms~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1036,6 +1056,7 @@ BEGIN @19300 DESIGNATED 193
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_char_colors_normal_helms~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1057,6 +1078,7 @@ BEGIN @19400 DESIGNATED 194
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_char_colors_all_shields~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1077,6 +1099,7 @@ BEGIN @19500 DESIGNATED 195
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_char_colors_normal_shields~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1093,11 +1116,10 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// Remove annoying blur effect                      \\\\\
+///// Remove Annoying Visual Effects fr Equipped Items \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
 
 /////                                                  \\\\\
 ///// Remove annoying blur effect                      \\\\\
@@ -1106,30 +1128,42 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BEGIN @20000 DESIGNATED 200
 GROUP @11
 SUBCOMPONENT @20001
+LABEL ~cd_tweaks_remove_equipped_blur_effects~
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-  READ_BYTE 0x18 flags
-  PATCH_IF ((flags & BIT2) = BIT2) BEGIN // don't care if not droppable
-    LPF DELETE_EFFECT INT_VAR silent = 1 check_headers = 0 match_opcode = 65 match_timing = 2 END // only delete equipping blur effects
-  END
-  BUT_ONLY
+OUTER_SET remove_blur      = 1
+OUTER_SET remove_spelltrap = 0
+
+INCLUDE ~cdtweaks/lib/annoying_equipped_fx.tpa~
 
 /////                                                  \\\\\
-///// Remove annoying blur effect                      \\\\\
+///// Remove Spell Trap and Reflection Effects         \\\\\
 /////                                                  \\\\\
 
-BEGIN @20100 DESIGNATED 201
+BEGIN @20002 DESIGNATED 3150
+GROUP @11
+REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+SUBCOMPONENT @20001
+LABEL ~cd_tweaks_remove_equipped_spell_trap_effects~
+
+OUTER_SET remove_blur      = 0
+OUTER_SET remove_spelltrap = 1
+
+INCLUDE ~cdtweaks/lib/annoying_equipped_fx.tpa~
+
+/////                                                  \\\\\
+///// Remove blur and CoM/ST effects                   \\\\\
+/////                                                  \\\\\
+
+BEGIN @20003 DESIGNATED 201
 GROUP @11
 SUBCOMPONENT @20001
+REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_remove_equipped_blur_spell_trap_effects~
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~		//remove blur, physical mirror, spell trap visual effects from items only ie: claw of kazgoroth, relfection shield, cloak of mirroring
-  READ_BYTE 0x18 flags
-  PATCH_IF ((flags & BIT2) = BIT2) BEGIN // don't care if not droppable
-    LPF DELETE_EFFECT INT_VAR silent = 1 check_headers = 0 match_opcode =  65 match_timing = 2 END // only delete equipping blur effects
-    LPF CLONE_EFFECT  INT_VAR silent = 1 check_headers = 0 match_opcode = 197 match_timing = 2 opcode = 291 END  // prevent visual effect for phsyical mirror from playing on character if item has them only while equipped (reflection shield)
-    LPF CLONE_EFFECT  INT_VAR silent = 1 check_headers = 0 match_opcode = 205 match_timing = 2 opcode = 291 END  // prevent visual effect for spell trap from playing on character if item has them only while equipped (cloak of mirroring)
-  END
-  BUT_ONLY
+OUTER_SET remove_blur      = 1
+OUTER_SET remove_spelltrap = 1
+
+INCLUDE ~cdtweaks/lib/annoying_equipped_fx.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -10911,58 +10945,6 @@ INCLUDE ~cdtweaks/lib/faster_start.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// Remove Cloak-of-Mirroring & Spell-Trap Animation \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
-/* // old overwrite version
-BEGIN @315000 DESIGNATED 3150
-GROUP @4
-REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwd how totlm iwd2 pst pstee~ @25
-
-COPY ~cdtweaks/bam/spmagglo.bam~ ~override~
-     ~cdtweaks/bam/spmagglo.bam~ ~override/spsturni.bam~
-     ~cdtweaks/bam/spmagglo.bam~ ~override/spturni2.bam~
-*/
-
-BEGIN @506000 DESIGNATED 3150
-GROUP @4
-REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
-
-COPY_EXISTING_REGEXP GLOB ~^.+\itm$~ ~override~
-  SET blocked = 0
-  READ_LONG  0x6a fx_off
-  READ_SHORT 0x6e fx_idx
-  READ_SHORT 0x70 fx_num
-  FOR (index = 0 ; index < fx_num ; ++index) BEGIN
-    READ_BYTE  (fx_off + 0x0d + ((index + fx_idx) * 0x30)) timing
-    PATCH_IF timing = 2 BEGIN
-      READ_SHORT (fx_off + 0x00 + ((index + fx_idx) * 0x30)) opcode
-      PATCH_IF ((opcode = 197) OR (opcode = 198) OR ((opcode > 200) AND (opcode < 206)) OR (opcode = 207) OR (opcode = 223) OR ((opcode > 225) AND (opcode < 229)) OR (opcode = 259)) BEGIN
-        READ_ASCII   (fx_off + 0x00 + ((index + fx_idx) * 0x30)) copy (48)
-        INSERT_BYTES (fx_off + 0x00 + ((index + fx_idx) * 0x30)) 0x30
-        WRITE_ASCIIE (fx_off + 0x00 + ((index + fx_idx) * 0x30)) ~%copy%~ #48
-        WRITE_SHORT  (fx_off + 0x00 + ((index + fx_idx) * 0x30)) 291
-        WRITE_LONG   (fx_off + 0x08 + ((index + fx_idx) * 0x30)) 1
-        SET blocked = 1
-        SET index = fx_num // kill loop
-      END
-    END
-  END  
-  PATCH_IF blocked BEGIN
-    WRITE_SHORT 0x70 fx_num + blocked
-    READ_LONG  0x64 abil_off
-    READ_SHORT 0x68 abil_num
-    FOR (index = 0 ; index < abil_num ; ++index) BEGIN
-      WRITE_SHORT (abil_off + 0x20 + (index * 0x38)) THIS + blocked // adjust indices
-    END  
-  END
-  BUT_ONLY  
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
 ///// Keep Drizzt's Loot, Disable Malchor Harpell      \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -11985,7 +11967,7 @@ BEGIN @322000 DESIGNATED 3220
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt soa tob~ @25
 
-ACTION_IF game_includes_bg1 THEN BEGIN // BGT/Tutu/BGEE changes
+ACTION_IF game_includes_bg1 THEN BEGIN // BGT/Tutu/obg changes
 
   ACTION_IF game_is_bgt THEN BEGIN // BGT
     
@@ -12125,7 +12107,7 @@ ACTION_IF game_includes_bg1 THEN BEGIN // BGT/Tutu/BGEE changes
 
 END
 
-ACTION_IF game_includes_soa THEN BEGIN // BG2/BGT; skip for bg2ee
+ACTION_IF game_includes_soa THEN BEGIN // flipping the NORH in BG2/BGT; already flipped in bg2ee/eet
 
   DECOMPRESS_BIFF AREA090A.BIF
 
@@ -12309,7 +12291,7 @@ ACTION_IF game_includes_soa THEN BEGIN // BG2/BGT; skip for bg2ee
        ~cdtweaks/bmp/ar0903sr.bmp~ ~override~
        ~cdtweaks/mos/ar0903.mos~   ~override~
        ~cdtweaks/wed/ar0903.wed~   ~override~
-
+  
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

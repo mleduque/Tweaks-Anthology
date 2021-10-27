@@ -37,6 +37,10 @@
 @26 = ~Using values from the cdtweaks.txt config file for this component...~
 @27 = ~Modmerge is required before mods can be installed on this game. Check the readme for more information and a link to download Modmerge.~
 @28 = ~There are not enough free spell state or secondary type slots available to install this component.~
+
+@100 = ~Automated Installer~
+@101 = ~Automated install file not found, skipping...~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -111,9 +115,12 @@
 @19300 = ~For non-magical helmets~
 @19400 = ~For all shields~
 @19500 = ~For non-magical shields~
-@20000 = ~Remove Blur Effect from Items, e.g. Cloak of Displacement~
+@20000 = ~Remove Blur Effect~
 @20001 = ~Remove Annoying Visual Effects from Equipped Items~
-@20100 = ~Remove Blur and Reflection Effects from Items (Daeros Trollkiller)~
+@20002 = ~Remove Spell Trap and Reflection Effects~
+@20003 = ~Remove All of the Above~
+//@20100 = ~Remove Blur and Reflection Effects from Items (Daeros Trollkiller)~
+@20101 = ~Install both of the above~
 @21000 = ~Separate Resist Fire/Cold Icon into Separate Icons (Angel)~
 @22000 = ~Enhanced Overlays for Colorblind Players (Fouinto)~
 
@@ -1070,7 +1077,7 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @314000 = ~Faster Chapter 1&2 Cut-Scenes and Dreams~
 @314001 = ~Originals from EoU (Karzak, Blucher)~
 @314100 = ~Non-Silly Version~
-@315000 = ~Turn Off The Hideous Cloak-of-Mirroring, Spell-Trap, and Physical Mirror Animations~
+//@315000 = ~Turn Off The Hideous Cloak-of-Mirroring, Spell-Trap, and Physical Mirror Animations~
 @316000 = ~Keep Drizzt's Loot, Disable Malchor Harpell~
 @317000 = ~No Drow Avatars On Party In Underdark~
 @317500 = ~Disable Romances~
@@ -1315,4 +1322,4 @@ Use Baldur.lua options: a7_interval_ini
 @503000 = ~Move Boo into Minsc's pack~
 @504000 = ~Allow Yeslick to use axes~
 @505000 = ~Ensure Shar-Teel doesn't die in the original challenge~
-@506000 = ~Remove animation from the Cloak of Mirroring (leave it for other spells and effects that use the same graphic)~
+//@506000 = ~Remove animation from the Cloak of Mirroring (leave it for other spells and effects that use the same graphic)~
