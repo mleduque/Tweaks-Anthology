@@ -541,6 +541,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 
 COPY ~cdtweaks/bam/cdgchan.bam~  ~override~
      ~cdtweaks/bam/cdgelchn.bam~ ~override~
+     ~cdtweaks/bam/cdgdwchn.bam~ ~override~
      ~cdtweaks/bam/cdgleat.bam~  ~override~
      ~cdtweaks/bam/gchan01.bam~  ~override~
      ~cdtweaks/bam/gclck01.bam~  ~override~
@@ -561,7 +562,8 @@ ACTION_PHP_EACH cd_common_armor_list AS params => item BEGIN
   
   ACTION_IF (("%params_2%" STRING_COMPARE_CASE "leather" = 0) OR
              ("%params_2%" STRING_COMPARE_CASE "chain" = 0) OR
-             ("%params_2%" STRING_COMPARE_CASE "chain_elven" = 0)) BEGIN
+             ("%params_2%" STRING_COMPARE_CASE "chain_elven" = 0) OR
+             ("%params_2%" STRING_COMPARE_CASE "chain_drow" = 0)) BEGIN
 
     COPY_EXISTING ~%item%.itm~ ~override~
       READ_SHORT 0x1c type
@@ -579,6 +581,9 @@ ACTION_PHP_EACH cd_common_armor_list AS params => item BEGIN
           END ELSE
           PATCH_IF ("%params_2%" STRING_COMPARE_CASE "chain_elven" = 0) BEGIN // elven chain
             WRITE_ASCII 0x44 ~cdgelchn~ #8
+          END ELSE
+          PATCH_IF ("%params_2%" STRING_COMPARE_CASE "chain_drow" = 0) BEGIN // drow elven chain
+            WRITE_ASCII 0x44 ~cdgdwchn~ #8
           END
         END
       END  
