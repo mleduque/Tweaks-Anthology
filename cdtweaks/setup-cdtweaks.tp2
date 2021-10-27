@@ -235,9 +235,6 @@ GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~1pp/1pp.tp2~ ~113~ @24 // don't install if 1pp smart avatar/armor switching installed
 
-// adds ToB trigger/actions to SoA
-INCLUDE ~cdtweaks/lib/tob2soa.tpa~
-
 COMPILE ~cdtweaks/baf/0ikmorph.baf~
         ~cdtweaks/baf/ikmorph.baf~
         ~cdtweaks/dlg/ikmorph.d~
@@ -341,7 +338,8 @@ ACTION_IF enhanced_edition BEGIN
   ACTION_FOR_EACH file IN cgabjura cgaltera cgconjur cgdivina cgenchan cgillusi cginvoca cgnecrom BEGIN
 
     COPY ~cdtweaks/bam/%file%_ee.bam~ ~override/%file%.bam~
-         ~cdtweaks/pro/%file%.pro~    ~override~
+    COPY ~cdtweaks/pro/cast_iwd.pro~  ~override/%file%.pro~
+      WRITE_ASCIIE 0x104 ~%file%~ #8
          
   END
 
@@ -380,23 +378,40 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_map_casting BEGIN
   necrocg => cgnecrom // necromancy
 END
 
-ACTION_IF game_is_iwd-in-bg2 THEN BEGIN
+ACTION_IF enhanced_edition THEN BEGIN
 
   ACTION_PHP_EACH cd_map_casting AS iwd => bg2 BEGIN
-    
-    COPY ~cdtweaks/bam/%iwd%.bam~ ~override/%bg2%.bam~
 
+    COPY ~cdtweaks/bam/%iwd%_ee.bam~ ~override/%iwd%.bam~
+         ~cdtweaks/bam/%iwd%_ee.bam~ ~override/%bg2%.bam~ // iwdee has extra unused set, but replace anyway
+    COPY ~cdtweaks/pro/cast_bg.pro~  ~override/%bg2%.pro~
+      WRITE_ASCIIE 0x104 ~%iwd%~ #8
+      
   END
 
 END ELSE BEGIN
 
-  ACTION_PHP_EACH cd_map_casting AS iwd => bg2 BEGIN
+  ACTION_IF game_is_iwd-in-bg2 THEN BEGIN
 
-    COPY ~cdtweaks/bam/%iwd%.bam~ ~override~
+    ACTION_PHP_EACH cd_map_casting AS iwd => bg2 BEGIN
+    
+      COPY ~cdtweaks/bam/%iwd%.bam~ ~override/%bg2%.bam~
+      
+    END  
+
+  END ELSE BEGIN // original iwd
+
+    ACTION_PHP_EACH cd_map_casting AS iwd => bg2 BEGIN
+
+      COPY ~cdtweaks/bam/%iwd%.bam~ ~override~
+  
+    END
   
   END
 
 END
+
+LAF HANDLE_AUDIO STR_VAR audio_path = ~cdtweaks/wav/casting_bg~ oggdec_path = ~cdtweaks/wav~ END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -6017,7 +6032,6 @@ GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 
 INCLUDE ~cdtweaks/lib/kit_ids_fixer.tpa~
-INCLUDE ~cdtweaks/lib/tob2soa.tpa~
 
 // first it replaces WILDMAGE and BARBARIAN values in these files if they're present
 COPY_EXISTING ~dualclas.2da~ ~override~
