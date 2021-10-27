@@ -4,6 +4,6 @@ DEFINE_PATCH_MACRO ~arcane_descripts~ BEGIN
   SPRINT arcane_miscast @212002
   REPLACE_TEXTUALLY ~%arcane_weight%~
   ~\1
-%arcane_miscast% +%penalty_miscast%%~
+%arcane_miscast% +%params_3%%~
 
 END

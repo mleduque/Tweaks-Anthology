@@ -1,47 +1,47 @@
 DEFINE_PATCH_MACRO ~thieving_descripts~ BEGIN
   SPRINT text_weight @210001
 
-  PATCH_IF ("%penalty_locks%" != 255) BEGIN
+  PATCH_IF ("%params_5%" != 255) BEGIN
     SPRINT text_lock @210002
     SPRINT text_lock_penalty @210003
     REPLACE_TEXTUALLY ~%text_lock%~ ~~
-    PATCH_IF ("%penalty_locks%" != 0) BEGIN // don't add text if penalty is zero
+    PATCH_IF ("%params_5%" != 0) BEGIN // don't add text if penalty is zero
       REPLACE_TEXTUALLY ~%text_weight%~
       ~\1
-%text_lock_penalty% -%penalty_locks%CDPERCENTAGE~
+%text_lock_penalty% -%params_5%CDPERCENTAGE~
     END
   END
-  PATCH_IF ("%penalty_traps%" != 255) BEGIN
+  PATCH_IF ("%params_6%" != 255) BEGIN
     SPRINT text_trap @210004
     SPRINT text_trap_penalty @210005
     REPLACE_TEXTUALLY ~%text_trap%~ ~~
-    PATCH_IF ("%penalty_traps%" != 0) BEGIN // don't add text if penalty is zero
+    PATCH_IF ("%params_6%" != 0) BEGIN // don't add text if penalty is zero
       REPLACE_TEXTUALLY ~%text_weight%~
       ~\1
-%text_trap_penalty% -%penalty_traps%CDPERCENTAGE~
+%text_trap_penalty% -%params_6%CDPERCENTAGE~
     END
   END
-  PATCH_IF ("%penalty_pick%" != 255) BEGIN
+  PATCH_IF ("%params_4%" != 255) BEGIN
     SPRINT text_pickpocket @210006
     SPRINT text_pickpocket_penalty @210007
     REPLACE_TEXTUALLY ~%text_pickpocket%~ ~~
-    PATCH_IF ("%penalty_pick%" != 0) BEGIN // don't add text if penalty is zero
+    PATCH_IF ("%params_4%" != 0) BEGIN // don't add text if penalty is zero
       REPLACE_TEXTUALLY ~%text_weight%~
       ~\1
-%text_pickpocket_penalty% -%penalty_pick%CDPERCENTAGE~
+%text_pickpocket_penalty% -%params_4%CDPERCENTAGE~
     END
   END
-  PATCH_IF ("%penalty_hide%" != 255) BEGIN
+  PATCH_IF ("%params_8%" != 255) BEGIN
     SPRINT text_hide @210008
     SPRINT text_hide_penalty @210009
     REPLACE_TEXTUALLY ~%text_hide%~ ~~
-    PATCH_IF ("%penalty_hide%" != 0) BEGIN // don't add text if penalty is zero
+    PATCH_IF ("%params_8%" != 0) BEGIN // don't add text if penalty is zero
       REPLACE_TEXTUALLY ~%text_weight%~
       ~\1
-%text_hide_penalty% -%penalty_hide%CDPERCENTAGE~
+%text_hide_penalty% -%params_8%CDPERCENTAGE~
     END
   END
-  PATCH_IF ("%penalty_move%" != 255) BEGIN
+  PATCH_IF ("%params_7%" != 255) BEGIN
     PATCH_IF (use_stealth = 0) BEGIN
       SPRINT text_silent @210010
       SPRINT text_silent_penalty @210011
@@ -50,10 +50,10 @@ DEFINE_PATCH_MACRO ~thieving_descripts~ BEGIN
       SPRINT text_silent_penalty @210013
     END
     REPLACE_TEXTUALLY ~%text_silent%~ ~~
-    PATCH_IF ("%penalty_move%" != 0) BEGIN // don't add text if penalty is zero
+    PATCH_IF ("%params_7%" != 0) BEGIN // don't add text if penalty is zero
       REPLACE_TEXTUALLY ~%text_weight%~
       ~\1
-%text_silent_penalty% -%penalty_move%CDPERCENTAGE~
+%text_silent_penalty% -%params_7%CDPERCENTAGE~
     END
   END
   

@@ -83,6 +83,54 @@ LANGUAGE
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// Automated Installer                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @100 DESIGNATED 0
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/install.txt~ @101
+
+ACTION_MATCH ~%LANGUAGE%~ WITH
+  ~english~  BEGIN OUTER_SET lang = 0 END
+  ~czech~    BEGIN OUTER_SET lang = 1 END
+  ~french~   BEGIN OUTER_SET lang = 2 END
+  ~german~   BEGIN OUTER_SET lang = 3 END
+  ~italian~  BEGIN OUTER_SET lang = 4 END
+  ~korean~   BEGIN OUTER_SET lang = 5 END
+  ~polish~   BEGIN OUTER_SET lang = 6 END
+  ~russian~  BEGIN OUTER_SET lang = 7 END
+  ~spanish~  BEGIN OUTER_SET lang = 8 END
+  ~schinese~ BEGIN OUTER_SET lang = 9 END
+  DEFAULT OUTER_SET lang = 0
+END  
+
+ACTION_IF ("%WEIDU_OS%" STRING_COMPARE_CASE "unix" = 0) BEGIN
+  OUTER_SPRINT exe ~weidu~
+END ELSE BEGIN
+  OUTER_SPRINT exe ~setup-cdtweaks~
+END
+
+INCLUDE ~cdtweaks/install.txt~
+
+OUTER_SPRINT component_list ~~
+
+ACTION_PHP_EACH cdtweaks_install AS component => value BEGIN
+
+  ACTION_IF value BEGIN OUTER_SPRINT component_list ~%component_list% %component%~ END // concatenate
+  
+END
+
+OUTER_INNER_PATCH_SAVE component_list ~%component_list%~ BEGIN
+  REPLACE_TEXTUALLY ~comp~ ~~
+END
+
+AT_EXIT ~%exe% --language %lang% --force-install-list %component_list% --noautoupdate~
+//PRINT ~ would try %exe% --language %lang% --force-install-list %component_list%~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// Remove Helmet Animations                         \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -490,41 +538,39 @@ COPY ~cdtweaks/bam/cdgchan.bam~  ~override~
      ~cdtweaks/bam/iclck15.bam~  ~override~
      ~cdtweaks/bam/iclck16.bam~  ~override~
      ~cdtweaks/bam/iclck17.bam~  ~override~
+     
+INCLUDE ~cdtweaks/lib/common_armor_list.tpa~
 
-COPY + ~cdtweaks/2da/common_armor_list.2da~ ~cdtweaks/2da/common_armor_list.2da~
-  COUNT_2DA_ROWS 10 rows
-  FOR (index = 1 ; index < rows ; ++index) BEGIN // start at 1 to skip header row
-    READ_2DA_ENTRY index 0 10 file
-    PATCH_IF FILE_EXISTS_IN_GAME ~%file%.itm~ BEGIN
-      READ_2DA_ENTRY index 2 10 appearance
-      PATCH_IF (("%appearance%" STRING_COMPARE_CASE "leather" = 0) OR
-                ("%appearance%" STRING_COMPARE_CASE "chain" = 0) OR
-                ("%appearance%" STRING_COMPARE_CASE "chain_elven" = 0)) BEGIN
-        INNER_ACTION BEGIN
+ACTION_PHP_EACH cd_common_armor_list AS params => item BEGIN
+  
+  ACTION_IF (("%params_2%" STRING_COMPARE_CASE "leather" = 0) OR
+             ("%params_2%" STRING_COMPARE_CASE "chain" = 0) OR
+             ("%params_2%" STRING_COMPARE_CASE "chain_elven" = 0)) BEGIN
 
-          COPY_EXISTING ~%file%.itm~ ~override~
-            READ_ASCII 0x44 icon ELSE 0
-            PATCH_IF (("%appearance%" STRING_COMPARE_CASE "leather" = 0) AND // leather using generic leather icons
-                      (("%icon%" STRING_COMPARE_CASE "gleat01" = 0) OR
-                       ("%icon%" STRING_COMPARE_CASE "_gleat01" = 0))) BEGIN
-              WRITE_ASCII 0x44 ~cdgleat~ #8
-            END
-            PATCH_IF (("%icon%" STRING_COMPARE_CASE "gchan01" = 0) OR
-                      ("%icon%" STRING_COMPARE_CASE "_gchan01" = 0)) BEGIN // (elven) chain using generic chain icons
-              PATCH_IF ("%appearance%" STRING_COMPARE_CASE "chain" = 0) BEGIN // chain
-                WRITE_ASCII 0x44 ~cdgchan~ #8
-              END ELSE
-              PATCH_IF ("%appearance%" STRING_COMPARE_CASE "chain_elven" = 0) BEGIN // elven chain
-                WRITE_ASCII 0x44 ~cdgelchn~ #8
-              END
-            END
-            BUT_ONLY
-            
-        END // inner action
-      END // appearance check
-    END // file_exists
-  END // for loop
-  BUT_ONLY
+    COPY_EXISTING ~%item%.itm~ ~override~
+      READ_SHORT 0x1c type
+      PATCH_IF type = 2 BEGIN // sanity check
+        READ_ASCII 0x44 icon ELSE 0
+        PATCH_IF (("%params_2%" STRING_COMPARE_CASE "leather" = 0) AND // leather using generic leather icons
+                  (("%icon%" STRING_COMPARE_CASE "gleat01" = 0) OR
+                   ("%icon%" STRING_COMPARE_CASE "_gleat01" = 0))) BEGIN
+          WRITE_ASCII 0x44 ~cdgleat~ #8
+        END
+        PATCH_IF (("%icon%" STRING_COMPARE_CASE "gchan01" = 0) OR
+                  ("%icon%" STRING_COMPARE_CASE "_gchan01" = 0)) BEGIN // (elven) chain using generic chain icons
+          PATCH_IF ("%params_2%" STRING_COMPARE_CASE "chain" = 0) BEGIN // chain
+            WRITE_ASCII 0x44 ~cdgchan~ #8
+          END ELSE
+          PATCH_IF ("%params_2%" STRING_COMPARE_CASE "chain_elven" = 0) BEGIN // elven chain
+            WRITE_ASCII 0x44 ~cdgelchn~ #8
+          END
+        END
+      END  
+      BUT_ONLY
+      
+  END // appearance check
+
+END // php_each
 
 // if Tutu, move BG2 icons to Tutu defaults
 ACTION_IF FILE_EXISTS_IN_GAME ~_gleat01.bam~ THEN BEGIN
@@ -5827,7 +5873,6 @@ INCLUDE ~cdtweaks/lib/thieving_to_50.tpa~     // extend bard, ranger pickpocketi
 COPY_EXISTING ~skillrac.2da~ ~override~
   PATCH_IF original_bg1 OR original_iwd OR game_is_pst OR game_is_pstee BEGIN // games that use stealth
     SET use_stealth = 1
-    SET penalty_hide = 255 // forces patch to skip HiS adjustments; needed below
     SET max_col = 5
   END ELSE BEGIN
     SET use_stealth = 0
@@ -5845,84 +5890,72 @@ COPY_EXISTING ~skillrac.2da~ ~override~
     END
   END
   BUT_ONLY
+     
+INCLUDE ~cdtweaks/lib/common_armor_list.tpa~
 
-PRINT @1
-COPY + ~cdtweaks/2da/common_armor_list.2da~ ~cdtweaks/2da/common_armor_list.2da~
-  COUNT_2DA_ROWS 10 rows
-  FOR (index = 1 ; index < rows ; ++index) BEGIN // start at 1 to skip header row
-    READ_2DA_ENTRY index 0 10 file
-    PATCH_IF (FILE_EXISTS_IN_GAME ~%file%.itm~) BEGIN // check that file exists
-      READ_2DA_ENTRY index 4 10 penalty_pick
-      READ_2DA_ENTRY index 5 10 penalty_locks
-      READ_2DA_ENTRY index 6 10 penalty_traps
-      PATCH_IF (use_stealth = 1) BEGIN // old games that use stealth
-        READ_2DA_ENTRY index 9 10 penalty_move
-      END ELSE BEGIN
-        READ_2DA_ENTRY index 7 10 penalty_move
-        READ_2DA_ENTRY index 8 10 penalty_hide
-      END
-      PATCH_IF ((penalty_pick  != 255) OR // make sure we have something to do, e.g. not futzing with a robe
-                (penalty_locks != 255) OR
-                (penalty_traps != 255) OR
-                (penalty_move  != 255) OR
-                (penalty_hide  != 255)) BEGIN
-        INNER_ACTION BEGIN
+ACTION_PHP_EACH cd_common_armor_list AS params => item BEGIN
+
+  ACTION_IF use_stealth BEGIN
+    OUTER_SET params_7 = params_9 // use 'stealth' value for move silently
+    OUTER_SET params_8 = 255      // ignore hide in shadows
+  END 
+
+  // make sure we have something to do, e.g. not futzing with a robe
+  ACTION_IF ((params_4 != 255) OR     // pickpocketing 
+             (params_5 != 255) OR     // locks
+             (params_6 != 255) OR     // traps
+             (params_7 != 255) OR     // move silently
+             (params_8 != 255)) BEGIN // hide in shadows
   
-          COPY_EXISTING ~%file%.itm~ ~override~
-            READ_SHORT 0x1c sanity_check
-            PATCH_IF sanity_check = 2 BEGIN // type 2 is armor
-              PATCH_PRINT ~%file% is being patched...~
-              LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 144 END // delete disable thieving buttons
-              PATCH_IF (use_stealth = 0) BEGIN
-                PATCH_IF (penalty_hide != 255) BEGIN
-                  LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 275 END
-                  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 275 target = 1 parameter1 = (0 - penalty_hide - 5) timing = 2 END // extra 5 to offset unarmored bonus
-                END ELSE BEGIN
-                  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 275 target = 1 parameter1 = "-5"                   timing = 2 END // extra 5 to offset unarmored bonus
-                END
-              END
-              PATCH_IF (penalty_pick != 255) BEGIN
-                LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 92 END
-                LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 92 target = 1 parameter1 = (0 - penalty_pick - 5) timing = 2 END // extra 5 to offset unarmored bonus
-              END ELSE BEGIN
-                LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 92 target = 1 parameter1 = "-5"                         timing = 2 END // extra 5 to offset unarmored bonus
-              END
-              PATCH_IF (penalty_traps != 255) BEGIN
-                LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 91 END
-                LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 91  target = 1 parameter1 = (0 - penalty_traps)           timing = 2 END
-              END
-              PATCH_IF (penalty_locks != 255) BEGIN
-                LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 90 END
-                LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 90  target = 1 parameter1 = (0 - penalty_locks)           timing = 2 END
-              END
-              PATCH_IF (penalty_move != 255) BEGIN
-                LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 59 END
-                LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 59  target = 1 parameter1 = (0 - penalty_move - 10)    timing = 2 END // extra 10 to offset unarmored bonus
-              END ELSE BEGIN
-                LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 59 target = 1 parameter1 = "-10"                         timing = 2 END // extra 10 to offset unarmored bonus
-              END
-              // adjust descriptions
-              PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
-                READ_LONG ~%offset%~ desc_strref
-                PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-                  READ_STRREF ~%offset%~ desc
-                  INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-                    LAUNCH_PATCH_MACRO ~thieving_descripts~
-                  END
-                  SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
-                END
-              END
+    COPY_EXISTING ~%item%.itm~ ~override~
+      READ_SHORT 0x1c sanity_check
+      PATCH_IF sanity_check = 2 BEGIN // type 2 is armor
+        LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 144 END // delete disable thieving buttons
+        PATCH_IF (use_stealth = 0) BEGIN
+          PATCH_IF (params_8 != 255) BEGIN
+            LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 275 END
+            LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 275 target = 1 parameter1 = (0 - params_8 - 5) timing = 2 END // extra 5 to offset unarmored bonus
+          END ELSE BEGIN
+            LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 275 target = 1 parameter1 = "-5"               timing = 2 END // extra 5 to offset unarmored bonus
+          END
+        END
+        PATCH_IF (params_4 != 255) BEGIN
+          LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 92 END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 92 target = 1 parameter1 = (0 - params_4 - 5) timing = 2 END // extra 5 to offset unarmored bonus
+        END ELSE BEGIN
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 92 target = 1 parameter1 = "-5"               timing = 2 END // extra 5 to offset unarmored bonus
+        END
+        PATCH_IF (params_6 != 255) BEGIN
+          LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 91 END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 91  target = 1 parameter1 = (0 - params_6) timing = 2 END
+        END
+        PATCH_IF (params_5 != 255) BEGIN
+          LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 90 END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 90  target = 1 parameter1 = (0 - params_5) timing = 2 END
+        END
+        PATCH_IF (params_7 != 255) BEGIN
+          LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 59 END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 59  target = 1 parameter1 = (0 - params_7 - 10) timing = 2 END // extra 10 to offset unarmored bonus
+        END ELSE BEGIN
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 59 target = 1 parameter1 = "-10"                timing = 2 END // extra 10 to offset unarmored bonus
+        END
+        // adjust descriptions
+        PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+          READ_LONG ~%offset%~ desc_strref
+          PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
+            READ_STRREF ~%offset%~ desc
+            INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+              LAUNCH_PATCH_MACRO ~thieving_descripts~
             END
-            BUT_ONLY
-        
-        END // inner_action
-      
-      END // penalty check
-  
-    END // file_check
+            SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
+          END
+        END
+      END
+      BUT_ONLY
 
-  END // for loop
-  BUT_ONLY
+  END // end skill check
+    
+END // end php_each
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -5936,51 +5969,39 @@ BEGIN @212000 DESIGNATED 2120
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 
-ACTION_CLEAR_ARRAY cd_armor
-INCLUDE ~cdtweaks/lib/arcane_descripts.tpa~  // text replacement macros
-//INCLUDE ~cdtweaks/lib/common_armor_list.tpa~ // common armor types needed for both components
+INCLUDE ~cdtweaks/lib/arcane_descripts.tpa~  // text replacement macros     
+INCLUDE ~cdtweaks/lib/common_armor_list.tpa~
 
-PRINT @1
-COPY + ~cdtweaks/2da/common_armor_list.2da~ ~cdtweaks/2da/common_armor_list.2da~
-  COUNT_2DA_ROWS 10 rows
-  FOR (index = 1 ; index < rows ; ++index) BEGIN // start at 1 to skip header row
-    READ_2DA_ENTRY index 0 10 file
-    READ_2DA_ENTRY index 3 10 penalty_miscast
-    PATCH_IF ((FILE_EXISTS_IN_GAME ~%file%.itm~) AND // check that file exists
-              (penalty_miscast != 0) AND
-              (penalty_miscast != 255)) BEGIN        // and that patching is needed
-      INNER_ACTION BEGIN
+ACTION_PHP_EACH cd_common_armor_list AS params => item BEGIN
 
-        COPY_EXISTING ~%file%.itm~ ~override~
-          READ_SHORT 0x1c type
-          PATCH_IF ((type = 2) OR (type = 12) OR (type = 41) OR (type = 47) OR (type = 49) OR (type = 53)) BEGIN // 12 is bg shield type, all others are iwd; 2 is armor
-            PATCH_PRINT ~%file% is being patched...~
-            LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete =  60 END
-            LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 145 END
-            PATCH_FOR_EACH res IN d5arcal d5arcac d5arcap BEGIN // compat with subtledoctor
-              LPF DELETE_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = EVAL ~%res%~ END
-            END 
-            LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 60 target = 1 parameter1 = penalty_miscast timing = 2 END
-            // adjust descriptions
-            PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
-              READ_LONG ~%offset%~ desc_strref
-              PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-                READ_STRREF ~%offset%~ desc
-                INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-                  LAUNCH_PATCH_MACRO ~arcane_descripts~
-                END
-                SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
-              END
+  ACTION_IF ((params_3 != 0) AND (params_3 != 255)) BEGIN // if penalty is needed
+  
+    COPY_EXISTING ~%item%.itm~ ~override~
+      READ_SHORT 0x1c type
+      PATCH_IF ((type = 2) OR (type = 12) OR (type = 41) OR (type = 47) OR (type = 49) OR (type = 53)) BEGIN // 12 is bg shield type, all others are iwd; 2 is armor
+        LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete =  60 END
+        LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 145 END
+        PATCH_FOR_EACH res IN d5arcal d5arcac d5arcap BEGIN // compat with subtledoctor
+          LPF DELETE_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = EVAL ~%res%~ END
+        END 
+        LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 60 target = 1 parameter1 = params_3 timing = 2 END
+        // adjust descriptions
+        PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+          READ_LONG ~%offset%~ desc_strref
+          PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
+            READ_STRREF ~%offset%~ desc
+            INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+              LAUNCH_PATCH_MACRO ~arcane_descripts~
             END
+            SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
           END
-          BUT_ONLY
-      
-      END // inner_action
+        END
+      END
+      BUT_ONLY
 
-    END // file_check
-
-  END // for loop
-  BUT_ONLY
+  END // miscast check
+  
+END // php_each
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -8911,7 +8932,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~weapprof.2da~ THEN BEGIN
 END
 
 /////                                                            \\\\\
-///// Tighten Equipment Restrictions for Druid Multis             \\\\\
+///// Tighten Equipment Restrictions for Druid Multis            \\\\\
 /////                                                            \\\\\
  
 BEGIN @243100 DESIGNATED 2431
