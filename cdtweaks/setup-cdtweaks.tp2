@@ -87,7 +87,7 @@ LANGUAGE
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
+/*
 BEGIN @100 DESIGNATED 0
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/install.txt~ @101
 
@@ -127,6 +127,7 @@ END
 
 AT_EXIT ~%exe% --language %lang% --force-install-list %component_list% --noautoupdate~
 //PRINT ~ would try %exe% --language %lang% --force-install-list %component_list%~
+*/
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -12329,11 +12330,11 @@ GROUP @4
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
 
-INCLUDE ~cdtweaks/random/random_common.tpa~ // ar9200 fix, UB detection
+INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
 
 ACTION_IF enhanced_edition THEN BEGIN
 
-  INCLUDE ~cdtweaks/random/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema
+  INCLUDE ~cdtweaks/lib/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema
 
 END
 
@@ -12354,9 +12355,9 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
           BEGIN SPRINT "list" "%MATCH2%" END ~%MATCH1%%MATCH2%%MATCH3%~
           BUT_ONLY
 
-        COPY ~cdtweaks/random/areabottom.baf~ ~weidu_external/cdtweaks/random/%item%.baf~
+        COPY ~cdtweaks/baf/areabottom.baf~ ~weidu_external/cdtweaks/random/%item%.baf~
 
-        COPY ~cdtweaks/random/template.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
+        COPY ~cdtweaks/lib/template.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
           REPLACE_TEXTUALLY ~replacemelist~ ~%list%~ EVALUATE_BUFFER
           REPLACE_TEXTUALLY ~drop~ ~drop%item%~ EVALUATE_BUFFER
           REPLACE_TEXTUALLY ~\([ %TAB%]+\*\)*~ ~~
@@ -12372,7 +12373,7 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
         COPY ~weidu_external/cdtweaks/random/%item%.baf~ ~weidu_external/cdtweaks/random/%item%.baf~
           REPLACE_TEXTUALLY ~replaceme[12]~ ~~
       
-        EXTEND_TOP    ~%area%.bcs~ ~cdtweaks/random/areatop.baf~ EVALUATE_BUFFER
+        EXTEND_TOP    ~%area%.bcs~ ~cdtweaks/baf/areatop.baf~ EVALUATE_BUFFER
         EXTEND_BOTTOM ~%area%.bcs~ ~weidu_external/cdtweaks/random/%item%.baf~  EVALUATE_BUFFER
 
       END
@@ -12404,7 +12405,7 @@ GROUP @4
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
 
-INCLUDE ~cdtweaks/random/random_common.tpa~ // ar9200 fix, UB detection
+INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
 
 COPY ~cdtweaks/bam/cdtokeni.bam~ ~override~
 COPY_EXISTING ~de1tres.itm~ ~override~
@@ -12415,8 +12416,8 @@ COPY_EXISTING ~de1tres.itm~ ~override~
   WRITE_ASCII 0x3a ~cdtokeni~
   WRITE_ASCII 0x44 ~gtreas01~
   
-COPY ~cdtweaks/random/cdrandom.d~   ~weidu_external/cdtweaks/random/cdrandom.d~
-COPY ~cdtweaks/random/cdrandom.baf~ ~weidu_external/cdtweaks/random/cdrandom.baf~
+COPY ~cdtweaks/dlg/cdrandom.d~   ~weidu_external/cdtweaks/random/cdrandom.d~
+COPY ~cdtweaks/baf/cdrandom.baf~ ~weidu_external/cdtweaks/random/cdrandom.baf~
 
 ACTION_IF game_is_iwdee OR game_is_iwd-in-bg2 THEN BEGIN // if modern engine
 
@@ -12425,11 +12426,9 @@ ACTION_IF game_is_iwdee OR game_is_iwd-in-bg2 THEN BEGIN // if modern engine
     COPY ~weidu_external/cdtweaks/random/cdrandom.d~ ~weidu_external/cdtweaks/random/cdrandom.d~
       REPLACE_TEXTUALLY ~SAY #288~ ~SAY #74388~ // normally we'd replace_eval, but only one replacement
 
-    COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
-
   END ELSE BEGIN
 
-    INCLUDE ~cdtweaks/random/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema in random.2da
+    INCLUDE ~cdtweaks/lib/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema in random.2da
 
   END
 
@@ -12492,13 +12491,13 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
 
         OUTER_FOR (index2 = 1 ; index2 < 7 ; ++index2) BEGIN
 
-          EXTEND_BOTTOM ~%area%.bcs~ ~cdtweaks/random/cdrandom_extend.baf~ EVALUATE_BUFFER
+          EXTEND_BOTTOM ~%area%.bcs~ ~cdtweaks/baf/cdrandom_extend.baf~ EVALUATE_BUFFER
 
         END
 
         ACTION_IF index = 1 BEGIN // special for orrick's random-via-dialogue
 
-          COMPILE ~cdtweaks/random/dorrick.d~ EVALUATE_BUFFER
+          COMPILE ~cdtweaks/dlg/dorrick.d~ EVALUATE_BUFFER
         
         END
 
@@ -12523,7 +12522,7 @@ END
 insert_state
 ~~~~~
 
-        COPY ~cdtweaks/random/template2.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
+        COPY ~cdtweaks/lib/template2.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
           REPLACE_TEXTUALLY ~replacemelist~ ~%list%~ //EVALUATE_BUFFER
 //          REPLACE_TEXTUALLY ~drop~ ~drop%item%~ EVALUATE_BUFFER
           REPLACE_TEXTUALLY ~\([ %TAB%]+\*\)*~ ~~
@@ -12572,7 +12571,7 @@ GROUP @4
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
 
-INCLUDE ~cdtweaks/random/random_common.tpa~ // ar9200 fix, UB detection
+INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
 
 COPY_EXISTING ~katown1.cre~ ~override/cdrndm1.cre~
   SAY 0x08 @324201
@@ -12588,15 +12587,15 @@ COPY_EXISTING ~katown1.cre~ ~override/cdrndm1.cre~
     WRITE_ASCII 0x2cc ~cdrndm1~ #8  // dialogue
   END
 
-EXTEND_BOTTOM ~ar2100.bcs~ ~cdtweaks/random/ar2100.baf~
+EXTEND_BOTTOM ~ar2100.bcs~ ~cdtweaks/baf/ar2100.baf~
 
 ACTION_IF game_is_iwdee THEN BEGIN
 
-  INCLUDE ~cdtweaks/random/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema in random.2da
+  INCLUDE ~cdtweaks/lib/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema in random.2da
 
 END
 
-COPY ~cdtweaks/random/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm1.d~
+COPY ~cdtweaks/dlg/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm1.d~
 
 COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
   COUNT_2DA_ROWS 3 "rows"
@@ -12609,7 +12608,7 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
         BEGIN SPRINT "list" "%MATCH2%" END ~%MATCH1%%MATCH2%%MATCH3%~
         BUT_ONLY
 
-      COPY ~cdtweaks/random/template3.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
+      COPY ~cdtweaks/lib/template3.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
         REPLACE_TEXTUALLY ~replacemelist~ ~%list%~ //EVALUATE_BUFFER
         REPLACE_TEXTUALLY ~\([ %TAB%]+\*\)*~ ~~
         REPLACE_TEXTUALLY ~multiply~ ~*~
@@ -12641,7 +12640,7 @@ ACTION_IF NOT game_is_iwd THEN BEGIN // add lonelywood merchant
       WRITE_ASCII 0x2cc ~cdrndm2~ #8  // dialogue
     END
 
-  EXTEND_BOTTOM ~ar9100.bcs~ ~cdtweaks/random/ar9100.baf~
+  EXTEND_BOTTOM ~ar9100.bcs~ ~cdtweaks/baf/ar9100.baf~
 
   COPY ~weidu_external/cdtweaks/random/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm2.d~
     REPLACE_TEXTUALLY ~31426\([0-9]\)~ ~31428\1~

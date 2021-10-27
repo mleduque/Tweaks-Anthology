@@ -1,5 +1,5 @@
 MKDIR ~weidu_external/cdtweaks/random~
-COPY ~cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
+COPY ~cdtweaks/2da/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
 OUTER_SPRINT table rndtres
 
 ACTION_IF FILE_EXISTS_IN_GAME ar9200.are THEN BEGIN // fixed by fixpack, but we'll do it again just in case

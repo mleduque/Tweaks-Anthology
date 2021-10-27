@@ -33,12 +33,12 @@ insert_reply
     
     ACTION_IF index = 1 BEGIN
     
-      COMPILE ~cdtweaks/random/dorrick_itm.d~ EVALUATE_BUFFER
+      COMPILE ~cdtweaks/dlg/dorrick_itm.d~ EVALUATE_BUFFER
     
     END ELSE BEGIN
 
       ACTION_IF game_is_iwdee BEGIN
-        EXTEND_BOTTOM ~%area%.bcs~ ~cdtweaks/random/token_swap.baf~ EVALUATE_BUFFER
+        EXTEND_BOTTOM ~%area%.bcs~ ~cdtweaks/baf/token_swap.baf~ EVALUATE_BUFFER
       END
     
     END
