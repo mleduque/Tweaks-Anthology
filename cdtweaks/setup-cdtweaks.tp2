@@ -8628,6 +8628,7 @@ END
 BEGIN @242000 DESIGNATED 2420
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_cleric_multis_loosen_equipment_restrictions~
 
 // basically, only mess with kit flags if they still have their original usability and have not been hijacked by kit mods as free flags
 OUTER_SET lathander = 0
@@ -8789,6 +8790,7 @@ BEGIN @243000 DESIGNATED 2430
 GROUP @9
 SUBCOMPONENT @243001
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_druid_multis_loosen_equipment_restrictions~
   
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_BYTE 0x1f use
@@ -8848,6 +8850,7 @@ BEGIN @243100 DESIGNATED 2431
 GROUP @9
 SUBCOMPONENT @243001
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_druid_multis_tighten_equipment_restrictions~
   
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   PATCH_IF (("%SOURCE_RES%" STRING_COMPARE_CASE "cdrelm") AND
@@ -8929,6 +8932,7 @@ END
 BEGIN @244000 DESIGNATED 2440
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
+LABEL ~cd_tweaks_specialization_apr_bonus_for_all~
 
 INCLUDE ~cdtweaks/lib/remove_lines.tpa~
 
@@ -9056,6 +9060,7 @@ BEGIN @245000 DESIGNATED 2450
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~kitlist.2da~ @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_pnp_prof_restrictions_for_dualclasses~
 
 INCLUDE ~cdtweaks/lib/sod_25stweap_fix.tpa~
 INCLUDE ~cdtweaks/lib/iwdee_25stweap_fix.tpa~
@@ -9086,7 +9091,7 @@ OUTER_SET rgr_strref1 = 7200
 OUTER_SET rgr_strref2 = 10173 // 1077, 2184-5
 OUTER_SET rgr_strref3 = 9557
 
-COPY ~cdtweaks/lib/pnp_dual_core.tpa~ ~cdtweaks/lib/pnp_dual_core.tpa~
+COPY ~cdtweaks/lib/pnp_dual_core.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~
   REPLACE_TEXTUALLY ~fgt_strref1~ ~%fgt_strref1%~
   REPLACE_TEXTUALLY ~fgt_strref2~ ~%fgt_strref2%~
   REPLACE_TEXTUALLY ~fgt_strref3~ ~%fgt_strref3%~
@@ -9096,7 +9101,7 @@ COPY ~cdtweaks/lib/pnp_dual_core.tpa~ ~cdtweaks/lib/pnp_dual_core.tpa~
   REPLACE_TEXTUALLY ~rgr_strref3~ ~%rgr_strref3%~
   REPLACE_TEXTUALLY ~rgr_strref4~ ~%rgr_strref4%~
 
-REINCLUDE ~cdtweaks/lib/pnp_dual_core.tpa~
+REINCLUDE ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~
 
 COPY ~cdtweaks/spl/d5_duafc.spl~ ~override~
 
@@ -9232,6 +9237,7 @@ BEGIN @250000 DESIGNATED 2500
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~strmodex.2da~ @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_exceptional_strength_weight_limits~
 
 COPY_EXISTING ~strmodex.2da~ ~override~
   REPLACE_EVALUATE ~^\([0-9]+\)\([ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+\)\([0-9]+\)~
@@ -9250,6 +9256,7 @@ COPY_EXISTING ~strmodex.2da~ ~override~
 BEGIN @251000 DESIGNATED 2510
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
+LABEL ~cd_tweaks_level_locked_scrolls~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -9292,40 +9299,39 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BEGIN @252000 DESIGNATED 2520
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~soa tob bg1 totsc iwd how totlm tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
+LABEL ~cd_tweaks_loosen_shield_restrictions~
+     
+INCLUDE ~cdtweaks/lib/common_armor_list.tpa~
 
-COPY + ~cdtweaks/2da/common_armor_list.2da~ ~cdtweaks/2da/common_armor_list.2da~
-  COUNT_2DA_ROWS 10 rows
-  FOR (index = 1 ; index < rows ; ++index) BEGIN // start at 1 to skip header row
-    READ_2DA_ENTRY index 0 10 file
-    PATCH_IF FILE_EXISTS_IN_GAME ~%file%.itm~ BEGIN
-      READ_2DA_ENTRY index 2 10 appearance
-      PATCH_IF (("%appearance%" STRING_COMPARE_CASE "shield_buckler" = 0) OR
-                ("%appearance%" STRING_COMPARE_CASE "shield_small" = 0)) BEGIN
-        INNER_ACTION BEGIN
+ACTION_PHP_EACH cd_common_armor_list AS params => item BEGIN
+  
+  ACTION_IF (("%params_2%" STRING_COMPARE_CASE "shield_buckler" = 0) OR
+             ("%params_2%" STRING_COMPARE_CASE "shield_small" = 0)) BEGIN
 
-          COPY_EXISTING ~%file%.itm~ ~override~
-            READ_LONG 0x1e use
-            PATCH_IF (("%appearance%" STRING_COMPARE_CASE "shield_buckler" = 0) AND // buckler that's usable by...
-                      ((use BAND BIT8)  = 0) AND                                    // cleric-mages and
-                      ((use BAND BIT13) = 0) AND                                    // fighter-mages and
-                      ((use BAND BIT15) = 0) AND                                    // fighter-mage-clerics and
-                      ((use BAND BIT16) = 0) AND                                    // fighter-mage-thieves and
-                      ((use BAND BIT19) = 0)) BEGIN                                 // mage-thieves
-              WRITE_LONG 0x1e (THIS BAND `BIT18)                                    // removes mage flag
-            END ELSE
-            PATCH_IF (("%appearance%" STRING_COMPARE_CASE "shield_small" = 0) AND // small shield that's usable by...
-                      ((use BAND BIT9)  = 0) AND                                  // cleric-thieves and
-                      ((use BAND BIT16) = 0) AND                                  // fighter-mage-thieves and
-                      ((use BAND BIT17) = 0)) BEGIN                               // fighter-thieves
-              WRITE_LONG 0x1e (((THIS BAND `BIT22) BAND `BIT19) BAND `BIT6)       // removes bard, thief, mage-thief flags
-            END
-            BUT_ONLY
-            
-        END // inner action
-      END // appearance check
-    END // file_exists
-  END // for loop
-  BUT_ONLY
+    COPY_EXISTING ~%item%.itm~ ~override~
+      READ_SHORT 0x1c type
+      PATCH_IF ((type = 12) OR (type = 41) OR (type = 47) OR (type = 49) OR (type = 53)) BEGIN // 12 is bg shield type, all others are iwd
+        READ_LONG 0x1e use
+        PATCH_IF (("%params_2%" STRING_COMPARE_CASE "shield_buckler" = 0) AND // buckler that's usable by...
+                  ((use BAND BIT8)  = 0) AND                                  // cleric-mages and
+                  ((use BAND BIT13) = 0) AND                                  // fighter-mages and
+                  ((use BAND BIT15) = 0) AND                                  // fighter-mage-clerics and
+                  ((use BAND BIT16) = 0) AND                                  // fighter-mage-thieves and
+                  ((use BAND BIT19) = 0)) BEGIN                               // mage-thieves
+          WRITE_LONG 0x1e (THIS BAND `BIT18)                                  // removes mage flag
+        END ELSE
+        PATCH_IF (("%params_2%" STRING_COMPARE_CASE "shield_small" = 0) AND // small shield that's usable by...
+                  ((use BAND BIT9)  = 0) AND                                // cleric-thieves and
+                  ((use BAND BIT16) = 0) AND                                // fighter-mage-thieves and
+                  ((use BAND BIT17) = 0)) BEGIN                             // fighter-thieves
+          WRITE_LONG 0x1e (((THIS BAND `BIT22) BAND `BIT19) BAND `BIT6)     // removes bard, thief, mage-thief flags
+        END
+      END  
+      BUT_ONLY
+      
+  END // appearance check
+  
+END // php_each
   
 ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2060~ THEN BEGIN // weapon styles for all
 
