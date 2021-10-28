@@ -6549,6 +6549,7 @@ BEGIN @215100 DESIGNATED 2151 // no restrictions
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 SUBCOMPONENT @215000 // wear multiple protection items
+LABEL ~cd_tweaks_protection_items_all~
 
 COPY  ~cdtweaks/2da/itemexcl.2da~ ~override~
 
@@ -6560,6 +6561,7 @@ BEGIN @215200 DESIGNATED 2152 // no restrictions
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 SUBCOMPONENT @215000 // wear multiple protection items
+LABEL ~cd_tweaks_protection_items_armor_plus_one~
 
 COPY_EXISTING ~itemexcl.2da~ ~override~
   COUNT_2DA_ROWS 2 rows
@@ -6598,6 +6600,7 @@ BEGIN @216000 DESIGNATED 2160
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
+LABEL ~cd_tweaks_alter_prof_rebalanced~
 
 INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
 INCLUDE ~cdtweaks/lib/profs_common.tpa~
@@ -6611,6 +6614,7 @@ BEGIN @216100 DESIGNATED 2161
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
+LABEL ~cd_tweaks_alter_prof_bg_with_styles~
 
 OUTER_SET "tb#tutu_realloc_style" = 0
 INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
@@ -6625,6 +6629,7 @@ BEGIN @216200 DESIGNATED 2162
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
+LABEL ~cd_tweaks_alter_prof_bg_no_styles~
 
 OUTER_SET "tb#tutu_realloc_style" = 1
 INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
@@ -6639,6 +6644,7 @@ BEGIN @216300 DESIGNATED 2163
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
+LABEL ~cd_tweaks_alter_prof_iwd_with_styles~
 
 OUTER_SET "tb#tutu_realloc_style" = 0
 INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
@@ -6653,6 +6659,7 @@ BEGIN @216400 DESIGNATED 2164
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
+LABEL ~cd_tweaks_alter_prof_iwd_no_styles~
 
 OUTER_SET "tb#tutu_realloc_style" = 1
 INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
@@ -6669,6 +6676,7 @@ INCLUDE ~cdtweaks/lib/iwd_style_profs.tpa~
 
 BEGIN @217000 DESIGNATED 2170
 GROUP @9
+LABEL ~cd_tweaks_item_spells_at_char_level~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   PATCH_FOR_EACH op IN 146 148 BEGIN
@@ -6692,48 +6700,11 @@ BEGIN @219001 DESIGNATED 2190 // only mages n bards
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 SUBCOMPONENT @219000 // limited storekeeper id ability
+LABEL ~cd_tweaks_shopkeeper_id_mages~
 
-// builds cdstores.2da
+OUTER_SET lore_class = 1
+OUTER_SET lore_calc  = 0
 INCLUDE ~cdtweaks/lib/cdstores.tpa~
-
-  // with cdstores.2da built, use it as a lookup table
-COPY_EXISTING ~cdstores.2da~ ~override~
-  COUNT_2DA_ROWS ~2~ "rows"
-  FOR ( index = 1 ; index < rows ; index = index + 1 ) BEGIN
-    READ_2DA_ENTRY "%index%" 0 1 "store"
-    READ_2DA_ENTRY "%index%" 1 1 "creature"
-    PATCH_IF FILE_EXISTS_IN_GAME ~%store%~ THEN BEGIN
-
-      INNER_PATCH_FILE ~%creature%~ BEGIN
-        READ_BYTE class_off "class" // V1.0
-        PATCH_IF (("%class%" =   1) OR     // mage
-                  ("%class%" =   5) OR     // bard
-                  ("%class%" =   7) OR     // fighter-mage
-                  ("%class%" =  10) OR     // fighter-mage-thief
-                  ("%class%" =  13) OR     // mage-thief
-                  ("%class%" =  14) OR     // cleric-mage
-                  ("%class%" =  17) OR     // fighter-mage-cleric
-                  ("%class%" =  19) OR     // sorcerer
-                  ("%class%" = 202) OR     // mage-all
-                  ("%class%" = 206)) BEGIN // bard-all
-          SET "lore" = 200
-        END ELSE BEGIN
-          SET "lore" = 0
-        END
-      END // end inner_patch_file
-
-      INNER_ACTION BEGIN
-
-        COPY_EXISTING ~%store%~ ~override~ // store formats vary, but lore remains in the same place
-          PATCH_IF (SOURCE_SIZE > 0x9a) BEGIN
-            WRITE_LONG 0x3c "%lore%" // lore value
-          END
-          BUT_ONLY
-
-      END
-    END // end patch_if
-  END
-  BUT_ONLY
 
 /////                                                  \\\\\
 ///// based on shopkeeper                              \\\\\
@@ -6743,147 +6714,11 @@ BEGIN @219100 DESIGNATED 2191 // only mages n bards
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 SUBCOMPONENT @219000 // limited storekeeper id ability
+LABEL ~cd_tweaks_shopkeeper_id_shopkeeper_lore~
 
-// builds cdstores.2da
+OUTER_SET lore_class = 0
+OUTER_SET lore_calc  = 1
 INCLUDE ~cdtweaks/lib/cdstores.tpa~
-
-  // with cdstores.2da built, use it as a lookup table
-COPY_EXISTING ~cdstores.2da~ ~override~
-  COUNT_2DA_ROWS ~2~ "rows"
-  FOR (index = 1 ; index < rows ; index = index + 1 ) BEGIN
-    READ_2DA_ENTRY "%index%" 0 1 "store"
-    READ_2DA_ENTRY "%index%" 1 1 "creature"
-    PATCH_IF FILE_EXISTS_IN_GAME ~%store%~ THEN BEGIN
-
-      INNER_PATCH_FILE ~%creature%~ BEGIN
-        READ_BYTE 0x234 "level1" // level of primary class
-        READ_BYTE 0x235 "level2" // Highest attained level in secondary class (0-100)
-        READ_BYTE 0x236 "level3" // Highest attained level in tertiary class (0-100)
-        READ_BYTE class_off "class" // V1.0
-
-        // lore due to class and level
-        PATCH_IF ("%class%" = 5) BEGIN // bard
-          SET "lore" = (10 * "%level1%")
-        END ELSE
-        PATCH_IF (("%class%" =  1) OR     // single-class mage
-                  ("%class%" =  4) OR     // single-class thief
-                  ("%class%" = 19)) BEGIN // single-class sorcerer
-          SET "lore" = (3 * "%level1%")
-        END ELSE
-        PATCH_IF (("%class%" =  7) OR     // multi-dual fighter-thief
-                  ("%class%" =  9) OR     // multi-dual fighter-mage
-                  ("%class%" = 14) OR     // multi-dual cleric-mage
-                  ("%class%" = 15)) BEGIN // multi-dual cleric-thief
-          PATCH_IF ((3 * "%level2%") < ("%level1%")) BEGIN
-            SET "lore" = "%level1%"
-          END ELSE BEGIN
-            SET "lore" = (3 * "%level2%")
-          END
-        END ELSE
-        PATCH_IF (("%class%" =  13)) BEGIN // multi-dual mage-thief
-          PATCH_IF (("%level2%") < ("%level1%")) BEGIN
-            SET "lore" = (3 * "%level1%")
-          END ELSE BEGIN
-            SET "lore" = (3 * "%level2%")
-          END
-        END ELSE
-        PATCH_IF (("%class%" =  10)) BEGIN // fighter-mage-thief
-          PATCH_IF (("%level2%") < ("%level3%")) BEGIN
-            SET "lore" = (3 * "%level3%")
-          END ELSE BEGIN
-            SET "lore" = (3 * "%level2%")
-          END
-          PATCH_IF ("%lore%" < "%level1%") BEGIN
-            SET "lore" = "%level1%"
-          END
-        END ELSE
-        PATCH_IF (("%class%" =  17)) BEGIN // fighter-mage-cleric
-          PATCH_IF (("%level1%") < ("%level3%")) BEGIN
-            SET "lore" = "%level3%"
-          END ELSE BEGIN
-            SET "lore" = "%level1%"
-          END
-          PATCH_IF ("%lore%" < (3 * "%level2%")) BEGIN
-            SET "lore" = (3 * "%level2%")
-          END
-        END ELSE BEGIN // any other single, multi, or dual class non-mage, non-thief, non-bard
-          PATCH_IF ("%level1%" > "%level2%") BEGIN
-            SET "lore" = "%level1%"
-          END ELSE BEGIN
-            SET "lore" = "%level2%"
-          END
-          PATCH_IF ("%lore%" < "%level3%") BEGIN
-            SET "lore" = "%level3%"
-          END
-        END
-
-        SET "lore" = (40 + "%lore%") // occupational bonus--also, just enough for Ribald to ID everything in game
-
-        // assign bonuses for high/low int and wis
-        FOR (index2 = 0 ; index2 < 2 ; index2 = index2 + 1) BEGIN
-          READ_BYTE (0x23a + "%index2%") "attr" // int, wis on the two loops
-          PATCH_IF (("%attr%" > 9) AND ("%attr%" < 15)) BEGIN // kills sequence if of average value
-          END ELSE
-          PATCH_IF ("%attr%" < 7) BEGIN
-            SET "lore" = "%lore%" - 20
-          END ELSE
-          PATCH_IF (("%attr%" > 6) AND ("%attr%" < 10)) BEGIN
-            SET "lore" = "%lore%" - 10
-          END ELSE
-          PATCH_IF (("%attr%" > 14) AND ("%attr%" < 17)) BEGIN
-            SET "lore" = "%lore%" + 5
-          END ELSE
-          PATCH_IF ("%attr%" = 17) BEGIN
-            SET "lore" = "%lore%" + 7
-          END ELSE
-          PATCH_IF ("%attr%" = 18) BEGIN
-            SET "lore" = "%lore%" + 10
-          END ELSE
-          PATCH_IF ("%attr%" = 19) BEGIN
-            SET "lore" = "%lore%" + 12
-          END ELSE
-          PATCH_IF ("%attr%" = 20) BEGIN
-            SET "lore" = "%lore%" + 15
-          END ELSE
-          PATCH_IF ("%attr%" = 21) BEGIN
-            SET "lore" = "%lore%" + 20
-          END ELSE
-          PATCH_IF ("%attr%" = 22) BEGIN
-            SET "lore" = "%lore%" + 25
-          END ELSE
-          PATCH_IF ("%attr%" = 23) BEGIN
-            SET "lore" = "%lore%" + 30
-          END ELSE
-          PATCH_IF ("%attr%" = 24) BEGIN
-            SET "lore" = "%lore%" + 35
-          END ELSE
-          PATCH_IF ("%attr%" = 25) BEGIN
-            SET "lore" = "%lore%" + 40
-          END
-        END
-
-        // enforce min-max limits of 0, 200
-        PATCH_IF ("%lore%" < 0) BEGIN
-          SET "lore" = 0
-        END ELSE
-        PATCH_IF ("%lore%" > 200) BEGIN
-          SET "lore" = 200
-        END
-      END // end inner_patch_file
-
-      INNER_ACTION BEGIN
-
-        COPY_EXISTING ~%store%~ ~override~
-          READ_LONG 0x3c "old_lore" ELSE 0
-          PATCH_IF ("%old_lore%" > 0) BEGIN
-            WRITE_LONG 0x3c "%lore%" // lore value
-          END
-          BUT_ONLY
-
-      END
-    END
-  END
-  BUT_ONLY
 
 /////                                                  \\\\\
 ///// hybrid approach                                  \\\\\
@@ -6893,160 +6728,11 @@ BEGIN @219200 DESIGNATED 2192 // only mages n bards
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 SUBCOMPONENT @219000 // limited storekeeper id ability
+LABEL ~cd_tweaks_shopkeeper_id_shopkeeper_hybrid~
 
-// builds cdstores.2da
+OUTER_SET lore_class = 1
+OUTER_SET lore_calc  = 1
 INCLUDE ~cdtweaks/lib/cdstores.tpa~
-
-  // with cdstores.2da built, use it as a lookup table
-COPY_EXISTING ~cdstores.2da~ ~override~
-  COUNT_2DA_ROWS ~2~ "rows"
-  FOR (index = 1 ; index < rows ; index = index + 1 ) BEGIN
-    READ_2DA_ENTRY "%index%" 0 1 "store"
-    READ_2DA_ENTRY "%index%" 1 1 "creature"
-    PATCH_IF FILE_EXISTS_IN_GAME ~%store%~ THEN BEGIN
-
-      INNER_PATCH_FILE ~%creature%~ BEGIN
-        READ_BYTE class_off "class" // V1.0
-        PATCH_IF (("%class%" =   1) OR     // mage
-                  ("%class%" =   5) OR     // bard
-                  ("%class%" =   7) OR     // fighter-mage
-                  ("%class%" =  10) OR     // fighter-mage-thief
-                  ("%class%" =  13) OR     // mage-thief
-                  ("%class%" =  14) OR     // cleric-mage
-                  ("%class%" =  17) OR     // fighter-mage-cleric
-                  ("%class%" =  19) OR     // sorcerer
-                  ("%class%" = 202) OR     // mage-all
-                  ("%class%" = 206)) BEGIN // bard-all
-          SET "lore" = 200
-        END ELSE BEGIN
-          READ_BYTE 0x234 "level1" // level of primary class
-          READ_BYTE 0x235 "level2" // Highest attained level in secondary class (0-100)
-          READ_BYTE 0x236 "level3" // Highest attained level in tertiary class (0-100)
-
-          // lore due to class and level
-          PATCH_IF ("%class%" = 5) BEGIN // bard
-            SET "lore" = (10 * "%level1%")
-          END ELSE
-          PATCH_IF (("%class%" =  1) OR     // single-class mage
-                    ("%class%" =  4) OR     // single-class thief
-                    ("%class%" = 19)) BEGIN // single-class sorcerer
-            SET "lore" = (3 * "%level1%")
-          END ELSE
-          PATCH_IF (("%class%" =  7) OR     // multi-dual fighter-thief
-                    ("%class%" =  9) OR     // multi-dual fighter-mage
-                    ("%class%" = 14) OR     // multi-dual cleric-mage
-                    ("%class%" = 15)) BEGIN // multi-dual cleric-thief
-            PATCH_IF ((3 * "%level2%") < ("%level1%")) BEGIN
-              SET "lore" = "%level1%"
-            END ELSE BEGIN
-              SET "lore" = (3 * "%level2%")
-            END
-          END ELSE
-          PATCH_IF (("%class%" =  13)) BEGIN // multi-dual mage-thief
-            PATCH_IF (("%level2%") < ("%level1%")) BEGIN
-              SET "lore" = (3 * "%level1%")
-            END ELSE BEGIN
-              SET "lore" = (3 * "%level2%")
-            END
-          END ELSE
-          PATCH_IF (("%class%" =  10)) BEGIN // fighter-mage-thief
-            PATCH_IF (("%level2%") < ("%level3%")) BEGIN
-              SET "lore" = (3 * "%level3%")
-            END ELSE BEGIN
-              SET "lore" = (3 * "%level2%")
-            END
-            PATCH_IF ("%lore%" < "%level1%") BEGIN
-              SET "lore" = "%level1%"
-            END
-          END ELSE
-          PATCH_IF (("%class%" =  17)) BEGIN // fighter-mage-cleric
-            PATCH_IF (("%level1%") < ("%level3%")) BEGIN
-              SET "lore" = "%level3%"
-            END ELSE BEGIN
-              SET "lore" = "%level1%"
-            END
-            PATCH_IF ("%lore%" < (3 * "%level2%")) BEGIN
-              SET "lore" = (3 * "%level2%")
-            END
-          END ELSE BEGIN // any other single, multi, or dual class non-mage, non-thief, non-bard
-            PATCH_IF ("%level1%" > "%level2%") BEGIN
-              SET "lore" = "%level1%"
-            END ELSE BEGIN
-              SET "lore" = "%level2%"
-            END
-            PATCH_IF ("%lore%" < "%level3%") BEGIN
-              SET "lore" = "%level3%"
-            END
-          END
-  
-          SET "lore" = (40 + "%lore%") // occupational bonus--also, just enough for Ribald to ID everything in game
-  
-          // assign bonuses for high/low int and wis
-          FOR (index2 = 0 ; index2 < 2 ; index2 = index2 + 1) BEGIN
-            READ_BYTE (0x23a + "%index2%") "attr" // int, wis on the two loops
-            PATCH_IF (("%attr%" > 9) AND ("%attr%" < 15)) BEGIN // kills sequence if of average value
-            END ELSE
-            PATCH_IF ("%attr%" < 7) BEGIN
-              SET "lore" = "%lore%" - 20
-            END ELSE
-            PATCH_IF (("%attr%" > 6) AND ("%attr%" < 10)) BEGIN
-              SET "lore" = "%lore%" - 10
-            END ELSE
-            PATCH_IF (("%attr%" > 14) AND ("%attr%" < 17)) BEGIN
-              SET "lore" = "%lore%" + 5
-            END ELSE
-            PATCH_IF ("%attr%" = 17) BEGIN
-              SET "lore" = "%lore%" + 7
-            END ELSE
-            PATCH_IF ("%attr%" = 18) BEGIN
-              SET "lore" = "%lore%" + 10
-            END ELSE
-            PATCH_IF ("%attr%" = 19) BEGIN
-              SET "lore" = "%lore%" + 12
-            END ELSE
-            PATCH_IF ("%attr%" = 20) BEGIN
-              SET "lore" = "%lore%" + 15
-            END ELSE
-            PATCH_IF ("%attr%" = 21) BEGIN
-              SET "lore" = "%lore%" + 20
-            END ELSE
-            PATCH_IF ("%attr%" = 22) BEGIN
-              SET "lore" = "%lore%" + 25
-            END ELSE
-            PATCH_IF ("%attr%" = 23) BEGIN
-              SET "lore" = "%lore%" + 30
-            END ELSE
-            PATCH_IF ("%attr%" = 24) BEGIN
-              SET "lore" = "%lore%" + 35
-            END ELSE
-            PATCH_IF ("%attr%" = 25) BEGIN
-              SET "lore" = "%lore%" + 40
-            END
-          END
-  
-          // enforce min-max limits of 0, 200
-          PATCH_IF ("%lore%" < 0) BEGIN
-            SET "lore" = 0
-          END ELSE
-          PATCH_IF ("%lore%" > 200) BEGIN
-            SET "lore" = 200
-          END
-        END
-      END // end inner_patch_file
-
-      INNER_ACTION BEGIN
-
-        COPY_EXISTING ~%store%~ ~override~
-          READ_LONG 0x3c "old_lore" ELSE 0
-          PATCH_IF ("%old_lore%" > 0) BEGIN
-            WRITE_LONG 0x3c "%lore%" // lore value
-          END
-          BUT_ONLY
-
-      END
-    END
-  END
-  BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

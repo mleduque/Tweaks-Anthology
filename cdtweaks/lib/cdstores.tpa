@@ -1,3 +1,6 @@
+ACTION_CLEAR_ARRAY cdstores_check
+ACTION_CLEAR_ARRAY cdstores
+
 OUTER_SET class_off = 0x273 // cre v1.0
 OUTER_SET dlg_off   = 0x2cc
 // int, wis, levels at same offsets
@@ -17,33 +20,183 @@ ACTION_IF game_is_iwd2 BEGIN
   OUTER_SET dlg_off   = 0x626
 END
 
-// cdstores.2da will be the lookup table for the actual store patching
-COPY ~cdtweaks/2da/cdstores.2da~ ~override~
-
 // build list creature-store relations
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
-  PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
-    SET "store" = 0
-    SET "MATCH1" = 0
-    READ_ASCII dlg_off "dialog" ELSE ""
-    // look through dialogue for StartStore references
-    INNER_PATCH_FILE ~%dialog%.dlg~ BEGIN
+  READ_ASCII dlg_off "dialog" ELSE ""
+  PATCH_IF ("%dialog%" STRING_COMPARE_CASE "") BEGIN // if not blank
+    DEFINE_ASSOCIATIVE_ARRAY cdstores_check BEGIN "%SOURCE_RES%" => "%dialog%" END
+  END
+  BUT_ONLY
 
-      COUNT_REGEXP_INSTANCES ~StartStore("\([^"]+\)"~ "store" // if dialog contains a StartStore call
+ACTION_PHP_EACH cdstores_check AS creature => dialog BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%dialog%.dlg~ BEGIN
+  
+    COPY_EXISTING ~%dialog%.dlg~ ~override~
+      COUNT_REGEXP_INSTANCES ~StartStore("\([^"]+\)"~ store // if dialog contains a StartStore call
       PATCH_IF ("%store%" > 0) BEGIN
         // what follows is a horrible hack to extract store names
         REPLACE_EVALUATE ~StartStore("\([^"]+\)"~ BEGIN // abused to get store file name
-          // really shouldn't break out of a R_E, but... has to go here otherwise MATCH1 would only get last 
-          // store referenced in dlg, not all of them (needed for multi-store dialogues like ribald and bernard)
-          INNER_ACTION BEGIN
-            ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~cdstores.2da~ ~%MATCH1%\.sto~)) THEN BEGIN // unless clause can't take vars, so use action_if
-              APPEND ~cdstores.2da~ ~%MATCH1%.sto    %SOURCE_FILE%~
-            END
-          END
+          DEFINE_ASSOCIATIVE_ARRAY cdstores BEGIN "%MATCH1%" => "%creature%" END
         END
         ~StartStore("%MATCH1%"~ // don't actually change anything (wouldn't anyway since we're in an inner_patch_file)
       END
-    
-    END
+      BUT_ONLY
+  
   END
-  BUT_ONLY
+  
+END 
+
+ACTION_PHP_EACH cdstores AS store => shopkeeper BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%store%.sto~ BEGIN // skip without a valid store entry
+
+    COPY_EXISTING ~%shopkeeper%.cre~ ~override~
+      READ_BYTE class_off class // V1.0
+      SET lore = 0 
+      PATCH_IF lore_class BEGIN
+        PATCH_IF ((class =   1) OR     // mage
+                  (class =   5) OR     // bard
+                  (class =   7) OR     // fighter-mage
+                  (class =  10) OR     // fighter-mage-thief
+                  (class =  13) OR     // mage-thief
+                  (class =  14) OR     // cleric-mage
+                  (class =  17) OR     // fighter-mage-cleric
+                  (class =  19) OR     // sorcerer
+                  (class = 202) OR     // mage-all
+                  (class = 206)) BEGIN // bard-all
+          SET lore = 200
+        END  
+      END // lore_class check  
+      PATCH_IF ((lore != 200) AND (lore_calc)) BEGIN // only proceed to check levels if not already set to 200 (hybrid) and indicated
+        READ_BYTE 0x234 level1 // level of primary class
+        READ_BYTE 0x235 level2 // Highest attained level in secondary class (0-100)
+        READ_BYTE 0x236 level3 // Highest attained level in tertiary class (0-100)
+
+        // lore due to class and level
+        PATCH_IF (class = 5) BEGIN // bard
+          SET lore = (10 * level1)
+        END ELSE
+        PATCH_IF ((class =  1) OR     // single-class mage
+                  (class =  4) OR     // single-class thief
+                  (class = 19)) BEGIN // single-class sorcerer
+          SET lore = (3 * level1)
+        END ELSE
+        PATCH_IF ((class =  7) OR     // multi-dual fighter-thief
+                  (class =  9) OR     // multi-dual fighter-mage
+                  (class = 14) OR     // multi-dual cleric-mage
+                  (class = 15)) BEGIN // multi-dual cleric-thief
+          PATCH_IF ((3 * level2) < (level1)) BEGIN
+            SET lore = level1
+          END ELSE BEGIN
+            SET lore = (3 * level2)
+          END
+        END ELSE
+        PATCH_IF ((class =  13)) BEGIN // multi-dual mage-thief
+          PATCH_IF ((level2) < (level1)) BEGIN
+            SET lore = (3 * level1)
+          END ELSE BEGIN
+            SET lore = (3 * level2)
+          END
+        END ELSE
+        PATCH_IF ((class =  10)) BEGIN // fighter-mage-thief
+          PATCH_IF ((level2) < (level3)) BEGIN
+            SET lore = (3 * level3)
+          END ELSE BEGIN
+            SET lore = (3 * level2)
+          END
+          PATCH_IF (lore < level1) BEGIN
+            SET lore = level1
+          END
+        END ELSE
+        PATCH_IF ((class =  17)) BEGIN // fighter-mage-cleric
+          PATCH_IF ((level1) < (level3)) BEGIN
+            SET lore = level3
+          END ELSE BEGIN
+            SET lore = level1
+          END
+          PATCH_IF (lore < (3 * level2)) BEGIN
+            SET lore = (3 * level2)
+          END
+        END ELSE BEGIN // any other single, multi, or dual class non-mage, non-thief, non-bard
+          PATCH_IF (level1 > level2) BEGIN
+            SET lore = level1
+          END ELSE BEGIN
+            SET lore = level2
+          END
+          PATCH_IF (lore < level3) BEGIN
+            SET lore = level3
+          END
+        END
+
+        SET lore += 40 // occupational bonus--also, just enough for Ribald to ID everything in game
+
+        // assign bonuses for high/low int and wis
+        PATCH_FOR_EACH offset IN 0x23a 0x23b BEGIN
+          READ_BYTE offset attr // int, wis on the two loops
+          PATCH_IF ((attr > 9) AND (attr < 15)) BEGIN // kills sequence if of average value
+          END ELSE
+          PATCH_IF (attr < 7) BEGIN
+            SET lore -= 20
+          END ELSE
+          PATCH_IF ((attr > 6) AND (attr < 10)) BEGIN
+            SET lore -= 10
+          END ELSE
+          PATCH_IF ((attr > 14) AND (attr < 17)) BEGIN
+            SET lore += 5
+          END ELSE
+          PATCH_IF (attr = 17) BEGIN
+            SET lore += 7
+          END ELSE
+          PATCH_IF (attr = 18) BEGIN
+            SET lore += 10
+          END ELSE
+          PATCH_IF (attr = 19) BEGIN
+            SET lore += 12
+          END ELSE
+          PATCH_IF (attr = 20) BEGIN
+            SET lore += 15
+          END ELSE
+          PATCH_IF (attr = 21) BEGIN
+            SET lore += 20
+          END ELSE
+          PATCH_IF (attr = 22) BEGIN
+            SET lore += 25
+          END ELSE
+          PATCH_IF (attr = 23) BEGIN
+            SET lore += 30
+          END ELSE
+          PATCH_IF (attr = 24) BEGIN
+            SET lore += 35
+          END ELSE
+          PATCH_IF (attr = 25) BEGIN
+            SET lore += 40
+          END
+        END
+
+        // enforce min-max limits of 0, 200
+        PATCH_IF (lore < 0) BEGIN
+          SET lore = 0
+        END ELSE
+        PATCH_IF (lore > 200) BEGIN
+          SET lore = 200
+        END
+      END // end lore_calc
+      BUT_ONLY
+      
+    PRINT ~patching %store%.sto with lore %lore% from %shopkeeper%.cre~
+
+    COPY_EXISTING ~%store%.sto~ ~override~
+      PATCH_IF lore_class AND !lore_calc BEGIN // if 'only mages can id' enforce 0 lore
+        WRITE_LONG 0x3c lore // lore value
+      END ELSE BEGIN  
+        READ_LONG 0x3c old_lore ELSE 0
+        PATCH_IF (old_lore > 0) BEGIN
+          WRITE_LONG 0x3c lore // lore value
+        END
+      END  
+      BUT_ONLY
+      
+  END
+  
+END
