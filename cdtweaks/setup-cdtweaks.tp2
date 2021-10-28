@@ -2875,6 +2875,7 @@ END
 BEGIN @110100 DESIGNATED 1101
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~eet bgt bg2ee soa tob~ @25
+LABEL ~cd_tweaks_do_not_reveal_city_areas~
 
 ACTION_FOR_EACH file IN
   ar0015   // bgt: candlekeep prologue
@@ -2949,6 +2950,7 @@ END
 BEGIN @111000 DESIGNATED 1110
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc iwd-in-bg2~ @25 // tutu only
+LABEL ~cd_tweaks_add_map_notes~
 
 /*
 Note Color key:
@@ -3345,6 +3347,7 @@ END
 BEGIN @112000 DESIGNATED 1120
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_stores_sell_higher_stacks~
 
 ACTION_CLEAR_ARRAY  cd_higher_stacks
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_higher_stacks BEGIN
@@ -3384,6 +3387,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
 BEGIN @112500 DESIGNATED 1125 DEPRECATED @18
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_infinite_nonmagical_ammo~
 
 OUTER_SET arow01_name = RESOLVE_STR_REF (@112501)
 OUTER_SET bolt01_name = RESOLVE_STR_REF (@112502)
@@ -3539,6 +3543,7 @@ BEGIN @113000 DESIGNATED 1130
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bgt~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdt01130.g3~ @16 // already installed by BGT tweaks
+LABEL ~cd_tweaks_rep_reset_in_bg2~
 
 EXTEND_BOTTOM ~ar0602.bcs~ ~cdtweaks/baf/ar0602.baf~
 
@@ -3558,6 +3563,7 @@ BEGIN @114002 DESIGNATED 1140
 SUBCOMPONENT @114000
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_lore_for_gems_potions~
 
 OUTER_SET match_jewelry = 1
 OUTER_SET match_potion  = 1
@@ -3572,6 +3578,7 @@ BEGIN @114100 DESIGNATED 1141
 SUBCOMPONENT @114000
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_lore_for_gems~
 
 OUTER_SET match_jewelry = 1
 OUTER_SET match_potion  = 0
@@ -3586,6 +3593,7 @@ BEGIN @114200 DESIGNATED 1142
 SUBCOMPONENT @114000
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_lore_for_potions~
 
 OUTER_SET match_jewelry = 0
 OUTER_SET match_potion  = 1
@@ -3603,6 +3611,7 @@ INCLUDE ~cdtweaks/lib/lore.tpa~
 BEGIN @115000 DESIGNATED 1150
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bgee tutu tutu_totsc eet bgt bg2ee soa tob iwd-in-bg2 ca iwdee~ @25
+LABEL ~cd_tweaks_weimer_shapeshifter_rebalancing~
 
 ACTION_IF tutu_gen THEN BEGIN // Tutu
 
@@ -3788,48 +3797,39 @@ END
 BEGIN @116001 DESIGNATED 1160
 GROUP @13
 SUBCOMPONENT @116000 // multi strongholds
-REQUIRE_PREDICATE ((GAME_IS ~soa tob bgt bg2ee eet~) OR
-                   ((MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~10~) AND (FILE_EXISTS ~thecalling/baf/cheat2.baf~))) @25
-
-ACTION_IF game_includes_soa BEGIN
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
+//REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~10~) AND (FILE_EXISTS ~thecalling/baf/cheat2.baf~)) @25
+LABEL ~cd_tweaks_multi_stronghold_no_restriction~
   
-  COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
-                          ~cdtweaks/dlg/stronghold_cabin_choice.d~     // allows choice for ranger stronghold
-                          ~cdtweaks/dlg/stronghold_grove_choice.d~     // allows choice for druid stronghold
-                          ~cdtweaks/dlg/stronghold_playhouse_choice.d~ // allows choice for bard stronghold
-                          ~cdtweaks/dlg/stronghold_cabin.d~            // removes class check: ranger
-                          ~cdtweaks/dlg/stronghold_dearnise.d~         // removes class check: fighter, blackguard
-                          ~cdtweaks/dlg/stronghold_grove.d~            // removes class check: druid
-                          ~cdtweaks/dlg/stronghold_guild.d~            // removes class check: thief
-                          ~cdtweaks/dlg/stronghold_norh.d~             // removes class check: paladin
-                          ~cdtweaks/dlg/stronghold_playhouse.d~        // removes class check: bard
-                          ~cdtweaks/dlg/stronghold_sphere.d~           // removes class check: mage, sorcerer
-                          ~cdtweaks/dlg/stronghold_temples.d~          // removes class check: cleric
-  
-  COPY_EXISTING ~ar0900.bcs~ ~override~
-                ~ar0901.bcs~ ~override~
-                ~ar0902.bcs~ ~override~
-                ~ar0904.bcs~ ~override~
-    DECOMPILE_AND_PATCH BEGIN
-      REPLACE_TEXTUALLY ~OR([56])[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,FIGHTER_CLERIC)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_MAGE)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_THIEF)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,FIGHTER_MAGE_CLERIC)\([%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_RANGER)\)?~
-        ~~ // deletes positive class checks for oisig/arval/nalla/telwyn spawn
-      REPLACE_TEXTUALLY ~!Class(Player1,CLERIC)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,FIGHTER_CLERIC)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_MAGE)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_THIEF)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,FIGHTER_MAGE_CLERIC)\([%TAB% %LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_RANGER)\)?~
-        ~False()~ // removes oisig spawn for non-clerics, who should get the regular spawn from the previous change
-    END
-  
-  COPY_EXISTING ~baldur.bcs~ ~override~ // non-druids not getting great druid messenger
-    DECOMPILE_AND_PATCH BEGIN
-      REPLACE_TEXTUALLY ~Class(Player1,DRUID_ALL)[%TAB% %LNL%%MNL%%WNL%]+\(LevelGT(Player1,13)[%TAB% %LNL%%MNL%%WNL%]+Global("DruidADSpawn","GLOBAL",0)\)~ ~\1~
-    END
-    BUT_ONLY
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
+                        ~cdtweaks/dlg/stronghold_cabin_choice.d~     // allows choice for ranger stronghold
+                        ~cdtweaks/dlg/stronghold_grove_choice.d~     // allows choice for druid stronghold
+                        ~cdtweaks/dlg/stronghold_playhouse_choice.d~ // allows choice for bard stronghold
+                        ~cdtweaks/dlg/stronghold_cabin.d~            // removes class check: ranger
+                        ~cdtweaks/dlg/stronghold_dearnise.d~         // removes class check: fighter, blackguard
+                        ~cdtweaks/dlg/stronghold_grove.d~            // removes class check: druid
+                        ~cdtweaks/dlg/stronghold_guild.d~            // removes class check: thief
+                        ~cdtweaks/dlg/stronghold_norh.d~             // removes class check: paladin
+                        ~cdtweaks/dlg/stronghold_playhouse.d~        // removes class check: bard
+                        ~cdtweaks/dlg/stronghold_sphere.d~           // removes class check: mage, sorcerer
+                        ~cdtweaks/dlg/stronghold_temples.d~          // removes class check: cleric
 
-END
+COPY_EXISTING ~ar0900.bcs~ ~override~
+              ~ar0901.bcs~ ~override~
+              ~ar0902.bcs~ ~override~
+              ~ar0904.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~OR([56])[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,FIGHTER_CLERIC)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_MAGE)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_THIEF)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,FIGHTER_MAGE_CLERIC)\([%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_RANGER)\)?~
+      ~~ // deletes positive class checks for oisig/arval/nalla/telwyn spawn
+    REPLACE_TEXTUALLY ~!Class(Player1,CLERIC)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,FIGHTER_CLERIC)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_MAGE)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_THIEF)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,FIGHTER_MAGE_CLERIC)\([%TAB% %LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_RANGER)\)?~
+      ~False()~ // removes oisig spawn for non-clerics, who should get the regular spawn from the previous change
+  END
 
-ACTION_IF ((MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~10~) AND (FILE_EXISTS ~thecalling/baf/cheat2.baf~)) BEGIN
-
-  EXTEND_BOTTOM ~baldur.bcs~ ~thecalling/baf/cheat1.baf~
-
-END
+COPY_EXISTING ~baldur.bcs~ ~override~ // non-druids not getting great druid messenger
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~Class(Player1,DRUID_ALL)[%TAB% %LNL%%MNL%%WNL%]+\(LevelGT(Player1,13)[%TAB% %LNL%%MNL%%WNL%]+Global("DruidADSpawn","GLOBAL",0)\)~ ~\1~
+  END
+  BUT_ONLY
 
 /////                                                  \\\\\
 ///// keep class restrictions                          \\\\\
@@ -3838,23 +3838,14 @@ END
 BEGIN @116100 DESIGNATED 1161
 GROUP @13
 SUBCOMPONENT @116000 // multi strongholds
-REQUIRE_PREDICATE ((GAME_IS ~soa tob bgt bg2ee eet~) OR
-                   ((MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~10~) AND (FILE_EXISTS ~thecalling/baf/cheat1.baf~))) @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
+//REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~10~) AND (FILE_EXISTS ~thecalling/baf/cheat2.baf~)) @25
+LABEL ~cd_tweaks_multi_stronghold_class_restriction~
 
-ACTION_IF game_includes_soa BEGIN
-
-  COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
-                          ~cdtweaks/dlg/stronghold_cabin_choice.d~     // allows choice for ranger stronghold
-                          ~cdtweaks/dlg/stronghold_grove_choice.d~     // allows choice for druid stronghold
-                          ~cdtweaks/dlg/stronghold_playhouse_choice.d~ // allows choice for bard stronghold
-
-END
-
-ACTION_IF ((MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~10~) AND (FILE_EXISTS ~thecalling/baf/cheat1.baf~)) BEGIN
-
-  EXTEND_BOTTOM ~baldur.bcs~ ~thecalling/baf/cheat1.baf~
-
-END
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
+                        ~cdtweaks/dlg/stronghold_cabin_choice.d~     // allows choice for ranger stronghold
+                        ~cdtweaks/dlg/stronghold_grove_choice.d~     // allows choice for druid stronghold
+                        ~cdtweaks/dlg/stronghold_playhouse_choice.d~ // allows choice for bard stronghold
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -3870,8 +3861,9 @@ END
 
 BEGIN @134000 DESIGNATED 1340
 GROUP @13
-REQUIRE_PREDICATE (GAME_IS ~soa tob bgt bg2ee eet~) @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+LABEL ~cd_tweaks_sole_stronghold_mage~
 
 COMPILE ~cdtweaks/dlg/stronghold1.d~       // removes stronghold var
         ~cdtweaks/dlg/stronghold_sphere.d~ // removes class check
@@ -3882,8 +3874,9 @@ COMPILE ~cdtweaks/dlg/stronghold1.d~       // removes stronghold var
 
 BEGIN @134100 DESIGNATED 1341
 GROUP @13
-REQUIRE_PREDICATE (GAME_IS ~soa tob bgt bg2ee eet~) @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+LABEL ~cd_tweaks_sole_stronghold_fighter~
 
 COMPILE ~cdtweaks/dlg/stronghold1.d~         // removes stronghold var
         ~cdtweaks/dlg/stronghold_dearnise.d~ // removes class check
@@ -3894,8 +3887,9 @@ COMPILE ~cdtweaks/dlg/stronghold1.d~         // removes stronghold var
 
 BEGIN @134200 DESIGNATED 1342
 GROUP @13
-REQUIRE_PREDICATE (GAME_IS ~soa tob bgt bg2ee eet~) @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+LABEL ~cd_tweaks_sole_stronghold_cleric~
 
 COMPILE ~cdtweaks/dlg/stronghold1.d~        // removes stronghold var
         ~cdtweaks/dlg/stronghold_temples.d~ // removes class check
@@ -3917,8 +3911,9 @@ COPY_EXISTING ~ar0900.bcs~ ~override~
 
 BEGIN @134300 DESIGNATED 1343
 GROUP @13
-REQUIRE_PREDICATE (GAME_IS ~soa tob bgt bg2ee eet~) @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+LABEL ~cd_tweaks_sole_stronghold_thief~
 
 COMPILE ~cdtweaks/dlg/stronghold1.d~      // removes stronghold var
         ~cdtweaks/dlg/stronghold_guild.d~ // removes class check
@@ -3929,8 +3924,9 @@ COMPILE ~cdtweaks/dlg/stronghold1.d~      // removes stronghold var
 
 BEGIN @134400 DESIGNATED 1344
 GROUP @13
-REQUIRE_PREDICATE (GAME_IS ~soa tob bgt bg2ee eet~) @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+LABEL ~cd_tweaks_sole_stronghold_bard~
 
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
                         ~cdtweaks/dlg/stronghold_playhouse.d~        // removes class check
@@ -3942,8 +3938,9 @@ COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes 
 
 BEGIN @134500 DESIGNATED 1345
 GROUP @13
-REQUIRE_PREDICATE (GAME_IS ~soa tob bgt bg2ee eet~) @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+LABEL ~cd_tweaks_sole_stronghold_paladin~
 
 COMPILE ~cdtweaks/dlg/stronghold1.d~     // removes stronghold var
         ~cdtweaks/dlg/stronghold_norh.d~ // removes class check
@@ -3954,8 +3951,9 @@ COMPILE ~cdtweaks/dlg/stronghold1.d~     // removes stronghold var
 
 BEGIN @134600 DESIGNATED 1346
 GROUP @13
-REQUIRE_PREDICATE (GAME_IS ~soa tob bgt bg2ee eet~) @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+LABEL ~cd_tweaks_sole_stronghold_druid~
 
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~             // removes stronghold var
                         ~cdtweaks/dlg/stronghold_grove.d~        // removes class check
@@ -3973,8 +3971,9 @@ COPY_EXISTING ~baldur.bcs~ ~override~ // non-druids not getting great druid mess
 
 BEGIN @134700 DESIGNATED 1347
 GROUP @13
-REQUIRE_PREDICATE (GAME_IS ~soa tob bgt bg2ee eet~) @25
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+LABEL ~cd_tweaks_sole_stronghold_ranger~
 
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~             // removes stronghold var
                         ~cdtweaks/dlg/stronghold_cabin.d~        // removes class check
@@ -3992,6 +3991,7 @@ BEGIN @117000 DESIGNATED 1170
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16 // non-BP
+LABEL ~cd_tweaks_bonus_merchants~
 
 ACTION_FOR_EACH file IN ar0406 ar0702 BEGIN
 
@@ -4015,6 +4015,7 @@ END
 BEGIN @118000 DESIGNATED 1180
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
+LABEL ~cd_tweaks_edwina~
 
 ACTION_IF enhanced_edition THEN BEGIN
 
@@ -4050,6 +4051,7 @@ BEGIN @119000 DESIGNATED 1190
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ @16 // only if Fixpack not installed
+LABEL ~cd_tweaks_eou_romance_fixes~
 
 COMPILE ~cdtweaks/dlg/jagalvar.d~
 
@@ -4177,6 +4179,7 @@ BEGIN @120000 DESIGNATED 1200
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bgt tob~    @25 // ToB required, already fixed in bg2ee
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ @16 // only if Fixpack not installed
+LABEL ~cd_tweaks_tob_imoen_dialogue_fix~
 
 COMPILE ~cdtweaks/dlg/immyfix.d~
 
@@ -4191,6 +4194,7 @@ COMPILE ~cdtweaks/dlg/immyfix.d~
 BEGIN @121000 DESIGNATED 1210
 GROUP @13 
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_use_bg_walking_speeds~
 
 ACTION_IF enhanced_edition THEN BEGIN // in ee, can adjust the animation speed directly
    
@@ -4316,6 +4320,7 @@ END
 BEGIN @122000 DESIGNATED 1220
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~tob bgt bg2ee eet~ @25
+LABEL ~cd_tweaks_cromwell_updates_wk_items~
 
 STRING_SET 66764 @122043
 
@@ -4344,7 +4349,7 @@ COMPILE ~cdtweaks/dlg/crom6.d~
 COMPILE ~cdtweaks/dlg/crom7.d~
 COMPILE ~cdtweaks/dlg/crom8.d~
 COMPILE ~cdtweaks/dlg/crom9.d~
-ACTION_IF MOD_IS_INSTALLED ~ITEM_REV/ITEM_REV.TP2~ ~0~ THEN BEGIN // ir detection
+ACTION_IF MOD_IS_INSTALLED ~item_rev/item_rev.tp2~ ~0~ THEN BEGIN // ir detection
   COMPILE ~cdtweaks/dlg/crom10_irr.d~ // ir adds ring of energy to erienne sling upgrade
 END ELSE BEGIN  
   COMPILE ~cdtweaks/dlg/crom10.d~ // regular
@@ -4376,6 +4381,7 @@ BEGIN @122501 DESIGNATED 1225
 SUBCOMPONENT @122500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
+LABEL ~cd_tweaks_cromwell_forge_time_0~
 
 ACTION_IF enhanced_edition BEGIN
 
@@ -4395,6 +4401,7 @@ BEGIN @122600 DESIGNATED 1226
 SUBCOMPONENT @122500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
+LABEL ~cd_tweaks_cromwell_forge_time_8~
 
 ACTION_IF enhanced_edition THEN BEGIN
 
@@ -4427,6 +4434,7 @@ BEGIN @122700 DESIGNATED 1227
 SUBCOMPONENT @122500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
+LABEL ~cd_tweaks_cromwell_forge_time_24~
 
 ACTION_IF !enhanced_edition THEN BEGIN
 
@@ -4455,6 +4463,7 @@ END
 BEGIN @123000 DESIGNATED 1230
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~tob bgt bg2ee eet~ @25
+LABEL ~cd_tweaks_cespenar_updates_soa_items~
 
 ACTION_IF NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1220~ BEGIN
 
@@ -4494,6 +4503,7 @@ EXTEND_BOTTOM ~botsmith.bcs~ ~cdtweaks/baf/cespy.baf~
 BEGIN @124000 DESIGNATED 1240
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1~ @25 // not even totsc
+LABEL ~cd_tweaks_fai_container_restoration~
 
 COPY_EXISTING ~ar2300.are~ ~override~
   //first determine that the container truly is not there  if it is, we don't do anything
@@ -4563,7 +4573,8 @@ BEGIN @125100 DESIGNATED 1251
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
-REQUIRE_PREDICATE !FILE_EXISTS ~override/X#AloraMove.G3~ @16 // bg1 npc does these separately
+REQUIRE_PREDICATE !FILE_EXISTS ~override/x#aloramove.g3~ @16 // bg1 npc does these separately
+LABEL ~cd_tweaks_move_bg_npcs_alora~
 
 COPY_EXISTING ~%ALORA_BCS%.bcs~ ~override~ // catching and updating area variables
   DECOMPILE_AND_PATCH BEGIN
@@ -4632,7 +4643,8 @@ BEGIN @125200 DESIGNATED 1252
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
-REQUIRE_PREDICATE !FILE_EXISTS ~override/X#EldothMove.G3~ @16 // bg1 npc does these separately
+REQUIRE_PREDICATE !FILE_EXISTS ~override/x#eldothmove.g3~ @16 // bg1 npc does these separately
+LABEL ~cd_tweaks_move_bg_npcs_eldoth~
 
 COPY_EXISTING ~%ELDOTH_BCS%.bcs~ ~override~ // bg1npc compat
   DECOMPILE_AND_PATCH BEGIN
@@ -4677,7 +4689,8 @@ BEGIN @125300 DESIGNATED 1253
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
-REQUIRE_PREDICATE !FILE_EXISTS ~override/X#QuayleMove.G3~ @16 // bg1 npc does these separately
+REQUIRE_PREDICATE !FILE_EXISTS ~override/x#quaylemove.g3~ @16 // bg1 npc does these separately
+LABEL ~cd_tweaks_move_bg_npcs_quayle~
 
 COPY_EXISTING ~%QUAYLE_BCS%.bcs~ ~override~ // catching and updating area variables
   DECOMPILE_AND_PATCH BEGIN
@@ -4721,7 +4734,8 @@ BEGIN @125400 DESIGNATED 1254
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
-//REQUIRE_PREDICATE !FILE_EXISTS ~override/X#QuayleMove.G3~ @16 // bg1 npc doesn't move her
+//REQUIRE_PREDICATE !FILE_EXISTS ~override/x#quaylemove.g3~ @16 // bg1 npc doesn't move her
+LABEL ~cd_tweaks_move_bg_npcs_sharteel~
 
 COPY_EXISTING ~%SHARTEEL_BCS%.bcs~ ~override~ // catching and updating area variables
               ~shartel2.bcs~       ~override~
@@ -4784,7 +4798,8 @@ BEGIN @125500 DESIGNATED 1255
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
-REQUIRE_PREDICATE !FILE_EXISTS ~override/X#TiaxMove.G3~ @16 // bg1 npc does these separately
+REQUIRE_PREDICATE !FILE_EXISTS ~override/x#tiaxmove.g3~ @16 // bg1 npc does these separately
+LABEL ~cd_tweaks_move_bg_npcs_tiax~
 
 COPY_EXISTING ~%TIAX_BCS%.bcs~ ~override~ // catching and updating area variables
   DECOMPILE_AND_PATCH BEGIN
@@ -4828,7 +4843,8 @@ BEGIN @125600 DESIGNATED 1256
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
-//REQUIRE_PREDICATE !FILE_EXISTS ~override/X#QuayleMove.G3~ @16 // bg1 npc doesn't move her
+//REQUIRE_PREDICATE !FILE_EXISTS ~override/x#quaylemove.g3~ @16 // bg1 npc doesn't move her
+LABEL ~cd_tweaks_move_bg_npcs_viconia~
 
 COPY_EXISTING ~%VICONIA_BCS%.bcs~ ~override~ // catching and updating area variables
   DECOMPILE_AND_PATCH BEGIN
@@ -4883,6 +4899,7 @@ COPY_EXISTING ~%tutu_var%%tutu_scriptbg%viconi%eet_var%.dlg~ ~override~ // vicon
 BEGIN @126000 DESIGNATED 1260
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc~ @25 // leave bgee/tutu/bgee/etc. to BG1 NPC
+LABEL ~cd_tweaks_bardic_rep_adjustment~
 
 APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~CD_STATE_NOTVALID~
 CLEAR_IDS_MAP
@@ -4902,43 +4919,43 @@ COPY_EXISTING ~volo.cre~ ~override/x#lp1rep.cre~
   PATCH_IF (~%DEST_RES%~ STRING_EQUAL ~x#lp1rep~) THEN BEGIN
     SAY NAME1 @126001
     SAY NAME2 @126002
-    WRITE_ASCII 0x248 ~X#LP1R~ #8 // override script
+    WRITE_ASCII 0x248 ~x#lp1r~ #8 // override script
   END ELSE PATCH_IF (~%DEST_RES%~ STRING_EQUAL ~x#lp2rep~) THEN BEGIN
     SAY NAME1 @126003
     SAY NAME2 @126004
-    WRITE_ASCII 0x248 ~X#LP2R~ #8 // override script
+    WRITE_ASCII 0x248 ~x#lp2r~ #8 // override script
   END ELSE PATCH_IF (~%DEST_RES%~ STRING_EQUAL ~x#lp3rep~) THEN BEGIN
     SAY NAME1 @126005
     SAY NAME2 @126006
-    WRITE_ASCII 0x248 ~X#LP3R~ #8 // override script
+    WRITE_ASCII 0x248 ~x#lp3r~ #8 // override script
   END
 
 /* scripts */
-COMPILE EVALUATE_BUFFER ~cdtweaks/baf/X#LP1R.BAF~
-  USING ~cdtweaks/%LANGUAGE%/X#LP1R.TRA~
-COMPILE EVALUATE_BUFFER ~cdtweaks/baf/X#LP2R.BAF~
-  USING ~cdtweaks/%LANGUAGE%/X#LP2R.TRA~
-COMPILE EVALUATE_BUFFER ~cdtweaks/baf/X#LP3R.BAF~
-  USING ~cdtweaks/%LANGUAGE%/X#LP3R.TRA~
+COMPILE EVALUATE_BUFFER ~cdtweaks/baf/x#lp1r.baf~
+  USING ~cdtweaks/languages/%LANGUAGE%/x#lp1r.tra~
+COMPILE EVALUATE_BUFFER ~cdtweaks/baf/x#lp2r.baf~
+  USING ~cdtweaks/languages/%LANGUAGE%/x#lp2r.tra~
+COMPILE EVALUATE_BUFFER ~cdtweaks/baf/x#lp3r.baf~
+  USING ~cdtweaks/languages/%LANGUAGE%/x#lp3r.tra~
 
 /* dialogue */
-COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/X#LP1REP.D~
-  USING ~cdtweaks/TRA/%LANGUAGE%/X#LP1REP.TRA~
-COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/X#LP2REP.D~
-  USING ~cdtweaks/TRA/%LANGUAGE%/X#LP2REP.TRA~
-COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/X#LP3REP.D~
-  USING ~cdtweaks/TRA/%LANGUAGE%/X#LP2REP.TRA~
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lp1rep.d~
+  USING ~cdtweaks/languages/%LANGUAGE%/x#lp1rep.tra~
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lp2rep.d~
+  USING ~cdtweaks/languages/%LANGUAGE%/x#lp2rep.tra~
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lp3rep.d~
+  USING ~cdtweaks/languages/%LANGUAGE%/x#lp2rep.tra~
 
 /* Area Scripts for spawning */
-EXTEND_TOP ~ar2301.bcs~ ~cdtweaks/baf/X#LP1REPAS.BAF~ // The Friendly Arm Inn
-EXTEND_TOP ~ar4904.bcs~ ~cdtweaks/baf/X#LP2REPAS.BAF~ // The Carnival
-EXTEND_TOP ~ar0705.bcs~ ~cdtweaks/baf/X#LP3REPAS.BAF~ // The Elfsong
+EXTEND_TOP ~ar2301.bcs~ ~cdtweaks/baf/x#lp1repas.baf~ // The Friendly Arm Inn
+EXTEND_TOP ~ar4904.bcs~ ~cdtweaks/baf/x#lp2repas.baf~ // The Carnival
+EXTEND_TOP ~ar0705.bcs~ ~cdtweaks/baf/x#lp3repas.baf~ // The Elfsong
 
 /* Ajantis Reputation Seller Reactions */
-COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/X#LPRCAD.D~
-  USING ~cdtweaks/TRA/%LANGUAGE%/X#LPRCAD.TRA~
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lprcad.d~
+  USING ~cdtweaks/languages/%LANGUAGE%/x#lprcad.tra~
 
-EXTEND_BOTTOM ~ajantis.bcs~ ~cdtweaks/baf/X#LPRCAJR.BAF~
+EXTEND_BOTTOM ~ajantis.bcs~ ~cdtweaks/baf/x#lprcajr.baf~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
