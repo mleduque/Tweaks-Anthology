@@ -1176,6 +1176,7 @@ INCLUDE ~cdtweaks/lib/annoying_equipped_fx.tpa~
 BEGIN @21000 DESIGNATED 2010
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_replace_fire_cold_resist_icons~
 
 INCLUDE ~cdtweaks/lib/bg2fp_effect_batches.tpa~
 
@@ -1197,6 +1198,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 BEGIN @22000 DESIGNATED 220
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet pstee~ @25
+LABEL ~cd_tweaks_colorblind_overlays~
 
 COPY ~cdtweaks/bam/stortint.bam~ ~override~ // red, unusable
      ~cdtweaks/bam/stortin2.bam~ ~override~ // blue, needs ID
@@ -1213,6 +1215,7 @@ COPY ~cdtweaks/bam/stortint.bam~ ~override~ // red, unusable
 BEGIN @101000 DESIGNATED 1010
 GROUP @13 
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_more_interjections~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~mrimrin1.itm~ THEN BEGIN // imoen romance compatibility code
 
@@ -1247,57 +1250,52 @@ COPY_EXISTING ~trigger.ids~ ~override~
 BEGIN @102000 DESIGNATED 1020
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~shoutids.ids~ THEN BEGIN // if no shoutids, make one
-
-  COPY ~cdtweaks/ids/shoutids.ids~ ~override~
-
-END
+LABEL ~cd_tweaks_alter_wounded_triggers~
 
 // alter triggers in dialogues...
 COMPILE ~cdtweaks/dlg/hptriggers.d~
 
 // and corresponding triggers in scripts
 COPY_EXISTING ~edwin.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~HPPercentLT(Myself,[12]5)~ ~HPPercentLT(Myself,50)~ // in case not fixed
     REPLACE_TEXTUALLY ~Global("BEdwin10","LOCALS",0)\([ %TAB%%LNL%%MNL%%WNL%]+Global("EdwintalksAerieJames","LOCALS",0)\)~ ~Global("BEdwin1","LOCALS",0)\1~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 
 COPY_EXISTING ~jaheira.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~HPLT("Aerie",10)~ ~HPPercentLT("Aerie",50)~
     REPLACE_TEXTUALLY ~HPLT("Nalia",10)~ ~HPPercentLT("Nalia",50)~
     REPLACE_TEXTUALLY ~HPLT(Myself,15)~  ~HPPercentLT(Myself,50)~
     REPLACE_TEXTUALLY ~HPGT(Myself,14)~  ~!HPPercentLT(Myself,50)~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 
 COPY_EXISTING ~mazzy.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~HPPercentLT("Valygar",20)~ ~HPPercentLT("Valygar",50)~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 
 COPY_EXISTING ~minsc.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~HPLT(Myself,20)~    ~HPPercentLT(Myself,50)~
     REPLACE_TEXTUALLY ~HPGT(Myself,19)~    ~!HPPercentLT(Myself,50)~
     REPLACE_TEXTUALLY ~HPLT("Keldorn",20)~ ~HPPercentLT("Keldorn",50)~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 
 COPY_EXISTING ~nalia.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~HPPercentLT("Aerie",25)~ ~HPPercentLT("Aerie",50)~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 
 COPY_EXISTING ~yoshimo.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~HPLT("Mazzy",20)~ ~HPPercentLT("Mazzy",50)~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1311,6 +1309,7 @@ COPY_EXISTING ~yoshimo.bcs~ ~override~
 BEGIN @103000 DESIGNATED 1030
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
+LABEL ~cd_tweaks_reveal_ch6_wilderness~
 
 ACTION_IF ((FILE_EXISTS_IN_GAME ~cdbehbla.pro~) OR (enhanced_edition)) THEN BEGIN // easy fix if fixed worldmap present
 
@@ -1449,7 +1448,8 @@ BEGIN @103501 DESIGNATED 1035
 SUBCOMPONENT @103500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt bgee eet~ @25 // Tutu, BGEE or BGT only
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~BG1NPC/BG1NPC.TP2~ ~29~ @24 // don't install if same component from bg1 npc installed
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~bg1npc/bg1npc.tp2~ ~29~ @24 // don't install if same component from bg1 npc installed
+LABEL ~cd_tweaks_reveal_cloakwood_1~
 
 COPY_EXISTING ~worldmap.wmp~ ~override~
   READ_LONG  0x30 "area_num"
@@ -1482,7 +1482,8 @@ BEGIN @103600 DESIGNATED 1036
 SUBCOMPONENT @103500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt bgee eet~ @25 // Tutu, BGEE or BGT only
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~BG1NPC/BG1NPC.TP2~ ~29~ @24 // don't install if same component from bg1 npc installed
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~bg1npc/bg1npc.tp2~ ~29~ @24 // don't install if same component from bg1 npc installed
+LABEL ~cd_tweaks_reveal_cloakwood_4~
 
 COPY_EXISTING ~worldmap.wmp~ ~override~
   READ_LONG  0x30 "area_num"
@@ -1519,6 +1520,7 @@ BEGIN @104000 DESIGNATED 1040
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16 // non-BP
+LABEL ~cd_tweaks_improved_athkatla_guard~
 
 COPY_EXISTING ~amncen1.cre~  ~override~ // amnish centurion
               ~amng1.cre~    ~override~ // amnish soldier
@@ -1615,6 +1617,7 @@ COMPILE ~cdtweaks/baf/a#amng.baf~
 BEGIN @105000 DESIGNATED 1050
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
+LABEL ~cd_tweaks_gradual_drow_item_disintegration~
 
 EXTEND_BOTTOM ~ar2500.bcs~ ~cdtweaks/baf/ar2500.baf~
 EXTEND_BOTTOM ~baldur.bcs~ ~cdtweaks/baf/baldur.baf~
@@ -1722,15 +1725,23 @@ COPY_EXISTING ~dwchan01.itm~ ~override~
 BEGIN @106000 DESIGNATED 1060
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgee eet~ @25 // tutu, BGEE only
+LABEL ~cd_tweaks_breakable_armor_bg~
 
 ACTION_IF game_is_totsc BEGIN // bg1 does this differently since there's no effect-on-hit opcode
 
-  //PHASE #1 - adds opcode to selected armor/shield/helm, which change stat TRACKING (unused in original game) to 1,2,4 respectively, while equipped. So we can tell the scripts, if the non-magic armor part is equipped. With disposable in BG1 script's triggers we can only check, if the person has the item, but not, if the item is equipped or just in inventory. Opcode "store local variable" is not so good, because local variable is set permanently while an item is equipping, and doesn't return to 0 itself, if the item is unequipped.
+  // PHASE #1 - adds opcode to selected armor/shield/helm, which change stat TRACKING (unused in original game) to 1,2,4 respectively, while equipped. 
+  // So we can tell the scripts, if the non-magic armor part is equipped. With disposable in BG1 script's triggers we can only check, if the person 
+  // has the item, but not, if the item is equipped or just in inventory. Opcode "store local variable" is not so good, because local variable is set 
+  // permanently while an item is equipping, and doesn't return to 0 itself, if the item is unequipped.
 
   APPEND ~action.ids~ ~160 ApplySpellRES(S:ResRef*,O:Target*)~       UNLESS ~ApplySpellRES~ // needed action
+  
   // tracking effect added to items in mutual code section
 
-  //PHASE #2 - script on party-NPC, which on conditions (person was hit, person is wearing an item that sets tracking to value > 0) with small probability applies a spell to the person. The script DPLAYER3 works continuous on Player1 (all party in multiplayer), but DPLAYER2 could be turned off with Party AI off. So we must add the script's blocks also to all OVERRIDE scripts of all joinable NPCs, also from mods. There is unfortunately no possibility to check all party members from DPLAYER3, because trigger HitBy() can be proof only in script on active creature.
+  //PHASE #2 - script on party-NPC, which on conditions (person was hit, person is wearing an item that sets tracking to value > 0) with small 
+  //probability applies a spell to the person. The script DPLAYER3 works continuous on Player1 (all party in multiplayer), but DPLAYER2 could be 
+  //turned off with Party AI off. So we must add the script's blocks also to all OVERRIDE scripts of all joinable NPCs, also from mods. There is 
+  //unfortunately no possibility to check all party members from DPLAYER3, because trigger HitBy() can be proof only in script on active creature.
   ACTION_FOR_EACH script IN dplayer2 dplayer3 ajantis alora branwen coran dynaheir edwin eldoth faldorn garrick imoen jaheira khalid
     kagain kivan minsc montaron quayle safana sharteel skie tiax viconia xan xzar yeslick BEGIN // scripts for regular NPCs, so no existance check
 
@@ -1749,7 +1760,7 @@ ACTION_IF game_is_totsc BEGIN // bg1 does this differently since there's no effe
   END
   
   //7 NPCs from BG1 don't have OVERRIDE script
-  COPY_EXISTING_REGEXP GLOB ~^alora[0-9]*\.cre~ ~override~
+  COPY_EXISTING_REGEXP GLOB ~^alora[0-9]*\.cre$~ ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~alora~
       READ_ASCII SCRIPT_CLASS ~Class_Script_Name~ //Alora has already script ~alora.BCS~ but on CLASS position and with bad blocks
       PATCH_IF ( ~%Class_Script_Name%~ STRING_EQUAL_CASE ~alora~ ) THEN BEGIN  WRITE_ASCII SCRIPT_CLASS ~~ #8  END
@@ -1762,31 +1773,34 @@ ACTION_IF game_is_totsc BEGIN // bg1 does this differently since there's no effe
     END
     BUT_ONLY
   
-  COPY_EXISTING_REGEXP GLOB ~^branwe[0-9]*\.cre~ ~override~
+  COPY_EXISTING_REGEXP GLOB ~^branwe[0-9]*\.cre$~ ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~branwen~
     BUT_ONLY_IF_IT_CHANGES
   
-  COPY_EXISTING_REGEXP GLOB ~^faldor[0-9]*\.cre~ ~override~
+  COPY_EXISTING_REGEXP GLOB ~^faldor[0-9]*\.cre$~ ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~faldorn~
     BUT_ONLY_IF_IT_CHANGES
   
-  COPY_EXISTING_REGEXP GLOB ~^garric[0-9]*\.cre~  ~override~
+  COPY_EXISTING_REGEXP GLOB ~^garric[0-9]*\.cre$~  ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~garrick~
      BUT_ONLY_IF_IT_CHANGES
   
-  COPY_EXISTING_REGEXP GLOB ~^imoen[0-9]+\.cre~   ~override~ // imoen1,2,4,6.CRE but not imoen.CRE
+  COPY_EXISTING_REGEXP GLOB ~^imoen[0-9]+\.cre$~   ~override~ // imoen1,2,4,6.CRE but not imoen.CRE
       WRITE_ASCII SCRIPT_OVERRIDE ~imoen~
     BUT_ONLY_IF_IT_CHANGES
   
-  COPY_EXISTING_REGEXP GLOB ~^skie[0-9]*\.cre~    ~override~
+  COPY_EXISTING_REGEXP GLOB ~^skie[0-9]*\.cre$~    ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~skie~
     BUT_ONLY_IF_IT_CHANGES
   
-  COPY_EXISTING_REGEXP GLOB ~^xan[0-9]*\.cre~     ~override~
+  COPY_EXISTING_REGEXP GLOB ~^xan[0-9]*\.cre$~     ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~xan~ #8
     BUT_ONLY_IF_IT_CHANGES
   
-  //PHASE #3 - spell casted from scripts changes the item to the broken one and displays the massage. I don't know, why in TUTU solution helms are handled different than armors and shields (broken armor and shield replace the armor/shield direct in their equipping slot, but "broken item", that replace helm, is created in inventory, and helm slot remains empty). If you prefer version from TUTU solution, I can modify this part of component.
+  //PHASE #3 - spell casted from scripts changes the item to the broken one and displays the massage. I don't know, 
+  //why in TUTU solution helms are handled different than armors and shields (broken armor and shield replace the 
+  //armor/shield direct in their equipping slot, but "broken item", that replace helm, is created in inventory, and 
+  //helm slot remains empty). If you prefer version from TUTU solution, I can modify this part of component.
   // done in mutual code section
 
 END
@@ -1898,6 +1912,7 @@ END
 BEGIN @107000 DESIGNATED 1070
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc soa tob bgt bgee bg2ee iwdee eet tutu tutu_totsc ca iwd-in-bg2~ @25
+LABEL ~cd_tweaks_mp_kickout_dialogue~
 
 ACTION_IF game_is_totsc BEGIN // old IE engines - can be extended to IWD?
 
@@ -1946,6 +1961,7 @@ END
 BEGIN @107500 DESIGNATED 1075
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgt bgee eet~ @25
+LABEL ~cd_tweaks_send_bg_npcs_to_inn~
 
 ACTION_IF game_is_totsc BEGIN
    INCLUDE ~cdtweaks/lib/BG1areacheck_emulation.tpa~ // clever bit of code from Zed that allows us to check areas; should also work on IWD
@@ -1967,6 +1983,7 @@ END
 BEGIN @108000 DESIGNATED 1080
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc soa tob bgt bgee bg2ee eet how totlm iwd-in-bg2~ @25
+LABEL ~cd_tweaks_add_bags_of_holding~
 
 ACTION_IF game_is_how OR game_is_totlm OR game_is_iwd-in-bg2 THEN BEGIN
 
@@ -2315,29 +2332,77 @@ ACTION_IF ((MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~181~) OR (MOD_IS_INS
   END ELSE BEGIN
     OUTER_SET names = 1
   END
+  
+  INCLUDE ~cdtweaks/lib/unique_containers_v2_macro.tpa~
+  
+  // gem bag
+  OUTER_SPRINT icon          ~t-bgem~
+  OUTER_SET    idic          = 29  
+  OUTER_FOR (index = 0 ; index < idic ; ++index) BEGIN
+    ACTION_IF !FILE_EXISTS_IN_GAME ~%icon%%index%.bam~ BEGIN
+      OUTER_SET idic = index  // kill loop
+    END
+  END  
+  OUTER_SET    string_offset = 100
+  OUTER_SET    last          = 28
+  ACTION_FOR_EACH item IN ~c!bag02~ BEGIN LAM cd_unique_legwork END  
 
-  ACTION_CLEAR_ARRAY cd_unique_containers
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_unique_containers BEGIN
+  // scroll cases (normal)
+  OUTER_SPRINT icon          ~t-bscr~
+  OUTER_SET    idic          = 26
+  OUTER_FOR (index = 0 ; index < idic ; ++index) BEGIN
+    ACTION_IF !FILE_EXISTS_IN_GAME ~%icon%%index%.bam~ BEGIN
+      OUTER_SET idic = index  // kill loop
+    END
+  END  
+  OUTER_SET    string_offset = 200
+  OUTER_SET    last          = 25
+  ACTION_FOR_EACH item IN ~c!bag03~ BEGIN LAM cd_unique_legwork END  
+  
+  // bags of holding
+  OUTER_SPRINT icon          ~t-bhld~
+  OUTER_SET    idic          = 43
+  OUTER_FOR (index = 0 ; index < idic ; ++index) BEGIN
+    ACTION_IF !FILE_EXISTS_IN_GAME ~%icon%%index%.bam~ BEGIN
+      OUTER_SET idic = index  // kill loop
+    END
+  END  
+  OUTER_SET    string_offset = 300
+  OUTER_SET    last          = 42
+  ACTION_FOR_EACH item IN ~c!bag04~ ~cdhold1~ ~cdhold2~ ~cdhold3~ BEGIN LAM cd_unique_legwork END  
+  
+  // ammo belts
+  OUTER_SPRINT icon          ~t-bamm~
+  OUTER_SET    idic          = 30
+  OUTER_FOR (index = 0 ; index < idic ; ++index) BEGIN
+    ACTION_IF !FILE_EXISTS_IN_GAME ~%icon%%index%.bam~ BEGIN
+      OUTER_SET idic = index  // kill loop
+      PRINT ~bag idic is %idic%~
+    END
+  END  
+  OUTER_SET    string_offset = 400
+  OUTER_SET    last          = 29
+  ACTION_FOR_EACH item IN ~c!ammo~ ~cdammo1~ ~cdammo2~ ~cdammo3~ ~cdammo4~ ~cdammo~ BEGIN LAM cd_unique_legwork END   
 
-    104 => ~c!bag02~
-    204 => ~c!bag03~
-    304 => ~c!bag04~
-    305 => ~cdhold1~
-    306 => ~cdhold2~
-    307 => ~cdhold3~
-    402 => ~cdammo3~
-    403 => ~cdammo4~
-    404 => ~c!ammo~
-    405 => ~cdammo1~
-    406 => ~cdammo~
-    407 => ~cdammo2~
-    504 => ~c!potion~
-    506 => ~cdpotio2~
-    507 => ~cdpotion~
+  // potion cases
+  OUTER_SPRINT icon          ~t-bptn~
+  OUTER_SET    idic          = 33
+  OUTER_FOR (index = 0 ; index < idic ; ++index) BEGIN
+    ACTION_IF !FILE_EXISTS_IN_GAME ~%icon%%index%.bam~ BEGIN
+      OUTER_SET idic = index  // kill loop
+    END
+  END  
+  OUTER_SET    string_offset = 500
+  OUTER_SET    last          = 32
+  ACTION_FOR_EACH item IN ~c!potion~ ~cdpotio2~ ~cdpotion~ BEGIN LAM cd_unique_legwork END 
 
-  END
+  ACTION_IF names BEGIN
 
-  INCLUDE ~cdtweaks/lib/unique_containers.tpa~ // does the actual work
+    WITH_TRA ~cdtweaks/languages/%LANGUAGE%/unique_containers.tra~ BEGIN
+      INCLUDE ~weidu_external/cdtweaks/unique_containers_working.tpa~
+    END  
+    
+  END  
 
 END
 
