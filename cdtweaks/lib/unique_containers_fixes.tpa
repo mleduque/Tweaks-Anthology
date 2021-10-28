@@ -516,9 +516,9 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cb4287mj.cre~ BEGIN //SOS
                 ~cbsoumjr.dlg~ ~override~
     PATCH_IF SOURCE_SIZE > 0x34 BEGIN
       PATCH_SILENT
-      DECOMPILE_DLG_TO_D
+      DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~GiveItem("CBLOCKER",Player1)~ ~GiveItemCreate("CBLOCKER",Player1,0,0,0)~
-      COMPILE_D_TO_DLG
+      END
       PATCH_VERBOSE
       READ_LONG 0x0c st_off //States offset
       FOR (i = 0; i < 14; i += 1) BEGIN //Cycle through states
@@ -588,9 +588,9 @@ ACTION_IF FILE_EXISTS_IN_GAME ~wwelle.dlg~ BEGIN //UB
     COPY_EXISTING ~bag02.itm~ ~override/u!bag02.itm~
     COPY_EXISTING ~bag02.sto~ ~override/u!bag02.sto~
     COPY_EXISTING ~wwelle.dlg~ ~override~
-      DECOMPILE_DLG_TO_D
+      DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~"BAG02"~ ~"u!bag02"~
-      COMPILE_D_TO_DLG
+      END
     BUT_ONLY
   END
 END

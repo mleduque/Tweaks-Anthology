@@ -4,51 +4,51 @@ ACTION_IF game_includes_soa THEN BEGIN
   //anomen-keldorn
   COPY_EXISTING ~anomen.bcs~  ~override~
                 ~keldorn.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("AnomenKeldornFight","GLOBAL",1)~ ~False()~
       REPLACE_TEXTUALLY ~Global("AnomenHatesKeldorn","GLOBAL",1)~ ~False()~
-    COMPILE_BAF_TO_BCS
-    BUT_ONLY_IF_IT_CHANGES
+    END
+    BUT_ONLY
   EXTEND_TOP ~anomen.bcs~  ~cdtweaks/baf/anomkeld.baf~
   EXTEND_TOP ~keldorn.bcs~ ~cdtweaks/baf/anomkeld.baf~
   
   //edwin-minsc
   COPY_EXISTING ~edwin.bcs~ ~override~
                 ~minsc.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("EdwinMinscFight","GLOBAL",1)~ ~False()~
-    COMPILE_BAF_TO_BCS
-    BUT_ONLY_IF_IT_CHANGES
+    END
+    BUT_ONLY
   EXTEND_TOP ~edwin.bcs~   ~cdtweaks/baf/edwimins.baf~
   EXTEND_TOP ~minsc.bcs~   ~cdtweaks/baf/edwimins.baf~
   
   //edwin-keldorn
   COPY_EXISTING ~edwin.bcs~   ~override~
                 ~keldorn.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("EdwinKeldornFight","GLOBAL",1)~ ~False()~
-    COMPILE_BAF_TO_BCS
-    BUT_ONLY_IF_IT_CHANGES
+    END
+    BUT_ONLY
   EXTEND_TOP ~edwin.bcs~   ~cdtweaks/baf/edwikeld.baf~
   EXTEND_TOP ~keldorn.bcs~ ~cdtweaks/baf/edwikeld.baf~
   
   //edwin-valygar
   COPY_EXISTING ~edwin.bcs~   ~override~
                 ~valygar.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("EdwinValygarFight","GLOBAL",1)~ ~False()~
-    COMPILE_BAF_TO_BCS
-    BUT_ONLY_IF_IT_CHANGES
+    END
+    BUT_ONLY
   EXTEND_TOP ~edwin.bcs~   ~cdtweaks/baf/edwivaly.baf~
   EXTEND_TOP ~valygar.bcs~ ~cdtweaks/baf/edwivaly.baf~
 
   //viconia-keldorn
   COPY_EXISTING ~viconia.bcs~ ~override~
                 ~keldorn.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("ViconiaKeldornFight","GLOBAL",1)~ ~False()~
-    COMPILE_BAF_TO_BCS
-    BUT_ONLY_IF_IT_CHANGES
+    END
+    BUT_ONLY
   EXTEND_TOP ~viconia.bcs~ ~cdtweaks/baf/vicokeld.baf~
   EXTEND_TOP ~keldorn.bcs~ ~cdtweaks/baf/vicokeld.baf~
   
@@ -60,50 +60,50 @@ ACTION_IF game_includes_soa THEN BEGIN
     // anomen-dorn
     COPY_EXISTING ~anomen.bcs~ ~override~
                   ~dorn.bcs~   ~override~
-      DECOMPILE_BCS_TO_BAF
+      DECOMPILE_AND_PATCH BEGIN
         REPLACE_TEXTUALLY ~Global("OHD_anomenfight","GLOBAL",1)~ ~False()~
         APPEND_FILE ~cdtweaks/baf/anomdorn.baf~
-      COMPILE_BAF_TO_BCS
-      BUT_ONLY_IF_IT_CHANGES
+      END
+      BUT_ONLY
 
     // hexxat-aerie
     COPY_EXISTING ~ohhaeri.bcs~ ~override~
                   ~hexxa25.bcs~ ~override~
-      DECOMPILE_BCS_TO_BAF
+      DECOMPILE_AND_PATCH BEGIN
         REPLACE_TEXTUALLY ~Global("OHH_aeriefight","GLOBAL",1)~ ~False()~
         APPEND_FILE ~cdtweaks/baf/aerihexx.baf~
-      COMPILE_BAF_TO_BCS
-      BUT_ONLY_IF_IT_CHANGES
+      END
+      BUT_ONLY
 
     // hexxat-mazzy
     COPY_EXISTING ~ohhmaz.bcs~  ~override~
                   ~ohhmaz2.bcs~ ~override~
                   ~hexxat.bcs~  ~override~
-      DECOMPILE_BCS_TO_BAF
+      DECOMPILE_AND_PATCH BEGIN
         REPLACE_TEXTUALLY ~Global("OHH_mazzyfight","GLOBAL",1)~ ~False()~
         APPEND_FILE ~cdtweaks/baf/hexxmazz.baf~
-      COMPILE_BAF_TO_BCS
-      BUT_ONLY_IF_IT_CHANGES
+      END
+      BUT_ONLY
 
     // hexxat-valygar
     COPY_EXISTING ~ohhval.bcs~  ~override~
                   ~ohhval2.bcs~ ~override~
                   ~hexxat.bcs~  ~override~
-      DECOMPILE_BCS_TO_BAF
+      DECOMPILE_AND_PATCH BEGIN
         REPLACE_TEXTUALLY ~Global("OHH_valygarfight","GLOBAL",1)~ ~False()~
         APPEND_FILE ~cdtweaks/baf/hexxvaly.baf~
-      COMPILE_BAF_TO_BCS
-      BUT_ONLY_IF_IT_CHANGES
+      END
+      BUT_ONLY
 
     // hexxat-keldorn
     COPY_EXISTING ~ohhkeld.bcs~  ~override~
                   ~ohhkeld2.bcs~ ~override~
                   ~hexxat.bcs~   ~override~
-      DECOMPILE_BCS_TO_BAF
+      DECOMPILE_AND_PATCH BEGIN
         REPLACE_TEXTUALLY ~Global("OHH_keldornfight","GLOBAL",1)~ ~False()~
         APPEND_FILE ~cdtweaks/baf/hexxkeld.baf~
-      COMPILE_BAF_TO_BCS
-      BUT_ONLY_IF_IT_CHANGES
+      END
+      BUT_ONLY
 
   END
 

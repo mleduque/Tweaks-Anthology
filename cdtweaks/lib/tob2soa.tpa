@@ -43,7 +43,7 @@ APPEND ~TRIGGER.IDS~ ~0x40D5 ActuallyInCombat()~
 COPY_EXISTING ~trigger.ids~ ~override~
   REPLACE_TEXTUALLY ~\bHeard(O:Object\*,I:ID\*)~
                     ~Heard(O:Object*,I:ID*SHOUTIDS)~
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~shoutids.ids~ THEN BEGIN
 

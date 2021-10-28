@@ -56,7 +56,7 @@ END ELSE BEGIN
       DISABLE_FROM_KEY "%file%"
     END
 
-  INCLUDE ~cdtweaks/lib/tob2soa.tpa~ // add tob scripting to soa games; written such that it shouldn't change anything if used on tob
+    INCLUDE ~cdtweaks/lib/tob2soa.tpa~ // add tob scripting to soa games; written such that it shouldn't change anything if used on tob
 
   END 
 

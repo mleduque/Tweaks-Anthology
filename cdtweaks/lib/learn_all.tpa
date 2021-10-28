@@ -47,4 +47,4 @@ COPY_EXISTING ~scblank.itm~ ~override~
     WRITE_SHORT 0x68 (abil_num + 1)
     WRITE_LONG  0x6a (fx_off + 0x38)
   END
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY

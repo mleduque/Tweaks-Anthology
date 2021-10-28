@@ -684,10 +684,10 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 ACTION_IF FILE_EXISTS_IN_GAME ~udlesa.bcs~ BEGIN
 
   COPY_EXISTING ~udlesa.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~\(IF[%TAB% %LNL%%MNL%%WNL%]+!CombatCounter(0)[%TAB% %LNL%%MNL%%WNL%]+Global("DuelOn","AR2202",0)\)\([%TAB% %LNL%%MNL%%WNL%]+\)\(THEN\)~
         ~\1\2Global("PlayerDuelingLesaonar","GLOBAL",0)\2\3~
-    COMPILE_BAF_TO_BCS
+    END
     BUT_ONLY
 
 END
@@ -1220,18 +1220,18 @@ LABEL ~cd_tweaks_more_interjections~
 ACTION_IF FILE_EXISTS_IN_GAME ~mrimrin1.itm~ THEN BEGIN // imoen romance compatibility code
 
   COPY_EXISTING ~imoen2j.dlg~ ~override~
-    DECOMPILE_DLG_TO_D
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~!I[fs]ValidForPartyDialog\(ue\)?(Player\([2-6]\))~ ~!Range(Player\2,30)~
-    COMPILE_D_TO_DLG
+    END
     BUT_ONLY
 
 END
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~I[fs]ValidForPartyDialog\(ue\)?(~
                       ~InParty(~
-  COMPILE_BAF_TO_BCS
+  END
   IF ~16552~
   BUT_ONLY
 
@@ -1469,9 +1469,9 @@ COPY_EXISTING ~worldmap.wmp~ ~override~
 
 COPY_EXISTING ~%BanditCamp_RaemonsTent_BCS%.bcs~ ~override~ // tutu, bgt. bg
               ~baldur.bcs~                       ~override~ // eet, bgee
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~RevealAreaOnMap("%CloakwoodLodge%")~ ~RevealAreaOnMap("%CloakwoodLodge%") RevealAreaOnMap("%CloakwoodNest%")~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 
 /////                                                            \\\\\
@@ -1503,9 +1503,9 @@ COPY_EXISTING ~worldmap.wmp~ ~override~
 
 COPY_EXISTING ~%BanditCamp_RaemonsTent_BCS%.bcs~ ~override~ // tutu, bgt. bg
               ~baldur.bcs~                       ~override~ // eet, bgee
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~RevealAreaOnMap("%CloakwoodLodge%")~ ~RevealAreaOnMap("%CloakwoodLodge%") RevealAreaOnMap("%CloakwoodMines%")~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1764,7 +1764,7 @@ ACTION_IF game_is_totsc BEGIN // bg1 does this differently since there's no effe
       WRITE_ASCII SCRIPT_OVERRIDE ~alora~
       READ_ASCII SCRIPT_CLASS ~Class_Script_Name~ //Alora has already script ~alora.BCS~ but on CLASS position and with bad blocks
       PATCH_IF ( ~%Class_Script_Name%~ STRING_EQUAL_CASE ~alora~ ) THEN BEGIN  WRITE_ASCII SCRIPT_CLASS ~~ #8  END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
   
   // delete broken junk in alora's script while we're here
   COPY_EXISTING ~alora.bcs~ ~override~
@@ -1775,27 +1775,27 @@ ACTION_IF game_is_totsc BEGIN // bg1 does this differently since there's no effe
   
   COPY_EXISTING_REGEXP GLOB ~^branwe[0-9]*\.cre$~ ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~branwen~
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
   
   COPY_EXISTING_REGEXP GLOB ~^faldor[0-9]*\.cre$~ ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~faldorn~
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
   
   COPY_EXISTING_REGEXP GLOB ~^garric[0-9]*\.cre$~  ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~garrick~
-     BUT_ONLY_IF_IT_CHANGES
+     BUT_ONLY
   
   COPY_EXISTING_REGEXP GLOB ~^imoen[0-9]+\.cre$~   ~override~ // imoen1,2,4,6.CRE but not imoen.CRE
       WRITE_ASCII SCRIPT_OVERRIDE ~imoen~
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
   
   COPY_EXISTING_REGEXP GLOB ~^skie[0-9]*\.cre$~    ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~skie~
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
   
   COPY_EXISTING_REGEXP GLOB ~^xan[0-9]*\.cre$~     ~override~
       WRITE_ASCII SCRIPT_OVERRIDE ~xan~ #8
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
   
   //PHASE #3 - spell casted from scripts changes the item to the broken one and displays the massage. I don't know, 
   //why in TUTU solution helms are handled different than armors and shields (broken armor and shield replace the 
@@ -2417,37 +2417,38 @@ END
 BEGIN @108500 DESIGNATED 1085
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc~ @25
-REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~TWM-01CORE.CoB~ @16
+REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~twm-01core.cob~ @16
+LABEL ~cd_tweaks_portable_containers~
 
-COPY ~cdtweaks/itm/Z!BAG01.ITM~  ~override~ // Gem Bag
+COPY ~cdtweaks/itm/z!bag01.itm~  ~override~ // Gem Bag
   SAY NAME1 @108501
   SAY NAME2 @108502
   SAY UNIDENTIFIED_DESC @108503
   SAY DESC @108504
   SAY 0xDE @108505
 
-COPY ~cdtweaks/itm/Z!BAG02.ITM~  ~override~ // Potion Case
+COPY ~cdtweaks/itm/z!bag02.itm~  ~override~ // Potion Case
   SAY NAME1 @108506
   SAY NAME2 @108507
   SAY UNIDENTIFIED_DESC @108508
   SAY DESC @108509
   SAY 0xDE @108510
 
-COPY ~cdtweaks/itm/Z!BAG03.ITM~  ~override~ // Scroll Case
+COPY ~cdtweaks/itm/z!bag03.itm~  ~override~ // Scroll Case
   SAY NAME1 @108511
   SAY NAME2 @108512
   SAY UNIDENTIFIED_DESC @108513
   SAY DESC @108514
   SAY 0xDE @108525
 
-COPY ~cdtweaks/itm/Z!BAG04.ITM~  ~override~  // Ammunition Belt
+COPY ~cdtweaks/itm/z!bag04.itm~  ~override~  // Ammunition Belt
   SAY NAME1 @108515
   SAY NAME2 @108516
   SAY UNIDENTIFIED_DESC @108517
   SAY DESC @108518
   SAY 0xDE @108519
 
-COPY ~cdtweaks/itm/Z!BAG11.ITM~  ~override~ // Bag of Holding
+COPY ~cdtweaks/itm/z!bag11.itm~  ~override~ // Bag of Holding
   SAY NAME1 @108520
   SAY NAME2 @108521
   SAY UNIDENTIFIED_DESC @108522
@@ -2455,77 +2456,77 @@ COPY ~cdtweaks/itm/Z!BAG11.ITM~  ~override~ // Bag of Holding
   SAY 0xDE @108524
 
 // copy the images needed
-COPY ~cdtweaks/BAM/cbag02.bam~ ~override~
-     ~cdtweaks/BAM/cbag03.bam~ ~override~
-     ~cdtweaks/BAM/cbag04.bam~ ~override~
-     ~cdtweaks/BAM/pbag05.bam~ ~override~
-     ~cdtweaks/BAM/pbag06.bam~ ~override~
-     ~cdtweaks/BAM/ibag02.bam~ ~override~
-     ~cdtweaks/BAM/ibag03.bam~ ~override~
-     ~cdtweaks/BAM/ibag04.bam~ ~override~
-     ~cdtweaks/BAM/ibag05.bam~ ~override~
-     ~cdtweaks/BAM/ibag06.bam~ ~override~
+COPY ~cdtweaks/bam/cbag02.bam~ ~override~
+     ~cdtweaks/bam/cbag03.bam~ ~override~
+     ~cdtweaks/bam/cbag04.bam~ ~override~
+     ~cdtweaks/bam/pbag05.bam~ ~override~
+     ~cdtweaks/bam/pbag06.bam~ ~override~
+     ~cdtweaks/bam/ibag02.bam~ ~override~
+     ~cdtweaks/bam/ibag03.bam~ ~override~
+     ~cdtweaks/bam/ibag04.bam~ ~override~
+     ~cdtweaks/bam/ibag05.bam~ ~override~
+     ~cdtweaks/bam/ibag06.bam~ ~override~
 
 // modify Dplayer3.bcs to make bags work
-EXTEND_BOTTOM ~dplayer3.BCS~ ~cdtweaks/baf/dplayer3_bagsAD.BAF~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~cdtweaks/baf/dplayer3_bagsad.baf~
 
 // Create the CRE files that access the stores
-COPY ~cdtweaks/cre/Z!BAG01.CRE~ ~override/Z!BAG01.cre~
-     ~cdtweaks/cre/Z!BAG01.CRE~ ~override/Z!BAG02.CRE~
-     ~cdtweaks/cre/Z!BAG01.CRE~ ~override/Z!BAG03.CRE~
-     ~cdtweaks/cre/Z!BAG01.CRE~ ~override/Z!BAG04.CRE~
-     ~cdtweaks/cre/Z!BAG01.CRE~ ~override/Z!BAG11.CRE~
+COPY ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag01.cre~
+     ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag02.cre~
+     ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag03.cre~
+     ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag04.cre~
+     ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag11.cre~
   WRITE_ASCIIE SCRIPT_OVERRIDE ~%DEST_RES%~
 
-COPY ~cdtweaks/cre/Z!BAG01.CRE~ ~override/Z!BAG0X.CRE~
+COPY ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag0x.cre~
   WRITE_ASCII DEATHVAR ~Z!BAG0X~
 
 // Create the scripts used by the CREs
-COMPILE ~cdtweaks/baf/Z!BAG01.BAF~
+COMPILE ~cdtweaks/baf/z!bag01.baf~
 
-COPY_EXISTING ~Z!BAG01.BCS~ ~override/Z!BAG02.BCS~
-              ~Z!BAG01.BCS~ ~override/Z!BAG03.BCS~
-              ~Z!BAG01.BCS~ ~override/Z!BAG04.BCS~
-              ~Z!BAG01.BCS~ ~override/Z!BAG11.BCS~
+COPY_EXISTING ~z!bag01.bcs~ ~override/z!bag02.bcs~
+              ~z!bag01.bcs~ ~override/z!bag03.bcs~
+              ~z!bag01.bcs~ ~override/z!bag04.bcs~
+              ~z!bag01.bcs~ ~override/z!bag11.bcs~
   REPLACE_TEXTUALLY ~Z!BAG01~ ~%DEST_RES%~
 
 // Place the stores in the game
-COPY ~cdtweaks/sto/Z!BAG01.STO~ ~override~
+COPY ~cdtweaks/sto/z!bag01.sto~ ~override~
   SAY NAME2 @108502
   ADD_STORE_ITEM ~ring13~ #1 #0 #0 ~NONE~ #1
   ADD_STORE_ITEM ~ring17~ #1 #0 #0 ~NONE~ #1
   ADD_STORE_ITEM ~amul10~ #1 #0 #0 ~NONE~ #1
 
-COPY ~cdtweaks/sto/Z!BAG02.STO~ ~override~
+COPY ~cdtweaks/sto/z!bag02.sto~ ~override~
   SAY NAME2 @108507
 
-COPY ~cdtweaks/sto/Z!BAG03.STO~ ~override~
+COPY ~cdtweaks/sto/z!bag03.sto~ ~override~
   SAY NAME2 @108512
 
-COPY ~cdtweaks/sto/Z!BAG04.STO~ ~override~
+COPY ~cdtweaks/sto/z!bag04.sto~ ~override~
   SAY NAME2 @108516
   ADD_STORE_ITEM ~dart04~ #5 #0 #0 ~NONE~ #1
 
-COPY ~cdtweaks/sto/Z!BAG11.STO~ ~override~
+COPY ~cdtweaks/sto/z!bag11.sto~ ~override~
   SAY NAME2 @108521
   ADD_STORE_ITEM ~slng02~ #0 #0 #0 ~NONE~ #1
   ADD_STORE_ITEM ~bull02~ #10 #0 #0 ~NONE~ #1
 
 // Finally, where the items are found
 COPY_EXISTING ~tarnes.cre~ ~override~
-  ADD_CRE_ITEM ~Z!BAG01~ #1 #0 #0 ~NONE~ ~INV9~
+  ADD_CRE_ITEM ~z!bag01~ #1 #0 #0 ~NONE~ ~INV9~
 
 COPY_EXISTING ~tem3402.sto~ ~override~
-  ADD_STORE_ITEM ~Z!BAG02~ LAST #0 #0 #0 ~IDENTIFIED~ #1
+  ADD_STORE_ITEM ~z!bag02~ LAST #0 #0 #0 ~IDENTIFIED~ #1
 
 COPY_EXISTING ~highhedg.sto~ ~override~
-  ADD_STORE_ITEM ~Z!BAG03~ LAST #0 #0 #0 ~IDENTIFIED~ #1
+  ADD_STORE_ITEM ~z!bag03~ LAST #0 #0 #0 ~IDENTIFIED~ #1
 
-COPY_EXISTING ~ZAL.CRE~ ~override~
-     ADD_CRE_ITEM ~Z!BAG04~ #1 #0 #0 ~NONE~ ~BELT~
+COPY_EXISTING ~zal.cre~ ~override~
+     ADD_CRE_ITEM ~z!bag04~ #1 #0 #0 ~NONE~ ~BELT~
 
 COPY_EXISTING ~mulahe.cre~ ~override~
-  ADD_CRE_ITEM ~Z!BAG11~ #1 #0 #0 ~NONE~ ~INV9~
+  ADD_CRE_ITEM ~z!bag11~ #1 #0 #0 ~NONE~ ~INV9~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2785,6 +2786,7 @@ END
 BEGIN @110000 DESIGNATED 1100
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgee pst pstee iwdee iwd-in-bg2 iwd how totlm bgt~ @25
+LABEL ~cd_tweaks_reveal_city_areas~
 
 ACTION_IF game_includes_pst THEN BEGIN
 
@@ -2808,11 +2810,11 @@ ACTION_IF game_includes_iwd THEN BEGIN
     ACTION_IF FILE_EXISTS_IN_GAME ~%file%.bcs~ BEGIN
   
       COPY_EXISTING ~%file%.bcs~ ~override~
-        DECOMPILE_BCS_TO_BAF
+        DECOMPILE_AND_PATCH BEGIN
           APPEND_FILE ~cdtweaks/baf/reveal.baf~
           REPLACE_TEXTUALLY ~CD_MYAREA_VAR_SCOPE~ ~%SOURCE_RES%~ // bg1 doesn't like MYAREA
-        COMPILE_BAF_TO_BCS
-        BUT_ONLY_IF_IT_CHANGES
+        END
+        BUT_ONLY
     
     END
 
@@ -2823,13 +2825,13 @@ END
 ACTION_IF game_includes_bg1 THEN BEGIN
 
   COPY_EXISTING ~%NEBaldursGate_BCS%.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~TimeGT(20)~ ~TimeGT(20) Global("CDNarlenExists","GLOBAL",0)~
       REPLACE_TEXTUALLY ~TimeLT(4)~  ~TimeLT(4)  Global("CDNarlenExists","GLOBAL",0)~
       REPLACE_TEXTUALLY ~TimeGT(4)~  ~TimeGT(4)  Global("CDNarlenExists","GLOBAL",1)~
       REPLACE_TEXTUALLY ~\bActivate("narlen")~   ~Activate("narlen") SetGlobal("CDNarlenExists","GLOBAL",1)~
       REPLACE_TEXTUALLY ~Deactivate("narlen")~ ~Deactivate("narlen") SetGlobal("CDNarlenExists","GLOBAL",0)~
-    COMPILE_BAF_TO_BCS
+    END
     BUT_ONLY IF ~CDNarlenExists~ IF_EXISTS
 
   COPY_EXISTING ~%NWBaldursGate%.are~      ~override~ // ar0100
@@ -2851,10 +2853,10 @@ ACTION_IF game_includes_bg1 THEN BEGIN
     INNER_ACTION BEGIN
 
       COPY_EXISTING ~%script%.bcs~ ~override~
-        DECOMPILE_BCS_TO_BAF
+        DECOMPILE_AND_PATCH BEGIN
           APPEND_FILE ~cdtweaks/baf/reveal.baf~
           REPLACE_TEXTUALLY ~CD_MYAREA_VAR_SCOPE~ ~%scope%~ // bg1 doesn't like MYAREA
-        COMPILE_BAF_TO_BCS
+        END
         BUT_ONLY IF_EXISTS
 
     END
@@ -4071,7 +4073,7 @@ COPY_EXISTING ~spin678.spl~ ~override~
   BUT_ONLY
 
 COPY_EXISTING ~aerie.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~SetGlobal("HaerDalisRomanceActive","GLOBAL",3)~
       ~SetGlobal("HaerDalisRomanceActive","GLOBAL",3)
       END
@@ -4098,20 +4100,20 @@ COPY_EXISTING ~aerie.bcs~ ~override~
           SetGlobal("HaerDalisRomanceActive","GLOBAL",3)
           Continue()~
     REPLACE_TEXTUALLY ~AreaType(0)~ ~AreaType(OUTDOOR)~
-  COMPILE_BAF_TO_BCS
+  END
 EXTEND_TOP ~aerie.bcs~ ~cdtweaks/baf/romfix_aerie.baf~
 
 COPY_EXISTING ~anomen.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~SetGlobal("AnomenIsNotKnight","GLOBAL",1)~
       ~SetGlobal("AnomenIsNotKnight","GLOBAL",1)
       ChangeAlignment("Anomen",CHAOTIC_NEUTRAL)~
     REPLACE_TEXTUALLY ~"TALKEDTOCOR","GLOBAL"~ ~"TALKEDCOR","GLOBAL"~
-  COMPILE_BAF_TO_BCS
+  END
 EXTEND_TOP ~anomen.bcs~ ~cdtweaks/baf/romfix_anomen.baf~
 
 COPY_EXISTING ~jaheira.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~GlobalLT("DerminSpawn","GLOBAL",5)~
       ~  GlobalLT("DerminSpawn","GLOBAL",5)
         !InParty(Myself)
@@ -4127,10 +4129,10 @@ COPY_EXISTING ~jaheira.bcs~ ~override~
         False()~
     REPLACE_TEXTUALLY ~\bSetGlobalTimer("TerminselAppear","GLOBAL",FIVE_DAYS)~
                       ~RealSetGlobalTimer("TerminselAppear","GLOBAL",3600)~ // originally 36000 seems to be more than random.
-  COMPILE_BAF_TO_BCS
+  END
 
 COPY_EXISTING ~viconia.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~Global("LoveTalk","LOCALS",71)~ ~False()~
     REPLACE_TEXTUALLY ~Global("ViconiaKeldornFight","GLOBAL",1)~
       ~Global("ViconiaKeldornFight","GLOBAL",1)
@@ -4141,25 +4143,25 @@ COPY_EXISTING ~viconia.bcs~ ~override~
 
       IF
         False()~
-  COMPILE_BAF_TO_BCS
+  END
 
 // If ToB installed, patch ToB BCS files:
 ACTION_IF game_is_tob THEN BEGIN
 
   COPY_EXISTING ~anom25.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("AnomenSummoned","GLOBAL",1)~
       ~Global("AnomenSummoned","GLOBAL",1)
       !Global("AnomenIsKnight","GLOBAL",1)~
-    COMPILE_BAF_TO_BCS
+    END
   EXTEND_TOP ~anom25.bcs~ ~cdtweaks/baf/romfix_anom25.baf~
 
   COPY_EXISTING ~jahe25.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~OR(2)~ ~~
       REPLACE_TEXTUALLY ~GlobalGT("LoveTalk","LOCALS",50)~ ~~
       REPLACE_TEXTUALLY ~SetGlobal("JaheiraRomanceActive","GLOBAL",2)~ ~~
-    COMPILE_BAF_TO_BCS
+    END
 
 END
 
@@ -4322,10 +4324,10 @@ ACTION_IF NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1230~ BEGIN
   EXTEND_BOTTOM ~botsmith.bcs~ ~cdtweaks/baf/botsmith.baf~
   
   COPY_EXISTING ~botsmith.dlg~ ~override~
-    DECOMPILE_DLG_TO_D
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~OR(2)\([%TAB% %LNL%%MNL%%WNL%]*PartyHasItem("blun14")[%TAB% %LNL%%MNL%%WNL%]*PartyHasItem("blun30c")\)~
                         ~OR(3)\1 PartyHasItem("blun30d")~
-    COMPILE_D_TO_DLG
+    END
     BUT_ONLY
 
   COMPILE ~cdtweaks/dlg/cespy0.d~ // cespenar FoA head order
@@ -4459,10 +4461,10 @@ ACTION_IF NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1220~ BEGIN
   EXTEND_BOTTOM ~botsmith.bcs~ ~cdtweaks/baf/botsmith.baf~
 
   COPY_EXISTING ~botsmith.dlg~ ~override~
-    DECOMPILE_DLG_TO_D
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~OR(2)\([%TAB% %LNL%%MNL%%WNL%]*PartyHasItem("blun14")[%TAB% %LNL%%MNL%%WNL%]*PartyHasItem("blun30c")\)~
                         ~OR(3)\1 PartyHasItem("blun30d")~
-    COMPILE_D_TO_DLG
+    END
     BUT_ONLY
 
   COMPILE ~cdtweaks/dlg/cespy0.d~ // cespenar FoA head order
@@ -4587,12 +4589,12 @@ END
 /* Alora Starts in Gullykin - VERIFY IF THIS BLOCK IS NEEDED */
 /* Trying to prevent Alora's CTD */
 COPY_EXISTING ~%WBaldursGate_HallofWonders_BCS%.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY
       ~!InParty("alora")~
       ~!InParty("alora") Global("X#AloraDontBeDifficult","GLOBAL",1)~
-    COMPILE_BAF_TO_BCS
-  BUT_ONLY_IF_IT_CHANGES
+    END
+  BUT_ONLY
 
 ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
 
@@ -4607,16 +4609,16 @@ ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
         WRITE_SHORT  (npc_off + 0x22 + (index * 0x160)) 506
       END
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
 
 END ELSE BEGIN // bgt
 
   // disable spawns
   COPY_EXISTING ~%WBaldursGate_HallofWonders_BCS%.bcs~ ~override~ // ar7230
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("BGTNPC[0-9]+","GLOBAL",0)~ ~False()~
-    COMPILE_BAF_TO_BCS
-    BUT_ONLY_IF_IT_CHANGES
+    END
+    BUT_ONLY
   
   EXTEND_BOTTOM ~%Gullykin_BCS%.bcs~                  ~cdtweaks/baf/bgt_spawn_alora.baf~
 
@@ -4637,7 +4639,7 @@ COPY_EXISTING ~%ELDOTH_BCS%.bcs~ ~override~ // bg1npc compat
     REPLACE_TEXTUALLY ~,"%CloakwoodDruids%",~ ~,"%CoastWay%",~ // catching and updating area variables
     REPLACE_TEXTUALLY ~!Global("X#SkieLeftEldoth","GLOBAL",1)~ ~OR(2) !Global("X#SkieLeftEldoth","GLOBAL",1) !Global("EldothMove","GLOBAL",0)~
   END
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
 
@@ -4652,16 +4654,16 @@ ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
         WRITE_SHORT  (npc_off + 0x22 + (index * 0x160)) 2086
       END
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
 
 END ELSE BEGIN // bgt
 
   // disable spawns
   COPY_EXISTING ~%CloakwoodDruids_BCS%.bcs~ ~override~ // ar7230
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~CreateCreature("ELDOTH5?",[^)]+)~ ~~ // blank this action rather than false()ing entire block, since same block spawns faldorn
-    COMPILE_BAF_TO_BCS
-    BUT_ONLY_IF_IT_CHANGES
+    END
+    BUT_ONLY
   
   EXTEND_BOTTOM ~%CoastWay_BCS%.bcs~                  ~cdtweaks/baf/bgt_spawn_eldoth.baf~
 
@@ -4696,16 +4698,16 @@ ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
         WRITE_SHORT  (npc_off + 0x22 + (index * 0x160)) 3784
       END
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
 
 END ELSE BEGIN // bgt
 
   // disable spawns
   COPY_EXISTING ~%WyrmsCrossing_BCS%.bcs~     ~override~ // ar7900
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("BGTNPC[0-9]+","GLOBAL",0)~ ~False()~
-    COMPILE_BAF_TO_BCS
-    BUT_ONLY_IF_IT_CHANGES
+    END
+    BUT_ONLY
 
   EXTEND_BOTTOM ~%NashkelCarnival_BCS%.bcs~           ~cdtweaks/baf/bgt_spawn_quayle.baf~
 
@@ -4741,7 +4743,7 @@ ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
         WRITE_SHORT  (npc_off + 0x22 + (index * 0x160)) 2524
       END
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
     
   ACTION_IF enhanced_edition BEGIN // her joining combat script is in the area script
 
@@ -4765,10 +4767,10 @@ END ELSE BEGIN // bgt
 
   // disable spawns
   COPY_EXISTING ~%MutaminsGarden_BCS%.bcs~     ~override~ // ar9400, mutamin's garden
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("BGTNPC[0-9]+","GLOBAL",0)~ ~False()~
-    COMPILE_BAF_TO_BCS
-    BUT_ONLY_IF_IT_CHANGES
+    END
+    BUT_ONLY
 
   EXTEND_BOTTOM ~%NorthNashkelRoad_BCS%.bcs~           ~cdtweaks/baf/bgt_spawn_sharteel.baf~
 
@@ -4803,16 +4805,16 @@ ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
         WRITE_SHORT  (npc_off + 0x22 + (index * 0x160)) 630
       END
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
 
 END ELSE BEGIN // bgt
 
   // disable spawns
   COPY_EXISTING ~%SWBaldursGate_BCS%.bcs~     ~override~ // ar8000
-    DECOMPILE_BCS_TO_BAF
+    DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("BGTNPC[0-9]+","GLOBAL",0)~ ~False()~
-    COMPILE_BAF_TO_BCS
-    BUT_ONLY_IF_IT_CHANGES
+    END
+    BUT_ONLY
 
   EXTEND_BOTTOM ~%Beregost_FeldepostsInn_L1_BCS%.bcs~ ~cdtweaks/baf/bgt_spawn_tiax.baf~
 
@@ -4847,7 +4849,7 @@ ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
         WRITE_SHORT  (npc_off + 0x22 + (index * 0x160)) 253
       END
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
 
 END ELSE BEGIN // bgt
 
@@ -4856,7 +4858,7 @@ END ELSE BEGIN // bgt
     DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~Global("BGTNPC[0-9]+","GLOBAL",0)~ ~False()~
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
 
   EXTEND_BOTTOM ~%SouthBeregostRoad_BCS%.bcs~           ~cdtweaks/baf/bgt_spawn_viconia.baf~
 
@@ -4955,13 +4957,13 @@ COPY_EXISTING ~%CloakwoodMines_L4%.are~ override // AR1803, 8603bgt
   PATCH_IF FILE_EXISTS_IN_GAME ~%areascript%.bcs~ BEGIN
     INNER_ACTION BEGIN
      COPY_EXISTING ~%areascript%.bcs~ override
-      DECOMPILE_BCS_TO_BAF
+      DECOMPILE_AND_PATCH BEGIN
         REPLACE_TEXTUALLY CASE_INSENSITIVE EVALUATE_REGEXP ~Dead("Davaeorn")~ ~False() Dead("Davaeorn")~
 //        REPLACE_EVALUATE
 //          ~\(IF[ %TAB%%LNL%%MNL%%WLN%]+Dead("Davaeorn")[ %TAB%%LNL%%MNL%%WLN%]+Global("Chapter","GLOBAL",[45])[ %TAB%%LNL%%MNL%%WLN%]+THEN[ %TAB%%LNL%%MNL%%WLN%]+RESPONSE #100[ %TAB%%LNL%%MNL%%WLN%]+\)\(.+END\)~
 //          BEGIN SPRINT actions "%MATCH2%" END
 //          ~\1\2~
-      COMPILE_BAF_TO_BCS
+      END
      BUT_ONLY
     END
   END
@@ -5109,10 +5111,10 @@ ACTION_FOR_EACH file IN
   ACTION_IF FILE_EXISTS_IN_GAME ~%file%.dlg~ THEN BEGIN
     
     COPY_EXISTING ~%file%.dlg~ ~override~
-      DECOMPILE_DLG_TO_D
+      DECOMPILE_AND_PATCH BEGIN
         REPLACE_TEXTUALLY ~LastTalkedToBy~  ~Protagonist~
-      COMPILE_D_TO_DLG
-      BUT_ONLY_IF_IT_CHANGES
+      END
+      BUT_ONLY
 
   END
 
@@ -5131,12 +5133,12 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~iwdee how totlm iwd-in-bg2~ @25
 
 COPY_EXISTING ~dhjollde.dlg~ ~override~
-  DECOMPILE_DLG_TO_D
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~LevelPartyGT(8)~      ~True()~  // iwd-in-bg2, also converts inverse to !True
     REPLACE_TEXTUALLY ~CheckPartyLevel(9)~   ~True()~  // iwd; also converts inverse check to !True
     REPLACE_TEXTUALLY ~XPLT(Player1,250000)~ ~False()~ // iwdee
     REPLACE_TEXTUALLY ~XPGT(Player1,249999)~ ~True()~  // iwdee
-  COMPILE_D_TO_DLG
+  END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -8787,7 +8789,7 @@ COPY_EXISTING ~alignmnt.2da~ ~override~
     SET_2DA_ENTRY  6 "%index%" 10 ~1~ // Druid
     SET_2DA_ENTRY 15 "%index%" 10 ~1~ // Fighter-Druid
   END
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 // now get kits, if available
 ACTION_IF FILE_EXISTS_IN_GAME ~kitlist.2da~ THEN BEGIN
@@ -8900,7 +8902,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
     END  
     WRITE_BYTE 0x29 use4
   END  
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 COPY_EXISTING ~clasweap.2da~ ~override~
   PATCH_IF original_iwd BEGIN
@@ -8933,7 +8935,7 @@ COPY_EXISTING ~clasweap.2da~ ~override~
   END
   REPLACE_TEXTUALLY ~CD_DELETE_ME ~ ~~
   PRETTY_PRINT_2DA
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 
 ACTION_IF FILE_EXISTS_IN_GAME ~weapprof.2da~ THEN BEGIN
@@ -10227,7 +10229,7 @@ ACTION_IF game_is_iwd2 THEN BEGIN
       WRITE_SHORT 0x24 "%maxed_hp%" * "%curhp%" / "%maxhp%"
       WRITE_SHORT 0x26 "%maxed_hp%"
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
 
 END ELSE BEGIN
 
@@ -10888,9 +10890,9 @@ GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgt soa tob bg2ee eet~ @25 // non-Tutu
 
 COPY_EXISTING ~haerdali.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~Global("RomanceConflict","GLOBAL",0)~ ~False()~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 EXTEND_TOP ~haerdali.bcs~ ~cdtweaks/baf/haerdali.baf~ 
 
@@ -11020,9 +11022,9 @@ GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
 
 COPY_EXISTING ~baldur.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~!Exists("c6harp")~ ~False()~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -11038,9 +11040,9 @@ GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
 
 COPY_EXISTING ~ar2102.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~ActionOverride(Player[1-6],ApplySpell(Myself,DROW_CHANGE))~ ~~
-  COMPILE_BAF_TO_BCS
+  END
   BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -13715,9 +13717,9 @@ REQUIRE_PREDICATE     GAME_IS ~tob bg2ee bgt~   @25 // ToB required
 // end of SoA cutscenes set extra variable
 COPY_EXISTING ~cut100a.bcs~ ~override~
               ~cut100b.bcs~ ~override~
-  DECOMPILE_BCS_TO_BAF
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~MultiPlayerSync()~ ~SetGlobal("G#G3.CompletedSoA","GLOBAL",1) MultiPlayerSync()~
-  COMPILE_BAF_TO_BCS
+  END
   UNLESS ~SetGlobal("G#G3.CompletedSoA","GLOBAL",1)~
   BUT_ONLY
 
@@ -13776,11 +13778,11 @@ ACTION_PHP_EACH cd_fate_spirit AS script => var BEGIN
 END
 
 COPY_EXISTING ~fatesp.dlg~ ~override~
-  DECOMPILE_DLG_TO_D
+  DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~~~~~!Dead("\([^"]+\)")[ |%TAB%|%LNL%|%MNL%|%WNL%]*Global("\([^"]+\)","GLOBAL",0)~ THEN REPLY #\([0-9]+\)~~~~~
     ~~~~~Dead("\1")~ THEN REPLY #\3 DO ~SetGlobal("\2","GLOBAL",2)~ GOTO 7
     IF ~!Dead("\1") Global("\2","GLOBAL",0)~ THEN REPLY #\3~~~~~
-  COMPILE_D_TO_DLG
+  END
   BUT_ONLY
 
 // add extra triggers to fate spirit dialogue
@@ -14269,7 +14271,7 @@ ACTION_IF original_bg1 BEGIN
         WRITE_LONG 0x2c4 (%fxoff% - 0x10)
       END
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
   
   // add in spells and items
   COPY_EXISTING ~khalid.cre~  ~override~
@@ -14692,7 +14694,7 @@ REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu o
 
 COPY_EXISTING_REGEXP GLOB ~^_?coran[0-9]*.*\.cre$~ ~override~
   WRITE_BYTE 0x23c 19 // 19 DEX
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -14712,7 +14714,7 @@ ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 COPY_EXISTING_REGEXP "^%tutu_scriptbg%xan.cre$" "override"
                      "^_?xan[0-9]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -14731,7 +14733,7 @@ ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
 COPY_EXISTING_REGEXP "^_?dynahe[0-9]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -14751,7 +14753,7 @@ ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 COPY_EXISTING_REGEXP "^%tutu_scriptbg%xzar.cre$" "override"
                      "^_?xzar[0-9]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -14770,7 +14772,7 @@ ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
 COPY_EXISTING_REGEXP "^_?edwin[0-9]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

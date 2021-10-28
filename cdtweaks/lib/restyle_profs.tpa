@@ -135,7 +135,7 @@ CLEAR_IDS_MAP
 
 // patch DLG files
 COPY_EXISTING_REGEXP GLOB ~.*\.dlg~ ~override~
-DECOMPILE_DLG_TO_D
+DECOMPILE_AND_PATCH BEGIN
 REPLACE_EVALUATE ~\([^A]\)PROFICIENCY\([2A-Z_]*\)~ BEGIN
 TEXT_SPRINT result ~%MATCH0%~
 proficiency = IDS_OF_SYMBOL (stats ~PROFICIENCY%MATCH2%~)
@@ -150,12 +150,12 @@ TEXT_SPRINT result ~%MATCH1%UNUSED%proficiency%~
 END
 END
 END ~%result%~
-COMPILE_D_TO_DLG
+END
 
 
 // patch BCS files
 COPY_EXISTING_REGEXP GLOB ~.*\.bcs~ ~override~
-DECOMPILE_BCS_TO_BAF
+DECOMPILE_AND_PATCH BEGIN
 REPLACE_EVALUATE ~UNASSIGNED\([0-9]*\)~ BEGIN
 proficiency = MATCH1
 LAUNCH_PATCH_MACRO ~tb#is_it_a_proficiency~
@@ -165,7 +165,7 @@ END ELSE BEGIN
 TEXT_SPRINT result ~UNASSIGNED%proficiency%~
 END
 END ~%result%~
-COMPILE_BAF_TO_BCS
+END
 BUT_ONLY
 
 
@@ -246,7 +246,7 @@ END
 END
 END
 SET_2DA_ENTRIES_NOW ~_#_#_#weapprof~ 3
-BUT_ONLY_IF_IT_CHANGES
+BUT_ONLY
 
 
 
@@ -275,7 +275,7 @@ END
 END
 END
 END
-BUT_ONLY_IF_IT_CHANGES
+BUT_ONLY
 
 // adjust magical abilities
 COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
@@ -329,7 +329,7 @@ END
 END
 END
 END
-BUT_ONLY_IF_IT_CHANGES
+BUT_ONLY
 
 // adjust creature proficiencies
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
@@ -395,7 +395,7 @@ END
 END
 END
 END
-BUT_ONLY_IF_IT_CHANGES
+BUT_ONLY
 
 COPY_EXISTING_REGEXP GLOB ~.*\.eff~ ~override~
 READ_LONG 0x10 opcode ELSE 0

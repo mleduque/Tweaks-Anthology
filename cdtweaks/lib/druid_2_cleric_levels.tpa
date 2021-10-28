@@ -4,7 +4,7 @@ REPLACE_TEXTUALLY
 DRUID \(.*\)~
 ~CLERIC \1
 DRUID  \1~
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
 ACTION_IF FILE_EXISTS_IN_GAME ~lunumab.2da~ THEN BEGIN
 
@@ -15,6 +15,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~lunumab.2da~ THEN BEGIN
     SET_2DA_ENTRY  15 1 5 "%f_c%"    // write dual f/c cleric value for initial HLA level into dual f/d slot
     READ_2DA_ENTRY 22 1 5 "multic"   // read multiclass cleric value for initial HLA level
     SET_2DA_ENTRY  24 1 5 "%multic%" // write multiclass cleric value for initial HLA level into multiclass druid slot
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
 
 END

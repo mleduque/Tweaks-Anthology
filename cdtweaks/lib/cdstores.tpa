@@ -46,4 +46,4 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
     
     END
   END
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY

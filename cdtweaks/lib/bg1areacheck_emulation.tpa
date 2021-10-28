@@ -40,7 +40,7 @@ ACTION_IF NOT VARIABLE_IS_SET cd_BG1TriggerEmulation THEN BEGIN
     COPY_EXISTING  ~AR2612.ARE~ ~override~ // two areas in BG1 have wrong flag "Outdoor"
                    ~AR3317.ARE~ ~override~
       WRITE_BYTE 0x48 0
-      BUT_ONLY_IF_IT_CHANGES
+      BUT_ONLY
   
   END
   
@@ -84,6 +84,6 @@ ACTION_IF NOT VARIABLE_IS_SET cd_BG1TriggerEmulation THEN BEGIN
       END
     
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
 
 END

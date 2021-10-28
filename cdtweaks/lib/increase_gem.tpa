@@ -135,7 +135,7 @@ END ELSE BEGIN
         END
       END
     END
-    BUT_ONLY_IF_IT_CHANGES
+    BUT_ONLY
   
   INCLUDE ~cdtweaks/lib/increase_scripts.tpa~
 
