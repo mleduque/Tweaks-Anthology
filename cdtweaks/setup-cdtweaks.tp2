@@ -6714,7 +6714,7 @@ BEGIN @219100 DESIGNATED 2191 // only mages n bards
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 SUBCOMPONENT @219000 // limited storekeeper id ability
-LABEL ~cd_tweaks_shopkeeper_id_shopkeeper_lore~
+LABEL ~cd_tweaks_shopkeeper_id_lore~
 
 OUTER_SET lore_class = 0
 OUTER_SET lore_calc  = 1
@@ -6728,7 +6728,7 @@ BEGIN @219200 DESIGNATED 2192 // only mages n bards
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 SUBCOMPONENT @219000 // limited storekeeper id ability
-LABEL ~cd_tweaks_shopkeeper_id_shopkeeper_hybrid~
+LABEL ~cd_tweaks_shopkeeper_id_hybrid~
 
 OUTER_SET lore_class = 1
 OUTER_SET lore_calc  = 1
@@ -6745,6 +6745,7 @@ INCLUDE ~cdtweaks/lib/cdstores.tpa~
 BEGIN @220000 DESIGNATED 2200
 GROUP @9 
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_shopkeeper_multiclass_gm~
 
 ACTION_IF original_bg1 OR original_iwd THEN BEGIN
 
@@ -6826,6 +6827,7 @@ BEGIN @221000 DESIGNATED 2210
 GROUP @9
 SUBCOMPONENT @221001 // Change Grandmastery Bonuses
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_grandmastery_bonus_true~
 
 ACTION_IF FILE_CONTAINS_EVALUATED (~wspecial.2da~ ~[ %TAB%]*SPEED[ %TAB%]*~) THEN BEGIN OUTER_SET dump_speed = 0 END ELSE BEGIN OUTER_SET dump_speed = 1 END
 
@@ -6849,6 +6851,7 @@ BEGIN @221100 DESIGNATED 2211
 GROUP @9
 SUBCOMPONENT @221001 // Change Grandmastery Bonuses
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_grandmastery_bonus_bg2~
 
 ACTION_IF FILE_CONTAINS_EVALUATED (~wspecial.2da~ ~[ %TAB%]*SPEED[ %TAB%]*~) THEN BEGIN OUTER_SET dump_speed = 0 END ELSE BEGIN OUTER_SET dump_speed = 1 END
 
@@ -6875,6 +6878,7 @@ END
 BEGIN @222000 DESIGNATED 2220
 GROUP @9 
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_0_weight_created_weapons~
 
 ACTION_IF enhanced_edition OR tutu_gen OR game_is_bgt OR original_bg2 OR game_is_iwd-in-bg2 OR game_is_ca BEGIN
   OUTER_SET check_255 = 1
@@ -6952,6 +6956,7 @@ GROUP @9
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ @16
 FORBID_COMPONENT ~item_rev/item_rev.tp2~ ~0~ @16
+LABEL ~cd_tweaks_consistent_x_y_items~
 
 // get enchantments from lookup table
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_enchantment BEGIN
@@ -6995,6 +7000,7 @@ REQUIRE_PREDICATE (("%LANGUAGE%" STRING_COMPARE_CASE "schinese" = 0) OR
                    ("%LANGUAGE%" STRING_COMPARE_CASE "german" = 0) OR 
                    ("%LANGUAGE%" STRING_COMPARE_CASE "italian" = 0) OR 
                    ("%LANGUAGE%" STRING_COMPARE_CASE "spanish" = 0)) @7 // chinese/english/french/german/italian/spanish only
+LABEL ~cd_tweaks_consistent_x_y_items_descriptions~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~bola01.itm~ THEN BEGIN // if AoE installed
 
@@ -7106,6 +7112,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_alter_thac0_table~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7141,6 +7148,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_sorc_spell_progression~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~mxsplsrc.2da~ THEN BEGIN
 
@@ -7202,6 +7210,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_mage_spell_progression_unnerfed~
 
 COPY ~cdtweaks/2da/un_mxsplwiz.2da~ ~override/mxsplwiz.2da~
 
@@ -7309,6 +7318,7 @@ GROUP @9
 SUBCOMPONENT @226000 // alter mage progression
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~mxsplwiz.2da~ @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_mage_spell_progression_pnp~
 
 COPY ~cdtweaks/2da/mxsplwiz.2da~ ~override~
 
@@ -7386,6 +7396,7 @@ GROUP @9
 SUBCOMPONENT @227000 // alter bard progression
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~mxsplbrd.2da~ @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_bard_spell_progression_pnp~
 
 COPY ~cdtweaks/2da/mxsplbrd.2da~ ~override~
 
@@ -7424,6 +7435,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_cleric_spell_progression_unnerfed~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7513,6 +7525,7 @@ GROUP @9
 SUBCOMPONENT @228000 // alter cleric progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxsplclr.2da~) OR (FILE_EXISTS_IN_GAME ~mxsplprs.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_cleric_spell_progression_pnp~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7544,6 +7557,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_druid_spell_progression_unnerfed_druid_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7564,6 +7578,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_druid_spell_progression_pnp_druid_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7584,6 +7599,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_druid_spell_progression_unchanged_cleric_level~
 
 // use cleric level progression
 INCLUDE ~cdtweaks/lib/druid_2_cleric_levels.tpa~
@@ -7597,6 +7613,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_druid_spell_progression_unnerfed_cleric_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7620,6 +7637,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_druid_spell_progression_pnp_cleric_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7643,6 +7661,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_druid_spell_progression_cleric_normal_cleric_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7666,6 +7685,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_druid_spell_progression_cleric_unnerfed_cleric_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7700,6 +7720,7 @@ BEGIN @229200 DESIGNATED 2297
 GROUP @9
 //SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc iwd how totlm~ @25
+LABEL ~cd_tweaks_druid_spell_progression_unchanged_cleric_level_obg_version~
 
 // use cleric level progression
 INCLUDE ~cdtweaks/lib/druid_2_cleric_levels.tpa~
@@ -7716,6 +7737,7 @@ BEGIN @230000 DESIGNATED 2300
 GROUP @9
 REQUIRE_PREDICATE     MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2090~ @21 // xp cap must be removed
 REQUIRE_PREDICATE     GAME_IS ~tob bgt bg2ee eet~   @25 // ToB required
+LABEL ~cd_tweaks_triple_class_hla_table~
 
 // gives f/m/c and f/m/t unique HLAs; tables created below
 COPY_EXISTING ~LUABBR.2DA~ ~override~
@@ -7887,6 +7909,7 @@ END
 BEGIN @231001 DESIGNATED 2310
 GROUP @9
 SUBCOMPONENT @231000 // arcane save penalties
+LABEL ~cd_tweaks_arcane_save_penalties~
 
 INCLUDE ~cdtweaks/lib/saves_macro.tpa~
 
@@ -7906,6 +7929,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
 BEGIN @231100 DESIGNATED 2311
 GROUP @9
 SUBCOMPONENT @231000 // divine
+LABEL ~cd_tweaks_divine_save_penalties~
 
 INCLUDE ~cdtweaks/lib/saves_macro.tpa~
 
@@ -7937,6 +7961,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
 BEGIN @231200 DESIGNATED 2312
 GROUP @9
 SUBCOMPONENT @231000 // both
+LABEL ~cd_tweaks_arcane_divine_save_penalties~
 
 INCLUDE ~cdtweaks/lib/saves_macro.tpa~
 
@@ -7972,6 +7997,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
 BEGIN @232000 DESIGNATED 2320
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_trap_cap_removal~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~traplimt.2da~ THEN BEGIN 
 
@@ -8047,6 +8073,7 @@ END
 BEGIN @233000 DESIGNATED 2330
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_remove_magical_trap_delay~
 
 ACTION_FOR_EACH proj IN dfirebl iceglyp idpro96 trapglyp trapskul BEGIN
 
@@ -8071,6 +8098,7 @@ END
 BEGIN @233900 DESIGNATED 2339
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~summlimt.2da~ @25 // ToB required
 GROUP @9
+LABEL ~cd_tweaks_summoning_cap_removal~
 
 COPY_EXISTING ~summlimt.2da~ ~override~
   REPLACE_TEXTUALLY ~NORMAL[ %TAB%]+[0-9]+~ ~NORMAL 999~
@@ -8087,6 +8115,7 @@ COPY_EXISTING ~summlimt.2da~ ~override~
 BEGIN @234000 DESIGNATED 2340
 REQUIRE_PREDICATE     GAME_IS ~tob bg2ee eet bgt~   @25 // ToB required
 GROUP @9
+LABEL ~cd_tweaks_celestial_cap_removal~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~summlimt.2da~ THEN BEGIN
 
@@ -8131,6 +8160,7 @@ BEGIN @235001 DESIGNATED 2350
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
+LABEL ~cd_tweaks_multiclass_allow_humans~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
@@ -8162,6 +8192,7 @@ BEGIN @235100 DESIGNATED 2351
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
+LABEL ~cd_tweaks_multiclass_allow_nonhumans_all~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
@@ -8202,6 +8233,7 @@ BEGIN @235300 DESIGNATED 2353
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
+LABEL ~cd_tweaks_multiclass_allow_nonhumans_limited~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
@@ -8255,6 +8287,7 @@ BEGIN @235200 DESIGNATED 2357
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
+LABEL ~cd_tweaks_multiclass_allow_all_all~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
@@ -8288,6 +8321,7 @@ BEGIN @235800 DESIGNATED 2358
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
+LABEL ~cd_tweaks_multiclass_allow_all_limited~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
@@ -8346,6 +8380,7 @@ INCLUDE ~cdtweaks/lib/multiclass_text.tpa~
 BEGIN @236000 DESIGNATED 2360
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+LABEL ~cd_tweaks_remove_class_racial_restrictions~
 
 INCLUDE ~cdtweaks/lib/class-race_removal.tpa~
 
@@ -8360,6 +8395,7 @@ INCLUDE ~cdtweaks/lib/class-race_removal.tpa~
 BEGIN @238000 DESIGNATED 2380
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+LABEL ~cd_tweaks_remove_kit_racial_restrictions~
 
 INCLUDE ~cdtweaks/lib/kit-race_removal.tpa~
 
@@ -8379,6 +8415,7 @@ BEGIN @255001 DESIGNATED 2550
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 SUBCOMPONENT @255000
+LABEL ~cd_tweaks_gnome_multiclass_illusionist_kits_all~
 
 OUTER_SET gnome_base = 1
 OUTER_SET gnome_kits = 1
@@ -8392,6 +8429,7 @@ BEGIN @255100 DESIGNATED 2551
 GROUP @9
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
 SUBCOMPONENT @255000
+LABEL ~cd_tweaks_gnome_multiclass_mage_kits_illusionist~
 
 OUTER_SET gnome_base = 0
 OUTER_SET gnome_kits = 0
@@ -8405,6 +8443,7 @@ BEGIN @255200 DESIGNATED 2552
 GROUP @9
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
 SUBCOMPONENT @255000
+LABEL ~cd_tweaks_gnome_multiclass_mage_kits_all~
 
 OUTER_SET gnome_base = 0
 OUTER_SET gnome_kits = 1
@@ -8426,6 +8465,7 @@ BEGIN @237100 DESIGNATED 2371
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx
 GROUP @9
 SUBCOMPONENT @237000 // Alter Dual-class Restrictions
+LABEL ~cd_tweaks_alter_dualclass_humans_yes_nonhumans_yes~
 
 ACTION_IF FILE_EXISTS ~tobex_ini/tobextweak.ini~ THEN BEGIN
 
@@ -8452,6 +8492,7 @@ BEGIN @237001 DESIGNATED 2370
 GROUP @9
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
 SUBCOMPONENT @237000 // Alter Dual-class Restrictions
+LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_no~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   REPLACE_TEXTUALLY ~^DUALCLASS[ %TAB%]+1~ ~DUALCLASS 0~
@@ -8468,6 +8509,7 @@ BEGIN @237200 DESIGNATED 2372
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
 GROUP @9
 SUBCOMPONENT @237000 // Alter Dual-class Restrictions
+LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_yes~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   REPLACE_TEXTUALLY ~^\(DUALCLASS[ %TAB%]+\).+$~ ~\1 0 1 1 1 1 1 1~
@@ -8527,14 +8569,14 @@ END
 BEGIN @241000 DESIGNATED 2410
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_druids_use_3e_alignment~
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_3e_druid_aligns BEGIN
+
+  DRUID         => 0
+  FIGHTER_DRUID => 0
   
-// Alignment changes
-COPY_EXISTING ~alignmnt.2da~ ~override~
-  FOR (index = 2 ; index < 9 ; index = index + 2) BEGIN
-    SET_2DA_ENTRY  6 "%index%" 10 ~1~ // Druid
-    SET_2DA_ENTRY 15 "%index%" 10 ~1~ // Fighter-Druid
-  END
-  BUT_ONLY
+END
 
 // now get kits, if available
 ACTION_IF FILE_EXISTS_IN_GAME ~kitlist.2da~ THEN BEGIN
@@ -8542,25 +8584,26 @@ ACTION_IF FILE_EXISTS_IN_GAME ~kitlist.2da~ THEN BEGIN
   COPY_EXISTING ~kitlist.2da~ ~override~
     COUNT_2DA_ROWS 9 rows
     FOR (row = 0 ; row < rows ; ++row) BEGIN
-      READ_2DA_ENTRY row 1 9 kittext
       READ_2DA_ENTRY row 8 9 class
       PATCH_IF (IS_AN_INT class) BEGIN // in case of junk rows being caught
-        PATCH_IF (class = 11) BEGIN
+        PATCH_IF ((class = 11) OR (class = 16)) BEGIN
           READ_2DA_ENTRY row 1 9 kittext
-          INNER_ACTION BEGIN
-
-            COPY_EXISTING ~alignmnt.2da~ ~override~
-              REPLACE_TEXTUALLY ~^\(%kittext%[ %TAB%]+[0-9][ %TAB%]+\)[0-9]\([ %TAB%]+[0-9][ %TAB%]+\)[0-9]\([ %TAB%]+\)[0-9]\([ %TAB%]+\)[0-9]\([ %TAB%]+[0-9][ %TAB%]+\)[0-9]\([ %TAB%]+[0-9][ %TAB%]*\)~
-                ~\11\21\31\41\51\6~ // leaves lg, cg, le, ce alone, sets others to 1
-              BUT_ONLY
-
-          END // inner patch
-        END // class = 11
-      END // int check
-    END // for loop
-    BUT_ONLY
+          DEFINE_ASSOCIATIVE_ARRAY cd_3e_druid_aligns BEGIN "%kittext%" => 0 END
+        END
+      END
+    END
+    BUT_ONLY    
 
 END
+  
+// Alignment changes
+COPY_EXISTING ~alignmnt.2da~ ~override~
+  PATCH_PHP_EACH cd_3e_druid_aligns AS text => foo BEGIN
+    REPLACE_TEXTUALLY ~^%text%[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0[ %TAB%]+1[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0~
+                      ~%text% 0 1 0 1 1 1 0 1 0~
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
 
 ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1150~ THEN BEGIN // shapeshifter rebalancing
 

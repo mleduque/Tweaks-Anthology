@@ -183,8 +183,6 @@ ACTION_PHP_EACH cdstores AS store => shopkeeper BEGIN
         END
       END // end lore_calc
       BUT_ONLY
-      
-    PRINT ~patching %store%.sto with lore %lore% from %shopkeeper%.cre~
 
     COPY_EXISTING ~%store%.sto~ ~override~
       PATCH_IF lore_class AND !lore_calc BEGIN // if 'only mages can id' enforce 0 lore
@@ -199,4 +197,4 @@ ACTION_PHP_EACH cdstores AS store => shopkeeper BEGIN
       
   END
   
-END
+END 
