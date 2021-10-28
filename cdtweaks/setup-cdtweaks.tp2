@@ -4968,6 +4968,7 @@ EXTEND_BOTTOM ~ajantis.bcs~ ~cdtweaks/baf/x#lprcajr.baf~
 BEGIN @127000 DESIGNATED 1270 // ~Revert Chapter Change in Cloakwood Mines to Non-ToTSC BG Behavior~
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc bgt eet bgee tutu tutu_totsc~ @25
+LABEL ~cd_tweaks_change_cloakwood_trigger~
 
 COPY_EXISTING ~%CloakwoodMines_L4%.are~ override // AR1803, 8603bgt
   READ_ASCII 0x94 areascript (8) NULL
@@ -5087,10 +5088,11 @@ END
 BEGIN @128000 DESIGNATED 1280
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd-in-bg2~ @25
+LABEL ~cd_tweaks_game_ends_with_player1~
 
 ACTION_IF game_is_iwd-in-bg2 THEN BEGIN // easy solution!
 
-  COPY ~TobEx_ini/TobExTweak.ini~ ~TobEx_ini~
+  COPY ~tobex_ini/tobextweak.ini~ ~tobex_ini~
     REPLACE_TEXTUALLY ~Engine:Disable End On Player1 Dead=1~ ~Engine:Disable End On Player1 Dead=0~
 
 END ELSE BEGIN // iwdee
@@ -5112,6 +5114,7 @@ END
 BEGIN @129000 DESIGNATED 1290
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
+LABEL ~cd_tweaks_protagonist_replacement~
 
 ACTION_FOR_EACH file IN
   daccalia dalbion daldwin dambere damelia dangaar dapsel darden darundel dbaldemr dbandoth dbeorn dcallard
@@ -5148,6 +5151,7 @@ END
 BEGIN @130000 DESIGNATED 1300
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~iwdee how totlm iwd-in-bg2~ @25
+LABEL ~cd_tweaks_how_accessible_at_l1~
 
 COPY_EXISTING ~dhjollde.dlg~ ~override~
   DECOMPILE_AND_PATCH BEGIN
@@ -5168,6 +5172,7 @@ COPY_EXISTING ~dhjollde.dlg~ ~override~
 BEGIN @131000 DESIGNATED 1310
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~iwd-in-bg2~ @25
+LABEL ~cd_tweaks_restore_bg2_spells~
 
 //LAF make_label STR_VAR label=~i#bg2spells~ END
 
@@ -5302,6 +5307,7 @@ LAF residual_journal_hacks END
 BEGIN @133000 DESIGNATED 1330
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
+LABEL ~cd_tweaks_I_am_a_servant_of_the_Secret_Fire_wielder_of_the_flame_of_Anor_You_cannot_pass_The_dark_fire_will_not_avail_you_flame_of_Udun_Go_back_to_the_Shadow_You_cannot_pass~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
   PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_CASE "ar0028") BEGIN
@@ -5329,6 +5335,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
 BEGIN @202000 DESIGNATED 2020
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_2h_bastard_swords~
 
 ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
@@ -5395,7 +5402,7 @@ END
 // cespenar can use alternate items for upgrades
 ACTION_IF FILE_EXISTS_IN_GAME botsmith.dlg THEN BEGIN
 
-  COMPILE ~cdtweaks/dlg/2Hbastard.d~
+  COMPILE ~cdtweaks/dlg/2hbastard.d~
 
 END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -5409,6 +5416,7 @@ END
 BEGIN @203000 DESIGNATED 2030
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_2h_katanas~
 
 ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
@@ -5456,7 +5464,7 @@ END
 // cespenar can use alternate items for upgrades
 ACTION_IF FILE_EXISTS_IN_GAME botsmith.dlg THEN BEGIN
 
-  COMPILE ~cdtweaks/dlg/2Hkatanas.d~
+  COMPILE ~cdtweaks/dlg/2hkatanas.d~
   
 END
 
@@ -5471,6 +5479,7 @@ END
 BEGIN @203500 DESIGNATED 2035
 GROUP @9 
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_2h_axes~
 
 ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
@@ -5540,14 +5549,14 @@ END
 // tutorial obe also destroys illusionary alternate axes
 ACTION_IF FILE_EXISTS_IN_GAME obe.dlg THEN BEGIN
 
-  COMPILE ~cdtweaks/dlg/2Haxes_obe.d~
+  COMPILE ~cdtweaks/dlg/2haxes_obe.d~
   
 END
 
 // cespenar can use alternate items for upgrades
 ACTION_IF FILE_EXISTS_IN_GAME botsmith.dlg THEN BEGIN
 
-  COMPILE ~cdtweaks/dlg/2Haxes.d~
+  COMPILE ~cdtweaks/dlg/2haxes.d~
 
 END
 
@@ -5569,6 +5578,7 @@ END
 BEGIN @204000 DESIGNATED 2040
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_universal_clubs~
 
 OUTER_SET type_match = 0
 OUTER_SET modify_descript = 0
@@ -5682,6 +5692,7 @@ GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2162~ @16 // bg profs w/o weapon styles
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2164~ @16 // iwd profs w/o weapon styles
+LABEL ~cd_tweaks_weapon_styles_for_all~
 
 OUTER_SET mage_kit_index = 0
 COPY_EXISTING ~kitlist.2da~ ~override~
@@ -5748,6 +5759,7 @@ COPY_EXISTING ~weapprof.2da~ ~override~
 BEGIN @208000 DESIGNATED 2080
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee bgt eet~   @25 // ToB required
+LABEL ~cd_tweaks_delay_hlas~
 
 COPY_EXISTING ~lunumab.2da~ ~override~
   COUNT_2DA_ROWS 5 rows
@@ -5775,6 +5787,7 @@ BEGIN @209001 DESIGNATED 2090 // remove xp cap
 GROUP @9
 SUBCOMPONENT @209000 // change xp cap
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_remove_xp_cap~
 
 COPY ~cdtweaks/2da/xplevel.2da~ ~override/xplevel.2da~
 INCLUDE ~cdtweaks/lib/xp_common.tpa~
@@ -5976,6 +5989,7 @@ BEGIN @209100 DESIGNATED 2091
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 SUBCOMPONENT @209000 // change xp cap
+LABEL ~cd_tweaks_cap_xp_at_l20~
 
 COPY ~cdtweaks/2da/xplevel20.2da~ ~override/xplevel.2da~
 INCLUDE ~cdtweaks/lib/xp_common.tpa~
@@ -5988,6 +6002,7 @@ BEGIN @209200 DESIGNATED 2092
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 SUBCOMPONENT @209000 // change xp cap
+LABEL ~cd_tweaks_cap_xp_at_l30~
 
 COPY ~cdtweaks/2da/xplevel30.2da~ ~override/xplevel.2da~
 INCLUDE ~cdtweaks/lib/xp_common.tpa~
@@ -6003,6 +6018,7 @@ INCLUDE ~cdtweaks/lib/xp_common.tpa~
 BEGIN @210000 DESIGNATED 2100
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_thieving_in_heavy_armor~
 
 INCLUDE ~cdtweaks/lib/thieving_descripts.tpa~ // text replacement macros
 INCLUDE ~cdtweaks/lib/thieving_to_50.tpa~     // extend bard, ranger pickpocketing to 200 and levels to 50
@@ -6107,6 +6123,7 @@ END // end php_each
 BEGIN @212000 DESIGNATED 2120
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+LABEL ~cd_tweaks_casting_in_armor~
 
 INCLUDE ~cdtweaks/lib/arcane_descripts.tpa~  // text replacement macros     
 INCLUDE ~cdtweaks/lib/common_armor_list.tpa~
@@ -6153,6 +6170,7 @@ END // php_each
 BEGIN @214000 DESIGNATED 2140
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+LABEL ~cd_tweaks_more_dual_classes~
 
 INCLUDE ~cdtweaks/lib/kit_ids_fixer.tpa~
 
@@ -6216,7 +6234,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   BUT_ONLY
 
 
-ACTION_IF FILE_EXISTS ~Refinements/Hlab/Thief/clab/CLABEMPT.2DA~ AND NOT FILE_EXISTS ~Refinements/lib/kit.tpa~ THEN BEGIN
+ACTION_IF FILE_EXISTS ~refinements/hlab/thief/clab/clabempt.2da~ AND NOT FILE_EXISTS ~refinements/lib/kit.tpa~ THEN BEGIN
 
   INCLUDE ~cdtweaks/lib/sod_25stweap_fix.tpa~ // for broken 25stweap.2da in SoD
   INCLUDE ~cdtweaks/lib/iwdee_25stweap_fix.tpa~ // for broken 25stweap.2da in SoD
@@ -6290,7 +6308,7 @@ ACTION_IF FILE_EXISTS ~Refinements/Hlab/Thief/clab/CLABEMPT.2DA~ AND NOT FILE_EX
       SET_2DA_ENTRY "%row%" (22+"%barbtw%") 1 "%barb%"
     END
 
-  COPY_EXISTING  ~KITLIST.2DA~ ~override~
+  COPY_EXISTING  ~kitlist.2da~ ~override~
     READ_2DA_ENTRY 34 2 1 "lower"
     READ_2DA_ENTRY 34 3 1 "mixed"
     READ_2DA_ENTRY 34 4 1 "help"
@@ -6319,6 +6337,11 @@ BEGIN @215001 DESIGNATED 2150 // PnP restrictions
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 SUBCOMPONENT @215000 // wear multiple protection items
+LABEL ~cd_tweaks_protection_items_pnp~
+  
+ACTION_CLEAR_ARRAY cd_pnp_check
+ACTION_CLEAR_ARRAY cd_pnp_table
+ACTION_CLEAR_ARRAY cd_pnp_charges
 
 INCLUDE ~cdtweaks/lib/pnp_descripts.tpa~  // text replacement macros
 INCLUDE ~cdtweaks/lib/fj_spl_itm_reindex.tpa~
@@ -6327,137 +6350,154 @@ INCLUDE ~cdtweaks/lib/fj_spl_itm_reindex.tpa~
 COPY_EXISTING ~itemexcl.2da~ ~override~
   REPLACE_TEXTUALLY ~^bootgr01[ %TAB%]+1[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
   REPLACE_TEXTUALLY ~^shldrng[ %TAB%]+1[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
+  
+ACTION_IF FILE_EXISTS ~weidu_external/cdtweaks/2da/cdpnp_final.2da~ BEGIN
+  COPY ~weidu_external/cdtweaks/2da/cdpnp_final.2da~ ~weidu_external/cdtweaks/2da/cdpnp.2da~
+END ELSE BEGIN
+  COPY ~cdtweaks/2da/cdpnp.2da~ ~weidu_external/cdtweaks/2da/cdpnp.2da~
+END  
 
 // lookup table
-COPY ~cdtweaks/2da/cdpnp.2da~ ~override~
-  COUNT_2DA_ROWS 2 cd_count
-
-// this array used to give item charges (re-used from bastard, makes no diff)
-ACTION_CLEAR_ARRAY cd_bastard
+COPY ~weidu_external/cdtweaks/2da/cdpnp.2da~ ~weidu_external/cdtweaks/2da/cdpnp.2da~
+  COUNT_2DA_ROWS 3 cd_count
+  FOR (row = 0 ; row < cd_count ; ++row) BEGIN // skip header
+    READ_2DA_ENTRY row 0 3 item
+    TO_LOWER item
+    SET $cd_pnppi("%item%") = 1
+  END  
 
 COPY_EXISTING ~itemexcl.2da~ ~override~
   COUNT_2DA_ROWS 2 rows
   FOR (index = 0 ; index < rows ; ++index) BEGIN
-    READ_2DA_ENTRY index 0 2 item
-    INNER_ACTION BEGIN
-
-      // don't bother if file isn't present or if it's already on the list
-      ACTION_IF (FILE_EXISTS_IN_GAME ~%item%.itm~ AND (!FILE_CONTAINS_EVALUATED (~cdpnp.2da~ ~^%item% ~))) THEN BEGIN
-
-        COPY_EXISTING ~%item%.itm~ ~override~
-          READ_SHORT 0x1c type
-          SET add = 0
-          PATCH_IF (type != 2) BEGIN // don't care if armor
-            READ_LONG  0x6a fx_off
-            READ_SHORT 0x70 fx_num
-            FOR (index2 = 0 ; index2 < fx_num ; ++index2) BEGIN
-              READ_SHORT (fx_off + (0x30 * index2)) opcode
-              PATCH_IF (opcode = 0) BEGIN
-                SET add = 1
-              END
-            END
-          END
-          BUT_ONLY
-
-        ACTION_IF (add = 1) BEGIN
-
-          OUTER_SET cd_count += 1
-          APPEND ~cdpnp.2da~ ~%SOURCE_RES%  cdpp%cd_count%  c!pp%cd_count%~
-
-        END
-
-      END
-
+    READ_2DA_ENTRY index 0 2 itemcheck
+    TO_LOWER itemcheck
+    PATCH_IF !VARIABLE_IS_SET $cd_pnppi("%itemcheck%") BEGIN
+      DEFINE_ASSOCIATIVE_ARRAY cd_pnp_check BEGIN "%itemcheck%" => 0 END
     END
   END
   BUT_ONLY
 
-COPY + ~override/cdpnp.2da~ ~cdtweaks/2da/cdpnp.2da~
+ACTION_PHP_EACH cd_pnp_check AS item => foo BEGIN 
+
+  // don't bother if file isn't present or if it's already on the list
+  ACTION_IF FILE_EXISTS_IN_GAME ~%item%.itm~ THEN BEGIN
+
+    COPY_EXISTING ~%item%.itm~ ~override~
+      READ_SHORT 0x1c type
+      SET add = 0
+      PATCH_IF (type != 2) BEGIN // don't care if armor
+        READ_LONG  0x6a fx_off
+        READ_SHORT 0x70 fx_num
+        FOR (index2 = 0 ; index2 < fx_num ; ++index2) BEGIN
+          READ_SHORT (fx_off + (0x30 * index2)) opcode
+          PATCH_IF (opcode = 0) BEGIN
+            SET add = 1
+            SET index2 = fx_num // kill loop
+          END
+        END
+      END
+      BUT_ONLY
+
+    ACTION_IF (add = 1) BEGIN
+
+      OUTER_SET cd_count += 1
+      APPEND_OUTER ~weidu_external/cdtweaks/2da/cdpnp.2da~ ~%SOURCE_RES%  cdpp%cd_count%  c!pp%cd_count%~
+
+    END
+
+  END
+
+END
+
+COPY ~weidu_external/cdtweaks/2da/cdpnp.2da~ ~weidu_external/cdtweaks/2da/cdpnp.2da~
   COUNT_2DA_ROWS 3 rows
   FOR (index = 0 ; index < rows ; ++index) BEGIN
     READ_2DA_ENTRY index 0 3 orig
     READ_2DA_ENTRY index 1 3 no_ac
     READ_2DA_ENTRY index 2 3 0_lore
-    INNER_ACTION BEGIN
+    DEFINE_ASSOCIATIVE_ARRAY cd_pnp_table BEGIN "%no_ac%", "%0_lore%" => "%orig%" END
+  END
+  BUT_ONLY  
+  
+ACTION_PHP_EACH cd_pnp_table AS params => orig BEGIN 
 
-      ACTION_IF FILE_EXISTS_IN_GAME ~%orig%.itm~ THEN BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%orig%.itm~ THEN BEGIN
 
-        COPY_EXISTING ~%orig%.itm~ ~override~
-          LPF ~FJ_SPL_ITM_REINDEX~ END
-          READ_ASCII  0x3a bam (8)
-          READ_SHORT  0x42 lore
-          PATCH_IF (lore = 0) BEGIN
-            SPRINT 0_lore ~%orig%~ // if original has no lore, don't bother with a second new item
-          END
-          READ_SHORT  0x68 abil_num
-          WRITE_SHORT 0x68 (abil_num + 1)
-          READ_LONG   0x6a fx_off
-          WRITE_LONG  0x6a (fx_off + 0x38)
-          PATCH_IF (abil_num > 0) BEGIN
-            READ_LONG   0x64 abil_off
-            READ_SHORT (abil_off + 0x1e + ((abil_num - 1) * 0x38)) last_fx_num
-            READ_SHORT (abil_off + 0x20 + ((abil_num - 1) * 0x38)) last_fx_idx
-            SET new_fx = (last_fx_idx + last_fx_num)
-          END ELSE BEGIN
-            READ_SHORT  0x70 new_fx
-          END
-          // because create inventory item doesn't have a way to set charges, create new and delete current
-          INSERT_BYTES   (fx_off +        (new_fx * 0x30)) 0x30 // new effect
-            WRITE_SHORT  (fx_off +        (new_fx * 0x30)) 122  // create inventory item
-            WRITE_BYTE   (fx_off + 0x02 + (new_fx * 0x30)) 1    // target: self
-            WRITE_BYTE   (fx_off + 0x0c + (new_fx * 0x30)) 1    // instant/permanent till death
-            WRITE_BYTE   (fx_off + 0x12 + (new_fx * 0x30)) 100  // probability
-            WRITE_ASCIIE (fx_off + 0x14 + (new_fx * 0x30)) ~%no_ac%~ #8
-          INSERT_BYTES   (fx_off       ) 0x38         // new ability
-            WRITE_BYTE   (fx_off       ) 3            // magical
-            WRITE_BYTE   (fx_off + 0x01) 1            // ID to use
-            WRITE_SHORT  (fx_off + 0x02) 3            // in item slots
-            WRITE_ASCIIE (fx_off + 0x04) ~%bam%~ #8   // item bam
-            WRITE_SHORT  (fx_off + 0x0c) 5            // target: caster
-            WRITE_SHORT  (fx_off + 0x0e) 1            // range: 1
-            WRITE_SHORT  (fx_off + 0x1e) 1            // num effects: 1
-            WRITE_SHORT  (fx_off + 0x20) new_fx       // fx index
-            WRITE_SHORT  (fx_off + 0x22) 1            // num charges
-            WRITE_BYTE   (fx_off + 0x24) 1            // vanishes when drained
-            WRITE_LONG   (fx_off + 0x26) BIT11        // recharge after resting
-            WRITE_SHORT  (fx_off + 0x2a) 1            // projectile: none
-          BUT_ONLY
-
-        ACTION_IF (lore != 0) BEGIN
-
-          APPEND ~itemexcl.2da~ ~%0_lore% 1~
-
-        END
-
-        ACTION_IF (abil_num < 3) BEGIN // don't bother if new ability is #4 (charges only for first 3 abils)
-
-          ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_bastard BEGIN "%orig%" => "%abil_num%" END
-        
-        END
-
-        COPY_EXISTING ~%orig%.itm~ ~override/%no_ac%.itm~
-                      ~%orig%.itm~ ~override/%0_lore%.itm~
-          WRITE_SHORT 0x42 0 // no lore
-
-        COPY_EXISTING ~%no_ac%.itm~ ~override~
-          WRITE_ASCIIE (fx_off + 0x4c + (new_fx * 0x30)) ~%0_lore%~ #8 // exploit the fact that fx_off and new_fx carry over
-          LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 0 END
-          // update descriptions
-          PATCH_FOR_EACH offset IN  0x54 BEGIN
-            READ_LONG ~%offset%~ desc_strref
-            PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-              READ_STRREF ~%offset%~ desc
-              INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-                LAUNCH_PATCH_MACRO ~pnp_descripts~
-              END
-              SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
-            END
-          END
-
+    COPY_EXISTING ~%orig%.itm~ ~override~
+      LPF ~FJ_SPL_ITM_REINDEX~ END
+      READ_ASCII  0x3a bam (8)
+      READ_SHORT  0x42 lore
+      PATCH_IF (lore = 0) BEGIN
+        SPRINT params_1 ~%orig%~ // if original has no lore, don't bother with a second new item
       END
+      READ_SHORT  0x68 abil_num
+      WRITE_SHORT 0x68 (abil_num + 1)
+      READ_LONG   0x6a fx_off
+      WRITE_LONG  0x6a (fx_off + 0x38)
+      PATCH_IF (abil_num > 0) BEGIN
+        READ_LONG   0x64 abil_off
+        READ_SHORT (abil_off + 0x1e + ((abil_num - 1) * 0x38)) last_fx_num
+        READ_SHORT (abil_off + 0x20 + ((abil_num - 1) * 0x38)) last_fx_idx
+        SET new_fx = (last_fx_idx + last_fx_num)
+      END ELSE BEGIN
+        READ_SHORT  0x70 new_fx
+      END
+      // because create inventory item doesn't have a way to set charges, create new and delete current
+      INSERT_BYTES   (fx_off +        (new_fx * 0x30)) 0x30 // new effect
+        WRITE_SHORT  (fx_off +        (new_fx * 0x30)) 122  // create inventory item
+        WRITE_BYTE   (fx_off + 0x02 + (new_fx * 0x30)) 1    // target: self
+        WRITE_BYTE   (fx_off + 0x0c + (new_fx * 0x30)) 1    // instant/permanent till death
+        WRITE_BYTE   (fx_off + 0x12 + (new_fx * 0x30)) 100  // probability
+        WRITE_ASCIIE (fx_off + 0x14 + (new_fx * 0x30)) ~%params_0%~ #8
+      INSERT_BYTES   (fx_off       ) 0x38         // new ability
+        WRITE_BYTE   (fx_off       ) 3            // magical
+        WRITE_BYTE   (fx_off + 0x01) 1            // ID to use
+        WRITE_SHORT  (fx_off + 0x02) 3            // in item slots
+        WRITE_ASCIIE (fx_off + 0x04) ~%bam%~ #8   // item bam
+        WRITE_SHORT  (fx_off + 0x0c) 5            // target: caster
+        WRITE_SHORT  (fx_off + 0x0e) 1            // range: 1
+        WRITE_SHORT  (fx_off + 0x1e) 1            // num effects: 1
+        WRITE_SHORT  (fx_off + 0x20) new_fx       // fx index
+        WRITE_SHORT  (fx_off + 0x22) 1            // num charges
+        WRITE_BYTE   (fx_off + 0x24) 1            // vanishes when drained
+        WRITE_LONG   (fx_off + 0x26) BIT11        // recharge after resting
+        WRITE_SHORT  (fx_off + 0x2a) 1            // projectile: none
+      BUT_ONLY
+
+    ACTION_IF (lore != 0) BEGIN
+
+      APPEND ~itemexcl.2da~ ~%params_1% 1~
 
     END
+
+    ACTION_IF (abil_num < 3) BEGIN // don't bother if new ability is #4 (charges only for first 3 abils)
+
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_pnp_charges BEGIN "%orig%" => "%abil_num%" END
+    
+    END
+
+    COPY_EXISTING ~%orig%.itm~ ~override/%params_0%.itm~
+                  ~%orig%.itm~ ~override/%params_1%.itm~
+      WRITE_SHORT 0x42 0 // no lore
+
+    COPY_EXISTING ~%params_0%.itm~ ~override~
+      WRITE_ASCIIE (fx_off + 0x4c + (new_fx * 0x30)) ~%params_1%~ #8 // exploit the fact that fx_off and new_fx carry over
+      LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 0 END
+      // update descriptions
+      PATCH_FOR_EACH offset IN  0x54 BEGIN
+        READ_LONG ~%offset%~ desc_strref
+        PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
+          READ_STRREF ~%offset%~ desc
+          INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+            LAUNCH_PATCH_MACRO ~pnp_descripts~
+          END
+          SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
+        END
+      END
+
   END
+
+END
 
 // add charges to items in game
 COPY_EXISTING_REGEXP GLOB ~^.+\.[ac]re$~ ~override~
@@ -6470,7 +6510,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.[ac]re$~ ~override~
   END
   FOR (index = 0 ; index < itm_num ; ++index) BEGIN
     READ_ASCII (itm_off +        (0x14 * index)) item ELSE ""
-    PHP_EACH cd_bastard AS itemname => charge BEGIN
+    PHP_EACH cd_pnp_charges AS itemname => charge BEGIN
       PATCH_IF ("%item%" STRING_COMPARE_CASE "%itemname%" = 0) BEGIN
         WRITE_SHORT (itm_off + 0x0a + (charge * 0x02) + (0x14 * index)) 1 // add charge
       END
@@ -6484,7 +6524,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
   READ_LONG 0x38 sale_num  ELSE 0
   FOR (index = 0 ; index < sale_num ; ++index) BEGIN
     READ_ASCII (sale_off +        (index * 0x1c)) item
-    PHP_EACH cd_bastard AS itemname => charge BEGIN
+    PHP_EACH cd_pnp_charges AS itemname => charge BEGIN
       PATCH_IF ("%item%" STRING_COMPARE_CASE "%itemname%" = 0) BEGIN
         WRITE_SHORT (sale_off + 0x0a + (charge * 0x02) + (0x1c * index)) 1 // add charge
       END
@@ -6498,6 +6538,8 @@ ACTION_IF FILE_EXISTS_IN_GAME botsmith.dlg THEN BEGIN
   COMPILE ~cdtweaks/dlg/cdpnp.d~
   
 END
+
+COPY + ~weidu_external/cdtweaks/2da/cdpnp.2da~ ~weidu_external/cdtweaks/2da/cdpnp_final.2da~
 
 /////                                                  \\\\\
 ///// no restrictions                                  \\\\\
