@@ -1129,6 +1129,9 @@ Questa abilità consente a un vagabondo di creare pergamene di incantesimi di ba
 @222000 = ~Imposta a zero il peso delle armi magiche~
 
 @223000 = ~Tratta le armi +x/+y coerentemente~
+// next two strings used for matching and updating item descriptions
+@223001 = ~STATISTICHE:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
+@223002 = ~Viene considerata come un'arma +%ench% per determinare ciò che può colpire~
 
 @223100 = ~Modifica la descrizione degli oggetti affinche' rispecchi la componente "Tratta le armi +x/+y coerentemente"~
 

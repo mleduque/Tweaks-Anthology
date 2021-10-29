@@ -948,6 +948,11 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @221100 = ~BG2 Grandmastery Rules~
 @222000 = ~Change Magically Created Weapons to Zero Weight~
 @223000 = ~Make +x/+y Weapons Consistent~
+// next two strings used for matching and updating item descriptions
+@223001 = ~STATISTICS:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
+@223002 = ~Always considered to be of +%ench% enchantment when determining what it can hit.~
+
+// translators: @223100 is for a deprecated component, you can skip it
 @223100 = ~Description Updates for Make +x/+y Weapons Consistent Component~
 @224000 = ~Un-Nerfed THAC0 Table~
 @224001 = ~Capped, Best THAC0 is 0 (Blucher)~

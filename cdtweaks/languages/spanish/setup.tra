@@ -726,6 +726,9 @@ Esta habilidad permite al ladrón crear hechizos. Los que puede crear son los sig
 @222000 = ~Cambiar el peso de las armas creadas magicamente a 0~
 
 @223000 = ~Hacer coherentes las armas +x/+y~
+// next two strings used for matching and updating item descriptions
+@223001 = ~CARACTERÍSTICAS:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
+@223002 = ~Siempre se la considera un arma +%ench% al determinar a quién puede golpear.~
 
 @223100 = ~Solo Ingles: Actualizaciones a las descripciones para hacer consistentes las armas +x/+y~
 

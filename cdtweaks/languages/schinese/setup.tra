@@ -929,6 +929,10 @@
 @221100 = ~BG2大宗师规则~
 @222000 = ~魔法创造的武器重量为0~
 @223000 = ~调整武器的+x/+y功能~
+// next two strings used for matching and updating item descriptions
+@223001 = ~数据资料：~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
+@223002 = ~在决定可以命中何物时，视为+%ench%武器~
+
 @223100 = ~更新“调整武器的+x/+y功能”部分的描述~
 @224000 = ~未削弱的零级命中率设置~
 @224001 = ~零级命中率最低为0（Blucher）~

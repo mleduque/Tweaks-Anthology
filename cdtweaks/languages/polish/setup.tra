@@ -598,6 +598,10 @@ Ta umiejêtnoœæ pozwala ³otrzykowi zapisaæ czary niskiego i œredniego poziomu na 
 @221000 = ~Prawdziwe wielkie mistrzostwo (Baldurdash)~
 @222000 = ~Zmien wage magicznie stworzonych broni do zera~
 @223000 = ~Spraw, by bronie odpowiadaly umagicznieniu +x/+y~
+// next two strings used for matching and updating item descriptions
+@223001 = ~PARAMETRY:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
+@223002 = ~Przy rzutach na trafienie, zawsze zachowuje siê jak broñ +%ench%~
+
 @223100 = ~Uaktualnienie opisow komponentu 'Spraw, by bronie odpowiadaly umagicznieniu +x/+y'~
 @224000 = ~Nieograniczona tabela TraK0~
 @224001 = ~Ograniczenie: najlepsze TraK0 wynosi 0 (Blucher)~

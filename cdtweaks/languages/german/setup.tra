@@ -589,6 +589,10 @@ identifizieren~
 @221000 = ~Wahre Grossmeisterschaft (Baldurdash)~
 @222000 = ~Aendere magisch erschaffene Waffen zu Null Gewicht~
 @223000 = ~+x/+y Waffen konsequent machen~
+// next two strings used for matching and updating item descriptions
+@223001 = ~EIGENSCHAFTEN:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
+@223002 = ~Gilt immer als eine magische Waffe +%ench%, wenn es darum geht, was es verletzten kann.~
+
 @223100 = ~Aktualisierte Beschreibungen fuer die Komponente '+x/+y Waffen 
 konsequent machen'~
 @224000 = ~Regeltreue ETW0 Tabelle~

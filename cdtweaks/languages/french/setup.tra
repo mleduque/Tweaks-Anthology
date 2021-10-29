@@ -1002,6 +1002,10 @@ Cette capacité permet au mage de créer des parchemins de faible et moyen nivea
 @221100 = ~Regles de grande maitrise de BG2~
 @222000 = ~Donner un poids de 0 aux armes creees par magie~
 @223000 = ~Rendre les armes +x/+y coherentes~
+// next two strings used for matching and updating item descriptions
+@223001 = ~PARAMÈTRES :~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
+@223002 = ~Toujours considéré comme ayant un enchantement de +%ench% pour déterminer ce qu'il peut toucher.~
+
 @223100 = ~Mise a jour des descriptions pour le composant "Rendre les armes +x/+y coherentes"~
 @224000 = ~Table debridee des TAC0~
 @224001 = ~Avec limite, le meilleur TAC0 est 0 (Blucher)~

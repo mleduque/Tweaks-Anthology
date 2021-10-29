@@ -20,7 +20,6 @@ AUTO_TRA ~cdtweaks/languages/%s~
 LANGUAGE
   ~English~
   ~english~
-  ~cdtweaks/languages/english/description_updates.tra~
   ~cdtweaks/languages/english/setup.tra~
 LANGUAGE
   ~Czech (Translation by Razfallow and Vlasák)~
@@ -30,23 +29,17 @@ LANGUAGE
 LANGUAGE
   ~Francais (Translation by Anomaly, Elgaern the Dragon Slayer, Isaya and elminster)~
   ~french~
-  ~cdtweaks/languages/english/description_updates.tra~
   ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/french/description_updates.tra~
   ~cdtweaks/languages/french/setup.tra~
 LANGUAGE
   ~Deutsch (Uebersetzung von Leonardo Watson, Caswallon und Jester)~
   ~german~
-  ~cdtweaks/languages/english/description_updates.tra~
   ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/german/description_updates.tra~
   ~cdtweaks/languages/german/setup.tra~
 LANGUAGE
   ~Italiano (translation by Andrea Colombo and improb@bile; original EoU by Antonio Favata)~
   ~italian~
-  ~cdtweaks/languages/english/description_updates.tra~
   ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/italian/description_updates.tra~
   ~cdtweaks/languages/italian/setup.tra~
 LANGUAGE
   ~Korean (Translation by web2air)~
@@ -66,16 +59,12 @@ LANGUAGE
 LANGUAGE
   ~Espanol (traducido por Clan DLAN)~
   ~spanish~
-  ~cdtweaks/languages/english/description_updates.tra~
   ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/spanish/description_updates.tra~
   ~cdtweaks/languages/spanish/setup.tra~
 LANGUAGE
   ~Simplified Chinese (Translation from bg2_tweaks by Miranda, distance20 and c4_angel)~
   ~schinese~
-  ~cdtweaks/languages/english/description_updates.tra~
   ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/schinese/description_updates.tra~
   ~cdtweaks/languages/schinese/setup.tra~
   ~cdtweaks/languages/schinese_prompts/prompts-%WEIDU_OS%.tra~
   ~cdtweaks/languages/schinese_prompts/setup-%WEIDU_OS%.tra~
@@ -6953,21 +6942,25 @@ END
 
 BEGIN @223000 DESIGNATED 2230
 GROUP @9
-REQUIRE_PREDICATE GAME_IS ~soa tob bgt~ @25
-REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ @16
+//REQUIRE_PREDICATE GAME_IS ~soa tob bgt~ @25
+//REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ @16
 FORBID_COMPONENT ~item_rev/item_rev.tp2~ ~0~ @16
 LABEL ~cd_tweaks_consistent_x_y_items~
+
+// to update descriptions; if not translated it'll try in English and not change anything
+OUTER_SPRINT text_stats @223001
+OUTER_SPRINT text_ench  @223002
 
 // get enchantments from lookup table
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_enchantment BEGIN
 
-  blun10.itm => 3 // Root of the Problem +1/+3 vs unnatural
-  blun23.itm => 3 // Bone Club +2/+3 vs undead
-  hamm04.itm => 4 // hammer +1/+4 vs giantkin
-  sw1h03.itm => 3 // bastard sword +1/+3 vs shapeshifters
-  sw1h31.itm => 4 // daystar
-  sw1h54.itm => 3 // Equalizer
-  wamace.itm => 5 // jerrod's mace
+  blun10 => 3 // Root of the Problem +1/+3 vs unnatural
+  blun23 => 3 // Bone Club +2/+3 vs undead
+  hamm04 => 4 // hammer +1/+4 vs giantkin
+  sw1h03 => 3 // bastard sword +1/+3 vs shapeshifters
+  sw1h31 => 4 // daystar
+  sw1h54 => 3 // Equalizer
+  wamace => 5 // jerrod's mace
 
 END
 
@@ -6975,8 +6968,18 @@ ACTION_PHP_EACH cd_enchantment AS item => ench BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%item%.itm~ THEN BEGIN
 
-    COPY_EXISTING ~%item%.itm~ ~override~ // daystar
+    COPY_EXISTING ~%item%.itm~ ~override~
       WRITE_LONG 0x60 ench
+      READ_LONG  0x54 desc_strref
+      PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
+        READ_STRREF 0x54 desc
+        INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+          REPLACE_TEXTUALLY ~\(%text_stats%[ %TAB%%LNL%%MNL%%WNL%]+\)\([^ %TAB%%LNL%%MNL%%WNL%]\)~
+            ~\1%text_ench%
+\2~
+        END
+        SAY_EVALUATED 0x54 ~%desc%~ // write changes
+      END
       BUT_ONLY
 
   END
@@ -6991,112 +6994,7 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @223100 DESIGNATED 2231
-GROUP @9
-REQUIRE_COMPONENT ~cdtweaks/setup-cdtweaks.tp2~ ~2230~ @17
-REQUIRE_PREDICATE (("%LANGUAGE%" STRING_COMPARE_CASE "schinese" = 0) OR
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "english" = 0) OR
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "french" = 0) OR
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "german" = 0) OR 
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "italian" = 0) OR 
-                   ("%LANGUAGE%" STRING_COMPARE_CASE "spanish" = 0)) @7 // chinese/english/french/german/italian/spanish only
-LABEL ~cd_tweaks_consistent_x_y_items_descriptions~
-
-ACTION_IF FILE_EXISTS_IN_GAME ~bola01.itm~ THEN BEGIN // if AoE installed
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~blun10.itm~ BEGIN
-    COPY_EXISTING ~blun10.itm~ ~override~ // Root of the Problem +1/+3 vs unnatural
-      SAY IDENTIFIED_DESC @99057
-      BUT_ONLY
-  END
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~blun23.itm~ BEGIN
-    COPY_EXISTING ~blun23.itm~ ~override~ // Bone Club +2/+3 vs undead
-      SAY IDENTIFIED_DESC @99058
-      BUT_ONLY
-  END
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~hamm04.itm~ BEGIN
-    COPY_EXISTING ~hamm04.itm~ ~override~ // Hammer +1/+4 vs Giantkin
-      SAY IDENTIFIED_DESC @99059
-      BUT_ONLY
-  END
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~sw1h03.itm~ BEGIN
-    COPY_EXISTING ~sw1h03.itm~ ~override~ // bastard sword +1/+3 vs shapeshifters
-      SAY IDENTIFIED_DESC @99060
-      BUT_ONLY
-  END
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~sw1h31.itm~ BEGIN
-    COPY_EXISTING ~sw1h31.itm~ ~override~ // Daystar
-      SAY IDENTIFIED_DESC @99061
-      BUT_ONLY
-  END
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~sw1h54.itm~ BEGIN
-    COPY_EXISTING ~sw1h54.itm~ ~override~ // Equalizer
-      SAY IDENTIFIED_DESC @99062
-      BUT_ONLY
-  END
-
-END ELSE BEGIN // if no AoE
-
-  ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2040~ THEN BEGIN // if universal clubs
-
-    ACTION_IF FILE_EXISTS_IN_GAME ~blun10.itm~ BEGIN
-      COPY_EXISTING ~blun10.itm~ ~override~ // Root of the Problem +1/+3 vs unnatural
-        SAY IDENTIFIED_DESC @99063
-        BUT_ONLY
-    END
-
-    ACTION_IF FILE_EXISTS_IN_GAME ~blun23.itm~ BEGIN
-      COPY_EXISTING ~blun23.itm~ ~override~ // Bone Club +2/+3 vs undead
-        SAY IDENTIFIED_DESC @99064
-        BUT_ONLY
-    END
-
-  END ELSE BEGIN // if
-
-    ACTION_IF FILE_EXISTS_IN_GAME ~blun10.itm~ BEGIN
-      COPY_EXISTING ~blun10.itm~ ~override~ // Root of the Problem +1/+3 vs unnatural
-        SAY IDENTIFIED_DESC @99051
-        BUT_ONLY
-    END
-
-    ACTION_IF FILE_EXISTS_IN_GAME ~blun23.itm~ BEGIN
-      COPY_EXISTING ~blun23.itm~ ~override~ // Bone Club +2/+3 vs undead
-        SAY IDENTIFIED_DESC @99052
-        BUT_ONLY
-    END
-
-  END
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~hamm04.itm~ BEGIN
-    COPY_EXISTING ~hamm04.itm~ ~override~ // Hammer +1/+4 vs Giantkin
-      SAY IDENTIFIED_DESC @99053
-      BUT_ONLY
-  END
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~sw1h03.itm~ BEGIN
-    COPY_EXISTING ~sw1h03.itm~ ~override~ // bastard sword +1/+3 vs shapeshifters
-      SAY IDENTIFIED_DESC @99054
-      BUT_ONLY
-  END
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~sw1h31.itm~ BEGIN
-    COPY_EXISTING ~sw1h31.itm~ ~override~ // Daystar
-      SAY IDENTIFIED_DESC @99055
-      BUT_ONLY
-  END
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~sw1h54.itm~ BEGIN
-    COPY_EXISTING ~sw1h54.itm~ ~override~ // Equalizer
-      SAY IDENTIFIED_DESC @99056
-      BUT_ONLY
-  END
-
-END
+BEGIN @223100 DESIGNATED 2231 DEPRECATED @18
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
