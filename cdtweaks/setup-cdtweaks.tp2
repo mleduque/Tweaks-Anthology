@@ -4869,7 +4869,7 @@ END ELSE BEGIN // bgt
 
 END
 
-COPY_EXISTING ~%tutu_var%%tutu_scriptbg%viconi%eet_var%.dlg~ ~override~ // viconi in bg/bgee, bgviconi in bgt, _viconi in tutu, viconi_ in eet
+COPY_EXISTING ~%tutu_scriptbg%viconi%eet_var%.dlg~ ~override~ // viconi in bg/bgee, bgviconi in bgt, _viconi in tutu, viconi_ in eet
   DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~CreateCreature("FLAM2",\[605\.901\])~ ~CreateCreature("FLAM2",[1620.420],0)~  // BG lacks a direction parameter, fix syntax
     REPLACE_TEXTUALLY ~CreateCreature("FLAM2",\[605\.901\]~ ~CreateCreature("FLAM2",[1620.420]~  // move the FF spawn to reflect her new coords
@@ -5341,50 +5341,34 @@ END
 
 // if breakable weapons from tutufix installed or BGEE/BGT breakable weapons
 ACTION_IF ((game_is_eet = 0) AND ((FILE_EXISTS_IN_GAME ~_sw1h01.spl~) OR (FILE_EXISTS_IN_GAME ~sw1h01.spl~))) THEN BEGIN
-   
-  ACTION_IF FILE_EXISTS_IN_GAME ~_sw1h01.spl~ THEN BEGIN
+
+  ACTION_CLEAR_ARRAY cd_breakables
+  ACTION_IF FILE_EXISTS_IN_GAME ~sw1h01.spl~  BEGIN ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_breakables BEGIN ~c!bs1~ => ~sw1h01~ END END
+  ACTION_IF FILE_EXISTS_IN_GAME ~_sw1h01.spl~ BEGIN ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_breakables BEGIN ~c!bs2~ => ~_sw1h01~ END END
+  ACTION_IF !game_is_bgt BEGIN OUTER_SET op = 146 END ELSE BEGIN OUTER_SET op = 309 END
   
-    OUTER_SPRINT break_spell "_sw1h01"
+  ACTION_PHP_EACH cd_breakables AS item => spell BEGIN
+  
+    COPY_EXISTING ~%item%.itm~ ~override~
+      LPF ALTER_EFFECT INT_VAR check_headers = 1 check_globals = 0 match_opcode = op STR_VAR match_resource = EVAL "%spell%" resource = EVAL "%item%" END
 
-  END ELSE BEGIN
+    // make new breaking spell
+    COPY_EXISTING ~%spell%.spl~ ~override/%item%.spl~ // create breakage spell for new swords
+      LPF ALTER_EFFECT INT_VAR match_opcode = 112 STR_VAR match_resource = EVAL "%spell%" resource = EVAL "%item%" END
 
-    OUTER_SPRINT break_spell "sw1h01"
-    
+    ACTION_IF game_is_bgt BEGIN
+      
+      COPY_EXISTING ~dplayer2.bcs~ ~override~
+                    ~dplayer3.bcs~ ~override~
+        DECOMPILE_AND_PATCH BEGIN
+          APPEND_FILE ~cdtweaks/baf/bgt_breakage.baf~
+          REPLACE_TEXTUALLY ~CD_REPLACE_ME~ ~%item%~
+        END
+        BUT_ONLY
+        
+    END    
+
   END
-
-  ACTION_FOR_EACH res IN ~c!bs1~ ~c!bs2~ BEGIN
-
-    ACTION_IF FILE_EXISTS_IN_GAME ~%res%.itm~ BEGIN
-
-      // change existing breakage spell to point to new spell
-      COPY_EXISTING ~%res%.itm~ ~override~
-        LPF ALTER_EFFECT INT_VAR check_headers = 1 check_globals = 0 match_opcode = 146 STR_VAR resource = EVAL "%res%" END
-
-      // make new breaking spell
-      COPY_EXISTING ~%break_spell%.spl~ ~override/%res%.spl~ // create breakage spell for new swords
-        LPF ALTER_EFFECT INT_VAR match_opcode = 112 STR_VAR match_resource = EVAL "%break_spell%" resource = EVAL "%res%" END
-
-    END
-
-  END
-
-END
-
-ACTION_IF game_is_bgt BEGIN
-
-  OUTER_SPRINT ref ~c!bs1~
-
-  // change existing breakage spell to point to new spell
-  COPY_EXISTING ~%ref%.itm~ ~override~
-    LPF ALTER_EFFECT INT_VAR check_headers = 1 check_globals = 0 match_opcode = 309 STR_VAR resource = EVAL ~%ref%~ END
-    
-  COPY_EXISTING ~dplayer2.bcs~ ~override~
-                ~dplayer3.bcs~ ~override~
-    DECOMPILE_AND_PATCH BEGIN
-      APPEND_FILE ~cdtweaks/baf/bgt_breakage.baf~
-      REPLACE_TEXTUALLY ~CD_REPLACE_ME~ ~%ref%~
-    END
-    BUT_ONLY
 
 END
 
@@ -5489,49 +5473,33 @@ END
 // if breakable weapons from tutufix installed or BGEE/BGT breakable weapons
 ACTION_IF ((game_is_eet = 0) AND ((FILE_EXISTS_IN_GAME ~_ax1h01.spl~) OR (FILE_EXISTS_IN_GAME ~ax1h01.spl~))) THEN BEGIN
 
-  ACTION_IF FILE_EXISTS_IN_GAME ~_ax1h01.spl~ THEN BEGIN
+  ACTION_CLEAR_ARRAY cd_breakables
+  ACTION_IF FILE_EXISTS_IN_GAME ~ax1h01.spl~  BEGIN ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_breakables BEGIN ~c!ax1~  => ~ax1h01~ END END
+  ACTION_IF FILE_EXISTS_IN_GAME ~_ax1h01.spl~ BEGIN ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_breakables BEGIN ~c!ax14~ => ~_ax1h01~ END END
+  ACTION_IF !game_is_bgt BEGIN OUTER_SET op = 146 END ELSE BEGIN OUTER_SET op = 309 END
+  
+  ACTION_PHP_EACH cd_breakables AS item => spell BEGIN
+  
+    COPY_EXISTING ~%item%.itm~ ~override~
+      LPF ALTER_EFFECT INT_VAR check_headers = 1 check_globals = 0 match_opcode = op STR_VAR match_resource = EVAL "%spell%" resource = EVAL "%item%" END
 
-    OUTER_SPRINT break_spell "_ax1h01"
-    
-  END ELSE BEGIN
+    // make new breaking spell
+    COPY_EXISTING ~%spell%.spl~ ~override/%item%.spl~ // create breakage spell for new swords
+      LPF ALTER_EFFECT INT_VAR match_opcode = 112 STR_VAR match_resource = EVAL "%spell%" resource = EVAL "%item%" END
 
-    OUTER_SPRINT break_spell "ax1h01"
+    ACTION_IF game_is_bgt BEGIN
+      
+      COPY_EXISTING ~dplayer2.bcs~ ~override~
+                    ~dplayer3.bcs~ ~override~
+        DECOMPILE_AND_PATCH BEGIN
+          APPEND_FILE ~cdtweaks/baf/bgt_breakage.baf~
+          REPLACE_TEXTUALLY ~CD_REPLACE_ME~ ~%item%~
+        END
+        BUT_ONLY
+        
+    END    
 
   END
-
-  ACTION_FOR_EACH res IN ~c!ax1~ ~c!ax14~ BEGIN
-    
-    ACTION_IF FILE_EXISTS_IN_GAME ~%res%.itm~ BEGIN
-
-      // change existing breakage spell to point to new spell
-      COPY_EXISTING ~%res%.itm~ ~override~
-        LPF ALTER_EFFECT INT_VAR check_globals = 0 match_opcode = 146 STR_VAR resource = EVAL "%res%" END
-
-      // make new breaking spell
-      COPY_EXISTING ~%break_spell%.spl~ ~override/%res%.spl~ // create breakage spell for new swords
-        LPF ALTER_EFFECT INT_VAR match_opcode = 112 STR_VAR match_resource = EVAL "%break_spell%" resource = EVAL "%res%" END
-
-    END
-
-  END
-
-END
-
-ACTION_IF game_is_bgt BEGIN
-
-  OUTER_SPRINT ref ~c!ax1~
-
-  // change existing breakage spell to point to new spell
-  COPY_EXISTING ~%ref%.itm~ ~override~
-    LPF ALTER_EFFECT INT_VAR check_headers = 1 check_globals = 0 match_opcode = 309 STR_VAR resource = EVAL ~%ref%~ END
-
-  COPY_EXISTING ~dplayer2.bcs~ ~override~
-                ~dplayer3.bcs~ ~override~
-    DECOMPILE_AND_PATCH BEGIN
-      APPEND_FILE ~cdtweaks/baf/bgt_breakage.baf~
-      REPLACE_TEXTUALLY ~CD_REPLACE_ME~ ~%ref%~
-    END
-    BUT_ONLY
 
 END
 
