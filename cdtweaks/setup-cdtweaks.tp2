@@ -1461,7 +1461,7 @@ COPY_EXISTING ~%BanditCamp_RaemonsTent_BCS%.bcs~ ~override~ // tutu, bgt. bg
   DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~RevealAreaOnMap("%CloakwoodLodge%")~ ~RevealAreaOnMap("%CloakwoodLodge%") RevealAreaOnMap("%CloakwoodNest%")~
   END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS // obg doesn't have baldur.bcs
 
 /////                                                            \\\\\
 ///// all cloakwood save mines                                   \\\\\
@@ -1495,7 +1495,7 @@ COPY_EXISTING ~%BanditCamp_RaemonsTent_BCS%.bcs~ ~override~ // tutu, bgt. bg
   DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~RevealAreaOnMap("%CloakwoodLodge%")~ ~RevealAreaOnMap("%CloakwoodLodge%") RevealAreaOnMap("%CloakwoodMines%")~
   END
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS // obg doesn't have baldur.bcs
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
