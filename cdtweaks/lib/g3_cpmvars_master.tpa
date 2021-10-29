@@ -1,38 +1,29 @@
-ACTION_IF NOT VARIABLE_IS_SET firebeadstate1 THEN BEGIN
+/* 
+For anyone interested in using these: check out BG1 NPC instead. They'll have more 
+examples and the most updated version of these libraries. These are also modified
+libraries in that I remove the GAME_IS checks from the individual libraries, since
+I do the game checks here instead. 
 
-  ACTION_IF game_is_bgee THEN BEGIN
+I mainly use these for the handful of times I need to patch specific BG areas or their 
+scripts; this is why I can do things like use the BGEE vars for oBG, which is something
+no one should really do.  
 
-    INCLUDE ~cdtweaks/lib/g3_bgee_cpmvars.tpa~
+BG1 NPC also has additional libraries for dream scripts, fluid states, and all sorts of
+other goodies for proper content support which I don't need for Tweaks. 
+*/
 
-  END ELSE BEGIN
+ACTION_IF !game_includes_bg1 THEN BEGIN // I feel like these come up enough in BG&BG2 components to define them
 
-    ACTION_IF game_is_eet THEN BEGIN
-
-      INCLUDE ~eet/other/cpmvars/eet_cpmvars.tpa~
-
-    END ELSE BEGIN
-
-      ACTION_IF tutu_gen THEN BEGIN
-
-        INCLUDE ~cdtweaks/lib/g3_tutu_cpmvars.tpa~
-
-      END ELSE BEGIN
-
-        ACTION_IF game_is_bgt THEN BEGIN
+	OUTER_SPRINT "tutu_var" ""
+	OUTER_SPRINT "tutu_scriptbg" ""//BGT 'BG' prefix
+	OUTER_SPRINT "eet_var" ""
   
-          INCLUDE ~cdtweaks/lib/g3_bgt_cpmvars.tpa~
-          
-        END ELSE BEGIN
-  
-          INCLUDE ~cdtweaks/lib/g3_bg_cpmvars.tpa~
+END ELSE BEGIN
 
-        END
-
-      END
-
-    END
-
-  END
+  ACTION_IF tutu_gen    BEGIN INCLUDE ~cdtweaks/lib/g3_tutu_cpmvars.tpa~  END ELSE       // tutu
+  ACTION_IF game_is_bgt BEGIN INCLUDE ~cdtweaks/lib/g3_bgt_cpmvars.tpa~   END ELSE       // bgt
+  ACTION_IF game_is_eet BEGIN INCLUDE ~eet/other/cpmvars/eet_cpmvars.tpa~ END ELSE BEGIN // eet
+                              INCLUDE ~cdtweaks/lib/g3_bgee_cpmvars.tpa~  END            // use this for bgee AND obg
 
   DEFINE_ACTION_FUNCTION cd_extend_bg_area_script
   
@@ -79,5 +70,3 @@ EXTEND_BOTTOM ~%a_script%.bcs~ ~%script%.baf~ EVALUATE_BUFFER USING ~%tra_file%~
   END
 
 END
-
-// bg1npc also maintains libraries for dream scripts, fluid states, and some other goodies, but they're not needed for Tweaks

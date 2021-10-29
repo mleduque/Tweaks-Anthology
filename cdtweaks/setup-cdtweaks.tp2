@@ -13788,7 +13788,7 @@ SUBCOMPONENT @403000 // Stat Changes: Edwin
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
 LABEL ~cd_tweaks_consistent_stats_edwin_bg~
 
-COPY_EXISTING_REGEXP GLOB ~^_?edwin[0-9]*\.cre$~ ~override~
+COPY_EXISTING_REGEXP GLOB ~^_?edwin[0-9_]*\.cre$~ ~override~
   PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN // protects against invalid files
     WRITE_BYTE 0x238 9 // 9 STR
     WRITE_BYTE 0x23b 9 // 9 WIS
@@ -13805,7 +13805,7 @@ SUBCOMPONENT @403000 // Stat Changes: Edwin
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
 LABEL ~cd_tweaks_consistent_stats_edwin_bg2~
 
-COPY_EXISTING_REGEXP GLOB ~^_?edwin[0-9]*\.cre$~ ~override~
+COPY_EXISTING_REGEXP GLOB ~^_?edwin[0-9_]*\.cre$~ ~override~
   PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN // protects against invalid files
     WRITE_BYTE 0x238 10 // 10 STR
     WRITE_BYTE 0x23b 10 // 10 WIS
@@ -13924,7 +13924,7 @@ SUBCOMPONENT @406000 // Stat Changes: Minsc
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
 LABEL ~cd_tweaks_consistent_stats_minsc_bg~
 
-COPY_EXISTING_REGEXP GLOB ~^_?minsc[0-9]*\.cre$~ ~override~
+COPY_EXISTING_REGEXP GLOB ~^_?minsc[0-9_]*\.cre$~ ~override~
   PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN // protects against invalid files
     WRITE_BYTE 0x23c 15 // 15 DEX
     WRITE_BYTE 0x23d 15 // 15 CON
@@ -13941,7 +13941,7 @@ SUBCOMPONENT @406000 // Stat Changes: Minsc
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
 LABEL ~cd_tweaks_consistent_stats_minsc_bg2~
 
-COPY_EXISTING_REGEXP GLOB ~^_?minsc[0-9]*\.cre$~ ~override~
+COPY_EXISTING_REGEXP GLOB ~^_?minsc[0-9_]*\.cre$~ ~override~
   PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN // protects against invalid files
     WRITE_BYTE 0x23c 16 // 16 DEX
     WRITE_BYTE 0x23d 16 // 16 CON
@@ -14517,7 +14517,7 @@ GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
 LABEL ~cd_tweaks_coran_legal_dex~
 
-COPY_EXISTING_REGEXP GLOB ~^_?coran[0-9]*.*\.cre$~ ~override~
+COPY_EXISTING_REGEXP GLOB ~^_?\(bd\)?coran[0-9]*.*\.cre$~ ~override~
   WRITE_BYTE 0x23c 19 // 19 DEX
   BUT_ONLY
 
@@ -14538,9 +14538,9 @@ LABEL ~cd_tweaks_make_xan_generic_mage~
 ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
 COPY_EXISTING_REGEXP "^%tutu_scriptbg%xan.cre$" "override"
-                     "^_?xan[0-9]*.cre$" "override"
+                     "^_?xan[0-9_]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
-  BUT_ONLY
+  BUT_ONLY IF_EXISTS
 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -14579,7 +14579,7 @@ LABEL ~cd_tweaks_make_xzar_generic_mage~
 ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
 COPY_EXISTING_REGEXP "^%tutu_scriptbg%xzar.cre$" "override"
-                     "^_?xzar[0-9]*.cre$" "override"
+                     "^_?xzar[0-9_]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
   BUT_ONLY
 
@@ -14599,7 +14599,7 @@ LABEL ~cd_tweaks_make_edwin_generic_mage~
 
 ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
-COPY_EXISTING_REGEXP "^_?edwin[0-9]*.cre$" "override"
+COPY_EXISTING_REGEXP "^_?edwin[0-9_]*.cre$" "override"
   LAUNCH_PATCH_MACRO mh_make_generalist
   BUT_ONLY
 

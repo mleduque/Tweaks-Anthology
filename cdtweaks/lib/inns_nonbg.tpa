@@ -78,10 +78,19 @@ COPY ~./inline/inn_data.2da~ ~./inline/inn_data.2da~
 
 ACTION_IF enhanced_edition BEGIN
 
-  STRING_SET 28125 @20844 // remove the part about Neera going to FAI
-  STRING_SET 28392 @20845 // remove the part about Dorn going to FAI
-  STRING_SET 29019 @20846 // remove the part about Rasaad going to Nashkel
+  ACTION_IF game_is_eet BEGIN
+    STRING_SET 228125 @20844 // remove the part about Neera going to FAI
+    STRING_SET 228392 @20845 // remove the part about Dorn going to FAI
+    STRING_SET 229019 @20846 // remove the part about Rasaad going to Nashkel
+    OUTER_SET baelothreply = 231931
+  END ELSE BEGIN
+    STRING_SET 28125 @20844 // remove the part about Neera going to FAI
+    STRING_SET 28392 @20845 // remove the part about Dorn going to FAI
+    STRING_SET 29019 @20846 // remove the part about Rasaad going to Nashkel
+    OUTER_SET baelothreply = 31931
+  END  
   // handle Baeloth here, since he's a special case regardless
+  //COPY ~cdtweaks/dlg/depart_ee.d~ ~weidu_external/cdtweaks/dlg/depart_ee.d~ EVALUATE_BUFFER
   COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/depart_ee.d~ 
 
 END  

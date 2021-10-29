@@ -57,7 +57,7 @@
       <p><strong> Version 9</strong><br />
         <strong> Languages:</strong> Chinese, Czech, English, French, German, Italian,
         Korean, Polish, Russian, and Spanish<br />
-        <strong>Platforms: </strong>Windows,  Mac OS X, Linux<br />
+        <strong>Platforms: </strong>Windows,  MacOS, Linux<br />
         <strong>GitHub: </strong><a href="https://github.com/Gibberlings3/Tweaks-Anthology">Gibberlings3/Tweaks-Anthology</a></p>
     </div>
     <div class="ribbon_rectangle_h2"><a id="Overview" name="Overview"></a>
@@ -105,7 +105,7 @@
           Cleric Kits component</li>
         <li>The changes to Cromwell's dialogue in the Allow Cromwell to Upgrade Watcher's
           Keep Items component should play nicely with other mods, provided the other
-          mods don't mangle his dialogue (older versions of Item Upgrade, for example) </li>
+          mods don't mangle his dialogue (ancient versions of Item Upgrade, for example) </li>
         <li>Certain mod items may not be affected by the item tweaks--in some cases,
           the tweak can't be made on the fly, so items to be modified are kept
           on static lists rather than a list made at installation time. If you find
@@ -127,27 +127,29 @@
     <div class="ribbon_triangle_h2-l"></div>
     <div class="ribbon_triangle_h2-r"></div>
     <div class="section">
-      <p><strong>Special Note for Siege of Dragonspear from Steam/GOG<br />
-        </strong>Good Old Games (GOG) and Steam both package the additional content for Siege of Dragonspear in a method that WeiDU, the tool used to install this mod, cannot access. You must  run a program called <a href="https://forums.beamdog.com/discussion/50441/modmerge-merge-your-steam-gog-zip-based-dlc-into-something-weidu-nearinfinity-dltcep-can-use/p1">Modmerge</a> on your SoD installation  before you can install this or any other WeiDU-based mod. </p>
-      <p><strong>Unattended Installation</strong><br />
-        A new configuration file, cdtweaks.txt, is now available in the mod's folder. Players can use this file to set inputs for the <strong>Romance Cheats</strong> and <strong>Minimum Stats Cheat</strong> components prior to installation. Doing so will allow the mod to be installed unattended, e.g. as part of a Big World Setup install. If the configuration file is not utilized, or indicates no changes, the player will be prompted during installation of these components, just like before. </p>
-      <p><strong>Enhanced Editions Note</strong><br />
-        The Enhanced Editions are actively supported games. Please note that every   patch update will wipe your current mod setup! If in the middle of a   modded game you might want to delay the patch update (if possible) as   even after reinstalling the mods, you might not be able to continue with   your old savegames. Alternatively, copy the whole game's folder into a   new one that can be modded and will stay untouched by game patches. For BG:EE it is important that you install the mod to the language   version you are playing the game in. Otherwise, the dialogues of the mod   will not show but give error messages. </p>
-      <p><strong>Windows</strong><br />
-        Tweaks Anthology for Windows is distributed as a self-extracting   archive and includes a WeiDU installer. To install, simply double-click   the archive and follow the instructions on screen.</p>
-      <p>Alternatively, the files can be extracted into your game directory using <a href="http://www.7-zip.org/download.html">7zip</a> or <a href="http://www.rarlab.com/download.htm">WinRAR</a>. When properly extracted, your game directory will contain <strong>setup-cdtweaks.exe</strong> and the folder <strong>cdtweaks</strong>. To install, double-click <strong>setup-cdtweaks.exe</strong> and follow the instructions on screen.</p>
-      <p>You can run <strong>setup-cdtweaks.exe</strong> in your game folder to reinstall, uninstall or otherwise change components.</p>
-      <p><strong>Mac OS X</strong><br />
-        The Tweaks Anthology for Mac OS X is distributed as a compressed tarball and includes a WeiDU installer.</p>
-      <p>First, extract the files from the tarball into your game directory. When properly extracted, your game directory will contain <strong>setup-cdtweaks</strong>, <strong>setup-cdtweaks.command</strong>, and the folder <strong>cdtweaks</strong>. To install, double-click <strong>setup-cdtweaks.command</strong> and follow the instructions on screen.</p>
-      <p>You can run <strong>setup-cdtweaks.command</strong> in your game folder to reinstall, uninstall or otherwise change components.</p>
-      <p><strong>Linux</strong><br />
-        The Tweaks Anthology for Linux is distributed as a compressed tarball and does not include a WeiDU installer.</p>
-      <p>Extract the contents of the mod to the folder of the game you wish to modify.</p>
-      <p>Download the latest version of WeiDU for Linux from <a href="http://www.weidu.org/%7Ethebigg/">WeiDU.org</a> and copy WeiDU and WeInstall to /usr/bin. Following that, open a terminal, cd to your game installation directory, run tolower   and answer Y to both queries. You can avoid running the second option   (linux.ini) if you've already ran it once in the same directory. To save   time, the archive is already tolowered, so there's no need to run the   first option (lowercasing file names) either if you've extracted only   this mod since the last time you lowercased file names. If you're   unsure, running tolower and choosing both options is the safe bet.</p>
-      <p>To install, run WeInstall cdtweaks in your game folder. Then run wine BGMain.exe and start playing. </p>
-      <p><strong> Note for Complete Uninstallation</strong><br />
-        In addition to the methods above for removing individual components, you can completely uninstall the mod using setup-cdtweaks --uninstall at the command line to remove all components without wading through prompts. . </p>
+      <div>
+        <div>
+          <p>First time installing a mod? Check out G3's comprehensive tutorial: <a href="https://www.gibberlings3.net/forums/topic/33164-a-new-player&rsquo;s-guide-to-installing-and-playing-mods/">A New Player&rsquo;s Guide to Installing and Playing Mods</a>. </p>
+          <p><strong>Special Note for Siege of Dragonspear from Steam/GOG<br />
+          </strong>Good Old Games (GOG) and Steam both package the     additional content for Siege of Dragonspear in a method that WeiDU, the     tool used to install this mod, cannot access. You must  run a program     called <a href="https://github.com/Argent77/A7-DlcMerger/releases">DLC Merger</a> on your SoD installation  before you can install this or any other WeiDU-based mod. </p>
+          <p><strong>Enhanced Editions Note</strong><br />
+            The Enhanced Editions are actively supported games. Please   note   that every   patch update will wipe your current mod setup! If in   the   middle of a   modded game you might want to delay the patch   update (if   possible) as   even after reinstalling the mods, you might   not be able   to continue with   your old savegames. Alternatively, copy   the whole   game's folder into a   new one that can be modded and will   stay   untouched by game patches. For BG:EE it is important that you   install   the mod to the language   version you are playing the game in.     Otherwise, the dialogues of the mod   will not show but give error     messages. </p>
+          <p><strong>Windows</strong><br />
+            The Tweaks Anthology  for Windows is   distributed as a   self-extracting   archive and includes a WeiDU   installer. To install,   simply double-click   the archive and follow   the instructions on screen.</p>
+          <p>Alternatively, the files can be extracted into your game directory using <a href="http://www.7-zip.org/download.html">7zip</a> or <a href="http://www.rarlab.com/download.htm">WinRAR</a>. When properly extracted, your game directory will contain <strong>setup-cdtweaks.exe</strong> and the folder <strong>cdtweaks</strong>. To install, double-click <strong>setup-cdtweaks.exe</strong> and follow the instructions on screen.</p>
+          <p>You can run <strong>setup-cdtweaks.exe</strong> in your game folder to reinstall, uninstall or otherwise change components.</p>
+          <p><strong>macOS</strong><br />
+            The Tweaks Anthology for macOS is   distributed as a compressed tarball and includes a WeiDU installer.</p>
+          <p>First, extract the files from the tarball into your game directory. When properly extracted, your game directory will contain <strong>setup-cdtweaks</strong>, <strong>setup-cdtweaks.command</strong>, and the folder <strong>cdtweaks</strong>. To install, double-click <strong>setup-cdtweaks.command</strong> and follow the instructions on screen.</p>
+          <p>You can run <strong>setup-cdtweaks.command</strong> in your game folder to reinstall, uninstall or otherwise change components.</p>
+          <p><strong>Linux</strong><br />
+            The Tweaks Anthology for Linux is   distributed as a compressed   tarball and does not   include a WeiDU   installer.  Linux users will need   to do a one-time   install of <abbr title="Weimer Dialogue Utility"><abbr title="Weimer Dialogue Utility">WeiDU</abbr></abbr> (and a few other adjustments) as described in <a href="https://moebiusproject.gitlab.io/mods_on_linux" rel="external nofollow noopener" target="_blank">this great writeup</a>. </p>
+          <p>To install, run 'WeInstall cdtweaks in your game folder. </p>
+          <p><strong> Note for Complete Uninstallation</strong><br />
+            In addition to the methods above for removing individual     components, you can completely uninstall the mod using     setup-cdtweaks --uninstall at the command line to remove all     components without wading through prompts.        </p>
+        </div>
+      </div>
+      <p>&nbsp;</p>
     </div>
     <div class="ribbon_rectangle_h2"><a id="Contents" name="Contents"></a>
       <h2>Contents</h2>
@@ -213,14 +215,9 @@
         This component will affect <em>all</em> items in the game, including items
         introduced by mods. </p>
       <p><strong>Icewind Dale Casting Graphics </strong><br />
-        <em>BGEE, BG2EE, EET,  BG2, BGT, Tutu, IWD-in-BG2</em> </p>
-      <p>When your character casts a spell, you get a pretty sequence of colors swirling
-        around their hand depending on the school the spell cast came from. A necromantic
-        spell, for example, looks quite different from creating an illusion. The
-        Baldur's Gate and Icewind Dale games use different sets of animations for
-        the schools. This component changes the spellcasting animations to those
-        of Icewind Dale. Note that this is purely a cosmetic change--the spells
-        themselves function exactly as before. Screenshots for comparison are available
+        <em>BGEE, BG2EE, EET,  BG2, BGT, Tutu, IWD-in-BG2</em> <br />
+      <em>Also available in the IWDification mod </em>      </p>
+      <p>When your character casts a spell, you get a pretty sequence of colors   swirling around their hand depending on the school the spell cast came   from. A necromantic spell, for example, looks quite different from   creating an illusion. The Baldur's Gate and Icewind Dale games use   different sets of animations for the schools. This component allows you to use the Icewind Dale graphics on the Baldur's Gate series of games. Screenshots for comparison are available
         in the <a href="https://www.gibberlings3.net/gallery/album/27-tweaks-anthology/">Tweaks
         gallery</a>. </p>
       <p><strong>Baldur's Gate  Casting Graphics </strong><br />
@@ -247,7 +244,8 @@
         This will not affect the actual effects of the items, only the display
         of the icon. It will also not affect icons added by spells or other means. </p>
       <p><strong>Commoners Use Drab Colors</strong><br />
-        <em>BGEE, BG2EE,  EET,  BG2, BGT, Tutu</em></p>
+        <em>BGEE, BG2EE,  EET,  BG2, BGT, Tutu</em><br />
+        <em>Also available in the IWDification mod </em></p>
       <p> Unlike Icewind Dale, commoners in the Baldur's Gate series wear
         brightly colored clothes. This tweak changes the random selections of colors
         for commoners to a drab palette. The dress of noblemen and noblewomen are
@@ -284,11 +282,23 @@
       <p><strong>Use Character Colors Instead of Item Colors</strong><br />
         <em>All games except PsT, PsTEE</em></p>
       <p>In the original Baldur's Gate, shields and helmets generally took on the major/minor colors of the character wearing them. In Baldur's Gate II, most shields and helmets instead set fixed colors so that the paperdoll and game screen would always match the item icons. You can <a href="https://www.gibberlings3.net/gallery/image/503-use-character-colors-instead-of-item-colors/">see a comparison</a> in the Tweaks gallery. This component allows you to use the BG behavior to allow helmets and shields to use character colors. The component allows you to select changing shield, helmets or both; and for choosing to alter all or just non-magical ones. </p>
-      <p><strong>Remove Blur Effect from Equipped Items</strong></p>
-      <p>This component will remove the blur effect from items such as the Cloak of Displacement and The Claw of Kazgaroth. This will not interfere with items that provide blur effects for creatures such as ghosts or from limited blur effects from spells or limited-use items. </p>
+      <p><strong>Remove Annoying Visual Effects from Equipped Items</strong></p>
+      <p>This component comes with two options which will affect graphical animations which constantly play when items are equipped. None of these options will interfere with items that provide visual effects for creatures such as ghosts or from time-limited  effects from spells or limited-use items. </p>
+      <ul>
+        <li><em>Remove Blur Effect  </em>will remove the blur effect from items such as the Cloak of Displacement and The Claw of Kazgaroth. </li>
+        <li><em>Remove Spell Trap and Reflection Effects </em>will remove the  huge glowing white wiffle ball animation for the ToB Cloak
+        of Mirroring as well as the glowing disc for physical
+        mirror effects (e.g. Balduran's Shield, Shield of Reflection). </li>
+        <li><em>Remove All of the Above</em> will essentially both of the above options, disabling blur, spell trap, and reflection animations from equipped items. </li>
+      </ul>
+      <p>The second option has been in Tweaks as a standalone component known previously as <strong>Invisible Cloak of Mirroring</strong> or <strong>Turn Off The Hideous Cloak-of-Mirroring, Spell-Trap, and Physical Mirror Animations</strong> before being rolled into this. </p>
       <p><strong>Separate Resist Fire/Cold Portrait Icon into Separate Icons (Angel)</strong><br />
         <em>All games except PsT, PsTEE</em></p>
       <p>This component will replace any instance of spells or items that use the Resist Fire/Cold portrait icon with separate Protection from Cold and/or Protection from Fire icons, as appropriate. </p>
+      <p><strong>Enhanced Overlays for Colorblind Players (Fouinto)</strong><br />
+      <em>All Enhanced Edition games</em></p>
+<p> This component alters the color overlays for items to allow colorblind   players to better distinguish the icons. The red overlay, now supplemented with an X,   denotes unusable items for the character. A blue overlay, supplemented   with ?, denotes an item that needs identification. A green overlay,   exclusive to scrolls and supplemented with an O, denotes that the   character can learn the spell on the scroll. You can <a href="https://www.gibberlings3.net/gallery/image/816-enhanced-overlays-for-colorblind-players-fouinto/">see a preview</a> in the Tweaks Anthology gallery. </p>
+      <p> Due to the differences in how the engines build these overlays, this   component is only available for the Enhanced Editions of the game.    </p>
     </div>
     <div class="ribbon_rectangle_h3">
       <h3>Content Changes </h3>
@@ -366,8 +376,9 @@
         <em>BGEE, BG2EE, IWDEE, EET, BG (requires TotSC), BG2,    BGT, Tutu, IWD-in-BG2 </em></p>
       <p> This allows you to ask multi-player created NPCs to &quot;wait
         here&quot; or go to a nearby meeting place. For BG2EE/EET/BG2/BGT, options are added to send NPCs to the Copper Coronet or the Pocket Plane. For BGEE/EET/BG/Tutu, options are added to send NPCs to the Friendly Arms Inn, Jovial Juggler in Beregost, the Temple of Helm in Nashkel, or the Elfsong in Baldur's Gate. For IWDEE/IWD-in-BG2, options are added for the Winter's Cradle Tavern in Easthaven, the Root Cellar in Kuldahar, or the Whistling Gallows in Lonelywood. </p>
-      <p><strong>BG NPCs go to inns (DavidW/Zed Nocear)</strong><br />
+      <p><strong>Send BioWare NPCs to an Inn (DavidW/Zed Nocear)</strong><br />
         <em>BGEE, EET, BG (requires TotSC), BGT, Tutu</em></p>
+      <p>Note: despite the name, the BG NPCs added by the Enhanced Editions are covered by this component.</p>
       <p><em>&quot;One of the nice features of BG2 is      the ability to ask NPCs to      meet you somewhere else, rather than just getting them to stand around forlornly.      This component introduces this feature for the &quot;core&quot; BG NPCs. You can send them to the Friendly      Arm Inn, the Elfsong Tavern in Baldur's Gate (from chapter 5), the Nashkel      Inn (if you've been to Nashkel), or the Jovial Juggler in Beregost (if you've      been to Beregost). You can't send them there from Balduran's Isle, the Ice      Island, the Candlekeep dungeons, or the lower levels of Durlag's Tower.</em></p>
       <p><em>&quot;To send someone to an inn, first kick them out of the party. Then talk to      them - you should be given the opportunity to ask them to go to an inn and      await you there.&quot; </em></p>
       <p><strong>Add Bags of Holding</strong><br />
@@ -384,7 +395,8 @@
         <em>BG (requires TotSC)</em></p>
       <p> When Baldur's Gate was created, it was not designed with bags of holding in mind. Tioma's      Ease-of-Use and Chosen of Mystra's Dark Side of the Sword Coast have methods that worked      but were limited. Now there is another. Using Zed Nocear's work from the Polish mod <em><strong>Tajemnice Wybrzeza Mieczy</strong></em> (Mysteries of the Sword Coast), this       component adds five portable containers to the game. These are      different from containers in other games such as BG2 because of engine differences.</p>
       <p><strong>Exotic Items Pack</strong><br />
-        <em>BGEE,   EET,      BGT, Tutu</em></p>
+        <em>BGEE,   EET,      BGT, Tutu</em><br />
+        <em>Also available in The Calling mod </em></p>
       <p> This component adds a handful of weapons and items available in Baldur's
         Gate II and scatters them throughout stores, creatures, and containers in
         the Baldur's Gate portion of the game. Items include katanas, wakizashis,
@@ -633,7 +645,7 @@
       <p><strong>Game Ends When the Main Character Dies</strong><br />
         <em>IWDEE, IWD-in-BG2 </em></p>
       <p>By default, in IWD-in-BG2 - as with the original IWD - the game   ends only when the whole party is killed. If you install this component,   the game instead behaves like Baldur's Gate: if your main character   dies, it's game over.</p>
-      <p><strong>NPCs Respond to the Main Character, Not to Whichever Character Talks to Them</strong><br />
+      <p><strong>NPCs Respond to the Main Character, Not to Whomever Character Talks to Them</strong><br />
         <em>IWDEE, IWD, IWD-in-BG2 </em></p>
       <p>By default, in IWD-in-BG2 - as with the original IWD - people you   talk to address their comments to whichever party member started the   conversation.      If you install this component, the game instead behaves like   Baldur's Gate: all NPCs talk to your main character, even if you   initiate conversation using some other character.</p>
       <p><strong>Make Heart of Winter Accessible at Any Level</strong><br />
@@ -961,9 +973,8 @@
         to reflect these changes. Weapon descriptions also get updated if the translations are available. </p>
       <p>The second and third options are variants of using the old BG-style
         system of proficiencies. In BG,
-        the weapons proficiencies were not as specialized (i.e. Large Swords covered
-        bastard swords, two-handed swords, and long swords) and there were only eight
-        categories. </p>
+        the weapons proficiencies were not as specialized and there were only eight
+        categories:</p>
       <ul>
         <li>Bastard swords, long swords, two-handed swords, katanas, scimitars, wakizashis, and ninja-tos are combined into the Large Sword proficiency. </li>
         <li>Shorts swords and daggers are combined into the Small Sword proficiency. </li>
@@ -1050,19 +1061,12 @@
         as their enchantment; i.e. Daystar will be treated as a +4 weapon. If the <a href="https://www.gibberlings3.net/mods/fixes/bg2fixpack/">BG2</a><a href="https://www.gibberlings3.net/mods/fixes/bg2fixpack/"> Fixpack</a> is
         installed, this component will be skipped as this fix is already included
         in the Fixpack Core Fixes. </p>
-      <p><strong>Description Updates for Make +x/+y Weapons Consistent Component</strong><br />
+      <p class="deprecated"><strong>Description Updates for Make +x/+y Weapons Consistent Component</strong><br />
         <em>BG2, BGT<br />
         </em> <em>Requires Make +x/+y Weapons Consistent</em></p>
-      <p> This component will update the descriptions of items altered by the Make
-        +x/+y Weapons Consistent component to reflect their adjusted enchantment
-        level. </p>
-      <p><em>Warning</em>: If another mod has altered one of the items, the
-        descriptions added by this component may not be accurate as they are based
-        on an unmodded game. This will not affect gameplay or the ability of the
-        items, as the descriptions are purely cosmetic. This component will detect
-        Ashes of Embers and adjust descriptions accordingly.</p>
+      <p class="deprecated"> This is now done directly in <strong>Make +x/+y Weapons Consistent</strong>, if the translation is available. </p>
       <p><strong>Un-Nerfed THAC0 Table</strong><br />
-        <em>All games except IWD2</em></p>
+      <em>All games except IWD2</em></p>
       <p>A spin-off of the deprecated Un-Nerfed THAC0 Table,
         Saving Throws, Grand-Mastery, and Arcane, Divine Spell Progression component,
         this allows the player to select the un-nerfed THAC0 table
@@ -1173,23 +1177,31 @@
         <li> <em>Install options one and three (everyone can multiclass anything they can single-class):</em> A combination of options one and three, above.</li>
       </ol>
       <p>In some cases (and especially without the <strong>Remove Racial Restrictions for Single Classes</strong> component) the entries for the multi-class combos may be missing words. You can select these entries and the text and description will remain correct, and it will work in game. </p>
-      <p>One other restriction is that any mage multiclass for gnomes will be replaced with illusionist, so a gnome will be fighter/illusionist/thief instead of a fighter/mage/thief.</p>
+      <p>Gnome multiclasses are a bit odd in that the engine automatically subs in the Illusionist kit for the mage class in any multiclass combination. They're addressed in a separate component, <strong>Alter Gnome Mage Kit/Multiclass Options</strong>. </p>
       <p> <strong>Remove Racial Restrictions for Single Classes</strong><br />
         <em>BGEE, BG2EE, IWDEE, EET,  BG2 (requires TobEx),    BGT (requires TobEx), Tutu (requires TobEx), IWD-in-BG2</em></p>
       <p>This component will remove the racial restrictions for all single classes, allowing for halfling paladins and half-orc mages. This component will also change the maximum charisma for dwarves to 17, allowing them to be paladins. The one exception is that monks remain human-only; other races do not have a monk animation so the game will crash during character creation. </p>
       <p><em>Please note: </em>the game will freeze during the ability score part of character creation if it reaches a point where a class or kit requires a minimum score in an ability that, due to racial limitations, can't be reached. The only potential instance of this in the unmodded game is the charisma requirement for dwarven paladins (which this component addresses) but it can't account for modded kits or requirements.</p>
+      <p><strong>Remove Racial Restrictions for Kits</strong><br />
+      <em>BGEE, BG2EE, IWDEE, EET,  BG2 (requires TobEx),    BGT (requires TobEx), Tutu (requires TobEx), IWD-in-BG2</em></p>
+      <p>This component will remove the racial restrictions for all kits though it will not remove the class restrictions (see the previous component). For example, if your selected race can't be a paladin, then the paladin kits remain unavailable. Two hardcoded limitation remains--gnome mages must be illusionists and monks remain human-only; other races do not have a monk animation so the game will crash during character creation. </p>
+      <p><em>Please note: </em>the game will freeze during the ability score part of character creation if it reaches a point where a class or kit requires a minimum score in an ability that, due to racial limitations, can't be reached. The only potential instance of this in the unmodded game is the charisma requirement for dwarven paladins (which this component addresses) but it can't account for modded kits or requirements. </p>
+      <p><strong>Alter Gnome Mage Kit/Multiclass Options</strong>. <br />
+      <em>BGEE, BG2EE, IWDEE, EET,  BG2 (requires TobEx),    BGT (requires TobEx), Tutu (requires TobEx), IWD-in-BG2</em></p>
+      <p>Gnome multiclasses are a bit odd in that the engine automatically subs in the Illusionist kit for the mage class in any multiclass combination. As single-class mages, they are only allowed the Illusionist kit. As such there are three options to change their options in this standalone component, though options two and three are only available in an Enhanced Edition game:</p>
+      <ul>
+        <li>Keep Gnome Illusionist Multiclass, Enable All Kits for Single-Class - Multiclass combos will still use Illusionist (e.g. instead of a thief-mage it will be a thief-illusionist) and all mage kits will be available for single-class mages </li>
+        <li>Generic Mage Multiclass, Keep Only Illusionist Kit for Single-Class - Multiclass combos will no longer use Illusionist (e.g.  a thief-mage  will be a thief-mage) and only the Illusionist kit will be available for single-class mages </li>
+        <li>Generic Mage Multiclass, Enable All Mage Kits for Single-Class - Generic Mage Multiclass, Keep Only Illusionist Kit for Single-Class - Multiclass combos will no longer use Illusionist (e.g.  a thief-mage  will be a thief-mage) and all mage kits will be available for single-class mages </li>
+      </ul>
       <p> <strong>Alter Dual-class Restrictions</strong><br />
         <em>BGEE, BG2EE, IWDEE, EET</em></p>
-      <p> This component allows the player to change how the game handles dual- and multiclassing:</p>
+      <p> This component allows the player to change how the game handles dual-classing:</p>
       <ul>
         <li><em>Humans can no longer dual-class:</em> This simply removes the ability of humans to dual-class.</li>
         <li><em>Allow non-humans to dual-class: </em>This option will allow non-humans to option to dual-class. The actual requirements for dual-classing (stat requirements and the like) remain in place. </li>
-        <li><em>Change both: </em>This option disallows human dual-classes while allowing non-human dual-classing. In short, the opposite of how the game normally works. </li>
+        <li><em>Change both: </em>This option disallows human dual-classes while allowing non-human dual-classing. In short, the opposite of how the game normally works.      </li>
       </ul>
-      <p><strong>Remove Racial Restrictions for Kits</strong><br />
-        <em>BGEE, BG2EE, IWDEE, EET,  BG2 (requires TobEx),    BGT (requires TobEx), Tutu (requires TobEx), IWD-in-BG2</em></p>
-      <p>This component will remove the racial restrictions for all kits though it will not remove the class restrictions (see the previous component). For example, if your selected race can't be a paladin, then the paladin kits remain unavailable. Two hardcoded limitation remains--gnome mages must be illusionists and monks remain human-only; other races do not have a monk animation so the game will crash during character creation. </p>
-      <p><em>Please note: </em>the game will freeze during the ability score part of character creation if it reaches a point where a class or kit requires a minimum score in an ability that, due to racial limitations, can't be reached. The only potential instance of this in the unmodded game is the charisma requirement for dwarven paladins (which this component addresses) but it can't account for modded kits or requirements. </p>
       <p><strong>Paladins Use IWD-HoW Spell Progression Tables (grogerson)</strong><br />
         <em>BGEE, BG2EE,  EET, BG, BG2,  IWD2, PsT, PsTEE, BGT, Tutu</em></p>
       <p> Icewind Dale expanded the level and number of spells high level paladins        could cast. This component replaces the game tables with those of IWD-HoW. <em>NOTE:</em> If you are playing BG without the expansion Tales of the Sword Coast a        paladin will not gain access to spells until 10th level due to a hard-coded bug.</p>
@@ -1268,6 +1280,9 @@
       <p><strong>Speed Up de'Arnise Keep Stronghold Quests</strong> <br />
         <em>BG2(EE), BGT, EET</em></p>
       <p>This component reduces the time between events at the de'Arnise Keep by 30% to help players who finish the Shadows of Amn campaign before the finale at the stronghold. </p>
+      <p><strong>Allow Monks to Wear Helmets</strong> <br />
+        <em>BG2(EE), BGT, EET, Tutu, IWDEE, BGEE</em></p>
+      <p>One of the issues with monks, especially for players on the harder difficulties, is that they have no way to receive critical hit protection. Any helmet that's usable by clerics and fighters will be made available to monks to provide some degree of protection. Since monks have <a href="https://www.gibberlings3.net/gallery/image/509-mask-of-king-strohm-vs-monks/">a serious animation glitch</a> when wearing helmets, it will also change their base animation to be a cleric unless the <strong>Remove Helmet Animations</strong> component is also installed. </p>
     </div>
     <div class="ribbon_rectangle_h3">
       <h3>Convenience Tweaks and/or Cheats</h3>
@@ -1437,11 +1452,9 @@
         really broke the fourth wall, such as the PC using
         lines from Neeber and Irenicus and Imoen leaving happily together after the
         party escaped to the Promenade. </p>
-      <p><strong>Invisible Cloak of Mirroring</strong> <br />
+      <p class="deprecated"><strong>Invisible Cloak of Mirroring</strong> <br />
         <em> BG2EE, IWDEE, EET,  BG2,    BGT,  IWD-in-BG2</em></p>
-      <p> This turns off that huge glowing white wiffle ball animation for the ToB Cloak
-        of Mirroring, but will leave intact the animations for Spell Trap spell as well as the glowing disc for physical
-        mirror effects (e.g. Balduran's Shield, Shield of Reflection). </p>
+      <p class="deprecated"> This component has been folded into the <strong>Remove Annoying Visual Effects from Equipped Items</strong> component in the cosmetic tweaks section. </p>
       <p><strong>Keep Drizzt's Loot, Disable Malchor Harpell (Weimer)</strong> <br />
         <em> BG2EE,  EET,  BG2,    BGT</em></p>
       <p> If you kill Drizzt and take his stuff, Malchor Harpell appears and takes
