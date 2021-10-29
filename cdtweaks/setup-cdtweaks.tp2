@@ -14618,7 +14618,7 @@ GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bg2 tob bgt eet bgee bg2ee~ @25 // All BG games
 LABEL ~cd_tweaks_move_boo_into_inventory~
 
-COPY_EXISTING_REGEXP ~^%tutu_var%minsc.*\.cre$~ ~override~
+COPY_EXISTING_REGEXP ~^_?minsc.*\.cre$~ ~override~
   SET boo = "-1"
   READ_LONG 0x2bc item_off
   READ_LONG 0x2c0 item_num
