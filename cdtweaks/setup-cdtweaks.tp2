@@ -8957,13 +8957,15 @@ END
 BEGIN @245000 DESIGNATED 2450
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~kitlist.2da~ @25
-REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+REQUIRE_PREDICATE NOT GAME_IS ~soa iwd2~ @25 // needs tob until ADD_KIT/luabbr is fixed
 LABEL ~cd_tweaks_pnp_prof_restrictions_for_dualclasses~
 
 INCLUDE ~cdtweaks/lib/sod_25stweap_fix.tpa~
 INCLUDE ~cdtweaks/lib/iwdee_25stweap_fix.tpa~
 INCLUDE ~cdtweaks/lib/remove_lines.tpa~
 INCLUDE ~cdtweaks/lib/fl#add_kit_ee.tpa~
+
+COPY ~cdtweaks/lib/pnp_dual_core.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~
 
 // look up default fighter/ranger stuff
 COPY_EXISTING ~weapprof.2da~  ~override~
@@ -8974,7 +8976,7 @@ COPY_EXISTING ~weapprof.2da~  ~override~
     PATCH_IF prof_fgt > 2 BEGIN SET prof_fgt = 2 END
     PATCH_IF prof_rgr > 2 BEGIN SET prof_rgr = 2 END
     INNER_ACTION BEGIN
-      COPY ~cdtweaks/lib/pnp_dual_core.tpa~ ~cdtweaks/lib/pnp_dual_core.tpa~
+      COPY ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~
         REPLACE_TEXTUALLY ~prof_fgt_%row%~ ~%prof_fgt%~
         REPLACE_TEXTUALLY ~prof_rgr_%row%~ ~%prof_rgr%~
     END
@@ -8989,7 +8991,7 @@ OUTER_SET rgr_strref1 = 7200
 OUTER_SET rgr_strref2 = 10173 // 1077, 2184-5
 OUTER_SET rgr_strref3 = 9557
 
-COPY ~cdtweaks/lib/pnp_dual_core.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~
+COPY ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~
   REPLACE_TEXTUALLY ~fgt_strref1~ ~%fgt_strref1%~
   REPLACE_TEXTUALLY ~fgt_strref2~ ~%fgt_strref2%~
   REPLACE_TEXTUALLY ~fgt_strref3~ ~%fgt_strref3%~
@@ -9066,7 +9068,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
         PATCH_IF sanity_check = 1 BEGIN
           INNER_ACTION BEGIN // sanity check two - don't bother if kit doesn't allow > 2 pips in anything
 
-            COPY ~cdtweaks/lib/pnp_dual_kit.tpa~ ~cdtweaks/lib/pnp_dual_working.tpa~
+            COPY ~cdtweaks/lib/pnp_dual_kit.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~
 
             COPY_EXISTING ~weapprof.2da~  ~override~
               COUNT_2DA_COLS weapprof_cols
@@ -9078,7 +9080,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
                     PATCH_IF prof_fgt > 2 BEGIN SET prof_fgt = 2 SET sanity_check = 2 END
                     INNER_ACTION BEGIN
 
-                      COPY ~cdtweaks/lib/pnp_dual_working.tpa~ ~cdtweaks/lib/pnp_dual_working.tpa~
+                      COPY ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~
                         REPLACE_TEXTUALLY ~prof_fgt_%row%~ ~%prof_fgt%~
 
                     END
@@ -9105,11 +9107,11 @@ COPY_EXISTING ~kitlist.2da~ ~override~
           END ELSE BEGIN // if we do indeed need shadow kit
             INNER_ACTION BEGIN
 
-              COPY ~cdtweaks/lib/pnp_dual_working.tpa~ ~cdtweaks/lib/pnp_dual_working.tpa~
+              COPY ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~
                 REPLACE_TEXTUALLY ~REPLACE_ME_KIT_NAME~ ~%name%~
                 REPLACE_TEXTUALLY ~CD_NEW_KIT_NAME~ ~CDSK%cd_kit_count%~
 
-              REINCLUDE ~cdtweaks/lib/pnp_dual_working.tpa~
+              REINCLUDE ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~
 
             END
           END // sanity check 2
