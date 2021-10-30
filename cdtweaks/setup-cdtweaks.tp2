@@ -3636,9 +3636,20 @@ COPY ~cdtweaks/cre/wwbear.cre~ ~override~
 
 COPY ~cdtweaks/2da/anisum04.2da~ ~override~
      ~cdtweaks/2da/anisum05.2da~ ~override~
-     ~cdtweaks/2da/clabdr03.2da~ ~override~
      ~cdtweaks/eff/spanim5.eff~  ~override~
-     
+
+// patch shapeshifter table instead of overwriting it
+APPEND ~clabdr03.2da~ ~ABILITY1 CDnewreplace3 **** **** **** **** **** **** **** **** **** **** **** CDnewreplace4 CDREPLACE~
+COPY_EXISTING ~clabdr03.2da~ ~override~
+  REPLACE_TEXTUALLY ~GA_SPCL64[34]~ ~****~
+  REPLACE_TEXTUALLY ~CDnewreplace~ ~GA_SPCL64~
+  COUNT_2DA_COLS cols
+  FOR (index = 15 ; index < cols ; ++index) BEGIN
+    REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+  END
+  REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+  PRETTY_PRINT_2DA  
+  
 ACTION_FOR_EACH spell IN spcl643 spcl644 BEGIN // grab existing strrefs
 
   COPY_EXISTING ~%spell%.spl~ ~override~
