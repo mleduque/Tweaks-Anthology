@@ -1143,7 +1143,7 @@ INCLUDE ~cdtweaks/lib/annoying_equipped_fx.tpa~
 ///// Remove blur and CoM/ST effects                   \\\\\
 /////                                                  \\\\\
 
-BEGIN @20003 DESIGNATED 201
+BEGIN @20003 DESIGNATED 3151 // why 3151 instead of 201? WeiDU presents SUBCOMPONENTs in component order
 GROUP @11
 SUBCOMPONENT @20001
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
