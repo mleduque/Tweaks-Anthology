@@ -310,10 +310,10 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cbhl3631.sto~ BEGIN //CtB
   BUT_ONLY IF_EXISTS
 
   COPY_EXISTING ~cbtentbd.itm~ ~override/cbtentcg.itm~
-    SAY 0x8 @18317 //Camping Gear
-    SAY 0xc @18317
+    SAY 0x8 @18035 //Camping Gear
+    SAY 0xc @18035
   COPY_EXISTING ~cbtentbd.sto~ ~override/cbtentcg.sto~
-    SAY 0xc @18317
+    SAY 0xc @18035
 
   COPY_EXISTING ~cbsttflw.cre~ ~override~ //Paddy Stoutfellow
     PATCH_IF SOURCE_SIZE > 0x2d3 BEGIN
