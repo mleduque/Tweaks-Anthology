@@ -1774,7 +1774,10 @@
       <p><strong>Don't Auto-Assign Advanced AI Scripting to Party</strong><br />
         <em>BGEE,   BG2EE, EET</em></p>
       <p> Party members automatically get assigned the 'Advanced AI' script in BGEE/BG2EE. This component alters the NPCs to instead come with the &quot;DEFAULT&quot; AI script assigned, which does nothing, as they do in vanilla BG/BG2 games. </p>
-    </div>
+      <p><strong>Removable NPC Items</strong><br />
+      <em>BGEE,   BG2EE, EET, BG, BG2, BGT, Tutu</em></p>
+      <p>Alora, Edwin, Hexxat, and Nalia all have jewelry that cannot be removed. Except for Hexxat, this component allows you to remove these items (though they cannot be used by other characters) so that you can use other items in these slots. Hexxat's Amulet is fairly integral to her powers and abilities and so she is not altered by this component. Note that while Edwin's amulet is actually the source of his extra spell slots, these effects are now applied directly to him so that you can remove his amulet without penalty. </p>
+</div>
     <div class="ribbon_rectangle_h2"><a id="Contact" name="Contact"></a>
       <h2>Contact Information</h2>
     </div>
@@ -1890,12 +1893,13 @@
     <div class="section">
       <p><strong>Version 10 Release Candidate 1 - October 31, 2021</strong></p>
       <ul>
-        <li>New components:
+        <li>New and/or removed components:
           <ul>
             <li>argent77 contributed <span data-code-marker="+"><strong>Create interval saves</strong></span> and <strong>Reset UnderSigil Fog of War</strong></li>
             <li>The <strong>Make Xan a Generalist Mage</strong> was generalized and made into similar components for Dynaheir, Edwin, and Xzar by Angel</li>
-            <li><strong>Allow Monks to Wear Helmets</strong></li>
-            <li><strong>Enhanced Overlays for Colorblind Players (Fouinto)</strong></li>
+            <li><strong>Added Allow Monks to Wear Helmets</strong>, <strong>Enhanced Overlays for Colorblind Players (Fouinto)</strong>, and <strong>Removable NPC Items</strong></li>
+            <li><strong>Remove Blur Effect from Equipped Items</strong> and <strong>Invisible Cloak of Mirroring</strong> have been merged into a new component, <strong>Remove Annoying Visual Effects from Equipped Items</strong>. The scope has been broadened to cover any item that contains annoying, persistent visual effects. </li>
+            <li><strong> Description Updates for Make +x/+y Weapons Consistent Component</strong> has been deprecated; item descriptions will be updated automatically by the main component if the translation is available</li>
           </ul>
         </li>
         <li>Several updates to make Tweaks Anthology integrate better with Project Infinity</li>
@@ -1913,7 +1917,6 @@
         <li>The non-silly version of  <strong>Faster Chapter 1&amp;2 Cut-Scenes &amp; Dreams</strong> could fail to match and replace all of the scripting it was supposed to</li>
         <li><strong>Make Khalid a Fighter-Mage</strong> was not covering his SoD incarnation, and its unnecessarily complex spawning script could cause multiple Khalids to appear if you didn't recruit him the first you met at the FAI</li>
         <li><strong>No Traps or Locks</strong> was checking the wrong fields for keys, causing it to behave erratically. </li>
-        <li><strong>Remove Blur Effect from Equipped Items</strong> and <strong>Invisible Cloak of Mirroring</strong> have been merged into a new component, <strong>Remove Annoying Visual Effects from Equipped Items</strong>. The scope has been broadened to cover any item that contains annoying, persistent visual effects. </li>
         <li><strong>Move Boo out of quick access and into Minsc's pack</strong> is now available on BG2 games</li>
         <li>Courtesy of Jazira, with proffreading from Gwendolyne and Elisabeth, the French translation has been updated. Jazira also reviewed the English translation, and submitted several grammar and spelling fixes there as well. </li>
         <li>Fixed a bug where <strong>Increase party movement speed and/or casting speed outside of combat</strong> could add duplicate scripting to the main game script</li>
@@ -1939,10 +1942,10 @@
         <li><strong> Icewind Dale Casting Graphics</strong> and <strong>Baldur's Gate Casting Graphics</strong> now include casting sounds; on EE games they'll also use the nicer blended animations</li>
         <li>Components which use the static item lists--<strong>Icon Improvements</strong>,  <strong>Allow Stealth and Thieving Abilities in Heavy Armor per <abbr title="Pen and Paper">P&amp;P</abbr></strong>, <strong>Allow Arcane Spellcasting in Armor</strong>, and <strong>Allow Mages to Use Bucklers and Thieves to Use Small Shields</strong>--should be substantially faster to install. Also recoded the <strong>Shopkeepers Have Limited Identification Ability</strong> and the PnP option for <strong>Wear Multiple Protection Items</strong> to be faster as well. </li>
         <li><strong>Icon Improvements </strong>now has a special ground icon for drow chain, as the bright green elven chain icon really stood out in places like the Underdark. The green elven chain has also been toned down a bit. </li>
-        <li><strong> Description Updates for Make +x/+y Weapons Consistent Component</strong> has been deprecated; item descriptions will be updated automatically by the main component if the translation is available</li>
         <li><strong>Enforce PnP Proficiency Rules on Dual-Classed Characters</strong> now requires ToB due to a bug in WeiDU v247</li>
         <li>EET uses slightly different BG resources that were being missed in a few components:  <strong>Adjust Evil Joinable <abbr title="Non-Player Character">NPC</abbr> Reactions</strong> was missing Edwin; <abbr title="Non-Player Characters"><strong>NPCs</strong></abbr><strong> Don't Fight</strong> was missing several conflicts; <strong>Unique Containers</strong> missed a few bags; <strong>Consistent Stats</strong> could miss a copy of Edwin and Minsc; <strong>Make Xan a Generalist Mage</strong> could miss a copy of Xan. Related, <strong>Give Coran A Legal Dexterity Score of 19</strong> also missed an SoD version of Coran. </li>
         <li><strong> Add Bags of Holding</strong> would fail to install on oIWD without the TotLM expansion</li>
+        <li><strong>Shapeshifter Rebalancing</strong> now tries to patch the kit ability table of the Shapeshifter rather than simply overwriting it</li>
       </ul>
       <p><strong>Version 9 - June 1, 2019</strong></p>
       <ul>

@@ -1313,6 +1313,28 @@ Use Baldur.lua options: a7_interval_ini
 @413200 = ~Make Xzar a Generalist Mage (Angel)~
 @413300 = ~Make Edwin a Generalist Mage (Angel)~
 @414000 = ~Don't Auto-Assign Advanced AI Scripting to Party~
+@418000 = ~Removable NPC Items~
+// translators: 418001 is strref #10732 from bgee or bg2ee without the 'equipped abilities' block. 
+// This is not used on non-EE games since they don't mention equipping effects
+@418001 = ~This is Edwin's birthright, inlaid with his family stone.
+
+Weight: 1~
+// translators: 418002 and 418003 are strref #50818 in bg2ee and obg2, respectively, 
+// with the part about 'the ring may not be removed from nalia' deleted 
+@418002 = ~This ring was given to Nalia by her father upon her ascension to adulthood. Bonded to her blood as it is the ring may not be used by anyone else. The ring grants a +2 bonus to all Saving Throws, a +2 bonus to Armor Class, and a 50% bonus to Fire Resistance.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +2
+– Saving Throws: +2
+– Fire Resistance: +50%
+
+Weight: 0~
+@418003 = ~de'Arnise Signet Ring
+
+This ring was given to Nalia by her father upon her ascension to adulthood.  Bonded to her blood as it is the ring may not be used by anyone else.  The ring grants a +2 bonus to all saving throws, +2 armor class bonus, and 50% resistance to fire.~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

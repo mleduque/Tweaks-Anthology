@@ -1,0 +1,8 @@
+IF
+  !InParty(Myself)
+  PartyHasItem("%item%")
+THEN
+  RESPONSE #100
+    TakePartyItemAll("%item%")
+    Continue()
+END
