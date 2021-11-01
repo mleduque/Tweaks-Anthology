@@ -133,7 +133,6 @@ ou rendues obsoletes par un autre mod deja installe.~
 //Reprise de la correction de CorrecFr
 //Manifestement pour BG1
 @108500 = ~Conteneurs transportables (Zed Nocear)~
-@108525 = ~Ouverture de l'étui à parchemin en cours. Veuillez patienter.~
 @109000 = ~Pack d'objets exotiques~
 
 @110000 = ~Exploration automatique des villes~

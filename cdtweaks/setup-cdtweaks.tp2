@@ -10278,8 +10278,7 @@ INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @500000 DESIGNATED 3115
-DEPRECATED @18 // already covered by gem/jewelry 
+BEGIN @500000 DESIGNATED 3115 DEPRECATED @18 // already covered by gem/jewelry 
 LABEL ~cd_tweaks_increase_pelt_stacks_infnite~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

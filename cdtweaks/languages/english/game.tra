@@ -5,8 +5,10 @@
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 @5001 = ~AVATAR MORPHING SCRIPT:~
 @5002 = ~This script lets the user have control over the avatar of the character. Press 'S' to activate the avatar selection screen. (<script>)~
+
 @18001 = ~Arcana Archives~
 @18002 = ~Sio'chaire~
 @18003 = ~Sio'chaire's Shop~
@@ -37,8 +39,6 @@
 @18034 = ~Selence Hillstar's Fenced Goods~
 @18035 = ~Camping Gear~
 
-
-//@20100 = ~Remove Blur and Reflection Effects from Items (Daeros Trollkiller)~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -46,13 +46,17 @@
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 @104001 = ~Amnish Soldier~
 @104002 = ~Sanctioned Wizard~
 @104003 = ~Militia Cleric~
+
 @105001 = ~Your drow item has disintegrated~
+
 @106001 = ~Your armor has broken~
 @106002 = ~Your shield has broken~
 @106003 = ~Your helm has broken~
+
 @107001 = ~Go wait for us at the Friendly Arm Inn. If things change, we'll meet you there.~
 @107002 = ~Please rejoin the party.~
 @107003 = ~I'll send you back to the pocket plane... wait for me there.~
@@ -68,6 +72,7 @@
 @107013 = ~Wait for me in Nashkel. If things change, I'll meet you at the Temple of Helm.~
 @107014 = ~Should I need your services again, meet me at the Elfsong Tavern in Baldur's Gate.~
 @107015 = ~We'll go our separate ways for now. Wait for me at the Jovial Juggler in Beregost.~
+
 @107501 = ~I don't need your help right now, but we'll travel together again soon. Until then, wait for me at the Friendly Arm Inn.~
 @107502 = ~Our paths must run apart for a while. If I should need your help again, though, we should rendezvous at the Jovial Juggler in Beregost.~
 @107503 = ~For the time being we should each seek our own destiny. I'll need your help again soon enough, though - if you take lodgings in the Nashkel Inn, I'll meet you there when I'm next in the south.~
@@ -97,6 +102,7 @@
 @107536 = ~As ye would have it. Some time away from ye will be good for us all, in any case.~
 @107537 = ~Okay - I guess this sort of thing is part of what adventurers do too, though it doesn't sound interesting...~
 @107538 = ~A chance for a little luxury and a rest from the road? I shan't turn it down.~
+
 @108001 = ~Ammo Belt~
 @108002 = ~This shoulder belt is ideally suited for holding sling bullets, darts, arrows or bolts.
 STATISTICS:
@@ -109,6 +115,7 @@ Capacity: 100 bottles
 Weight: 2~
 @108005 = ~Bag of Holding~
 @108006 = ~As with other magical bags, this one appears to be a common cloth sack of about 2 feet by 4 feet in size. The bag of holding opens into a nondimensional space, and its inside is larger than its outside dimensions. Regardless of what is put into this item, the bag always weighs a fixed amount.~
+
 @108501 = ~Bag~
 @108502 = ~Gem Bag~
 @108503 = ~A small bag.~
@@ -153,6 +160,8 @@ Special: Can hold items of all size without a limit.
 Weight: 10
 Place this in a quick item slot to open.~
 @108524 = ~Opening the Bag of Holding. Please wait.~
+@108525 = ~Opening the Scroll Case. Please wait.~
+
 // @109001 through 109026 have been removed, as this component has moved to The Calling
 
 @111001 = ~Candlekeep Inn~
@@ -280,7 +289,9 @@ Place this in a quick item slot to open.~
 @111123 = ~Boathouse~
 @111124 = ~Whistling Gallows Inn~
 @111125 = ~Purvis's Shack~
+
 @114001 = ~A gem is a mineral that when cut or faceted and polished is collectible or can be used in jewelry.~
+
 @115001 = ~Conjure Animals
 (Conjuration/Summoning) 
 Level: 6
@@ -346,6 +357,7 @@ Special Abilities:
 - Immune to non-magical weapons~
 @115008 = ~Werewolf Paw~
 @115009 = ~Greater Werewolf Paw~
+
 @116002 = ~I have the deed to the playhouse, if you wish to try your talents in the theater. Samuel is a good man and will honor the deed in your hands.~
 @116003 = ~I'm sorry Raelis, but I simply do not have the time.~
 @116004 = ~Thank you for the kind offer, but I must decline. I wouldn't even know where to begin running a theater.~
@@ -368,6 +380,7 @@ Special Abilities:
 @116021 = ~My friend has been kidnapped. Though it pains me, I can not set aside these concerns to assist the grove.~
 @116022 = ~You have earned the blessing of the Grove, and I present to you the Staff of Thunder and Lightning.~
 @116023 = ~Very well. I shall continue to stand as challenge master, and the steward until the rites of ascension are fulfilled.~
+
 @122001 = ~Ah, a Case of Plenty. I can enchant this to produce even stronger bolts, but it'll cost ye. 5,000 gold it is.~
 @122002 = ~Well, let's see what else ye got.~
 @122003 = ~A thieves hood, aye?~
@@ -416,6 +429,7 @@ Special Abilities:
 @122046 = ~This is a gnomish sling. I've got a few tricks up my sleeve that can make it more accurate.~
 @122047 = ~If ye come across a Ring of Energy, I can get ye fixed right up.~
 @122048 = ~Give me yon Ring of Energy and 5,000 gold and we can get started.~
+
 @123001 = ~Oh, shiny red scales is it? I make good scale armor, protect from fire real good.~
 @123002 = ~What's this pile of shiny? Ooh, illithium!~
 @123003 = ~Make nice shiny coating for disruption maces. Come backs if you find one.~
@@ -452,6 +466,7 @@ Special Abilities:
 @123034 = ~Any dragon armor just 5,000 gp. You wants?~
 @123035 = ~Make the shadow dragon scale armor.~
 @123036 = ~Make the red dragon scale armor.~
+
 @125002 = ~Off with you, halfling, I have no patience for your chattering!~
 @125003 = ~As a matter of fact, yes, I am. Why did you ask?~
 @125004 = ~I've been to the ruins already, and I must say that they are overrated.~
@@ -468,12 +483,14 @@ Special Abilities:
 @125015 = ~Well if your gonna be puppy-doggin after me all <DAYNIGHT>, maybe we should work together.~
 @125016 = ~No, I have no interest in ruins.~
 @125017 = ~Hey, you're not from around here! Yeesh! There's no polish on yer boots, no snap in yer suspenders. You're not merchants. They're always so much more presentable. Aww nutbunnies, adventurers in Gullykin! Yer gonna loot them Firewine ruins?~
+
 @126001 = ~Lake Poet Sam~
 @126002 = ~Sam~
 @126003 = ~Lake Poet Rob~
 @126004 = ~Rob~
 @126005 = ~Lake Poet Willy~
 @126006 = ~Willy~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -481,6 +498,7 @@ Special Abilities:
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 @202001 = ~Wield One-Handed~
 @202002 = ~Wield Two-Handed~
 @202003 = ~^[ %TAB%]*Type[ %TAB%]*:[ %TAB%]*\(1\|one\)[- %TAB%]*handed.*~
@@ -488,8 +506,7 @@ Special Abilities:
 @204001 = ~^[ %TAB%]*\(Unusable By\|Not Usable By\).*~
 @204002 = ~Not Usable By:~
 @204003 = ~[%LNL%%MNL%%WNL%].*[ %TAB%]*Mage.*~
-/* deprecated component
-*/
+
 // Moved from thieving_descripts.tpa
 // Typical weight line for an item, used for a search matching the whole line
 @210001 = ~\(Weight:[ %TAB%]*[0-9]+\)~
@@ -517,16 +534,20 @@ Special Abilities:
 @210012 = ~^[ %TAB%]*.?.?.?[ %TAB%]*Stealth:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 // Title for move silently added after Weight line, penalty is added after this text
 @210013 = ~Stealth:~
+
 // Moved from arcane_descripts.tpa
 // Typical weight line for an item, used for a search matching the whole line
 @212001 = ~\(Weight:[ %tab%]*[0-9]+\)~
 // Title for miscast chance added after Weight line, value is added after this text
 @212002 = ~Miscast Arcane Magic:~
+
 @214001 = ~barbarian / mage~
 @214002 = ~barbarian / cleric~
 @214003 = ~barbarian / thief~
 @214004 = ~barbarian / druid~
+
 @215002 = ~[ %TAB%]*.?.?.?[ %TAB%]*Armou?r Class[^:]*:.*$~ // lone . at front to catch EE emdash
+
 @216001 = ~SHORT SWORD/NINJA-TO: The preferred weapon of many a thief and halfling, short swords and ninja-tos are light but useful weapons.
 <DOTS1>
 <DOTS2>
@@ -563,7 +584,9 @@ WARNING: Magical katanas are very rare outside of Kara-Tur!
 @216009 = ~Short Sword/Ninja-To~
 @216010 = ~Katana/Wakizashi~
 @216011 = ~Mace/Morningstar~
+
 @216101 = ~Small Sword~
+
 @216301 = ~Great Sword~
 @216302 = ~GREAT SWORDS: This weapon class allows the character to use Two-Handed Swords and Bastard Swords.
 <DOTS1>
@@ -583,7 +606,8 @@ WARNING: Magical katanas are very rare outside of Kara-Tur!
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-// ^^ this component deprecated, but the strings below still needed for the components that replace it
+
+// this component deprecated, but the strings below still needed for the components that replace it
 @218001 = ~Alchemy (Mage)~
 @218002 = ~Alchemy (Priest)~
 @218003 = ~Alchemy (Rogue)~
@@ -660,14 +684,13 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 7) Cone of Cold
 8) Monster Summoning II
 9) Monster Summoning III~
+
 // next two strings used for matching and updating item descriptions
 @223001 = ~STATISTICS:~ // this is used for matching in the item description, so copy this from an oBG2 item description
 @223002 = ~Always considered to be of +%ench% enchantment when determining what it can hit.~
 
-// translators: @223100 is for a deprecated component, you can skip it
 // the next string should match content TO BE REMOVED from the racial description of humans and the help reference for dual-classing
 @235002 = ~Humans may not multi-class.~ // from strref #9550
-
 
 // the next two strings should match content TO BE REMOVED from the racial description of humans and the help reference for dual-classing
 // you may need to check the EEs, as oBG2 doesn't mention dual-classing in #9550 or #32540
@@ -681,6 +704,7 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @244002 = ~Proficiency Slot Table:~ // line before <DOTS1>, exclude the * if present
 // get @244003 from string 32117 (bg2ee/iwdee) or 24220 (bgee)
 @244003 = ~(for warriors only)~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -688,7 +712,7 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-//@315000 = ~Turn Off The Hideous Cloak-of-Mirroring, Spell-Trap, and Physical Mirror Animations~
+
 @318313 = ~Bring me my lover, Aerie.~
 @318314 = ~Bring me my lover, Jaheira.~
 @318315 = ~Bring me my lover, Sir Anomen, Knight of the Order.~
@@ -698,13 +722,15 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @318319 = ~Bring me my lover, Hexxat.~
 @318320 = ~Bring me my lover, Neera.~
 @318321 = ~Bring me my lover, Rasaad.~
-//@321001 = ~Select a minimum stat value, between 6 and 15:~
+
 @322001 = ~Atta Girl~
 @322002 = ~Angel~
+
 @324101 = ~Token Genie~
 @324102 = ~Token~
 @324103 = ~A nondescript token with no markings.~
 @324104 = ~Greetings! Please select the item you would like to redeem your token for:~
+
 @324201 = ~Flynn~
 @324202 = ~Traveling Merchant~
 @324203 = ~Harrold~
@@ -733,7 +759,7 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @324226 = ~No, I'm afraid not. What else can we trade?~
 @324227 = ~Very well.~
 @324228 = ~Thank you. Farewell.~
-// 60 and 80 strings are identical, just with Flynn/Harrold and Lonelywood/Kuldahar exchanged
+// -60 and -80 string series are identical, just with Flynn/Harrold and Lonelywood/Kuldahar exchanged
 @324260 = ~I am Flynn, an agent of a Calimport trading exchange, sent here to seek exotic and unique items.~
 @324261 = ~I believe I met your counterpart, Harrold, in Lonelywood.~
 @324262 = ~Well met Flynn. May I see your wares?~
@@ -748,8 +774,10 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @324284 = ~Hello again Harrold. Are you willing to exchange anything here?~
 @324285 = ~No, I'm not interested in any of those. Farewell Harrold.~
 @324286 = ~Thank you Harrold. Is there anything else you'd like to trade?~
+
 @325001 = ~Actually, can we see the items you had to offer when we first arrived in Kuldahar?~
 @325002 = ~Can we have another look at the items you had to offer partway through our stay here?~
+
 @333050 = ~Disable Auto-haste~
 @333051 = ~Disable Auto-haste
 
@@ -771,9 +799,11 @@ This ability controls whether movement speed and casting speed are increased for
 
 This ability controls whether casting speed is increased for party members outside of combat. Click on the ability to turn it ON.~
 @333070 = ~Auto-haste bonuses removed~
+
 @335100 = ~Interval-Save~
 @335101 = ~Interval save created~
 @335102 = ~Interval save (slot %slot_index%) created~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -781,24 +811,17 @@ This ability controls whether casting speed is increased for party members outsi
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 @408001 = ~When asked about his past, KHALID nervously reveals that he was born and raised in the nation of Calimshan. He does not say much of his parents, but you get the feeling that his merchant father thought little of him, devoting much more attention to Khalid's half-brothers. Without his father's support, Khalid was unable to pay to become apprenticed with a wizard, so he joined the city militia in hopes to earn enough money. He doesn't go into detail on how he met Jaheira, but his adoration of her is obvious. When asked about how he knew Gorion he will only say that they had long been friends, and that many shared acquaintances will mourn his loss with harpsong.~
+
 // translators: 418001 is strref #10732 from bgee or bg2ee without the 'equipped abilities' block. 
 // This is not used on non-EE games since they don't mention equipping effects
 @418001 = ~This is Edwin's birthright, inlaid with his family stone.
 
 Weight: 1~
-// translators: 418002 and 418003 are strref #50818 in bg2ee and obg2, respectively, 
-// with the part about 'the ring may not be removed from nalia' deleted 
+// translators: 418002 is strref #50818 in obg2 with the part about 
+// 'the ring may not be removed from nalia' deleted 
+// in english, this is overridden in ee.tra
 @418002 = ~de'Arnise Signet Ring
 
 This ring was given to Nalia by her father upon her ascension to adulthood.  Bonded to her blood as it is the ring may not be used by anyone else.  The ring grants a +2 bonus to all saving throws, +2 armor class bonus, and 50% resistance to fire.~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// Ex-SCS components                                \\\\\
-///// Automatically copied over from SCS TRA files     \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-//@506000 = ~Remove animation from the Cloak of Mirroring (leave it for other spells and effects that use the same graphic)~

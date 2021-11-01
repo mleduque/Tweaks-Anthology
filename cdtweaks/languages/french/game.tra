@@ -199,6 +199,7 @@ Spécial : peut contenir des objets de toute taille sans limites.
 Poids : 10
 Placez-le dans un emplacement d'objet rapide pour l'ouvrir.~
 @108524 = ~Ouverture du sac de contenance en cours. Veuillez patienter.~
+@108525 = ~Ouverture de l'étui à parchemin en cours. Veuillez patienter.~
 @111001 = ~Auberge de Château-Suif~
 @111002 = ~Quartiers du prêtre~
 @111003 = ~Temple d'Oghma~
