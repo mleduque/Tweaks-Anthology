@@ -1,0 +1,13 @@
+// this file is used to override strings in game.tra for EE games
+// it will NOT be re-encoded for EE games, so put it in the corrrect charset for your language
+
+@418002 = ~This ring was given to Nalia by her father upon her ascension to adulthood. Bonded to her blood as it is the ring may not be used by anyone else. The ring grants a +2 bonus to all Saving Throws, a +2 bonus to Armor Class, and a 50% bonus to Fire Resistance.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +2
+– Saving Throws: +2
+– Fire Resistance: +50%
+
+Weight: 0~

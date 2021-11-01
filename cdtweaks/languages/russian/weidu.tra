@@ -1,0 +1,870 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Setup Messages                                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+     @0 = ~NPC Tweaks~
+     @1 = ~This step may take a few moments ...~
+     @2 = ~The Add Bags of Holding to BG is required for this component.~
+//     @3 = ~Requires 'Allow Arcane Spellcasting in Armor' component~
+     @4 = ~Convenience Tweaks/Cheats~
+     @5 = ~The Exotic Item Pack is required for this component.~
+//     @6 = ~Requires 'Allow Stealth and Thieving Abilities in Heavy Armor' component~
+     @7 = ~This component is not available in your language.~
+//     @8 = ~This component is only for BGT.~
+     @9 = ~Rule Changes~
+//    @10 = ~This component is not available for Tutu.~
+    @11 = ~Cosmetic Changes~
+//    @12 = ~Throne of Bhaal is required for this component.~
+    @13 = ~Content Changes~
+//    @14 = ~This component is only for Tutu or BGT or Baldur's Gate: Enhanced Edition.~
+//    @15 = ~This component is only for Tutu.~
+    @16 = ~The functionality of this component is either already included
+            or superceded by one of your already installed mods.~
+    @17 = ~Requires the Make +x/+y Weapons Consistent component to be installed.~
+    @18 = ~This component has been deprecated.~
+//    @19 = ~Cam's House Rules~
+//    @20 = ~View the readme?
+//  a) Yes
+//  b) No~
+    @21 = ~Requires the 'Change Experience Point Cap: Remove Experience Cap' component.~
+    @22 = ~This component is not available for Baldur's Gate: Enhanced Edition.~
+    @23 = ~This component is only for Tutu or Baldur's Gate: Enhanced Edition.~
+    @24 = ~This component is incompatible with another mod already installed.~
+    @25 = ~This component is not available for your game.~
+	@26 = ~Using values from the cdtweaks.txt config file for this component...~
+    @27 = ~Modmerge is required before mods can be installed on this game. Check the readme for more information and a link to download Modmerge.~
+    
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Cosmetic Changes Components                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+  @1000 = ~Remove Helmet Animations~
+
+  @2000 = ~Change Imoen's Avatar to Mage~
+
+  @3000 = ~Change Nalia's Avatar to Thief~
+
+  @4000 = ~Change Viconia's Skin Color to Dark Blue~
+
+  @5000 = ~Avatar Morphing Script~
+  @6000 = ~Weapon Animation Tweaks~
+
+  @7000 = ~Icewind Dale Casting Graphics (Andyr)~
+
+  @7020 = ~Baldur's Gate Casting Graphics (Andyr)~
+
+  @8000 = ~Restore SoA Load Screen Logo (ToB Only)~
+  
+  @8020 = ~Restore IWD Loading Screens~
+
+  @9000 = ~Disable Portrait Icons Added by Equipped Items~
+
+ @10000 = ~Commoners Use Drab Colors~
+
+ @11000 = ~Icon Improvements~
+
+ @12000 = ~Change Avatar When Wearing Robes or Armor (Galactygon)~
+
+ @13000 = ~Force All Dialogue to Pause Game~
+
+ @14000 = ~Fix Boo's Squeak~
+ 
+ @15000 = ~Alter Name of Unique Items~
+ @15001 = ~Use Unique Name (i.e. Kondar)~
+
+ @15100 = ~Use Unique Name +x (i.e. Kondar +1)~
+
+ @15200 = ~Use Generic Name (i.e. Bastard Sword +1, +3 vs. Shapeshifters)~
+ 
+ @16000 = ~Make Magic Shields Glow (plainab/grogerson)~
+ 
+ @17000 = ~Unique Icons~
+ 
+ @18000 = ~Unique Containers~
+ @18018 = ~Fixes only~
+ @18019 = ~This component is not relevant for BG1.~
+ @18020 = ~Unique icons and names~
+ @18021 = ~Unique icons only~
+ @18022 = ~BG2 colors for BG1/Tutu NPCs~
+ @18023 = ~This component is not relevant for BG2.~
+ @18100 = ~Бронзовая сумка для самоцветов~
+ @18101 = ~Черно-зеленая сумка для самоцветов~
+ @18102 = ~Зеленая сумка для самоцветов~
+ @18103 = ~Бирюзовая сумка для самоцветов~
+ @18104 = ~Индиговая сумка для самоцветов~
+ @18105 = ~Пурпурная сумка для самоцветов~
+ @18106 = ~Черно-золотистая сумка для самоцветов~
+ @18107 = ~Синяя сумка для самоцветов~
+ @18108 = ~Черная сумка для самоцветов~
+ @18109 = ~Черно-красная сумка для самоцветов~
+ @18110 = ~Бордовая сумка для самоцветов~
+ @18111 = ~Серебряная сумка для самоцветов~
+ @18112 = ~Медная сумка для самоцветов~
+ @18113 = ~Золотистая сумка для самоцветов~
+ @18114 = ~Красная сумка для самоцветов~
+ @18115 = ~Сумка для самоцветов из кожи орка~
+ @18116 = ~Коричневая сумка для самоцветов~
+ @18117 = ~Красно-золотистая сумка для самоцветов~
+ @18118 = ~Красно-фиолетовая сумка для самоцветов~
+ @18119 = ~Бархатная сумка для самоцветов~
+ @18120 = ~Старая сумка для самоцветов~
+ @18121 = ~Голубая сумка для самоцветов~
+ @18122 = ~Золотисто-красная сумка для самоцветов~
+ @18123 = ~Серебристая сумка для самоцветов~
+ @18124 = ~Огненно-темная сумка для самоцветов~
+ @18125 = ~Сумка для самоцветов цвета морской волны~
+ @18126 = ~Сумка для самоцветов Дроу~
+ @18127 = ~Изумрудная сумка для самоцветов~
+ @18128 = ~Темная сумка для самоцветов~
+
+ @18200 = ~Бронзовый ящик для свитков~
+ @18201 = ~Черно-зеленый ящик для свитков~
+ @18202 = ~Зеленый ящик для свитков~
+ @18203 = ~Бирюзовый ящик для свитков~
+ @18204 = ~Индиговый ящик для свитков~
+ @18205 = ~Пурпурный ящик для свитков~
+ @18206 = ~Черный ящик для свитков~
+ @18207 = ~Синий ящик для свитков~
+ @18208 = ~Черно-красный ящик для свитков~
+ @18209 = ~Серебряный ящик для свитков~
+ @18210 = ~Медный ящик для свитков~
+ @18211 = ~Золотистый ящик для свитков~
+ @18212 = ~Красный ящик для свитков~
+ @18213 = ~Латунный ящик для свитков~
+ @18214 = ~Бордовый ящик для свитков~
+ @18215 = ~Рубиновый ящик для свитков~
+ @18216 = ~Коричневый ящик для свитков~
+ @18217 = ~Аметистовый ящик для свитков~
+ @18218 = ~Антикварный ящик для свитков~
+ @18219 = ~Старый ящик для свитков~
+ @18220 = ~Серебристый ящик для свитков~
+ @18221 = ~Огненно-темный ящик для свитков~
+ @18222 = ~Ящик для свитков цвета морской волны~
+ @18223 = ~Ящик для свитков Дроу~
+ @18224 = ~Изумрудный ящик для свитков~
+ @18225 = ~Красная сумка для книг~
+ @18226 = ~Оранжевая сумка для книг~
+ @18227 = ~Золотистая сумка для книг~
+ @18228 = ~Зеленая сумка для книг~
+ @18229 = ~Сине-зеленая сумка для книг~
+ @18230 = ~Синяя сумка для книг~
+ @18231 = ~Индиговая сумка для книг~
+ @18232 = ~Фиолетовая сумка для книг~
+ @18233 = ~Черная сумка для книг~
+ @18234 = ~Красный тубус для свитков~
+ @18235 = ~Медный тубус для свитков~
+ @18236 = ~Золотистый тубус для свитков~
+ @18237 = ~Зеленый тубус для свитков~
+ @18238 = ~Сине-зеленый тубус для свитков~
+ @18239 = ~Синий тубус для свитков~
+ @18240 = ~Индиговый тубус для свитков~
+ @18241 = ~Фиолетовый тубус для свитков~
+ @18242 = ~Черный тубус для свитков~
+ @18243 = ~Темный ящик для свитков~
+
+ @18300 = ~Бронзовая сумка хранения~
+ @18301 = ~Малахитовая сумка хранения~
+ @18302 = ~Зеленая сумка хранения~
+ @18303 = ~Бирюзовая сумка хранения~
+ @18304 = ~Индиговая сумка хранения~
+ @18305 = ~Пурпурная сумка хранения~
+ @18306 = ~Серебряная сумка хранения~
+ @18307 = ~Оранжевая сумка хранения~
+ @18308 = ~Бордовая сумка хранения~
+ @18309 = ~Коричневая сумка хранения~
+ @18310 = ~Гранатовая сумка хранения~
+ @18311 = ~Черная сумка хранения~
+ @18312 = ~Золотистая сумка хранения~
+ @18313 = ~Красная сумка хранения~
+ @18314 = ~Медная сумка хранения~
+ @18315 = ~Сумка хранения из кожи орка~
+ @18316 = ~Сумеречная сумка хранения~
+ @18317 = ~Одежда для отдыха~
+ @18318 = ~Коричнево-синяя сумка хранения~
+ @18319 = ~Коричнево-зеленая сумка хранения~
+ @18320 = ~Коричнево-красная сумка хранения~
+ @18321 = ~Коричнево-золотистая сумка хранения~
+ @18322 = ~Зелено-красная сумка хранения~
+ @18323 = ~Красно-зеленая сумка хранения~
+ @18324 = ~Черно-красная сумка хранения~
+ @18325 = ~Черно-золотистая сумка хранения~
+ @18326 = ~Сине-зеленая сумка хранения~
+ @18327 = ~Сине-золотистая сумка хранения~
+ @18328 = ~Золотисто-синяя сумка хранения~
+ @18329 = ~Золотисто-зеленая сумка хранения~
+ @18330 = ~Золотисто-красная сумка хранения~
+ @18331 = ~Зелено-золотистая сумка хранения~
+ @18332 = ~Серебряно-зеленая сумка хранения~
+ @18333 = ~Серебряно-красная сумка хранения~
+ @18334 = ~Серебряно-золотая сумка хранения~
+ @18335 = ~Сине-фиолетовая сумка хранения~
+ @18336 = ~Синяя сумка хранения~
+ @18337 = ~Серебристая сумка хранения~
+ @18338 = ~Огненно-темная сумка хранения~
+ @18339 = ~Сумка хранения цвета морской волны~
+ @18340 = ~Сумка хранения Дроу~
+ @18341 = ~Изумрудная сумка хранения~
+ @18342 = ~Темная сумка хранения~
+
+ @18400 = ~Бело-золотистый ремень с боеприпасами~
+ @18401 = ~Красно-черный ремень с боеприпасами~
+ @18402 = ~Серебряно-черный ремень с боеприпасами~
+ @18403 = ~Бирюзовый ремень с боеприпасами~
+ @18404 = ~Синий ремень с боеприпасами~
+ @18405 = ~Пурпурный ремень с боеприпасами~
+ @18406 = ~Сине-черный ремень с боеприпасами~
+ @18407 = ~Ремень с боеприпасами Форестера~
+ @18408 = ~Посеребренный ремень с боеприпасами~
+ @18409 = ~Огненный ремень с боеприпасами~
+ @18410 = ~Зеленый ремень с боеприпасами~
+ @18411 = ~Рубиновый ремень с боеприпасами~
+ @18412 = ~Золотистый ремень с боеприпасами~
+ @18413 = ~Кожаный ремень с боеприпасами~
+ @18414 = ~Деревенский ремень с боеприпасами~
+ @18415 = ~Серебристый ремень с боеприпасами~
+ @18416 = ~Огненно-темный ремень с боеприпасами~
+ @18417 = ~Ремень с боеприпасами цвета морской волны~
+ @18418 = ~Ремень с боеприпасами Дроу~
+ @18419 = ~Изумрудный ремень с боеприпасами~
+ @18420 = ~Красный колчан~
+ @18421 = ~Коричневый колчан~
+ @18422 = ~Золотистый колчан~
+ @18423 = ~Зеленый колчан~
+ @18424 = ~Сине-зеленый колчан~
+ @18425 = ~Синий колчан~
+ @18426 = ~Индиговый колчан~
+ @18427 = ~Фиолетовый колчан~
+ @18428 = ~Черный колчан~
+ @18429 = ~Красный арбалетный колчан~
+ @18430 = ~Коричневый арбалетный колчан~
+ @18431 = ~Золотистый арбалетный колчан~
+ @18432 = ~Зеленый арбалетный колчан~
+ @18433 = ~Сине-зеленый арбалетный колчан~
+ @18434 = ~Синий арбалетный колчан~
+ @18435 = ~Индиговый арбалетный колчан~
+ @18436 = ~Фиолетовый арбалетный колчан~
+ @18437 = ~Черный арбалетный колчан~
+ @18438 = ~Красный железный ремень с боеприпасами~
+ @18439 = ~Бронзовый железный ремень с боеприпасами~
+ @18440 = ~Золотистый железный ремень с боеприпасами~
+ @18441 = ~Зеленый железный ремень с боеприпасами~
+ @18442 = ~Сине-зеленый железный ремень с боеприпасами~
+ @18443 = ~Синий железный ремень с боеприпасами~
+ @18444 = ~Индиговый железный ремень с боеприпасами~
+ @18445 = ~Фиолетовый железный ремень с боеприпасами~
+ @18446 = ~Черный железный ремень с боеприпасами~
+ @18447 = ~Темный ремень с боеприпасами~
+
+ @18500 = ~Медный ящик для зелий~
+ @18501 = ~Черно-зеленый ящик для зелий~
+ @18502 = ~Зеленый ящик для зелий~
+ @18503 = ~Бирюзовый ящик для зелий~
+ @18504 = ~Индиговый ящик для зелий~
+ @18505 = ~Пурпурный ящик для зелий~
+ @18506 = ~Черный ящик для зелий~
+ @18507 = ~Полуночный ящик для зелий~
+ @18508 = ~Зелено-золотистый ящик для зелий~
+ @18509 = ~Ржавый ящик для зелий~
+ @18510 = ~Рубиновый ящик для зелий~
+ @18511 = ~Золотистый ящик для зелий~
+ @18512 = ~Красный ящик для зелий~
+ @18513 = ~Черно-золотистый ящик для зелий~
+ @18514 = ~Розовый ящик для зелий~
+ @18515 = ~Белый ящик для зелий~
+ @18516 = ~Деревенский ящик для зелий~
+ @18517 = ~Старый ящик для зелий~
+ @18518 = ~Серебристый ящик для зелий~
+ @18519 = ~Огненно-темный ящик для зелий~
+ @18520 = ~Ящик для зелий цвета морской волны~
+ @18521 = ~Ящик для зелий Дроу~
+ @18522 = ~Изумрудный ящик для зелий~
+ @18523 = ~Окаймованная красным сумка для зелий~
+ @18524 = ~Окаймованная бронзой сумка для зелий~
+ @18525 = ~Окаймованная золотом сумка для зелий~
+ @18526 = ~Окаймованная зеленым сумка для зелий~
+ @18527 = ~Окаймованная сине-зеленым сумка для зелий~
+ @18528 = ~Окаймованная синим сумка для зелий~
+ @18529 = ~Окаймованная индиговым сумка для зелий~
+ @18530 = ~Окаймованная фиолетовым сумка для зелий~
+ @18531 = ~Окаймованная черным сумка для зелий~
+ @18532 = ~Темный ящик для зелий~
+
+ @19000 = ~For all shields and helmets~
+ @19001 = ~Use Character Colors Instead of Item Colors~
+
+ @19100 = ~For non-magical shields and helmets~
+
+ @19200 = ~For all helmets~
+
+ @19300 = ~For non-magical helmets~
+
+ @19400 = ~For all shields~
+
+ @19500 = ~For non-magical shields~
+ 
+ @20000 = ~Remove Blur Effect from Items, e.g. Cloack of Displacement~
+ 
+ @21000 = ~Separate Resist Fire/Cold Icon into Separate Icons (Angel)~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Content Changes Components                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@101000 = ~More Interjections~
+
+@102000 = ~Alter HP Triggers for NPC Wounded Dialogues~
+
+@103000 = ~Reveal Wilderness Areas Before Chapter Six~
+
+@103500 = ~Make Cloakwood Areas Available Before Completing the Bandit Camp~
+@103501 = ~First Area Only~
+
+@103600 = ~All of Cloakwood Except the Mines~
+
+@104000 = ~Improved Athkatlan City Guard~
+@105000 = ~Gradual Drow Item Disintegration~
+@106000 = ~Breakable Iron Nonmagical Shields, Helms, and Armor~
+@107000 = ~Improved Multi-Player Kick-out Dialogues~
+@107500 = ~Send BioWare NPCs to an Inn (DavidW/Zed Nocear)~
+@108000 = ~Add Bags of Holding~
+@108500 = ~Portable Containers (Zed Nocear)~
+@108525 = ~Открывается пенал для свитков. Пожалуйста, подождите.~
+
+@109000 = ~Exotic Item Pack~
+
+
+@110000 = ~Reveal City Maps When Entering Area~
+
+@110100 = ~Do Not Reveal City Maps When Entering Area~
+
+@111000 = ~Add Map Notes~
+@112000 = ~Stores Sell Higher Stacks of Items~
+
+@113000 = ~Reputation Resets in BG2 (BGT Only)~
+
+@114000 = ~Gems and Potions Require Identification~
+@114002 = ~Gems and potions~
+@114100 = ~Just gems~
+@114200 = ~Just potions~
+@115000 = ~Shapeshifter Rebalancing~
+@116000 = ~Multiple Strongholds (Baldurdash)~
+@116001 = ~No Restrictions (Baldurdash)~
+@116100 = ~Keep Class Restrictions~
+
+@117000 = ~Bonus Merchants (Baldurdash)~
+
+@118000 = ~Female Edwina~
+
+@119000 = ~Romance Bug Fixes~
+
+@120000 = ~Imoen ToB Dialogue Fix~
+
+@121000 = ~Use BG Walking Speeds (BETA)~
+    
+@122000 = ~Allow Cromwell to Upgrade Watcher's Keep Items~
+
+@122500 = ~Adjust Cromwell's Forging Time~
+@122501 = ~Instant forging (original BG2 default)~
+@122600 = ~Eight hours~
+@122700 = ~Full 24 hours (BG2EE default, includes sleep)~
+
+@123000 = ~Allow Cespenar to Use Cromwell Recipes~
+@124000 = ~Friendly Arm Inn Hidden Container Restoration (plainab)~
+
+@125000 = ~Move NPCs from Baldur's Gate~
+@125001 = ~You must start a new game for this component to take effect.~
+@125100 = ~Move NPCs to Convenient Locations: Move Alora to Gullykin~
+@125200 = ~Move NPCs to Convenient Locations: Move Eldoth to the Coast Way~
+@125300 = ~Move NPCs to Convenient Locations: Move Quayle to the Nashkel Carnival~
+@125400 = ~Move NPCs to Convenient Locations: Move Shar-Teel to North Nashkel Road~
+@125500 = ~Move NPCs to Convenient Locations: Move Tiax to Beregost~
+@125600 = ~Move NPCs to Convenient Locations: Move Viconia to South Beregost Road~
+@126000 = ~Bardic Reputation Adjustment~
+@127000 = ~Change Cloakwood Mine Chapter End Change Trigger to Non-TotSC Behavior (plainab) (BETA)~
+
+@128000 = ~Game ends when the main character dies~
+
+@129000 = ~NPCs respond to the main character, not to whichever character talks to them~
+
+@130000 = ~Make Heart of Winter accessible at any level~
+
+@131000 = ~Restore (most) BG2 spells and make scrolls available - WARNING: they will look very out of place~
+
+@132000 = ~BG2-style journal [work in progress]~
+@133000 = ~NPCs Cannot Use Doors~
+@134000 = ~Make the Planar Sphere Stronghold Available to All Classes~
+@134100 = ~Make the de'Arnise Keep Stronghold Available to All Classes~
+@134200 = ~Make the Temple Strongholds Available to All Classes~
+@134300 = ~Make the Thieves Guild Stronghold Available to All Classes~
+@134400 = ~Make the Playhouse Stronghold Available to All Classes~
+@134500 = ~Make the Noble Order of the Radiant Heart Stronghold Available to All Classes~
+@134600 = ~Make the Druid Grove Stronghold Available to All Classes~
+@134700 = ~Make the Imnesvale Cabin Stronghold Available to All Classes~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Rule Changes Components                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@201000 = ~PnP Spell Progression Tables~
+
+@202000 = ~Two-Handed Bastard Swords~
+@203000 = ~Two-Handed Katanas~
+
+@203500 = ~Two-Handed Axes~
+
+@204000 = ~Universal Clubs~
+/* deprecated component
+@205000 = ~Description Updates for Universal
+  Clubs Component~
+@205001 = ~Requires Universal Clubs to be installed~
+@205002 = ~Ashes of Embers is installed, which already adjusts club descriptions.~
+*/
+@206000 = ~Weapon Styles for All~
+
+@207000 = ~Druids Use Cleric Level and Spell Progression~
+
+@208000 = ~Delay High Level Abilities~
+
+@209000 = ~Change Experience Point Cap~
+@209001 = ~Remove Experience Cap~
+
+@209100 = ~Level 20 Experience Point Cap~
+
+@209200 = ~Level 30 Experience Point Cap~
+
+@210000 = ~Allow Thieving and Stealth in Heavy Armor~
+// Moved from thieving_descripts.tpa
+// Typical weight line for an item, used for a search matching the whole line
+// Typical lock picking penalty line in original armors
+// Title for lock picking added after Weight line, penalty is added after this text
+// Typical find trap penalty line in original armors
+// Title for find trap added after Weight line, penalty is added after this text
+// Typical pick pocket penalty line in original armors
+// Title for pick pocket added after Weight line, penalty is added after this text
+// Typical hide en shadow penalty line in original armors
+// Title for hide in shadow added after Weight line, penalty is added after this text
+// Typical move silently penalty line in original armors
+// Title for move silently added after Weight line, penalty is added after this text
+// Typical move silently penalty line in original armors
+// Title for move silently added after Weight line, penalty is added after this text
+@211000 = ~Alter Item Descriptions for 'Stealth and
+Thieving Abilities in Heavy Armor' Component~
+
+@212000 = ~Allow Arcane Spellcasting in Heavy Armor~
+// Moved from arcane_descripts.tpa
+// Typical weight line for an item, used for a search matching the whole line
+// Title for miscast chance added after Weight line, value is added after this text
+@213000 = ~Alter Item Descriptions for 'Allow Arcane 
+  Spellcasting in Armor' Component~
+
+@214000 = ~Expanded Dual-Class Options~
+@215000 = ~Wear Multiple Protection Items~
+@215001 = ~P&P Restrictions~
+@215100 = ~No Restrictions~
+@215200 = ~Allow Armor Plus One Protection Item (Angel)~
+
+@216000 = ~Rebalanced Weapon Proficiencies~
+@216006 = ~Alter Weapon Proficiency System~
+@216100 = ~BG-Style Weapon Proficiencies, With Weapon Styles (the bigg)~
+@216200 = ~BG-Style Weapon Proficiencies, Without Weapon Styles (the bigg)~
+
+@216300 = ~IWD-Style Proficiencies with Weapon Styles~
+@216400 = ~IWD-Style Proficiencies without Weapon Styles~
+
+@217000 = ~Cast Spells from Scrolls (and Other Items) at Character Level~
+
+@218000 = ~Un-Nerfed THAC0 Table, Saving Throws, Grand-Mastery, and Arcane, Divine Spell Progression (Blucher)~
+@219000 = ~Limit Ability of Storekeepers to Identify Items~
+@219001 = ~Only Mage and Bard Storekeepers Can Identify Items~
+
+@219100 = ~Identification Ability is Based on Storekeeper's Lore~
+
+@219200 = ~Hybrid of Both Methods~
+
+@220000 = ~Multi-Class Grandmastery (Weimer)~
+
+@221000 = ~True Grandmastery (Baldurdash)~
+@221001 = ~Change Grandmastery Bonuses~
+
+@221100 = ~BG2 Grandmastery Rules~
+
+@222000 = ~Change Magically Created Weapons to Zero Weight~
+
+@223000 = ~Make +x/+y Weapons Consistent~
+
+@223100 = ~Description Updates for Make +x/+y Weapons Consistent Component~
+
+@224000 = ~Un-Nerfed THAC0 Table~
+@224001 = ~Capped, Best THAC0 is 0 (Blucher)~
+
+@224100 = ~Capped, Best THAC0 is -10 (PnP/BG1 Table)~
+
+@225000 = ~Un-Nerfed Sorcerer Spell Progression Table~
+
+@226000 = ~Alter Mage Spell Progression Table~
+@226001 = ~Un-Nerfed Table (Blucher)~
+
+@226100 = ~PnP Table~
+
+@227000 = ~Alter Bard Spell Progression Table~
+
+@228000 = ~Alter Cleric Spell Progression Table~
+
+@229000 = ~Alter Druid Spell and Level Progression Tables~
+@229001 = ~No Level Progression Changes, Un-Nerfed Druid Spell Table Only (Blucher)~
+
+@229100 = ~No Level Progression Changes, PnP Druid/Cleric Spell Table Only~
+
+@229200 = ~Use Cleric Level Progression Changes With Normal Druid Spell Table~
+
+@229300 = ~Use Cleric Level Progression Changes With Un-Nerfed Druid Spell Table (Blucher)~
+
+@229400 = ~Use Cleric Level Progression Changes With PnP Druid/Cleric Spell Table~
+
+@229500 = ~Use Cleric Level Progression Changes With Normal Cleric Spell Table~
+
+@229600 = ~Use Cleric Level Progression Changes With Un-Nerfed Cleric Spell Table (Blucher)~
+
+@230000 = ~Triple-Class HLA Tables~
+
+@231000 = ~Add Save Penalties for Spells Cast by High-Level Casters (BETA)~
+@231001 = ~Arcane Magic Only~
+
+@231100 = ~Divine Magic Only~
+
+@231200 = ~Arcane & Divine Magic~
+
+@232000 = ~Trap Cap Removal (Ardanis/GeN1e)~
+
+@233000 = ~Remove Delay for Magical Traps (Ardanis/GeN1e)~
+
+@233900 = ~Remove Summoning Cap for Regular Summons~
+
+@234000 = ~Remove Summoning Cap for Celestials (Ardanis/GeN1e)~
+
+@235000 = ~Alter Multiclass Restrictions~
+@235001 = ~Allow humans to multiclass~
+
+@235100 = ~Allow non-humans acces to all multiclass combinations~
+
+@235200 = ~Install options one and two (everyone can multiclass anything)~
+@235300 = ~Allow non-humans access to a multiclasses only if they can access the single-classes~
+@235800 = ~Install options one and three (everyone can multiclass anything they can single-class)~
+
+@236000 = ~Remove Racial Restrictions for Single Classes~
+
+@237000 = ~Alter Dual-class Restrictions~
+@237001 = ~Humans can no longer dual-class~
+
+@237100 = ~Allow non-humans to dual-class~
+
+@238000 = ~Remove Racial Restrictions for Kits~
+
+@239000 = ~Paladins Use Icewind Dale-Heart of Winter Spell Tables (grogerson)~
+
+@240000 = ~Rangers Use Icewind Dale-Heart of Winter Spell Tables (grogerson)~
+
+@241000 = ~Druids Use 3E Alignment Restrictions~
+
+@242000 = ~Loosen Equipment Restrictions for Cleric Multi-Classes~
+
+@243000 = ~Loosen Equipment Restrictions for Druid Multi-Classes~
+@243001 = ~Change Equipment Restrictions for Druid Multi-Classes~
+@243100 = ~Tighten Equipment Restrictions for Druid Multi-Classes (Angel)~
+
+@244000 = ~Everyone Gets Bonus APR from Specialization~
+// translators - the next three strings are used to replace game text, so they need to be copied from the game itself
+// get @244001 and @244002 from strref 9588 in bgee/bg2ee/iwdee
+// get @244003 from string 32117 (bg2ee/iwdee) or 24220 (bgee)
+@245000 = ~Enforce PnP Proficiency Rules on Dual-Classed Characters~
+@250000 = ~Exceptional Strength Weight Limit Changes~
+@251000 = ~Level-Lock Spell Scrolls (Angel)~
+@252000 = ~Allow Mages to Use Bucklers and Thieves to Use Small Shields (Angel)~
+@253000 = ~Lightning Bolts Don't Bounce (Angel)~
+@254000 = ~Speed Up de'Arnise Keep Stronghold Quests~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Convenience Tweaks                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@299900 = ~Max HP at Level One~
+
+@300000 = ~Higher HP on Level Up~
+@300001 = ~Maximum~
+
+@300100 = ~NWN Style~
+
+@300200 = ~Average Rolls~
+
+@300300 = ~Low Variance Rolls~
+@300800 = ~Allow HP Rolls Through Level 20 (Angel)~
+
+@301000 = ~Maximum HP for NPCs (the bigg)~
+@301001 = ~For All Creatures in Game~
+
+@301100 = ~For Non-Party-Joinable NPCs Only~
+
+@301200 = ~For Party-Joinable NPCs Only~
+
+@302000 = ~Identify All Items~
+
+@303000 = ~Easy Spell Learning~
+@303001 = ~100% Learn Spells~
+
+@303100 = ~100% Learn Spells and No Maximum Cap~
+
+@304000 = ~Make Bags of Holding Bottomless~
+
+@305000 = ~Remove fatigue from restoration spells~
+
+@306000 = ~Remove «You Must Gather Your Party...» Sound (Weimer)~
+
+@307000 = ~Low Reputation Store Discount (Sabre)~
+@307001 = ~Change Effect of Reputation on Store Prices~
+
+@307100 = ~Reputation Has No Effect, Stores Price Fixed at 100% (Luiz)~
+
+@307200 = ~Reputation Has No Effect, Stores Price Fixed at 80% (Luiz)~
+
+@307300 = ~Reputation Has No Effect, Stores Price Fixed at 60% (Luiz)~
+
+@308000 = ~Unlimited Ammo Stacking~
+@308001 = ~Increase Ammo Stack Size~
+
+@308100 = ~Stacks of 40~
+
+@308200 = ~Stacks of 80~
+
+@308300 = ~Stacks of 120~
+
+@309000 = ~Unlimited Gem and Jewelry Stacking~
+@309001 = ~Increase Gem and Jewelry Stacking~
+
+@310000 = ~Unlimited Potion Stacking~
+@310001 = ~Increase Potion Stacking~
+
+@311000 = ~Unlimited Scroll Stacking~
+@311001 = ~Increase Scroll Stacking~
+
+@312000 = ~Happy Patch (Party NPCs do not complain about reputation)~
+
+@312001 = ~NPCs are never angry about reputation~
+
+@312100 = ~NPCs can be angry about reputation but never leave (Salk)~
+
+@312200 = ~NPCs are always neutral about reputation (Anomaly)~
+
+@312300 = ~NPCs don't fight~ 
+
+@312400 = ~Stop Haer'Dalis-Aerie romance from starting~
+
+@312500 = ~Neutral Characters Make Happy Comments at Mid-Range Reputation~
+
+@313000 = ~No Traps or Locks (Weimer)~
+
+@314000 = ~Faster Chapter 1&2 Cut-Scenes and Dreams~
+@314001 = ~Originals from EoU (Karzak, Blucher)~
+
+@314100 = ~Non-Silly Version~
+
+@315000 = ~Turn Off The Hideous Cloak-of-Mirroring, Spell-Trap, and Physical Mirror Animations~
+
+@316000 = ~Keep Drizzt's Loot, Disable Malchor Harpell~
+
+@317000 = ~No Drow Avatars On Party In Underdark~
+@317500 = ~Disable Romances~
+@317600 = ~Accelerate/Decelerate Romances~
+@317601 = ~Please enter the percentage speed you would like to apply to the time between love talks,
+e.g. 50 would halve the current time between talks, whereas 300% would triple the length.
+Enter a percentage between 20 and 500:~
+
+@317900 = ~No Racial Requirements for Romance~
+
+@318000 = ~Romance Cheats~
+@318001 = ~No Gender/Racial Requirements for Romance~
+
+@318100 = ~No Gender/Racial Requirements for Romance, Allow Multiple Romances~
+
+@318200 = ~No Gender/Racial Requirements for Romance, Allow Multiple Romances, Nothing Kills Romances~
+
+@318300 = ~Romance Cheats~
+@318301 = ~Remove racial requirements for romances? (Select 1 or 2)
+  1) Remove
+  2) No changes~
+@318302 = ~  * Remove racial requirements for romances~
+@318303 = ~Remove gender requirements for romances? (Select 1 or 2)
+  1) Remove
+  2) No changes~
+@318304 = ~  * Remove gender requirements for romances~
+@318305 = ~Allow multiple romances? (Select 1 or 2)
+  1) Allow multiple
+  2) No changes~
+@318306 = ~  * Allow multiple romances~
+@318307 = ~Nothing kills romances? (Select 1 or 2)
+  1) Nothing kills romances
+  2) No changes~
+@318308 = ~  * Nothing kills romances~
+@318309 = ~You have selected to install the following options:~
+@318310 = ~Are these choices correct? (Select 1 or 2)
+  1) Yes, proceed with install
+  2) No, let me re-select them~
+@318311 = ~Start romances for new games in ToB? (Select 1 or 2)
+  1) Start for new ToB games
+  2) No changes~
+@318312 = ~  * Start romances for new games in ToB~
+@319000 = ~Rest Anywhere (Japheth)~
+
+@319100 = ~Disable Non-Hostile Rest Spawns~
+
+@319400 = ~Alter Hostile Rest Spawns~
+@319401 = ~Disable completely~
+
+@319500 = ~Decrease frequency by 50%~
+
+@319600 = ~Increase frequency by 50%~
+
+@319700 = ~Double frequency~
+
+@319800 = ~Quadruple frequency~
+
+@320000 = ~Sellable Items (Icelus)~
+
+@320500 = ~Stores Purchase All Item Types~
+
+@321000 = ~Minimum Stats Cheat~
+//@321001 = ~Select a minimum stat value, between 6 and 15:~
+@321002 = ~Select a minimum STRENGTH value, between 6 and 15, or 0 for no minimum:~
+@321003 = ~Select a minimum DEXTERITY value, between 6 and 15, or 0 for no minimum:~
+@321004 = ~Select a minimum CONSTITUTION value, between 6 and 15, or 0 for no minimum:~
+@321005 = ~Select a minimum INTELLIGENCE value, between 6 and 15, or 0 for no minimum:~
+@321006 = ~Select a minimum WISDOM value, between 6 and 15, or 0 for no minimum:~
+@321007 = ~Select a minimum CHARISMA value, between 6 and 15, or 0 for no minimum:~
+@321008 = ~Minimum STRENGTH:~
+@321009 = ~Minimum DEXTERITY:~
+@321010 = ~Minimum CONSTITUTION:~
+@321011 = ~Minimum INTELLIGENCE:~
+@321012 = ~Minimum WISDOM:~
+@321013 = ~Minimum CHARISMA:~
+@321014 = ~No changes selected! Choose again.~
+
+@322000 = ~Sensible Entrance Points~
+@323000 = ~Taerom Makes Additional Ankheg Armor (Icendoan/grogerson)~
+
+@324000 = ~Friendly Random Drops~
+@324001 = ~Randomize on reload~
+
+@324100 = ~Choose Your Drop~
+@324200 = ~Exchange with merchants~
+// 60 and 80 strings are identical, just with Flynn/Harrold and Lonelywood/Kuldahar exchanged
+@325000 = ~Never lose access to Orrick the Gray's trade goods~
+@326000 = ~Recoverable ammunition~
+@326001 = ~25% chance to recover after a successful hit~
+
+@326100 = ~50% chance to recover after a successful hit~
+
+@326200 = ~75% chance to recover after a successful hit~
+
+@326300 = ~100% chance to recover after a successful hit~
+
+@326400 = ~25% chance to recover after a successful hit, vs. enemies only~
+
+@326500 = ~50% chance to recover after a successful hit, vs. enemies only~
+
+@326600 = ~75% chance to recover after a successful hit, vs. enemies only~
+
+@326700 = ~100% chance to recover after a successful hit, vs. enemies only~
+
+@327000 = ~Recoverable throwing weapons~
+@328000 = ~Give Every Class/Kit Four Weapon Slots~
+@329000 = ~Personalize automatic save names~
+@329001 = ~Use scheme: 000000000-Protagonist-Save-Name~
+@329100 = ~Use scheme: 000000000-Protagonist Save-Name~
+@329200 = ~Use scheme: 000000000-(Protagonist)-Save-Name~
+@329300 = ~Use scheme: 000000000-(Protagonist) Save-Name~
+@329400 = ~Use scheme: 000000000-[Protagonist]-Save-Name~
+@329500 = ~Use scheme: 000000000-[Protagonist] Save-Name~
+@330000 = ~Death Cam~
+@331000 = ~Start New Games with Party AI Turned Off~
+@332000 = ~No Depreciation in Stores~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// NPC Tweaks                                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@400000 = ~Adjust Evil joinable NPC reaction rolls~
+
+@401000 = ~Improved Fate Spirit Summoning~
+
+@402000 = ~ToB-Style NPCs~
+
+@403000 = ~Consistent Stats: Edwin~
+@403001 = ~Use BG Values~
+
+@403100 = ~Use BG2 Values~
+
+@404000 = ~Consistent Stats: Jaheira~
+
+@405000 = ~Change Jaheira to Neutral Good~
+
+@406000 = ~Consistent Stats: Minsc~
+
+@407000 = ~Consistent Stats: Viconia~
+
+@408000 = ~Make Khalid a Fighter-Mage (Domi)~
+@409000 = ~Make Montaron an Assassin (Andyr)~
+
+@410000 = ~Change Korgan to Neutral Evil~
+
+@411000 = ~Give Kagain A Legal Constitution Score of 19~
+
+@412000 = ~Give Coran A Legal Dexterity Score of 19~
+
+@413000 = ~Make Xan a Generalist Mage (Mike1072)~
+@414000 = ~Don't Auto-Assign Advanced AI Scripting to Party~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Ex-SCS components                                \\\\\
+///// Automatically copied over from SCS TRA files     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@500000 = ~Stackable ankheg shells, winterwolf pelts and wyvern heads~
+@501000 = ~Allow NPC pairs to separate~
+@502000 = ~Make party members less likely to die irreversibly~
+@503000 = ~Move Boo into Minsc's pack~
+@504000 = ~Allow Yeslick to use axes~
+@505000 = ~Ensure Shar-Teel doesn't die in the original challenge~
+@506000 = ~Remove animation from the Cloak of Mirroring (leave it for other spells and effects that use the same graphic)~
+@507001 = ~Make the starting dungeon slightly harder~
+@507002 = ~Make the bard stronghold available to all classes~
+@507003 = ~Make the cleric stronghold available to all classes~
+@507004 = ~Make the druid stronghold available to all classes~
+@507005 = ~Make the fighter stronghold available to all classes~
+@507006 = ~Make the paladin stronghold available to all classes~
+@507007 = ~Make the ranger stronghold available to all classes~
+@507008 = ~Make the thief stronghold available to all classes~

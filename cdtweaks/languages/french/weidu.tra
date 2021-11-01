@@ -1,0 +1,669 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Setup Messages                                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@0 = ~Changements concernant les PNJs~
+@1 = ~Cette etape peut prendre quelques instants...~
+@2 = ~Le composant "Ajouter des sacs de contenance" est requis pour ce composant.~
+//@3 = ~Necessite le composant "Autoriser le lancement des sorts profanes en armure"~
+@4 = ~Changements facilitant le jeu~
+@5 = ~Le composant "Pack d'objets exotiques" est requis pour ce composant.~
+//@6 = ~Necessite le composant "Autoriser l'utilisation des competences de voleur en armure lourde"~
+@7 = ~Ce composant n'est pas disponible en francais.~
+//@8 = ~Ce composant ne concerne que BGT.~
+@9 = ~Changements concernant les regles du jeu~
+//@10 = ~Ce composant n'est pas disponible pour Tutu.~
+@11 = ~Changements purement cosmetiques~
+//@12 = ~Throne of Bhaal est requis pour ce composant.~
+@13 = ~Changements concernant le contenu du jeu~
+//@14 = ~Ce composant ne concerne que Tutu, BGT ou Baldur's Gate : Enhanced Edition.~
+//@15 = ~Ce composant ne concerne que Tutu.~
+@16 = ~Les fonctionnalites de ce composant sont deja incluses
+ou rendues obsoletes par un autre mod deja installe.~
+@17 = ~Necessite le composant "Rendre les armes +x/+y coherentes"~
+@18 = ~Ce composant est obsolete.~
+//@19 = ~Regles maison de Cam~
+//@20 = ~Afficher le ReadMe ?
+//a) Oui
+//b) Non~
+@21 = ~Necessite le composant "Changer la limite de points d'experience : Retirer la limite".~
+@22 = ~Ce composant n'est pas disponible pour Baldur's Gate : Enhanced Edition.~
+@23 = ~Ce composant ne concerne que Tutu ou Baldur's Gate : Enhanced Edition.~
+@24 = ~Ce composant est incompatible avec un autre mod deja installe.~
+@25 = ~Ce composant n'est pas disponible pour votre jeu.~
+@26 = ~Utilisation des valeurs du fichier de config cdtweaks.txt pour ce composant...~
+@27 = ~Il est necessaire d'utiliser Modmerge avant d'installer des mods pour ce jeu. Consultez le readme pour plus d'informations et pour trouver un lien pour telecharger Modmerge.~
+@28 = ~Nombre d'emplacements disponibles de "spellstates" ou d'ecoles de magie secondaire insuffisant pour installer ce composant (trop de mods installes).~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Cosmetic Changes Components                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@1000 = ~Masquer les casques sur les avatars~
+@2000 = ~Avatar de mage pour Imoen~
+@3000 = ~Avatar de voleur pour Nalia~
+@4000 = ~Peau bleue pour Viconia~
+@5000 = ~Script de changement d'avatar~
+@6000 = ~Animation des armes amelioree~
+@7000 = ~Incantation des sorts style Icewind Dale (Andyr)~
+@7020 = ~Incantation des sorts style Baldur's Gate II (Andyr)~
+@8000 = ~Restaurer le logo de SoA sur les ecrans de chargement (ToB uniquement)~
+@8020 = ~Restaurer les ecrans de chargement d'IWD~
+@9000 = ~Masquer les icones de portrait ajoutees par les objets~
+@10000 = ~Couleurs ternes pour les habits des roturiers~
+@11000 = ~Amelioration des icones des objets~
+@12000 = ~Changer d'avatar lors du port d'une robe ou d'une armure (Galactygon)~
+@13000 = ~Mode pause dans tous les dialogues~
+@14000 = ~Correction du cri de Bouh~
+@15000 = ~Alteration du nom des objets uniques~
+@15001 = ~Utiliser le nom unique (i.e. Kondar)~
+@15100 = ~Utiliser le nom unique +x (i.e. Kondar +1)~
+@15200 = ~Utiliser le nom generique (i.e. Epee batarde +1, +3 contre les metamorphes)~
+@16000 = ~Rendre rougeoyants les boucliers magiques (plainab/grogerson)~
+@17000 = ~Icones uniques~
+@18000 = ~Recipients uniques~
+@18018 = ~Corrections uniquement~
+@18019 = ~Ce composant n'est pas utile pour BG1.~
+@18020 = ~Recipients et noms uniques~
+@18021 = ~Recipients uniques seulement~
+@18022 = ~Couleurs de BG2 pour les PNJs de BG1/Tutu~
+@18023 = ~Ce composant n'est pas utile pour BG2.~
+@19000 = ~Pour tous les boucliers et casques~
+@19001 = ~Utiliser les couleurs du personnage plutot que les couleurs de l'objet~
+@19100 = ~Pour tous les boucliers et casques non magiques~
+@19200 = ~Pour tous les casques~
+@19300 = ~Pour tous les casques non magiques~
+@19400 = ~Pour tous les boucliers~
+@19500 = ~Pour tous les boucliers non magiques~
+@20000 = ~Retirer l'effet de Flou des objets, par exemple la Cape de deplacement~
+@21000 = ~Separer l'icone de resistance au feu/froid en icones distinctes (Angel)~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Content Changes Components                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@101000 = ~Davantage d'interjections~
+@102000 = ~Modifier la valeur limite des points de vie pour les dialogues des PNJs blesses~
+@103000 = ~Reveler les zones vierges avant le chapitre 6~
+@103500 = ~Rendre disponibles les zones de Bois-Manteau en avance~
+@103501 = ~Seulement la premiere zone~
+@103600 = ~Tout Bois-Manteau sauf les mines~
+@104000 = ~Ameliorer les gardes d'Athkatla~
+@105000 = ~Transformation progressive des objets des Elfes Noirs en poussiere~
+@106000 = ~Casques, Boucliers et Armures de fer cassables~
+@107000 = ~Amelioration du dialogue d'ejection pour les PNJs multijoueurs~
+//Isaya : lieux d'Icewind Dale
+//Nouveaux textes de Tweaks Anthology
+@107500 = ~Envoyer les PNJs de BioWare dans une auberge (DavidW/Zed Nocear)~
+//Isaya : les 4 textes suivants proviennent de SCS (@20801 à @20804)
+//Isaya : les textes suivants proviennent de SCS (@20810 à @20826, @20831 à ), corrections pour tutoiement/vouvoiement comme dans BG1 NPC
+//Ajantis
+//Imoen
+//Kagain
+//Edwin
+//Branwen - Modif : tutoiement
+//Safana - Modif : tutoiement, amusement au singulier
+//Garrick - Modif : reprise de traduction
+//Coran
+//Kivan
+//Yeslick
+//Xan - Modif : reprise de traduction
+//Alora
+//Faldorn - Modif : tutoiement
+//Quayle - Modif : tutoiement
+//Shar-Teel - Modif : tutoiement
+//Tiax - Modif : tutoiement, reprise de traduction
+//Viconia
+//Jaheira
+//Khalid
+//Dynahéir - Modif : reprise de traduction
+//Minsc - Modif : reprise de traduction
+//Xzar - Modif : reprise de traduction
+//Montaron - Modif : tutoiement, reprise de traduction
+//Skie - Modif : reprise de traduction (style)
+//Eldoth
+@108000 = ~Ajouter des sacs de contenance~
+//Reprise de la correction de CorrecFr
+//Manifestement pour BG1
+@108500 = ~Conteneurs transportables (Zed Nocear)~
+@108525 = ~Ouverture de l'étui à parchemin en cours. Veuillez patienter.~
+@109000 = ~Pack d'objets exotiques~
+
+@110000 = ~Exploration automatique des villes~
+@110100 = ~Ne pas explorer automatiquement les villes~
+@111000 = ~Ajouter des annotations aux cartes~
+/// @todo A relire pour IWDEE (pas dans IWD tweaks, pertinence de certains noms VF à vérifier par un connaisseur du jeu)
+@112000 = ~Plus de munitions dans les boutiques~
+@112500 = ~Munitions non-magiques infinies pour les arcs, arbaletes et frondes~
+@112501 = ~Flèches non-magiques~
+@112502 = ~Carreaux non-magiques~
+@112503 = ~Billes non-magiques~
+@113000 = ~Reinitialisation de la reputation dans BG2 (BGT uniquement)~
+@114000 = ~Identification obligatoire des gemmes et potions~
+@114002 = ~Pour gemmes et potions~
+@114100 = ~Juste pour les gemmes~
+@114200 = ~Juste pour les potions~
+@115000 = ~Reequilibrage du metamorphe~
+//BGEE @32328, version 1.3 plutôt que 2.3
+//BGEE @32329
+@116000 = ~Forteresses pour toutes les classes~
+@116001 = ~Pas de restrictions (Baldurdash)~
+@116100 = ~Conserver les restrictions des classes~
+@117000 = ~Marchands bonus (Baldurdash)~
+@118000 = ~Portrait feminin pour Edwina~
+@119000 = ~Correctifs pour les romances~
+@120000 = ~Correction du dialogue d'Imoen dans ToB~
+@121000 = ~Utiliser les vitesses de deplacement de BG1 (BETA)~
+@122000 = ~Permettre a Cromwell d'ameliorer les objets de la Tour de Garde~
+@122500 = ~Ajuster le temps de forgeage de Cromwell~
+@122501 = ~Forgeage instantane (reglage BG2 original)~
+@122600 = ~Huit heures~
+@122700 = ~Un jour entier (reglage BG2EE, inclut un repos)~
+@123000 = ~Permettre a Cespenar d'utiliser les recettes de Cromwell~
+@124000 = ~Restaurer le conteneur cache de l'auberge de Brasamical (plainab)~
+@125000 = ~Deplacer les PNJ de la Porte de Baldur~
+@125001 = ~Vous devez commencer une nouvelle partie pour que ce composant fasse effet.~
+//@2 de x#aloran.tra de BG1 NPC
+//@3 de x#aloran.tra de BG1 NPC
+//@4 de x#aloran.tra de BG1 NPC
+//@5 de x#aloran.tra de BG1 NPC, traduction corrigée
+//@6 de x#aloran.tra de BG1 NPC
+//@7 de x#aloran.tra de BG1 NPC, traduction corrigée
+//@8 de x#aloran.tra de BG1 NPC
+//@9 de x#aloran.tra de BG1 NPC
+//@10 de x#aloran.tra de BG1 NPC, traduction corrigée
+//@11 de x#aloran.tra de BG1 NPC
+//@12 de x#aloran.tra de BG1 NPC
+//@13 de x#aloran.tra de BG1 NPC, traduction corrigée
+//@14 de x#aloran.tra de BG1 NPC
+//@15 de x#aloran.tra de BG1 NPC
+//= @1 de x#aloran.tra de BG1 NPC
+//= @0 de x#aloran.tra de BG1 NPC
+@125100 = ~Deplacer les PNJ a des endroits plus accessibles : Deplacer Alora a Gullykin~
+@125200 = ~Deplacer les PNJ a des endroits plus accessibles : Deplacer Eldoth sur la Voie cotiere~
+@125300 = ~Deplacer les PNJ a des endroits plus accessibles : Deplacer Quayle au festival de Nashkel~
+@125400 = ~Deplacer les PNJ a des endroits plus accessibles : Deplacer Shar-Teel sur la route au Nord de Nashkel~
+@125500 = ~Deplacer les PNJ a des endroits plus accessibles : Deplacer Tiax a Beregost~
+@125600 = ~Deplacer les PNJ a des endroits plus accessibles : Deplacer Viconia sur la route au Sud de Beregost~
+@126000 = ~Ajustement de reputation grace a des bardes~
+@127000 = ~Changer le declencheur de fin de chapitre des mines de Bois-Manteau pour la methode sans TotSC (plainab) (BETA)~
+@128000 = ~Le jeu se termine lorsque le personnage principal meurt~
+@129000 = ~Les personnages non jouables repondent au personnage principal, et non au personnage qui leur parle~
+@130000 = ~Rendre Heart of Winter accessible sans contrainte de niveau~
+@131000 = ~Retablir (la plupart) des sorts de BG2 et rendre leurs parchemins disponibles - ATTENTION : ils vont jurer~
+@132000 = ~Journal style BG II [travail en cours]~
+@133000 = ~Les PNJ ne peuvent pas franchir les portes~
+@134000 = ~Rendre le bastion du mage (Sphere planaire) accessible a toutes les classes~
+@134100 = ~Rendre le bastion du combattant (Chateau de'Arnise) accessible a toutes les classes~
+@134200 = ~Rendre le bastion du clerc (Temple) accessible a toutes les classes~
+@134300 = ~Rendre le bastion du voleur (Guilde des voleurs) accessible a toutes les classes~
+@134400 = ~Rendre le bastion du barde (Theatre des 5 chopes) accessible a toutes les classes~
+@134500 = ~Rendre le bastion du paladin (Tres noble ordre du coeur radieux) accessible a toutes les classes~
+@134600 = ~Rendre le bastion du druide (Bosquet des druides) accessible a toutes les classes~
+@134700 = ~Rendre le bastion du rodeur (Cabane des collines d'Umar) accessible a toutes les classes~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Rule Changes Components                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@201000 = ~Progression des sorts style P&P~
+@202000 = ~Epees batardes a deux mains~
+//BG II "Type : arme à 1 main" / "Type d'arme : à une main"
+//Isaya : traite aussi l'espace insécable de BGEE avant ":" (deuxième caractère entre [], encodé ici en CP1252)
+//@202003 = ~^[ %TAB%]*Type[ %TAB%]*:[ %TAB%]*\(1\|one\)[- %TAB%]*handed.*~
+//Arbitrairement la forme de BG II avec 2 en chiffre
+@203000 = ~Katanas a deux mains~
+@203500 = ~Haches a deux mains~
+@204000 = ~Gourdins universels~
+//Isaya : repris de @100401 dans Item Revisions + adaptation
+/* deprecated component
+@205000 = ~Mise a jour des descriptions pour les Gourdins universels~
+@205001 = ~Necessite le composant "Gourdins universels"~
+@205002 = ~Ashes of Embers est present : les descriptions sont deja corrigees.~
+*/
+@206000 = ~Styles de combat pour toutes les classes~
+@207000 = ~Les druides utilisent la table de progression en XP et en sorts des clercs~
+@208000 = ~Reporter les competences de haut niveau~
+@209000 = ~Changer la limite de points d'experience~
+@209001 = ~Retirer la limite~
+@209100 = ~Limiter au niveau 20~
+@209200 = ~Limiter au niveau 30~
+@210000 = ~Autoriser l'utilisation des competences de voleur en armure lourde~
+//Moved from thieving_descripts.tpa
+//Nota : textes repris de l'armure de peau, puisque c'est elle pour laquelle il faut remplacer les mentions existantes
+//Nota : l'expression régulière pour l'espace avant les deux points inclut aussi un espace insécable (code 0xA0, Alt 0160 au clavier)
+//en raison de l'utilisation de ce caractère dans les textes de BGEE en français
+//Typical weight line for an item, used for a search matching the whole line
+//Typical lock picking penalty line in original armors
+//BGEE 22716, 25552 ; BGEE "- crochetage des serrures', BG II "Crochetage"
+//Title for lock picking added after Weight line, penalty is added after this text
+//Isaya : il faut choisir une forme, arbitrairement on conserve celle de BG II
+//Typical find trap penalty line in original armors
+//BGEE "- détection des pièges", BG II "Pièges"
+//Title for find trap added after Weight line, penalty is added after this text
+//Isaya : il faut choisir une forme, on conserve celle de BG II, plus générale
+//Typical pick pocket penalty line in original armors
+//BGEE "- vol à la tire", BG II : "Vol à la tire"
+//Title for pick pocket added after Weight line, penalty is added after this text
+//Typical hide en shadow penalty line in original armors
+//BGEE "- se cacher dans l'ombre", BG II "Se cacher dans l'ombre/les ombres"
+//Title for hide in shadow added after Weight line, penalty is added after this text
+//Typical move silently penalty line in original armors
+//BGEE "- déplacement silencieux", BG II "Déplacement [Ss]ilencieux"
+//Title for move silently added after Weight line, penalty is added after this text
+//Typical move silently penalty line in original armors
+//BGEE / BG II : 7362 (pas une armure), BGEE "- furtivité", BG II "Furtivité"
+//Title for move silently added after Weight line, penalty is added after this text
+@211000 = ~Modifier la description des objets pour le composant "Autoriser l'utilisation des competences de voleur en armure lourde"~
+@212000 = ~Autoriser le lancement des sorts profanes en armure~
+//Moved from arcane_descripts.tpa
+//Typical weight line for an item, used for a search matching the whole line
+//Title for miscast chance added after Weight line, value is added after this text
+@213000 = ~Modifier la description des objets pour le composant "Autoriser le lancement des sorts profanes en armure"~
+@214000 = ~Options de jumelage etendues~
+@215000 = ~Port de plusieurs objets de protection~
+@215001 = ~Restrictions style P&P~
+//Objet : retirer le bonus de CA des objets avec protection (anneau, cape, ..., hors armure) et donc la description du bonus
+//Isaya : traite aussi l'espace insécable de BGEE avant ":" (deuxième caractère entre [], encodé ici en CP1252)
+//BGEE "- classe d'armure :", BG II "Classe d'Armure :" / "Bonus à la Classe d'Armure :" / "CA +x"
+@215100 = ~Pas de restrictions~
+@215200 = ~Autorise une armure plus un objet de protection (Angel)~
+@216000 = ~Reequilibrage des competences martiales~
+@216006 = ~Modifier le systeme des competences martiales~
+@216100 = ~Competences style BG1, avec les styles de combat (the bigg)~
+@216200 = ~Competences style BG1, sans les styles de combat (the bigg)~
+@216300 = ~Competences style IWD, avec les styles de combat~
+@216400 = ~Competences style IWD, sans les styles de combat~
+@217000 = ~Lancement des sorts depuis les parchemins (et autres objets) au niveau du personnage~
+@218000 = ~Veritables tables de TAC0, jets de sauvegarde, grande maitrise, et progression des sorts divins et profanes (Blucher)~
+//^^ this component deprecated, but the strings below still needed for the components that replace it
+@219000 = ~Limiter la capacite des vendeurs a identifier les objets~
+@219001 = ~Seuls les vendeurs mages ou bardes peuvent identifier les objets~
+@219100 = ~Capacite d'identification basee sur la connaissance du vendeur~
+@219200 = ~Methode hybride~
+@220000 = ~Grande maitrise pour les multi-classes (Weimer)~
+@221000 = ~Veritable grande maitrise (Baldurdash)~
+@221001 = ~Modifier les bonus de grande maitrise~
+@221100 = ~Regles de grande maitrise de BG2~
+@222000 = ~Donner un poids de 0 aux armes creees par magie~
+@223000 = ~Rendre les armes +x/+y coherentes~
+// next two strings used for matching and updating item descriptions
+@223100 = ~Mise a jour des descriptions pour le composant "Rendre les armes +x/+y coherentes"~
+@224000 = ~Table debridee des TAC0~
+@224001 = ~Avec limite, le meilleur TAC0 est 0 (Blucher)~
+@224100 = ~Avec limite, le meilleur TAC0 est -10 (P&P / Table BG1)~
+@225000 = ~Table de progression des sorts du sorcier debridee~
+@226000 = ~Alterer la table de progression des sorts du mage~
+@226001 = ~Table debridee (Blucher)~
+@226100 = ~Table P&P~
+@227000 = ~Alterer la table de progression des sorts du barde~
+@228000 = ~Alterer la table de progression des sorts du clerc~
+@229000 = ~Alterer les tables de progression des sorts et de niveaux du druide~
+@229001 = ~Pas de modification de la progression, table debridee des sorts des druides uniquement (Blucher)~
+@229100 = ~Pas de modification de la progression, table P&P des sorts des clercs et druides uniquement~
+@229200 = ~Utiliser la table de progression des clercs et la table normale des sorts des druides~
+@229300 = ~Utiliser la table de progression des clercs et la table debridee des sorts des druides (Blucher)~
+@229400 = ~Utiliser la table de progression des clercs et la table P&P des sorts des clercs et druides~
+@229500 = ~Utiliser la table de progression des clercs et la table normale des sorts des clercs~
+@229600 = ~Utiliser la table de progression des clercs et la table debridee des sorts des clercs (Blucher)~
+@230000 = ~Tables de capacites de haut niveau pour les triclasses~
+@231000 = ~Ajouter des penalites aux jets de sauvegarde des sorts des lanceurs de sorts de haut niveau (BETA)~
+@231001 = ~Magie des arcanes uniquement~
+@231100 = ~Magie divine uniquement~
+@231200 = ~Magie divine et des arcanes~
+@232000 = ~Suppression de la limite du nombre de pieges (Ardanis/GeN1e)~
+@233000 = ~Suppression du delai pour les pieges magiques (Ardanis/GeN1e)~
+@233900 = ~Suppression de la limite de convocation pour les creatures normales~
+@234000 = ~Suppression de la limite de convocation des creatures celestes (Ardanis/GeN1e)~
+@235000 = ~Alterer les restrictions des multi-classses~
+@235001 = ~Autoriser les humains a se multi-classer~
+@235100 = ~Autoriser aux non-humains l'acces a toutes les combinaisons multi-classes~
+@235200 = ~Installer les options une et deux (tout le monde a acces aux multi-classes sans contrainte)~
+@235300 = ~Permettre aux non-humains l'acces uniquement aux multi-classes basees sur des classes accessibles~
+@235800 = ~Installer les options une et trois (tout le monde a acces aux multi-classes des classes accessibles)~
+@236000 = ~Suppression des restrictions raciales pour les mono-classes~
+@237000 = ~Alterer les restrictions de jumelage~
+@237001 = ~Les humains ne peuvent plus se jumeler~
+@237100 = ~Autoriser les non-humains a se jumeler~
+@238000 = ~Suppression des restrictions raciales pour les kits~
+@239000 = ~Les paladins utilisent les tables de sort d'Icewind Dale - Heart of Winter (grogerson)~
+@240000 = ~Les rodeurs utilisent les tables de sort d'Icewind Dale - Heart of Winter (grogerson)~
+@241000 = ~Les druides utilisent les restrictions d'alignement de la 3eme edition~
+@242000 = ~Attenuer les restrictions d'equipement pour les clercs multi-classes~
+@243000 = ~Attenuer les restrictions d'equipement pour les druides multi-classes~
+@243001 = ~Modifier les restrictions d'equipement pour les druides multi-classes~
+@243100 = ~Accentuer les restrictions d'equipement pour les druides multi-classes (Angel)~
+@244000 = ~Tout le monde obtient le bonus d'attaque par round de specialisation~
+//translators - the next three strings are used to replace game text, so they need to be copied from the game itself
+//get @244001 and @244002 from strref 9588 in bgee/bg2ee/iwdee, 24315 for bgee V2.3
+//get @244003 from string 32117-32120 (bg2ee/iwdee) or 24220-24223 (bgee)
+@245000 = ~Imposer les regles de competences du jeu Papier pour les personnages jumeles~
+@250000 = ~Modification de la limite de poids de la force exceptionnelle~
+@251000 = ~Parchemins de sort avec restriction de niveau (Angel)~
+@252000 = ~Permettre aux mages d'utiliser une targe et les voleurs d'utiliser une rondache (Angel)~
+@253000 = ~Les eclairs ne rebondissent pas (Angel)~
+@254000 = ~Accelerer les quetes de forteresse du chateau d'Arnise~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Convenience Tweaks                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@299900 = ~Maximum de PV au niveau 1~
+@300000 = ~Davantage de points de vie a la montee de niveau~
+@300001 = ~Maximum~
+@300100 = ~Style NWN~
+@300200 = ~Tirages moyens~
+@300300 = ~Tirages à faible variation~ // Désactivé
+@300800 = ~Autoriser le tirage des PV jusqu'au niveau 20 (Angel)~
+@301000 = ~Points de vie maximum pour les PNJs (the bigg)~
+@301001 = ~Pour toutes les creatures du jeu~
+@301100 = ~Pour les PNJs non recrutables uniquement~
+@301200 = ~Pour les PNJs recrutables uniquement~
+@302000 = ~Identification de tous les objets~
+@303000 = ~Apprentissage des sorts assoupli~
+@303001 = ~100 % de chance d'apprendre un sort~
+@303100 = ~100 % de chance d'apprendre un sort et nombre de sorts illimite~
+@304000 = ~Sacs de contenance sans fond~
+@305000 = ~Retirer l'effet de fatigue des sorts de restauration~
+@306000 = ~Desactiver la voix "Vous devez reunir votre groupe avant d'aller plus loin" (Weimer)~
+@307000 = ~Prix reduits dans les boutiques pour les faibles reputations (Sabre)~
+@307001 = ~Changer l'effet de la reputation sur les prix dans les boutiques~
+@307100 = ~Reputation sans effet, prix a 100 % dans les boutiques (Luiz)~
+@307200 = ~Reputation sans effet, prix a 80 % dans les boutiques (Luiz)~
+@307300 = ~Reputation sans effet, prix a 60 % dans les boutiques (Luiz)~
+@308000 = ~Empilement illimite des munitions~
+@308001 = ~Augmenter la taille de la pile de munitions~
+@308100 = ~Piles de 40~
+@308200 = ~Piles de 80~
+@308300 = ~Piles de 120~
+@309000 = ~Empilement illimite des gemmes et des bijoux~
+@309001 = ~Augmenter la limite d'empilement des gemmes et des bijoux~
+@310000 = ~Empilement illimite des potions~
+@310001 = ~Augmenter la limite d'empilement des potions~
+@311000 = ~Empilement illimite des parchemins~
+@311001 = ~Augmenter la limite d'empilement des parchemins~
+@312000 = ~Patch du bonheur (les PNJs du groupe ne se plaignent pas de la reputation)~
+@312001 = ~Les PNJs ne sont jamais en colere a propos de la reputation~
+@312100 = ~Les PNJs peuvent etre en colere a propos de la reputation mais ne partent jamais (Salk)~
+@312200 = ~Les PNJs sont toujours neutres a propos de la reputation (Anomaly)~
+@312300 = ~Les PNJs du groupe ne se battent pas~
+@312400 = ~Empecher le romance entre Aerie et Haer'Dalis des le commencement~
+@312500 = ~Rendre heureux les personnages neutres lorsque la reputation est moyenne~
+@313000 = ~Pas de pieges ni de verrous (Weimer)~
+@314000 = ~Cinematiques et reves des chapitres 1 et 2 acceleres~
+@314001 = ~Version originale d'Ease of Use (Karzak, Blucher)~
+@314100 = ~Version moins stupide~
+@315000 = ~Desactiver l'animation hideuse de la Cape de Renvoi, du Piege a sort et du Miroir physique~
+@316000 = ~Conserver le butin de Drizzt et desactiver Malchor Harpell~
+@317000 = ~Pas d'avatar Elfe Noir sur le groupe en Ombre-Terre~
+@317500 = ~Desactiver les romances~
+@317600 = ~Accelerer/ralentir les romances~
+@317601 = ~Veuillez entrer le pourcentage de variation que vous voudriez appliquer a l'intervalle de temps entre deux discussions,
+par exemple, 50 reduirait de moitie l'intervalle entre deux discussions tandis que 300 le triplerait.
+Indiquez un pourcentage entre 20 et 500 : ~
+@317900 = ~Pas de restriction de race~
+@318000 = ~Triche sur les romances~
+@318001 = ~Pas de restriction de race ni de sexe~
+@318100 = ~Pas de restriction de race ni de sexe et romances multiples possibles~
+@318200 = ~Pas de restriction de race ni de sexe, romances multiples possibles et pas de risque de rater les romances~
+@318300 = ~Triche sur les romances~
+@318301 = ~Supprimer les restrictions de race des romances ? (Choisissez 1 ou 2)
+1) Supprimer
+2) Pas de changements~
+@318302 = ~  * Supprimer les restrictions de race des romances~
+@318303 = ~Supprimer les restrictions de sexe des romances ? (Choisissez 1 ou 2)
+1) Supprimer
+2) Pas de changements~
+@318304 = ~  * Supprimer les restrictions de sexe des romances~
+@318305 = ~Autoriser les romances multiples ? (Choisissez 1 ou 2)
+1) Autoriser
+2) Pas de changements~
+@318306 = ~  * Autoriser les romances multiples~
+@318307 = ~Pas de risque de rater les romances ? (Choisissez 1 ou 2)
+1) Pas de risque de rater les romances
+2) Pas de changements~
+@318308 = ~  * Pas de risque de rater les romances~
+@318309 = ~Vous avez choisi d'installer les options suivantes :~
+@318310 = ~Ces choix sont-ils corrects ? (Choisissez 1 ou 2)
+1) Oui, lancer l'installation
+2) Non, refaire mes choix~
+@318311 = ~Demarrer les romances pour les nouvelles parties ToB ? (Choisissez 1 ou 2)
+1) Demarrer pour les nouvelles parties ToB
+2) Pas de changements~
+@318312 = ~  * Demarrer les romances pour les nouvelles parties ToB~
+@319000 = ~Repos possible partout (Japheth)~
+@319100 = ~Desactiver les interruptions du repos non-hostiles~
+@319400 = ~Alterer les interruptions du repos hostiles~
+@319401 = ~Desactiver en totalite~
+@319500 = ~Reduire la frequence de 50 %~
+@319600 = ~Augmenter la frequence de 50 %~
+@319700 = ~Doubler la frequence~
+@319800 = ~Quadrupler la frequence~
+@320000 = ~Batons, gourdins et frondes vendables (Icelus)~
+@320500 = ~Les magasins achetent tous les types d'objets~
+@321000 = ~Minimum pour les stats (triche)~
+//@321001 = ~Selectionnez le minimum pour les stats, entre 6 et 15 :~
+@321002 = ~Choisissez une valeur minimum de FORCE, entre 6 et 15, ou 0 pour aucun minimum :~
+@321003 = ~Choisissez une valeur minimum de DEXTERITE, entre 6 et 15, ou 0 pour aucun minimum :~
+@321004 = ~Choisissez une valeur minimum de CONSTITUTION, entre 6 et 15, ou 0 pour aucun minimum :~
+@321005 = ~Choisissez une valeur minimum d'INTELLIGENCE, entre 6 et 15, ou 0 pour aucun minimum :~
+@321006 = ~Choisissez une valeur minimum de SAGESSE, entre 6 et 15, ou 0 pour aucun minimum :~
+@321007 = ~Choisissez une valeur minimum de CHARISME, entre 6 et 15, ou 0 pour aucun minimum :~
+@321008 = ~FORCE minimum :~
+@321009 = ~DEXTERITE minimum :~
+@321010 = ~CONSTITUTION minimum :~
+@321011 = ~INTELLIGENCE minimum :~
+@321012 = ~SAGESSE minimum :~
+@321013 = ~CHARISME minimum :~
+@321014 = ~Aucun changement choisi ! Choisissez de nouveau.~
+@322000 = ~Points d'entree de carte plus judicieux~
+@323000 = ~Taerum fabrique une armure d'Ankheg supplementaire (Icendoan/grogerson)~
+@324000 = ~Butin aleatoire sympathique~
+@324001 = ~Rendre aleatoire au rechargement~
+@324100 = ~Choisir son butin~
+@324200 = ~Echange avec des marchands~
+//60 and 80 strings are identical, just with Flynn/Harrold and Lonelywood/Kuldahar exchanged
+@325000 = ~Ne jamais perdre l'acces aux marchandises du commerce d'Orrick le Gris~
+@326000 = ~Munitions recuperables~
+@326001 = ~25 % de chance de recuperer apres une attaque reussie~
+@326100 = ~50 % de chance de recuperer apres une attaque reussie~
+@326200 = ~75 % de chance de recuperer apres une attaque reussie~
+@326300 = ~100 % de chance de recuperer apres une attaque reussie~
+@326400 = ~25 % de chance de recuperer apres une attaque reussie, contre les ennemis seulement~
+@326500 = ~50 % de chance de recuperer apres une attaque reussie, contre les ennemis seulement~
+@326600 = ~75 % de chance de recuperer apres une attaque reussie, contre les ennemis seulement~
+@326700 = ~100 % de chance de recuperer apres une attaque reussie, contre les ennemis seulement~
+@327000 = ~Armes de jet recuperables~
+@328000 = ~Accorder a chaque classe/kit quatre emplacements d'arme~
+@329000 = ~Personnaliser le nom des sauvegardes automatiques~
+@329001 = ~Employer la forme : 000000000-Protagoniste-Nom de sauvegarde~
+@329100 = ~Employer la forme : 000000000-Protagoniste Nom de sauvegarde~
+@329200 = ~Employer la forme : 000000000-(Protagoniste)-Nom de sauvegarde~
+@329300 = ~Employer la forme : 000000000-(Protagoniste) Nom de sauvegarde~
+@329400 = ~Employer la forme : 000000000-[Protagoniste]-Nom de sauvegarde~
+@329500 = ~Employer la forme : 000000000-[Protagoniste] Nom de sauvegarde~
+@330000 = ~Focus camera en cas de mort~
+@331000 = ~Demarrer les nouvelles parties avec l'IA de groupe desactivee~
+@332000 = ~Pas de depreciation dans les magasins~
+@333000 = ~Augmenter la vitesse de deplacement du groupe en dehors des combats~
+@333001 = ~De 50 pour cent~
+@333002 = ~De 100 pour cent~
+@333003 = ~De 150 pour cent~
+@333010 = ~Désactiver la Hâte automatique~
+@333011 = ~Désactiver la Hâte automatique
+
+Cette compétence permet aux membres du groupe de se déplacer plus rapidement en dehors des combats. Cliquez sur la compétence pour la désactiver.~
+
+@333012 = ~Activer la Hâte automatique~
+@333013 = ~Activer la Hâte automatique
+
+Cette compétence permet aux membres du groupe de se déplacer plus rapidement en dehors des combats. Cliquez sur la compétence pour l'activer.~
+@333020 = ~Bonus de vitesse de déplacement désactivé~
+@335000 = ~Creer des sauvegardes periodiques~
+@335001 = ~Toutes les 15 minutes (un emplacement de sauvegarde seulement)~
+@335002 = ~Toutes les 30 minutes (un emplacement de sauvegarde seulement)~
+@335003 = ~Toutes les 60 minutes (un emplacement de sauvegarde seulement)~
+@335004 = ~Toutes les 120 minutes (un emplacement de sauvegarde seulement)~
+@335005 = ~Toutes les 15 minutes (cycle de quatre emplacements de sauvegarde)~
+@335006 = ~Toutes les 30 minutes (cycle de quatre emplacements de sauvegarde)~
+@335007 = ~Toutes les 60 minutes (cycle de quatre emplacements de sauvegarde)~
+@335008 = ~Toutes les 120 minutes (cycle de quatre emplacements de sauvegarde)~
+@335009 = ~Personnaliser (via cdtweaks.txt)~
+@335103 = ~Parametres des sauvegardes periodiques :
+Activer les sauvegardes periodiques :        a7_interval_enable
+Periode entre les sauvegardes :              a7_interval_delay seconds
+Sauvegarde pendant le combat :               a7_interval_combat
+Nombre d'emplacements de sauvegarde :        a7_interval_slots
+Utiliser un nom de sauvegarde personnalise : a7_interval_custom
+Afficher le message d'information :          a7_interval_feedback
+Utiliser les parametres de Baldur.lua :      a7_interval_ini
+~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// NPC Tweaks                                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@400000 = ~Ajuster le jet de reputation des PNJs mauvais recrutables~
+@401000 = ~Convocation par l'Esprit du Destin amelioree~
+@402000 = ~PNJs style ToB~
+@403000 = ~Caracteristiques coherentes : Edwin~
+@403001 = ~Valeurs de BG1~
+@403100 = ~Valeurs de BG2~
+@404000 = ~Caracteristiques coherentes : Jaheira~
+@405000 = ~Changer l'alignement de Jaheira en "Neutre Bon"~
+@406000 = ~Caracteristiques coherentes : Minsc~
+@407000 = ~Caracteristiques coherentes : Viconia~
+@408000 = ~Transformer Khalid en Guerrier / Mage (Domi)~
+@409000 = ~Transformer Montaron en Assassin (Andyr)~
+@410000 = ~Changer l'alignement de Korgan en "Neutre Mauvais"~
+@411000 = ~Donner a Kagain une valeur reglementaire de 19 en constitution~
+@412000 = ~Donner a Coran une valeur reglementaire de 19 en dexterite~
+@413000 = ~Transformer Xan en mage generaliste (Mike1072)~
+@414000 = ~Ne pas attribuer automatiquement un script IA avance au groupe~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Ex-SCS components                                \\\\\
+///// Automatically copied over from SCS TRA files     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@500000 = ~Carapaces d'ankhegs, peaux de loup des glaces et tetes de wivernes empilables~
+@501000 = ~Permettre de separer les couples de PNJ~
+@502000 = ~Rendre les membres du groupe moins susceptibles de 
+mourir de facon permanente~
+@503000 = ~Deplacer Bouh dans le sac de Minsc~
+@504000 = ~Permettre a Yeslick d'utiliser les haches~
+@505000 = ~S'assurer que Shar-Teel ne meurt pas lors du defi originel~
+@506000 = ~Retirer l'animation de la Cape de renvoi (la laisser
+pour les sorts et effets donnant le meme graphisme)~
+//WeiDU prompts
+@-1000= "Le mod %TP2_FILE_NAME% contient"
+@-1001= "composants optionnels distincts.
+Pour gagner du temps, vous pouvez choisir ce que vous souhaitez faire d'eux
+au niveau general plutot que de repondre aux questions pour chacun.
+"
+@-1002= "Que faut-il faire de tous les composants qui NE sont PAS ENCORE installes ?
+Les [I]nstaller, les [S]auter, dem[A]nder pour chacun ? "
+@-1003= "Que faut-il faire de tous les composants qui sont DEJA installes ?
+Les [R]einstaller, les s[U]pprimer, les [S]auter, dem[A]nder pour chacun ? "
+
+@-1004= "S'IL VOUS PLAIT, envoyez par e-mail le fichier"
+@-1005= "a"
+
+@-1006= "Installer le composant ["
+@-1007= "] ?
+[R]einstaller, co[N]server, s[U]pprimer ou [Q]uitter ? "
+@-1008= "] ?
+[I]nstaller, [N]e pas installer ou [Q]uitter ? "
+
+@-1009= "Entrez une partie du nom du module : "
+
+@-1010= "Reinstallation du composant ["
+@-1011= "] "
+@-1012= "Reinstallation dans la langue"
+
+@-1013= "Suppression de l'ancienne installation de ["
+@-1014= "] au prealable..."
+@-1015= "SUPPRESSION REUSSIE DE L'ANCIEN"
+
+@-1016= "Installation en cours"
+@-1017= "ERREUR pendant l'installation de ["
+@-1018= "], retour a l'etat anterieur"
+@-1019= "INSTALLATION REUSSIE"
+@-1020= "Saute"
+@-1021= "Suppression de ["
+@-1022= "] (composant #"
+@-1023= ")"
+@-1024= "SUPPRESSION REUSSIE DE ["
+
+@-1025= "] ?
+[R]einstaller, co[N]server, s[U]pprimer, [Q]uitter ou choisir un parmi :"
+@-1026= "] ?
+[N]e pas installer, [Q]uitter ou choisir un parmi :"
+@-1027= " (installe actuellement)"
+
+@-1028= "Souhaitez-vous afficher les composants de ["
+@-1029= "] ?
+[Y]Oui, [N]on ? "
+
+@-1030= "] ?
+choisir un parmi :"
+@-1031= "] ?
+[R]einstaller, co[N]server, [Q]uitter ou choisir un parmi :"
+@-1032= "INSTALLATION ECHOUEE A CAUSE D'ERREURS"
+@-1033= "INSTALLATION AVEC DES ALERTES"
+@-1034= "Souhaitez-vous afficher les instructions (ReadMe) ? [Y]Oui [N]on"
+@-1035= "Dans la langue"
+
+@-1036= "Saute le GROUPE ["
+@-1037= "] pour cause d'absence des pre-requis."
+
+@-1038= "dem[A]nder pour chaque composant, tout [S]auter, ou choisir une selection pre-definie :"
+@-1039= "dem[A]nder pour chaque composant, [R]einstaller la configuration courante, tout s[U]pprimer, tout [S]auter, ou choisir une selection pre-definie :"
+
+@-1040= "
+Veuillez choisir la langue dans laquelle vous souhaitez jouer au jeu.
+Si par la suite vous desirez jouer au jeu dans une langue differente, il vous
+faudra editer le fichier weidu.conf et reinstaller vos mods.
+"
+@-1041= "Tcheque"
+@-1042= "Allemand"
+@-1043= "Anglais"
+@-1044= "Espagnol"
+@-1045= "Francais"
+@-1046= "Italien"
+@-1047= "Polonais"
+@-1048= "Portugais"
+@-1049= "Turc"
+@-1050= "Japonais"
+@-1051= "Coreen"
+@-1052= "Chinois simplifie"
+@-1053= "Russe"
+@-1054= "Ukrainien"
+
+@-1060= "
+Ce jeu est disponible en plusieurs langues mais WeiDU ne sait pas laquelle a ete choisie quand ce mod a ete installe.
+
+Veuillez indiquer quelle langue du jeu a ete utilisee quand vous avez installe ce mod. Votre choix servira jusqu'a ce que WeiDU s'arrete mais ne sera pas memorise.
+"
+@-1061= "
+Utilisation de"
+@-1062= " et "
+
+@-1063= "INSTALLATION ABANDONNEE"
+@-1064= "Abandon de l'installation de ["
+@-1065= "], retour a l'etat anterieur"

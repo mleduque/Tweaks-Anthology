@@ -1,0 +1,301 @@
+@0      = ~NSC Verbesserungen~
+@1      = ~Dieser Schritt kann einen Moment dauern...~
+@2      = ~'Nimmervolle Beutel hinzufuegen' wird fuer diese Komponente vorausgesetzt.~ 
+@3      = ~Setzt die Komponente 'In Ruestung erlauben magische Zauber zu wirken' voraus.~
+@4      = ~Angenehme Verbesserungen/Cheats~ 
+@5      = ~'Exotische Gegenstaende' wird fuer diese Komponente vorausgesetzt.~
+@6      = ~Setzt die Komponente 'Schleichen und Diebesfaehigkeiten in Schwerer Ruestung erlauben' voraus.~
+@7      = ~Diese Komponente ist nicht in Eurer Sprache verfuegbar.~ 
+@8      = ~Diese Komponente ist nur fuer BGT.~
+@9      = ~Regelaenderungen~ 
+@10     = ~Diese Komponente ist nicht fuer Tutu verfuegbar.~
+@11     = ~Kosmetische Aenderungen~
+@12     = ~Thron des Bhaal wird fuer diese Komponente vorausgesetzt.~ 
+@13     = ~Inhaltsaenderungen~
+@14     = ~Diese Komponente ist nur fuer Tutu oder BGT.~ 
+@15     = ~Diese Komponente ist nur fuer Tutu.~
+@16     = ~Die Funktionalitaet dieser Komponente ist entweder bereits enthalten 
+oder durch einen Eurer installlierten Mods bereits ersetzt worden.~
+@17     = ~Die Komponente '+x/+y Waffen konsequent machen' muss dafuer installiert sein.~
+@18     = ~Diese Komponente wurde verworfen. ~ 
+@19     = ~Cams Hausregeln~
+@20     = ~Readme anschauen?
+  a) Ja
+  b) Nein~ 
+@21     = ~Benoetigt die Komponente 'Erfahrungspunktgrenze aendern: Komplett entfernen'.~ 
+@1000   = ~Helm-Animationen entfernen~
+@2000   = ~Imoens Spielfigur zur Magierin aendern~ 
+@3000   = ~Nalias Spielfigur zur Diebin aendern~
+@4000   = ~Viconias Hautfarbe zu Dunkelblau aendern~
+@5000   = ~Spielfigur-Veraenderungs-Skript~
+@6000   = ~Waffenanimation Verbesserungen~
+@7000   = ~Icewind Dale Zaubergrafiken (Andyr)]~
+@7020   = ~Zaubergrafiken von Baldu's Gate (Andyr)~
+@8000   = ~Logo des SvA Ladebildschirms wieder herstellen (nur TdB)~
+@8020   = ~Wiederhergestellte IWD Bilder während des Ladens~
+@9000   = ~Zusaetzliche Portraetsymbole der Ausruestungsgegenstaende 
+entfernen~
+@10000  = ~Buerger verwenden graue Farben~
+@11000  = ~Symbol Verbesserungen~
+@12000  = ~Spielfigur aendern, wenn Roben oder Ruestung getragen wird 
+(Galactygon)~
+@13000  = ~Spielpause bei allen Dialogen erzwingen~
+ @18000 = ~Einzigartige Behaelter~
+ @18018 = ~Nur die Fehler beheben~
+ @18019 = ~Diese Komponente ist nicht Relevant fuer BG1.~
+ @18020 = ~Einzigartige Symbole und Namen~
+ @18021 = ~Nur einzigartige Symbole~
+ @18022 = ~BG2 Farben fuer BG1/Tutu NSCs~
+ @18023 = ~Diese Komponente ist nicht Relevant fuer BG2.~
+@101000 = ~Mehr Interjektionen~
+@102000 = ~Trefferpunkte-Ausloeser fuer die NSC-Verwundet-Dialoge 
+veraendern~
+@103000 = ~Wildnisgebiete vor Kapitel 6 offenbaren~
+@103500 = ~Mantelwald Gebiete vor Beenden des Banditenlagers bereitstellen~
+@103501 = ~Nur das erste Gebiet~
+@103600 = ~Alle Wildnisgebiete ausser der Mine~
+@104000 = ~Verbesserte Athkatlaner Stadtwache~
+@105000 = ~Langsamer Zerfall von Drow Gegenstaenden~
+@106000 = ~Zerbrechliche nichtmagische Schilder, Helme und Ruestung aus Eisen~
+@107000 = ~Verbesserte Multiplayer-Entlassen-Dialoge~
+@108000 = ~Nimmervolle Beutel hinzufuegen~
+@109000 = ~Exotische Gegenstaende~
+
+@110000 = ~Stadtkarten beim Betreten des Gebietes enthuellen~
+@111000 = ~Kartennotizen hinzufuegen~
+@112000 = ~Geschaefte verkaufen groessere Stapel von Gegenstaenden~
+@113000 = ~Ruf am Anfang von BG2 zuruecksetzen (nur BGT)~
+@114000 = ~Edelsteine und Traenke erfordern Identifizierung~
+@115000 = ~Gestaltwandler neu ausgleichen~
+@116000 = ~Mehrere Hochburgen (Baldurdash)~
+@116001 = ~Keine Beschraenkungen (Baldurdash)~
+@116100 = ~Klassenbeschraenkungen behalten~
+@117000 = ~Bonus Haendler (Baldurdash)~
+@118000 = ~Weibliche Edwina~
+@119000 = ~Romanzen Fehlerbehebungen~
+@120000 = ~Imoen TdB Dialogbehebung~
+@121000 = ~BG Schrittgeschwindigkeiten verwenden (BETA)~
+@122000 = ~Cromwell wertet Gegenstaende der Wachenden Festung auf~
+@201000 = ~PnP Zauberfortschrittsfabellen~
+@202000 = ~Zweihaendige Bastardschwerter~
+@203000 = ~Zweihaendige Katanas~
+@204000 = ~Universelle Keulen~
+@205000 = ~Beschreibung fuer die Universelle Keulen Komponente anpassen~
+@205001 = ~Erfordert die Installation von 'Universelle Keulen'~
+@205002 = ~'Ashes of Embers' ist installiert, welches bereits die Beschreibungen der Keulen angepasst hat.~
+@206000 = ~Kampfstile fuer alle~
+@207000 = ~Druiden benutzen Stufen- und Zaubertabellen von Klerikern~
+@208000 = ~Hohe Stufe Faehigkeiten verzoegern~
+@209000 = ~Erfahrungspunktgrenze aendern~
+@209001 = ~Erfahrungspunktgrenze entfernen ~
+@209100 = ~Erfahrungspunktgrenze bei Stufe 20~
+@209200 = ~Erfahrungspunktgrenze bei Stufe 30~
+@210000 = ~Schleichen und Diebesfaehigkeiten in Schwerer Ruestung 
+erlauben~
+// Moved from thieving_descripts.tpa
+// See English setup.tra for details on what should be matched by the regular expression
+@211000 = ~Veraendert Gegenstandsbeschreibungen fuer die Komponente 'Schleichen und Diebesfaehigkeiten in Schwerer Ruestung erlauben'~
+@212000 = ~In Ruestung erlauben magische Zauber zu wirken~
+// Moved from arcane_descripts.tpa
+// See English setup.tra for details on what should be matched by the regular expression
+@213000 = ~Veraendert Gegenstandsbeschreibungen fuer die Komponente 'In Ruestung erlauben magische Zauber zu wirken'~
+@214000 = ~Erweiterte Mehrklassenoptionen~
+@215000 = ~Mehrere Schutzgegenstaende tragen~
+@215001 = ~PnP Beschraenkungen~
+@215100 = ~Keine Beschraenkungen~
+@216000 = ~Ausgeglichene Waffenfertigkeiten~
+@216006 = ~Waffenfertigkeitssystem veraendern~
+@216100 = ~BG-Stil Waffenfertigkeiten mit Kampfstile (the bigg)~
+@216200 = ~BG-Stil Waffenfertigkeiten ohne Kampfstile (the bigg)~
+@217000 = ~Zauber von Schriftrollen (und anderen Gegenstaenden) auf der Stufe des Charakters wirken~
+@218000 = ~Regeltreue ETW0-Tabelle, Rettungswuerfe, Großmeisterschaft und magischer sowie goettlicher Zauberfortschritt (Blucher)~
+@219000 = ~Begrenzte Faehigkeit der Ladenbesitzer Gegenstaende zu 
+identifizieren~
+@219001 = ~Nur Magier und Barden Ladenbesitzer koennen Gegenstaende identifizieren~
+@219100 = ~Identifizierungsfaehigkeit basiert auf Sagenkunde der Ladenbesitzer~
+@219200 = ~Mischform beider Methoden~
+@220000 = ~Klassenkombination Grossmeisterschaft (Weimer)~
+@221000 = ~Wahre Grossmeisterschaft (Baldurdash)~
+@222000 = ~Aendere magisch erschaffene Waffen zu Null Gewicht~
+@223000 = ~+x/+y Waffen konsequent machen~
+// next two strings used for matching and updating item descriptions
+@223100 = ~Aktualisierte Beschreibungen fuer die Komponente '+x/+y Waffen 
+konsequent machen'~
+@224000 = ~Regeltreue ETW0 Tabelle~
+@224001 = ~Begrenzt, beste ETW0 ist 0 (Blucher)~
+@224100 = ~Begrenzt, beste ETW0 ist -10 (PnP/BG1 Tabelle)~
+@225000 = ~Regeltreue Hexenmeister Zauberfortschrittstabelle~
+@226000 = ~Magier Zauberfortschrittstabelle veraendern~
+@226001 = ~Regeltreue Tabelle (Blucher)~
+@226100 = ~PnP-Tabelle~
+@227000 = ~Barden Zauberfortschrittstabelle veraendern~
+@228000 = ~Kleriker Zauberfortschrittstabelle veraendern~
+@229000 = ~Druiden Zauber- und Stufenfortschrittstabelle veraendern~
+@229001 = ~Keine Stufentabelle Aenderungen, nur regeltreue Druiden Zaubertabelle 
+(Blucher)~
+@229100 = ~Keine Stufentabelle Aenderungen, nur PnP Druiden/Kleriker Zaubertabelle~
+@229200 = ~Benutze Kleriker Stufentabelle mit normaler Druiden Zaubertabelle~
+@229300 = ~Benutze Kleriker Stufentabelle mit regeltreuer Druiden Zaubertabelle 
+(Blucher)~
+@229400 = ~Benutze Kleriker Stufentabelle mit PnP Druiden/Kleriker Zaubertabelle~
+@229500 = ~Benutze Kleriker Stufentabelle mit normaler Kleriker Zaubertabelle~
+@229600 = ~Benutze Kleriker Stufentabelle mit regeltreuer Kleriker Zaubertabelle 
+(Blucher)~
+@230000 = ~Dreifach-Klassen HLA Tabellen~
+@231000 = ~Rettungswurf Abzuege fuer gewirkte Zauber von hochstufigen 
+Wesen (BETA)~
+@231001 = ~Nur arkane Magie~
+@231100 = ~Nur goettliche Magie~
+@231200 = ~Arkane und goettliche Magie~
+@232000 = ~Entfernung der Fallen-Obergrenze (Ardanis/GeN1e)~
+@233000 = ~Verzoegerung von magischen Fallen entfernen (Ardanis/GeN1e)~
+@234000 = ~Herbeirufungs-Obergrenze von himmlichen Wesen entfernen 
+(Ardanis/GeN1e)~
+@300000 = ~Hoehere TP beim Stufenaufstieg~
+@300001 = ~Maximum~
+@300100 = ~NWN Stil~
+@301000 = ~Maximale TP fuer NSCs (the bigg)~
+@301001 = ~Fuer alle Kreaturen im Spiel~
+@301100 = ~Nur fuer keine anschlussfaehigen Gruppe-NSCs~
+@301200 = ~Nur fuer anschlussfaehige Gruppen-NSCs~
+@302000 = ~Alle Gegenstaende identifizieren~
+@303000 = ~Einfaches erlernen von Zaubern~
+@303001 = ~100% Zauber zu lernen~
+@303100 = ~100% Zauber zu lernen und keine Hoechstgrenze~
+@304000 = ~Nimmervolle Beutel unerschoepflich machen~
+@305000 = ~Erschoepfung von Genesungszaubern entfernen~
+@306000 = ~'Ihr muesst Eure Gruppe erst sammeln'-Sound entfernen 
+(Weimer)~
+@307000 = ~Preisnachlass bei schlechtem Ruf (Sabre)~
+@307001 = ~Auswirkung des Rufs auf die Ladenpreise aendern~
+@307100 = ~Ruf hat keine Auswirkung, Ladenpreise fest bei 100% (Luiz)~
+@307200 = ~Ruf hat keine Auswirkung, Ladenpreise fest bei 80% (Luiz)~
+@307300 = ~Ruf hat keine Auswirkung, Ladenpreise fest bei 60% (Luiz)~
+@308000 = ~Unbegrenzte Munitionsstapel~
+@309000 = ~Unbegrenzte Schmuck- und Edelsteinstapel~
+@310000 = ~Unbegrenzte Traenkestapel~
+@311000 = ~Unbegrenzte Schriftrollenstapel~
+@312000 = ~Happy Patch (Gruppen-NSCs beschweren sich nicht ueber den Ruf)~
+@312001 = ~NSCs sind niemals ueber den Ruf veraergert~
+@312100 = ~NSCs koennen ueber den Ruf veraergert sein, aber gehen nie (Salk)~
+@312200 = ~NSCs verhalten sich immer neutral ueber den Ruf (Anomaly)~
+@312300 = ~Gruppen-NSCs bekaempfen~ 
+@312400 = ~Verhindern Sie den Romance zwischen Aerie und Haer'Dalis am Anfang~
+@312500 = ~Neutrale Charaktere machen glueckliche Bemerkungen bei 
+durchschnittlichem Ruf~
+@313000 = ~Keine Fallen oder Schloesser (Weimer)~
+@314000 = ~Schnellere Kapitel 1+2 Zwischensequenzen und Traeume~
+@314001 = ~Originale von Ease-of-Use (Karzak, Blucher)~
+@314100 = ~Nicht verrueckte Version~
+@315000 = ~Die schrecklichen Animationen von Spiegelumhang, Zauberfalle und Physischer Spiegel ausschalten~
+@316000 = ~Drizzts Beute behalten, Malchor Harpell entfernen~
+@317000 = ~Keine Drow-Spielfiguren fuer die Gruppe im Unterreich~
+@317900 = ~Keine Rassen Voraussetzungen fuer Romanzen~
+@318000 = ~Romanzen Cheats~
+@318001 = ~Keine Geschlecht/Rassen Voraussetzungen fuer Romanzen~
+@318100 = ~Keine Geschlecht/Rassen Voraussetzungen fuer Romanzen, mehrfache Romanzen erlauben~
+@318200 = ~Keine Geschlecht/Rassen Voraussetzungen fuer Romanzen, mehrfache Romanzen erlauben, nichts zerstoert Romanzen~
+@318300 = ~Romanzen Cheats~
+@318301 = ~Rassenvoraussetzungen fuer Romanzen entfernen? (Waehle 1 oder 2)
+  1) Entfernen
+  2) Keine Aenderungen~
+@318302 = ~  * Rassenvoraussetzungen fuer Romanzen entfernen~
+@318303 = ~Geschlechtsvoraussetzungen fuer Romanzen entfernen? (Waehle 1 oder 2)
+  1) Entfernen
+  2) Keine Aenderungen~
+@318304 = ~  * Geschlechtsvoraussetzungen fuer Romanzen entfernen~
+@318305 = ~Mehrfache Romanzen erlauben? (Waehle 1 oder 2)
+  1) Mehrfache erlauben
+  2) Keine Aenderungen~
+@318306 = ~  * Mehrfache Romanzen erlauben~
+@318307 = ~Nichts zerstoert Romanzen? (Waehle 1 oder 2)
+  1) Nichts zerstoert Romanzen
+  2) Keine Aenderungen~
+@318308 = ~  * Nichts zerstoert Romanzen~
+@318309 = ~Ihr habt folgende Installationsoptionen ausgewaehlt:~
+@318310 = ~Sind diese Einstellungen richtig?
+  1) Ja, mit der Installation fortfahren
+  2) Nein, lass sie mich erneut auswaehlen~
+@318311 = ~Romanzen fuer neue Spiele in TdB starten?
+  1) Starte fuer neue TdB Spiele
+  2) Keine Aenderungen~
+@318312 = ~  * Romanzen fuer neue Spiele in TdB starten~
+@319000 = ~Ueberall Rasten (Japheth)~
+@320000 = ~Verkaeufliche Gegenstaende (Icelus)~
+@321000 = ~Cheat: Minimale Eigenschaften~
+@321001 = ~Waehle den minimalen Wert der Eigenschaften, zwischen 6 und 15:~
+@326000 = ~Wiederverwertbare Munition~
+@326001 = ~25% der Munition nach einem erfolgreichen Treffer wiederverwertbar~
+@326100 = ~50% der Munition nach einem erfolgreichen Treffer wiederverwertbar~
+@326200 = ~75% der Munition nach einem erfolgreichen Treffer wiederverwertbar~
+@326300 = ~100% der Munition nach einem erfolgreichen Treffer wiederverwertbar~
+@326400 = ~25% der Munition nach einem erfolgreichen Treffer wiederverwertbar, nur bei Gegnern~
+@326500 = ~50% der Munition nach einem erfolgreichen Treffer wiederverwertbar, nur bei Gegnern~
+@326600 = ~75% der Munition nach einem erfolgreichen Treffer wiederverwertbar, nur bei Gegnern~
+@326700 = ~100% der Munition nach einem erfolgreichen Treffer wiederverwertbar, nur bei Gegnern~
+@327000 = ~Wiederverwertbare Wurfwaffen~
+@329000 = ~Individuelle Namen fuer automatische Speicherstaende~
+@329001 = ~Schema anwenden: 000000000-Protagonist-Save-Name~
+@329100 = ~Schema anwenden: 000000000-Protagonist Save-Name~
+@329200 = ~Schema anwenden: 000000000-(Protagonist)-Save-Name~
+@329300 = ~Schema anwenden: 000000000-(Protagonist) Save-Name~
+@329400 = ~Schema anwenden: 000000000-[Protagonist]-Save-Name~
+@329500 = ~Schema anwenden: 000000000-[Protagonist] Save-Name~
+@400000 = ~Reaktionswuerfe von anschlussfaehigen boesen NSCs anpassen~
+@401000 = ~Verbessertes Herbeirufen beim Geist des Schicksals~
+@402000 = ~TdB-Stil NSCs~
+@403000 = ~Gleichbleibende Eigenschaften: Edwin~
+@403001 = ~BG Werte benutzen~
+@403100 = ~BG2 Werte benutzen~
+@404000 = ~Gleichbleibende Eigenschaften: Jaheira~
+@405000 = ~Aendere Jaheira zu Neutral Gut~
+@406000 = ~Gleichbleibende Eigenschaften: Minsk~
+@407000 = ~Gleichbleibende Eigenschaften: Viconia~
+@408000 = ~Khalid zum Kaempfer/Magier machen (Domi)~
+@409000 = ~Montaron zum Meuchelmoerder machen (Andyr)~
+@410000 = ~Aendere Korgan zu Neutral Boese~
+@411000 = ~Kagain ein zulaessiges Konstitutionsergebnis von 19 geben~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Ex-SCS components                                \\\\\
+///// Automatically copied over from SCS TRA files     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@500000 = ~Stapelbare Ankheg-Panzer, Winterwolf-Pelze und Drachenköpfe~
+@501000 = ~NPC-Paaren erlauben, sich zu trennen~
+@502000 = ~Gruppenmitglieder werden weniger wahrscheinlich unabänderlich sterben~
+@503000 = ~Verschiebt Boo in Misks Gepäck~
+@504000 = ~Yeslick erlauben, Äxte zu benutzen~
+@505000 = ~Sicherstellen, dass Shar-Teel nicht bei der ursprünglichen Herausforderung stirbt~
+@506000 = ~Animation vom Spiegelumhang entfernen (belasst ihn für andere Zauber und Wirkungen, die dieselbe Graphik verwenden)~
+@507001 = ~Macht den Anfangs-Kerker ein bisschen schwerer~
+@507002 = ~Macht die Bardenfestung für alle Klassen zugänglich~
+@507003 = ~Macht die Klerikerfestung für alle Klassen zugänglich~
+@507004 = ~Macht die Druidenfestung für alle Klassen zugänglich~
+@507005 = ~Macht die Kämpferfestung für alle Klassen zugänglich~
+@507006 = ~Macht die Paladinfestung für alle Klassen zugänglich~
+@507007 = ~Macht die Waldläuferfestung für alle Klassen zugänglich~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Ex-SCS components                                \\\\\
+///// Automatically copied over from SCS TRA files     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@500000 = ~Stapelbare Ankheg-Panzer, Winterwolf-Pelze und Drachenköpfe~
+@501000 = ~NPC-Paaren erlauben, sich zu trennen~
+@502000 = ~Gruppenmitglieder werden weniger wahrscheinlich unabänderlich sterben~
+@503000 = ~Verschiebt Boo in Misks Gepäck~
+@504000 = ~Yeslick erlauben, Äxte zu benutzen~
+@505000 = ~Sicherstellen, dass Shar-Teel nicht bei der ursprünglichen Herausforderung stirbt~
+@506000 = ~Animation vom Spiegelumhang entfernen (belasst ihn für andere Zauber und Wirkungen, die dieselbe Graphik verwenden)~
+@507001 = ~Macht die Bardenfestung für alle Klassen zugänglich~
+@507002 = ~Macht die Klerikerfestung für alle Klassen zugänglich~
+@507003 = ~Macht die Druidenfestung für alle Klassen zugänglich~
+@507004 = ~Macht die Kämpferfestung für alle Klassen zugänglich~
+@507005 = ~Macht die Paladinfestung für alle Klassen zugänglich~
+@507007 = ~Macht die Waldläuferfestung für alle Klassen zugänglich~
+@507008 = ~Macht die Diebesfestung für alle Klassen zugänglich~

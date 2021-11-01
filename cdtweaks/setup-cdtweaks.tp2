@@ -20,52 +20,71 @@ AUTO_TRA ~cdtweaks/languages/%s~
 LANGUAGE
   ~English~
   ~english~
-  ~cdtweaks/languages/english/setup.tra~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
 LANGUAGE
   ~Czech (Translation by Razfallow and Vlasák)~
   ~czech~
-  ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/czech/setup.tra~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
+  ~cdtweaks/languages/czech/game.tra~
+  ~cdtweaks/languages/czech/weidu.tra~
 LANGUAGE
   ~Francais (Translation by Anomaly, Elgaern the Dragon Slayer, Isaya and elminster)~
   ~french~
-  ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/french/setup.tra~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
+  ~cdtweaks/languages/french/game.tra~
+  ~cdtweaks/languages/french/weidu.tra~
 LANGUAGE
   ~Deutsch (Uebersetzung von Leonardo Watson, Caswallon und Jester)~
   ~german~
-  ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/german/setup.tra~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
+  ~cdtweaks/languages/german/game.tra~
+  ~cdtweaks/languages/german/weidu.tra~
 LANGUAGE
   ~Italiano (translation by Andrea Colombo and improb@bile; original EoU by Antonio Favata)~
   ~italian~
-  ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/italian/setup.tra~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
+  ~cdtweaks/languages/italian/game.tra~
+  ~cdtweaks/languages/italian/weidu.tra~
 LANGUAGE
   ~Korean (Translation by web2air)~
   ~korean~
-  ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/korean/setup.tra~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
+  ~cdtweaks/languages/korean/game.tra~
+  ~cdtweaks/languages/korean/weidu.tra~
 LANGUAGE
   ~Polski (Translation by yarpen, Artanis, dragionian, Evendur, Grjgori, and Neminus)~
   ~polish~
-  ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/polish/setup.tra~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
+  ~cdtweaks/languages/polish/game.tra~
+  ~cdtweaks/languages/polish/weidu.tra~
 LANGUAGE
   ~Russian (Translation by Creepin, Domi, Kulyok, Serdrick, and aerie.ru)~
   ~russian~
-  ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/russian/setup.tra~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
+  ~cdtweaks/languages/russian/game.tra~
+  ~cdtweaks/languages/russian/weidu.tra~
 LANGUAGE
   ~Espanol (traducido por Clan DLAN)~
   ~spanish~
-  ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/spanish/setup.tra~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
+  ~cdtweaks/languages/spanish/game.tra~
+  ~cdtweaks/languages/spanish/weidu.tra~
 LANGUAGE
   ~Simplified Chinese (Translation from bg2_tweaks by Miranda, distance20 and c4_angel)~
   ~schinese~
-  ~cdtweaks/languages/english/setup.tra~
-  ~cdtweaks/languages/schinese/setup.tra~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
+  ~cdtweaks/languages/schinese/game.tra~
+  ~cdtweaks/languages/schinese/weidu.tra~
   ~cdtweaks/languages/schinese_prompts/prompts-%WEIDU_OS%.tra~
   ~cdtweaks/languages/schinese_prompts/setup-%WEIDU_OS%.tra~
 
@@ -14518,30 +14537,53 @@ GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bg2 tob bgt eet bgee bg2ee~ @25 // All BG games
 LABEL ~cd_tweaks_removable_npc_items~
 
+// some special stuff for edwin; move the amulet effects directly to edwin
+COPY_EXISTING ~misc89.itm~                         ~override~ // bg2
+              ~%tutu_scriptbg%misc89%eet_var%.itm~ ~override~ // tutu or eet version
+  LPF DELETE_EFFECT INT_VAR match_opcode = 42 check_headers = 0 END
+  PATCH_IF enhanced_edition BEGIN
+    SAY 0x50 @418001 // on EEs, amulet descript mentions extra spells granted, so remove
+  END  
+  BUT_ONLY IF_EXISTS
+  
+COPY_EXISTING_REGEXP ~^_?edwin[0-9_]*\.cre$~ ~override~
+  FOR (index = 0 ; index < 9 ; ++index) BEGIN
+    LPF ADD_CRE_EFFECT INT_VAR opcode = 42 target = 1 parameter1 = 2 parameter2 = (2 ** index) timing = 9 END
+  END  
+  BUT_ONLY
+  
+COPY_EXISTING ~npring01.itm~ ~override~ // remove 'cannot be removed' bit from nalia's ring
+  SAY 0x54 @418002
+  BUT_ONLY IF_EXISTS 
+
+ACTION_IF game_is_bgt BEGIN // bgt edwin has special scripting to keep wearing his amulet; disable it
+
+  COPY_EXISTING ~bgedwin.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~!HasItemEquipedReal("MISC89",Myself)~ ~False()~
+    END
+    BUT_ONLY
+
+END    
+
 ACTION_IF game_includes_bg1 BEGIN // obg, tutu, bgt, bgee, eet
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_removable_npc_items BEGIN
-    alora, ~%tutu_var%alora~, ~%ALORA_BCS%~, bdalora => ~%tutu_var%misc88~          // alora's lucky rabbit foot; bdalora.bcs shouldn't exist
-    edwin, ~%tutu_var%edwin~, ~%EDWIN_BCS%~, bdedwin => ~%tutu_var%misc89%eet_var%~ // edwin's amulet (bg/sod)
+    alora, ~%tutu_var%alora~, ~%ALORA_BCS%~, bdalora, cdalorab => ~%tutu_var%misc88~               // alora's lucky rabbit foot; bdalora.bcs shouldn't exist
+    edwin, ~%tutu_var%edwin~, ~%EDWIN_BCS%~, bdedwin, cdedamul => ~%tutu_scriptbg%misc89%eet_var%~ // edwin's amulet (bg/sod)
   END
 END
 
 ACTION_IF game_includes_soa BEGIN // obg2, bgt, bg2ee, eet
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_removable_npc_items BEGIN
-    nalia, nalia15, nalia, nali25 => npring01 // nalia's de'Arnise Signet Ring
-    edwin, edwin13, edwin, edwi25 => misc89   // edwin's amulet (bg2/tob)
+    nalia, nalia15, nalia, nali25, cdnalrng => npring01 // nalia's de'Arnise Signet Ring
+    edwin, edwin13, edwin, edwi25, cdedamul => misc89   // edwin's amulet (bg2/tob)
   END
 END
   
 
-ACTION_PHP_EACH cd_removable_npc_items AS params => item BEGIN // dv, cre file, script, expansion script => item
+ACTION_PHP_EACH cd_removable_npc_items AS params => item BEGIN // dv, cre file, script, expansion script, cloned item => item
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%item%.itm~ AND FILE_EXISTS_IN_GAME ~%params_1%.cre~ BEGIN
-  
-    ACTION_FOR_EACH script IN ~%params_2%~ ~%params_3%~ BEGIN    
-      ACTION_IF FILE_EXISTS_IN_GAME ~%script%.bcs~ BEGIN      
-        EXTEND_TOP ~%script%.bcs~ ~cdtweaks/baf/removable_npc_items.baf~ EVALUATE_BUFFER        
-      END
-    END      
   
     COPY_EXISTING ~%params_1%.cre~ ~override~
       READ_LONG  0x08 name
@@ -14563,7 +14605,7 @@ ACTION_PHP_EACH cd_removable_npc_items AS params => item BEGIN // dv, cre file, 
       WRITE_LONG 0x18 (THIS BOR BIT2) // adds droppable flag
       WRITE_LONG 0x34 0 // make unsellable
       PATCH_IF enhanced_edition BEGIN
-        LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter2 = 11 timing = 2 special = name STR_VAR resource = EVAL ~%params_0%~ END
+        LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 power = 1 parameter2 = 11 timing = 2 special = name STR_VAR resource = EVAL ~%params_0%~ END
       END ELSE BEGIN
         WRITE_SHORT 0x26 str
         WRITE_BYTE  0x2a int
@@ -14621,31 +14663,38 @@ ACTION_PHP_EACH cd_removable_npc_items AS params => item BEGIN // dv, cre file, 
         WRITE_LONG 0x1e usability
       END
       BUT_ONLY
+
+    ACTION_IF enhanced_edition BEGIN 
+    
+      COPY_EXISTING ~item_use.2da~ ~override~
+        REPLACE_TEXTUALLY ~^\(%item%[ %TAB%]+[^ %TAB%]+[ %TAB%]+[0-9]+[ %TAB%]+\)[0-9]+~ ~\12~
+        BUT_ONLY
+    
+    END ELSE BEGIN
+    
+      COPY_EXISTING ~%item%.itm~ ~override/%params_4%.itm~ // clone item
+      
+      COPY_EXISTING_REGEXP ~^_?%params_0%[0-9_]*\.cre$~ ~override~
+        READ_LONG 0x2bc item_off
+        READ_LONG 0x2c0 item_num
+        FOR (index = 0 ; index < item_num ; ++index) BEGIN
+          READ_ASCII (item_off + 0x00 + (index * 0x14)) item_check
+          PATCH_IF ("%item_check%" STRING_COMPARE_CASE "%item%" = 0) BEGIN
+            WRITE_ASCIIE (item_off + 0x00 + (index * 0x14)) ~%params_4%~ #8
+          END
+        END
+        BUT_ONLY
+        
+      OUTER_SPRINT item ~%params_4%~ // so that the script extensions, below, use the replacement item
+        
+    END    
+  
+    ACTION_FOR_EACH script IN ~%params_2%~ ~%params_3%~ BEGIN    
+      ACTION_IF FILE_EXISTS_IN_GAME ~%script%.bcs~ BEGIN      
+        EXTEND_TOP ~%script%.bcs~ ~cdtweaks/baf/removable_npc_items.baf~ EVALUATE_BUFFER        
+      END
+    END      
       
   END // file check
   
 END // php_each
-
-// some special stuff for edwin; move the amulet effects directly to edwin
-COPY_EXISTING ~misc89.itm~                    ~override~ // bg2
-              ~%tutu_var%misc89%eet_var%.itm~ ~override~ // tutu or eet version
-  LPF DELETE_EFFECT INT_VAR match_opcode = 42 check_headers = 0 END
-  PATCH_IF enhanced_edition BEGIN
-    SAY 0x50 @418001
-  END  
-  BUT_ONLY IF_EXISTS
-
-COPY_EXISTING_REGEXP ~^_?edwin[0-9_]*\.cre$~ ~override~
-  FOR (index = 0 ; index < 9 ; ++index) BEGIN
-    LPF ADD_CRE_EFFECT INT_VAR opcode = 42 target = 1 parameter1 = 2 parameter2 = index timing = 9 END
-  END  
-  BUT_ONLY
-  
-COPY_EXISTING ~npring01.itm~ ~override~ 
-  PATCH_IF enhanced_edition BEGIN
-    SAY 0x54 @418002
-  END ELSE BEGIN
-    SAY 0x54 @418003
-  END    
-  BUT_ONLY IF_EXISTS  
-  

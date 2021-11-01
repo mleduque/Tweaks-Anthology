@@ -1,0 +1,271 @@
+@0      = ~Poprawki dla postaci przylaczalnych~
+@1      = ~To moze chwile potrwac...~
+@2      = ~Ten komponent wymaga komponentu 'Torby przechowywania dla BG'.~ 
+@4      = ~Poprawki udogadniajace gre/oszustwa~
+@5      = ~Ten komponent wymaga komponentu 'Zestaw egzotycznych przedmiotow'.~ 
+@7      = ~Ten komponent nie jest dostepny w tym jezyku.~
+@9      = ~Zmiany zasad~
+@11     = ~Zmiany wygladu~ 
+@13     = ~Zmiany zawartosci~
+@16     = ~Funkcjonalnosc tego komponentu jest uwzgledniona lub zastapiona przez jeden z juz zainstalowanych modow.~ 
+@17     = ~Wymagane jest zainstalowanie komponentu 'Spraw, by bronie odpowiadaly umagicznieniu +x/+y'.~
+@18     = ~Ten komponent zostal wycofany.~
+@21     = ~Wymagany jest komponent 'Zmien ograniczenie doswiadczenia: Usun ograniczenie doswiadczenia'.~ 
+@22     = ~Ten komponent jest niedostepny dla Baldur's Gate: Enhanced Edition.~
+@23     = ~Ten komponent jest tylko dla Tutu lub Baldur's Gate: Enhanced Edition.~ 
+@24     = ~Ten komponent nie jest zgodny z innym juz zainstalowanym modem.~
+@25     = ~Ten komponent nie jest dostepny dla twojej gry.~
+@1000   = ~Usun animacje helmow~
+@2000   = ~Zmien awatara Imoen na maga~ 
+@3000   = ~Zmien awatara Nalii na zlodzieja~
+@4000   = ~Zmien kolor skory Viconi na ciemnoniebieski~ 
+@5000   = ~Skrypt przemiany awatarow~ 
+@6000   = ~Poprawki animacji broni~
+@7000   = ~Grafiki rzucania zaklec z Icewind Dale (Andyr)~
+@7020   = ~Wyglad rzucania zaklec z Baldur's Gate II (Andyr)~
+@8000   = ~Przywroc ekran wczytywania z Cieni Amn (tylko dla Tronu Bhalla)~
+@8020   = ~Przywrócenie ekranów wczytywania z IWD~
+@9000   = ~Wylacz ikony w portretach postaci dodane przez uzywane przedmioty~
+@10000  = ~Zwykli ludzie uzywaja szarych kolorow~
+@11000  = ~Poprawki ikon~
+@12000  = ~Zmien awatara przy noszeniu szat i pancerzy (Galactygon)~
+@13000  = ~Wszystkie dialogi zatrzymuja gre~
+@14000  = ~Napraw pisk Boo~
+@15000  = ~Zmien nazwy rzadkich przedmiotow~
+@15001  = ~Uzyj rzadkiej nazwy (tj. Kondar)~
+@15100  = ~Uzyj rzadkiej nazwy +x (tj. Kondar +1)~
+@15200  = ~Uzyj ogolnych nazw (tj. Miecz poltorareczny +1, +3 przeciw zmiennokszta³tnym)	 ~
+@101000 = ~Wiecej wtracen~
+@102000 = ~Zmiana punktow zycia uruchamia uszkodzone dialogi postaci przylaczalnych~
+@103000 = ~Odslon obszary dziczy przed rozdzialem szostym~
+@103500 = ~Udostepnij Knieje Otulisko przed ukonczeniem Obozowiska bandytow~
+@103501 = ~Tylko pierwszy obszar Kniei~
+@103600 = ~Cala Knieje Otulisko oprocz kopalni~
+@104000 = ~Ulepszona gwardia miejska Athkatli~
+@105000 = ~Stopniowe rozkladanie sie przedmiotow drowow~
+@106000 = ~Latwe do zniszczenia zelazne, niemagiczne tarcze, helmy i zbroje~
+@107000 = ~Ulepszone dialogi wyrzucania z druzyny dla wielu graczy~
+@108000 = ~Dodaj Torby przechowywania~
+@109000 = ~Zestaw egzotycznych przedmiotow~
+
+@110000 = ~Odslon mapy miast przy wejsciu na nowy obszar~
+@110100 = ~Nie odslaniaj map miasta przy wejsciu na nowy obszar~
+@111000 = ~Dodaj notatki do map~
+@112000 = ~Sklepy sprzedaja wieksze ilosci przedmiotow~
+@113000 = ~Wyzerowanie reputacji w BG2 (tylko dla BGT)~
+@114000 = ~Klejnoty i mikstury wymagaja identyfikacji~
+@115000 = ~Zbalansowanie zmiennoksztaltnych~
+@116000 = ~Wiele twierdz (Baldurdash)~
+@116001 = ~Brak ograniczen (Baldurdash)~
+@116100 = ~Zachowaj ograniczenia klasowe~
+@117000 = ~Dodatkowi kupcy (Baldurdash)~
+@118000 = ~Kobieca Edwina~
+@119000 = ~Poprawki bledow w romansach~
+@120000 = ~Poprawka do dialogow Imoen w Tronie Bhaala~
+@121000 = ~Uzyj szybkosci chodu z BG (BETA)~
+@122000 = ~Zezwol Cromwellowi na ulepszanie przedmiotow z Twierdzy Straznika~
+@123000 = ~Pozwol Cespenarowi uzywac przepisow Cromwella~
+@201000 = ~Tabele rozwoju czarow z papierowego AD&D~
+@202000 = ~Dwureczne miecze poltorareczne~
+@203000 = ~Dwureczne katany~
+@203500 = ~Dwureczne topory~
+@204000 = ~Maczugi dla wszystkich~
+@205000 = ~Uaktualnienia opisow komponentu 'Maczugi dla wszystkich'~
+@205001 = ~Wymaga instalacji 'Maczugi dla wszystkich'~
+@205002 = ~Ashes of Embers jest zainstalowane, ktore dostosowuje juz opisy dla maczug.~
+@206000 = ~Style walki dla wszystkich~
+@207000 = ~Druidzi uzywaja rozwoju czarow i poziomow kaplanow~
+@208000 = ~Opoznij pojawienie sie umiejetnosci wysokiego poziomu~
+@209000 = ~Zmien ograniczenie doswiadczenia~
+@209001 = ~Usun ograniczenie doswiadczenia~
+@209100 = ~Ograniczenie doswiadczenia do 20 poziomu~
+@209200 = ~Ograniczenie doswiadczenia do 30 poziomu~
+@210000 = ~Pozwol na uzywanie umiejetnoœci zlodziejskich i krycia sie w cieniu ciezkich pancerzach~
+@211000 = ~Zmien opis przedmiotow dla komponentu 'Pozwol na uzywanie umiejetnosci zlodziejskich i krycia sie w cieniu w ciezkich pancerzach'~
+@212000 = ~Pozwol rzucac czary maga w ciezkich pancerzach~
+@213000 = ~Zmien opis przedmiotow dla komponentu 'Pozwol rzucac czary mistyczne maga w ciezkich pancerzach'~
+@214000 = ~Rozszerzone opcje dla dwuklasowcow~
+@215000 = ~Noszenie wielu przedmiotow ochronnych z premia do Klasy Pancerza~
+@215001 = ~Ograniczenia jak w papierowym AD&D~
+@215100 = ~Brak ograniczen~
+@216000 = ~Zbalansowanie bieglosci w broniach~
+@216006 = ~Zmien system bieglosci w broniach~
+@216100 = ~System bieglosci w broniach w stylu BG, ze stylami walki (the bigg)~
+@216200 = ~System bieglosci w broniach w stylu BG, bez stylow walki (the bigg)~
+@217000 = ~Rzucaj czary ze zwojow (i innych przedmiotow) na poziomie postaci~
+@218000 = ~Nieograniczona tabela TraK0, rzuty obronne, wielkie mistrzostwo, rozwoj zaklec duchowych i mistycznych (Blucher)~
+@219000 = ~Ogranicz mozliwosc sklepikarzy do identyfikacji przedmiotow~
+@219001 = ~Tylko magowie i bardowie moga identyfikowac przedmioty~
+@219100 = ~Identyfikacja bazuje na wiedzy sklepikarza~
+@219200 = ~Hybryda obu metod~
+@220000 = ~Wielkie mistrzostwo dla wieloklasowcow (Weimer)~
+@221000 = ~Prawdziwe wielkie mistrzostwo (Baldurdash)~
+@222000 = ~Zmien wage magicznie stworzonych broni do zera~
+@223000 = ~Spraw, by bronie odpowiadaly umagicznieniu +x/+y~
+// next two strings used for matching and updating item descriptions
+@223100 = ~Uaktualnienie opisow komponentu 'Spraw, by bronie odpowiadaly umagicznieniu +x/+y'~
+@224000 = ~Nieograniczona tabela TraK0~
+@224001 = ~Ograniczenie: najlepsze TraK0 wynosi 0 (Blucher)~
+@224100 = ~Ograniczenie: najlepsze TraK0 wynosi -10 (tabela podrecznikowa/BG)~
+@225000 = ~Nieograniczona tabela w rozwoju czarow czarownika~
+@226000 = ~Zmien tabele w rowoju czarow maga~
+@226001 = ~Tabela nieograniczona (Blucher)~
+@226100 = ~Tabela podrecznikowa~
+@227000 = ~Zmien tabele w rozwoju zaklec barda~
+@228000 = ~Zmien tabele w rozwoju zaklec kaplana~
+@229000 = ~Zmien tabele w rozwoju poziomow i zaklec druida~
+@229001 = ~Brak zmian w rozwoju poziomow, tylko nieograniczona tabela zaklec druida (Blucher)~
+@229100 = ~Brak zmian w rozwoju poziomow, tylko podrecznikowa tabela zaklec druida/kaplana~
+@229200 = ~Uzyj tabeli w rozwoju poziomow kaplana z normalna tabela zaklec druida~
+@229300 = ~Uzyj tabeli w rozwoju poziomow kaplana z nieograniczona tabela zaklec druida (Blucher)~
+@229400 = ~Uzyj tabeli w rozwoju poziomow kaplana z podrecznikowa tabela zaklec druida~
+@229500 = ~Uzyj tabeli w rozwoju poziomow kaplana z normalna tabela zaklec kaplana~
+@229600 = ~Uzyj tabeli w rozwoju poziomow kaplana z nieograniczona tabela zaklec kaplana (Blucher)~
+@230000 = ~Tabele zdolnosci wysokopoziomowych dla trojklasowcow~
+@231000 = ~Dodaj kary do rzutow obronnych na czary rzucane przez wysokopoziomowych magow (BETA)~
+@231001 = ~Tylko dla zaklec mistycznych~
+@231100 = ~Tylko dla zaklec duchowych~
+@231200 = ~Dla zaklec mistycznych i duchowych~
+@232000 = ~Usuniecie limitu pulapek (Ardanis/GeN1e)~
+@233000 = ~Usun opoznienie magicznych pulapek (Ardanis/GeN1e)~
+@233900 = ~Usun ograniczenie przyzywania dla zwyklego przyzywania~
+@234000 = ~Usun ograniczenie przyzywania Niebian (Ardanis/GeN1e)~
+@235000 = ~Zmien ograniczenia dla wieloklasowcow~
+@235001 = ~Zezwol ludziom na wieloklasowosc~
+@235100 = ~Udostepnij nieludziom wszystkie kombinacje wieloklasowosci~
+@235200 = ~Zainstaluj obie z powyzszych opcji~
+@236000 = ~Usun ograniczenia rasowe dla jednoklasowcow~
+@237000 = ~Zmien ograniczenia dla dwuklasowcow~
+@237001 = ~Ludzie nie moga juz dwuklasowac~
+@237100 = ~Zezwol nieludziom na dwuklasowosc~
+@238000 = ~Usun ograniczenia rasowe dla podklas~
+@300000 = ~Wieksza ilosc punktow zycia przy awansie~
+@300001 = ~Maksymalna~
+@300100 = ~Na styl NWN ~
+@301000 = ~Maksymalna ilosc punktow zycia dla postaci przylaczalnych (the bigg)~
+@301001 = ~Dla wszystkich stworzen w grze~
+@301100 = ~Tylko dla postaci nie mogacych dolaczyc do druzyny~
+@301200 = ~Tylko dla postaci mogacych dolaczyc do druzyny~
+@302000 = ~Wszystkie przedmioty zidentyfikowane~
+@303000 = ~Latwa nauka czarow~
+@303001 = ~100% szansa na nauczenie sie czaru~
+@303100 = ~100% szansa na nauczenie sie czaru i brak maksymalnego ograniczenia ilosci czarow~
+@304000 = ~Uczyn Torby przechowywania bezdennymi~
+@305000 = ~Usun zmeczenie z czarow przywrocenie~
+@306000 = ~Usun dzwiek "Przed wyruszeniem w droge nalezy zebrac druzyne." (Weimer)~
+@307000 = ~Obnizki cen w sklepach dla druzyny o niskiej reputacji (Sabre)~
+@307001 = ~Zmiana wplywu reputacji na ceny w sklepach~
+@307100 = ~Reputacja nie ma wplywu na ceny, sa one ustalone w sklepach w wysokosci 100% (Luiz)~
+@307200 = ~Reputacja nie ma wplywu na ceny, sa one ustalone w sklepach w wysokosci 80% (Luiz)~
+@307300 = ~Reputacja nie ma wplywu na ceny, sa one ustalone w sklepach w wysokosci 60% (Luiz)~
+@308000 = ~Nieograniczone grupowanie amunicji~
+@309000 = ~Nieograniczone grupowanie klejnotow i bizuterii~
+@310000 = ~Nieograniczone grupowanie mikstur~
+@311000 = ~Nieograniczone grupowanie zwojow~
+@312000 = ~Szczesliwosc (Postacie przylaczalne w druzynie nie narzekaja na reputacje)~
+@312001 = ~Postacie przylaczalne nie sa zle wzgledem reputacji~
+@312100 = ~Postacie przylaczalne moga byc zle wzgledem reputacji, lecz nie odchodza (Salk)~
+@312200 = ~Postacie przylaczalne sa obojetne wzgledem reputacji (Anomaly)~
+@312300 = ~Postacie przylaczalne nie walcza ze soba~
+@312400 = ~Zatrzymaj romans Haer'Dalisa i Aerie ~
+@312500 = ~Neutralne postacie sa szczesliwe przy sredniej wartosci reputacji~
+@313000 = ~Brak pulapek i zamkow (Weimer)~
+@314000 = ~Szybsze przerywniki filmowe i sny z pierwszego i drugiego rozdzialu~
+@314001 = ~Oryginalna z modu Ease of Use (Karzak, Blucher)~
+@314100 = ~Wersja bez glupich odzywek~
+@315000 = ~Wylacz okropne animacje Plaszcza odwzwierciedlen, Pulapki na czary i Lustra materii~
+@316000 = ~Zatrzymywanie lupow Drizzta, wylaczenie Malchora Harpella~
+@317000 = ~Brak awatarow drowow w Podmroku~
+@317900 = ~Brak rasowych wymagan dla romansow~
+@318000 = ~Oszustwa w romansach~
+@318001 = ~Brak wymagan odnosnie rasy/plci~
+@318100 = ~Brak wymagan odnosnie rasy/plci, zezwol na wiele romansow~
+@318200 = ~Brak wymagan odnosnie rasy/plci, zezwol na wiele romansow, nic nie niszczy romansow~
+@318300 = ~Oszustwa w romansach~
+@318301 = ~Usun rasowe wymagania dla romansow (wybierz 1 lub 2)
+ 1) Usun
+ 2) Bez zmian~
+@318302 = ~  * Usun rasowe wymagania dla romansow~
+@318303 = ~Usun wymagania plci dla romansow (wybierz 1 lub 2)
+ 1) Usun
+ 2) Bez zmian~
+@318304 = ~  * Usun wymagania plci dla romansow~
+@318305 = ~Zezwol na prowadzenie wielu romansow? (wybierz 1 lub 2)
+ 1) Zezwol na wiele romansow
+ 2) Bez zmian~
+@318306 = ~  * Zezwol na prowadzenie wielu romansow~
+@318307 = ~Nic nie niszczy romansow? (wybierz 1 lub 2)
+ 1) Nic nie niszczy romansow
+ 1) Bez zmian~
+@318308 = ~  * Nic nie niszczy romansow~
+@318309 = ~Wybrales instalacje nastepujacych opcji:~
+@318310 = ~Czy ten wybor jest prawidlowy?
+ 1) Tak, kontynuuj instalacje
+ 2) Nie, pozwol mi wybrac ponownie~
+@318311 = ~Rozpocznij romanse dla nowej gry w Tronie Bhaala?
+ 1) Zacznij w Tronie Bhaala
+ 2) Bez zmian~
+@318312 = ~  * Rozpoczecie romansow dla nowej gry w Tronie Bhaala~
+@319000 = ~Odpoczywaj gdziekolwiek (Japheth)~
+@320000 = ~Moliwosc sprzedazy przedmiotow: kijow, maczug i proc (Icelus)~
+@321000 = ~Oszustwo minimalnych cech~
+@321001 = ~Wybierz minimalna wartosc dla cech z przedzialu od 6 do 15:~
+@322000 = ~Sensowaniejsze miejsca dostepu do obszarow~
+@400000 = ~Dostosuj rakcje zlych postaci przylaczalnych do rzutu~
+@401000 = ~Ulepszone przyzywanie Ducha przeznaczenia~
+@402000 = ~Postacie przylaczalne w stylu Tronu Bhaala~
+@403000 = ~Cechy zgodne z BG lub BG2: Edwin~
+@403001 = ~Uzyj wartosci z BG~
+@403100 = ~Uzyj wartosci z BG2~
+@404000 = ~Cechy zgodne z BG lub BG2: Jaheira~
+@405000 = ~Zmien charakter Jaheiry na Neutralny dobry~
+@406000 = ~Cechy zgodne z BG lub BG2: Minsc~
+@407000 = ~Cechy zgodne z BG lub BG2: Viconia~
+@408000 = ~Zmien Khalida w wojownika / maga (Domi)~
+@409000 = ~Zmien Montarona w zabojce (Andyr)~
+@410000 = ~Zmien charakter Korgana na Neutralny zly~
+@411000 = ~Obniz wartosc nielegalnej kondycji Kagaina do 19~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Ex-SCS components                                \\\\\
+///// Automatically copied over from SCS TRA files     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@500000 = ~Mozliwosc ukladania w stosy skorup ankhegow, skor snieznych wilkow i glow wiwern~
+@501000 = ~Pozwol na rozdzielenie par postaci niezaleznych~
+@502000 = ~Spraw, by czlonkowie druzyny rzadko umierali ostatecznie~
+@503000 = ~Przesun Boo do ekwipunku Minsca~
+@504000 = ~Pozwol Yeslickowi na uzywanie toporow~
+@505000 = ~Zapewnij, by Shar-Teel nie zginela przy pierwszym wyzwaniu~
+@506000 = ~Usun animacje z Plaszcza odbicia (pozostaw ja dla pozostalych czarow i efektow, ktore korzystaja z tej samej grafiki)~
+@507001 = ~Spraw, by lochy na poczatku gry staly sie nieco trudniejsze~
+@507002 = ~Udostepnij dla wszystkich klas twierdze barda ~
+@507003 = ~Udostepnij dla wszystkich klas twierdze kaplana~
+@507004 = ~Udostepnij dla wszystkich klas twierdze druida~
+@507005 = ~Udostepnij dla wszystkich klas twierdze wojownika~
+@507006 = ~Udostepnij dla wszystkich klas twierdze paladyna~
+@507007 = ~Udostepnij dla wszystkich klas twierdze lowcy~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Ex-SCS components                                \\\\\
+///// Automatically copied over from SCS TRA files     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@500000 = ~Mozliwosc ukladania w stosy skorup ankhegow, skor snieznych wilkow i glow wiwern~
+@501000 = ~Pozwol na rozdzielenie par postaci niezaleznych~
+@502000 = ~Spraw, by czlonkowie druzyny rzadko umierali ostatecznie~
+@503000 = ~Przesun Boo do ekwipunku Minsca~
+@504000 = ~Pozwol Yeslickowi na uzywanie toporow~
+@505000 = ~Zapewnij, by Shar-Teel nie zginela przy pierwszym wyzwaniu~
+@506000 = ~Usun animacje z Plaszcza odbicia (pozostaw ja dla pozostalych czarow i efektow, ktore korzystaja z tej samej grafiki)~
+@507001 = ~Udostepnij dla wszystkich klas twierdze barda ~
+@507002 = ~Udostepnij dla wszystkich klas twierdze kaplana~
+@507003 = ~Udostepnij dla wszystkich klas twierdze druida~
+@507004 = ~Udostepnij dla wszystkich klas twierdze wojownika~
+@507005 = ~Udostepnij dla wszystkich klas twierdze paladyna~
+@507007 = ~Udostepnij dla wszystkich klas twierdze lowcy~
+@507008 = ~Udostepnij dla wszystkich klas twierdze zlodzieja~

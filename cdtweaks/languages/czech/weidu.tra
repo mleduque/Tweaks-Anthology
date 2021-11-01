@@ -1,0 +1,411 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Setup Messages                                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+     @0 = ~Upravy NPC~
+     @1 = ~Tento krok muze chvilku trvat...~
+     @2 = ~Tato cast vyzaduje komponentu 'Pridat do BG1 Bezedny vak'~
+     @3 = ~Tato cast vyzaduje komponentu
+'Umozneni sesilani magovych kouzel ve zbrojich'~
+     @4 = ~Vyhodne upravy/cheaty~
+     @5 = ~Pro tuto komponentu  je vyzadovana 'Sada exotickych predmetu'~
+     @6 = ~Vyzaduje komponentu 'Umozneni pouziti zlodejskych schopnosti
+a ukryvani v tezkych zbrojich'~
+     @7 = ~Tato cast není dostupna ve tvem jazyce~
+     @8 = ~Tato cast je pouze pro BGT(Baldur's Gate Trilogy)~
+     @9 = ~Zmeny pravidel~
+    @10 = ~Tato cast neni dostupna pro BG1Tutu~
+    @11 = ~Kosmeticke upravy~
+    @12 = ~Tato cast modu vyzaduje datadisk Throne of Bhaal~
+    @13 = ~Vyhovujici upravy~
+    @14 = ~Tato cas je pouze pro BG1Tutu nebo BGT(Baldur's Gate Trilogy)~
+    @15 = ~Tato cast je pouze pro BG1Tutu~
+    @16 = ~Funkce teto casti modu uz bud tva hra obsahuje nebo
+je prekonana jinym, jiz nainstalovanym modem~
+    @17 = ~Vyzaduje cast modu Ucineni +x/+y zbrani konzistentnimi.~
+    @18 = ~Tato cast modu uz je zavrzena.~
+    @19 = ~Camuv domovni rad~
+    @20 = ~Zobrazit dokumentaci?
+  a) Ano
+  b) Ne~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Cosmetic Changes Components                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+  @1000 = ~Odstranit animace prileb~
+
+  @2000 = ~Zmena Imoenina avatara na maga~
+
+  @3000 = ~Zmena Naliana avatara na zlodeje~
+
+  @4000 = ~Zmena barvy Viconiini pokozky na tmave modrou~
+
+  @5000 = ~Script zmeny avatara~
+  @6000 = ~Uprava animace zbrani~
+
+  @7000 = ~Graficke efekty kouzleni z Icewind Dale (Andyr)~
+
+  @7020 = ~Graficke efekty kouzleni z Baldur's Gate (Andyr)~
+
+  @8000 = ~Obnoveni nahravacich obrazovek ze SoA (pouze pro ToB)~
+
+  @8020 = ~Obnoveni nahravacich IWD obrazovek~
+
+  @9000 = ~Zruseni ikon na portretu od nosenych predmetu~
+
+ @10000 = ~Obyvatele uzivaji jednotvarne barvy~
+
+ @11000 = ~Vylepseni ikon~
+
+ @12000 = ~Zmena avatary pri noseni rob nebo brneni(Galactygon)~
+
+ @13000 = ~Pri kazdem dialogu zapauzovat hru~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Content Changes Components                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@101000 = ~Vice poznamek~
+
+@102000 = ~Upraveni podminek pro dialogy zranenych NPC~
+
+@103000 = ~Odkryti prirodnych oblasti pred sestou kapitolou~
+
+@103500 = ~Ucin oblasti Zahaleneho lese dostupne pred dokoncenim Tabora banditu~
+@103501 = ~Pouze prvni oblast~
+
+@103600 = ~Vsechny oblasti Zahaleneho lesa, krome Dolu~
+
+@104000 = ~Vylepsena Mestska straz Athkatly~
+@105000 = ~Postupne rozlozeni drowich predmetu~
+@106000 = ~Rozbitne zelezne nemagicke stity, helmy a zbroje~
+@107000 = ~Vylepsene dialogy pro vykopnuti v multiplayeru~
+@108000 = ~Pridat do BG1 Bezedny vak~
+@109000  = ~Sada exotickych predmetu~
+
+@110000  = ~Odhalit cele mapy mest pri vstupu~
+
+@111000  = ~Pridat popisky do map~
+@112000  = ~Obchody nabizeji vetsi mnozstvi predmetu najednou~
+
+@113000 = ~Znovunastavení reputace pro BG2 (pouze BGT)~
+
+@114000 = ~Klenoty a lektvary vyzaduji identifikaci~
+@115000 = ~Vyladeni premenovatelu~
+@116000 = ~Vice pevnosti~
+@116001 = ~Zadna omezeni (Baldurdash)~
+@116100 = ~Ponechej omezeni povolani~
+
+@117000 = ~Bonusovi obchodnici (Baldurdash)~
+
+@118000 = ~Zenska Edwina~
+
+@119000 = ~Romance: Oprava Chyb (vyzaduji dalsi soucasti).~
+
+@120000 = ~Oprava dialogu u Imoen v ToB~
+
+@121000 = ~Uzij rychlost chuze z BG (BETA)~
+
+@122000 = ~Umozni Cromwellovi vylepsovat predmety ze Strazcovi tvrze~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Rule Changes Components                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@201000 = ~Tabulky postupu kouzel podle PnP~
+
+@202000 = ~Obourucni mece bastardy~
+
+@203000 = ~Obourucni katany (vyzaduje komponentu Sada exotickych
+predmetu)~
+
+@204000 = ~Kyje pouzitelne kazdym~
+
+@205000 = ~Upravy popisu pro komponentu 'Kyje pouzitelne kazdym'~
+@205001 = ~Vyzaduje nainstalovanou komponentu 'Kyje pouzitelne kazdym'~
+@205002 = ~Jiz je nainstalovan mod Ashes of Embers, ktery upravuje
+popis kyju.~
+
+@206000 = ~Zbranove styly pro kazdeho~
+
+@207000 = ~Pouzit pro druida knezovy tabulky postupu v urovnich
+a kouzlech~
+
+@208000 = ~Oddaleni vysokolevelovych schopnosti~
+
+@209000 = ~Zmena zkusenostniho stropu~
+@209001 = ~Odstranit limit zkusenosti~
+
+@209100 = ~Zkusenostni strop na 20. levelu~
+
+@209200 = ~Zkusenostni strop na 30. levelu~
+
+@210000 = ~Umozneni pouziti zlodejskych schopnosti a ukryvani v tezkych zbrojich~
+// Moved from thieving_descripts.tpa
+// See English setup.tra for details on what should be matched by the regular expression
+// Texts remaining in English in the original czech thieving_descripts.tpa
+@211000 = ~Upravy popisu predmetu pro komponentu 'Umozneni pouziti
+zlodejskych schopnosti a ukryvani v tezkych zbrojich'~
+
+@212000 = ~Umozneni sesilani magovych kouzel ve zbrojich~
+// Moved from arcane_descripts.tpa
+// See English setup.tra for details on what should be matched by the regular expression
+@213000 = ~Upravy popisu predmetu pro komponentu 'Umozneni sesilani
+magovych kouzel ve zbrojich'~
+
+@214000 = ~Rozsirene moznosti vyberu dual-povolani~
+@215000 = ~Moznost noseni vice ochrannych predmetu najednou~
+@215001 = ~Omezeni podle P&P~
+
+@215100 = ~Bez omezeni~
+
+@216000 = ~Vyladene zbranove dovednosti~
+@216006 = ~Uprava systemu zbranovych dovednosti~
+
+@216100 = ~Zbranove dovednosti jako v BG, se zbranovymi styly (the bigg)~
+
+@216200 = ~Zbranove dovednosti jako v BG, bez zbranovych stylu (the bigg)~
+
+@217000 = ~Sesilani kouzel ze svitku (a jinych predmetu) zavisi na levelu
+postavy~
+
+@218000 = ~Opravene tabulky THAC0, zachrannych hodu, velmistrovstvi
+ve zbrani a postupu v kouzelnickych a knezskych kouzlech (Blucher)~
+@219000 = ~Omezeni schopnosti obchodniku identifikovat predmety~
+@219001 = ~Pouze magove a bardi obchodnici mohou identifikovat predmety~
+
+@219100 = ~Schopnost identifikace je zalozena na obchodnikove Uceni~
+
+@219200 = ~Skrizeni obou metod~
+
+@220000 = ~Velmistrovstvi ve zbranovych dovednostech
+i pro multi-povolani (Weimer)~
+
+@221000 = ~Prave velmistrovstvi ve zbrani (Baldurdash)~
+
+@222000 = ~Zmena magicky vytvorenych zbrani na nulovou vahu~
+
+@223000 = ~Ucineni +x/+y zbrani konzistentnimi~
+
+@223100 = ~Pouze anglicky: Rozsireni popisu pro cast modu Ucineni +x/+y zbrani konzistentnimi~
+
+@224000 = ~Upravena THAC0 tabulka~
+@224001 = ~Omezeni, nejlepsi THAC0 je 0 (Blucher)~
+
+@224100 = ~Omezeni, nejlepsi THAC0 je -10 (PnP/BG1 Table)~
+
+@225000 = ~Uprav tabulku sesilani kouzel pro magy~
+
+@226000 = ~Uprav tabulku sesilani kouzel pro magy~
+@226001 = ~Upravena tabulka (Blucher)~
+
+@226100 = ~PnP tabulka~
+
+@227000 = ~Uprav tabulku sesilani kouzel pro bardy~
+
+@228000 = ~Uprav tabulku sesilani kouzel pro kleriky~
+
+@229000 = ~Uprav tabulku sesilani kouzel a urovni pro druidy~
+@229001 = ~Zadne zmeny v postupech urovni, pouze upravena tabulka sesilani kouzel pro druidy (Blucher)~
+
+@229100 = ~Zadne zmeny v postupech urovni, pouze PnP tabulka sesilani kouzel pro druidy/kleriky~
+
+@229200 = ~Uzij tabulku postupu urovni pro kleriky s normalni tabulkou sesilani kouzel pro druidy~
+
+@229300 = ~Uzij tabulku postupu urovni pro kleriky s upravenou tabulkou sesilani kouzel pro druidy (Blucher)~
+
+@229400 = ~Uzij tabulku postupu urovni pro kleriky s PnP tabulkou sesilani kouzel pro druidy/kleriky~
+
+@229500 = ~Uzij tabulku postupu urovni pro kleriky s normalni tabulkou sesilani kouzel pro kleriky~
+
+@229600 = ~Uzij tabulku postupu urovni pro kleriky s upravenou tabulkou sesilani kouzel pro kleriky (Blucher)~
+
+@230000 = ~Tabulky HLA pro troj-povolani~
+
+@231000 = ~Pridej penalizaci na zachranne hody pro kouzla sesilana postavami na vysokych levelech~
+@231001 = ~Pouze pro arkanni magii~
+
+@231100 = ~Pouze pro knezskou magii~
+
+@231200 = ~Arkanni & knezska magie~
+
+@232000 = ~Odtran omezeni poctu pasti (Ardanis/GeN1e)~
+
+@233000 = ~Odtran prodlevu pro magicke pasti (Ardanis/GeN1e)~
+
+@234000 = ~Odstran omezeni poctu vyvolanych Celestialu (Deva, Planetar) (Ardanis/GeN1e)~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Convenience Tweaks                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@300000 = ~Vice zivotu pri levelovani~
+@300001 = ~Maximum~
+
+@300100 = ~NWN styl~
+
+@301000 = ~Maximum zivotu pro NPC (the bigg)~
+@301001 = ~Pro vsechny bytosti ve hre~
+
+@301100 = ~Pro vsechna NPC, ktere nelze prijmou do druziny~
+
+@301200 = ~Pro vsechna NPC, ktere lze prijmou do druziny~
+
+@302000 = ~Vsechny predmety identifikovane~
+
+@303000 = ~Jednoduche uceni kouzel~
+@303001 = ~100% nauceni kouzel~
+
+@303100 = ~100% nauceni kouzel a neomezeny pocet kouzel na level~
+
+@304000 = ~Skutecne bezedne Bezedne vaky~
+
+@305000 = ~Odstran unavu z kouzel obnovy~
+
+@306000 = ~Odstraneni hlasky "Shromazdi svoji druzinu,
+nez se vydas dale." (Weimer)~
+
+@307000 = ~Slevy za nizkou reputaci (Sabre)~
+@307001 = ~Zmen vliv reputace na ceny v obchodech~
+
+@307100 = ~Reputace nema zadny vliv, ceny v obchodech nastaveny na 100% (Luiz)~
+
+@307200 = ~Reputace nema zadny vliv, ceny v obchodech nastaveny na 80% (Luiz)~
+
+@307300 = ~Reputace nema zadny vliv, ceny v obchodech nastaveny na 60% (Luiz)~
+
+@308000 = ~Neomezene skladani streliva do jednoho slotu~
+
+@309000 = ~Neomezene skladani drahokamu a sperku do jednoho slotu~
+
+@310000 = ~Neomezene skladani lektvaru do jednoho slotu~
+
+@311000 = ~Neomezene skladani svitku do jednoho slotu~
+
+@312000 = ~Patch dobre nalady (postavy v druzine nebojuji a nestezuji
+si kvuli hodnotam reputace)~
+@312001 = ~NPC nikdy reptat kvuli reputaci~
+
+@312100 = ~NPC muze reptat kvuli reputaci, ale
+nikdy neodejde (Salk)~
+
+@312200 = ~NPC jsou vzdy neutralni k reputaci
+(Anomaly)~
+
+@312300 = ~NPCs don't fight~ 
+
+@312400 = ~Stop Haer'Dalis-Aerie romance from starting~
+
+@312500 = ~Neutralni postavy maji stastne komentare
+pri stredni reputaci~
+
+@313000 = ~Zadne pasti a zamky (Weimer)~
+
+@314000 = ~Rychlejsi sceny a sny v kapitole 1&2~
+@314001 = ~Puvodni verze z EoU (Karzak, Blucher)~
+
+@314100 = ~Nepritroubla verze~
+
+@315000 = ~Vypnout prisernou animaci u Plaste zrcadleni, Kouzelne pasti a Fyzickeho zrcadla~
+
+@316000 = ~Ponechani Drizztovy vybavy, zneskodni Malchora Harpella~
+
+@317000 = ~Zadne drowi avatary v Underdarku~
+
+@317900 = ~Zadne rasove pozadavky na romanci~
+
+@318000 = ~Podvudky s romanci~
+@318001 = ~Zadne pozadavky na pohlavi/rasu pro romanci~
+
+@318100 = ~Zadne pozadavky na pohlavi/rasu pro romanci; umozneni vice romanci~
+
+@318200 = ~Zadne pozadavky na pohlavi/rasu pro romanci; umozneni vice romanci;
+nic nemuze zrusit romanci~
+
+@318300 = ~Podvudky s romanci~
+@318301 = ~Odtran pozadavky na rasu pro romance? (Zvol 1 nebo 2)
+  1) Odstran
+  2) Beze zmen~
+@318302 = ~  * Odtran pozadavky na rasu pro romance~
+@318303 = ~Odtran pozadavky na pohlavi pro romance? (Zvol 1 nebo 2)
+  1) Odstran
+  2) Beze zmen~
+@318304 = ~  * Odtran pozadavky na pohlavi pro romance~
+@318305 = ~Umozni vice romanci najednou? (Zvol 1 nebo 2)
+  1) Umozni
+  2) Beze zmen~
+@318306 = ~  * Umozni vice romanci najednou~
+@318307 = ~Nic nezrusi romance? (Zvol 1 nebo 2)
+  1) Nic nezrusi romance
+  2) Beze zmen~
+@318308 = ~  * Nic nezrusi romance~
+@318309 = ~Zvolil jsi nasledujici moznosti pro instalaci:~
+@318310 = ~Jsou tyto volby spravne?
+  1) Ano, pokracuj s instalaci
+  2) Ne, nech me je navolit znova~
+@318311 = ~Zacit romanci s novou hrou v ToB(datadisk)?
+  1) Zacit s novou ToB hrou
+  2) Beze zmen~
+@318312 = ~  * Zacit romanci s novou hrou v ToB(datadisk)~
+@319000 = ~Odpocinek je mozny kdekoliv (Japheth)~
+
+@320000 = ~Prodejne hole, kyje a praky (Icelus)~
+
+@321000 = ~Cheat minimalnich vlastnosti~
+@321001 = ~Zvol minimalni hodnotu vlastnosti, v rozmezi 6 az 15:~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// NPC Tweaks                                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@400000 = ~Upravit hody na reakci zlych postav,
+ktere se mohou pripojit do druziny~
+
+@401000 = ~Vylepsene povolavani NPC Duchem osudu~
+
+@402000 = ~Styl NPC z ToB~
+
+@403000 = ~Shodne vlastnosti: Edwin~
+@403001 = ~Uzij hodnoty z BG~
+
+@403100 = ~Uzij hodnoty z BG2~
+
+@404000 = ~Shodne vlastnosti: Jaheira~
+
+@405000 = ~Zmen Jaheirino presvedceni na Neutralni dobro~
+
+@406000 = ~Shodne vlastnosti: Minsc~
+
+@407000 = ~Shodne vlastnosti: Viconia~
+
+@408000 = ~Udelej z Khalida Bojovnika/Maga (Domi)~
+@409000 = ~Udelej z Montarona Zabijaka (Andyr)~
+
+@410000 = ~Zmen Korganovo presvedceni na Neutralni zlo~
+
+@411000 = ~Dej Kagain legalni odolnost 19~

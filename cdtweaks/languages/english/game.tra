@@ -1,0 +1,804 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Cosmetic Changes Components                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@5001 = ~AVATAR MORPHING SCRIPT:~
+@5002 = ~This script lets the user have control over the avatar of the character. Press 'S' to activate the avatar selection screen. (<script>)~
+@18001 = ~Arcana Archives~
+@18002 = ~Sio'chaire~
+@18003 = ~Sio'chaire's Shop~
+@18004 = ~Ikert's Wares~
+@18005 = ~Jayes's Goods~
+@18006 = ~Galoomp's Books~
+@18007 = ~Kich's Goods~
+@18008 = ~Min's Merchandise~
+@18009 = ~Wallace's Wares~
+@18010 = ~Joluv's Wares~
+@18011 = ~Deidre's Wares~
+@18012 = ~Deli's Supplies~
+@18013 = ~Carnival Magic Items~
+@18014 = ~Lucky Aello's Discount Store~
+@18015 = ~Carnival Ranged Weapons~
+@18016 = ~Carnival Armor~
+@18017 = ~Carnival Magic Weapons~
+@18024 = ~Mira's Merchandise~
+@18025 = ~Black Lily's Shop~
+@18026 = ~Perter's Products~
+@18027 = ~a locker~
+@18028 = ~a safe place~
+@18029 = ~the bag~
+@18030 = ~this bag~
+@18031 = ~the duffle~
+@18032 = ~the trunk~
+@18033 = ~this trunk~
+@18034 = ~Selence Hillstar's Fenced Goods~
+@18035 = ~Camping Gear~
+
+
+//@20100 = ~Remove Blur and Reflection Effects from Items (Daeros Trollkiller)~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Content Changes Components                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@104001 = ~Amnish Soldier~
+@104002 = ~Sanctioned Wizard~
+@104003 = ~Militia Cleric~
+@105001 = ~Your drow item has disintegrated~
+@106001 = ~Your armor has broken~
+@106002 = ~Your shield has broken~
+@106003 = ~Your helm has broken~
+@107001 = ~Go wait for us at the Friendly Arm Inn. If things change, we'll meet you there.~
+@107002 = ~Please rejoin the party.~
+@107003 = ~I'll send you back to the pocket plane... wait for me there.~
+@107004 = ~Go wait for us at the Winter's Cradle Tavern. If things change, we'll meet you there.~
+@107005 = ~Go wait for us at the Root Cellar. If things change, we'll meet you there.~
+@107006 = ~Go wait for us at the Whistling Gallows. If things change, we'll meet you there.~
+@107007 = ~Hello again. A pleasure as it was before.~
+@107008 = ~You will have to wait here. I have no room for you at the moment.~ // bg2 strref 27251
+@107009 = ~It has been a pleasure adventuring with you. Well met, and farewell.~ // bg2 strref 43200
+@107010 = ~Hello there.~ [genmg05] // bg2 strref 11082
+@107011 = ~Hello there.~ [genfg12] // bg2 strref 11119
+@107012 = ~Alas, we must part ways. Until next time then.~ // bg2 strref 43202
+@107013 = ~Wait for me in Nashkel. If things change, I'll meet you at the Temple of Helm.~
+@107014 = ~Should I need your services again, meet me at the Elfsong Tavern in Baldur's Gate.~
+@107015 = ~We'll go our separate ways for now. Wait for me at the Jovial Juggler in Beregost.~
+@107501 = ~I don't need your help right now, but we'll travel together again soon. Until then, wait for me at the Friendly Arm Inn.~
+@107502 = ~Our paths must run apart for a while. If I should need your help again, though, we should rendezvous at the Jovial Juggler in Beregost.~
+@107503 = ~For the time being we should each seek our own destiny. I'll need your help again soon enough, though - if you take lodgings in the Nashkel Inn, I'll meet you there when I'm next in the south.~
+@107504 = ~We should separate now. I'll look you up next time I'm in the Gate - meet me in the Elfsong Tavern.~
+@107510 = ~It would be an honour.~
+@107511 = ~Well sure. I won't get into any trouble while you're gone, no sir.~
+@107512 = ~As it happens, I do have some business in them parts. Look me up there if you ever need any more dwarven muscle.~
+@107513 = ~Very well, I accept under the terms of our agreement. (Best to humour them, they're not bright enough to understand the arguments against the idea.)~
+@107514 = ~I will chafe at the inaction, but I am deeply in your debt. Return soon to this war priest.~
+@107515 = ~Of course, darling. I'm sure I'll be able to find amusements there in your absence.~
+@107516 = ~Well, my song could do with a few days quiet work. Hurry back, though - there's far more to be seen, I'm sure!~
+@107517 = ~Even the best things pass away, they say, but perhaps they may pass back? I will await the time when our paths cross once more.~
+@107518 = ~I will do this thing, but much remains to be done. Do not delay your return.~
+@107519 = ~It's been good being with you. But I'm sure you're acting wisely... Still, there's much left to be done, so let's work together again soon.~
+@107520 = ~It makes no difference either way. I can await death as easily in one place as in another.~
+@107521 = ~Awww... do I have to? I don't wanna go there... but I suppose I'll do what ya say. I'll sulk till you return though!~
+@107522 = ~I see little prospect of protecting Nature by huddling under a roof of dead wood, surrounded by all the squalor of Man. It is a mark of my trust in you that I will do as you say.~
+@107523 = ~That seems a remarkably stupid idea. But I suppose the only way of convincing you of that is to play along with it.~
+@107524 = ~I will do so, but I hope to rejoin you soon. I do not yet hold my debt repayed.~
+@107525 = ~Tiax is pleased by your creative subservience. Upon your return, the lowly denizens of this inn will be worshipping the glory that is Tiax!~
+@107526 = ~I will do this, but not willingly. I am far from safe in these dwellings of surface folk.~
+@107531 = ~Yes, O omnipresent authority figure.~
+@107532 = ~V-v-v-very well, then. Good luck on your travels.~
+@107533 = ~If thou dost desire it, then I shall do so. Thou hast proven thyself to be quite the leader, and by now I have confidence in thy decisions.~
+@107534 = ~Are you sure? Boo does not think that there is much evil to be mercilessly pummelled in an inn. But then evil is very clever, and often well educated, and can hide anywhere. We will see you soon.~
+@107535 = ~Hooray! A way in which I can be useful to our happy family! And without having to spend any more time in the company of fools.~
+@107536 = ~As ye would have it. Some time away from ye will be good for us all, in any case.~
+@107537 = ~Okay - I guess this sort of thing is part of what adventurers do too, though it doesn't sound interesting...~
+@107538 = ~A chance for a little luxury and a rest from the road? I shan't turn it down.~
+@108001 = ~Ammo Belt~
+@108002 = ~This shoulder belt is ideally suited for holding sling bullets, darts, arrows or bolts.
+STATISTICS:
+Capacity: 2,000 sling bullets, darts, arrows or bolts in total
+Weight: 2~
+@108003 = ~Potion Case~
+@108004 = ~Typically carried by traveling healers, this leather case folds open and allows the user to strap delicate potion bottles to its cushioned side with numerous leather thongs for safe storage during travel. Regardless of how many potions are contained in this case, it always weighs the same amount.
+STATISTICS:
+Capacity: 100 bottles
+Weight: 2~
+@108005 = ~Bag of Holding~
+@108006 = ~As with other magical bags, this one appears to be a common cloth sack of about 2 feet by 4 feet in size. The bag of holding opens into a nondimensional space, and its inside is larger than its outside dimensions. Regardless of what is put into this item, the bag always weighs a fixed amount.~
+@108501 = ~Bag~
+@108502 = ~Gem Bag~
+@108503 = ~A small bag.~
+@108504 = ~A Bag of Holding has infinite space to hold items. This sturdy pouch is especially well-suited for holding all manner of gems and jewelry. It will reject anything else you try to put in.
+STATISTICS:
+Special: Can hold gems, rings, amulets and necklaces.
+Weight: 1
+Place this in a quick item slot to open.~
+@108505 = ~Opening the Gem Bag. Please wait.~
+@108506 = ~Case~
+@108507 = ~Potion Case~
+@108508 = ~A rectangular case.~
+@108509 = ~A Bag of Holding has infinite space to hold items. Typically carried by travelling healers, this leather case folds open and allows the user to strap delicate potion bottles to its cushioned side with numerous leather thongs for safe storage during travel. The magic of the item will expel anything else.
+STATISTICS:
+Special: Can hold potions and bottles.
+Weight: 3
+Place this in a quick item slot to open.~
+@108510 = ~Opening the Potion Case. Please wait.~
+@108511 = ~Case~
+@108512 = ~Scroll Case~
+@108513 = ~A case.~
+@108514 = ~A Bag of Holding has infinite space to hold items. This sturdy case allows dozens of scrolls to be placed in it, safe from exposure to fire, rain, or lightning -- common hazards faced by any adventuring wizard. It will not accept anything else.
+STATISTICS:
+Special: Can hold a great numbers of scrolls.
+Weight: 2
+Place this in a quick item slot to open.~
+@108515 = ~Belt~
+@108516 = ~Ammo Belt~
+@108517 = ~A belt.~
+@108518 = ~A Bag of Holding has infinite space to hold items. Because of its many small pouches, this belt is ideally suited for holding sling bullets, darts, arrows or bolts. Nothing else will go in.
+STATISTICS:
+Special: Can hold a huge number of ammunition (bolts, arrows, bullets and darts.)
+Weight: 2
+Wear this belt to access its special ability.~
+@108519 = ~Opening pockets of the Ammo Belt. Please wait.~
+@108520 = ~Bag~
+@108521 = ~Bag of Holding~
+@108522 = ~A bag.~
+@108523 = ~As with other magical bags, this one appears to be a common cloth sack of about 2 feet by 4 feet size. The bag of holding opens into a nondimensional space, and its inside is larger than its outside dimensions. Regardless of what is put into this item, the bag always weighs a fixed amount.
+STATISTICS:
+Special: Can hold items of all size without a limit.
+Weight: 10
+Place this in a quick item slot to open.~
+@108524 = ~Opening the Bag of Holding. Please wait.~
+// @109001 through 109026 have been removed, as this component has moved to The Calling
+
+@111001 = ~Candlekeep Inn~
+@111002 = ~Priest's Quarters~
+@111003 = ~Temple of Oghma~
+@111004 = ~Storehouse~
+@111005 = ~Front Gate~
+@111006 = ~Candlekeep Library~
+@111007 = ~Bunkhouse~
+@111008 = ~Barracks~
+@111009 = ~Infirmary~
+@111010 = ~Entar Silvershield's Estate~
+@111011 = ~Helm and Cloak~
+@111012 = ~Tavern~
+@111013 = ~Temple of Helm~
+@111014 = ~Black Dragon Gate~
+@111015 = ~Ramazith's Tower~
+@111016 = ~Duchal Palace~
+@111017 = ~Three Old Kegs~
+@111018 = ~Blushing Mermaid~
+@111019 = ~Splurging Sturgeon~
+@111020 = ~Ilmater's Shrine~
+@111021 = ~Counting House~
+@111022 = ~Cellars~
+@111023 = ~Caravan~
+@111024 = ~Friendly Arm Inn~
+@111025 = ~Temple of Wisdom~
+@111026 = ~Jovial Juggler~
+@111027 = ~Feldepost's Inn~
+@111028 = ~Thunder Hammer Smithy~
+@111029 = ~Red Sheaf~
+@111030 = ~Burning Wizard~
+@111031 = ~Manor~
+@111032 = ~High Hedge~
+@111033 = ~House~
+@111034 = ~Cave~
+@111035 = ~Submerged House~
+@111036 = ~Nashkel Inn~
+@111037 = ~Nashkel Store~
+@111038 = ~Belching Dragon Tavern~
+@111039 = ~Manor House~
+@111040 = ~Garrison~
+@111041 = ~Gnoll Stronghold~
+@111042 = ~Mine Entrance~
+@111043 = ~Cabin~
+@111044 = ~Sculpture~
+@111045 = ~Abandoned House~
+@111046 = ~Vestibule~
+@111047 = ~Song of the Morning Temple~
+@111048 = ~Ulcaster Ruins~
+@111049 = ~Exit~
+@111050 = ~Down to Next Level~
+@111051 = ~Up to Next Level~
+@111052 = ~Exit to Surface~
+@111053 = ~Gullykin Village~
+@111054 = ~Firewine Ruins Entrance~
+@111055 = ~Shipwreck~
+@111056 = ~Abandoned Lighthouse~
+@111057 = ~Pit~
+@111058 = ~Farm~
+@111059 = ~Wyrm's Crossing~
+@111060 = ~Large Tent~
+@111061 = ~Spider Nest~
+@111062 = ~Tree House~
+@111063 = ~River Plug~
+@111064 = ~Mine Elevator~
+@111065 = ~Elfsong Tavern~
+@111066 = ~Sorcerous Sundries~
+@111067 = ~Lucky Aello's Discount Store~
+@111068 = ~Maltz' Weapon Shop~
+@111069 = ~Keexie Tavern~
+@111070 = ~Shop of Silence~
+@111071 = ~Blade and Stars~
+@111072 = ~General Store~
+@111073 = ~Inn~
+@111074 = ~HarborMaster's Building~
+@111075 = ~Low Lantern~
+@111076 = ~WaterQueen's House~
+@111077 = ~Iron Throne~
+@111078 = ~Jopalin's Tavern~
+@111079 = ~Seven Suns~
+@111080 = ~Flaming Fist~
+@111081 = ~Merchant League~
+@111082 = ~Ye Olde Inn~
+@111083 = ~The Lady's House~
+@111084 = ~Hall of Wonders~
+@111085 = ~High House of Wonders~
+@111086 = ~Ragefast's Home~
+@111087 = ~The Fortune Teller~
+@111088 = ~Poultry Store~
+@111089 = ~Drakon Tavern~
+@111090 = ~Felonius Gist's Manor~
+@111091 = ~Ulgoth's Beard Inn~
+@111092 = ~Deserted Tower~
+@111093 = ~Durlag's Tower Entrance~
+@111094 = ~Mine Exit~
+@111095 = ~Exit~
+@111096 = ~Temple of Bhaal~
+@111097 = ~Shrine of Waukeen~
+@111098 = ~Bowyer's~
+@111099 = ~Merchant's Warehouse~
+@111100 = ~Temple of Tempus~
+@111101 = ~Hrothgar's House~
+@111102 = ~Winter's Cradle Tavern~
+@111103 = ~Snowdrift Inn~
+@111104 = ~Pomab's Emporium~
+@111105 = ~Old Jed's House~
+@111106 = ~Apsel's House~
+@111107 = ~Warehouse~
+@111108 = ~Fishmonger's~
+@111109 = ~Tower of Orrick the Grey~
+@111110 = ~Arundel's House~
+@111111 = ~Gerth's Equipment Shoppe~
+@111112 = ~Potter's~
+@111113 = ~Root Cellar Tavern~
+@111114 = ~Blacksmith's~
+@111115 = ~Evening Shade Inn~
+@111116 = ~Barbarian Shaman's Home~
+@111117 = ~Temple of Ilmater~
+@111118 = ~Oswald Fiddlebender's Airship~
+@111119 = ~Tolben's Statue~
+@111120 = ~Brothers' Cabin~
+@111121 = ~Cartwright's~
+@111122 = ~Cooper's~
+@111123 = ~Boathouse~
+@111124 = ~Whistling Gallows Inn~
+@111125 = ~Purvis's Shack~
+@114001 = ~A gem is a mineral that when cut or faceted and polished is collectible or can be used in jewellery.~
+@115001 = ~Conjure Animals
+(Conjuration/Summoning) 
+Level: 6
+Sphere: Summoning 
+Range: 60 yards
+Duration: 4 turns
+Casting Time: 9
+Area of Effect: Special 
+Saving Throw: None
+This spell allows the caster to summon forth and control two 20 HD Bearweres. The bears will respond to the caster's every whim for the duration of the spell. Bearweres are slower than Greater Wolfweres but they are tougher as well. Bearweres are resistant to elemental and magical attacks and regenerate rapidly.~
+@115002 = ~Greater Bearwere~
+@115003 = ~Bearwere~
+@115004 = ~This symbolic paw represents a Shapeshifter Druid's control over lycanthropy. While the paw is wielded the Shapeshifter becomes a Werewolf. When the paw is removed, the Shapeshifter returns to human form. The paws of a Werewolf count as +2 weapons.
+STATISTICS:
+Attributes: 19 STR, 16 DEX, 15 CON
+Base Armor Class: 1
+Resistances: 20% magic resistance, immunity to non-magical weapons
+Attacks Per Round: 2
+Damage: 1D12
+Damage type: slashing
+Speed Factor: 3
+Proficiency Type: Dagger 
+Type: 1-handed
+~
+@115005 = ~This symbolic paw represents a Shapeshifter Druid's ultimate control over lycanthropy. While the paw is wielded the Shapeshifter becomes a Greater Werewolf. When the paw is removed, the Shapeshifter returns to human form. The paws of a Greater Werewolf count as +3 weapons.
+STATISTICS:
+Attributes: 21 STR, 20 DEX, 25 CON
+Base Armor Class: -6
+Base Saving Throws: 1/1/1/2/1
+Resistances: 40% magic resistance, 50% elemental resistance, immunity to non-magical weapons
+Regeneration: 3 hit points per second
+Attacks Per Round: 3
+Base Paw THAC0: 6 
+Damage: 2D8
+Damage type: slashing
+Speed Factor: 3
+Proficiency Type: Dagger 
+Type: 1-handed
+~
+@115006 = ~Shapeshift: Werewolf
+Strength: 19 
+Dexterity: 16
+Constitution: 15
+Base Armor Class: 1
+Number of Attacks: 2
+Attack Damage: 1d12 (slashing), strikes as +2 weapon
+Special Abilities:
+- Magic Resistance: 20%
+- Immune to non-magical weapons~
+@115007 = ~Shapeshift: Greater Werewolf
+Strength: 21
+Dexterity: 20
+Constitution: 25
+Base Armor Class: -6
+Number of Attacks: 3
+Attack Damage: 2d8 (slashing)
+Special Abilities:
+- Fire Resistance: 50%
+- Cold Resistance: 50%
+- Electricity Resistance: 50%
+- Acid Resistance: 50%
+- Magic Resistance: 40%
+- Immune to non-magical weapons~
+@115008 = ~Werewolf Paw~
+@115009 = ~Greater Werewolf Paw~
+@116002 = ~I have the deed to the playhouse, if you wish to try your talents in the theater. Samuel is a good man and will honor the deed in your hands.~
+@116003 = ~I'm sorry Raelis, but I simply do not have the time.~
+@116004 = ~Thank you for the kind offer, but I must decline. I wouldn't even know where to begin running a theater.~
+@116005 = ~Your theater under the Five Flagons? I would be honored to make it my own.~
+@116006 = ~Aye, you will do as you must. I never could stop you. I owe our savior more than parting words, however.~
+@116007 = ~I have the deed to the playhouse, if you wish to try your talents in the theater. Samuel is a good man and will honor the deed in your hands.~
+@116008 = ~Then you must be satisfied with our heartfelt thanks. Come, ye Doomguard, we must be off and swiftly. Perhaps we all shall meet again, <CHARNAME>.~
+@116009 = ~I am sorry, but I can not. I need to track down a friend of mine and I doubt I can be this far away from Athkatla often.~
+@116010 = ~I can not, minister, as I shall not be out this way much. I seek a powerful mage and my best leads are all back in Athkatla.~
+@116011 = ~I must decline. Events in Athkatla require my presence and I can not be this far afield regularly.~
+@116012 = ~It would be an honor. I accept, and will do my best to be here for the village.~
+@116013 = ~Sorry mayor, not interested. I expect to be paid!~
+@116014 = ~I'll admit I am disappointed but I understand the hardships of your profession, <CHARNAME>. I do not envy you on your chosen path.~
+@116015 = ~You, my <LADYLORD>, are a true friend of the land. The land could be restored with the steady hand of one such as you.~
+@116016 = ~Can you guide this grove during this time of rebirth?~
+@116017 = ~I will do my best to restore balance to this land.~
+@116018 = ~This land has suffered, and I will strive to undo the damage wrought by Faldorn's actions.~
+@116019 = ~A poor steward I would be. My business lies in Athkatla, and I must decline.~
+@116020 = ~I am seeking a powerful mage, and I can not be distracted with other conerns.~
+@116021 = ~My friend has been kidnapped. Though it pains me, I can not set aside these concerns to assist the grove.~
+@116022 = ~You have earned the blessing of the Grove, and I present to you the Staff of Thunder and Lightning.~
+@116023 = ~Very well. I shall continue to stand as challenge master, and the steward until the rites of ascension are fulfilled.~
+@122001 = ~Ah, a Case of Plenty. I can enchant this to produce even stronger bolts, but it'll cost ye. 5,000 gold it is.~
+@122002 = ~Well, let's see what else ye got.~
+@122003 = ~A thieves hood, aye?~
+@122004 = ~With a bottle of antidote and an invisibility ring, this can be dead useful.~
+@122005 = ~There's a ring of invisibility alright... and an antidote. Ye got everything I need. For 10,000 gold I can make this much more powerful.~
+@122006 = ~What's this, then?~
+@122007 = ~I have a recipe to attach two horns to a Helm of the Rock, making it more powerful. When you've got the pieces, I can make it for ye.~
+@122008 = ~You have the Helm of the Rock, and two horns that attach to it. For 5,000 gold I can attach the Horns, making a great helmet for fighters.~
+@122009 = ~These are Bard Gloves.~
+@122010 = ~With some crushed gems, these can be improved. Bring me a diamond, emerald, rogue stone, and star sapphire and I can do it for ye.~
+@122011 = ~By crushing a diamond, emerald, star sapphire, and rogue stone I can improve these. It'll cost you 5,000 gold.~
+@122012 = ~These are bracers for a paladin.~
+@122013 = ~For 10,000 gold, I can re-forge these into something even better.~
+@122014 = ~Hmm, an old golem manual.~
+@122015 = ~With certain pages, you can improve the golems summoned by these books.~
+@122016 = ~With that clay golem page and 5,000 gold, I can improve your manual to summon clay golems.~
+@122017 = ~Ach, now this is a real protection cloak.~
+@122018 = ~With scrolls of invisibility and improved haste, this can be made even better.~
+@122019 = ~We can use those invisibility and improved haste scrolls to make this cloak even better. It's a tricky process and'll cost you 20,000 gold.~
+@122020 = ~Aye, scales from a white wyrm. I can make a suit of armor from yon scales, if ye like, for only 5,000 gold.~
+@122021 = ~Now this is some fine elven chain, even by dwarven standards.~
+@122022 = ~But there's still some dwarven tricks they don't yet ken. With a scroll of protection from normal weapons, it'll take something magic to get past it.~
+@122023 = ~With that scroll of protection from normal weapons, we can enchant the armor to resist anything but a magical blade. It's not easy adding dwarven magic to elven chain, and it'll cost ye 40,000 gold.~
+@122024 = ~This is a gnomish sling. For 5,000 gold, I've got a few tricks up my sleeve that can make it more accurate.~
+@122025 = ~What's this quiver here then? Aye, produces infinite magic arrows.~
+@122026 = ~If ye come across a rogue stone, we can improve those arrows even more.~
+@122027 = ~With this rogue stone and 10,000 gold I can enchant the arrows another level.~
+@122028 = ~Ach, now this is a fine sight! The Flail of Ages!~
+@122029 = ~There are rumors of even more heads for this flail. If you find any, I can add them.~
+@122030 = ~I see you've found another head for it, too. Looks like poison. For 5,000 gold I can attach it.~
+@122031 = ~Could this be... ? Aye, it's a detonating club.~
+@122032 = ~If ye find a ring of fire resistance, we can make that one flash club.~
+@122033 = ~For 5,000 gold I can combine this with your ring of fire resistance for an even better club.~
+@122034 = ~Ah, now that looks like something of Ixil's.~
+@122035 = ~This is part of a great spear of Ixil's. If you find the other half, I can complete the weapon.~
+@122036 = ~You've found both parts of Ixil's old spear. For 5,000 gold we can top Ixil's Nail with Ixil's Spike.~
+@122037 = ~Ah, now this is a Dagger of the Star.~
+@122038 = ~If we combine this with five star sapphires, we can increase its enchantment further.~
+@122039 = ~With five of those star sapphires and 5,000 gold we can make it even more effective.~
+@122040 = ~You gots three heads there... I can adds poison and electric heads to it at once. So five heads, you know? 10,000 gp and I can do it. You wants?~
+@122041 = ~Could you just attach the electric head for now? We'll give you 5,000 gold.~
+@122042 = ~Could you just attach the poison head for now? We'll give you 5,000 gold.~
+@122043 = ~I knows recipes for two heads for Flail of Ages. You can adds poison head... or you adds electricity head. Only recipes I have, sorry.~
+@122044 = ~You gots three heads there... I can adds electric heads to it. So four heads, you know? 5,000 gp and I can do it. You wants?~
+@122045 = ~Ooo! You gots four heads and I can add the final head. Real pestilent, that one. 5,000 gp and I do it okay. You want?~
+@122046 = ~This is a gnomish sling. I've got a few tricks up my sleeve that can make it more accurate.~
+@122047 = ~If ye come across a Ring of Energy, I can get ye fixed right up.~
+@122048 = ~Give me yon Ring of Energy and 5,000 gold and we can get started.~
+@123001 = ~Oh, shiny red scales is it? I make good scale armor, protect from fire real good.~
+@123002 = ~What's whis pile of shiny? Ooh, illitium!~
+@123003 = ~Make nice shiny coating for disruption maces. Come backs if you find one.~
+@123004 = ~Oh, and a mace of disruption! Make mace even more scary for just 7,500 gp!~
+@123005 = ~Ugh. You needs to wash this bag.~
+@123006 = ~Wow, lots of shiny shiny silver.~
+@123007 = ~Ow! Sharp, shiny silver. Need hilt and I can makes nice shiny silver sword.~
+@123008 = ~Nice, shiny hilt, but you needs the pointy bit.~
+@123009 = ~You gots a matching hilt and blade of silver. For 7,500 gp I can combine into sword.~
+@123010 = ~Alrights, I keeps looking.~
+@123011 = ~Hello! Wave to the Wave!~
+@123012 = ~You gots a nice halberd blade, but I needs the rest of it.~
+@123013 = ~Why you keeping this stick? Might be nice halberd if you could find the blade for it.~
+@123014 = ~The shaft and the blade of the Wave. I could combine into nice shiny halberd for 7,500 gp.~
+@123015 = ~I keep looking then... oops. It was like that already!~
+@123016 = ~Huh, looks like something of Gesen's.~
+@123017 = ~Looks like nice bow of Gesen, but you needs some string.~
+@123018 = ~Ooh, and some shiny string. 7,500 gp and you can have a nice short bow.~
+@123019 = ~Wonder why they calls it short? Still too big for me! I keeps looking then.~
+@123020 = ~Ooh, shiny bits of Equalizer. Why you no put this together?~
+@123021 = ~Oh, because you don't have all sword parts. Can help with later if you do.~
+@123022 = ~Maybe you don't know how? Cespenar does, oh yes, and for only 7,500 gp.~
+@123023 = ~Alright, I check your bag again.~
+@123024 = ~Ooh, big hammer of thunder. Bzzt! Bzzt!~
+@123025 = ~You gets the right scroll, ogre gauntlets, and a frost giant belt and Cespenar makes this more better!~
+@123026 = ~You may not notice, but Cespenar is not dwarf. Cespenar still know some dwarf tricks though.~
+@123027 = ~Take this hammer, scroll, ogre gauntlets, 10,000 gp, and frost giant belt and make Crom Faeyr. Big, shiny hammer!~
+@123028 = ~Cespenar still searching then.~
+@123029 = ~Nasty smelly ankheg scales! Only 5,000 gp I make plate mail, protect acid good, shiny and very green. You wants?~
+@123030 = ~OK, Cepsenar keeps looking.~
+@123031 = ~Shadow dragon? Make nice luggage. Armor, too. Both protect from acid.~
+@123032 = ~Oh, is blue dragon scales. Stinky. I make good plate armor, though... very light, very shiny.~
+@123033 = ~Oh, is white dragon scales, is it? I make good scale armor, protect you from cold maybe.~
+@123034 = ~Any dragon armor just 5,000 gp. You wants?~
+@123035 = ~Make the shadow dragon scale armor.~
+@123036 = ~Make the red dragon scale armor.~
+@125002 = ~Off with you, halfling, I have no patience for your chattering!~
+@125003 = ~As a matter of fact, yes, I am. Why did you ask?~
+@125004 = ~I've been to the ruins already, and I must say that they are overrated.~
+@125005 = ~Wait till you hear what I have to say. These ruins, they are ripe for the pickin' and will be pretty good takin's with none too many bruises. Maybe we should work together. Stayin' with my aunt here and all, I know this place pretty good, know a few secrets and how to pick a lock or find a booby trap. Could be fun. What say you?~
+@125006 = ~A splendid idea! Welcome aboard.~
+@125007 = ~I really am sorry but we've all we need.~
+@125008 = ~Laughable! What do I need you for? You took up enough of my time, now get lost!~
+@125009 = ~Well! There's no need to be rude about it! Hmph! Never meet nice people in this line of work! No wonder people hate adventurers! Goodbye!~
+@125010 = ~Double good and done! Oh, it's great fun having someone from the trade to talk to! I'm here stayin' with my aunt, to mend my ways and all, but I'm growin' just a little bit bored. Maybe we should work together. I know this place pretty good; know a few secrets, how to pick a lock or find a booby trap. Could be fun. What say you?~
+@125011 = ~Holy Kitty Cacophony, overrated?! Now this *is* exciting! We should... we should work together! Yeah! I could use the help... uh... I mean, we could just help each other a little bit. I can scout out the pretties for you. You can even keep most of it! Whatcha say?~
+@125012 = ~Friends we are, and nice ones too! One for all and things like that! Fun for all of us, I just *know* it!~
+@125013 = ~Ah well, easy go I guess. Never get to make any friends in this biz. Specially the nice ones. Bye, I guess.~
+@125014 = ~I guess I'll just mope around here 'till you come back to your senses and come back for me.~
+@125015 = ~Well if your gonna be puppy-doggin after me all <DAYNIGHT>, maybe we should work together.~
+@125016 = ~No, I have no interest in ruins.~
+@125017 = ~Hey, you're not from around here! Yeesh! There's no polish on yer boots, no snap in yer suspenders. You're not merchants. They're always so much more presentable. Aww nutbunnies, adventurers in Gullykin! Yer gonna loot them Firewine ruins?~
+@126001 = ~Lake Poet Sam~
+@126002 = ~Sam~
+@126003 = ~Lake Poet Rob~
+@126004 = ~Rob~
+@126005 = ~Lake Poet Willy~
+@126006 = ~Willy~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Rule Changes Components                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@202001 = ~Wield One-Handed~
+@202002 = ~Wield Two-Handed~
+@202003 = ~^[ %TAB%]*Type[ %TAB%]*:[ %TAB%]*\(1\|one\)[- %TAB%]*handed.*~
+@202004 = ~Type: 2-handed~
+@204001 = ~^[ %TAB%]*\(Unusable By\|Not Usable By\).*~
+@204002 = ~Not Usable By:~
+@204003 = ~[%LNL%%MNL%%WNL%].*[ %TAB%]*Mage.*~
+/* deprecated component
+*/
+// Moved from thieving_descripts.tpa
+// Typical weight line for an item, used for a search matching the whole line
+@210001 = ~\(Weight:[ %TAB%]*[0-9]+\)~
+// Typical lock picking penalty line in original armors
+@210002 = ~^\([ %TAB%]*Lock Picking:.+\)\|\([ %TAB%]*.?.?.?[ %TAB%]*Open Locks:.+\)$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
+// Title for lock picking added after Weight line, penalty is added after this text
+@210003 = ~Lock Picking:~
+// Typical find trap penalty line in original armors
+@210004 = ~^\([ %TAB%]*Find/Remove Traps:.+\)\|\([ %TAB%]*.?.?.?[ %TAB%]*Find Traps:.+\)$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
+// Title for find trap added after Weight line, penalty is added after this text
+@210005 = ~Find/Remove Traps:~
+// Typical pick pocket penalty line in original armors
+@210006 = ~^[ %TAB%]*.?.?.?[ %TAB%]*Pick Pockets:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
+// Title for pick pocket added after Weight line, penalty is added after this text
+@210007 = ~Pick Pockets:~
+// Typical hide en shadow penalty line in original armors
+@210008 = ~^[ %TAB%]*.?.?.?[ %TAB%]*Hide in Shadows:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
+// Title for hide in shadow added after Weight line, penalty is added after this text
+@210009 = ~Hide in Shadows:~
+// Typical move silently penalty line in original armors
+@210010 = ~^[ %TAB%]*.?.?.?[ %TAB%]*Move Silently:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
+// Title for move silently added after Weight line, penalty is added after this text
+@210011 = ~Move Silently:~
+// Typical move silently penalty line in original armors
+@210012 = ~^[ %TAB%]*.?.?.?[ %TAB%]*Stealth:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
+// Title for move silently added after Weight line, penalty is added after this text
+@210013 = ~Stealth:~
+// Moved from arcane_descripts.tpa
+// Typical weight line for an item, used for a search matching the whole line
+@212001 = ~\(Weight:[ %tab%]*[0-9]+\)~
+// Title for miscast chance added after Weight line, value is added after this text
+@212002 = ~Miscast Arcane Magic:~
+@214001 = ~barbarian / mage~
+@214002 = ~barbarian / cleric~
+@214003 = ~barbarian / thief~
+@214004 = ~barbarian / druid~
+@215002 = ~[ %TAB%]*.?.?.?[ %TAB%]*Armou?r Class[^:]*:.*$~ // lone . at front to catch EE emdash
+@216001 = ~SHORT SWORD/NINJA-TO: The preferred weapon of many a thief and halfling, short swords and ninja-tos are light but useful weapons.
+<DOTS1>
+<DOTS2>
+<DOTS3>
+<DOTS4>
+<DOTS5>~
+@216002 = ~KATANA/WAKIZASHI: Katanas and wakizashis are the finest examples of the swordsmith's craft, and require great care to use. As skill develops, the wielder and blade become a single being, dedicated completely to the art of warfare. These weapons are hard to find Outside of Kara-Tur, so care must be taken when considering this proficiency. After all, skill with katanas and wakizashis is only helpful if you can find one.
+WARNING: Magical katanas are very rare outside of Kara-Tur!
+<DOTS1>
+<DOTS2>
+<DOTS3>
+<DOTS4>
+<DOTS5>~
+@216003 = ~SCIMITAR: This weapon class allows the character to use curved, bladed weapons such as scimitars.
+<DOTS1>
+<DOTS2>
+<DOTS3>
+<DOTS4>
+<DOTS5>~
+@216004 = ~FLAIL: Flails are blunt weapons used to knock your enemies senseless. They are difficult to use but with skill and practice these weapons are very useful.
+<DOTS1>
+<DOTS2>
+<DOTS3>
+<DOTS4>
+<DOTS5>~
+@216005 = ~MACE/MORNINGSTAR: The mace is most often associated with clerics. It is a powerful blunt weapon, similar to the club, but designed to do more damage. A morningstar is similar to a mace, typically with spikes instead of flanges.
+<DOTS1>
+<DOTS2>
+<DOTS3>
+<DOTS4>
+<DOTS5>~
+@216007 = ~Proficiency\( Type\)?[:-] *~
+@216008 = ~Proficiency Type:~
+@216009 = ~Short Sword/Ninja-To~
+@216010 = ~Katana/Wakizashi~
+@216011 = ~Mace/Morningstar~
+@216101 = ~Small Sword~
+@216301 = ~Great Sword~
+@216302 = ~GREAT SWORDS: This weapon class allows the character to use Two-Handed Swords and Bastard Swords.
+<DOTS1>
+<DOTS2>
+<DOTS3>
+<DOTS4>
+<DOTS5>~
+@216303 = ~LARGE SWORD: This weapon class allows the character to use Broad Swords, Long Swords, and Scimitars. The Thief is able to take this weapon class, but he is only allowed to use the Long Sword. The Druid is able to select this class, but is limited to Scimitars alone.
+<DOTS1>
+<DOTS2>
+<DOTS3>
+<DOTS4>
+<DOTS5>~
+@216304 = ~MISSILE WEAPONS: This weapon class allows the character to use Slings and Darts. Clerics can choose this proficiency but are restricted to Slings alone.
+<DOTS1>
+<DOTS2>
+<DOTS3>
+<DOTS4>
+<DOTS5>~
+// ^^ this component deprecated, but the strings below still needed for the components that replace it
+@218001 = ~Alchemy (Mage)~
+@218002 = ~Alchemy (Priest)~
+@218003 = ~Alchemy (Rogue)~
+@218004 = ~Alchemy (Mage)
+This ability allows a mage to create potions. The potions that the mage can create are randomly chosen from the following list:
+1)  Potion of Absorption
+2)  Potion of Fire Resistance
+3)  Potion of Cold Resistance
+4)  Potion of Invisibility
+5)  Potion of Stone Form
+6)  Potion of Strength
+7)  Potion of Agility
+8)  Potion of Firebreath
+9)  Oil of Speed
+10) Oil of Fiery Burning~
+@218005 = ~Alchemy (Priest)
+This ability allows a priest to create potions. The potions that the priest can create are randomly chosen from the following list:
+1)  Potion of Healing
+2)  Potion of Extra Healing
+3)  Potion of Superior Healing
+4)  Elixir of Health
+5)  Potion of Insight
+6)  Potion of Regeneration
+7)  Potion of Clarity
+8)  Antidote
+9)  Potion of Mind Focusing
+10) Potion of Genius~
+@218006 = ~Alchemy (Rogue)
+With cleverness innate to the class, an experienced rogue has seen enough potions in his or her adventuring career to simulate the creation of one. With the Alchemy skill, the rogue can create one of eight types of potions, once per day.
+The potions a rogue can create are randomly chosen from the following list:
+1) Potion of Mind Focusing
+2) Potion of Perception
+3) Potion of Invisibility
+4) Potion of Superior Healing
+5) Potion of Regeneration
+6) Antidote
+7) Oil of Speed
+8) Rogue's Potion of Frost Giant Strength~
+@218007 = ~Scribe Scrolls (Mage)~
+@218008 = ~Scribe Scrolls (Priest)~
+@218009 = ~Scribe Scrolls (Rogue)~
+@218010 = ~Scribe Scrolls (Mage)
+This ability allows a mage to create low and mid level spell scrolls. The scrolls that the mage can create are randomly chosen from the following list:
+1)  Magic Missile
+2)  Shield
+3)  Melf's Acid Arrow
+4)  Mirror Image
+5)  Melf's Minute Meteor
+6)  Minor Spell Deflection
+7)  Improved Invisibility
+8)  Ice Storm
+9)  Oracle
+10) Chaos~
+@218011 = ~Scribe Scrolls (Priest)
+This ability allows a priest to create divine spell scrolls. The scrolls that the priest can create are randomly chosen from the following list:
+1)  Cure Critical Wounds
+2)  Flame Strike
+3)  Raise Dead
+4)  Restoration
+5)  Protection from Acid
+6)  Protection from Cold
+7)  Protection from Electricity
+8)  Protection from Fire
+9)  Champion's Strength
+10) Mental Domination~
+@218012 = ~Scribe Scrolls (Rogue)
+This ability allows a rogue to create low and mid level spell scrolls. The scrolls that the rogue can create are randomly chosen from the following list:
+1) Magic Missile
+2) Haste
+3) Fireball
+4) Dispel Magic
+5) Dire Charm
+6) Invisibility
+7) Cone of Cold
+8) Monster Summoning II
+9) Monster Summoning III~
+// next two strings used for matching and updating item descriptions
+@223001 = ~STATISTICS:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
+@223002 = ~Always considered to be of +%ench% enchantment when determining what it can hit.~
+
+// translators: @223100 is for a deprecated component, you can skip it
+// the next string should match content TO BE REMOVED from the racial description of humans and the help reference for dual-classing
+@235002 = ~Humans may not multi-class.~ // from strref #9550
+
+
+// the next two strings should match content TO BE REMOVED from the racial description of humans and the help reference for dual-classing
+// you may need to check the EEs, as oBG2 doesn't mention dual-classing in #9550 or #32540
+@237002 = ~ and are also the only race that can dual-class~ // from strref #9550
+@237003 = ~Dual-classing is an ability that only humans have. ~ // from strref #10811
+@237004 = ~, if your character is human~ // BG tutorial monk dialogue monktu4 - 32540 in BGEE/SoD 
+
+// translators - the next three strings are used to replace game text, so they need to be copied from the game itself
+// get @244001 and @244002 from strref 9588 in bgee/bg2ee/iwdee
+@244001 = ~\* All extra attacks are only available to warrior classes.~ // last line; if there's a * included then add \ in front of it
+@244002 = ~Proficiency Slot Table:~ // line before <DOTS1>, exclude the * if present
+// get @244003 from string 32117 (bg2ee/iwdee) or 24220 (bgee)
+@244003 = ~(for warriors only)~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Convenience Tweaks                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+//@315000 = ~Turn Off The Hideous Cloak-of-Mirroring, Spell-Trap, and Physical Mirror Animations~
+@318313 = ~Bring me my lover, Aerie.~
+@318314 = ~Bring me my lover, Jaheira.~
+@318315 = ~Bring me my lover, Sir Anomen, Knight of the Order.~
+@318316 = ~Bring me my lover, Anomen, priest of Helm.~
+@318317 = ~Bring me my lover, Viconia.~
+@318318 = ~Bring me my lover, Dorn.~
+@318319 = ~Bring me my lover, Hexxat.~
+@318320 = ~Bring me my lover, Neera.~
+@318321 = ~Bring me my lover, Rasaad.~
+//@321001 = ~Select a minimum stat value, between 6 and 15:~
+@322001 = ~Atta Girl~
+@322002 = ~Angel~
+@324101 = ~Token Genie~
+@324102 = ~Token~
+@324103 = ~A nondescript token with no markings.~
+@324104 = ~Greetings! Please select the item you would like to redeem your token for:~
+@324201 = ~Flynn~
+@324202 = ~Traveling Merchant~
+@324203 = ~Harrold~
+@324204 = ~Hello travelers! Might I have a moment of your time?~
+@324205 = ~I'm sorry, I haven't the time right now.~
+@324206 = ~Apologies for the confusion, but I have no wares to show. I am here to acquire exotic items, though I have no gold to give.~
+@324207 = ~All this... for a small commission, of course.~
+@324208 = ~Another time then.~
+@324209 = ~What kind of a commission?~
+@324210 = ~My typical fee is 1000 gold, but I can provide a variety of options for your exchanges.~
+@324211 = ~That's awfully steep!~
+@324212 = ~Very well. Do I have anything of interest?~
+@324213 = ~True, but my selection is also second-to-none. And looking costs nothing.~
+@324214 = ~Farewll and safe journeys.~
+@324215 = ~Good to hear he made it safely. So you already know how this works?~
+@324216 = ~I do. Could you look at my wares and see if I have anything worth exchanging?~
+@324217 = ~No, actually.~
+@324218 = ~I am willing to exchange my own exotic stock for any you might find--perhaps I have something more useful for a <MANWOMAN> of your talents.~
+@324219 = ~Well, let me see...~
+@324220 = ~Welcome back, travelers.~
+@324221 = ~No, I'm afraid I don't see anything of interest.~
+@324222 = ~I would like to acquire these items. Would you like to know what I have to trade for them?~
+@324223 = ~I'm not willing to trade any of these.~
+@324224 = ~Oh... it appears you don't have the gold to afford my commission.~
+@324225 = ~Alright then. Do any of these items interest you?~
+@324226 = ~No, I'm afraid not. What else can we trade?~
+@324227 = ~Very well.~
+@324228 = ~Thank you. Farewell.~
+// 60 and 80 strings are identical, just with Flynn/Harrold and Lonelywood/Kuldahar exchanged
+@324260 = ~I am Flynn, an agent of a Calimport trading exchange, sent here to seek exotic and unique items.~
+@324261 = ~I believe I met your counterpart, Harrold, in Lonelywood.~
+@324262 = ~Well met Flynn. May I see your wares?~
+@324263 = ~Thanks Flynn, I'll keep you in mind if I find anything.~
+@324264 = ~Hello again Flynn. Are you willing to exchange anything here?~
+@324265 = ~No, I'm not interested in any of those. Farewell Flynn.~
+@324266 = ~Thank you Flynn. Is there anything else you'd like to trade?~
+@324280 = ~I am Harrold, an agent of a Calimport trading exchange, sent here to seek exotic and unique items.~
+@324281 = ~I believe I met your counterpart, Flynn, in Kuldahar.~
+@324282 = ~Well met Harrold. May I see your wares?~
+@324283 = ~Thanks Harrold, I'll keep you in mind if I find anything.~
+@324284 = ~Hello again Harrold. Are you willing to exchange anything here?~
+@324285 = ~No, I'm not interested in any of those. Farewell Harrold.~
+@324286 = ~Thank you Harrold. Is there anything else you'd like to trade?~
+@325001 = ~Actually, can we see the items you had to offer when we first arrived in Kuldahar?~
+@325002 = ~Can we have another look at the items you had to offer partway through our stay here?~
+@333050 = ~Disable Auto-haste~
+@333051 = ~Disable Auto-haste
+
+This ability controls whether movement speed is increased for party members outside of combat. Click on the ability to turn it OFF.~
+@333052 = ~Disable Auto-haste
+
+This ability controls whether movement speed and casting speed are increased for party members outside of combat. Click on the ability to turn it OFF.~
+@333053 = ~Disable Auto-haste
+
+This ability controls whether casting speed is increased for party members outside of combat. Click on the ability to turn it OFF.~
+@333060 = ~Enable Auto-haste~
+@333061 = ~Enable Auto-haste
+
+This ability controls whether movement speed is increased for party members outside of combat. Click on the ability to turn it ON.~
+@333062 = ~Enable Auto-haste
+
+This ability controls whether movement speed and casting speed are increased for party members outside of combat. Click on the ability to turn it ON.~
+@333063 = ~Enable Auto-haste
+
+This ability controls whether casting speed is increased for party members outside of combat. Click on the ability to turn it ON.~
+@333070 = ~Auto-haste bonuses removed~
+@335100 = ~Interval-Save~
+@335101 = ~Interval save created~
+@335102 = ~Interval save (slot %slot_index%) created~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// NPC Tweaks                                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@408001 = ~When asked about his past, KHALID nervously reveals that he was born and raised in the nation of Calimshan. He does not say much of his parents, but you get the feeling that his merchant father thought little of him, devoting much more attention to Khalid's half-brothers. Without his father's support, Khalid was unable to pay to become apprenticed with a wizard, so he joined the city militia in hopes to earn enough money. He doesn't go into detail on how he met Jaheira, but his adoration of her is obvious. When asked about how he knew Gorion he will only say that they had long been friends, and that many shared acquaintances will mourn his loss with harpsong.~
+// translators: 418001 is strref #10732 from bgee or bg2ee without the 'equipped abilities' block. 
+// This is not used on non-EE games since they don't mention equipping effects
+@418001 = ~This is Edwin's birthright, inlaid with his family stone.
+
+Weight: 1~
+// translators: 418002 and 418003 are strref #50818 in bg2ee and obg2, respectively, 
+// with the part about 'the ring may not be removed from nalia' deleted 
+@418002 = ~de'Arnise Signet Ring
+
+This ring was given to Nalia by her father upon her ascension to adulthood.  Bonded to her blood as it is the ring may not be used by anyone else.  The ring grants a +2 bonus to all saving throws, +2 armor class bonus, and 50% resistance to fire.~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Ex-SCS components                                \\\\\
+///// Automatically copied over from SCS TRA files     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+//@506000 = ~Remove animation from the Cloak of Mirroring (leave it for other spells and effects that use the same graphic)~
