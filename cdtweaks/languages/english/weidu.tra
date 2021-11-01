@@ -28,7 +28,7 @@
          
 @18 = ~This component has been deprecated.~
 
-@21 = ~Requires the 'Change Experience Point Cap: Remove Experience Cap' component.~
+@21 = ~Requires the 'Change Experience Point Cap: Remove experience cap' component.~
 
 @24 = ~This component is incompatible with another mod already installed.~
 @25 = ~This component is not available for your game.~
@@ -60,11 +60,11 @@
 
 @6000 = ~Weapon Animation Tweaks~
 
-@7000 = ~Icewind Dale Casting Graphics (Andyr)~
+@7000 = ~Icewind Dale Casting Graphics [Andyr]~
 
-@7020 = ~Baldur's Gate Casting Graphics (Andyr)~
+@7020 = ~Baldur's Gate Casting Graphics [Andyr]~
 
-@8000 = ~Restore SoA Load Screen Logo (ToB Only)~
+@8000 = ~Restore SoA Load Screen Logo~
 
 @8020 = ~Restore IWD Loading Screens~
 
@@ -75,7 +75,7 @@
 @11000 = ~Icon Improvements~
 
 // deprecated: you don't have to translate @12000
-@12000 = ~Change Avatar When Wearing Robes or Armor (Galactygon)~
+@12000 = ~Change Avatar When Wearing Robes or Armor [Galactygon]~
 
 @13000 = ~Force All Dialogue to Pause Game~
 
@@ -83,11 +83,11 @@
 
 // this component is not ready, you can skip translating this block
 //@15000 = ~Alter Name of Unique Items~
-//@15001 = ~Use Unique Name (i.e. Kondar)~
-//@15100 = ~Use Unique Name +x (i.e. Kondar +1)~
-//@15200 = ~Use Generic Name (i.e. Bastard Sword +1, +3 vs. Shapeshifters)~
+//@15001 = ~Use unique name (i.e. Kondar)~
+//@15100 = ~Use unique name +x (i.e. Kondar +1)~
+//@15200 = ~Use generic name (i.e. Bastard Sword +1, +3 vs. Shapeshifters)~
 
-@16000 = ~Make Magic Shields Glow (plainab/grogerson)~
+@16000 = ~Make Magic Shields Glow [plainab/grogerson]~
 
 @17000 = ~Unique Icons~
 
@@ -107,14 +107,14 @@
 @19400 = ~For all shields~
 @19500 = ~For non-magical shields~
 
-@20000 = ~Remove Blur Effect~
+@20000 = ~Remove blur effect~
 @20001 = ~Remove Annoying Visual Effects from Equipped Items~
-@20002 = ~Remove Spell Trap and Reflection Effects~
-@20003 = ~Remove All of the Above~
+@20002 = ~Remove spell trap and reflection effects~
+@20003 = ~Remove all of the above~
 
-@21000 = ~Separate Resist Fire/Cold Icon into Separate Icons (Angel)~
+@21000 = ~Separate Resist Fire/Cold Icon into Separate Icons [Angel]~
 
-@22000 = ~Enhanced Overlays for Colorblind Players (Fouinto)~
+@22000 = ~Enhanced Overlays for Colorblind Players [Fouinto]~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -131,26 +131,25 @@
 @103000 = ~Reveal Wilderness Areas Before Chapter Six~
 
 @103500 = ~Make Cloakwood Areas Available Before Completing the Bandit Camp~
-@103501 = ~First Area Only~
-@103600 = ~All of Cloakwood Except the Mines~
+@103501 = ~First area only~
+@103600 = ~All of Cloakwood except the mines~
 
 @104000 = ~Improved Athkatlan City Guard~
 
 @105000 = ~Gradual Drow Item Disintegration~
 
-@106000 = ~Breakable Iron Nonmagical Shields, Helms, and Armor~
+@106000 = ~Breakable Iron Non-Magical Shields, Helms, and Armor~
 
-@107000 = ~Improved Multi-Player Kick-out Dialogues~
+@107000 = ~Improved Multi-Player Kick-Out Dialogues~
 
-@107500 = ~Send BioWare NPCs to an Inn (DavidW/Zed Nocear)~
+@107500 = ~Send BioWare NPCs to an Inn [DavidW/Zed Nocear]~
 
 @108000 = ~Add Bags of Holding~
 
-@108500 = ~Portable Containers (Zed Nocear)~
+@108500 = ~Portable Containers [Zed Nocear]~
 
 // deprecated: you don't have to translate @109000
 @109000 = ~Exotic Item Pack~
-// @109001 through 109026 have been removed, as this component has moved to The Calling
 
 @110000 = ~Reveal City Maps When Entering Area~
 
@@ -161,9 +160,9 @@
 @112000 = ~Stores Sell Higher Stacks of Items~
 
 // deprecated: you don't have to translate @112500
-@112500 = ~Infinite Nonmagical Ammo for Bows, Crossbows, and Slings~
+@112500 = ~Infinite Non-Magical Ammo for Bows, Crossbows, and Slings~
 
-@113000 = ~Reputation Resets in BG2 (BGT Only)~
+@113000 = ~Reputation Resets in BG2~
 
 @114000 = ~Gems and Potions Require Identification~
 @114002 = ~Gems and potions~
@@ -172,11 +171,11 @@
 
 @115000 = ~Shapeshifter Rebalancing~
 
-@116000 = ~Multiple Strongholds (Baldurdash)~
-@116001 = ~No Restrictions (Baldurdash)~
-@116100 = ~Keep Class Restrictions~
+@116000 = ~Multiple Strongholds [Baldurdash]~
+@116001 = ~No restrictions [Baldurdash]~
+@116100 = ~Keep class restrictions~
 
-@117000 = ~Bonus Merchants (Baldurdash)~
+@117000 = ~Bonus Merchants [Baldurdash]~
 
 @118000 = ~Female Edwina~
 
@@ -184,7 +183,7 @@
 
 @120000 = ~Imoen ToB Dialogue Fix~
 
-@121000 = ~Use BG Walking Speeds (BETA)~
+@121000 = ~Use BG Walking Speeds~
 
 @122000 = ~Allow Cromwell to Upgrade Watcher's Keep Items~
 
@@ -195,7 +194,7 @@
 
 @123000 = ~Allow Cespenar to Use Cromwell Recipes~
 
-@124000 = ~Friendly Arm Inn Hidden Container Restoration (plainab)~
+@124000 = ~Friendly Arm Inn Hidden Container Restoration [plainab]~
 
 // deprecated: you don't have to translate @125000
 @125000 = ~Move NPCs from Baldur's Gate~
@@ -214,17 +213,18 @@
 
 @126000 = ~Bardic Reputation Adjustment~
 
-@127000 = ~Change Cloakwood Mine Chapter End Change Trigger to Non-TotSC Behavior (plainab) (BETA)~
+@127000 = ~Change Cloakwood Mine Chapter End Change Trigger to Non-TotSC Behavior [plainab]~
 
-@128000 = ~Game ends when the main character dies~
+@128000 = ~Game Ends When the Main Character Dies~
 
-@129000 = ~NPCs respond to the main character, not to whichever character talks to them~
+@129000 = ~NPCs Respond to the Main Character, not to Whichever Character Talks to Them~
 
-@130000 = ~Make Heart of Winter accessible at any level~
+@130000 = ~Make Heart of Winter Accessible at Any Level~
 
-@131000 = ~Restore (most) BG2 spells and make scrolls available - WARNING: they will look very out of place~
+@131000 = ~Restore (Most) BG2 Spells and Make Scrolls Available
+  WARNING: They will look very out of place~
 
-@132000 = ~BG2-style journal [work in progress]~
+@132000 = ~BG2-Style Journal (work in progress)~
 
 @133000 = ~NPCs Cannot Use Doors~
 
@@ -269,9 +269,9 @@
 @208000 = ~Delay High Level Abilities~
 
 @209000 = ~Change Experience Point Cap~
-@209001 = ~Remove Experience Cap~
-@209100 = ~Level 20 Experience Point Cap~
-@209200 = ~Level 30 Experience Point Cap~
+@209001 = ~Remove experience cap~
+@209100 = ~Level 20 experience point cap~
+@209200 = ~Level 30 experience point cap~
 
 @210000 = ~Allow Thieving and Stealth in Heavy Armor~
 
@@ -280,32 +280,32 @@
 @214000 = ~Expanded Dual-Class Options~
 
 @215000 = ~Wear Multiple Protection Items~
-@215001 = ~P&P Restrictions~
-@215100 = ~No Restrictions~
-@215200 = ~Allow Armor Plus One Protection Item (Angel)~
+@215001 = ~PnP restrictions~
+@215100 = ~No restrictions~
+@215200 = ~Allow armor plus one protection item [Angel]~
 
-@216000 = ~Rebalanced Weapon Proficiencies~
+@216000 = ~Rebalanced weapon proficiencies~
 @216006 = ~Alter Weapon Proficiency System~
-@216100 = ~BG-Style Weapon Proficiencies, With Weapon Styles (the bigg)~
-@216200 = ~BG-Style Weapon Proficiencies, Without Weapon Styles (the bigg)~
-@216300 = ~IWD-Style Proficiencies with Weapon Styles~
-@216400 = ~IWD-Style Proficiencies without Weapon Styles~
+@216100 = ~BG-style weapon proficiencies, with weapon styles [the bigg]~
+@216200 = ~BG-style weapon proficiencies, without weapon styles [the bigg]~
+@216300 = ~IWD-style proficiencies with weapon styles~
+@216400 = ~IWD-style proficiencies without weapon styles~
 
 @217000 = ~Cast Spells from Scrolls (and Other Items) at Character Level~
 
 // deprecated: you don't have to translate @218000
-@218000 = ~Un-Nerfed THAC0 Table, Saving Throws, Grand-Mastery, and Arcane, Divine Spell Progression (Blucher)~
+@218000 = ~Un-Nerfed THAC0 Table, Saving Throws, Grand-Mastery, and Arcane, Divine Spell Progression [Blucher]~
 
 @219000 = ~Limit Ability of Storekeepers to Identify Items~
-@219001 = ~Only Mage and Bard Storekeepers Can Identify Items~
-@219100 = ~Identification Ability is Based on Storekeeper's Lore~
-@219200 = ~Hybrid of Both Methods~
+@219001 = ~Only mage and bard storekeepers can identify items~
+@219100 = ~Identification ability is based on storekeeper's lore~
+@219200 = ~Hybrid of both methods~
 
-@220000 = ~Multiclass Grandmastery (Weimer)~
+@220000 = ~Multi-Class Grandmastery [Weimer]~
 
-@221000 = ~True Grandmastery (Baldurdash)~
+@221000 = ~True grandmastery [Baldurdash]~
 @221001 = ~Change Grandmastery Bonuses~
-@221100 = ~BG2 Grandmastery Rules~
+@221100 = ~BG2 grandmastery rules~
 
 @222000 = ~Change Magically Created Weapons to Zero Weight~
 
@@ -315,51 +315,51 @@
 @223100 = ~Description Updates for Make +x/+y Weapons Consistent Component~
 
 @224000 = ~Un-Nerfed THAC0 Table~
-@224001 = ~Capped, Best THAC0 is 0 (Blucher)~
-@224100 = ~Capped, Best THAC0 is -10 (PnP/BG1 Table)~
+@224001 = ~Capped, best THAC0 is 0 [Blucher]~
+@224100 = ~Capped, best THAC0 is -10 (PnP/BG1 table)~
 
 @225000 = ~Un-Nerfed Sorcerer Spell Progression Table~
 
 @226000 = ~Alter Mage Spell Progression Table~
-@226001 = ~Un-Nerfed Table (Blucher)~
-@226100 = ~PnP Table~
+@226001 = ~Un-nerfed table [Blucher]~
+@226100 = ~PnP table~
 
 @227000 = ~Alter Bard Spell Progression Table~
 
 @228000 = ~Alter Cleric Spell Progression Table~
 
 @229000 = ~Alter Druid Spell and Level Progression Tables~
-@229001 = ~No Level Progression Changes, Un-Nerfed Druid Spell Table Only (Blucher)~
-@229100 = ~No Level Progression Changes, PnP Druid/Cleric Spell Table Only~
-@229200 = ~Use Cleric Level Progression Changes With Normal Druid Spell Table~
-@229300 = ~Use Cleric Level Progression Changes With Un-Nerfed Druid Spell Table (Blucher)~
-@229400 = ~Use Cleric Level Progression Changes With PnP Druid/Cleric Spell Table~
-@229500 = ~Use Cleric Level Progression Changes With Normal Cleric Spell Table~
-@229600 = ~Use Cleric Level Progression Changes With Un-Nerfed Cleric Spell Table (Blucher)~
+@229001 = ~No level progression changes, un-nerfed druid spell table only [Blucher]~
+@229100 = ~No level progression changes, PnP druid/cleric spell table only~
+@229200 = ~Use cleric level progression changes with normal druid spell table~
+@229300 = ~Use cleric level progression changes with un-nerfed druid spell table [Blucher]~
+@229400 = ~Use cleric level progression changes with pnp druid/cleric spell table~
+@229500 = ~Use cleric level progression changes with normal cleric spell table~
+@229600 = ~Use cleric level progression changes with un-nerfed cleric spell table [Blucher]~
 
 @230000 = ~Triple-Class HLA Tables~
 
-@231000 = ~Add Save Penalties for Spells Cast by High-Level Casters (BETA)~
-@231001 = ~Arcane Magic Only~
-@231100 = ~Divine Magic Only~
-@231200 = ~Arcane & Divine Magic~
+@231000 = ~Add Save Penalties for Spells Cast by High-Level Casters~
+@231001 = ~Arcane magic only~
+@231100 = ~Divine magic only~
+@231200 = ~Arcane and divine magic~
 
-@232000 = ~Trap Cap Removal (Ardanis/GeN1e)~
+@232000 = ~Trap Cap Removal [Ardanis/GeN1e]~
 
-@233000 = ~Remove Delay for Magical Traps (Ardanis/GeN1e)~
+@233000 = ~Remove Delay for Magical Traps [Ardanis/GeN1e]~
 
 @233900 = ~Remove Summoning Cap for Regular Summons~
 
-@234000 = ~Remove Summoning Cap for Celestials (Ardanis/GeN1e)~
+@234000 = ~Remove Summoning Cap for Celestials [Ardanis/GeN1e]~
 
-@235000 = ~Alter Multiclass Restrictions~
-@235001 = ~Allow humans to multiclass~
-@235100 = ~Allow non-humans access to all multiclass combinations~
-@235200 = ~Install options one and two (everyone can multiclass anything)~
-@235300 = ~Allow non-humans access to a multiclasses only if they can access the single-classes~
-@235800 = ~Install options one and three (everyone can multiclass anything they can single-class)~
+@235000 = ~Alter Multi-Class Restrictions~
+@235001 = ~Allow humans to multi-class~
+@235100 = ~Allow non-humans access to all multi-class combinations~
+@235200 = ~Install options one and two (everyone can multi-class anything)~
+@235300 = ~Allow non-humans access to a multi-classes only if they can access the single-classes~
+@235800 = ~Install options one and three (everyone can multi-class anything they can single-class)~
 
-@236000 = ~Remove Racial Restrictions for Single Classes~
+@236000 = ~Remove Racial Restrictions for Single-Classes~
 
 @237000 = ~Alter Dual-class Restrictions~
 @237001 = ~Humans can no longer dual-class~
@@ -368,17 +368,17 @@
 
 @238000 = ~Remove Racial Restrictions for Kits~
 
-@239000 = ~Paladins Use Icewind Dale-Heart of Winter Spell Tables (grogerson)~
+@239000 = ~Paladins Use Icewind Dale-Heart of Winter Spell Tables [grogerson]~
 
-@240000 = ~Rangers Use Icewind Dale-Heart of Winter Spell Tables (grogerson)~
+@240000 = ~Rangers Use Icewind Dale-Heart of Winter Spell Tables [grogerson]~
 
 @241000 = ~Druids Use 3E Alignment Restrictions~
 
-@242000 = ~Loosen Equipment Restrictions for Cleric Multiclasses~
+@242000 = ~Loosen Equipment Restrictions for Cleric Multi-Classes~
 
-@243000 = ~Loosen Equipment Restrictions for Druid Multiclasses~
-@243001 = ~Change Equipment Restrictions for Druid Multiclasses~
-@243100 = ~Tighten Equipment Restrictions for Druid Multiclasses (Angel)~
+@243000 = ~Loosen equipment restrictions for druid multi-classes~
+@243001 = ~Change Equipment Restrictions for Druid Multi-Classes~
+@243100 = ~Tighten equipment restrictions for druid multi-classes [Angel]~
 
 @244000 = ~Everyone Gets Bonus APR from Specialization~
 
@@ -386,18 +386,18 @@
 
 @250000 = ~Exceptional Strength Weight Limit Changes~
 
-@251000 = ~Level-Lock Spell Scrolls (Angel)~
+@251000 = ~Level-Lock Spell Scrolls [Angel]~
 
-@252000 = ~Allow Mages to Use Bucklers and Thieves to Use Small Shields (Angel)~
+@252000 = ~Allow Mages to Use Bucklers and Thieves to Use Small Shields [Angel]~
 
-@253000 = ~Lightning Bolts Don't Bounce (Angel)~
+@253000 = ~Lightning Bolts Don't Bounce [Angel]~
 
 @254000 = ~Speed Up de'Arnise Keep Stronghold Quests~
 
-@255000 = ~Alter Gnome Mage Kit/Multiclass Options~
-@255001 = ~Keep Gnome Illusionist Multiclass, Enable All Kits for Single-Class~
-@255100 = ~Generic Mage Multiclass, Keep Only Illusionist Kit for Single-Class~
-@255200 = ~Generic Mage Multiclass, Enable All Kits for Single-Class~
+@255000 = ~Alter Gnome Mage Kit/Multi-Class Options~
+@255001 = ~Keep gnome illusionist multi-class, enable all kits for single-class~
+@255100 = ~Generic mage multi-class, keep only illusionist kit for single-class~
+@255200 = ~Generic mage multi-class, enable all kits for single-class~
 
 @256000 = ~Allow Monks to Wear Helmets~
 
@@ -413,67 +413,67 @@
 
 @300000 = ~Higher HP on Level Up~
 @300001 = ~Maximum~
-@300100 = ~NWN Style~
-@300200 = ~Average Rolls~
-@300300 = ~Low Variance Rolls~
+@300100 = ~NWN style~
+@300200 = ~Average rolls~
+@300300 = ~Low variance rolls~
 
-@300800 = ~Allow HP Rolls Through Level 20 (Angel)~
+@300800 = ~Allow HP Rolls Through Level 20 [Angel]~
 
-@301000 = ~Maximum HP for NPCs (the bigg)~
-@301001 = ~For All Creatures in Game~
-@301100 = ~For Non-Party-Joinable NPCs Only~
-@301200 = ~For Party-Joinable NPCs Only~
+@301000 = ~Maximum HP for NPCs [the bigg]~
+@301001 = ~For all creatures in game~
+@301100 = ~For non-party-joinable NPCs only~
+@301200 = ~For party-joinable NPCs only~
 
 @302000 = ~Identify All Items~
 
 @303000 = ~Easy Spell Learning~
-@303001 = ~100% Learn Spells~
-@303100 = ~100% Learn Spells and No Maximum Cap~
+@303001 = ~100% learn spells~
+@303100 = ~100% learn spells and no maximum cap~
 
 @304000 = ~Make Bags of Holding Bottomless~
 
-@305000 = ~Remove fatigue from restoration spells~
+@305000 = ~Remove Fatigue from Restoration Spells~
 
-@306000 = ~Remove "You Must Gather Your Party..." Sound (Weimer)~
+@306000 = ~Remove "You Must Gather Your Party..." Sound [Weimer]~
 
-@307000 = ~Low Reputation Store Discount (Sabre)~
+@307000 = ~Low Reputation Store Discount [Sabre]~
 
 @307001 = ~Change Effect of Reputation on Store Prices~
-@307100 = ~Reputation Has No Effect, Stores Price Fixed at 100% (Luiz)~
-@307200 = ~Reputation Has No Effect, Stores Price Fixed at 80% (Luiz)~
-@307300 = ~Reputation Has No Effect, Stores Price Fixed at 60% (Luiz)~
+@307100 = ~Reputation has no effect, stores price fixed at 100% [Luiz]~
+@307200 = ~Reputation has no effect, stores price fixed at 80% [Luiz]~
+@307300 = ~Reputation has no effect, stores price fixed at 60% [Luiz]~
 
-@308000 = ~Unlimited Ammo Stacking~
+@308000 = ~Unlimited ammo stacking~
 @308001 = ~Increase Ammo Stack Size~
 @308100 = ~Stacks of 40~
 @308200 = ~Stacks of 80~
 @308300 = ~Stacks of 120~
 
-@309000 = ~Unlimited Gem and Jewelry Stacking~
+@309000 = ~Unlimited gem and jewelry stacking~
 @309001 = ~Increase Gem and Jewelry Stacking~
 
-@310000 = ~Unlimited Potion Stacking~
+@310000 = ~Unlimited potion stacking~
 @310001 = ~Increase Potion Stacking~
 
-@311000 = ~Unlimited Scroll Stacking~
+@311000 = ~Unlimited scroll stacking~
 @311001 = ~Increase Scroll Stacking~
 
-@312000 = ~Happy Patch (Party NPCs do not complain about reputation)~
-@312001 = ~NPCs Are Never Angry About Reputation~
-@312100 = ~NPCs Can Be Angry About Reputation but Never Leave (Salk)~
-@312200 = ~NPCs Are Always Neutral About Reputation (Anomaly)~
+@312000 = ~Happy Patch - Alter How Party NPCs Complain About Reputation~
+@312001 = ~NPCs are never angry about reputation~
+@312100 = ~NPCs can be angry about reputation but never leave [Salk]~
+@312200 = ~NPCs are always neutral about reputation [Anomaly]~
 
 @312300 = ~NPCs Don't Fight~
 
-@312400 = ~Stop Haer'Dalis-Aerie romance from starting~
+@312400 = ~Stop Haer'Dalis-Aerie Romance from Starting~
 
 @312500 = ~Neutral Characters Make Happy Comments at Mid-Range Reputation~
 
-@313000 = ~No Traps or Locks (Weimer)~
+@313000 = ~No Traps or Locks [Weimer]~
 
-@314000 = ~Faster Chapter 1&2 Cut-Scenes and Dreams~
-@314001 = ~Originals from Ease of Use Mod (Karzak, Blucher)~
-@314100 = ~Non-Silly Version~
+@314000 = ~Faster Chapter One and Two Cutscenes and Dreams~
+@314001 = ~Originals from Ease of Use mod [Karzak, Blucher]~
+@314100 = ~Non-silly version~
 
 @316000 = ~Keep Drizzt's Loot, Disable Malchor Harpell~
 
@@ -487,10 +487,7 @@ e.g. 50 would halve the current time between talks, whereas 300% would triple th
 Enter a percentage between 20 and 500:~
 
 @317900 = ~No Racial Requirements for Romance~
-@318000 = ~Romance Cheats~
-@318001 = ~No Gender/Racial Requirements for Romance~
-@318100 = ~No Gender/Racial Requirements for Romance, Allow Multiple Romances~
-@318200 = ~No Gender/Racial Requirements for Romance, Allow Multiple Romances, Nothing Kills Romances~
+
 @318300 = ~Romance Cheats~
 @318301 = ~Remove racial requirements for romances? (Select 1 or 2)
   1) Remove
@@ -517,7 +514,7 @@ Enter a percentage between 20 and 500:~
   2) No changes~
 @318312 = ~  * Start romances for new games in ToB~
 
-@319000 = ~Rest Anywhere (Japheth)~
+@319000 = ~Rest Anywhere [Japheth]~
 
 @319100 = ~Disable Non-Hostile Rest Spawns~
 
@@ -528,7 +525,7 @@ Enter a percentage between 20 and 500:~
 @319700 = ~Double frequency~
 @319800 = ~Quadruple frequency~
 
-@320000 = ~Sellable Items (Icelus)~
+@320000 = ~Sellable Items [Icelus]~
 
 @320500 = ~Stores Purchase All Item Types~
 
@@ -549,16 +546,16 @@ Enter a percentage between 20 and 500:~
 
 @322000 = ~Sensible Entrance Points~
 
-@323000 = ~Taerom Makes Additional Ankheg Armor (Icendoan/grogerson)~
+@323000 = ~Taerom Makes Additional Ankheg Armor [Icendoan/grogerson]~
 
 @324000 = ~Friendly Random Drops~
 @324001 = ~Randomize on reload~
-@324100 = ~Choose Your Drop~
-@324200 = ~Exchange With Merchants~
+@324100 = ~Choose your drop~
+@324200 = ~Exchange with merchants~
 
-@325000 = ~Never lose access to Orrick the Gray's trade goods~
+@325000 = ~Never Lose Access to Orrick the Gray's Trade Goods~
 
-@326000 = ~Recoverable ammunition~
+@326000 = ~Recoverable Ammunition~
 @326001 = ~25% chance to recover after a successful hit~
 @326100 = ~50% chance to recover after a successful hit~
 @326200 = ~75% chance to recover after a successful hit~
@@ -568,11 +565,11 @@ Enter a percentage between 20 and 500:~
 @326600 = ~75% chance to recover after a successful hit, vs. enemies only~
 @326700 = ~100% chance to recover after a successful hit, vs. enemies only~
 
-@327000 = ~Recoverable throwing weapons~
+@327000 = ~Recoverable Throwing Weapons~
 
 @328000 = ~Give Every Class/Kit Four Weapon Slots~
 
-@329000 = ~Personalize automatic save names~
+@329000 = ~Personalize Automatic Save Names~
 @329001 = ~Use scheme: 000000000-Protagonist-Save-Name~
 @329100 = ~Use scheme: 000000000-Protagonist Save-Name~
 @329200 = ~Use scheme: 000000000-(Protagonist)-Save-Name~
@@ -586,7 +583,7 @@ Enter a percentage between 20 and 500:~
 
 @332000 = ~No Depreciation in Stores~
 
-@333000 = ~Increase party movement speed and/or casting speed outside of combat~
+@333000 = ~Increase Party Movement Speed and/or Casting Speed Outside of Combat~
 @333001 = ~Movement speed by 50 percent~
 @333002 = ~Movement speed by 100 percent~
 @333003 = ~Movement speed by 150 percent~
@@ -595,7 +592,7 @@ Enter a percentage between 20 and 500:~
 @333006 = ~Movement speed by 150 percent and casting speed~
 @333007 = ~Casting speed only~
 
-@335000 = ~Create interval saves~
+@335000 = ~Create Interval Saves~
 @335001 = ~Every 15 minutes (one save only)~
 @335002 = ~Every 30 minutes (one save only)~
 @335003 = ~Every 60 minutes (one save only)~
@@ -625,15 +622,15 @@ Use Baldur.lua options: a7_interval_ini
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@400000 = ~Adjust Evil joinable NPC reaction rolls~
+@400000 = ~Adjust Evil Joinable NPC Reaction Rolls~
 
 @401000 = ~Improved Fate Spirit Summoning~
 
 @402000 = ~ToB-Style NPCs~
 
 @403000 = ~Consistent Stats: Edwin~
-@403001 = ~Use BG Values~
-@403100 = ~Use BG2 Values~
+@403001 = ~Use BG values~
+@403100 = ~Use BG2 values~
 
 @404000 = ~Consistent Stats: Jaheira~
 
@@ -643,23 +640,23 @@ Use Baldur.lua options: a7_interval_ini
 
 @407000 = ~Consistent Stats: Viconia~
 
-@408000 = ~Make Khalid a Fighter-Mage (Domi)~
+@408000 = ~Make Khalid a Fighter-Mage [Domi]~
 
-@409000 = ~Make Montaron an Assassin (Andyr)~
+@409000 = ~Make Montaron an Assassin [Andyr]~
 
 @410000 = ~Change Korgan to Neutral Evil~
 
-@411000 = ~Give Kagain A Legal Constitution Score of 19~
+@411000 = ~Give Kagain a Legal Constitution Score of 19~
 
-@412000 = ~Give Coran A Legal Dexterity Score of 19~
+@412000 = ~Give Coran a Legal Dexterity Score of 19~
 
-@413000 = ~Make Xan a Generalist Mage (Mike1072)~
+@413000 = ~Make Xan a Generalist Mage [Mike1072]~
 
-@413100 = ~Make Dynaheir a Generalist Mage (Angel)~
+@413100 = ~Make Dynaheir a Generalist Mage [Angel]~
 
-@413200 = ~Make Xzar a Generalist Mage (Angel)~
+@413200 = ~Make Xzar a Generalist Mage [Angel]~
 
-@413300 = ~Make Edwin a Generalist Mage (Angel)~
+@413300 = ~Make Edwin a Generalist Mage [Angel]~
 
 @414000 = ~Don't Auto-Assign Advanced AI Scripting to Party~
 
@@ -675,14 +672,14 @@ Use Baldur.lua options: a7_interval_ini
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 // deprecated: you don't have to translate @500000
-@500000 = ~Stackable ankheg shells, winter wolf pelts and wyvern heads~
+@500000 = ~Stackable Ankheg Shells, Winter Wolf Pelts and Wyvern Heads~
 
-@501000 = ~Allow NPC pairs to separate~
+@501000 = ~Allow NPC Pairs to Separate~
 
-@502000 = ~Make party members less likely to die irreversibly~
+@502000 = ~Make Party Members Less Likely to Die Irreversibly~
 
-@503000 = ~Move Boo into Minsc's pack~
+@503000 = ~Move Boo Into Minsc's Pack~
 
-@504000 = ~Allow Yeslick to use axes~
+@504000 = ~Allow Yeslick to Use Axes~
 
-@505000 = ~Ensure Shar-Teel doesn't die in the original challenge~
+@505000 = ~Ensure Shar-Teel Doesn't Die in the Original Challenge~
