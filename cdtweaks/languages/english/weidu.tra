@@ -22,7 +22,7 @@
 //@14 = ~This component is only for Tutu or BGT or Baldur's Gate: Enhanced Edition.~
 //@15 = ~This component is only for Tutu.~
 @16 = ~The functionality of this component is either already included
-         or superceded by one of your already installed mods.~
+         or superseded by one of your already installed mods.~
 @17 = ~Requires the Make +x/+y Weapons Consistent component to be installed.~
 @18 = ~This component has been deprecated.~
 //@19 = ~Cam's House Rules~
@@ -35,7 +35,7 @@
 @24 = ~This component is incompatible with another mod already installed.~
 @25 = ~This component is not available for your game.~
 @26 = ~Using values from the cdtweaks.txt config file for this component...~
-@27 = ~Modmerge is required before mods can be installed on this game. Check the readme for more information and a link to download Modmerge.~
+@27 = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
 @28 = ~There are not enough free spell state or secondary type slots available to install this component.~
 
 @100 = ~Automated Installer~
@@ -236,7 +236,7 @@ Thieving Abilities in Heavy Armor' Component~
 @219001 = ~Only Mage and Bard Storekeepers Can Identify Items~
 @219100 = ~Identification Ability is Based on Storekeeper's Lore~
 @219200 = ~Hybrid of Both Methods~
-@220000 = ~Multi-Class Grandmastery (Weimer)~
+@220000 = ~Multiclass Grandmastery (Weimer)~
 @221000 = ~True Grandmastery (Baldurdash)~
 @221001 = ~Change Grandmastery Bonuses~
 @221100 = ~BG2 Grandmastery Rules~
@@ -291,10 +291,10 @@ Thieving Abilities in Heavy Armor' Component~
 @239000 = ~Paladins Use Icewind Dale-Heart of Winter Spell Tables (grogerson)~
 @240000 = ~Rangers Use Icewind Dale-Heart of Winter Spell Tables (grogerson)~
 @241000 = ~Druids Use 3E Alignment Restrictions~
-@242000 = ~Loosen Equipment Restrictions for Cleric Multi-Classes~
-@243000 = ~Loosen Equipment Restrictions for Druid Multi-Classes~
-@243001 = ~Change Equipment Restrictions for Druid Multi-Classes~
-@243100 = ~Tighten Equipment Restrictions for Druid Multi-Classes (Angel)~
+@242000 = ~Loosen Equipment Restrictions for Cleric Multiclasses~
+@243000 = ~Loosen Equipment Restrictions for Druid Multiclasses~
+@243001 = ~Change Equipment Restrictions for Druid Multiclasses~
+@243100 = ~Tighten Equipment Restrictions for Druid Multiclasses (Angel)~
 @244000 = ~Everyone Gets Bonus APR from Specialization~
 // translators - the next three strings are used to replace game text, so they need to be copied from the game itself
 // get @244001 and @244002 from strref 9588 in bgee/bg2ee/iwdee
@@ -523,7 +523,7 @@ Use Baldur.lua options: a7_interval_ini
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@500000 = ~Stackable ankheg shells, winterwolf pelts and wyvern heads~
+@500000 = ~Stackable ankheg shells, winter wolf pelts and wyvern heads~
 @501000 = ~Allow NPC pairs to separate~
 @502000 = ~Make party members less likely to die irreversibly~
 @503000 = ~Move Boo into Minsc's pack~
