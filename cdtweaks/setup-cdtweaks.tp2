@@ -10794,7 +10794,7 @@ END
 
 // take care of tob_start
 // this will also take care of any romance requirement adjustments on the ToB side while we're here
-ACTION_IF (romance_starts_in_ToB = 1) THEN BEGIN
+ACTION_IF romance_starts_in_ToB AND game_includes_tob THEN BEGIN
 
   EXTEND_TOP ~aeri25.bcs~ ~cdtweaks/baf/aeri25_start_tob.baf~
 
