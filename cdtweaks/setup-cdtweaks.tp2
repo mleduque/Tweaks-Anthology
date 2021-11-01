@@ -14551,7 +14551,7 @@ COPY_EXISTING_REGEXP ~^_?edwin[0-9_]*\.cre$~ ~override~
   END  
   BUT_ONLY
   
-COPY_EXISTING ~npring01.itm~ ~override~ // remove 'cannot be removed' bit from nalia's ring
+COPY_EXISTING ~npring01.itm~ ~override~ // remove 'cannot be removed' description from nalia's ring
   SAY 0x54 @418002
   BUT_ONLY IF_EXISTS 
 
@@ -14566,10 +14566,17 @@ ACTION_IF game_is_bgt BEGIN // bgt edwin has special scripting to keep wearing h
 END    
 
 ACTION_IF game_includes_bg1 BEGIN // obg, tutu, bgt, bgee, eet
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_removable_npc_items BEGIN
-    alora, ~%tutu_var%alora~, ~%ALORA_BCS%~, bdalora, cdalorab => ~%tutu_var%misc88~               // alora's lucky rabbit foot; bdalora.bcs shouldn't exist
-    edwin, ~%tutu_var%edwin~, ~%EDWIN_BCS%~, bdedwin, cdedamul => ~%tutu_scriptbg%misc89%eet_var%~ // edwin's amulet (bg/sod)
-  END
+  ACTION_IF !tutu_gen BEGIN
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_removable_npc_items BEGIN
+      alora, ~%tutu_var%alora~, ~%ALORA_BCS%~, bdalora, cdalorab => ~%tutu_var%misc88~               // alora's lucky rabbit foot; bdalora.bcs shouldn't exist
+      edwin, ~%tutu_var%edwin~, ~%EDWIN_BCS%~, bdedwin, cdedamul => ~%tutu_scriptbg%misc89%eet_var%~ // edwin's amulet (bg/sod)
+    END
+  END ELSE BEGIN // tutu breaks its own _foo naming convention, so can't rely on CPM variables here
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_removable_npc_items BEGIN
+      alora, ~%tutu_var%alora~, ~%ALORA_BCS%~, bdalora, cdalorab => ~misc88~ // alora's lucky rabbit foot; bdalora.bcs shouldn't exist
+      edwin, ~%tutu_var%edwin~, ~%EDWIN_BCS%~, bdedwin, cdedamul => ~misc89~ // edwin's amulet (bg/sod)
+    END
+  END  
 END
 
 ACTION_IF game_includes_soa BEGIN // obg2, bgt, bg2ee, eet
