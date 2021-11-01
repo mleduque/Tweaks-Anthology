@@ -66,7 +66,7 @@
 
 @8000 = ~Restore SoA Load Screen Logo~
 
-@8020 = ~Restore IWD Loading Screens~
+@8020 = ~Restore IWD Loading Screens [icelus]~
 
 @9000 = ~Disable Portrait Icons Added by Equipped Items~
 
@@ -91,7 +91,7 @@
 
 @17000 = ~Unique Icons~
 
-@18000 = ~Unique Containers~
+@18000 = ~Unique Containers [Miloch]~
 @18018 = ~Fixes only~
 @18019 = ~This component is not relevant for BG1.~
 @18020 = ~Unique icons and names~
@@ -169,19 +169,19 @@
 @114100 = ~Just gems~
 @114200 = ~Just potions~
 
-@115000 = ~Shapeshifter Rebalancing~
+@115000 = ~Shapeshifter Rebalancing [Weimer]~
 
-@116000 = ~Multiple Strongholds [Baldurdash]~
-@116001 = ~No restrictions [Baldurdash]~
+@116000 = ~Multiple Strongholds [Sabre, Baldurdash, Weimer]~
+@116001 = ~No restrictions~
 @116100 = ~Keep class restrictions~
 
 @117000 = ~Bonus Merchants [Baldurdash]~
 
-@118000 = ~Female Edwina~
+@118000 = ~Female Edwina [Davide Carte, Wendy Yung, Weimer]~
 
-@119000 = ~Romance Bug Fixes~
+@119000 = ~Romance Bug Fixes [Sabre, Richardson]~
 
-@120000 = ~Imoen ToB Dialogue Fix~
+@120000 = ~Imoen ToB Dialogue Fix [jcompton]~
 
 @121000 = ~Use BG Walking Speeds~
 
@@ -217,7 +217,7 @@
 
 @128000 = ~Game Ends When the Main Character Dies~
 
-@129000 = ~NPCs Respond to the Main Character, not to Whichever Character Talks to Them~
+@129000 = ~NPCs Respond to the Main Character, Not to Whichever Character Talks to Them~
 
 @130000 = ~Make Heart of Winter Accessible at Any Level~
 
@@ -273,7 +273,7 @@
 @209100 = ~Level 20 experience point cap~
 @209200 = ~Level 30 experience point cap~
 
-@210000 = ~Allow Thieving and Stealth in Heavy Armor~
+@210000 = ~Allow Thieving and Stealth in Heavy Armor per PnP~
 
 @212000 = ~Allow Arcane Spellcasting in Heavy Armor~
 
@@ -361,7 +361,7 @@
 
 @236000 = ~Remove Racial Restrictions for Single-Classes~
 
-@237000 = ~Alter Dual-class Restrictions~
+@237000 = ~Alter Dual-Class Restrictions~
 @237001 = ~Humans can no longer dual-class~
 @237100 = ~Allow non-humans to dual-class~
 @237200 = ~Both options: *only* non-humans can dual-class~
@@ -374,17 +374,17 @@
 
 @241000 = ~Druids Use 3E Alignment Restrictions~
 
-@242000 = ~Loosen Equipment Restrictions for Cleric Multi-Classes~
+@242000 = ~Loosen Equipment Restrictions for Cleric Multi- and Dual-Classes~
 
-@243000 = ~Loosen equipment restrictions for druid multi-classes~
-@243001 = ~Change Equipment Restrictions for Druid Multi-Classes~
-@243100 = ~Tighten equipment restrictions for druid multi-classes [Angel]~
+@243000 = ~Loosen equipment restrictions for druid multi- and dual-classes~
+@243001 = ~Change Equipment Restrictions for Druid Multi- and Dual-Classes~
+@243100 = ~Tighten equipment restrictions for druid multi- and dual-classes [Angel]~
 
-@244000 = ~Everyone Gets Bonus APR from Specialization~
+@244000 = ~Everyone Gets Bonus APR from Specialization [subtledoctor]~
 
-@245000 = ~Enforce PnP Proficiency Rules on Dual-Classed Characters~
+@245000 = ~Enforce PnP Proficiency Rules on Dual-Classed Characters [subtledoctor]~
 
-@250000 = ~Exceptional Strength Weight Limit Changes~
+@250000 = ~Exceptional Strength Weight Limit Changes [sarevok57]~
 
 @251000 = ~Level-Lock Spell Scrolls [Angel]~
 
@@ -413,13 +413,13 @@
 
 @300000 = ~Higher HP on Level Up~
 @300001 = ~Maximum~
-@300100 = ~NWN style~
+@300100 = ~NWN-style~
 @300200 = ~Average rolls~
 @300300 = ~Low variance rolls~
 
 @300800 = ~Allow HP Rolls Through Level 20 [Angel]~
 
-@301000 = ~Maximum HP for NPCs [the bigg]~
+@301000 = ~Maximum HP Creatures [the bigg]~
 @301001 = ~For all creatures in game~
 @301100 = ~For non-party-joinable NPCs only~
 @301200 = ~For party-joinable NPCs only~
@@ -449,8 +449,8 @@
 @308200 = ~Stacks of 80~
 @308300 = ~Stacks of 120~
 
-@309000 = ~Unlimited gem and jewelry stacking~
-@309001 = ~Increase Gem and Jewelry Stacking~
+@309000 = ~Unlimited jewelry, gem, and miscellaneous item stacking~
+@309001 = ~Increase Jewelry, Gem, and Miscellaneous Item Stacks~
 
 @310000 = ~Unlimited potion stacking~
 @310001 = ~Increase Potion Stacking~
@@ -467,17 +467,17 @@
 
 @312400 = ~Stop Haer'Dalis-Aerie Romance from Starting~
 
-@312500 = ~Neutral Characters Make Happy Comments at Mid-Range Reputation~
+@312500 = ~Neutral Characters Make Happy Comments at Mid-Range Reputation [Luiz]~
 
 @313000 = ~No Traps or Locks [Weimer]~
 
 @314000 = ~Faster Chapter One and Two Cutscenes and Dreams~
-@314001 = ~Originals from Ease of Use mod [Karzak, Blucher]~
+@314001 = ~Originals from Ease-of-Use mod [Karzak, Blucher, aVENGER, Weimer]~
 @314100 = ~Non-silly version~
 
-@316000 = ~Keep Drizzt's Loot, Disable Malchor Harpell~
+@316000 = ~Keep Drizzt's Loot, Disable Malchor Harpell [Weimer]~
 
-@317000 = ~No Drow Avatars On Party In Underdark~
+@317000 = ~No Drow Avatars On Party In Underdark [Weimer]~
 
 @317500 = ~Disable Romances~
 
@@ -488,7 +488,7 @@ Enter a percentage between 20 and 500:~
 
 @317900 = ~No Racial Requirements for Romance~
 
-@318300 = ~Romance Cheats~
+@318300 = ~Romance Cheats [Sabre, Richardson, Weimer]~
 @318301 = ~Remove racial requirements for romances? (Select 1 or 2)
   1) Remove
   2) No changes~
@@ -514,7 +514,7 @@ Enter a percentage between 20 and 500:~
   2) No changes~
 @318312 = ~  * Start romances for new games in ToB~
 
-@319000 = ~Rest Anywhere [Japheth]~
+@319000 = ~Rest Anywhere [japheth]~
 
 @319100 = ~Disable Non-Hostile Rest Spawns~
 
@@ -525,7 +525,7 @@ Enter a percentage between 20 and 500:~
 @319700 = ~Double frequency~
 @319800 = ~Quadruple frequency~
 
-@320000 = ~Sellable Items [Icelus]~
+@320000 = ~Sellable Items [icelus]~
 
 @320500 = ~Stores Purchase All Item Types~
 
@@ -555,7 +555,7 @@ Enter a percentage between 20 and 500:~
 
 @325000 = ~Never Lose Access to Orrick the Gray's Trade Goods~
 
-@326000 = ~Recoverable Ammunition~
+@326000 = ~Recoverable Ammunition [argent77]~
 @326001 = ~25% chance to recover after a successful hit~
 @326100 = ~50% chance to recover after a successful hit~
 @326200 = ~75% chance to recover after a successful hit~
@@ -565,7 +565,7 @@ Enter a percentage between 20 and 500:~
 @326600 = ~75% chance to recover after a successful hit, vs. enemies only~
 @326700 = ~100% chance to recover after a successful hit, vs. enemies only~
 
-@327000 = ~Recoverable Throwing Weapons~
+@327000 = ~Recoverable Throwing Weapons [argent77]~
 
 @328000 = ~Give Every Class/Kit Four Weapon Slots~
 
@@ -583,7 +583,7 @@ Enter a percentage between 20 and 500:~
 
 @332000 = ~No Depreciation in Stores~
 
-@333000 = ~Increase Party Movement Speed and/or Casting Speed Outside of Combat~
+@333000 = ~Increase Party Movement Speed and/or Casting Speed Outside of Combat [argent77]~
 @333001 = ~Movement speed by 50 percent~
 @333002 = ~Movement speed by 100 percent~
 @333003 = ~Movement speed by 150 percent~
@@ -592,7 +592,7 @@ Enter a percentage between 20 and 500:~
 @333006 = ~Movement speed by 150 percent and casting speed~
 @333007 = ~Casting speed only~
 
-@335000 = ~Create Interval Saves~
+@335000 = ~Create Interval Saves [argent77]~
 @335001 = ~Every 15 minutes (one save only)~
 @335002 = ~Every 30 minutes (one save only)~
 @335003 = ~Every 60 minutes (one save only)~
@@ -634,7 +634,7 @@ Use Baldur.lua options: a7_interval_ini
 
 @404000 = ~Consistent Stats: Jaheira~
 
-@405000 = ~Change Jaheira to Neutral Good~
+@405000 = ~Change Jaheira to Neutral Good Alignment~
 
 @406000 = ~Consistent Stats: Minsc~
 
@@ -644,7 +644,7 @@ Use Baldur.lua options: a7_interval_ini
 
 @409000 = ~Make Montaron an Assassin [Andyr]~
 
-@410000 = ~Change Korgan to Neutral Evil~
+@410000 = ~Change Korgan to Neutral Evil Alignment~
 
 @411000 = ~Give Kagain a Legal Constitution Score of 19~
 
