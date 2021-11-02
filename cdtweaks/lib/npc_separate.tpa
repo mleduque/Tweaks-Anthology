@@ -8,9 +8,9 @@ montaron_loc           5             1              5                   5
 xzar_loc               5             1              5                   5
 eldoth_loc             4             0              4                   4
 skie_loc               4             0              4                   4
-jaheira_stay           6             6              999                 6
-khalid_stay            6             6              6                   6
-minsc_stay             999           999            13                  999
+jaheira_stay           6             6              75                  6
+khalid_stay            6             6              1                   6
+minsc_stay             999           999            999                 999
 dynaheir_stay          6             6              6                   6
 montaron_stay          7             7              7                   7
 xzar_stay              6             6              6                   6
@@ -24,6 +24,7 @@ ACTION_IF game_is_bgee BEGIN
 END ELSE
 ACTION_IF game_is_bgt BEGIN
   OUTER_SET column = 3
+  COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/depart_bgt.d~ 
 END ELSE
 ACTION_IF tutu_gen BEGIN
   OUTER_SET column = 2
@@ -44,10 +45,6 @@ COPY ~./inlined/npc_data.2da~ ~./inlined/npc_data.2da~
   BUT_ONLY
 
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/pairsep.d~
-
-  <<<<<<<< pairsep2.d
-  ALTER_TRANS ~%dlg%~ BEGIN ~%staynum%~ END BEGIN 0 END BEGIN "ACTION" "" END
-  >>>>>>>>
     
  ACTION_CLEAR_ARRAY npc_data
  ACTION_DEFINE_ASSOCIATIVE_ARRAY npc_data BEGIN
@@ -69,16 +66,9 @@ COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/pairsep.d~
       REPLACE_TEXTUALLY ~!Dead("%ally%")~ ~!Dead("%ally%") !InParty("%ally%") InMyArea("%ally%")~
       REPLACE_TEXTUALLY ~ActionOverride("%ally%",LeaveParty())~ ~ActionOverride("%ally%",LeaveParty()) ActionOverride("%ally%",SetGlobal("%kicked_out_variable%","LOCALS",1))~
       REPLACE_TEXTUALLY ~ActionOverride("%ally%",JoinParty())~  ~ActionOverride("%ally%",JoinParty())  ActionOverride("%ally%",SetGlobal("%kicked_out_variable%","LOCALS",0))~
-      // minsc special
-      REPLACE_TEXTUALLY ~OR(2)[ %TAB%%LNL%%MNL%%WNL%]+OR(3) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%")[ %TAB%%LNL%%MNL%%WNL%]+!BeenInParty("%ally%")~
-                        ~OR(4) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%") !BeenInParty("%ally%")~
+      // minsc special - bgt/ee
+      REPLACE_TEXTUALLY ~OR(2)[ %TAB%%LNL%%MNL%%WNL%]+OR(3) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%")[ %TAB%%LNL%%MNL%%WNL%]*\(!Global("HelpMinsc","GLOBAL",2)\|!BeenInParty("%ally%")\)~
+                        ~OR(4) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%") \1~
     END
-  OUTER_SPRINT npc ~%script%~
-  ACTION_TO_LOWER npc
-  OUTER_SPRINT staynum EVALUATE_BUFFER ~%%npc%_stay%~
-  ACTION_IF !(staynum=999) BEGIN
-    COPY pairsep2.d "weidu_external/cdtweaks/pairsep2_%script%.d" EVALUATE_BUFFER
-    COMPILE EVALUATE_BUFFER "weidu_external/cdtweaks/pairsep2_%script%.d"
-  END
 
 END
