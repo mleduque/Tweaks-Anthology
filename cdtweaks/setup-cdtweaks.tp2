@@ -7806,6 +7806,105 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                            \\\\\
+///// Remove Racial Restrictions for Single Classes              \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @236000 DESIGNATED 2360
+GROUP @9
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+LABEL ~cd_tweaks_remove_class_racial_restrictions~
+
+INCLUDE ~cdtweaks/lib/class-race_removal.tpa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Remove Racial Restrictions for Kits                        \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+  
+BEGIN @238000 DESIGNATED 2380
+GROUP @9
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+LABEL ~cd_tweaks_remove_kit_racial_restrictions~
+
+INCLUDE ~cdtweaks/lib/kit-race_removal.tpa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Alter Dual-class Restrictions                              \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// Allow Non-Humans to Dual-Class                             \\\\\
+/////                                                            \\\\\
+
+BEGIN @237100 DESIGNATED 2371
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx
+GROUP @9
+SUBCOMPONENT @237000 // Alter Dual-class Restrictions
+LABEL ~cd_tweaks_alter_dualclass_humans_yes_nonhumans_yes~
+
+ACTION_IF FILE_EXISTS ~tobex_ini/tobextweak.ini~ THEN BEGIN
+
+  COPY ~tobex_ini/tobextweak.ini~ ~tobex_ini/tobextweak.ini~
+    REPLACE_TEXTUALLY ~Engine:Allow All Races to Dual Class=0~ ~Engine:Allow All Races to Dual Class=1~
+    BUT_ONLY
+
+END ELSE BEGIN
+
+  COPY_EXISTING ~clsrcreq.2da~ ~override~
+    REPLACE_TEXTUALLY ~^\(DUALCLASS[ %TAB%]+[0-9]+[ %TAB%]+\).+$~ ~\1 1 1 1 1 1 1~
+    PRETTY_PRINT_2DA
+    BUT_ONLY
+
+END
+
+INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class
+
+/////                                                            \\\\\
+///// Humans can no longer dual-class                            \\\\\
+/////                                                            \\\\\
+
+BEGIN @237001 DESIGNATED 2370
+GROUP @9
+REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
+SUBCOMPONENT @237000 // Alter Dual-class Restrictions
+LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_no~
+
+COPY_EXISTING ~clsrcreq.2da~ ~override~
+  REPLACE_TEXTUALLY ~^DUALCLASS[ %TAB%]+1~ ~DUALCLASS 0~
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+
+INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class
+
+/////                                                            \\\\\
+///// Change both                                                 \\\\\
+/////                                                            \\\\\
+
+BEGIN @237200 DESIGNATED 2372
+REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
+GROUP @9
+SUBCOMPONENT @237000 // Alter Dual-class Restrictions
+LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_yes~
+
+COPY_EXISTING ~clsrcreq.2da~ ~override~
+  REPLACE_TEXTUALLY ~^\(DUALCLASS[ %TAB%]+\).+$~ ~\1 0 1 1 1 1 1 1~
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+
+INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
 ///// Alter Multiclass Restrictions                              \\\\\
 /////                                                            \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -8031,36 +8130,6 @@ INCLUDE ~cdtweaks/lib/multiclass_text.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                            \\\\\
-///// Remove Racial Restrictions for Single Classes              \\\\\
-/////                                                            \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
-BEGIN @236000 DESIGNATED 2360
-GROUP @9
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
-LABEL ~cd_tweaks_remove_class_racial_restrictions~
-
-INCLUDE ~cdtweaks/lib/class-race_removal.tpa~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                            \\\\\
-///// Remove Racial Restrictions for Kits                        \\\\\
-/////                                                            \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-  
-BEGIN @238000 DESIGNATED 2380
-GROUP @9
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
-LABEL ~cd_tweaks_remove_kit_racial_restrictions~
-
-INCLUDE ~cdtweaks/lib/kit-race_removal.tpa~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                            \\\\\
 ///// Alter Gnome Mage Kit/Multiclass Options                    \\\\\
 /////                                                            \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -8107,75 +8176,6 @@ LABEL ~cd_tweaks_gnome_multiclass_mage_kits_all~
 OUTER_SET gnome_base = 0
 OUTER_SET gnome_kits = 1
 INCLUDE ~cdtweaks/lib/kit-gnome.tpa~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                            \\\\\
-///// Alter Dual-class Restrictions                              \\\\\
-/////                                                            \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
-/////                                                            \\\\\
-///// Allow Non-Humans to Dual-Class                             \\\\\
-/////                                                            \\\\\
-
-BEGIN @237100 DESIGNATED 2371
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx
-GROUP @9
-SUBCOMPONENT @237000 // Alter Dual-class Restrictions
-LABEL ~cd_tweaks_alter_dualclass_humans_yes_nonhumans_yes~
-
-ACTION_IF FILE_EXISTS ~tobex_ini/tobextweak.ini~ THEN BEGIN
-
-  COPY ~tobex_ini/tobextweak.ini~ ~tobex_ini/tobextweak.ini~
-    REPLACE_TEXTUALLY ~Engine:Allow All Races to Dual Class=0~ ~Engine:Allow All Races to Dual Class=1~
-    BUT_ONLY
-
-END ELSE BEGIN
-
-  COPY_EXISTING ~clsrcreq.2da~ ~override~
-    REPLACE_TEXTUALLY ~^\(DUALCLASS[ %TAB%]+[0-9]+[ %TAB%]+\).+$~ ~\1 1 1 1 1 1 1~
-    PRETTY_PRINT_2DA
-    BUT_ONLY
-
-END
-
-INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class
-
-/////                                                            \\\\\
-///// Humans can no longer dual-class                            \\\\\
-/////                                                            \\\\\
-
-BEGIN @237001 DESIGNATED 2370
-GROUP @9
-REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
-SUBCOMPONENT @237000 // Alter Dual-class Restrictions
-LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_no~
-
-COPY_EXISTING ~clsrcreq.2da~ ~override~
-  REPLACE_TEXTUALLY ~^DUALCLASS[ %TAB%]+1~ ~DUALCLASS 0~
-  PRETTY_PRINT_2DA
-  BUT_ONLY
-
-INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class
-
-/////                                                            \\\\\
-///// Change both                                                 \\\\\
-/////                                                            \\\\\
-
-BEGIN @237200 DESIGNATED 2372
-REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
-GROUP @9
-SUBCOMPONENT @237000 // Alter Dual-class Restrictions
-LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_yes~
-
-COPY_EXISTING ~clsrcreq.2da~ ~override~
-  REPLACE_TEXTUALLY ~^\(DUALCLASS[ %TAB%]+\).+$~ ~\1 0 1 1 1 1 1 1~
-  PRETTY_PRINT_2DA
-  BUT_ONLY
-
-INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
