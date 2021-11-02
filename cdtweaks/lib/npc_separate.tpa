@@ -25,6 +25,7 @@ END ELSE
 ACTION_IF game_is_bgt BEGIN
   OUTER_SET column = 3
   COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/depart_bgt.d~ 
+  COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/pairsep_bgt.d~ 
 END ELSE
 ACTION_IF tutu_gen BEGIN
   OUTER_SET column = 2
@@ -62,13 +63,16 @@ COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/pairsep.d~
   OUTER_SPRINT dlg EVALUATE_BUFFER ~%%script%_POST%~
   COPY_EXISTING ~%dlg%.dlg~ ~override~
     DECOMPILE_AND_PATCH BEGIN
-      REPLACE_TEXTUALLY ~[ %TAB%%LNL%%MNL%%WNL%]Dead("%ally%")~ ~ OR(3) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%")~
-      REPLACE_TEXTUALLY ~!Dead("%ally%")~ ~!Dead("%ally%") !InParty("%ally%") InMyArea("%ally%")~
-      REPLACE_TEXTUALLY ~ActionOverride("%ally%",LeaveParty())~ ~ActionOverride("%ally%",LeaveParty()) ActionOverride("%ally%",SetGlobal("%kicked_out_variable%","LOCALS",1))~
-      REPLACE_TEXTUALLY ~ActionOverride("%ally%",JoinParty())~  ~ActionOverride("%ally%",JoinParty())  ActionOverride("%ally%",SetGlobal("%kicked_out_variable%","LOCALS",0))~
+      REPLACE_TEXTUALLY CASE_INSENSITIVE ~[ %TAB%%LNL%%MNL%%WNL%]Dead("%ally%")~ ~ OR(3) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%")~
+      REPLACE_TEXTUALLY CASE_INSENSITIVE ~!Dead("%ally%")~ ~!Dead("%ally%") !InParty("%ally%") InMyArea("%ally%")~
+      REPLACE_TEXTUALLY CASE_INSENSITIVE ~ActionOverride("%ally%",LeaveParty())~ 
+        ~ActionOverride("%ally%",LeaveParty()) ActionOverride("%ally%",SetGlobal("%kicked_out_variable%","LOCALS",1))~
+      REPLACE_TEXTUALLY CASE_INSENSITIVE ~ActionOverride("%ally%",JoinParty())~  
+        ~ActionOverride("%ally%",JoinParty())  ActionOverride("%ally%",SetGlobal("%kicked_out_variable%","LOCALS",0))~
       // minsc special - bgt/ee
-      REPLACE_TEXTUALLY ~OR(2)[ %TAB%%LNL%%MNL%%WNL%]+OR(3) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%")[ %TAB%%LNL%%MNL%%WNL%]*\(!Global("HelpMinsc","GLOBAL",2)\|!BeenInParty("%ally%")\)~
-                        ~OR(4) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%") \1~
+      REPLACE_TEXTUALLY CASE_INSENSITIVE 
+        ~OR(2)[ %TAB%%LNL%%MNL%%WNL%]+OR(3) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%")[ %TAB%%LNL%%MNL%%WNL%]*\(!Global("HelpMinsc","GLOBAL",2)\|!BeenInParty("%ally%")\)~
+        ~OR(4) Dead("%ally%") InParty("%ally%") !InMyArea("%ally%") \1~
     END
 
 END
