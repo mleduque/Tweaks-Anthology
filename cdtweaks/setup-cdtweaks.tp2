@@ -1,5 +1,5 @@
 BACKUP ~cdtweaks/backup~ // location to store files for
-SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=34~ // URL displayed if install fails
+SUPPORT ~https://www.gibberlings3.net/forum/34-tweaks-anthology-forum/~ // URL displayed if install fails
 AUTO_EVAL_STRINGS
 
 ALWAYS
@@ -11,7 +11,7 @@ ALWAYS
   
 END
 
-VERSION ~v9~
+VERSION ~v10 Release Candidate 1~
 
 README ~cdtweaks/languages/%LANGUAGE%/readme-cdtweaks.html~ ~cdtweaks/readme-cdtweaks.html~
 
