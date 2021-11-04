@@ -94,32 +94,28 @@ END
 APPEND ~%postdialogue%~
 IF ~~ THEN BEGIN dmww_fai
   SAY @%dmwwresponse%
-  IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("%FriendlyArmInn_L1%","%npc%",[%friendly_xloc%.%friendly_yloc%])~
+  IF ~~ THEN DO ~EscapeAreaMove("%FriendlyArmInn_L1%",%friendly_xloc%,%friendly_yloc%,0)~
 EXIT
 END
 
 IF
   ~~ THEN BEGIN dmww_beregost
   SAY @%dmwwresponse%
-  IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("%Beregost_JovialJuggler_L1%","%npc%",[%beregost_xloc%.%beregost_yloc%])~
+  IF ~~ THEN DO ~EscapeAreaMove("%Beregost_JovialJuggler_L1%",%beregost_xloc%,%beregost_yloc%,0)~
 EXIT
 END
 
 IF
   ~~ THEN BEGIN dmww_nash
   SAY @%dmwwresponse%
-  IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("%Nashkel_Inn%","%npc%",[%nashkel_xloc%.%nashkel_yloc%])~
+  IF ~~ THEN DO ~EscapeAreaMove("%Nashkel_Inn%",%nashkel_xloc%,%nashkel_yloc%,0)~
 EXIT
 END
 
 IF
   ~~ THEN BEGIN dmww_elfsong
   SAY @%dmwwresponse%
-  IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("%EBaldursGate_ElfsongTavern_L1%","%npc%",[%elfsong_xloc%.%elfsong_yloc%])~
+  IF ~~ THEN DO ~EscapeAreaMove("%EBaldursGate_ElfsongTavern_L1%",%elfsong_xloc%,%elfsong_yloc%,0)~
 EXIT
 END
 

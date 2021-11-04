@@ -106,32 +106,28 @@ END
 APPEND baelothp
 IF ~~ THEN BEGIN dmww_fai
   SAY @20851
-  IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("%FriendlyArmInn%","baeloth",[4721.3045])~
+  IF ~~ THEN DO ~EscapeAreaMove("%FriendlyArmInn%",4721,3045,0)~
 EXIT
 END
 
 IF
   ~~ THEN BEGIN dmww_beregost
   SAY @20851
-  IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("%Beregost%","baeloth",[829.2427])~
+  IF ~~ THEN DO ~EscapeAreaMove("%Beregost%",829,2427,0)~
 EXIT
 END
 
 IF
   ~~ THEN BEGIN dmww_nash
   SAY @20851
-  IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("%Nashkel%","baeloth",[432.1288])~
+  IF ~~ THEN DO ~EscapeAreaMove("%Nashkel%",432,1288,0)~
 EXIT
 END
 
 IF
   ~~ THEN BEGIN dmww_elfsong
   SAY @20851
-  IF ~~ THEN DO ~RunAwayFromNoInterrupt([PC],120)
-  Face(0) MoveGlobal("%EBaldursGate%","baeloth",[353.1623])~
+  IF ~~ THEN DO ~EscapeAreaMove("%EBaldursGate%",353,1623,0)~
 EXIT
 END
 

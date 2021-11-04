@@ -7,7 +7,7 @@ CHAIN
 IF ~~ THEN %KHALID_POST% dmww_khalidnotwanted
 @20701 == %JAHEIRA_POST%
 @20702
-DO ~ SetGlobal("%kicked_out_variable%","LOCALS",0)JoinParty()~ EXIT
+DO ~SetGlobal("%kicked_out_variable%","LOCALS",0) JoinParty()~ EXIT
 
 EXTEND_BOTTOM ~%KHALID_POST%~ %khalid_loc%
 
@@ -18,7 +18,7 @@ CHAIN
 IF ~~ THEN %KHALID_POST% dmww_jaheiranotwanted
 @20704 == %JAHEIRA_POST%
 @20705
-DO ~ActionOverride("khalid",JoinParty())~ EXIT
+DO ~ActionOverride("khalid",SetGlobal("%kicked_out_variable%","LOCALS",0)) ActionOverride("khalid",JoinParty())~ EXIT
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -31,7 +31,7 @@ CHAIN
 IF ~~ THEN %MINSC_POST% dmww_dynaheirnotwanted
 @20707 == %DYNAHEIR_POST%
 @20708
-DO ~ActionOverride("minsc",JoinParty())~ 
+DO ~ActionOverride("minsc",SetGlobal("%kicked_out_variable%","LOCALS",0)) ActionOverride("minsc",JoinParty())~ 
 EXIT
 
 EXTEND_BOTTOM ~%DYNAHEIR_POST%~ %dynaheir_loc%
@@ -68,7 +68,7 @@ CHAIN
 IF ~~ THEN %XZAR_POST% dmww_montaronnotwanted
 @20716 == %MONTARON_POST%
 @20717
-DO ~ActionOverride("xzar",JoinParty())~ EXIT
+DO ~ActionOverride("xzar",SetGlobal("%kicked_out_variable%","LOCALS",0)) ActionOverride("xzar",JoinParty())~ EXIT
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -81,7 +81,7 @@ CHAIN
 IF ~~ THEN %ELDOTH_POST% dmww_skienotwanted
 @20718 = @20719 == %SKIE_POST%
 @20720 = @20721
-DO ~ActionOverride("eldoth",JoinParty())~
+DO ~ActionOverride("eldoth",SetGlobal("%kicked_out_variable%","LOCALS",0)) ActionOverride("eldoth",JoinParty())~
 EXIT
 
 EXTEND_BOTTOM ~%SKIE_POST%~ %skie_loc%
@@ -93,7 +93,7 @@ CHAIN
 IF ~~ THEN %SKIE_POST% dmww_eldothnotwanted
 @20722 == %ELDOTH_POST%
 @20723=@20724
-DO ~ActionOverride("skie",JoinParty())~
+DO ~ActionOverride("skie",SetGlobal("%kicked_out_variable%","LOCALS",0)) ActionOverride("skie",JoinParty())~
 EXIT
 
 
