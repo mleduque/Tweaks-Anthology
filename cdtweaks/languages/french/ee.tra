@@ -1,2 +1,12 @@
 // this file is used to override strings in game.tra for EE games
 // it will NOT be re-encoded for EE games, so put it in the correct charset for your language
+~Cet anneau a été donné à Nalia par son père à son passage à la majorité. Lié par le sang, cet anneau ne peut être utilisé par quelqu'un d'autre. L'anneau octroie un bonus de +2 à tous les Jets de Sauvegarde, +2 à la Classe d'armure et 50 % de résistance au feu.
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+- Classe d'armure : +2
+- Jets de sauvegarde : +2
+- Résistance au feu : +50 %
+
+Poids : 0~

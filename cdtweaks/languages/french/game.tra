@@ -857,6 +857,17 @@ Cette compétence permet aux membres du groupe de lancer des sorts plus rapideme
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 @408001 = ~Interrogé sur son passé, c'est un KHALID visiblement nerveux qui avoue être né et avoir été élevé en Calimshan. Il ne parle guère de ses parents, mais on sent que son marchand de père n'avait pas une haute opinion de lui et se consacrait davantage à ses demi-frères. Sans l'aide de son père, Khalid n'a pas pu payer pour avoir l'enseignement d'un mage, donc il s'engagea dans la milice de sa ville dans l'espoir de gagner suffisamment d'argent. Et même s'il reste dans le vague quant aux circonstances de sa rencontre avec Jaheira, il est visible qu'il l'adore. Quand on lui demande comment il se fait qu'il ait connu Gorion, il se borne à dire qu'ils étaient amis de longue date et que beaucoup de leurs amis communs vont pleurer sa perte sur leur harpe.~
+// translators: 418001 is strref #10732 from bgee or bg2ee without the 'equipped abilities' block. 
+// This is not used on non-EE games since they don't mention equipping effects
+@418001 = ~Ce bijou de famille atteste du droit de naissance d'Edwin.
+
+Poids : 1~
+// translators: 418002 and 418003 are strref #50818 in bg2ee and obg2, respectively, 
+// with the part about 'the ring may not be removed from nalia' deleted 
+@418002 = ~Chevalière de'Arnise
+
+Cet anneau a été donné à Nalia par son père à son passage à la majorité. Lié par le sang, cet anneau ne peut être utilisé par quelqu'un d'autre. L'anneau octroie un bonus de +2 à tous les Jets de Sauvegarde, +2 à la Classe d'armure et 50 % de résistance au feu.~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

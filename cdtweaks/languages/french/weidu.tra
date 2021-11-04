@@ -575,6 +575,7 @@ Utiliser les parametres de Baldur.lua :      a7_interval_ini
 @412000 = ~Donner a Coran une valeur reglementaire de 19 en dexterite~
 @413000 = ~Transformer Xan en mage generaliste (Mike1072)~
 @414000 = ~Ne pas attribuer automatiquement un script IA avance au groupe~
+@418000 = ~Les objets des PNJ peuvent être retirés~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
