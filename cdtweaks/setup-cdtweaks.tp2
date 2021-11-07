@@ -13394,6 +13394,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
   READ_LONG 0x1cc bio ELSE "-1"
   PATCH_IF (("%SOURCE_RES%" STRING_COMPARE_CASE "BDIMOEN") AND  // exclude special imoen files
             ("%SOURCE_RES%" STRING_COMPARE_CASE "BDSHIMOE") AND // exclude special imoen files
+            ("%SOURCE_RES%" STRING_COMPARE_CASE "FINIMOEN") AND // exclude special imoen files
             (bio >= 0)) BEGIN // don't bother if no bio
     READ_ASCII 0x280 "dvcre" (32) NULL
     PHP_EACH cd_dv_array AS file => dv BEGIN
