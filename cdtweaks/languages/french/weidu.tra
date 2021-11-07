@@ -35,7 +35,7 @@ ou rendues obsoletes par un autre mod deja installe.~
 @24 = ~Ce composant est incompatible avec un autre mod deja installe.~
 @25 = ~Ce composant n'est pas disponible pour votre jeu.~
 @26 = ~Utilisation des valeurs du fichier de config cdtweaks.txt pour ce composant...~
-@27 = ~Il est necessaire d'utiliser Modmerge avant d'installer des mods pour ce jeu. Consultez le readme pour plus d'informations et pour trouver un lien pour telecharger Modmerge.~
+@27 = ~Il est necessaire d'utiliser DLC Merger avant d'installer des mods pour ce jeu. Consultez le readme pour plus d'informations et pour trouver un lien pour telecharger DLC Merger.~
 @28 = ~Nombre d'emplacements disponibles de "spellstates" ou d'ecoles de magie secondaire insuffisant pour installer ce composant (trop de mods installes).~
 
 @100 = ~installateur automatisé~
