@@ -1,4 +1,5 @@
-@100 = ~Sac à gemmes velours~
+
+@100 = ~Sac à gemmes velours~ // was 18119
 @101 = ~Sac à gemmes noir-vert~
 @102 = ~Sac à gemmes vert~
 @103 = ~Sac à gemmes turquoise~
@@ -17,7 +18,7 @@
 @116 = ~Sac à gemmes marron~
 @117 = ~Sac à gemmes rouge-or~
 @118 = ~Sac à gemmes rouge-violet~
-@119 = ~Sac à gemmes bronze~
+@119 = ~Sac à gemmes bronze~ // was 18100
 @120 = ~Vieux sac à gemmes~
 @121 = ~Sac à gemmes cyan~
 @122 = ~Sac à gemmes or-rouge~
@@ -27,7 +28,9 @@
 @126 = ~Sac à gemmes drow~
 @127 = ~Sac à gemmes émeraude~
 @128 = ~Sac à gemmes de couleur sombre~
-@200 = ~Étui à parchemin ancien~
+
+// scroll cases
+@200 = ~Étui à parchemin ancien~ // was 18218
 @201 = ~Étui à parchemin noir-vert~
 @202 = ~Étui à parchemin vert~
 @203 = ~Étui à parchemin turquoise~
@@ -45,14 +48,15 @@
 @215 = ~Étui à parchemin rubis~
 @216 = ~Étui à parchemin marron~
 @217 = ~Étui à parchemin améthyste~
-@218 = ~Étui à parchemin bronze~
+@218 = ~Étui à parchemin bronze~ // was 18200
 @219 = ~Vieil étui à parchemin~
 @220 = ~Étui à parchemin argenté~
 @221 = ~Étui à parchemin feu sombre~
 @222 = ~Étui à parchemin vert marin~
 @223 = ~Étui à parchemin drow~
 @224 = ~Étui à parchemin émeraude~
-@225 = ~Étui à parchemin de couleur sombre~
+@225 = ~Étui à parchemin de couleur sombre~ // was 18243
+// was 225-233
 @240 = ~Sacoche de livres rouge~
 @241 = ~Sacoche de livres orange~
 @242 = ~Sacoche de livres dorée~
@@ -62,6 +66,7 @@
 @246 = ~Sacoche de livres indigo~
 @247 = ~Sacoche de livres violette~
 @248 = ~Sacoche de livres noire~
+// was 234-242
 @260 = ~Rouleau de parchemins rouge~
 @261 = ~Rouleau de parchemins cuivre~
 @262 = ~Rouleau de parchemins or~
@@ -71,7 +76,9 @@
 @266 = ~Rouleau de parchemins indigo~
 @267 = ~Rouleau de parchemins violet~
 @268 = ~Rouleau de parchemins noir~
-@300 = ~Sac de contenance bleu~
+
+// bags of holding
+@300 = ~Sac de contenance bleu~ // was 18336
 @301 = ~Sac de contenance vert malachite~
 @302 = ~Sac de contenance vert~
 @303 = ~Sac de contenance turquoise~
@@ -88,7 +95,7 @@
 @314 = ~Sac de contenance cuivre~
 @315 = ~Sac de contenance verdâtre~
 @316 = ~Sac de contenance sombre~
-@317 = ~Sac de contenance bronze~
+@317 = ~Sac de contenance bronze~ // was 18300
 @318 = ~Sac de contenance marron-bleu~
 @319 = ~Sac de contenance marron-vert~
 @320 = ~Sac de contenance marron-rouge~
@@ -107,13 +114,16 @@
 @333 = ~Sac de contenance argent-rouge~
 @334 = ~Sac de contenance argent-or~
 @335 = ~Sac de contenance bleu-violet~
+@336 = ~Sac de contenance bleu-argent~ // was 18346
 @337 = ~Sac de contenance argenté~
 @338 = ~Sac de contenance feu sombre~
 @339 = ~Sac de contenance vert marin~
 @340 = ~Sac de contenance drow~
 @341 = ~Sac de contenance émeraude~
 @342 = ~Sac de contenance de couleur sombre~
-@400 = ~Ceinture de munitions de cuir~
+
+// ammo belts
+@400 = ~Ceinture de munitions de cuir~ // was 18413
 @401 = ~Ceinture de munitions rouge-noire~
 @402 = ~Ceinture de munitions argent-noire~
 @403 = ~Ceinture de munitions turquoise~
@@ -126,13 +136,14 @@
 @410 = ~Ceinture de munitions verte~
 @411 = ~Ceinture de munitions rubis~
 @412 = ~Ceinture de munitions dorée~
-@413 = ~Ceinture de munitions blanche-or~
+@413 = ~Ceinture de munitions blanche-or~ // was 18400
 @414 = ~Ceinture de munitions rustique~
 @415 = ~Ceinture de munitions argenté~
 @416 = ~Ceinture de munitions feu sombre~
 @417 = ~Ceinture de munitions vert marin~
 @418 = ~Ceinture de munitions drow~
 @419 = ~Ceinture de munitions émeraude~
+// this block was 438-447, now 420-429
 @420 = ~Ceinture de munitions rouge ferraille~
 @421 = ~Ceinture de munitions bronze~
 @422 = ~Ceinture de munitions or ferraille~
@@ -143,6 +154,8 @@
 @427 = ~Ceinture de munitions violette ferraille~
 @428 = ~Ceinture de munitions noire ferraille~
 @429 = ~Ceinture de munitions de couleur sombre~
+
+// this block was 18420 - 18428
 @460 = ~Carquois rouge~
 @461 = ~Carquois marron~
 @462 = ~Carquois doré~
@@ -152,6 +165,8 @@
 @466 = ~Carquois indigo~
 @467 = ~Carquois violet~
 @468 = ~Carquois noir~
+
+// this block was 18429 - 18437
 @480 = ~Trousse de carreaux rouge~
 @481 = ~Trousse de carreaux marron~
 @482 = ~Trousse de carreaux dorée~
@@ -161,7 +176,9 @@
 @486 = ~Trousse de carreaux indigo~
 @487 = ~Trousse de carreaux violette~
 @488 = ~Trousse de carreaux noire~
-@500 = ~Boîte à potions rustique~
+
+// potion cases
+@500 = ~Boîte à potions rustique~ // 18516
 @501 = ~Boîte à potions noire-verte~
 @502 = ~Boîte à potions verte~
 @503 = ~Boîte à potions turquoise~
@@ -177,7 +194,7 @@
 @513 = ~Boîte à potions noir-or~
 @514 = ~Boîte à potions rose~
 @515 = ~Boîte à potions blanche~
-@516 = ~Boîte à potions cuivre~
+@516 = ~Boîte à potions cuivre~ // was 18500
 @517 = ~Vieille boîte à potions~
 @518 = ~Boîte à potions argentée~
 @519 = ~Boîte à potions feu sombre~

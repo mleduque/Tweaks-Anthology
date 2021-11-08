@@ -56,3 +56,14 @@
 @20837 = ~D'accord, je suppose que les aventuriers font aussi ce genre de choses, bien que ça n'ait pas l'air intéressant...~
 @20838 = ~Une chance d'avoir un peu de luxe et de se reposer de la route ? Je ne la gâcherai pas.~
 @20840 = ~Certainement ! J'ai quelques jours à passer en lecture. Cependant, j'attends avec impatience le moment où nous pourrons voyager à nouveau ensemble !~
+@20841 = ~Parfait ! Quand tu seras prêt à t'excuser, tu pourras me trouver là-bas.~ ~Parfait ! Quand tu seras prête à t'excuser, tu pourras me trouver là-bas.~
+@20842 = ~Hmpf. Si tu changes d'avis, je serai là-bas.~
+@20843 = ~Très bien. Si vous souhaitez en savoir plus sur la Conscience Solaire, n'hésitez pas à venir me voir.~
+@20844 = ~C'est sérieux ? Après tout ce qu'on a traversé, <CHARNAME> ? De toute évidence je me faisais des idées sur notre amitié.~ // 28125, minus the destination
+@20845 = ~Hmm... Vous ne devriez pas prendre l'habitude de commettre de telles erreurs. Elles s'accumulent.~ // 28392 minus the FAI part
+@20846 = ~Comme la pleine lune qui décroît puis disparaît, ainsi va notre association qui touche à sa fin. Je prie pour qu'elle renaisse un jour à nouveau et que nous puissions encore voyager côte à côte à travers les Royaumes. Si vous souhaitez un jour en savoir davantage sur la Conscience Solaire, n'hésitez surtout pas à revenir me voir.~ // 29019 minus Nashkel
+@20847 = ~Frayez-vous un chemin jusqu'à Nashkel. Ce n'est pas si loin, et si vous vous cachez dans l'une des fermes de l'autre côté de la rivière, vous ne serez pas nécessairement repéré et... assassiné. Probablement...~
+@20848 = ~Frayez-vous un chemin jusqu'à Bérégost. Ce n'est pas si loin, et si vous vous cachez derrière l'auberge de Feldepost, vous ne serez pas nécessairement repéré et... assassiné. Probablement...~
+@20849 = ~Frayez-vous un chemin jusqu'à la Porte de Baldur. Ce n'est pas si loin, et si vous vous cachez derrière le Bazar Magique, vous ne serez pas nécessairement repéré et... assassiné. Probablement...~
+@20850 = ~Restez ici et faites profil bas. Vous ne serez pas nécessairement repéré et... assassiné. Probablement...~
+@20851 = ~Bien ! Je vous attendrai. Ne me laissez pas mourir aux mains de ces barbares à la peau pâle !~
