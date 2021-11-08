@@ -1,30 +1,14 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// Setup Messages                                   \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-//@3 = ~Necessite le composant "Autoriser le lancement des sorts profanes en armure"~
-//@6 = ~Necessite le composant "Autoriser l'utilisation des competences de voleur en armure lourde"~
-//@8 = ~Ce composant ne concerne que BGT.~
-//@10 = ~Ce composant n'est pas disponible pour Tutu.~
-//@12 = ~Throne of Bhaal est requis pour ce composant.~
-//@14 = ~Ce composant ne concerne que Tutu, BGT ou Baldur's Gate : Enhanced Edition.~
-//@15 = ~Ce composant ne concerne que Tutu.~
-//@19 = ~Regles maison de Cam~
-//@20 = ~Afficher le ReadMe ?
-//a) Oui
-//b) Non~
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
 ///// Cosmetic Changes Components                      \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 @5001 = ~SCRIPT DE CHANGEMENT D'AVATAR :~
 @5002 = ~Ce script permet à l'utilisateur d'avoir un contrôle sur l'avatar du personnage. Enfoncez 'S' pour activer l'écran de sélection d'un avatar. (<script>)~
+
 @18001 = ~Archives d'Arcane~
 @18002 = ~Sio'chaire~
 @18003 = ~Boutique de Sio'chaire~
@@ -54,6 +38,7 @@
 @18033 = ~cette malle~
 @18034 = ~Articles de Contrebande de Selence Hillstar~
 @18035 = ~Nécessaire de camping~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -61,21 +46,23 @@
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 @104001 = ~Soldat Amnien~
 @104002 = ~Mage autorisé~
 @104003 = ~Clerc militaire~
+
 @105001 = ~Votre objet Elfe Noir s'est transformé en poussière~
+
 @106001 = ~Votre armure s'est brisée~
 @106002 = ~Votre bouclier s'est brisé~
 @106003 = ~Votre casque s'est brisé~
+
 @107001 = ~Va nous attendre à l'auberge du Bras Amical. Si les choses changent, nous irons te chercher là-bas.~
 @107002 = ~Rejoins le groupe s'il te plaît.~
 @107003 = ~Je vais te renvoyer dans l'Antichambre... attends-moi là-bas.~
-//Isaya : lieux d'Icewind Dale
 @107004 = ~Va nous attendre à la taverne du Berceau de l'Hiver. Si les choses changent, nous irons te chercher là-bas.~
 @107005 = ~Va nous attendre à la taverne de La Cave aux Racines. Si les choses changent, nous irons te chercher là-bas.~
 @107006 = ~Va nous attendre à la taverne du Gibet Siffleur. Si les choses changent, nous irons te chercher là-bas.~
-//Nouveaux textes de Tweaks Anthology
 @107007 = ~Rebonjour. C'est toujours un plaisir de te voir.~
 @107008 = ~Tu devras attendre ici. Je n'ai pas de place pour toi en ce moment.~ // bg2 strref 27251
 @107009 = ~Cela a été un vrai plaisir de partir à l'aventure avec toi. Heureux de t'avoir rencontré et au revoir.~ // bg2 strref 43200, adapté au tutoiement
@@ -85,76 +72,50 @@
 @107013 = ~Attends-moi à Nashkel. Si les choses changent, je te retrouverai au temple de Heaum.~
 @107014 = ~Au cas où j'ai de nouveau besoin de tes services, retrouve-moi à la taverne du Chant de l'Elfe à la Porte de Baldur.~
 @107015 = ~Nos chemins vont se séparer pour l'instant. Attends-moi au Jongleur jovial à Bérégost.~
-//Isaya : les 4 textes suivants proviennent de SCS (@20801 à @20804)
+
 @107501 = ~Je n'ai pas besoin de ton aide pour l'instant, mais nous voyagerons ensemble à nouveau, bientôt. D'ici là, attends-moi à l'auberge de Brasamical.~
 @107502 = ~Nos chemins doivent se séparer pour un temps. Si j'ai à nouveau besoin de ton aide, nous devrions nous donner rendez-vous au Jongleur Jovial à Bérégost.~
 @107503 = ~Pour l'instant, nous devrions chercher chacun notre destinée. J'aurai bientôt besoin de ton aide à nouveau, cependant, si tu t'établis à l'auberge de Nashkel, je t'y reverrai quand je repasserai dans le sud.~
 @107504 = ~Nous devrions nous séparer maintenant. Je chercherai après toi la prochaine fois que je serai à la Porte, rencontrons-nous à la taverne du Chant de l'Elfe.~
-//Isaya : les textes suivants proviennent de SCS (@20810 à @20826, @20831 à ), corrections pour tutoiement/vouvoiement comme dans BG1 NPC
-//Ajantis
 @107510 = ~Ce serait un honneur.~
-//Imoen
 @107511 = ~Bien sûr. Je ne m'impliquerai dans aucun trouble pendant ton absence, non monsieur.~ ~Bien sûr. Je ne m'impliquerai dans aucun trouble pendant ton absence, non madame.~
-//Kagain
 @107512 = ~Puisque c'est comme ça, j'ai des choses à faire de mon côté. Cherche après moi là-bas si jamais tu as encore besoin de muscles nains.~
-//Edwin
 @107513 = ~Très bien, j'accepte, selon les termes de notre accord. (Mieux vaut en rire, ils ne sont pas assez intelligents pour comprendre les arguments contre.)~
-//Branwen - Modif : tutoiement
 @107514 = ~Je vais ronger mon frein dans l'inaction, mais je vous suis hautement reconnaissante. Revenez bientôt voir la prêtresse guerrière.~
-//Safana - Modif : tutoiement, amusement au singulier
 @107515 = ~Bien sûr, chéri. Je suis sûre que je pourrai trouver des amusements ici pendant ton absence.~ ~Bien sûr, chérie. Je suis sûre que je pourrai trouver des amusements ici pendant ton absence.~
-//Garrick - Modif : reprise de traduction
 @107516 = ~Eh bien, ma chanson pourrait profiter de quelques jours de travail au calme. Revenez vite, cela dit ; il y a tant à voir, j'en suis sûr !~
-//Coran
 @107517 = ~Même les meilleures choses ont une fin, qu'ils disent, mais peut-être peuvent-elles repasser ? J'attendrai que nos chemins se croisent à nouveau.~
-//Kivan
 @107518 = ~Je ferai cela, mais tant reste à faire. Ne retardez pas votre retour.~
-//Yeslick
 @107519 = ~C'était bien d'être avec vous. Mais je suis sûr que vous agissez sagement... Mais il y a tant à faire, alors, ne tardons pas à retravailler ensemble.~
-//Xan - Modif : reprise de traduction
 @107520 = ~Cela ne fait aucune différence de toute façon. Je peux attendre la mort aussi bien à un endroit qu'à un autre.~
-//Alora
 @107521 = ~Ohhh... le dois-je vraiment ? Je ne veux pas aller là... mais je suppose que je ferai c'que tu dis. Je vais bouder jusqu'à ton retour, cela dit !~
-//Faldorn - Modif : tutoiement
 @107522 = ~Je vois peu de perspectives de protéger la Nature en me fourrant sous un toit de bois mort, entourée par toute la misère de l'Homme. C'est une marque de ma confiance en toi que je fasse comme tu le souhaites.~
-//Quayle - Modif : tutoiement
 @107523 = ~Cela semble être une idée remarquablement stupide. Mais je suppose que la seule façon de t'en convaincre est d'entrer dans ton jeu.~
-//Shar-Teel - Modif : tutoiement
 @107524 = ~Je ferai comme tel, mais j'espère te rejoindre bientôt. Je ne laisserai pas ma dette impayée.~
-//Tiax - Modif : tutoiement, reprise de traduction
 @107525 = ~Ton obséquiosité créative plaît à Tiax. Lorsque tu reviendras, les misérables occupants de cette taverne adoreront la gloire de Tiax !~
-//Viconia
 @107526 = ~Je ferai cela, mais pas volontiers. Je suis loin d'être en sécurité dans ces habitations de la surface.~
-//Jaheira
 @107531 = ~Oui, Ô figure autoritaire omniprésente.~
-//Khalid
 @107532 = ~T-t-t-très bien, alors. Bonne chance pour votre voyage.~
-//Dynahéir - Modif : reprise de traduction
 @107533 = ~Si vous désirez cela, ainsi en sera-t-il. Vous avez prouvé que vous étiez un meneur, et maintenant j'ai confiance en vos décisions.~
-//Minsc - Modif : reprise de traduction
 @107534 = ~Es-tu sûr ? Bouh ne pense pas qu'il y ait beaucoup de mal à botter sans pitié dans une taverne. Cela dit le mal est très malin, et souvent bien éduqué, et peut se cacher n'importe où. Nous te reverrons bientôt.~ ~Es-tu sûre ? Bouh ne pense pas qu'il y ait beaucoup de mal à botter sans pitié dans une taverne. Cela dit le mal est très malin, et souvent bien éduqué, et peut se cacher n'importe où. Nous te reverrons bientôt.~
-//Xzar - Modif : reprise de traduction
 @107535 = ~Hourra ! Une occasion d'être utile à notre joyeuse famille ! Et sans avoir à passer plus de temps en compagnie d'imbéciles.~
-//Montaron - Modif : tutoiement, reprise de traduction
 @107536 = ~Comme tu voudras. Un peu de temps loin de toi sera bon pour nous tous, en tout cas.~
-//Skie - Modif : reprise de traduction (style)
 @107537 = ~D'accord, je suppose que les aventuriers font aussi ce genre de choses, bien que ça n'ait pas l'air intéressant...~
-//Eldoth
 @107538 = ~Une chance d'avoir un peu de luxe et de se reposer de la route ? Je ne la gâcherai pas.~
+
 @108001 = ~Ceinture à munitions~
 @108002 = ~Cette sangle est idéale pour stocker sur l'épaule des billes de fronde, des fléchettes, des flèches ou des carreaux.
 PARAMÈTRES :
 Capacité : 2 000 billes de fronde, fléchettes, flèches ou carreaux en tout
 Poids : 2~
 @108003 = ~Boîte à potions~
-//Reprise de la correction de CorrecFr
 @108004 = ~Généralement utilisée par les guérisseurs itinérants, cette boite de cuir s'ouvre en se dépliant et permet à l'utilisateur de sangler sur ses côtés matelassés les bouteilles de potion fragiles, au moyen de nombreuses lanières de cuir, afin d'offrir un stockage sûr pendant un voyage. Quel que soit le nombre de potions contenues, la boîte pèse toujours un poids fixe.
 PARAMÈTRES :
 Capacité : 100 bouteilles
 Poids : 2~
 @108005 = ~Sac de contenance~
 @108006 = ~Comme d'autres sacs magiques, celui-ci ressemble à un sac de tissu classique, d'environ 60 cm sur 1,20 m. Ce sac sans fond ouvre sur un espace non dimensionnel, et l'intérieur est plus grand que l'extérieur. Le poids du sac reste inchangé, quels que soient les objets qui y sont déposés.~
-//Manifestement pour BG1
+
 @108501 = ~Sac~
 @108502 = ~Sac à gemmes~
 @108503 = ~Un petit sac.~
@@ -200,6 +161,9 @@ Poids : 10
 Placez-le dans un emplacement d'objet rapide pour l'ouvrir.~
 @108524 = ~Ouverture du sac de contenance en cours. Veuillez patienter.~
 @108525 = ~Ouverture de l'étui à parchemin en cours. Veuillez patienter.~
+
+// @109001 through 109026 have been removed, as this component has moved to The Calling
+
 @111001 = ~Auberge de Château-Suif~
 @111002 = ~Quartiers du prêtre~
 @111003 = ~Temple d'Oghma~
@@ -296,7 +260,6 @@ Placez-le dans un emplacement d'objet rapide pour l'ouvrir.~
 @111094 = ~Sortie de la mine~
 @111095 = ~Sortie~
 @111096 = ~Temple de Bhaal~
-/// @todo A relire pour IWDEE (pas dans IWD tweaks, pertinence de certains noms VF à vérifier par un connaisseur du jeu)
 @111097 = ~Autel de Waukyne~
 @111098 = ~Fabricant d'arc~
 @111099 = ~Entrepôt de marchand~ // vérifier le lieu
@@ -326,7 +289,9 @@ Placez-le dans un emplacement d'objet rapide pour l'ouvrir.~
 @111123 = ~Hangar à bateau~
 @111124 = ~Auberge du Gibet Siffleur~
 @111125 = ~Cabane de Purvis~
+
 @114001 = ~Une gemme est un minéral qui a été découpé ou façonné et poli. Il peut être collectionné ou utilisé dans des bijoux.~
+
 @115001 = ~Conjuration d'Animaux
 (Conjuration / Convocation)
 Niveau : 6
@@ -366,7 +331,6 @@ Facteur de vitesse : 3
 Type de compétence : Dague
 Type : arme à 1 main
 ~
-//BGEE @32328, version 1.3 plutôt que 2.3
 @115006 = ~Métamorphose en loup-garou
 Force : 19
 Dextérité : 16
@@ -377,7 +341,6 @@ Dégâts : 1d12 (tranchant), touche comme une arme +2
 Capacités spéciales :
 - résistance à la magie : 20 %
 - immunité aux armes non-magiques~
-//BGEE @32329
 @115007 = ~Métamorphose en loup-garou majeur
 Force : 21
 Dextérité : 20
@@ -394,6 +357,7 @@ Capacités spéciales :
 - immunité aux armes non-magiques~
 @115008 = ~Patte de loup-garou~
 @115009 = ~Patte de loup-garou majeur~
+
 @116002 = ~J'ai l'acte de propriété du théâtre, si vous souhaitez en profiter pour y exercer vos talents. Samuel est un homme bon et il remettra le théâtre entre vos mains.~
 @116003 = ~Je suis désolé Raelis, mais je n'ai tout simplement pas le temps.~ ~Je suis désolée Raelis, mais je n'ai tout simplement pas le temps.~
 @116004 = ~Merci pour cette gentille offre, mais je dois refuser. Je ne sais même pas où je pourrais établir un théâtre.~
@@ -416,6 +380,7 @@ Capacités spéciales :
 @116021 = ~Mon amie a été kidnappée. Bien que ça me fasse mal de refuser, je ne peux pas mettre de côté mes recherches pour aider le bosquet.~
 @116022 = ~Vous avez gagné la bénédiction du Bosquet, et je vous offre le Bâton de Foudre et Tonnerre.~
 @116023 = ~Très bien. Je vais continuer de faire office de Maître des Défis et de Grand Druide jusqu'à ce que les rituels de l'Ascension soient accomplis.~
+
 @122001 = ~Ah, un Étui d'Abondance. Je peux l'enchanter pour produire des carreaux encore plus puissants, mais il me faudra 5 000 pièces d'or pour ce travail.~
 @122002 = ~Bon, voyons ce que vous avez d'autres.~
 @122003 = ~Une cagoule de voleur, n'est-ce pas ?~
@@ -464,6 +429,7 @@ Capacités spéciales :
 @122046 = ~C'est une fronde gnome. J'ai plusieurs trucs dans mon escarcelle qui peuvent la rendre plus précise.~
 @122047 = ~Si vous tombez sur un Anneau d'énergie, je peux vous arranger ça très vite.~
 @122048 = ~Donnez-moi votre Anneau d'énergie et 5 000 pièces d'or et nous pouvons commencer.~
+
 @123001 = ~Oh, des écailles rouges luisantes, hein ? Ça fait une bonne armure d'écailles, pour protéger du feu vraiment bien.~
 @123002 = ~C'est quoi ce tas brillant ? Ooh, de l'illithium !~
 @123003 = ~Ça fait une belle couche brillante pour les masses de Destruction. Reviens si tu en trouves une.~
@@ -500,44 +466,31 @@ Capacités spéciales :
 @123034 = ~N'importe quelle armure de dragon juste 5 000 pièces d'or. Tu veux ?~
 @123035 = ~Fabrique l'armure d'écailles de dragon d'ombre.~
 @123036 = ~Fabrique l'armure d'écailles de dragon rouge.~
-//@2 de x#aloran.tra de BG1 NPC
+
 @125002 = ~Va-t-en petite-femme, tes bavardages m'exaspèrent !~
-//@3 de x#aloran.tra de BG1 NPC
 @125003 = ~Il se trouve que oui. Pourquoi me demandes-tu cela ?~
-//@4 de x#aloran.tra de BG1 NPC
 @125004 = ~J'ai déjà visité ces ruines et je dois dire que leur réputation est surfaite.~
-//@5 de x#aloran.tra de BG1 NPC, traduction corrigée
 @125005 = ~Attends d'avoir entendu ce que j'ai à dire. Ces ruines, elles sont à point pour être pillées et il y a beaucoup à ramasser sans trop de bleus. Peut-être qu'on devrait s'associer. Vu que je vis ici avec ma tante, je connais bien cet endroit ; quelques-uns de ses secrets, comment crocheter une serrure ou bien détecter un piège. Cela pourrait être amusant. T'en dis quoi ?~
-//@6 de x#aloran.tra de BG1 NPC
 @125006 = ~Une excellente idée ! Bienvenue à bord !~
-//@7 de x#aloran.tra de BG1 NPC, traduction corrigée
 @125007 = ~Je regrette vraiment, mais nous avons tout ce dont nous avons besoin.~
-//@8 de x#aloran.tra de BG1 NPC
 @125008 = ~C'est ridicule ! Pourquoi aurais-je besoin de toi ? Tu m'as fait perdre assez de temps, maintenant file !~
-//@9 de x#aloran.tra de BG1 NPC
 @125009 = ~Bon ! Pas besoin de me traiter de la sorte ! Pfff ! Les gens sont pas sympas dans ce métier ! Pas étonnant que les gens détestent les aventuriers ! Au revoir !~
-//@10 de x#aloran.tra de BG1 NPC, traduction corrigée
 @125010 = ~Bravo ! Oh, c'est plus marrant d'avoir quelqu'un du métier à qui parler ! Je vis ici avec ma tante, les bonnes manières et tout ça... mais je commence à m'ennuyer un peu. Peut-être qu'on devrait s'associer. Je connais bien cet endroit ; quelques-uns de ses secrets, comment crocheter une serrure ou bien détecter un piège. Cela pourrait être amusant. T'en dis quoi ?~
-//@11 de x#aloran.tra de BG1 NPC
 @125011 = ~Niquedouille, surfaite ?! Là, ça devient excitant ! Nous devrions... nous devrions faire équipe ! Ouais ! Tu pourrais m'aider... enfin... je veux dire, nous pourrions nous entraider. Je peux chercher de jolies choses. Tu pourras même garder la plus grosse part ! Qu'est-ce que tu en dis ?~
-//@12 de x#aloran.tra de BG1 NPC
 @125012 = ~Nous sommes camarades ! Un pour tous et tous pour un, Je CONNAIS le refrain ! On va bien s'amuser !~
-//@13 de x#aloran.tra de BG1 NPC, traduction corrigée
 @125013 = ~Ah bon, tant pis. J'arrive jamais à me faire des amis dans ce milieu. Surtout les plus sympas. Salut alors.~
-//@14 de x#aloran.tra de BG1 NPC
 @125014 = ~Alors je resterai à traîner dans le coin jusqu'à ce que tu reprennes tes esprits et reviennes me chercher.~
-//@15 de x#aloran.tra de BG1 NPC
 @125015 = ~Bon, si tu comptes me suivre sans arrêt comme un petit chien, autant travailler ensemble.~
-//= @1 de x#aloran.tra de BG1 NPC
 @125016 = ~Non, les ruines ne m'intéressent pas.~
-//= @0 de x#aloran.tra de BG1 NPC
 @125017 = ~Hé, vous n'êtes pas du coin ! Vouiii ! Pas de cirage sur vos bottes, pas de bouton sur vos bretelles. Vous n'êtes pas des marchands. Ils sont toujours beaucoup plus présentables. Oh ma parole, des aventuriers à Gullykin ! Vous êtes venus piller les ruines de Flammevin ?~
+
 @126001 = ~Sam le Poète Lakiste~
 @126002 = ~Sam~
 @126003 = ~Rob le Poète Lakiste~
 @126004 = ~Rob~
 @126005 = ~Willy le Poète Lakiste~
 @126006 = ~Willy~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -545,71 +498,56 @@ Capacités spéciales :
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 @202001 = ~Manipuler à une main~
 @202002 = ~Manipuler à deux mains~
-//BG II "Type : arme à 1 main" / "Type d'arme : à une main"
-//Isaya : traite aussi l'espace insécable de BGEE avant ":" (deuxième caractère entre [], encodé ici en CP1252)
 @202003 = ~^[ %TAB%]*Type\( d'arme\)?[ %TAB% ]*:[ %TAB%]*\([Aa]rme \)?à \(1\|une\) main.*~
-//@202003 = ~^[ %TAB%]*Type[ %TAB%]*:[ %TAB%]*\(1\|one\)[- %TAB%]*handed.*~
-//Arbitrairement la forme de BG II avec 2 en chiffre
 @202004 = ~Type : arme à 2 mains~
-//Isaya : repris de @100401 dans Item Revisions + adaptation
 @204001 = ~^[ %TAB%]*\([Nn]on[ %tab%]+\|[Ii]n\)[Uu]tilisable[ %tab%]+[Pp]ar.*~
 @204002 = ~Non utilisable par :~
 @204003 = ~[%LNL%%MNL%%WNL%].*[ %TAB%]*Mage.*~
-/* deprecated component
-*/
+
 //Moved from thieving_descripts.tpa
-//Nota : textes repris de l'armure de peau, puisque c'est elle pour laquelle il faut remplacer les mentions existantes
-//Nota : l'expression régulière pour l'espace avant les deux points inclut aussi un espace insécable (code 0xA0, Alt 0160 au clavier)
-//en raison de l'utilisation de ce caractère dans les textes de BGEE en français
 //Typical weight line for an item, used for a search matching the whole line
 @210001 = ~\(Poids[ %TAB% ]*:[ %TAB%]*[0-9]+\)~
 //Typical lock picking penalty line in original armors
-//BGEE 22716, 25552 ; BGEE "- crochetage des serrures', BG II "Crochetage"
 @210002 = ~^[ %TAB%]*.?.?.?[ %TAB%]*[Cc]rochetage\(\| des serrures\)[ %TAB% ]*:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 //Title for lock picking added after Weight line, penalty is added after this text
-//Isaya : il faut choisir une forme, arbitrairement on conserve celle de BG II
 @210003 = ~Crochetage :~
 //Typical find trap penalty line in original armors
-//BGEE "- détection des pièges", BG II "Pièges"
 @210004 = ~^[ %TAB%]*.?.?.?[ %TAB%]*\([Dd]étection des \|\)[Pp]ièges[ %TAB% ]*:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 //Title for find trap added after Weight line, penalty is added after this text
-//Isaya : il faut choisir une forme, on conserve celle de BG II, plus générale
 @210005 = ~Pièges :~
 //Typical pick pocket penalty line in original armors
-//BGEE "- vol à la tire", BG II : "Vol à la tire"
 @210006 = ~^[ %TAB%]*.?.?.?[ %TAB%]*[Vv]ol à la tire[ %TAB% ]*:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 //Title for pick pocket added after Weight line, penalty is added after this text
 @210007 = ~Vol à la tire :~
 //Typical hide en shadow penalty line in original armors
-//BGEE "- se cacher dans l'ombre", BG II "Se cacher dans l'ombre/les ombres"
 @210008 = ~^[ %TAB%]*.?.?.?[ %TAB%]*[Ss]e cacher dans \(l'ombre\|les ombres\)[ %TAB% ]*:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 //Title for hide in shadow added after Weight line, penalty is added after this text
 @210009 = ~Se cacher dans l'ombre :~
 //Typical move silently penalty line in original armors
-//BGEE "- déplacement silencieux", BG II "Déplacement [Ss]ilencieux"
 @210010 = ~^[ %TAB%]*.?.?.?[ %TAB%]*[Dd]éplacement [Ss]ilencieux[ %TAB% ]*:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 //Title for move silently added after Weight line, penalty is added after this text
 @210011 = ~Déplacement Silencieux :~
 //Typical move silently penalty line in original armors
-//BGEE / BG II : 7362 (pas une armure), BGEE "- furtivité", BG II "Furtivité"
 @210012 = ~^[ %TAB%]*.?.?.?[ %TAB%]*[Ff]urtivité[ %TAB% ]*:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 //Title for move silently added after Weight line, penalty is added after this text
 @210013 = ~Furtivité :~
+
 //Moved from arcane_descripts.tpa
 //Typical weight line for an item, used for a search matching the whole line
 @212001 = ~\(Poids[ %tab% ]*:[ %tab%]*[0-9]+\)~
 //Title for miscast chance added after Weight line, value is added after this text
 @212002 = ~Échec d'incantation des sorts profanes :~
+
 @214001 = ~barbare / mage~
 @214002 = ~barbare / clerc~
 @214003 = ~barbare / voleur~
 @214004 = ~barbare / druide~
-//Objet : retirer le bonus de CA des objets avec protection (anneau, cape, ..., hors armure) et donc la description du bonus
-//Isaya : traite aussi l'espace insécable de BGEE avant ":" (deuxième caractère entre [], encodé ici en CP1252)
-//BGEE "- classe d'armure :", BG II "Classe d'Armure :" / "Bonus à la Classe d'Armure :" / "CA +x"
+
 @215002 = ~[%LNL%%MNL%%WNL%][ %TAB%]*.?.?.?[ %TAB%]*\(\([Bb]onus à la \)?[Cc]lasse d'[Aa]rmure[ %TAB% ]*:\|CA[ %TAB% ]*\).*$~ // lone . at front to catch EE emdash
+
 @216001 = ~ÉPÉE COURTE / NINJA-TO : L'arme préférée de nombreux voleurs et petites personnes, les épées courtes et les ninja-to sont des épées légères mais utiles.
 <DOTS1>
 <DOTS2>
@@ -646,7 +584,9 @@ AVERTISSEMENT : Les katanas magiques sont très rares en dehors de Kara-Tur !
 @216009 = ~Épée courte/Ninja-To~
 @216010 = ~Katana/Wakizashi~
 @216011 = ~Masse/Étoile du matin~
+
 @216101 = ~Petite épée~
+
 @216301 = ~Épée de grande taille~
 @216302 = ~ÉPÉE DE GRANDE TAILLE : cette compétence permet d'utiliser l'épée à deux mains et l'épée bâtarde.
 <DOTS1>
@@ -666,7 +606,8 @@ AVERTISSEMENT : Les katanas magiques sont très rares en dehors de Kara-Tur !
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-//^^ this component deprecated, but the strings below still needed for the components that replace it
+
+// this component deprecated, but the strings below still needed for the components that replace it
 @218001 = ~Alchimie (Mage)~
 @218002 = ~Alchimie (Prêtre)~
 @218003 = ~Alchimie (Roublard)~
@@ -743,9 +684,19 @@ Cette capacité permet au mage de créer des parchemins de faible et moyen niveau.
 7) Cône de froid
 8) Convocation de monstres II
 9) Convocation de monstres III~
+
 // next two strings used for matching and updating item descriptions
 @223001 = ~PARAMÈTRES :~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
 @223002 = ~Toujours considéré comme ayant un enchantement de +%ench% pour déterminer ce qu'il peut toucher.~
+
+// the next string should match content TO BE REMOVED from the racial description of humans and the help reference for dual-classing
+@235002 = ~Les humains ne peuvent pas se multi-classer.~ // from strref #9550
+
+// the next two strings should match content TO BE REMOVED from the racial description of humans and the help reference for dual-classing
+// you may need to check the EEs, as oBG2 doesn't mention dual-classing in #9550 or #32540
+@237002 = ~ Ils sont aussi la seule race à pouvoir prétendre à une classe jumelée.~ // from strref #9550
+@237003 = ~Seuls les humains peuvent avoir des classes jumelées. ~ // from strref #10811
+@237004 = ~, si votre personnage est humain.~ // BG tutorial monk dialogue monktu4 - 32540 in BGEE/SoD 
 
 //translators - the next three strings are used to replace game text, so they need to be copied from the game itself
 //get @244001 and @244002 from strref 9588 in bgee/bg2ee/iwdee, 24315 for bgee V2.3
@@ -753,6 +704,7 @@ Cette capacité permet au mage de créer des parchemins de faible et moyen niveau.
 @244002 = ~Table des niveaux de compétence~ // line before <DOTS1>, exclude the * if present
 //get @244003 from string 32117-32120 (bg2ee/iwdee) or 24220-24223 (bgee)
 @244003 = ~(\. S'il a une classe de combattant|s'il appartient à une classe de combattant)~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -760,7 +712,7 @@ Cette capacité permet au mage de créer des parchemins de faible et moyen niveau.
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@315000 = ~Desactiver l'animation hideuse de la Cape de Renvoi, du Piege a sort et du Miroir physique~
+
 @318313 = ~Amène-moi mon amour, Aerie.~
 @318314 = ~Amène-moi mon amour, Jaheira.~
 @318315 = ~Amène-moi mon amour, Anomen, Chevalier de l'Ordre.~
@@ -770,13 +722,15 @@ Cette capacité permet au mage de créer des parchemins de faible et moyen niveau.
 @318319 = ~Amène-moi mon amour, Hexxat.~
 @318320 = ~Amène-moi mon amour, Neera.~
 @318321 = ~Amène-moi mon amour, Rasaad.~
-//@321001 = ~Selectionnez le minimum pour les stats, entre 6 et 15 :~
+
 @322001 = ~Fifille~
 @322002 = ~Ange~
+
 @324101 = ~Génie des jetons~
 @324102 = ~Jeton~
 @324103 = ~Un jeton quelconque sans la moindre marque.~
 @324104 = ~Salutations ! Choisir l'objet que vous voudriez échanger contre votre jeton, s'il vous plaît :~
+
 @324201 = ~Flynn~
 @324202 = ~Marchand ambulant~
 @324203 = ~Harrold~
@@ -805,7 +759,7 @@ Cette capacité permet au mage de créer des parchemins de faible et moyen niveau.
 @324226 = ~Non, je crains que non. Que pouvons-nous échanger d'autre ?~
 @324227 = ~Très bien.~
 @324228 = ~Merci. Au revoir.~
-//60 and 80 strings are identical, just with Flynn/Harrold and Lonelywood/Kuldahar exchanged
+// -60 and -80 string series are identical, just with Flynn/Harrold and Lonelywood/Kuldahar exchanged
 @324260 = ~Je m'appelle Flynn et je suis un agent de la bourse de commerce de Calimport, envoyé ici à la recherche d'objets exotiques et uniques.~
 @324261 = ~Je crois que j'ai rencontré votre homologue, Harrold, au Bois Isolé.~
 @324262 = ~Bonne rencontre Flynn. Puis-je voir vos marchandises ?~
@@ -820,21 +774,36 @@ Cette capacité permet au mage de créer des parchemins de faible et moyen niveau.
 @324284 = ~Rebonjour Harrold. Avez-vous envie d'échanger quelque chose parmi ceci ?~
 @324285 = ~Non, je ne suis pas intéressé par tout cela. Au revoir Harrold.~ ~Non, je ne suis pas intéressée par tout cela. Au revoir Harrold.~
 @324286 = ~Merci Harrold. Y a-t-il autre chose que vous voudriez échanger ?~
+
 @325001 = ~En fait, pouvons-nous voir les objets que vous proposiez lorsque nous sommes arrivés à Kuldahar ?~
 @325002 = ~Pouvons-nous jeter un nouveau coup d'?il aux objets que vous proposiez au milieu de notre séjour ici ?~
-@333010 = ~Désactiver la Hâte automatique~
-@333011 = ~Désactiver la Hâte automatique
+
+@333050 = ~Désactiver la Hâte automatique~
+@333051 = ~Désactiver la Hâte automatique
 
 Cette compétence permet aux membres du groupe de se déplacer plus rapidement en dehors des combats. Cliquez sur la compétence pour la désactiver.~
+@333052 = ~Désactiver la Hâte automatique
 
-@333012 = ~Activer la Hâte automatique~
-@333013 = ~Activer la Hâte automatique
+Cette compétence permet aux membres du groupe de se déplacer et d'incanter des sorts plus rapidement en dehors des combats. Cliquez sur la compétence pour la désactiver.~
+@333053 = ~Désactiver la Hâte automatique
+
+Cette compétence permet aux membres du groupe d'incanter des sorts plus rapidement en dehors des combats. Cliquez sur la compétence pour la désactiver.~
+@333060 = ~Activer la Hâte automatique~
+@333061 = ~Activer la Hâte automatique
 
 Cette compétence permet aux membres du groupe de se déplacer plus rapidement en dehors des combats. Cliquez sur la compétence pour l'activer.~
-@333020 = ~Bonus de vitesse de déplacement désactivé~
+@333062 = ~Activer la Hâte automatique
+
+Cette compétence permet aux membres du groupe de se déplacer et d'incanter des sorts plus rapidement en dehors des combats. Cliquez sur la compétence pour l'activer.~
+@333063 = ~Activer la Hâte automatique
+
+Cette compétence permet aux membres du groupe d'incanter des sorts plus rapidement en dehors des combats. Cliquez sur la compétence pour l'activer.~
+@333070 = ~Bonus de la Hâte automatique désactivé~
+
 @335100 = ~Sauvegarde-Périodique~
 @335101 = ~Sauvegarde périodique créée~
 @335102 = ~Sauvegarde périodique (emplacement %slot_index%) créée~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -842,111 +811,17 @@ Cette compétence permet aux membres du groupe de se déplacer plus rapidement en 
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 @408001 = ~Interrogé sur son passé, c'est un KHALID visiblement nerveux qui avoue être né et avoir été élevé en Calimshan. Il ne parle guère de ses parents, mais on sent que son marchand de père n'avait pas une haute opinion de lui et se consacrait davantage à ses demi-frères. Sans l'aide de son père, Khalid n'a pas pu payer pour avoir l'enseignement d'un mage, donc il s'engagea dans la milice de sa ville dans l'espoir de gagner suffisamment d'argent. Et même s'il reste dans le vague quant aux circonstances de sa rencontre avec Jaheira, il est visible qu'il l'adore. Quand on lui demande comment il se fait qu'il ait connu Gorion, il se borne à dire qu'ils étaient amis de longue date et que beaucoup de leurs amis communs vont pleurer sa perte sur leur harpe.~
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// Ex-SCS components                                \\\\\
-///// Automatically copied over from SCS TRA files     \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@506000 = ~Retirer l'animation de la Cape de renvoi (la laisser
-pour les sorts et effets donnant le meme graphisme)~
-//WeiDU prompts
-@-1000= "Le mod %TP2_FILE_NAME% contient"
-@-1001= "composants optionnels distincts.
-Pour gagner du temps, vous pouvez choisir ce que vous souhaitez faire d'eux
-au niveau general plutot que de repondre aux questions pour chacun.
-"
-@-1002= "Que faut-il faire de tous les composants qui NE sont PAS ENCORE installes ?
-Les [I]nstaller, les [S]auter, dem[A]nder pour chacun ? "
-@-1003= "Que faut-il faire de tous les composants qui sont DEJA installes ?
-Les [R]einstaller, les s[U]pprimer, les [S]auter, dem[A]nder pour chacun ? "
 
-@-1004= "S'IL VOUS PLAIT, envoyez par e-mail le fichier"
-@-1005= "a"
+// translators: 418001 is strref #10232 from bgee or bg2ee without the 'equipped abilities' block. 
+// This is not used on non-EE games since they don't mention equipping effects
+@418001 = ~Ce bijou de famille atteste du droit de naissance d'Edwin.
 
-@-1006= "Installer le composant ["
-@-1007= "] ?
-[R]einstaller, co[N]server, s[U]pprimer ou [Q]uitter ? "
-@-1008= "] ?
-[I]nstaller, [N]e pas installer ou [Q]uitter ? "
+Poids : 1~
+// translators: 418002 is strref #50818 in obg2 with the part about 
+// 'the ring may not be removed from nalia' deleted 
+// in english, this is overridden in ee.tra
+@418002 = ~Chevalière de'Arnise
 
-@-1009= "Entrez une partie du nom du module : "
-
-@-1010= "Reinstallation du composant ["
-@-1011= "] "
-@-1012= "Reinstallation dans la langue"
-
-@-1013= "Suppression de l'ancienne installation de ["
-@-1014= "] au prealable..."
-@-1015= "SUPPRESSION REUSSIE DE L'ANCIEN"
-
-@-1016= "Installation en cours"
-@-1017= "ERREUR pendant l'installation de ["
-@-1018= "], retour a l'etat anterieur"
-@-1019= "INSTALLATION REUSSIE"
-@-1020= "Saute"
-@-1021= "Suppression de ["
-@-1022= "] (composant #"
-@-1023= ")"
-@-1024= "SUPPRESSION REUSSIE DE ["
-
-@-1025= "] ?
-[R]einstaller, co[N]server, s[U]pprimer, [Q]uitter ou choisir un parmi :"
-@-1026= "] ?
-[N]e pas installer, [Q]uitter ou choisir un parmi :"
-@-1027= " (installe actuellement)"
-
-@-1028= "Souhaitez-vous afficher les composants de ["
-@-1029= "] ?
-[Y]Oui, [N]on ? "
-
-@-1030= "] ?
-choisir un parmi :"
-@-1031= "] ?
-[R]einstaller, co[N]server, [Q]uitter ou choisir un parmi :"
-@-1032= "INSTALLATION ECHOUEE A CAUSE D'ERREURS"
-@-1033= "INSTALLATION AVEC DES ALERTES"
-@-1034= "Souhaitez-vous afficher les instructions (ReadMe) ? [Y]Oui [N]on"
-@-1035= "Dans la langue"
-
-@-1036= "Saute le GROUPE ["
-@-1037= "] pour cause d'absence des pre-requis."
-
-@-1038= "dem[A]nder pour chaque composant, tout [S]auter, ou choisir une selection pre-definie :"
-@-1039= "dem[A]nder pour chaque composant, [R]einstaller la configuration courante, tout s[U]pprimer, tout [S]auter, ou choisir une selection pre-definie :"
-
-@-1040= "
-Veuillez choisir la langue dans laquelle vous souhaitez jouer au jeu.
-Si par la suite vous desirez jouer au jeu dans une langue differente, il vous
-faudra editer le fichier weidu.conf et reinstaller vos mods.
-"
-@-1041= "Tcheque"
-@-1042= "Allemand"
-@-1043= "Anglais"
-@-1044= "Espagnol"
-@-1045= "Francais"
-@-1046= "Italien"
-@-1047= "Polonais"
-@-1048= "Portugais"
-@-1049= "Turc"
-@-1050= "Japonais"
-@-1051= "Coreen"
-@-1052= "Chinois simplifie"
-@-1053= "Russe"
-@-1054= "Ukrainien"
-
-@-1060= "
-Ce jeu est disponible en plusieurs langues mais WeiDU ne sait pas laquelle a ete choisie quand ce mod a ete installe.
-
-Veuillez indiquer quelle langue du jeu a ete utilisee quand vous avez installe ce mod. Votre choix servira jusqu'a ce que WeiDU s'arrete mais ne sera pas memorise.
-"
-@-1061= "
-Utilisation de"
-@-1062= " et "
-
-@-1063= "INSTALLATION ABANDONNEE"
-@-1064= "Abandon de l'installation de ["
-@-1065= "], retour a l'etat anterieur"
+Cet anneau a été donné à Nalia par son père à son passage à la majorité. L'anneau octroie un bonus de +2 à tous les jets de sauvegarde, +2 à la classe d'armure et 50 % de résistance au feu.~
