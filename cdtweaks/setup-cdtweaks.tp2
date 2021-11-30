@@ -873,29 +873,19 @@ GROUP @11
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2 soa tob bg2ee eet bgt ca~ @25
 // LABEL ~cd_tweaks_unique_icons~
 
-ACTION_CLEAR_ARRAY cd_unique_icons
-ACTION_CLEAR_ARRAY cd_unique_anims
+INCLUDE ~cdtweaks/lib/unique_icons_v2.tpa~ // load reference array
 
-ACTION_IF game_includes_iwd THEN BEGIN
+ACTION_PHP_EACH cd_unique_icons AS params => icon BEGIN
 
-  INCLUDE ~cdtweaks/lib/unique_icons_iwd.tpa~ // loads arrays
-
-END ELSE BEGIN // soa tob bg2ee eet bgt ca
-
-  INCLUDE ~cdtweaks/lib/unique_icons_bg2.tpa~ // loads arrays
-
-  COPY_EXISTING ~plat19.itm~ ~override~ // make (wish) full plate +2 look like normal full plate +2, not full plate +1 (plate of the dark)
-    WRITE_ASCII 0x58 ~cplat09~ #8
-    LPF ALTER_EFFECT INT_VAR match_opcode = 7 match_parameter2 = 0 parameter1 = 27 END
-    LPF ALTER_EFFECT INT_VAR match_opcode = 7 match_parameter2 = 4 parameter1 = 25 END
-    LPF ALTER_EFFECT INT_VAR match_opcode = 7 match_parameter2 = 5 parameter1 = 27 END
-    BUT_ONLY IF_EXISTS
-
-END
-
-ACTION_PHP_EACH cd_unique_icons AS item => icon BEGIN
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~%item%.itm~ THEN BEGIN
+  ACTION_IF game_includes_iwd BEGIN
+    OUTER_SPRINT item ~%params_3%~
+    OUTER_SPRINT anim ~%params_4%~
+  END ELSE BEGIN  
+    OUTER_SPRINT item ~%params_1%~
+    OUTER_SPRINT anim ~%params_2%~
+  END  
+  
+  ACTION_IF FILE_EXISTS_IN_GAME ~%item%.itm~ BEGIN
   
     ACTION_IF FILE_EXISTS ~cdtweaks/bam/%icon%.bam~ THEN BEGIN // in case it's getting an existing icon
 
@@ -904,6 +894,9 @@ ACTION_PHP_EACH cd_unique_icons AS item => icon BEGIN
     END
 
     COPY_EXISTING ~%item%.itm~ ~override~
+      PATCH_IF ("%anim%" STRING_COMPARE_CASE "null") BEGIN // if animation
+        WRITE_ASCIIE 0x22 ~%anim%~
+      END  
       READ_ASCII   0x3a icon_old
       WRITE_ASCIIE 0x3a ~%icon%~ #8
       READ_LONG    0x64 abil_off ELSE 0
@@ -914,24 +907,56 @@ ACTION_PHP_EACH cd_unique_icons AS item => icon BEGIN
           WRITE_ASCIIE (abil_off + 0x04 + (index * 0x38)) ~%icon%~ #8
         END
       END
+      CLEAR_ARRAY cd_unique_icons_coloring
+      PATCH_IF ("%params_8%" STRING_COMPARE_CASE "armor" = 0) BEGIN 
+        DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
+          0 => ~%params_9%~        
+          4 => ~%params_10%~        
+          5 => ~%params_11%~
+        END
+      END  
+      PATCH_IF ("%params_8%" STRING_COMPARE_CASE "weapon" = 0) BEGIN 
+        DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
+          16 => ~%params_12%~        
+          20 => ~%params_13%~        
+          21 => ~%params_14%~
+        END
+      END   
+      PATCH_IF ("%params_8%" STRING_COMPARE_CASE "shield" = 0) BEGIN 
+        DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
+          32 => ~%params_15%~        
+          33 => ~%params_16%~        
+          34 => ~%params_17%~      
+          37 => ~%params_18%~
+        END
+      END  
+      PATCH_IF ("%params_8%" STRING_COMPARE_CASE "helm" = 0) BEGIN 
+        DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
+          48 => ~%params_19%~      
+          52 => ~%params_20%~        
+          53 => ~%params_21%~
+        END
+      END   
+      PATCH_PHP_EACH cd_unique_icons_coloring AS loc => color BEGIN
+        LPF DELETE_EFFECT INT_VAR silent = 1 check_headers = 0 match_opcode = 7 match_parameter2 = loc END
+        PATCH_IF IS_AN_INT color BEGIN
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 7 target = 1 parameter1 = color parameter2 = loc timing = 2 END
+        END  
+      END  
       BUT_ONLY
   
   END
-
+        
 END
 
-ACTION_PHP_EACH cd_unique_anims AS item => anim BEGIN
+ACTION_IF !game_includes_iwd THEN BEGIN
 
-  ACTION_IF FILE_EXISTS_IN_GAME ~%item%.itm~ THEN BEGIN
-
-    COPY_EXISTING ~%item%.itm~ ~override~
-      READ_SHORT 0x22 itm_anim
-      PATCH_IF (itm_anim != 0) BEGIN // don't bother if blank (e.g. helmet animations removed)
-        WRITE_ASCIIE 0x22 "%anim%" #2
-      END
-      BUT_ONLY
-  
-  END
+  COPY_EXISTING ~plat19.itm~ ~override~ // make (wish) full plate +2 look like normal full plate +2, not full plate +1 (plate of the dark)
+    WRITE_ASCII 0x58 ~cplat09~ #8
+    LPF ALTER_EFFECT INT_VAR match_opcode = 7 match_parameter2 = 0 parameter1 = 27 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 7 match_parameter2 = 4 parameter1 = 25 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 7 match_parameter2 = 5 parameter1 = 27 END
+    BUT_ONLY IF_EXISTS
 
 END
 
