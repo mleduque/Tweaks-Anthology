@@ -148,7 +148,7 @@ AT_EXIT ~%exe% --language %lang% --force-install-list %component_list% --noautou
 BEGIN @1000 DESIGNATED 10
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_remove_helmets~
+LABEL ~cd_tweaks_remove_helmets~
 
 ACTION_IF enhanced_edition OR game_includes_soa OR game_is_ca OR tutu_gen OR game_is_iwd-in-bg2 BEGIN
   OUTER_SET check_anim = 1
@@ -181,7 +181,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BEGIN @2000 DESIGNATED 20
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~bgt eet bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_imoen_avatar_change~
+LABEL ~cd_tweaks_imoen_avatar_change~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Imoen animation adjustments
   READ_LONG   0x08 name  ELSE 0
@@ -203,7 +203,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Imoen animation adjustments
 BEGIN @3000 DESIGNATED 30
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~bgt eet bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_nalia_avatar_change~
+LABEL ~cd_tweaks_nalia_avatar_change~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Nalia animation adjustments
   READ_LONG   0x08 name  ELSE 0
@@ -225,7 +225,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Nalia animation adjustments
 BEGIN @4000 DESIGNATED 40
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_viconia_skin_color~
+LABEL ~cd_tweaks_viconia_skin_color~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Viconia skin color change
   READ_LONG 0x08 "name" ELSE 0
@@ -246,7 +246,7 @@ BEGIN @5000 DESIGNATED 50
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~1pp/1pp.tp2~ ~113~ @24 // don't install if 1pp smart avatar/armor switching installed
-// LABEL ~cd_tweaks_avatar_morphing_script~
+LABEL ~cd_tweaks_avatar_morphing_script~
 
 COMPILE ~cdtweaks/baf/0ikmorph.baf~
         ~cdtweaks/baf/ikmorph.baf~
@@ -274,7 +274,7 @@ COPY ~cdtweaks/cre/ikmorph.cre~  ~override~
 
 BEGIN @6000 DESIGNATED 60
 GROUP @11
-// LABEL ~cd_tweaks_weapon_animation_tweaks~
+LABEL ~cd_tweaks_weapon_animation_tweaks~
 
 ACTION_IF original_bg1 OR original_iwd OR game_is_iwd2 OR game_is_pst THEN BEGIN // exclude pstee
   OUTER_SET use_type = 1
@@ -345,7 +345,7 @@ BEGIN @7000 DESIGNATED 70
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~10~ @16
-// LABEL ~cd_tweaks_iwd_casting_graphics~
+LABEL ~cd_tweaks_iwd_casting_graphics~
 
 ACTION_IF enhanced_edition BEGIN
 
@@ -380,7 +380,7 @@ LAF HANDLE_AUDIO STR_VAR audio_path = ~cdtweaks/wav/casting~ oggdec_path = ~cdtw
 BEGIN @7020 DESIGNATED 72
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob ca pst pstee~ @25
-// LABEL ~cd_tweaks_bg_casting_graphics~
+LABEL ~cd_tweaks_bg_casting_graphics~
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_map_casting BEGIN
   abjurcg => cgabjura // abjuration
@@ -439,7 +439,7 @@ LAF HANDLE_AUDIO STR_VAR audio_path = ~cdtweaks/wav/casting_bg~ oggdec_path = ~c
 BEGIN @8000 DESIGNATED 80
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~tob~ @25
-// LABEL ~cd_tweaks_restore_soa_loading_screen~
+LABEL ~cd_tweaks_restore_soa_loading_screen~
 
 //Force the game to use the SoA files in the biffs
 MOVE ~override/loadcntr.bam~ ~cdtweaks/backup~
@@ -459,7 +459,7 @@ MOVE ~override/loadcntr.bam~ ~cdtweaks/backup~
 BEGIN @8020 DESIGNATED 82
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~how totlm~   @25 // HoW required
-// LABEL ~cd_tweaks_restore_iwd_loading_screen~
+LABEL ~cd_tweaks_restore_iwd_loading_screen~
 
 COPY ~cdtweaks/mos/gprogbar.mos~ ~override~
      ~cdtweaks/mos/gtrbpbar.mos~ ~override~
@@ -478,7 +478,7 @@ COPY ~cdtweaks/mos/gprogbar.mos~ ~override~
 
 BEGIN @9000 DESIGNATED 90
 GROUP @11
-// LABEL ~cd_tweaks_remove_portrait_icons~
+LABEL ~cd_tweaks_remove_portrait_icons~
 
 PRINT @1
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
@@ -497,7 +497,7 @@ BEGIN @10000 DESIGNATED 100
 GROUP @11 
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~20~ @16
-// LABEL ~cd_tweaks_drab_commoners~
+LABEL ~cd_tweaks_drab_commoners~
 
 COPY_EXISTING ~randcolr.2da~ ~override~
   REPLACE_TEXTUALLY ~HairSet1~ ~CD_DELETE_ME HairSet1~
@@ -556,7 +556,7 @@ COPY_EXISTING ~randcolr.2da~ ~override~
 BEGIN @11000 DESIGNATED 110
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_icon_improvements~
+LABEL ~cd_tweaks_icon_improvements~
 
 COPY ~cdtweaks/bam/cdgchan.bam~  ~override~
      ~cdtweaks/bam/cdgelchn.bam~ ~override~
@@ -662,7 +662,7 @@ DEPRECATED @18
 
 BEGIN @13000 DESIGNATED 130
 GROUP @11 
-// LABEL ~cd_tweaks_force_all_dialogue_to_pause~
+LABEL ~cd_tweaks_force_all_dialogue_to_pause~
 
 PRINT @1
 COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
@@ -711,7 +711,7 @@ END
 BEGIN @14000 DESIGNATED 140
 GROUP @11 // 
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_fix_boo_squeak~
+LABEL ~cd_tweaks_fix_boo_squeak~
 
 COPY ~cdtweaks/wav/gam_48.wav~ ~override~
 /*
@@ -774,7 +774,7 @@ INCLUDE ~cdtweaks/lib/unique.tpa~
 BEGIN @16000 DESIGNATED 160
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_glowing_magical_shields~
+LABEL ~cd_tweaks_glowing_magical_shields~
 
 OUTER_SET column = 4
 INCLUDE ~cdtweaks/lib/mpalette.tpa~
@@ -871,7 +871,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BEGIN @17000 DESIGNATED 170
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2 soa tob bg2ee eet bgt ca~ @25
-// LABEL ~cd_tweaks_unique_icons~
+LABEL ~cd_tweaks_unique_icons~
 
 INCLUDE ~cdtweaks/lib/unique_icons_v2.tpa~ // load reference array
 
@@ -976,7 +976,7 @@ BEGIN @18018 DESIGNATED 180
 SUBCOMPONENT @18000
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd-in-bg2~ @25
-// LABEL ~cd_tweaks_unique_containers_fixes_only~
+LABEL ~cd_tweaks_unique_containers_fixes_only~
 
 INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes
 
@@ -988,7 +988,7 @@ BEGIN @18021 DESIGNATED 181
 SUBCOMPONENT @18000
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd-in-bg2~ @25
-// LABEL ~cd_tweaks_unique_containers_fixes_and_icons~
+LABEL ~cd_tweaks_unique_containers_fixes_and_icons~
 
 OUTER_SET names = 0 // don't set names
 INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes 
@@ -1003,7 +1003,7 @@ SUBCOMPONENT @18000
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~soa tob bgee bg2ee eet bgt tutu tutu_totsc how totlm iwdee iwd-in-bg2~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/unique_containers.tra~ @7
-// LABEL ~cd_tweaks_unique_containers_full~
+LABEL ~cd_tweaks_unique_containers_full~
 
 OUTER_SET names = 1 // set names
 INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes
@@ -1025,7 +1025,7 @@ BEGIN @19000 DESIGNATED 190
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_char_colors_all_helms_shields~
+LABEL ~cd_tweaks_char_colors_all_helms_shields~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1046,7 +1046,7 @@ BEGIN @19100 DESIGNATED 191
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_char_colors_normal_helms_shields~
+LABEL ~cd_tweaks_char_colors_normal_helms_shields~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1068,7 +1068,7 @@ BEGIN @19200 DESIGNATED 192
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_char_colors_all_helms~
+LABEL ~cd_tweaks_char_colors_all_helms~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1089,7 +1089,7 @@ BEGIN @19300 DESIGNATED 193
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_char_colors_normal_helms~
+LABEL ~cd_tweaks_char_colors_normal_helms~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1111,7 +1111,7 @@ BEGIN @19400 DESIGNATED 194
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_char_colors_all_shields~
+LABEL ~cd_tweaks_char_colors_all_shields~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1132,7 +1132,7 @@ BEGIN @19500 DESIGNATED 195
 SUBCOMPONENT @19001
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_char_colors_normal_shields~
+LABEL ~cd_tweaks_char_colors_normal_shields~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -1161,7 +1161,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BEGIN @20000 DESIGNATED 200
 GROUP @11
 SUBCOMPONENT @20001
-// LABEL ~cd_tweaks_remove_equipped_blur_effects~
+LABEL ~cd_tweaks_remove_equipped_blur_effects~
 
 OUTER_SET remove_blur      = 1
 OUTER_SET remove_spelltrap = 0
@@ -1176,7 +1176,7 @@ BEGIN @20002 DESIGNATED 3150
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @20001
-// LABEL ~cd_tweaks_remove_equipped_spell_trap_effects~
+LABEL ~cd_tweaks_remove_equipped_spell_trap_effects~
 
 OUTER_SET remove_blur      = 0
 OUTER_SET remove_spelltrap = 1
@@ -1191,7 +1191,7 @@ BEGIN @20003 DESIGNATED 3151 // why 3151 instead of 201? WeiDU presents SUBCOMPO
 GROUP @11
 SUBCOMPONENT @20001
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_remove_equipped_blur_spell_trap_effects~
+LABEL ~cd_tweaks_remove_equipped_blur_spell_trap_effects~
 
 OUTER_SET remove_blur      = 1
 OUTER_SET remove_spelltrap = 1
@@ -1209,7 +1209,7 @@ INCLUDE ~cdtweaks/lib/annoying_equipped_fx.tpa~
 BEGIN @21000 DESIGNATED 2010
 GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_replace_fire_cold_resist_icons~
+LABEL ~cd_tweaks_replace_fire_cold_resist_icons~
 
 INCLUDE ~cdtweaks/lib/bg2fp_effect_batches.tpa~
 
@@ -1231,7 +1231,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 BEGIN @22000 DESIGNATED 220
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet pstee~ @25
-// LABEL ~cd_tweaks_colorblind_overlays~
+LABEL ~cd_tweaks_colorblind_overlays~
 
 COPY ~cdtweaks/bam/stortint.bam~ ~override~ // red, unusable
      ~cdtweaks/bam/stortin2.bam~ ~override~ // blue, needs ID
@@ -1248,7 +1248,7 @@ COPY ~cdtweaks/bam/stortint.bam~ ~override~ // red, unusable
 BEGIN @101000 DESIGNATED 1010
 GROUP @13 
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_more_interjections~
+LABEL ~cd_tweaks_more_interjections~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~mrimrin1.itm~ THEN BEGIN // imoen romance compatibility code
 
@@ -1283,7 +1283,7 @@ COPY_EXISTING ~trigger.ids~ ~override~
 BEGIN @102000 DESIGNATED 1020
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-// LABEL ~cd_tweaks_alter_wounded_triggers~
+LABEL ~cd_tweaks_alter_wounded_triggers~
 
 // alter triggers in dialogues...
 COMPILE ~cdtweaks/dlg/hptriggers.d~
@@ -1342,7 +1342,7 @@ COPY_EXISTING ~yoshimo.bcs~ ~override~
 BEGIN @103000 DESIGNATED 1030
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-// LABEL ~cd_tweaks_reveal_ch6_wilderness~
+LABEL ~cd_tweaks_reveal_ch6_wilderness~
 
 ACTION_IF ((FILE_EXISTS_IN_GAME ~cdbehbla.pro~) OR (enhanced_edition)) THEN BEGIN // easy fix if fixed worldmap present
 
@@ -1482,7 +1482,7 @@ SUBCOMPONENT @103500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt bgee eet~ @25 // Tutu, BGEE or BGT only
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~bg1npc/bg1npc.tp2~ ~29~ @24 // don't install if same component from bg1 npc installed
-// LABEL ~cd_tweaks_reveal_cloakwood_1~
+LABEL ~cd_tweaks_reveal_cloakwood_1~
 
 COPY_EXISTING ~worldmap.wmp~ ~override~
   READ_LONG  0x30 "area_num"
@@ -1516,7 +1516,7 @@ SUBCOMPONENT @103500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt bgee eet~ @25 // Tutu, BGEE or BGT only
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~bg1npc/bg1npc.tp2~ ~29~ @24 // don't install if same component from bg1 npc installed
-// LABEL ~cd_tweaks_reveal_cloakwood_4~
+LABEL ~cd_tweaks_reveal_cloakwood_4~
 
 COPY_EXISTING ~worldmap.wmp~ ~override~
   READ_LONG  0x30 "area_num"
@@ -1553,7 +1553,7 @@ BEGIN @104000 DESIGNATED 1040
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16 // non-BP
-// LABEL ~cd_tweaks_improved_athkatla_guard~
+LABEL ~cd_tweaks_improved_athkatla_guard~
 
 COPY_EXISTING ~amncen1.cre~  ~override~ // amnish centurion
               ~amng1.cre~    ~override~ // amnish soldier
@@ -1650,7 +1650,7 @@ COMPILE ~cdtweaks/baf/a#amng.baf~
 BEGIN @105000 DESIGNATED 1050
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-// LABEL ~cd_tweaks_gradual_drow_item_disintegration~
+LABEL ~cd_tweaks_gradual_drow_item_disintegration~
 
 EXTEND_BOTTOM ~ar2500.bcs~ ~cdtweaks/baf/ar2500.baf~
 EXTEND_BOTTOM ~baldur.bcs~ ~cdtweaks/baf/baldur.baf~
@@ -1758,7 +1758,7 @@ COPY_EXISTING ~dwchan01.itm~ ~override~
 BEGIN @106000 DESIGNATED 1060
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgee eet~ @25 // tutu, BGEE only
-// LABEL ~cd_tweaks_breakable_armor_bg~
+LABEL ~cd_tweaks_breakable_armor_bg~
 
 ACTION_IF game_is_totsc BEGIN // bg1 does this differently since there's no effect-on-hit opcode
 
@@ -1945,7 +1945,7 @@ END
 BEGIN @107000 DESIGNATED 1070
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc soa tob bgt bgee bg2ee iwdee eet tutu tutu_totsc ca iwd-in-bg2~ @25
-// LABEL ~cd_tweaks_mp_kickout_dialogue~
+LABEL ~cd_tweaks_mp_kickout_dialogue~
 
 ACTION_IF game_is_totsc BEGIN // old IE engines - can be extended to IWD?
 
@@ -1994,7 +1994,7 @@ END
 BEGIN @107500 DESIGNATED 1075
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgt bgee eet~ @25
-// LABEL ~cd_tweaks_send_bg_npcs_to_inn~
+LABEL ~cd_tweaks_send_bg_npcs_to_inn~
 
 ACTION_IF game_is_totsc BEGIN
    INCLUDE ~cdtweaks/lib/BG1areacheck_emulation.tpa~ // clever bit of code from Zed that allows us to check areas; should also work on IWD
@@ -2016,7 +2016,7 @@ END
 BEGIN @108000 DESIGNATED 1080
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc soa tob bgt bgee bg2ee eet how totlm iwd-in-bg2~ @25
-// LABEL ~cd_tweaks_add_bags_of_holding~
+LABEL ~cd_tweaks_add_bags_of_holding~
 
 ACTION_IF game_is_how OR game_is_totlm OR game_is_iwd-in-bg2 THEN BEGIN
 
@@ -2451,7 +2451,7 @@ BEGIN @108500 DESIGNATED 1085
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~twm-01core.cob~ @16
-// LABEL ~cd_tweaks_portable_containers~
+LABEL ~cd_tweaks_portable_containers~
 
 COPY ~cdtweaks/itm/z!bag01.itm~  ~override~ // Gem Bag
   SAY NAME1 @108501
@@ -2582,7 +2582,7 @@ BEGIN @109000 DESIGNATED 1090 DEPRECATED @18 // permanently moved to The Calling
 BEGIN @110000 DESIGNATED 1100
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgee pst pstee iwdee iwd-in-bg2 iwd how totlm bgt~ @25
-// LABEL ~cd_tweaks_reveal_city_areas~
+LABEL ~cd_tweaks_reveal_city_areas~
 
 ACTION_IF game_includes_pst THEN BEGIN
 
@@ -2671,7 +2671,7 @@ END
 BEGIN @110100 DESIGNATED 1101
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_do_not_reveal_city_areas~
+LABEL ~cd_tweaks_do_not_reveal_city_areas~
 
 ACTION_FOR_EACH file IN
   ar0015   // bgt: candlekeep prologue
@@ -2746,7 +2746,7 @@ END
 BEGIN @111000 DESIGNATED 1110
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc iwd-in-bg2~ @25 // tutu only
-// LABEL ~cd_tweaks_add_map_notes~
+LABEL ~cd_tweaks_add_map_notes~
 
 /*
 Note Color key:
@@ -3143,7 +3143,7 @@ END
 BEGIN @112000 DESIGNATED 1120
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_stores_sell_higher_stacks~
+LABEL ~cd_tweaks_stores_sell_higher_stacks~
 
 ACTION_CLEAR_ARRAY  cd_higher_stacks
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_higher_stacks BEGIN
@@ -3183,7 +3183,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
 BEGIN @112500 DESIGNATED 1125 DEPRECATED @18
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_infinite_nonmagical_ammo~
+LABEL ~cd_tweaks_infinite_nonmagical_ammo~
 
 OUTER_SET arow01_name = RESOLVE_STR_REF (@112501)
 OUTER_SET bolt01_name = RESOLVE_STR_REF (@112502)
@@ -3339,7 +3339,7 @@ BEGIN @113000 DESIGNATED 1130
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bgt~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdt01130.g3~ @16 // already installed by BGT tweaks
-// LABEL ~cd_tweaks_rep_reset_in_bg2~
+LABEL ~cd_tweaks_rep_reset_in_bg2~
 
 EXTEND_BOTTOM ~ar0602.bcs~ ~cdtweaks/baf/ar0602.baf~
 
@@ -3359,7 +3359,7 @@ BEGIN @114002 DESIGNATED 1140
 SUBCOMPONENT @114000
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_lore_for_gems_potions~
+LABEL ~cd_tweaks_lore_for_gems_potions~
 
 OUTER_SET match_jewelry = 1
 OUTER_SET match_potion  = 1
@@ -3374,7 +3374,7 @@ BEGIN @114100 DESIGNATED 1141
 SUBCOMPONENT @114000
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_lore_for_gems~
+LABEL ~cd_tweaks_lore_for_gems~
 
 OUTER_SET match_jewelry = 1
 OUTER_SET match_potion  = 0
@@ -3389,7 +3389,7 @@ BEGIN @114200 DESIGNATED 1142
 SUBCOMPONENT @114000
 GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_lore_for_potions~
+LABEL ~cd_tweaks_lore_for_potions~
 
 OUTER_SET match_jewelry = 0
 OUTER_SET match_potion  = 1
@@ -3407,7 +3407,7 @@ INCLUDE ~cdtweaks/lib/lore.tpa~
 BEGIN @115000 DESIGNATED 1150
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bgee tutu tutu_totsc eet bgt bg2ee soa tob iwd-in-bg2 ca iwdee~ @25
-// LABEL ~cd_tweaks_weimer_shapeshifter_rebalancing~
+LABEL ~cd_tweaks_weimer_shapeshifter_rebalancing~
 
 ACTION_IF tutu_gen THEN BEGIN // Tutu
 
@@ -3606,7 +3606,7 @@ GROUP @13
 SUBCOMPONENT @116000 // multi strongholds
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 //REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~10~) AND (FILE_EXISTS ~thecalling/baf/cheat2.baf~)) @25
-// LABEL ~cd_tweaks_multi_stronghold_no_restriction~
+LABEL ~cd_tweaks_multi_stronghold_no_restriction~
   
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
                         ~cdtweaks/dlg/stronghold_cabin_choice.d~     // allows choice for ranger stronghold
@@ -3647,7 +3647,7 @@ GROUP @13
 SUBCOMPONENT @116000 // multi strongholds
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 //REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~thecalling/setup-thecalling.tp2~ ~10~) AND (FILE_EXISTS ~thecalling/baf/cheat2.baf~)) @25
-// LABEL ~cd_tweaks_multi_stronghold_class_restriction~
+LABEL ~cd_tweaks_multi_stronghold_class_restriction~
 
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
                         ~cdtweaks/dlg/stronghold_cabin_choice.d~     // allows choice for ranger stronghold
@@ -3670,7 +3670,7 @@ BEGIN @134000 DESIGNATED 1340
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
-// LABEL ~cd_tweaks_sole_stronghold_mage~
+LABEL ~cd_tweaks_sole_stronghold_mage~
 
 COMPILE ~cdtweaks/dlg/stronghold1.d~       // removes stronghold var
         ~cdtweaks/dlg/stronghold_sphere.d~ // removes class check
@@ -3683,7 +3683,7 @@ BEGIN @134100 DESIGNATED 1341
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
-// LABEL ~cd_tweaks_sole_stronghold_fighter~
+LABEL ~cd_tweaks_sole_stronghold_fighter~
 
 COMPILE ~cdtweaks/dlg/stronghold1.d~         // removes stronghold var
         ~cdtweaks/dlg/stronghold_dearnise.d~ // removes class check
@@ -3696,7 +3696,7 @@ BEGIN @134200 DESIGNATED 1342
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
-// LABEL ~cd_tweaks_sole_stronghold_cleric~
+LABEL ~cd_tweaks_sole_stronghold_cleric~
 
 COMPILE ~cdtweaks/dlg/stronghold1.d~        // removes stronghold var
         ~cdtweaks/dlg/stronghold_temples.d~ // removes class check
@@ -3720,7 +3720,7 @@ BEGIN @134300 DESIGNATED 1343
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
-// LABEL ~cd_tweaks_sole_stronghold_thief~
+LABEL ~cd_tweaks_sole_stronghold_thief~
 
 COMPILE ~cdtweaks/dlg/stronghold1.d~      // removes stronghold var
         ~cdtweaks/dlg/stronghold_guild.d~ // removes class check
@@ -3733,7 +3733,7 @@ BEGIN @134400 DESIGNATED 1344
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
-// LABEL ~cd_tweaks_sole_stronghold_bard~
+LABEL ~cd_tweaks_sole_stronghold_bard~
 
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
                         ~cdtweaks/dlg/stronghold_playhouse.d~        // removes class check
@@ -3747,7 +3747,7 @@ BEGIN @134500 DESIGNATED 1345
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
-// LABEL ~cd_tweaks_sole_stronghold_paladin~
+LABEL ~cd_tweaks_sole_stronghold_paladin~
 
 COMPILE ~cdtweaks/dlg/stronghold1.d~     // removes stronghold var
         ~cdtweaks/dlg/stronghold_norh.d~ // removes class check
@@ -3760,7 +3760,7 @@ BEGIN @134600 DESIGNATED 1346
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
-// LABEL ~cd_tweaks_sole_stronghold_druid~
+LABEL ~cd_tweaks_sole_stronghold_druid~
 
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~             // removes stronghold var
                         ~cdtweaks/dlg/stronghold_grove.d~        // removes class check
@@ -3780,7 +3780,7 @@ BEGIN @134700 DESIGNATED 1347
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
-// LABEL ~cd_tweaks_sole_stronghold_ranger~
+LABEL ~cd_tweaks_sole_stronghold_ranger~
 
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~             // removes stronghold var
                         ~cdtweaks/dlg/stronghold_cabin.d~        // removes class check
@@ -3798,7 +3798,7 @@ BEGIN @117000 DESIGNATED 1170
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16 // non-BP
-// LABEL ~cd_tweaks_bonus_merchants~
+LABEL ~cd_tweaks_bonus_merchants~
 
 ACTION_FOR_EACH file IN ar0406 ar0702 BEGIN
 
@@ -3822,7 +3822,7 @@ END
 BEGIN @118000 DESIGNATED 1180
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-// LABEL ~cd_tweaks_edwina~
+LABEL ~cd_tweaks_edwina~
 
 ACTION_IF enhanced_edition THEN BEGIN
 
@@ -3858,7 +3858,7 @@ BEGIN @119000 DESIGNATED 1190
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ @16 // only if Fixpack not installed
-// LABEL ~cd_tweaks_eou_romance_fixes~
+LABEL ~cd_tweaks_eou_romance_fixes~
 
 COMPILE ~cdtweaks/dlg/jagalvar.d~
 
@@ -3986,7 +3986,7 @@ BEGIN @120000 DESIGNATED 1200
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bgt tob~    @25 // ToB required, already fixed in bg2ee
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ @16 // only if Fixpack not installed
-// LABEL ~cd_tweaks_tob_imoen_dialogue_fix~
+LABEL ~cd_tweaks_tob_imoen_dialogue_fix~
 
 COMPILE ~cdtweaks/dlg/immyfix.d~
 
@@ -4001,7 +4001,7 @@ COMPILE ~cdtweaks/dlg/immyfix.d~
 BEGIN @121000 DESIGNATED 1210
 GROUP @13 
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_use_bg_walking_speeds~
+LABEL ~cd_tweaks_use_bg_walking_speeds~
 
 ACTION_IF enhanced_edition THEN BEGIN // in ee, can adjust the animation speed directly
    
@@ -4127,7 +4127,7 @@ END
 BEGIN @122000 DESIGNATED 1220
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~tob bgt bg2ee eet~ @25
-// LABEL ~cd_tweaks_cromwell_updates_wk_items~
+LABEL ~cd_tweaks_cromwell_updates_wk_items~
 
 STRING_SET 66764 @122043
 
@@ -4188,7 +4188,7 @@ BEGIN @122501 DESIGNATED 1225
 SUBCOMPONENT @122500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-// LABEL ~cd_tweaks_cromwell_forge_time_0~
+LABEL ~cd_tweaks_cromwell_forge_time_0~
 
 ACTION_IF enhanced_edition BEGIN
 
@@ -4208,7 +4208,7 @@ BEGIN @122600 DESIGNATED 1226
 SUBCOMPONENT @122500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-// LABEL ~cd_tweaks_cromwell_forge_time_8~
+LABEL ~cd_tweaks_cromwell_forge_time_8~
 
 ACTION_IF enhanced_edition THEN BEGIN
 
@@ -4241,7 +4241,7 @@ BEGIN @122700 DESIGNATED 1227
 SUBCOMPONENT @122500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-// LABEL ~cd_tweaks_cromwell_forge_time_24~
+LABEL ~cd_tweaks_cromwell_forge_time_24~
 
 ACTION_IF !enhanced_edition THEN BEGIN
 
@@ -4270,7 +4270,7 @@ END
 BEGIN @123000 DESIGNATED 1230
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~tob bgt bg2ee eet~ @25
-// LABEL ~cd_tweaks_cespenar_updates_soa_items~
+LABEL ~cd_tweaks_cespenar_updates_soa_items~
 
 ACTION_IF NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1220~ BEGIN
 
@@ -4310,7 +4310,7 @@ EXTEND_BOTTOM ~botsmith.bcs~ ~cdtweaks/baf/cespy.baf~
 BEGIN @124000 DESIGNATED 1240
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1~ @25 // not even totsc
-// LABEL ~cd_tweaks_fai_container_restoration~
+LABEL ~cd_tweaks_fai_container_restoration~
 
 COPY_EXISTING ~ar2300.are~ ~override~
   //first determine that the container truly is not there  if it is, we don't do anything
@@ -4381,7 +4381,7 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 REQUIRE_PREDICATE !FILE_EXISTS ~override/x#aloramove.g3~ @16 // bg1 npc does these separately
-// LABEL ~cd_tweaks_move_bg_npcs_alora~
+LABEL ~cd_tweaks_move_bg_npcs_alora~
 
 COPY_EXISTING ~%ALORA_BCS%.bcs~ ~override~ // catching and updating area variables
   DECOMPILE_AND_PATCH BEGIN
@@ -4451,7 +4451,7 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 REQUIRE_PREDICATE !FILE_EXISTS ~override/x#eldothmove.g3~ @16 // bg1 npc does these separately
-// LABEL ~cd_tweaks_move_bg_npcs_eldoth~
+LABEL ~cd_tweaks_move_bg_npcs_eldoth~
 
 COPY_EXISTING ~%ELDOTH_BCS%.bcs~ ~override~ // bg1npc compat
   DECOMPILE_AND_PATCH BEGIN
@@ -4497,7 +4497,7 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 REQUIRE_PREDICATE !FILE_EXISTS ~override/x#quaylemove.g3~ @16 // bg1 npc does these separately
-// LABEL ~cd_tweaks_move_bg_npcs_quayle~
+LABEL ~cd_tweaks_move_bg_npcs_quayle~
 
 COPY_EXISTING ~%QUAYLE_BCS%.bcs~ ~override~ // catching and updating area variables
   DECOMPILE_AND_PATCH BEGIN
@@ -4542,7 +4542,7 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 //REQUIRE_PREDICATE !FILE_EXISTS ~override/x#quaylemove.g3~ @16 // bg1 npc doesn't move her
-// LABEL ~cd_tweaks_move_bg_npcs_sharteel~
+LABEL ~cd_tweaks_move_bg_npcs_sharteel~
 
 COPY_EXISTING ~%SHARTEEL_BCS%.bcs~ ~override~ // catching and updating area variables
               ~shartel2.bcs~       ~override~
@@ -4606,7 +4606,7 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 REQUIRE_PREDICATE !FILE_EXISTS ~override/x#tiaxmove.g3~ @16 // bg1 npc does these separately
-// LABEL ~cd_tweaks_move_bg_npcs_tiax~
+LABEL ~cd_tweaks_move_bg_npcs_tiax~
 
 COPY_EXISTING ~%TIAX_BCS%.bcs~ ~override~ // catching and updating area variables
   DECOMPILE_AND_PATCH BEGIN
@@ -4651,7 +4651,7 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
 REQUIRE_PREDICATE NOT FILE_EXISTS ~override/dw#npc_start_loc.mrk~ @16 // scs version of same
 //REQUIRE_PREDICATE !FILE_EXISTS ~override/x#quaylemove.g3~ @16 // bg1 npc doesn't move her
-// LABEL ~cd_tweaks_move_bg_npcs_viconia~
+LABEL ~cd_tweaks_move_bg_npcs_viconia~
 
 COPY_EXISTING ~%VICONIA_BCS%.bcs~ ~override~ // catching and updating area variables
   DECOMPILE_AND_PATCH BEGIN
@@ -4706,7 +4706,7 @@ COPY_EXISTING ~%tutu_scriptbg%viconi%eet_var%.dlg~ ~override~ // viconi in bg/bg
 BEGIN @126000 DESIGNATED 1260
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc~ @25 // leave bgee/tutu/bgee/etc. to BG1 NPC
-// LABEL ~cd_tweaks_bardic_rep_adjustment~
+LABEL ~cd_tweaks_bardic_rep_adjustment~
 
 APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~CD_STATE_NOTVALID~
 CLEAR_IDS_MAP
@@ -4775,7 +4775,7 @@ EXTEND_BOTTOM ~ajantis.bcs~ ~cdtweaks/baf/x#lprcajr.baf~
 BEGIN @127000 DESIGNATED 1270 // ~Revert Chapter Change in Cloakwood Mines to Non-ToTSC BG Behavior~
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc bgt eet bgee tutu tutu_totsc~ @25
-// LABEL ~cd_tweaks_change_cloakwood_trigger~
+LABEL ~cd_tweaks_change_cloakwood_trigger~
 
 COPY_EXISTING ~%CloakwoodMines_L4%.are~ override // AR1803, 8603bgt
   READ_ASCII 0x94 areascript (8) NULL
@@ -4895,7 +4895,7 @@ END
 BEGIN @128000 DESIGNATED 1280
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd-in-bg2~ @25
-// LABEL ~cd_tweaks_game_ends_with_player1~
+LABEL ~cd_tweaks_game_ends_with_player1~
 
 ACTION_IF game_is_iwd-in-bg2 THEN BEGIN // easy solution!
 
@@ -4921,7 +4921,7 @@ END
 BEGIN @129000 DESIGNATED 1290
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
-// LABEL ~cd_tweaks_protagonist_replacement~
+LABEL ~cd_tweaks_protagonist_replacement~
 
 ACTION_FOR_EACH file IN
   daccalia dalbion daldwin dambere damelia dangaar dapsel darden darundel dbaldemr dbandoth dbeorn dcallard
@@ -4958,7 +4958,7 @@ END
 BEGIN @130000 DESIGNATED 1300
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~iwdee how totlm iwd-in-bg2~ @25
-// LABEL ~cd_tweaks_how_accessible_at_l1~
+LABEL ~cd_tweaks_how_accessible_at_l1~
 
 COPY_EXISTING ~dhjollde.dlg~ ~override~
   DECOMPILE_AND_PATCH BEGIN
@@ -4979,7 +4979,7 @@ COPY_EXISTING ~dhjollde.dlg~ ~override~
 BEGIN @131000 DESIGNATED 1310
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~iwd-in-bg2~ @25
-// LABEL ~cd_tweaks_restore_bg2_spells~
+LABEL ~cd_tweaks_restore_bg2_spells~
 
 //LAF make_label STR_VAR label=~i#bg2spells~ END
 
@@ -5114,7 +5114,7 @@ LAF residual_journal_hacks END
 BEGIN @133000 DESIGNATED 1330
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
-// LABEL ~cd_tweaks_I_am_a_servant_of_the_Secret_Fire_wielder_of_the_flame_of_Anor_You_cannot_pass_The_dark_fire_will_not_avail_you_flame_of_Udun_Go_back_to_the_Shadow_You_cannot_pass~
+LABEL ~cd_tweaks_I_am_a_servant_of_the_Secret_Fire_wielder_of_the_flame_of_Anor_You_cannot_pass_The_dark_fire_will_not_avail_you_flame_of_Udun_Go_back_to_the_Shadow_You_cannot_pass~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
   PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_CASE "ar0028") BEGIN
@@ -5142,7 +5142,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
 BEGIN @202000 DESIGNATED 2020
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_2h_bastard_swords~
+LABEL ~cd_tweaks_2h_bastard_swords~
 
 ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
@@ -5207,7 +5207,7 @@ END
 BEGIN @203000 DESIGNATED 2030
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_2h_katanas~
+LABEL ~cd_tweaks_2h_katanas~
 
 ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
@@ -5270,7 +5270,7 @@ END
 BEGIN @203500 DESIGNATED 2035
 GROUP @9 
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_2h_axes~
+LABEL ~cd_tweaks_2h_axes~
 
 ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
@@ -5353,7 +5353,7 @@ END
 BEGIN @204000 DESIGNATED 2040
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_universal_clubs~
+LABEL ~cd_tweaks_universal_clubs~
 
 OUTER_SET type_match = 0
 OUTER_SET modify_descript = 0
@@ -5467,7 +5467,7 @@ GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2162~ @16 // bg profs w/o weapon styles
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2164~ @16 // iwd profs w/o weapon styles
-// LABEL ~cd_tweaks_weapon_styles_for_all~
+LABEL ~cd_tweaks_weapon_styles_for_all~
 
 ACTION_CLEAR_ARRAY style_kits
 OUTER_SET $style_kits(MAGE) = 1
@@ -5532,7 +5532,7 @@ COPY_EXISTING ~weapprof.2da~ ~override~
 BEGIN @208000 DESIGNATED 2080
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee bgt eet~   @25 // ToB required
-// LABEL ~cd_tweaks_delay_hlas~
+LABEL ~cd_tweaks_delay_hlas~
 
 COPY_EXISTING ~lunumab.2da~ ~override~
   COUNT_2DA_ROWS 5 rows
@@ -5560,7 +5560,7 @@ BEGIN @209001 DESIGNATED 2090 // remove xp cap
 GROUP @9
 SUBCOMPONENT @209000 // change xp cap
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_remove_xp_cap~
+LABEL ~cd_tweaks_remove_xp_cap~
 
 COPY ~cdtweaks/2da/xplevel.2da~ ~override/xplevel.2da~
 INCLUDE ~cdtweaks/lib/xp_common.tpa~
@@ -5762,7 +5762,7 @@ BEGIN @209100 DESIGNATED 2091
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 SUBCOMPONENT @209000 // change xp cap
-// LABEL ~cd_tweaks_cap_xp_at_l20~
+LABEL ~cd_tweaks_cap_xp_at_l20~
 
 COPY ~cdtweaks/2da/xplevel20.2da~ ~override/xplevel.2da~
 INCLUDE ~cdtweaks/lib/xp_common.tpa~
@@ -5775,7 +5775,7 @@ BEGIN @209200 DESIGNATED 2092
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 SUBCOMPONENT @209000 // change xp cap
-// LABEL ~cd_tweaks_cap_xp_at_l30~
+LABEL ~cd_tweaks_cap_xp_at_l30~
 
 COPY ~cdtweaks/2da/xplevel30.2da~ ~override/xplevel.2da~
 INCLUDE ~cdtweaks/lib/xp_common.tpa~
@@ -5791,7 +5791,7 @@ INCLUDE ~cdtweaks/lib/xp_common.tpa~
 BEGIN @210000 DESIGNATED 2100
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_thieving_in_heavy_armor~
+LABEL ~cd_tweaks_thieving_in_heavy_armor~
 
 INCLUDE ~cdtweaks/lib/thieving_descripts.tpa~ // text replacement macros
 INCLUDE ~cdtweaks/lib/thieving_to_50.tpa~     // extend bard, ranger pickpocketing to 200 and levels to 50
@@ -5896,7 +5896,7 @@ END // end php_each
 BEGIN @212000 DESIGNATED 2120
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_casting_in_armor~
+LABEL ~cd_tweaks_casting_in_armor~
 
 INCLUDE ~cdtweaks/lib/arcane_descripts.tpa~  // text replacement macros     
 INCLUDE ~cdtweaks/lib/common_armor_list.tpa~
@@ -5943,7 +5943,7 @@ END // php_each
 BEGIN @214000 DESIGNATED 2140
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_more_dual_classes~
+LABEL ~cd_tweaks_more_dual_classes~
 
 INCLUDE ~cdtweaks/lib/kit_ids_fixer.tpa~
 
@@ -6110,7 +6110,7 @@ BEGIN @215001 DESIGNATED 2150 // PnP restrictions
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 SUBCOMPONENT @215000 // wear multiple protection items
-// LABEL ~cd_tweaks_protection_items_pnp~
+LABEL ~cd_tweaks_protection_items_pnp~
   
 ACTION_CLEAR_ARRAY cd_pnp_check
 ACTION_CLEAR_ARRAY cd_pnp_table
@@ -6322,7 +6322,7 @@ BEGIN @215100 DESIGNATED 2151 // no restrictions
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 SUBCOMPONENT @215000 // wear multiple protection items
-// LABEL ~cd_tweaks_protection_items_all~
+LABEL ~cd_tweaks_protection_items_all~
 
 COPY  ~cdtweaks/2da/itemexcl.2da~ ~override~
 
@@ -6334,7 +6334,7 @@ BEGIN @215200 DESIGNATED 2152 // no restrictions
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 SUBCOMPONENT @215000 // wear multiple protection items
-// LABEL ~cd_tweaks_protection_items_armor_plus_one~
+LABEL ~cd_tweaks_protection_items_armor_plus_one~
 
 COPY_EXISTING ~itemexcl.2da~ ~override~
   COUNT_2DA_ROWS 2 rows
@@ -6373,7 +6373,7 @@ BEGIN @216000 DESIGNATED 2160
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
-// LABEL ~cd_tweaks_alter_prof_rebalanced~
+LABEL ~cd_tweaks_alter_prof_rebalanced~
 
 INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
 INCLUDE ~cdtweaks/lib/profs_common.tpa~
@@ -6387,7 +6387,7 @@ BEGIN @216100 DESIGNATED 2161
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
-// LABEL ~cd_tweaks_alter_prof_bg_with_styles~
+LABEL ~cd_tweaks_alter_prof_bg_with_styles~
 
 OUTER_SET "tb#tutu_realloc_style" = 0
 INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
@@ -6402,7 +6402,7 @@ BEGIN @216200 DESIGNATED 2162
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
-// LABEL ~cd_tweaks_alter_prof_bg_no_styles~
+LABEL ~cd_tweaks_alter_prof_bg_no_styles~
 
 OUTER_SET "tb#tutu_realloc_style" = 1
 INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
@@ -6417,7 +6417,7 @@ BEGIN @216300 DESIGNATED 2163
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
-// LABEL ~cd_tweaks_alter_prof_iwd_with_styles~
+LABEL ~cd_tweaks_alter_prof_iwd_with_styles~
 
 OUTER_SET "tb#tutu_realloc_style" = 0
 INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
@@ -6432,7 +6432,7 @@ BEGIN @216400 DESIGNATED 2164
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 SUBCOMPONENT @216006
-// LABEL ~cd_tweaks_alter_prof_iwd_no_styles~
+LABEL ~cd_tweaks_alter_prof_iwd_no_styles~
 
 OUTER_SET "tb#tutu_realloc_style" = 1
 INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
@@ -6449,7 +6449,7 @@ INCLUDE ~cdtweaks/lib/iwd_style_profs.tpa~
 
 BEGIN @217000 DESIGNATED 2170
 GROUP @9
-// LABEL ~cd_tweaks_item_spells_at_char_level~
+LABEL ~cd_tweaks_item_spells_at_char_level~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   PATCH_FOR_EACH op IN 146 148 BEGIN
@@ -6473,7 +6473,7 @@ BEGIN @219001 DESIGNATED 2190 // only mages n bards
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 SUBCOMPONENT @219000 // limited storekeeper id ability
-// LABEL ~cd_tweaks_shopkeeper_id_mages~
+LABEL ~cd_tweaks_shopkeeper_id_mages~
 
 OUTER_SET lore_class = 1
 OUTER_SET lore_calc  = 0
@@ -6487,7 +6487,7 @@ BEGIN @219100 DESIGNATED 2191 // only mages n bards
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 SUBCOMPONENT @219000 // limited storekeeper id ability
-// LABEL ~cd_tweaks_shopkeeper_id_lore~
+LABEL ~cd_tweaks_shopkeeper_id_lore~
 
 OUTER_SET lore_class = 0
 OUTER_SET lore_calc  = 1
@@ -6501,7 +6501,7 @@ BEGIN @219200 DESIGNATED 2192 // only mages n bards
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
 SUBCOMPONENT @219000 // limited storekeeper id ability
-// LABEL ~cd_tweaks_shopkeeper_id_hybrid~
+LABEL ~cd_tweaks_shopkeeper_id_hybrid~
 
 OUTER_SET lore_class = 1
 OUTER_SET lore_calc  = 1
@@ -6518,7 +6518,7 @@ INCLUDE ~cdtweaks/lib/cdstores.tpa~
 BEGIN @220000 DESIGNATED 2200
 GROUP @9 
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_shopkeeper_multiclass_gm~
+LABEL ~cd_tweaks_multiclass_gm~
 
 ACTION_IF original_bg1 OR original_iwd THEN BEGIN
 
@@ -6600,7 +6600,7 @@ BEGIN @221000 DESIGNATED 2210
 GROUP @9
 SUBCOMPONENT @221001 // Change Grandmastery Bonuses
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_grandmastery_bonus_true~
+LABEL ~cd_tweaks_grandmastery_bonus_true~
 
 ACTION_IF FILE_CONTAINS_EVALUATED (~wspecial.2da~ ~[ %TAB%]*SPEED[ %TAB%]*~) THEN BEGIN OUTER_SET dump_speed = 0 END ELSE BEGIN OUTER_SET dump_speed = 1 END
 
@@ -6624,7 +6624,7 @@ BEGIN @221100 DESIGNATED 2211
 GROUP @9
 SUBCOMPONENT @221001 // Change Grandmastery Bonuses
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_grandmastery_bonus_bg2~
+LABEL ~cd_tweaks_grandmastery_bonus_bg2~
 
 ACTION_IF FILE_CONTAINS_EVALUATED (~wspecial.2da~ ~[ %TAB%]*SPEED[ %TAB%]*~) THEN BEGIN OUTER_SET dump_speed = 0 END ELSE BEGIN OUTER_SET dump_speed = 1 END
 
@@ -6651,7 +6651,7 @@ END
 BEGIN @222000 DESIGNATED 2220
 GROUP @9 
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
-// LABEL ~cd_tweaks_0_weight_created_weapons~
+LABEL ~cd_tweaks_0_weight_created_weapons~
 
 ACTION_IF enhanced_edition OR tutu_gen OR game_is_bgt OR original_bg2 OR game_is_iwd-in-bg2 OR game_is_ca BEGIN
   OUTER_SET check_255 = 1
@@ -6729,7 +6729,7 @@ GROUP @9
 //REQUIRE_PREDICATE GAME_IS ~soa tob bgt~ @25
 //REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ @16
 FORBID_COMPONENT ~item_rev/item_rev.tp2~ ~0~ @16
-// LABEL ~cd_tweaks_consistent_x_y_items~
+LABEL ~cd_tweaks_consistent_x_y_items~
 
 // to update descriptions; if not translated it'll try in English and not change anything
 OUTER_SPRINT text_stats @223001
@@ -6794,7 +6794,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_alter_thac0_table~
+LABEL ~cd_tweaks_alter_thac0_table~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -6830,7 +6830,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_sorc_spell_progression~
+LABEL ~cd_tweaks_sorc_spell_progression~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~mxsplsrc.2da~ THEN BEGIN
 
@@ -6892,7 +6892,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_mage_spell_progression_unnerfed~
+LABEL ~cd_tweaks_mage_spell_progression_unnerfed~
 
 COPY ~cdtweaks/2da/un_mxsplwiz.2da~ ~override/mxsplwiz.2da~
 
@@ -7000,7 +7000,7 @@ GROUP @9
 SUBCOMPONENT @226000 // alter mage progression
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~mxsplwiz.2da~ @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_mage_spell_progression_pnp~
+LABEL ~cd_tweaks_mage_spell_progression_pnp~
 
 COPY ~cdtweaks/2da/mxsplwiz.2da~ ~override~
 
@@ -7050,7 +7050,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_bard_spell_progression_unnerfed~
+LABEL ~cd_tweaks_bard_spell_progression_unnerfed~
 
 COPY ~cdtweaks/2da/un_mxsplbrd.2da~ ~override/mxsplbrd.2da~
 
@@ -7078,7 +7078,7 @@ GROUP @9
 SUBCOMPONENT @227000 // alter bard progression
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~mxsplbrd.2da~ @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_bard_spell_progression_pnp~
+LABEL ~cd_tweaks_bard_spell_progression_pnp~
 
 COPY ~cdtweaks/2da/mxsplbrd.2da~ ~override~
 
@@ -7117,7 +7117,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_cleric_spell_progression_unnerfed~
+LABEL ~cd_tweaks_cleric_spell_progression_unnerfed~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7207,7 +7207,7 @@ GROUP @9
 SUBCOMPONENT @228000 // alter cleric progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxsplclr.2da~) OR (FILE_EXISTS_IN_GAME ~mxsplprs.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_cleric_spell_progression_pnp~
+LABEL ~cd_tweaks_cleric_spell_progression_pnp~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7239,7 +7239,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_druid_spell_progression_unnerfed_druid_level~
+LABEL ~cd_tweaks_druid_spell_progression_unnerfed_druid_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7260,7 +7260,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_druid_spell_progression_pnp_druid_level~
+LABEL ~cd_tweaks_druid_spell_progression_pnp_druid_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7281,7 +7281,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_druid_spell_progression_unchanged_cleric_level~
+LABEL ~cd_tweaks_druid_spell_progression_unchanged_cleric_level~
 
 // use cleric level progression
 INCLUDE ~cdtweaks/lib/druid_2_cleric_levels.tpa~
@@ -7295,7 +7295,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_druid_spell_progression_unnerfed_cleric_level~
+LABEL ~cd_tweaks_druid_spell_progression_unnerfed_cleric_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7319,7 +7319,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_druid_spell_progression_pnp_cleric_level~
+LABEL ~cd_tweaks_druid_spell_progression_pnp_cleric_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7343,7 +7343,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_druid_spell_progression_cleric_normal_cleric_level~
+LABEL ~cd_tweaks_druid_spell_progression_cleric_normal_cleric_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7367,7 +7367,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_druid_spell_progression_cleric_unnerfed_cleric_level~
+LABEL ~cd_tweaks_druid_spell_progression_cleric_unnerfed_cleric_level~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -7402,7 +7402,7 @@ BEGIN @229200 DESIGNATED 2297
 GROUP @9
 //SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc iwd how totlm~ @25
-// LABEL ~cd_tweaks_druid_spell_progression_unchanged_cleric_level_obg_version~
+LABEL ~cd_tweaks_druid_spell_progression_unchanged_cleric_level_obg_version~
 
 // use cleric level progression
 INCLUDE ~cdtweaks/lib/druid_2_cleric_levels.tpa~
@@ -7419,7 +7419,7 @@ BEGIN @230000 DESIGNATED 2300
 GROUP @9
 REQUIRE_PREDICATE     MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2090~ @21 // xp cap must be removed
 REQUIRE_PREDICATE     GAME_IS ~tob bgt bg2ee eet~   @25 // ToB required
-// LABEL ~cd_tweaks_triple_class_hla_table~
+LABEL ~cd_tweaks_triple_class_hla_table~
 
 // gives f/m/c and f/m/t unique HLAs; tables created below
 COPY_EXISTING ~LUABBR.2DA~ ~override~
@@ -7591,7 +7591,7 @@ END
 BEGIN @231001 DESIGNATED 2310
 GROUP @9
 SUBCOMPONENT @231000 // arcane save penalties
-// LABEL ~cd_tweaks_arcane_save_penalties~
+LABEL ~cd_tweaks_arcane_save_penalties~
 
 INCLUDE ~cdtweaks/lib/saves_macro.tpa~
 
@@ -7611,7 +7611,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
 BEGIN @231100 DESIGNATED 2311
 GROUP @9
 SUBCOMPONENT @231000 // divine
-// LABEL ~cd_tweaks_divine_save_penalties~
+LABEL ~cd_tweaks_divine_save_penalties~
 
 INCLUDE ~cdtweaks/lib/saves_macro.tpa~
 
@@ -7643,7 +7643,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
 BEGIN @231200 DESIGNATED 2312
 GROUP @9
 SUBCOMPONENT @231000 // both
-// LABEL ~cd_tweaks_arcane_divine_save_penalties~
+LABEL ~cd_tweaks_arcane_divine_save_penalties~
 
 INCLUDE ~cdtweaks/lib/saves_macro.tpa~
 
@@ -7679,7 +7679,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
 BEGIN @232000 DESIGNATED 2320
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_trap_cap_removal~
+LABEL ~cd_tweaks_trap_cap_removal~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~traplimt.2da~ THEN BEGIN 
 
@@ -7755,7 +7755,7 @@ END
 BEGIN @233000 DESIGNATED 2330
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_remove_magical_trap_delay~
+LABEL ~cd_tweaks_remove_magical_trap_delay~
 
 ACTION_FOR_EACH proj IN dfirebl iceglyp idpro96 trapglyp trapskul BEGIN
 
@@ -7780,7 +7780,7 @@ END
 BEGIN @233900 DESIGNATED 2339
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~summlimt.2da~ @25 // ToB required
 GROUP @9
-// LABEL ~cd_tweaks_summoning_cap_removal~
+LABEL ~cd_tweaks_summoning_cap_removal~
 
 COPY_EXISTING ~summlimt.2da~ ~override~
   REPLACE_TEXTUALLY ~NORMAL[ %TAB%]+[0-9]+~ ~NORMAL 999~
@@ -7797,7 +7797,7 @@ COPY_EXISTING ~summlimt.2da~ ~override~
 BEGIN @234000 DESIGNATED 2340
 REQUIRE_PREDICATE     GAME_IS ~tob bg2ee eet bgt~   @25 // ToB required
 GROUP @9
-// LABEL ~cd_tweaks_celestial_cap_removal~
+LABEL ~cd_tweaks_celestial_cap_removal~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~summlimt.2da~ THEN BEGIN
 
@@ -7837,7 +7837,7 @@ END
 BEGIN @236000 DESIGNATED 2360
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
-// LABEL ~cd_tweaks_remove_class_racial_restrictions~
+LABEL ~cd_tweaks_remove_class_racial_restrictions~
 
 INCLUDE ~cdtweaks/lib/class-race_removal.tpa~
 
@@ -7852,7 +7852,7 @@ INCLUDE ~cdtweaks/lib/class-race_removal.tpa~
 BEGIN @238000 DESIGNATED 2380
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
-// LABEL ~cd_tweaks_remove_kit_racial_restrictions~
+LABEL ~cd_tweaks_remove_kit_racial_restrictions~
 
 INCLUDE ~cdtweaks/lib/kit-race_removal.tpa~
 
@@ -7872,7 +7872,7 @@ BEGIN @237100 DESIGNATED 2371
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx
 GROUP @9
 SUBCOMPONENT @237000 // Alter Dual-class Restrictions
-// LABEL ~cd_tweaks_alter_dualclass_humans_yes_nonhumans_yes~
+LABEL ~cd_tweaks_alter_dualclass_humans_yes_nonhumans_yes~
 
 ACTION_IF FILE_EXISTS ~tobex_ini/tobextweak.ini~ THEN BEGIN
 
@@ -7899,7 +7899,7 @@ BEGIN @237001 DESIGNATED 2370
 GROUP @9
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
 SUBCOMPONENT @237000 // Alter Dual-class Restrictions
-// LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_no~
+LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_no~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   REPLACE_TEXTUALLY ~^DUALCLASS[ %TAB%]+1~ ~DUALCLASS 0~
@@ -7916,7 +7916,7 @@ BEGIN @237200 DESIGNATED 2372
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
 GROUP @9
 SUBCOMPONENT @237000 // Alter Dual-class Restrictions
-// LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_yes~
+LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_yes~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   REPLACE_TEXTUALLY ~^\(DUALCLASS[ %TAB%]+\).+$~ ~\1 0 1 1 1 1 1 1~
@@ -7941,7 +7941,7 @@ BEGIN @235001 DESIGNATED 2350
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
-// LABEL ~cd_tweaks_multiclass_allow_humans~
+LABEL ~cd_tweaks_multiclass_allow_humans~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
@@ -7973,7 +7973,7 @@ BEGIN @235100 DESIGNATED 2351
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
-// LABEL ~cd_tweaks_multiclass_allow_nonhumans_all~
+LABEL ~cd_tweaks_multiclass_allow_nonhumans_all~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
@@ -8014,7 +8014,7 @@ BEGIN @235300 DESIGNATED 2353
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
-// LABEL ~cd_tweaks_multiclass_allow_nonhumans_limited~
+LABEL ~cd_tweaks_multiclass_allow_nonhumans_limited~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
@@ -8068,7 +8068,7 @@ BEGIN @235200 DESIGNATED 2357
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
-// LABEL ~cd_tweaks_multiclass_allow_all_all~
+LABEL ~cd_tweaks_multiclass_allow_all_all~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
@@ -8102,7 +8102,7 @@ BEGIN @235800 DESIGNATED 2358
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
-// LABEL ~cd_tweaks_multiclass_allow_all_limited~
+LABEL ~cd_tweaks_multiclass_allow_all_limited~
 
 COPY_EXISTING ~clsrcreq.2da~ ~override~
   COUNT_2DA_ROWS 8 rows
@@ -8166,7 +8166,7 @@ BEGIN @255001 DESIGNATED 2550
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
 SUBCOMPONENT @255000
-// LABEL ~cd_tweaks_gnome_multiclass_illusionist_kits_all~
+LABEL ~cd_tweaks_gnome_multiclass_illusionist_kits_all~
 
 OUTER_SET gnome_base = 1
 OUTER_SET gnome_kits = 1
@@ -8180,7 +8180,7 @@ BEGIN @255100 DESIGNATED 2551
 GROUP @9
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
 SUBCOMPONENT @255000
-// LABEL ~cd_tweaks_gnome_multiclass_mage_kits_illusionist~
+LABEL ~cd_tweaks_gnome_multiclass_mage_kits_illusionist~
 
 OUTER_SET gnome_base = 0
 OUTER_SET gnome_kits = 0
@@ -8194,7 +8194,7 @@ BEGIN @255200 DESIGNATED 2552
 GROUP @9
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
 SUBCOMPONENT @255000
-// LABEL ~cd_tweaks_gnome_multiclass_mage_kits_all~
+LABEL ~cd_tweaks_gnome_multiclass_mage_kits_all~
 
 OUTER_SET gnome_base = 0
 OUTER_SET gnome_kits = 1
@@ -8212,7 +8212,7 @@ BEGIN @239000 DESIGNATED 2390
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~160~ @16
-// LABEL ~cd_tweaks_paladin_spell_progression_iwd~
+LABEL ~cd_tweaks_paladin_spell_progression_iwd~
 
 COPY ~cdtweaks/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
 
@@ -8228,7 +8228,7 @@ BEGIN @240000 DESIGNATED 2400
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~170~ @16
-// LABEL ~cd_tweaks_ranger_spell_progression_iwd~
+LABEL ~cd_tweaks_ranger_spell_progression_iwd~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -8251,7 +8251,7 @@ END
 BEGIN @241000 DESIGNATED 2410
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_druids_use_3e_alignment~
+LABEL ~cd_tweaks_druids_use_3e_alignment~
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_3e_druid_aligns BEGIN
 
@@ -8310,7 +8310,7 @@ END
 BEGIN @242000 DESIGNATED 2420
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_cleric_multis_loosen_equipment_restrictions~
+LABEL ~cd_tweaks_cleric_multis_loosen_equipment_restrictions~
 
 // basically, only mess with kit flags if they still have their original usability and have not been hijacked by kit mods as free flags
 OUTER_SET lathander = 0
@@ -8472,7 +8472,7 @@ BEGIN @243000 DESIGNATED 2430
 GROUP @9
 SUBCOMPONENT @243001
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_druid_multis_loosen_equipment_restrictions~
+LABEL ~cd_tweaks_druid_multis_loosen_equipment_restrictions~
   
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_BYTE 0x1f use
@@ -8532,7 +8532,7 @@ BEGIN @243100 DESIGNATED 2431
 GROUP @9
 SUBCOMPONENT @243001
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_druid_multis_tighten_equipment_restrictions~
+LABEL ~cd_tweaks_druid_multis_tighten_equipment_restrictions~
   
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   PATCH_IF (("%SOURCE_RES%" STRING_COMPARE_CASE "cdrelm") AND
@@ -8614,7 +8614,7 @@ END
 BEGIN @244000 DESIGNATED 2440
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
-// LABEL ~cd_tweaks_specialization_apr_bonus_for_all~
+LABEL ~cd_tweaks_specialization_apr_bonus_for_all~
 
 INCLUDE ~cdtweaks/lib/remove_lines.tpa~
 
@@ -8742,7 +8742,7 @@ BEGIN @245000 DESIGNATED 2450
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~kitlist.2da~ @25
 REQUIRE_PREDICATE NOT GAME_IS ~soa iwd2~ @25 // needs tob until ADD_KIT/luabbr is fixed
-// LABEL ~cd_tweaks_pnp_prof_restrictions_for_dualclasses~
+LABEL ~cd_tweaks_pnp_prof_restrictions_for_dualclasses~
 
 INCLUDE ~cdtweaks/lib/sod_25stweap_fix.tpa~
 INCLUDE ~cdtweaks/lib/iwdee_25stweap_fix.tpa~
@@ -8921,7 +8921,7 @@ BEGIN @250000 DESIGNATED 2500
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~strmodex.2da~ @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_exceptional_strength_weight_limits~
+LABEL ~cd_tweaks_exceptional_strength_weight_limits~
 
 COPY_EXISTING ~strmodex.2da~ ~override~
   REPLACE_EVALUATE ~^\([0-9]+\)\([ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+[0-9]+[ %TAB%]+\)\([0-9]+\)~
@@ -8940,7 +8940,7 @@ COPY_EXISTING ~strmodex.2da~ ~override~
 BEGIN @251000 DESIGNATED 2510
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
-// LABEL ~cd_tweaks_level_locked_scrolls~
+LABEL ~cd_tweaks_level_locked_scrolls~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
@@ -8983,7 +8983,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BEGIN @252000 DESIGNATED 2520
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~soa tob bg1 totsc iwd how totlm tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
-// LABEL ~cd_tweaks_loosen_shield_restrictions~
+LABEL ~cd_tweaks_loosen_shield_restrictions~
      
 INCLUDE ~cdtweaks/lib/common_armor_list.tpa~
 
@@ -9057,7 +9057,7 @@ END
 BEGIN @253000 DESIGNATED 2530
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee iwd2~ @25
-// LABEL ~cd_tweaks_lightning_bolts_pls_no_bouncerino~
+LABEL ~cd_tweaks_lightning_bolts_pls_no_bouncerino~
 
 OUTER_SET proj_protect = 1
 ACTION_IF ((FILE_EXISTS_IN_GAME ~lightb.pro~) OR (FILE_EXISTS_IN_GAME ~idpro40.pro~)) THEN BEGIN // for EE games w/o hardcoded projectile...
@@ -9175,7 +9175,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 BEGIN @254000 DESIGNATED 2540
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-// LABEL ~cd_tweaks_faster_dearnise_keep_timer~
+LABEL ~cd_tweaks_faster_dearnise_keep_timer~
 
 COPY_EXISTING ~cut32b.bcs~   ~override~
               ~cut32c.bcs~   ~override~
@@ -9211,7 +9211,7 @@ COPY_EXISTING ~cut32b.bcs~   ~override~
 BEGIN @256000 DESIGNATED 2560
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet bgee iwdee tutu tutu_totsc~ @25
-// LABEL ~cd_tweaks_allow_monks_to_wear_helmets~
+LABEL ~cd_tweaks_allow_monks_to_wear_helmets~
 
 // monks generally not listed in unusability block, so skip description updates for oBG2
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
@@ -9266,7 +9266,7 @@ END
 
 BEGIN @299900 DESIGNATED 2999 // maximum at l1
 GROUP @4
-// LABEL ~cd_tweaks_max_hp_at_l1~
+LABEL ~cd_tweaks_max_hp_at_l1~
 
 ACTION_CLEAR_ARRAY cd_hp_tables
 
@@ -9333,7 +9333,7 @@ END
 BEGIN @300001 DESIGNATED 3000 // maximum
 GROUP @4
 SUBCOMPONENT @300000 // Higher HP on Level Up
-// LABEL ~cd_tweaks_higher_hp_at_levelup_max~
+LABEL ~cd_tweaks_higher_hp_at_levelup_max~
 
 ACTION_CLEAR_ARRAY cd_hp_tables
 
@@ -9395,7 +9395,7 @@ END
 BEGIN @300100 DESIGNATED 3001 // nwn-style
 GROUP @4
 SUBCOMPONENT @300000 // Higher HP on Level Up
-// LABEL ~cd_tweaks_higher_hp_at_levelup_nwn~
+LABEL ~cd_tweaks_higher_hp_at_levelup_nwn~
 
 ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2999~ THEN BEGIN // max at level 1
 
@@ -9466,7 +9466,7 @@ END
 BEGIN @300200 DESIGNATED 3002 // average
 GROUP @4
 SUBCOMPONENT @300000 // Higher HP on Level Up
-// LABEL ~cd_tweaks_higher_hp_at_levelup_average~
+LABEL ~cd_tweaks_higher_hp_at_levelup_average~
 
 ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2999~ THEN BEGIN // max at level 1
 
@@ -9545,7 +9545,7 @@ yep, cam forgot that if a roll occurs, the static modifier is ignored by the eng
 BEGIN @300300 DESIGNATED 3003 // small die
 GROUP @4
 SUBCOMPONENT @300000 // Higher HP on Level Up
-// LABEL ~cd_tweaks_higher_hp_at_levelup_small~
+LABEL ~cd_tweaks_higher_hp_at_levelup_small~
 
 ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2999~ THEN BEGIN // max at level 1
 
@@ -9623,7 +9623,7 @@ END
 BEGIN @300800 DESIGNATED 3008 // maximum
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
-// LABEL ~cd_tweaks_extend_hp_rolls_to_l20~
+LABEL ~cd_tweaks_extend_hp_rolls_to_l20~
 
 ACTION_CLEAR_ARRAY cd_hp_tables
 
@@ -9691,7 +9691,7 @@ END
 BEGIN @301001 DESIGNATED 3010 // maximum hp for npcs
 GROUP @4
 SUBCOMPONENT @301000 // all npcs
-// LABEL ~cd_tweaks_maximum_hp_npcs_all~
+LABEL ~cd_tweaks_maximum_hp_npcs_all~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
 
@@ -9747,7 +9747,7 @@ BEGIN @301100 DESIGNATED 3011 // maximum hp for npcs
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 iwd how totlm~ @25 // no joinables in iwd/iwd2; at least possible in iwdee/iwd-in-bg2
 SUBCOMPONENT @301000 // all npcs
-// LABEL ~cd_tweaks_maximum_hp_npcs_nonjoinable~
+LABEL ~cd_tweaks_maximum_hp_npcs_nonjoinable~
 
 // load patch macro
 INCLUDE ~cdtweaks/lib/max_hp_creatures.tpa~
@@ -9790,7 +9790,7 @@ BEGIN @301200 DESIGNATED 3012 // maximum hp for npcs
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 iwd how totlm~ @25 // no joinables in iwd/iwd2; at least possible in iwdee/iwd-in-bg2
 SUBCOMPONENT @301000 // all npcs
-// LABEL ~cd_tweaks_maximum_hp_npcs_joinable~
+LABEL ~cd_tweaks_maximum_hp_npcs_joinable~
 
 // load patch macro
 INCLUDE ~cdtweaks/lib/max_hp_creatures.tpa~
@@ -9835,7 +9835,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 
 BEGIN @302000 DESIGNATED 3020
 GROUP @4
-// LABEL ~cd_tweaks_id_all_items~
+LABEL ~cd_tweaks_id_all_items~
 
 // SoS item needs to be un-ID'd for one quest - part 1
 ACTION_IF FILE_EXISTS_IN_GAME ~cbltcnt2.itm~ THEN BEGIN
@@ -9904,7 +9904,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.[ac]re$~ ~override~
 BEGIN @303001 DESIGNATED 3030 // 100% learn spells
 GROUP @4
 SUBCOMPONENT @303000 // easy spell learning
-// LABEL ~cd_tweaks_easy_spell_learning_capped~
+LABEL ~cd_tweaks_easy_spell_learning_capped~
 
 PRINT @1
 COPY_EXISTING ~intmod.2da~ ~override~
@@ -9928,7 +9928,7 @@ END
 BEGIN @303100 DESIGNATED 3031 // 100% learn spells, remove caps
 GROUP @4
 SUBCOMPONENT @303000 // easy spell learning
-// LABEL ~cd_tweaks_easy_spell_learning_no_cap~
+LABEL ~cd_tweaks_easy_spell_learning_no_cap~
 
 PRINT @1
 COPY_EXISTING ~intmod.2da~ ~override~
@@ -9958,7 +9958,7 @@ END
 BEGIN @304000 DESIGNATED 3040
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd pst~ @25
-// LABEL ~cd_tweaks_bottomless_bags~
+LABEL ~cd_tweaks_bottomless_bags~
 
 OUTER_SET type_check = 5 
 OUTER_SET stor_off = 0x22
@@ -9986,7 +9986,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
 BEGIN @305000 DESIGNATED 3050
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc tutu tutu_totsc iwd how totlm iwd2 pst pstee~ @25 // iwd2 has restoration, but it incurs no fatigue
-// LABEL ~cd_tweaks_restoration_no_fatigue~
+LABEL ~cd_tweaks_restoration_no_fatigue~
 
 // remove fatigue from restoration spells
 ACTION_FOR_EACH spell IN sppr417 sppr713 spwish07 spwish46 ohbresto cdpr417 BEGIN
@@ -10011,7 +10011,7 @@ END
 BEGIN @306000 DESIGNATED 3060
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_remove_you_must_gather~
+LABEL ~cd_tweaks_remove_you_must_gather~
 
 COPY  ~cdtweaks/wav/error01.wav~ ~override~
 
@@ -10030,7 +10030,7 @@ COPY  ~cdtweaks/wav/error01.wav~ ~override~
 BEGIN @307000 DESIGNATED 3070 // low-rep discounts
 GROUP @4
 SUBCOMPONENT @307001 // store-rep tweaks
-// LABEL ~cd_tweaks_store_rep_low_rep_discount~
+LABEL ~cd_tweaks_store_rep_low_rep_discount~
 
 COPY ~cdtweaks/2da/repmodst.2da~ ~override~
 
@@ -10041,7 +10041,7 @@ COPY ~cdtweaks/2da/repmodst.2da~ ~override~
 BEGIN @307100 DESIGNATED 3071 // low-rep discounts
 GROUP @4
 SUBCOMPONENT @307001 // store-rep tweaks
-// LABEL ~cd_tweaks_store_rep_no_rep_effect_100~
+LABEL ~cd_tweaks_store_rep_no_rep_effect_100~
 
 COPY ~cdtweaks/2da/repmodst_100.2da~ ~override/repmodst.2da~
 
@@ -10052,7 +10052,7 @@ COPY ~cdtweaks/2da/repmodst_100.2da~ ~override/repmodst.2da~
 BEGIN @307200 DESIGNATED 3072 // low-rep discounts
 GROUP @4
 SUBCOMPONENT @307001 // store-rep tweaks
-// LABEL ~cd_tweaks_store_rep_no_rep_effect_80~
+LABEL ~cd_tweaks_store_rep_no_rep_effect_80~
 
 COPY ~cdtweaks/2da/repmodst_080.2da~ ~override/repmodst.2da~
 
@@ -10063,7 +10063,7 @@ COPY ~cdtweaks/2da/repmodst_080.2da~ ~override/repmodst.2da~
 BEGIN @307300 DESIGNATED 3073 // low-rep discounts
 GROUP @4
 SUBCOMPONENT @307001 // store-rep tweaks
-// LABEL ~cd_tweaks_store_rep_no_rep_effect_60~
+LABEL ~cd_tweaks_store_rep_no_rep_effect_60~
 
 COPY ~cdtweaks/2da/repmodst_060.2da~ ~override/repmodst.2da~
 
@@ -10082,7 +10082,7 @@ COPY ~cdtweaks/2da/repmodst_060.2da~ ~override/repmodst.2da~
 BEGIN @308000 DESIGNATED 3080
 GROUP @4
 SUBCOMPONENT @308001 // increase ammo stacks
-// LABEL ~cd_tweaks_increase_ammo_stacks_infinite~
+LABEL ~cd_tweaks_increase_ammo_stacks_infinite~
 
 OUTER_SET stack = 999
 INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
@@ -10094,7 +10094,7 @@ INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
 BEGIN @308100 DESIGNATED 3081
 GROUP @4
 SUBCOMPONENT @308001 // increase ammo stacks
-// LABEL ~cd_tweaks_increase_ammo_stacks_40~
+LABEL ~cd_tweaks_increase_ammo_stacks_40~
 
 OUTER_SET stack = 40
 INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
@@ -10106,7 +10106,7 @@ INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
 BEGIN @308200 DESIGNATED 3082
 GROUP @4
 SUBCOMPONENT @308001 // increase ammo stacks
-// LABEL ~cd_tweaks_increase_ammo_stacks_80~
+LABEL ~cd_tweaks_increase_ammo_stacks_80~
 
 OUTER_SET stack = 80
 INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
@@ -10118,7 +10118,7 @@ INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
 BEGIN @308300 DESIGNATED 3083
 GROUP @4
 SUBCOMPONENT @308001 // increase ammo stacks
-// LABEL ~cd_tweaks_increase_ammo_stacks_120~
+LABEL ~cd_tweaks_increase_ammo_stacks_120~
 
 OUTER_SET stack = 120
 INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
@@ -10138,7 +10138,7 @@ INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
 BEGIN @309000 DESIGNATED 3090
 GROUP @4
 SUBCOMPONENT @309001 // increase misc stacks
-// LABEL ~cd_tweaks_increase_gem_stacks_infinite~
+LABEL ~cd_tweaks_increase_gem_stacks_infinite~
 
 OUTER_SET stack = 999
 INCLUDE ~cdtweaks/lib/increase_gem.tpa~
@@ -10150,7 +10150,7 @@ INCLUDE ~cdtweaks/lib/increase_gem.tpa~
 BEGIN @308100 DESIGNATED 3091
 GROUP @4
 SUBCOMPONENT @309001 // increase misc stacks
-// LABEL ~cd_tweaks_increase_gem_stacks_40~
+LABEL ~cd_tweaks_increase_gem_stacks_40~
 
 OUTER_SET stack = 40
 INCLUDE ~cdtweaks/lib/increase_gem.tpa~
@@ -10162,7 +10162,7 @@ INCLUDE ~cdtweaks/lib/increase_gem.tpa~
 BEGIN @308200 DESIGNATED 3092
 GROUP @4
 SUBCOMPONENT @309001 // increase misc stacks
-// LABEL ~cd_tweaks_increase_gem_stacks_80~
+LABEL ~cd_tweaks_increase_gem_stacks_80~
 
 OUTER_SET stack = 80
 INCLUDE ~cdtweaks/lib/increase_gem.tpa~
@@ -10174,7 +10174,7 @@ INCLUDE ~cdtweaks/lib/increase_gem.tpa~
 BEGIN @308300 DESIGNATED 3093
 GROUP @4
 SUBCOMPONENT @309001 // increase misc stacks
-// LABEL ~cd_tweaks_increase_gem_stacks_120~
+LABEL ~cd_tweaks_increase_gem_stacks_120~
 
 OUTER_SET stack = 120
 INCLUDE ~cdtweaks/lib/increase_gem.tpa~
@@ -10194,7 +10194,7 @@ INCLUDE ~cdtweaks/lib/increase_gem.tpa~
 BEGIN @310000 DESIGNATED 3100
 GROUP @4
 SUBCOMPONENT @310001 // increase potion stacks
-// LABEL ~cd_tweaks_increase_potion_stacks_infinite~
+LABEL ~cd_tweaks_increase_potion_stacks_infinite~
 
 OUTER_SET stack = 999
 INCLUDE ~cdtweaks/lib/increase_potion.tpa~
@@ -10206,7 +10206,7 @@ INCLUDE ~cdtweaks/lib/increase_potion.tpa~
 BEGIN @308100 DESIGNATED 3101
 GROUP @4
 SUBCOMPONENT @310001 // increase potion stacks
-// LABEL ~cd_tweaks_increase_potion_stacks_40~
+LABEL ~cd_tweaks_increase_potion_stacks_40~
 
 OUTER_SET stack = 40
 INCLUDE ~cdtweaks/lib/increase_potion.tpa~
@@ -10218,7 +10218,7 @@ INCLUDE ~cdtweaks/lib/increase_potion.tpa~
 BEGIN @308200 DESIGNATED 3102
 GROUP @4
 SUBCOMPONENT @310001 // increase potion stacks
-// LABEL ~cd_tweaks_increase_potion_stacks_80~
+LABEL ~cd_tweaks_increase_potion_stacks_80~
 
 OUTER_SET stack = 80
 INCLUDE ~cdtweaks/lib/increase_potion.tpa~
@@ -10230,7 +10230,7 @@ INCLUDE ~cdtweaks/lib/increase_potion.tpa~
 BEGIN @308300 DESIGNATED 3103
 GROUP @4
 SUBCOMPONENT @310001 // increase potion stacks
-// LABEL ~cd_tweaks_increase_potion_stacks_120~
+LABEL ~cd_tweaks_increase_potion_stacks_120~
 
 OUTER_SET stack = 120
 INCLUDE ~cdtweaks/lib/increase_potion.tpa~
@@ -10250,7 +10250,7 @@ INCLUDE ~cdtweaks/lib/increase_potion.tpa~
 BEGIN @311000 DESIGNATED 3110
 GROUP @4
 SUBCOMPONENT @311001 // increase scroll stacks
-// LABEL ~cd_tweaks_increase_scroll_stacks_infinite~
+LABEL ~cd_tweaks_increase_scroll_stacks_infinite~
 
 OUTER_SET stack = 999
 INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
@@ -10262,7 +10262,7 @@ INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
 BEGIN @308100 DESIGNATED 3111
 GROUP @4
 SUBCOMPONENT @311001 // increase scroll stacks
-// LABEL ~cd_tweaks_increase_scroll_stacks_40~
+LABEL ~cd_tweaks_increase_scroll_stacks_40~
 
 OUTER_SET stack = 40
 INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
@@ -10274,7 +10274,7 @@ INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
 BEGIN @308200 DESIGNATED 3112
 GROUP @4
 SUBCOMPONENT @311001 // increase scroll stacks
-// LABEL ~cd_tweaks_increase_scroll_stacks_80~
+LABEL ~cd_tweaks_increase_scroll_stacks_80~
 
 OUTER_SET stack = 80
 INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
@@ -10286,7 +10286,7 @@ INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
 BEGIN @308300 DESIGNATED 3113
 GROUP @4
 SUBCOMPONENT @311001 // increase scroll stacks
-// LABEL ~cd_tweaks_increase_scroll_stacks_120~
+LABEL ~cd_tweaks_increase_scroll_stacks_120~
 
 OUTER_SET stack = 120
 INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
@@ -10302,7 +10302,7 @@ INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @500000 DESIGNATED 3115 DEPRECATED @18 // already covered by gem/jewelry 
-// LABEL ~cd_tweaks_increase_pelt_stacks_infnite~
+LABEL ~cd_tweaks_increase_pelt_stacks_infnite~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -10320,7 +10320,7 @@ BEGIN @312001 DESIGNATED 3120
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd-in-bg2 ca~ @25
 SUBCOMPONENT @312000
-// LABEL ~cd_tweaks_happy_patch_never_angry~
+LABEL ~cd_tweaks_happy_patch_never_angry~
 
 // stop rep complaints
 COPY_EXISTING ~happy.2da~ ~override~
@@ -10341,7 +10341,7 @@ BEGIN @312100 DESIGNATED 3121
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd-in-bg2 ca~ @25
 SUBCOMPONENT @312000
-// LABEL ~cd_tweaks_happy_patch_angry_never_leave~
+LABEL ~cd_tweaks_happy_patch_angry_never_leave~
 
 // stop rep complaints
 COPY_EXISTING ~happy.2da~ ~override~
@@ -10364,7 +10364,7 @@ BEGIN @312200 DESIGNATED 3122
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd-in-bg2 ca~ @25
 SUBCOMPONENT @312000
-// LABEL ~cd_tweaks_happy_patch_always_neutral~
+LABEL ~cd_tweaks_happy_patch_always_neutral~
 
 // stop rep complaints
 COPY_EXISTING ~happy.2da~ ~override~
@@ -10392,7 +10392,7 @@ END
 BEGIN @312300 DESIGNATED 3123
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_npcs_never_fight~
+LABEL ~cd_tweaks_npcs_never_fight~
 
 // remove NPC conflicts
 INCLUDE ~cdtweaks/lib/happy.tpa~
@@ -10408,7 +10408,7 @@ INCLUDE ~cdtweaks/lib/happy.tpa~
 BEGIN @312400 DESIGNATED 3124
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgt soa tob bg2ee eet~ @25 // non-Tutu
-// LABEL ~cd_tweaks_stop_hd_aerie_romance~
+LABEL ~cd_tweaks_stop_hd_aerie_romance~
 
 COPY_EXISTING ~haerdali.bcs~ ~override~
   DECOMPILE_AND_PATCH BEGIN
@@ -10429,7 +10429,7 @@ EXTEND_TOP ~haerdali.bcs~ ~cdtweaks/baf/haerdali.baf~
 BEGIN @312500 DESIGNATED 3125 // happy neutrals
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd-in-bg2 ca~ @25
-// LABEL ~cd_tweaks_happy_neutrals~
+LABEL ~cd_tweaks_happy_neutrals~
 
 COPY_EXISTING ~happy.2da~ ~override~
   FOR (row = 6; row < 12; row = row + 1) BEGIN
@@ -10447,7 +10447,7 @@ COPY_EXISTING ~happy.2da~ ~override~
 
 BEGIN @313000 DESIGNATED 3130
 GROUP @4
-// LABEL ~cd_tweaks_no_traps_or_locks~
+LABEL ~cd_tweaks_no_traps_or_locks~
 
 ACTION_IF game_is_iwd2 BEGIN OUTER_SET off = 0x10 END ELSE BEGIN OUTER_SET off = 0 END // outside of this, patch works for v1.0 and v9.1 areas
 
@@ -10514,7 +10514,7 @@ GROUP @4
 SUBCOMPONENT @314000 // faster chap 1&2 cutscenes
 REQUIRE_PREDICATE GAME_IS ~soa tob bg2ee bgt eet~ @25 // non-Tutu, non-BGT
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~mrimrin1.itm~ @24 // imoen romance compatibility code
-// LABEL ~cd_tweaks_faster_ch1_cutscenes_eou~
+LABEL ~cd_tweaks_faster_ch1_cutscenes_eou~
 
 OUTER_SET silly = 1
 INCLUDE ~cdtweaks/lib/faster_start.tpa~
@@ -10528,7 +10528,7 @@ GROUP @4
 SUBCOMPONENT @314000 // faster chap 1&2 cutscenes
 REQUIRE_PREDICATE GAME_IS ~soa tob bg2ee~ @25 // non-Tutu, non-BGT
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~mrimrin1.itm~ @24 // imoen romance compatibility code
-// LABEL ~cd_tweaks_faster_ch1_cutscenes_nonsilly~
+LABEL ~cd_tweaks_faster_ch1_cutscenes_nonsilly~
 
 //OUTER_SPRINT silly "_nonsilly"
 OUTER_SET silly = 0
@@ -10545,7 +10545,7 @@ INCLUDE ~cdtweaks/lib/faster_start.tpa~
 BEGIN @316000 DESIGNATED 3160
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
-// LABEL ~cd_tweaks_disable_malchor~
+LABEL ~cd_tweaks_disable_malchor~
 
 COPY_EXISTING ~baldur.bcs~ ~override~
   DECOMPILE_AND_PATCH BEGIN
@@ -10564,7 +10564,7 @@ COPY_EXISTING ~baldur.bcs~ ~override~
 BEGIN @317000 DESIGNATED 3170
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
-// LABEL ~cd_tweaks_no_drow_avatars_in_underdark~
+LABEL ~cd_tweaks_no_drow_avatars_in_underdark~
 
 COPY_EXISTING ~ar2102.bcs~ ~override~
   DECOMPILE_AND_PATCH BEGIN
@@ -10583,7 +10583,7 @@ COPY_EXISTING ~ar2102.bcs~ ~override~
 BEGIN @317500 DESIGNATED 3175
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgt soa tob bg2ee eet~ @25
-// LABEL ~cd_tweaks_disable_romances~
+LABEL ~cd_tweaks_disable_romances~
 
 ACTION_FOR_EACH script IN baldur baldur25 BEGIN
 
@@ -10607,7 +10607,7 @@ BEGIN @317600 DESIGNATED 3176
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgt soa tob bg2ee eet~ @25
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~3175~ @16
-// LABEL ~cd_tweaks_change_romance_speed~
+LABEL ~cd_tweaks_change_romance_speed~
 
 ACTION_IF (romance_speed_use_config_values = 1) THEN BEGIN // if set in the config file...
 
@@ -10688,7 +10688,7 @@ BEGIN @318300 DESIGNATED 3183
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgt soa tob bg2ee eet~ @25
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~3175~ @16
-// LABEL ~cd_tweaks_romance_cheats~
+LABEL ~cd_tweaks_romance_cheats~
 
 // make array for standard bg2 romances
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_romances BEGIN
@@ -10978,7 +10978,7 @@ END
 
 BEGIN @319000 DESIGNATED 3190
 GROUP @4
-// LABEL ~cd_tweaks_rest_anywhere~
+LABEL ~cd_tweaks_rest_anywhere~
 
 ACTION_IF game_is_pst BEGIN
 
@@ -11013,7 +11013,7 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @319100 DESIGNATED 3191
-// LABEL ~cd_tweaks_rest_spawns_alter_nonhostile_disable~
+LABEL ~cd_tweaks_rest_spawns_alter_nonhostile_disable~
 GROUP @4
 
 OUTER_SET factor = 0 // 0% chance (disable)
@@ -11035,7 +11035,7 @@ INCLUDE ~cdtweaks/lib/rest_spawns.tpa~
 BEGIN @319401 DESIGNATED 3194
 GROUP @4
 SUBCOMPONENT @319400 // Alter Hostile Rest Spawns
-// LABEL ~cd_tweaks_rest_spawns_alter_hostile_disable~
+LABEL ~cd_tweaks_rest_spawns_alter_hostile_disable~
 
 OUTER_SET factor = 0 // 0% chance (disable)
 OUTER_SET adjust_hostile = 1 // adjust hostile spawns
@@ -11048,7 +11048,7 @@ INCLUDE ~cdtweaks/lib/rest_spawns.tpa~
 BEGIN @319500 DESIGNATED 3195
 GROUP @4
 SUBCOMPONENT @319400 // Alter Hostile Rest Spawns
-// LABEL ~cd_tweaks_rest_spawns_alter_hostile_50~
+LABEL ~cd_tweaks_rest_spawns_alter_hostile_50~
 
 OUTER_SET factor = 50 // 50% chance
 OUTER_SET adjust_hostile = 1 // adjust hostile spawns
@@ -11061,7 +11061,7 @@ INCLUDE ~cdtweaks/lib/rest_spawns.tpa~
 BEGIN @319600 DESIGNATED 3196
 GROUP @4
 SUBCOMPONENT @319400 // Alter Hostile Rest Spawns
-// LABEL ~cd_tweaks_rest_spawns_alter_hostile_150~
+LABEL ~cd_tweaks_rest_spawns_alter_hostile_150~
 
 OUTER_SET factor = 150 // 150% chance
 OUTER_SET adjust_hostile = 1 // adjust hostile spawns
@@ -11074,7 +11074,7 @@ INCLUDE ~cdtweaks/lib/rest_spawns.tpa~
 BEGIN @319700 DESIGNATED 3197
 GROUP @4
 SUBCOMPONENT @319400 // Alter Hostile Rest Spawns
-// LABEL ~cd_tweaks_rest_spawns_alter_hostile_200~
+LABEL ~cd_tweaks_rest_spawns_alter_hostile_200~
 
 OUTER_SET factor = 200 // 200% chance
 OUTER_SET adjust_hostile = 1 // adjust hostile spawns
@@ -11087,7 +11087,7 @@ INCLUDE ~cdtweaks/lib/rest_spawns.tpa~
 BEGIN @319800 DESIGNATED 3198
 GROUP @4
 SUBCOMPONENT @319400 // Alter Hostile Rest Spawns
-// LABEL ~cd_tweaks_rest_spawns_alter_hostile_400~
+LABEL ~cd_tweaks_rest_spawns_alter_hostile_400~
 
 OUTER_SET factor = 400 // 400% chance
 OUTER_SET adjust_hostile = 1 // adjust hostile spawns
@@ -11103,7 +11103,7 @@ INCLUDE ~cdtweaks/lib/rest_spawns.tpa~
 
 BEGIN @320000 DESIGNATED 3200
 GROUP @4
-// LABEL ~cd_tweaks_sellable_items~
+LABEL ~cd_tweaks_sellable_items~
 
 PRINT @1
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
@@ -11204,7 +11204,7 @@ END
 
 BEGIN @320500 DESIGNATED 3205
 GROUP @4
-// LABEL ~cd_tweaks_stores_buy_all_items~
+LABEL ~cd_tweaks_stores_buy_all_items~
 
 // item types common to all games
 ACTION_CLEAR_ARRAY cd_buyable_item_types
@@ -11423,7 +11423,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
 BEGIN @321000 DESIGNATED 3210
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
-// LABEL ~cd_tweaks_minimum_stats~
+LABEL ~cd_tweaks_minimum_stats~
 
 OUTER_SPRINT minimum_stats_strength_text     @321008
 OUTER_SPRINT minimum_stats_dexterity_text    @321009
@@ -11573,7 +11573,7 @@ COPY_EXISTING ~abclasrq.2da~ ~override~
 BEGIN @322000 DESIGNATED 3220
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt soa tob~ @25
-// LABEL ~cd_tweaks_sensible_entrance_points~
+LABEL ~cd_tweaks_sensible_entrance_points~
 
 ACTION_IF game_includes_bg1 THEN BEGIN // BGT/Tutu/obg changes
 
@@ -11913,7 +11913,7 @@ END
 BEGIN @323000 DESIGNATED 3230
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt~ @25
-// LABEL ~cd_tweaks_taerom_makes_multiple_ankheg_armor~
+LABEL ~cd_tweaks_taerom_makes_multiple_ankheg_armor~
 
 ACTION_IF NOT (original_bg1) THEN BEGIN // change fenten/taerom to only take one shell at a time
   COMPILE ~cdtweaks/dlg/ankheg.d~ EVALUATE_BUFFER // use TakePartyItemNum when we can
@@ -11939,7 +11939,7 @@ BEGIN @324001 DESIGNATED 3240
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
-// LABEL ~cd_tweaks_friendly_random_drops_reload~
+LABEL ~cd_tweaks_friendly_random_drops_reload~
 
 INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
 
@@ -12015,7 +12015,7 @@ BEGIN @324100 DESIGNATED 3241
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
-// LABEL ~cd_tweaks_friendly_random_drops_tokens~
+LABEL ~cd_tweaks_friendly_random_drops_tokens~
 
 INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
 
@@ -12182,7 +12182,7 @@ BEGIN @324200 DESIGNATED 3242
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
-// LABEL ~cd_tweaks_friendly_random_drops_merchant~
+LABEL ~cd_tweaks_friendly_random_drops_merchant~
 
 INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
 
@@ -12278,7 +12278,7 @@ COMPILE ~weidu_external/cdtweaks/random/cdrndm1.d~
 BEGIN @325000 DESIGNATED 3250
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~iwd how totlm iwd-in-bg2~ @25 // functionality built into iwdee already
-// LABEL ~cd_tweaks_orrick_stock~
+LABEL ~cd_tweaks_orrick_stock~
 
 COMPILE ~cdtweaks/dlg/orrickadd.d~
 
@@ -12298,7 +12298,7 @@ BEGIN @326001 DESIGNATED 3260 // 25% chance to recover after a successful hit
 GROUP @4
 SUBCOMPONENT @326000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_ammo_25~
+LABEL ~cd_tweaks_recover_ammo_25~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12319,7 +12319,7 @@ BEGIN @326100 DESIGNATED 3261 // 50% chance to recover after a successful hit
 GROUP @4
 SUBCOMPONENT @326000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_ammo_50~
+LABEL ~cd_tweaks_recover_ammo_50~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12340,7 +12340,7 @@ BEGIN @326200 DESIGNATED 3262 // 75% chance to recover after a successful hit
 GROUP @4
 SUBCOMPONENT @326000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_ammo_75~
+LABEL ~cd_tweaks_recover_ammo_75~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12361,7 +12361,7 @@ BEGIN @326300 DESIGNATED 3263 // 100% chance to recover after a successful hit
 GROUP @4
 SUBCOMPONENT @326000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_ammo_100~
+LABEL ~cd_tweaks_recover_ammo_100~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12383,7 +12383,7 @@ BEGIN @326400 DESIGNATED 3264 // 25% chance to recover after a successful hit, v
 GROUP @4
 SUBCOMPONENT @326000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_ammo_25_enemy_only~
+LABEL ~cd_tweaks_recover_ammo_25_enemy_only~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12405,7 +12405,7 @@ BEGIN @326500 DESIGNATED 3265 // 50% chance to recover after a successful hit, v
 GROUP @4
 SUBCOMPONENT @326000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_ammo_50_enemy_only~
+LABEL ~cd_tweaks_recover_ammo_50_enemy_only~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12427,7 +12427,7 @@ BEGIN @326600 DESIGNATED 3266 // 75% chance to recover after a successful hit, v
 GROUP @4
 SUBCOMPONENT @326000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_ammo_75_enemy_only~
+LABEL ~cd_tweaks_recover_ammo_75_enemy_only~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12449,7 +12449,7 @@ BEGIN @326700 DESIGNATED 3267 // 100% chance to recover after a successful hit, 
 GROUP @4
 SUBCOMPONENT @326000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_ammo_100_enemy_only~
+LABEL ~cd_tweaks_recover_ammo_100_enemy_only~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12478,7 +12478,7 @@ BEGIN @326001 DESIGNATED 3270 // 25% chance to recover after a successful hit
 GROUP @4
 SUBCOMPONENT @327000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_throwing_weapons_25~
+LABEL ~cd_tweaks_recover_throwing_weapons_25~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12499,7 +12499,7 @@ BEGIN @326100 DESIGNATED 3271 // 50% chance to recover after a successful hit
 GROUP @4
 SUBCOMPONENT @327000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_throwing_weapons_50~
+LABEL ~cd_tweaks_recover_throwing_weapons_50~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12520,7 +12520,7 @@ BEGIN @326200 DESIGNATED 3272 // 75% chance to recover after a successful hit
 GROUP @4
 SUBCOMPONENT @327000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_throwing_weapons_75~
+LABEL ~cd_tweaks_recover_throwing_weapons_75~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12541,7 +12541,7 @@ BEGIN @326300 DESIGNATED 3273 // 100% chance to recover after a successful hit
 GROUP @4
 SUBCOMPONENT @327000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_throwing_weapons_100~
+LABEL ~cd_tweaks_recover_throwing_weapons_100~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12563,7 +12563,7 @@ BEGIN @326400 DESIGNATED 3274 // 25% chance to recover after a successful hit, v
 GROUP @4
 SUBCOMPONENT @327000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_throwing_weapons_25_enemy_only~
+LABEL ~cd_tweaks_recover_throwing_weapons_25_enemy_only~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12585,7 +12585,7 @@ BEGIN @326500 DESIGNATED 3275 // 50% chance to recover after a successful hit, v
 GROUP @4
 SUBCOMPONENT @327000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_throwing_weapons_50_enemy_only~
+LABEL ~cd_tweaks_recover_throwing_weapons_50_enemy_only~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12607,7 +12607,7 @@ BEGIN @326600 DESIGNATED 3276 // 75% chance to recover after a successful hit, v
 GROUP @4
 SUBCOMPONENT @327000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_throwing_weapons_75_enemy_only~
+LABEL ~cd_tweaks_recover_throwing_weapons_75_enemy_only~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12629,7 +12629,7 @@ BEGIN @326700 DESIGNATED 3277 // 100% chance to recover after a successful hit, 
 GROUP @4
 SUBCOMPONENT @327000 // Recoverable ammunition
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 iwd how totlm iwd2 pst~ @25 // no eff files
-// LABEL ~cd_tweaks_recover_throwing_weapons_100_enemy_only~
+LABEL ~cd_tweaks_recover_throwing_weapons_100_enemy_only~
 
 INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
 
@@ -12654,7 +12654,7 @@ END
 BEGIN @328000 DESIGNATED 3280
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~eet bgee bg2ee iwdee~ @25 // EEs (minus pstee)
-// LABEL ~cd_tweaks_universal_four_weapon_slots~
+LABEL ~cd_tweaks_universal_four_weapon_slots~
 
 COPY_EXISTING ~numwslot.2da~ ~override~
   REPLACE_TEXTUALLY ~\([ %TAB%]+\)[123][ %TAB%%MNL%]*$~ ~\14~ // thanks argent77!
@@ -12676,7 +12676,7 @@ BEGIN @329001 DESIGNATED 3290
 GROUP @4
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~savename.2da~) @25 // EEs (since patch 2.0)
 SUBCOMPONENT @329000 // Personalize automatic save names
-// LABEL ~cd_tweaks_personalize_savename_opt1~
+LABEL ~cd_tweaks_personalize_savename_opt1~
 
 INCLUDE ~cdtweaks/lib/personalized_save_names.tpa~
 
@@ -12693,7 +12693,7 @@ BEGIN @329100 DESIGNATED 3291
 GROUP @4
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~savename.2da~) @25 // EEs (since patch 2.0)
 SUBCOMPONENT @329000 // Personalize automatic save names
-// LABEL ~cd_tweaks_personalize_savename_opt2~
+LABEL ~cd_tweaks_personalize_savename_opt2~
 
 INCLUDE ~cdtweaks/lib/personalized_save_names.tpa~
 
@@ -12710,7 +12710,7 @@ BEGIN @329200 DESIGNATED 3292
 GROUP @4
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~savename.2da~) @25 // EEs (since patch 2.0)
 SUBCOMPONENT @329000 // Personalize automatic save names
-// LABEL ~cd_tweaks_personalize_savename_opt3~
+LABEL ~cd_tweaks_personalize_savename_opt3~
 
 INCLUDE ~cdtweaks/lib/personalized_save_names.tpa~
 
@@ -12727,7 +12727,7 @@ BEGIN @329300 DESIGNATED 3293
 GROUP @4
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~savename.2da~) @25 // EEs (since patch 2.0)
 SUBCOMPONENT @329000 // Personalize automatic save names
-// LABEL ~cd_tweaks_personalize_savename_opt4~
+LABEL ~cd_tweaks_personalize_savename_opt4~
 
 INCLUDE ~cdtweaks/lib/personalized_save_names.tpa~
 
@@ -12744,7 +12744,7 @@ BEGIN @329400 DESIGNATED 3294
 GROUP @4
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~savename.2da~) @25 // EEs (since patch 2.0)
 SUBCOMPONENT @329000 // Personalize automatic save names
-// LABEL ~cd_tweaks_personalize_savename_opt5~
+LABEL ~cd_tweaks_personalize_savename_opt5~
 
 INCLUDE ~cdtweaks/lib/personalized_save_names.tpa~
 
@@ -12761,7 +12761,7 @@ BEGIN @329500 DESIGNATED 3295
 GROUP @4
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~savename.2da~) @25 // EEs (since patch 2.0)
 SUBCOMPONENT @329000 // Personalize automatic save names
-// LABEL ~cd_tweaks_personalize_savename_opt6~
+LABEL ~cd_tweaks_personalize_savename_opt6~
 
 INCLUDE ~cdtweaks/lib/personalized_save_names.tpa~
 
@@ -12781,7 +12781,7 @@ END
 BEGIN @330000 DESIGNATED 3300
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @25
-// LABEL ~cd_tweaks_death_cam~
+LABEL ~cd_tweaks_death_cam~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
   WRITE_LONG 0x14 (THIS | BIT4) // add player1-can-die bit
@@ -12808,7 +12808,7 @@ END
 BEGIN @331000 DESIGNATED 3310
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~soa tob iwd2 pstee bg1 totsc iwd how totlm tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25   
-// LABEL ~cd_tweaks_new_game_disable_party_ai~
+LABEL ~cd_tweaks_new_game_disable_party_ai~
 
 COPY_EXISTING ~baldur.gam~   ~override~ // all others
               ~icewind.gam~  ~override~ // iwd
@@ -12827,7 +12827,7 @@ COPY_EXISTING ~baldur.gam~   ~override~ // all others
 
 BEGIN @332000 DESIGNATED 3320
 GROUP @4
-// LABEL ~cd_tweaks_no_store_depreciation~
+LABEL ~cd_tweaks_no_store_depreciation~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
   WRITE_LONG 0x1c 0 // depreciation
@@ -12844,7 +12844,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
 BEGIN @502000 DESIGNATED 3330
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt ca bgee bg2ee eet~ @25 // requires op 295, so EEs or bg2 only
-// LABEL ~cd_tweaks_reduced_party_chunking~
+LABEL ~cd_tweaks_reduced_party_chunking~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
   READ_LONG 0x1cc bio
@@ -12885,7 +12885,7 @@ BEGIN @333001 DESIGNATED 3340
 GROUP @4
 REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
 SUBCOMPONENT @333000
-// LABEL ~cd_tweaks_noncombat_speed_increase_50~
+LABEL ~cd_tweaks_noncombat_speed_increase_50~
 
 INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
 
@@ -12909,7 +12909,7 @@ BEGIN @333002 DESIGNATED 3341
 GROUP @4
 REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
 SUBCOMPONENT @333000
-// LABEL ~cd_tweaks_noncombat_speed_increase_100~
+LABEL ~cd_tweaks_noncombat_speed_increase_100~
 
 INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
 
@@ -12933,7 +12933,7 @@ BEGIN @333003 DESIGNATED 3342
 GROUP @4
 REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
 SUBCOMPONENT @333000
-// LABEL ~cd_tweaks_noncombat_speed_increase_150~
+LABEL ~cd_tweaks_noncombat_speed_increase_150~
 
 INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
 
@@ -12957,7 +12957,7 @@ BEGIN @333004 DESIGNATED 3343
 GROUP @4
 REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
 SUBCOMPONENT @333000
-// LABEL ~cd_tweaks_noncombat_speed_casting_increase_50~
+LABEL ~cd_tweaks_noncombat_speed_casting_increase_50~
 
 INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
 
@@ -12981,7 +12981,7 @@ BEGIN @333005 DESIGNATED 3344
 GROUP @4
 REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
 SUBCOMPONENT @333000
-// LABEL ~cd_tweaks_noncombat_speed_casting_increase_100~
+LABEL ~cd_tweaks_noncombat_speed_casting_increase_100~
 
 INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
 
@@ -13005,7 +13005,7 @@ BEGIN @333006 DESIGNATED 3345
 GROUP @4
 REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
 SUBCOMPONENT @333000
-// LABEL ~cd_tweaks_noncombat_speed_casting_increase_150~
+LABEL ~cd_tweaks_noncombat_speed_casting_increase_150~
 
 INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
 
@@ -13029,7 +13029,7 @@ BEGIN @333007 DESIGNATED 3346
 GROUP @4
 REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
 SUBCOMPONENT @333000
-// LABEL ~cd_tweaks_noncombat_casting_increase_only~
+LABEL ~cd_tweaks_noncombat_casting_increase_only~
 
 INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
 
@@ -13060,7 +13060,7 @@ BEGIN @335001 DESIGNATED 3350
 GROUP @4
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee pstee~) @25
 SUBCOMPONENT @335000
-// LABEL ~cd_tweaks_create_interval_one_save_15~
+LABEL ~cd_tweaks_create_interval_one_save_15~
 
 INCLUDE ~cdtweaks/lib/interval_saves.tpa~
 
@@ -13078,7 +13078,7 @@ BEGIN @335002 DESIGNATED 3351
 GROUP @4
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee pstee~) @25
 SUBCOMPONENT @335000
-// LABEL ~cd_tweaks_create_interval_one_save_30~
+LABEL ~cd_tweaks_create_interval_one_save_30~
 
 INCLUDE ~cdtweaks/lib/interval_saves.tpa~
 
@@ -13096,7 +13096,7 @@ BEGIN @335003 DESIGNATED 3352
 GROUP @4
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee pstee~) @25
 SUBCOMPONENT @335000
-// LABEL ~cd_tweaks_create_interval_one_save_60~
+LABEL ~cd_tweaks_create_interval_one_save_60~
 
 INCLUDE ~cdtweaks/lib/interval_saves.tpa~
 
@@ -13114,7 +13114,7 @@ BEGIN @335004 DESIGNATED 3353
 GROUP @4
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee pstee~) @25
 SUBCOMPONENT @335000
-// LABEL ~cd_tweaks_create_interval_one_save_120~
+LABEL ~cd_tweaks_create_interval_one_save_120~
 
 INCLUDE ~cdtweaks/lib/interval_saves.tpa~
 
@@ -13132,7 +13132,7 @@ BEGIN @335005 DESIGNATED 3354
 GROUP @4
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee pstee~ && FILE_EXISTS_IN_GAME ~savename.2da~) @25
 SUBCOMPONENT @335000
-// LABEL ~cd_tweaks_create_interval_four_saves_15~
+LABEL ~cd_tweaks_create_interval_four_saves_15~
 
 INCLUDE ~cdtweaks/lib/interval_saves.tpa~
 
@@ -13150,7 +13150,7 @@ BEGIN @335006 DESIGNATED 3355
 GROUP @4
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee pstee~ && FILE_EXISTS_IN_GAME ~savename.2da~) @25
 SUBCOMPONENT @335000
-// LABEL ~cd_tweaks_create_interval_four_saves_30~
+LABEL ~cd_tweaks_create_interval_four_saves_30~
 
 INCLUDE ~cdtweaks/lib/interval_saves.tpa~
 
@@ -13168,7 +13168,7 @@ BEGIN @335007 DESIGNATED 3356
 GROUP @4
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee pstee~ && FILE_EXISTS_IN_GAME ~savename.2da~) @25
 SUBCOMPONENT @335000
-// LABEL ~cd_tweaks_create_interval_four_saves_60~
+LABEL ~cd_tweaks_create_interval_four_saves_60~
 
 INCLUDE ~cdtweaks/lib/interval_saves.tpa~
 
@@ -13186,7 +13186,7 @@ BEGIN @335008 DESIGNATED 3357
 GROUP @4
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee pstee~ && FILE_EXISTS_IN_GAME ~savename.2da~) @25
 SUBCOMPONENT @335000
-// LABEL ~cd_tweaks_create_interval_four_saves_120~
+LABEL ~cd_tweaks_create_interval_four_saves_120~
 
 INCLUDE ~cdtweaks/lib/interval_saves.tpa~
 
@@ -13204,7 +13204,7 @@ BEGIN @335009 DESIGNATED 3358
 GROUP @4
 REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee pstee~ && FILE_EXISTS_IN_GAME ~savename.2da~) @25
 SUBCOMPONENT @335000
-// LABEL ~cd_tweaks_create_interval_save_custom~
+LABEL ~cd_tweaks_create_interval_save_custom~
 
 INCLUDE ~cdtweaks/lib/interval_saves.tpa~
 
@@ -13274,7 +13274,7 @@ END
 BEGIN @336000 DESIGNATED 3360
 GROUP @4
 REQUIRE_PREDICATE (GAME_IS ~pst pstee~) @25
-// LABEL ~cd_tweaks_reset_undersigil_fow~
+LABEL ~cd_tweaks_reset_undersigil_fow~
 
 INCLUDE ~cdtweaks/lib/undersigil_fow.tpa~
 
@@ -13289,7 +13289,7 @@ INCLUDE ~cdtweaks/lib/undersigil_fow.tpa~
 BEGIN @400000 DESIGNATED 4000
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
-// LABEL ~cd_tweaks_adjust_evil_npc_reactions~
+LABEL ~cd_tweaks_adjust_evil_npc_reactions~
 
 COMPILE ~cdtweaks/dlg/evilnpc.d~
 
@@ -13304,7 +13304,7 @@ COMPILE ~cdtweaks/dlg/evilnpc.d~
 BEGIN @401000 DESIGNATED 4010
 GROUP @0
 REQUIRE_PREDICATE     GAME_IS ~tob bg2ee bgt~   @25 // ToB required
-// LABEL ~cd_tweaks_improved_fate_spirit_summoning~
+LABEL ~cd_tweaks_improved_fate_spirit_summoning~
 
 // end of SoA cutscenes set extra variable
 COPY_EXISTING ~cut100a.bcs~ ~override~
@@ -13391,7 +13391,7 @@ COMPILE ~cdtweaks/dlg/fatesp.d~
 BEGIN @402000 DESIGNATED 4020
 GROUP @0
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 iwd how totlm pst pstee~ @25 // no joinables in iwd/iwd2; at least possible in iwdee/iwd-in-bg2; pst only uses one creature file per
-// LABEL ~cd_tweaks_tob_style_npcs~
+LABEL ~cd_tweaks_tob_style_npcs~
 
 MKDIR ~weidu_external/cdtweaks~
 
@@ -13538,7 +13538,7 @@ END
 BEGIN @501000 DESIGNATED 4025
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
-// LABEL ~cd_tweaks_allow_npc_pairs_to_separate~
+LABEL ~cd_tweaks_allow_npc_pairs_to_separate~
 
 ACTION_IF !original_bg1 BEGIN // originally modified a bunch of junk here, but easier just to do original bg1 as a one-off
   
@@ -13572,7 +13572,7 @@ BEGIN @403001 DESIGNATED 4030 // Use BG Stats
 GROUP @0
 SUBCOMPONENT @403000 // Stat Changes: Edwin
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_consistent_stats_edwin_bg~
+LABEL ~cd_tweaks_consistent_stats_edwin_bg~
 
 COPY_EXISTING_REGEXP GLOB ~^_?edwin[0-9_]*\.cre$~ ~override~
   PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN // protects against invalid files
@@ -13589,7 +13589,7 @@ BEGIN @403100 DESIGNATED 4031 // Use BG2 Stats
 GROUP @0
 SUBCOMPONENT @403000 // Stat Changes: Edwin
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_consistent_stats_edwin_bg2~
+LABEL ~cd_tweaks_consistent_stats_edwin_bg2~
 
 COPY_EXISTING_REGEXP GLOB ~^_?edwin[0-9_]*\.cre$~ ~override~
   PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN // protects against invalid files
@@ -13614,7 +13614,7 @@ BEGIN @403001 DESIGNATED 4040 // Use BG Stats
 GROUP @0
 SUBCOMPONENT @404000 // Stat Changes: Jaheira
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_consistent_stats_jaheira_bg~
+LABEL ~cd_tweaks_consistent_stats_jaheira_bg~
 
 COPY_EXISTING_REGEXP GLOB ~^_?jahei.*\.cre$~ ~override~
   READ_LONG 0x08 "strref" ELSE 0
@@ -13639,7 +13639,7 @@ BEGIN @403100 DESIGNATED 4041 // Use BG2 Stats
 GROUP @0
 SUBCOMPONENT @404000 // Stat Changes: Jaheira
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_consistent_stats_jaheira_bg2~
+LABEL ~cd_tweaks_consistent_stats_jaheira_bg2~
 
 COPY_EXISTING_REGEXP GLOB ~^_?jahei.*\.cre$~ ~override~
   READ_LONG 0x08 "strref" ELSE 0
@@ -13667,7 +13667,7 @@ END
 BEGIN @405000 DESIGNATED 4050
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_ng_jaheira~
+LABEL ~cd_tweaks_ng_jaheira~
 
 COPY_EXISTING_REGEXP GLOB ~^_?jahei.*\.cre$~ ~override~
   READ_LONG 0x08  "strref" ELSE 0
@@ -13708,7 +13708,7 @@ BEGIN @403001 DESIGNATED 4060 // Use BG Stats
 GROUP @0
 SUBCOMPONENT @406000 // Stat Changes: Minsc
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_consistent_stats_minsc_bg~
+LABEL ~cd_tweaks_consistent_stats_minsc_bg~
 
 COPY_EXISTING_REGEXP GLOB ~^_?minsc[0-9_]*\.cre$~ ~override~
   PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN // protects against invalid files
@@ -13725,7 +13725,7 @@ BEGIN @403100 DESIGNATED 4061 // Use BG2 Stats
 GROUP @0
 SUBCOMPONENT @406000 // Stat Changes: Minsc
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_consistent_stats_minsc_bg2~
+LABEL ~cd_tweaks_consistent_stats_minsc_bg2~
 
 COPY_EXISTING_REGEXP GLOB ~^_?minsc[0-9_]*\.cre$~ ~override~
   PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN // protects against invalid files
@@ -13750,7 +13750,7 @@ BEGIN @403001 DESIGNATED 4070 // Use BG Stats
 GROUP @0
 SUBCOMPONENT @407000 // Stat Changes: Viconia
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_consistent_stats_viconia_bg~
+LABEL ~cd_tweaks_consistent_stats_viconia_bg~
 
 COPY_EXISTING_REGEXP GLOB ~^\(bg\|_\)?viconi[0-9]*_?\.cre$~ ~override~
   WRITE_BYTE 0x5d 50
@@ -13791,7 +13791,7 @@ BEGIN @403100 DESIGNATED 4071 // Use BG2 Stats
 GROUP @0
 SUBCOMPONENT @407000 // Stat Changes: Viconia
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
-// LABEL ~cd_tweaks_consistent_stats_viconia_bg2~
+LABEL ~cd_tweaks_consistent_stats_viconia_bg2~
 
 COPY_EXISTING_REGEXP GLOB ~^\(bg\|_\)?viconi[0-9]*_?\.cre$~ ~override~
   WRITE_BYTE 0x5d 65
@@ -13836,7 +13836,7 @@ COPY_EXISTING_REGEXP GLOB ~^\(bg\|_\)?viconi[0-9]*_?\.cre$~ ~override~
 BEGIN @408000 DESIGNATED 4080
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25
-// LABEL ~cd_tweaks_make_khalid_fighter_mage~
+LABEL ~cd_tweaks_make_khalid_fighter_mage~
 
 ACTION_IF original_bg1 BEGIN
 
@@ -14104,7 +14104,7 @@ END
 BEGIN @409000 DESIGNATED 4090
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee tutu tutu_totsc eet bgt~ @25
-// LABEL ~cd_tweaks_make_montaron_assassin~
+LABEL ~cd_tweaks_make_montaron_assassin~
 
 COPY_EXISTING ~%tutu_var%montar.cre~ ~override~
   READ_ASCII 0x0a4 soundset (396) // read soundset from existing cre file
@@ -14261,7 +14261,7 @@ END
 BEGIN @410000 DESIGNATED 4100
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgt soa tob bg2ee eet~ @25 // bg2 only
-// LABEL ~cd_tweaks_ne_korgan~
+LABEL ~cd_tweaks_ne_korgan~
 
 COPY_EXISTING_REGEXP GLOB ~^korgan[0-9]*.*\.cre$~ ~override~
   WRITE_BYTE 0x27b 35 // neutral evil
@@ -14284,7 +14284,7 @@ END
 BEGIN @411000 DESIGNATED 4110
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
-// LABEL ~cd_tweaks_kagain_legal_con~
+LABEL ~cd_tweaks_kagain_legal_con~
 
 COPY_EXISTING_REGEXP GLOB ~^_?kagain[0-9]*.*\.cre$~ ~override~
   WRITE_BYTE 0x23d 19 // constitution
@@ -14301,7 +14301,7 @@ COPY_EXISTING_REGEXP GLOB ~^_?kagain[0-9]*.*\.cre$~ ~override~
 BEGIN @412000 DESIGNATED 4120
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
-// LABEL ~cd_tweaks_coran_legal_dex~
+LABEL ~cd_tweaks_coran_legal_dex~
 
 COPY_EXISTING_REGEXP GLOB ~^_?\(bd\)?coran[0-9]*.*\.cre$~ ~override~
   WRITE_BYTE 0x23c 19 // 19 DEX
@@ -14319,7 +14319,7 @@ COPY_EXISTING_REGEXP GLOB ~^_?\(bd\)?coran[0-9]*.*\.cre$~ ~override~
 BEGIN @413000 DESIGNATED 4130
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
-// LABEL ~cd_tweaks_make_xan_generic_mage~
+LABEL ~cd_tweaks_make_xan_generic_mage~
 
 ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
@@ -14340,7 +14340,7 @@ COPY_EXISTING_REGEXP "^%tutu_scriptbg%xan.cre$" "override"
 BEGIN @413100 DESIGNATED 4131
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
-// LABEL ~cd_tweaks_make_dynaheir_generic_mage~
+LABEL ~cd_tweaks_make_dynaheir_generic_mage~
 
 ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
@@ -14360,7 +14360,7 @@ COPY_EXISTING_REGEXP "^_?dynahe[0-9]*.cre$" "override"
 BEGIN @413200 DESIGNATED 4132
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
-// LABEL ~cd_tweaks_make_xzar_generic_mage~
+LABEL ~cd_tweaks_make_xzar_generic_mage~
 
 ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
@@ -14381,7 +14381,7 @@ COPY_EXISTING_REGEXP "^%tutu_scriptbg%xzar.cre$" "override"
 BEGIN @413300 DESIGNATED 4133
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bg2 tob bgt eet bgee bg2ee~ @25 // All BG games
-// LABEL ~cd_tweaks_make_edwin_generic_mage~
+LABEL ~cd_tweaks_make_edwin_generic_mage~
 
 ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
 
@@ -14402,7 +14402,7 @@ COPY_EXISTING_REGEXP "^_?edwin[0-9_]*.cre$" "override"
 BEGIN @503000 DESIGNATED 4150
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bg2 tob bgt eet bgee bg2ee~ @25 // All BG games
-// LABEL ~cd_tweaks_move_boo_into_inventory~
+LABEL ~cd_tweaks_move_boo_into_inventory~
 
 COPY_EXISTING_REGEXP ~^_?minsc.*\.cre$~ ~override~
   SET boo = "-1"
@@ -14459,7 +14459,7 @@ END
 BEGIN @504000 DESIGNATED 4160
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // BG content games
-// LABEL ~cd_tweaks_yeslick_can_use_axes~
+LABEL ~cd_tweaks_yeslick_can_use_axes~
 
 INCLUDE ~cdtweaks/lib/yeslick_axes.tpa~
 
@@ -14475,7 +14475,7 @@ INCLUDE ~cdtweaks/lib/yeslick_axes.tpa~
 BEGIN @505000 DESIGNATED 4170
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgt eet bgee~ @25 // Tutu or BGT only
-// LABEL ~cd_tweaks_protect_sharteel~
+LABEL ~cd_tweaks_protect_sharteel~
 
 ACTION_IF original_bg1 BEGIN // original bg - no min hp effect, so overcharge her HP and end fight when she's back to her normal HP
     
@@ -14535,7 +14535,7 @@ EXTEND_TOP ~%tutu_scripts%harteel.bcs~ ~./inline/cdsharteel.baf~
 BEGIN @414000 DESIGNATED 4140
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~eet bgee bg2ee~ @25 // EEs with joinables
-// LABEL ~cd_tweaks_disable_joinable_ai_scripts~
+LABEL ~cd_tweaks_disable_joinable_ai_scripts~
 
 COPY_EXISTING ~partyai.2da~ ~override~
   REPLACE_TEXTUALLY ~\([ %TAB%]+\)BD[A-Z]+[ %TAB%]*~ ~\1DEFAULT~
@@ -14560,7 +14560,7 @@ COPY_EXISTING ~ar0602.bcs~ ~override~ // irenicus's dungeon
 BEGIN @418000 DESIGNATED 4180
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bg2 tob bgt eet bgee bg2ee~ @25 // All BG games
-// LABEL ~cd_tweaks_removable_npc_items~
+LABEL ~cd_tweaks_removable_npc_items~
 
 // some special stuff for edwin; move the amulet effects directly to edwin
 COPY_EXISTING ~misc89.itm~                         ~override~ // bg2
