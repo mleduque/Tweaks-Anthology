@@ -1,2 +1,14 @@
 // this file is used to override strings in game.tra for EE games
 // it will NOT be re-encoded for EE games, so put it in the correct charset for your language
+
+//#50818 in obg2
+@418002 = ~Cet anneau a été donné à Nalia par son père lors de son passage à l'âge adulte. Lié à son sang, l'anneau ne peut être utilisé par personne d'autre. L'anneau confère un bonus de +2 à tous les jets de sauvegarde, un bonus de +2 à la classe d'armure et un bonus de 50% à la résistance au feu.
+
+PARAMÈTRES :
+
+Capacités d'équipement :
+- Classe d'armure : +2
+- jet de sauvegarde : +2
+- résistance au feu : +50%
+
+Poids : 0~
