@@ -2022,6 +2022,14 @@ ACTION_IF game_is_how OR game_is_totlm OR game_is_iwd-in-bg2 THEN BEGIN
 
   ACTION_IF !game_is_iwd-in-bg2 THEN BEGIN
   
+    COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ // allow sellable items in bags
+      READ_LONG 0x18 flags
+      PATCH_IF ((flags & BIT11) = BIT11) BEGIN // if bit11 set
+        WRITE_LONG 0x18 (THIS BAND `BIT11) // removes bit11
+        WRITE_LONG 0x34 0 // set price to zero, preventing selling
+      END
+      BUT_ONLY
+  
     OUTER_SET stor_off = 0x9c // for bottomless bags
   
     // bams
