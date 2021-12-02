@@ -25,6 +25,21 @@ ACTION_IF FILE_EXISTS_IN_GAME ar9200.are THEN BEGIN // fixed by fixpack, but we'
 
 END
 
+ACTION_IF ((MOD_IS_INSTALLED ~iwdfixpack/setup-iwdfixpack.tp2~ ~0~) AND     // fixpack is installed
+           (FILE_EXISTS ~iwdfixpack/languages/english/dplanar.tra~))  BEGIN // and it's >= v7
+
+  APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~ // as of v7, replaces the ar9601 dupe of EXTRES4
+~ar9200   EXTRES4  Container7
+ar9601   EXTRES1  Container1~
+
+END ELSE BEGIN// previous fixpacks, IWDEE replace the ar9200 dupe of EXTRES4
+
+  APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~
+~ar9200   EXTRES1  Container7
+ar9601   EXTRES4  Container1~
+
+END 
+
 ACTION_IF MOD_IS_INSTALLED ~ub_iwd/setup-ub_iwd.tp2~ ~1500~ THEN BEGIN // if restored random drops from UB
 
   APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~
