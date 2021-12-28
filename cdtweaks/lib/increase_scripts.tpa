@@ -2,16 +2,20 @@ ACTION_IF NOT (original_iwd OR original_bg1 OR game_is_pst) THEN BEGIN // no Tak
 
   COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
     DECOMPILE_AND_PATCH BEGIN
-      PATCH_PHP_EACH cd_stackables AS item => foo BEGIN
-        REPLACE_TEXTUALLY ~TakePartyItem("%item%")~ ~TakePartyItemNum("%item%",1)~
+      PATCH_PHP_EACH cd_stackables AS item => stack BEGIN
+        PATCH_IF stack < 2 BEGIN
+          REPLACE_TEXTUALLY ~TakePartyItem("%item%")~ ~TakePartyItemNum("%item%",1)~
+        END  
       END
     END
     BUT_ONLY IF ~116OB~
 
   COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
     DECOMPILE_AND_PATCH BEGIN
-      PATCH_PHP_EACH cd_stackables AS item => foo BEGIN
-        REPLACE_TEXTUALLY ~TakePartyItem("%item%")~ ~TakePartyItemNum("%item%",1)~
+      PATCH_PHP_EACH cd_stackables AS item => stack BEGIN
+        PATCH_IF stack < 2 BEGIN
+          REPLACE_TEXTUALLY ~TakePartyItem("%item%")~ ~TakePartyItemNum("%item%",1)~
+        END  
       END
     END
     BUT_ONLY  IF ~TakePartyItem(~

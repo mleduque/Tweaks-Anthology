@@ -69,6 +69,34 @@ ACTION_IF game_includes_pst THEN BEGIN
 END ELSE BEGIN
 
   ACTION_CLEAR_ARRAY cd_stackables
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_stackables BEGIN // default to =>2 so they'll be skipped on scripting update checks, unless item found
+    "00misc23" => 2 // rhino beetle shell
+    "00misc24" => 2 // umber hulk hide
+    "00misc39" => 2 // boring beetle shell
+    "_gberry"  => 2 // goodberry (tutu)
+    "_misc01"  => 2 // winter wolf pelts
+    "_misc12"  => 2 // ankheg shell
+    "_misc52"  => 2 // wyvern heads
+    "_misc86"  => 2 // bandit scalps
+    "_misc87"  => 2 // contaminated iron
+    "_potn54"  => 2 // empty potion bottle
+    "cdrem"    => 2 // remorhaz shell
+    "gberry"   => 2 // goodberry (bg2)
+    "goodber"  => 2 // goodberry (iwd)
+    "hidebee"  => 2 // rhino beetle shell
+    "hideumb"  => 2 // umber hulk hide
+    "misc01"   => 2 // winter wolf pelts
+    "misc12"   => 2 // ankheg shell
+    "misc1j"   => 2 // beljuril
+    "misc52"   => 2 // wyvern heads
+    "misc6m"   => 2 // demon heart
+    "misc7v"   => 2 // dog meat
+    "misc86"   => 2 // bandit scalps
+    "misc87"   => 2 // contaminated iron
+    "miscbd"   => 2 // dog bones
+    "potn54"   => 2 // empty potion bottle
+    "yeti"     => 2 // yeti pelts (iwd)
+  END
 
   ACTION_IF (original_iwd OR original_bg1) THEN BEGIN // old engines need a header to be able to stack items
     OUTER_SET needs_header = 1
@@ -84,58 +112,41 @@ END ELSE BEGIN
                (type = 10) OR      // rings
                (type = 33) OR      // gold
                (type = 34) OR      // gems
-               (type = 59) OR      // furs or pelts
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "00misc23" = 0) OR // rhino beetle shell
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "00misc24" = 0) OR // umber hulk hide
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "00misc39" = 0) OR // boring beetle shell
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "cdrem" = 0) OR    // remorhaz shell
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "hidebee" = 0) OR  // rhino beetle shell
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "hideumb" = 0) OR  // umber hulk hide
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "_misc01" = 0) OR  // winter wolf pelts
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "_misc12" = 0) OR  // ankheg shell
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "_misc52" = 0) OR  // wyvern heads
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "_misc86" = 0) OR  // bandit scalps
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "_misc87" = 0) OR  // contaminated iron
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "_potn54" = 0) OR  // empty potion bottle
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "misc01" = 0) OR   // winter wolf pelts
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "misc12" = 0) OR   // ankheg shell
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "misc1j" = 0) OR   // beljuril
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "misc52" = 0) OR   // wyvern heads
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "misc6m" = 0) OR   // demon heart
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "misc7v" = 0) OR   // dog meat
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "misc86" = 0) OR   // bandit scalps
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "misc87" = 0) OR   // contaminated iron
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "miscbd" = 0) OR   // dog bones
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "potn54" = 0) OR   // empty potion bottle
-               ("%SOURCE_RES%" STRING_COMPARE_CASE "yeti" = 0)) AND   // yeti pelts (iwd)
-              (fx_num = 0)) BEGIN
-      SET add = 0
+               (type = 59)) AND    // furs or pelts
+              (fx_num = 0)) BEGIN  // with no global effects
+      SET add = 1
       READ_SHORT 0x68 abil_num ELSE 0
       READ_LONG  0x64 abil_off ELSE 0
       FOR (index = 0 ; index < abil_num ; ++index) BEGIN
-        READ_BYTE  (abil_off +        (0x38 * index)) abil_type
         READ_SHORT (abil_off + 0x1e + (0x38 * index)) abil_fx_num
         PATCH_IF ("%abil_fx_num%" > 0) BEGIN
-          SET add = 1
+          SET add = 0
           SET index = abil_num // kill loop
         END
       END
-      PATCH_IF (add = 0) BEGIN // if no effects
-        READ_SHORT 0x38 current
-        PATCH_IF (stack > current) BEGIN
-          WRITE_SHORT  0x38 stack
-          PATCH_IF current < 2 BEGIN 
-            DEFINE_ASSOCIATIVE_ARRAY cd_stackables BEGIN ~%SOURCE_RES%~ => 1 END
-          END
-        END
-        PATCH_IF ((needs_header = 1) AND (abil_num = 0)) BEGIN // old engines need a header to be able to stack items
-          WRITE_SHORT  0x68 1 // add one ability
-          WRITE_LONG   0x6a (THIS + 0x38)
-          INSERT_BYTES 0x72 0x38 // inserts new ability of type default (0)
-        END
-      END
+      PATCH_IF add BEGIN // if no effects, add to array
+        DEFINE_ASSOCIATIVE_ARRAY cd_stackables BEGIN ~%SOURCE_RES%~ => 1 END
+      END  
     END
     BUT_ONLY
+    
+  ACTION_PHP_EACH cd_stackables AS item => foo BEGIN  
+
+    COPY_EXISTING ~%item%.itm~ ~override~ 
+      READ_SHORT 0x38 current
+      PATCH_IF (stack > current) BEGIN
+        WRITE_SHORT  0x38 stack
+      END
+      DEFINE_ASSOCIATIVE_ARRAY cd_stackables BEGIN ~%SOURCE_RES%~ => ~%current%~ END // redefine array with original stack
+      READ_SHORT 0x68 abil_num ELSE 1
+      PATCH_IF ((needs_header = 1) AND (abil_num = 0)) BEGIN // old engines need a header to be able to stack items
+        WRITE_SHORT  0x68 1             // add one ability
+        WRITE_LONG   0x6a (THIS + 0x38) // push back fx offset for new ability
+        INSERT_BYTES 0x72 0x38          // inserts new ability of type default (0)
+      END
+      BUT_ONLY IF_EXISTS
+      
+  END // action_php_each
   
   INCLUDE ~cdtweaks/lib/increase_scripts.tpa~
 

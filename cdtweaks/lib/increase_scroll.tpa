@@ -36,9 +36,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ // looking for scrolls
     READ_SHORT 0x38 current
     PATCH_IF (stack > current) BEGIN
       WRITE_SHORT  0x38 stack
-      PATCH_IF current < 2 BEGIN 
-        DEFINE_ASSOCIATIVE_ARRAY cd_stackables BEGIN ~%SOURCE_RES%~ => 1 END
-      END
+      DEFINE_ASSOCIATIVE_ARRAY cd_stackables BEGIN ~%SOURCE_RES%~ => ~%current%~ END
     END
   END
   READ_SHORT 0x68 abil_num ELSE 1
