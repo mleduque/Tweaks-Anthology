@@ -369,8 +369,12 @@
 @238000 = ~Remove Racial Restrictions for Kits~
 
 @239000 = ~Paladins Use Icewind Dale-Heart of Winter Spell Tables [grogerson]~
+@239001 = ~Alter Paladin Spell Progression Table~
+@239100 = ~BG2-Style Progression (Up To Level Six Spells) [TotoR]~
 
 @240000 = ~Rangers Use Icewind Dale-Heart of Winter Spell Tables [grogerson]~
+@240001 = ~Alter Ranger Spell Progression Table~
+@240100 = ~BG2-Style Progression (Up To Level Five Spells) [TotoR]~
 
 @241000 = ~Druids Use 3E Alignment Restrictions~
 

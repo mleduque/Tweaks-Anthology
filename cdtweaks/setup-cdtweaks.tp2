@@ -3454,7 +3454,7 @@ COPY_EXISTING ~wwbearwe.cre~ ~override~
   PATCH_IF ((IDS_OF_SYMBOL (~animate~ ~WEREBEAR_D2~)) >= 0) BEGIN // if werebear animation from Infinity animations available...
     WRITE_LONG 0x28 (IDS_OF_SYMBOL (~animate~ ~WEREBEAR_D2~))     // then use it
   END ELSE BEGIN
-    PATCH_IF game_is_iwdee OR iwd-in-bg2 BEGIN // if not, use polar bears for IWD games
+    PATCH_IF game_is_iwdee OR game_is_iwd-in-bg2 BEGIN // if not, use polar bears for IWD games
       WRITE_LONG 0x28 29187 // bear_polar
     END
   END
@@ -8222,31 +8222,54 @@ INCLUDE ~cdtweaks/lib/kit-gnome.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                            \\\\\
-///// Paladins Use HoW Spell Progression                         \\\\\
+///// Alter Paladin Spell Progression Table                      \\\\\
 /////                                                            \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// Paladins Use HoW Spell Progression                         \\\\\
+/////                                                            \\\\\
 
 BEGIN @239000 DESIGNATED 2390
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~160~ @16
+SUBCOMPONENT @239001
 LABEL ~cd_tweaks_paladin_spell_progression_iwd~
 
 COPY ~cdtweaks/2da/iwd_mxsplpal.2da~ ~override/mxsplpal.2da~
 
+/////                                                            \\\\\
+///// BG2-Style Progression (Up To Level Six Spells)             \\\\\
+/////                                                            \\\\\
+
+BEGIN @239100 DESIGNATED 2391
+GROUP @9
+REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~160~ @16
+SUBCOMPONENT @239001
+LABEL ~cd_tweaks_paladin_spell_progression_alt~
+
+COPY ~cdtweaks/2da/alt_mxsplpal.2da~ ~override/mxsplpal.2da~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Alter Ranger Spell Progression Table                       \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 /////                                                            \\\\\
 ///// Rangers Use HoW Spell Progression                          \\\\\
 /////                                                            \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @240000 DESIGNATED 2400
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~170~ @16
+SUBCOMPONENT @240001
 LABEL ~cd_tweaks_ranger_spell_progression_iwd~
 
 ACTION_IF game_is_iwd2 THEN BEGIN
@@ -8256,6 +8279,27 @@ ACTION_IF game_is_iwd2 THEN BEGIN
 END ELSE BEGIN
 
   COPY ~cdtweaks/2da/iwd_mxsplran.2da~ ~override/mxsplran.2da~
+
+END
+
+/////                                                            \\\\\
+///// BG2-Style Progression (Up To Level Five Spells)            \\\\\
+/////                                                            \\\\\
+
+BEGIN @240100 DESIGNATED 2401
+GROUP @9
+REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~170~ @16
+SUBCOMPONENT @240001
+LABEL ~cd_tweaks_ranger_spell_progression_alt~
+
+ACTION_IF game_is_iwd2 THEN BEGIN
+
+  COPY ~cdtweaks/2da/alt_mxsplran.2da~ ~override/mxsplrgr.2da~
+
+END ELSE BEGIN
+
+  COPY ~cdtweaks/2da/alt_mxsplran.2da~ ~override/mxsplran.2da~
 
 END
 
