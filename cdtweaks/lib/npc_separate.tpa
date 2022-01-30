@@ -24,7 +24,9 @@ ACTION_IF game_is_bgee BEGIN
 END ELSE
 ACTION_IF game_is_bgt BEGIN
   OUTER_SET column = 3
-  COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/depart_bgt.d~ 
+  ACTION_IF !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1075~ BEGIN 
+    COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/depart_bgt.d~ 
+  END  
   COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/pairsep_bgt.d~ 
 END ELSE
 ACTION_IF tutu_gen BEGIN

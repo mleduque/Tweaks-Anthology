@@ -33,7 +33,7 @@ DORN     -1          -1            -1        -1                   0             
 RASAAD   -1          -1            -1        -1                   0             -1              20843                701             1038             1088           757             629            475            981            645          RASAADP
 >>>>>>>>
 
-ACTION_IF game_is_bgt BEGIN
+ACTION_IF ((game_is_bgt) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~4025~)) BEGIN
   COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/depart_bgt.d~ 
 END
 
