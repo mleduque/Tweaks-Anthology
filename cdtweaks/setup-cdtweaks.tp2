@@ -5802,6 +5802,44 @@ INCLUDE ~cdtweaks/lib/xp_common.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// BGT: Additional Experience Cap While in BG       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @257000 DESIGNATED 2570
+GROUP @9
+REQUIRE_PREDICATE GAME_IS ~bgt~ @25
+LABEL ~cd_tweaks_bgt_xp_cap_in_bg~
+
+OUTER_SET xp_cap = 161000 // modify as desired
+
+OUTER_SPRINT trigger ~GlobalLT("ENDOFBG1","GLOBAL",2)~ // don't modify as desired
+OUTER_SPRINT spell   ~cdxpbg~ 
+INCLUDE ~cdtweaks/lib/bgt_xp_caps.tpa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// BGT: Additional Experience Cap While in SoA      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @257100 DESIGNATED 2571
+GROUP @9
+REQUIRE_PREDICATE GAME_IS ~bgt~ @25
+LABEL ~cd_tweaks_bgt_xp_cap_in_soa~
+
+OUTER_SET xp_cap = 2950000 // modify as desired
+
+OUTER_SPRINT trigger ~Global("ENDOFBG1","GLOBAL",2) GlobalLT("Chapter","GLOBAL",8)~ // don't modify as desired
+OUTER_SPRINT spell   ~cdxpsoa~ 
+INCLUDE ~cdtweaks/lib/bgt_xp_caps.tpa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// Allow Thief Skills and Stealth in Heavy Armor    \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

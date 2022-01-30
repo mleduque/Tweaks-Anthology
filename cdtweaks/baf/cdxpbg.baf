@@ -1,0 +1,8 @@
+IF
+    %trigger%
+    XPGT(Player%index%,%xp_cap%)
+THEN
+    RESPONSE #100
+        ApplySpellRES("%spell%",Player%index%)
+        Continue()
+END 
