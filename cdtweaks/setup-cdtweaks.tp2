@@ -3449,6 +3449,17 @@ COPY ~cdtweaks/cre/wwbear.cre~ ~override~
   SAY NAME1 @115003
   SAY NAME2 @115003
 
+COPY_EXISTING ~wwbearwe.cre~ ~override~
+              ~wwbear.cre~   ~override~
+  PATCH_IF ((IDS_OF_SYMBOL (~animate~ ~WEREBEAR_D2~)) >= 0) BEGIN // if werebear animation from Infinity animations available...
+    WRITE_LONG 0x28 (IDS_OF_SYMBOL (~animate~ ~WEREBEAR_D2~))     // then use it
+  END ELSE BEGIN
+    PATCH_IF game_is_iwdee OR iwd-in-bg2 BEGIN // if not, use polar bears for IWD games
+      WRITE_LONG 0x28 29187 // bear_polar
+    END
+  END
+  BUT_ONLY  
+
 COPY ~cdtweaks/2da/anisum04.2da~ ~override~
      ~cdtweaks/2da/anisum05.2da~ ~override~
      ~cdtweaks/eff/spanim5.eff~  ~override~
