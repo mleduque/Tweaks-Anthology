@@ -1,4 +1,4 @@
-BACKUP ~cdtweaks/backup~ // location to store files for
+BACKUP ~weidu_external/cdtweaks/backup~ // location to store files for
 SUPPORT ~https://www.gibberlings3.net/forum/34-tweaks-anthology-forum/~ // URL displayed if install fails
 AUTO_EVAL_STRINGS
 
@@ -11,7 +11,7 @@ ALWAYS
   
 END
 
-VERSION ~v10 Release Candidate 1~
+VERSION ~v10 Release Candidate 2~
 
 README ~cdtweaks/languages/%LANGUAGE%/readme-cdtweaks.html~ ~cdtweaks/readme-cdtweaks.html~
 
@@ -5799,6 +5799,9 @@ LABEL ~cd_tweaks_cap_xp_at_l30~
 COPY ~cdtweaks/2da/xplevel30.2da~ ~override/xplevel.2da~
 INCLUDE ~cdtweaks/lib/xp_common.tpa~
 
+/* 
+neat idea inspired by similar components in EET, but unworkable for dual-classes
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -5836,6 +5839,8 @@ OUTER_SET xp_cap = 2950000 // modify as desired
 OUTER_SPRINT trigger ~Global("ENDOFBG1","GLOBAL",2) GlobalLT("Chapter","GLOBAL",8)~ // don't modify as desired
 OUTER_SPRINT spell   ~cdxpsoa~ 
 INCLUDE ~cdtweaks/lib/bgt_xp_caps.tpa~
+
+*/
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

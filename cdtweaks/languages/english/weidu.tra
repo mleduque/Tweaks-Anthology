@@ -405,8 +405,9 @@
 
 @256000 = ~Allow Monks to Wear Helmets~
 
-@257000 = ~BGT: Additional Experience Cap While in BG~
-@257100 = ~BGT: Additional Experience Cap While in SoA~
+// these components were abandoned due to bugs with dual-classes
+// @257000 = ~BGT: Additional Experience Cap While in BG~
+// @257100 = ~BGT: Additional Experience Cap While in SoA~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
