@@ -54,7 +54,7 @@
         <strong> On the web: </strong><a href="https://www.gibberlings3.net/mods/tweaks/tweaks/">Home
         page</a>, <a href="https://www.gibberlings3.net/forums/forum/34-tweaks-anthology-forum/">discussion
         forum</a>, and <a href="https://www.gibberlings3.net/gallery/album/27-tweaks-anthology/">preview gallery</a></p>
-      <p><strong> Version 10 Release Candidate 1</strong><br />
+      <p><strong> Version 10</strong><br />
         <strong> Languages:</strong> Chinese, Czech, English, French, German, Italian,
         Korean, Polish, Russian, and Spanish<br />
         <strong>Platforms: </strong>Windows,  MacOS, Linux<br />
@@ -1183,14 +1183,24 @@
         <li><em>Generic mage multi-class, keep only illusionist kit for single-class:</em> Multi-class combos will no longer use Illusionist (e.g.  a thief-mage  will be a thief-mage) and only the Illusionist kit will be available for single-class mages </li>
         <li><em>Generic mage multi-class, enable all kits for single-class:</em> Generic Mage Multi-class, Keep Only Illusionist Kit for Single-Class - Multi-class combos will no longer use Illusionist (e.g.  a thief-mage  will be a thief-mage) and all mage kits will be available for single-class mages </li>
       </ul>
-      <p><strong>Paladins Use Icewind Dale-Heart of Winter Spell Tables [grogerson]</strong><br />
+      <p><strong>Alter Paladin Spell Progression Table </strong>(previously known as <strong>Paladins Use Icewind Dale-Heart of Winter Spell Tables [grogerson]</strong>)<br />
+      <em>BGEE, BG2EE,  EET, BG, BG2,  IWD2, PsT, PsTEE, BGT, Tutu</em></p>
+<p>This component offers two alternatives for changing the spell progression for paladins:</p>
+<ul>
+  <li><em><span data-code-marker=" ">Icewind Dale-Heart of Winter</span>:</em> Icewind Dale expanded the level and number of spells high-level paladins        could cast, allowing them to learn up to level six spells.</li>
+  <li><span data-code-marker="+"><em>BG2-Style Progression</em></span><em>:</em> An alternative that allows up to level six spells, but in a fashion that seeks to better match progression in BG2. </li>
+</ul>
+<p><em>NOTE:</em> If you are playing the original BG without the expansion Tales of the Sword Coast,         paladins will not gain access to spells until 10th level due to a hardcoded bug. A <a href="https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks_tables.html#paladin">comparison
+  of the spell progression tables</a> is available. </p>
+      <p><strong><span data-code-marker="+">Alter Ranger Spell Progression Table</span> </strong>(previously known as <strong>Rangers Use Icewind Dale-Heart of Winter Spell Tables [grogerson]</strong>)<br />
         <em>BGEE, BG2EE,  EET, BG, BG2,  IWD2, PsT, PsTEE, BGT, Tutu</em></p>
-      <p> Icewind Dale expanded the level and number of spells high-level paladins        could cast. This component replaces the game tables with those of IWD-HoW. <em>NOTE:</em> If you are playing the original BG without the expansion Tales of the Sword Coast,         paladins will not gain access to spells until 10th level due to a hardcoded bug. A <a href="https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks_tables.html#paladin">comparison
-      of the spell progression tables</a> is available. </p>
-      <p><strong>Rangers Use Icewind Dale-Heart of Winter Spell Tables [grogerson]</strong><br />
-        <em>BGEE, BG2EE,  EET, BG, BG2,  IWD2, PsT, PsTEE, BGT, Tutu</em></p>
-      <p> Icewind Dale expanded the level and number of spells high-level rangers could cast. This component replaces the game tables with those of IWD-HoW. A <a href="https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks_tables.html#ranger">comparison
-      of the spell progression tables</a> is available. </p>
+      <p>This component offers two alternatives for changing the spell progression for rangers:</p>
+      <ul>
+        <li><em><span data-code-marker=" ">Icewind Dale-Heart of Winter</span>:</em> Icewind Dale expanded the level and number of spells high-level rangers        could cast, allowing them to learn up to level six spells.</li>
+        <li><span data-code-marker="+"><em>BG2-Style Progression</em></span><em>:</em> An alternative that allows up to level five spells, but in a fashion that seeks to better match progression in BG2. </li>
+      </ul>
+<p>  A <a href="https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks_tables.html#ranger">comparison
+  of the spell progression tables</a> is available. </p>
       <p><strong>Druids Use 3E Alignment Restrictions</strong><br />
         <em>All games except IWD2, PsT, PsTEE</em></p>
       <p> This component will allow druids to be any alignment as long as it lies on      one axis of neutrality (NG, LN, TN, CN, NE),      as in the 3e rules. By default druids can only be True Neutral. This component will also try to find and adjust all druid kits to the new allowed alignments, including the original three druid kits.</p>
@@ -1869,6 +1879,20 @@
     <div class="ribbon_triangle_h2-l"></div>
     <div class="ribbon_triangle_h2-r"></div>
     <div class="section">
+      <p><strong>Version 10 - February 11, 2021</strong></p>
+      <ul>
+        <li><strong>Weapon Styles for All</strong> will now account for monk and sorcerer kits</li>
+        <li>Fixed the messed up encoding with the French translation; updated further by Jazira33</li>
+        <li>Took yet another pass at fixing the last few issues with <strong>Send BioWare NPCs to an Inn [DavidW/Zed Nocear]</strong> and <strong>Allow NPC Pairs to Separate</strong> on BGT</li>
+        <li>Fixed issue with Imoen specifically with <strong>ToB-Style NPCs</strong> when Ascension is installed. Thanks to Bartimaeus for tracking this down!</li>
+        <li><strong>Unique Icons</strong> will now adjust item coloring on the avatar and paperdoll to match the item's new icon. A few icons were also updated (thanks TotoR) and cover some Ascension versions of items</li>
+        <li><strong>Add Bags of Holding</strong> will now allow formerly unsellable items into the bags on original IWD</li>
+        <li><strong>Friendly Random Drops</strong> was adjusted to account for the small placement change in IWD Fixpack v7</li>
+        <li><strong>Increase Jewelry, Gem, and Miscellaneous Item Stacks</strong>  now covers goodberries</li>
+        <li>The static armor lists have been expanded to cover EEEE</li>
+        <li>The bearweres added by <strong>Shapeshifter Rebalancing</strong> always used the polar bear animation. They'll now use the bearwere animation from Infinity Animations, if available, otherwise the bearweres will use polar bear animations for IWD-series games or cave bears for BG-series games. </li>
+        <li>TotoR added an alternative, BG2-style spell progression table for rangers and paladins. As such <strong>Paladins Use IWD-HoW Spell Progression Tables</strong> and <strong>Rangers Use IWD-HoW Spell Progression Tables</strong> have been renamed to <span data-code-marker="+"><strong>Alter Paladin Spell Progression Table</strong></span> and <span data-code-marker="+"><strong>Alter Ranger Spell Progression Table</strong></span>, respectively, and players can choose between the HoW tables and TotoR's new alternatives. </li>
+      </ul>
       <p><strong>Version 10 Release Candidate 1 - November 3, 2021</strong></p>
       <ul>
         <li>New and/or removed components:
