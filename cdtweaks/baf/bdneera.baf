@@ -1,0 +1,6 @@
+IF
+  !Global("bd_neera_edwin","LOCALS",99)
+THEN
+  RESPONSE #100
+    SetGlobal("bd_neera_edwin","LOCALS",99)
+END                

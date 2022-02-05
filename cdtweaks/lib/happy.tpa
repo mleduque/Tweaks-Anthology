@@ -56,6 +56,10 @@ ACTION_IF game_includes_soa THEN BEGIN
   EXTEND_TOP ~korgan.bcs~ ~cdtweaks/baf/korgan.baf~
 
   ACTION_IF enhanced_edition THEN BEGIN // for new npcs
+  
+    // edwin-neera ultimatum
+    EXTEND_BOTTOM ~edwin.bcs~  ~cdtweaks/baf/edwineer.baf~
+    EXTEND_BOTTOM ~edwi25.bcs~ ~cdtweaks/baf/edwineer.baf~
 
     // anomen-dorn
     COPY_EXISTING ~anomen.bcs~ ~override~
@@ -141,6 +145,10 @@ ACTION_IF game_includes_bg1 THEN BEGIN
       EXTEND_TOP ~%script%.bcs~ ~cdtweaks/baf/dorn.baf~
     
     END
+    
+    ACTION_IF FILE_EXISTS_IN_GAME ~bdneera.bcs~ BEGIN // neera-edwin SoD ultimatum
+      EXTEND_BOTTOM ~bdneera.bcs~ ~cdtweaks/baf/bdneera.baf~
+    END  
   
   END
 

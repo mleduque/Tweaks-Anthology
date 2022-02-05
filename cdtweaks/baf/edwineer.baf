@@ -1,0 +1,6 @@
+IF
+  !Global("OHN_EDWIN_LEAVE","LOCALS",99)
+THEN
+  RESPONSE #100
+    SetGlobal("OHN_EDWIN_LEAVE","LOCALS",99)
+END                
