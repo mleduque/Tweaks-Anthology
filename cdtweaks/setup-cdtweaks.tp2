@@ -2018,7 +2018,7 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc soa tob bgt bgee bg2ee eet how totlm iwd-in-bg2~ @25
 LABEL ~cd_tweaks_add_bags_of_holding~
 
-ACTION_IF game_is_how OR game_is_totlm OR game_is_iwd-in-bg2 THEN BEGIN
+ACTION_IF game_is_how OR game_is_totlm OR game_is_iwd-in-bg2 THEN BEGIN // iwd content
 
   ACTION_IF !game_is_iwd-in-bg2 THEN BEGIN
   
@@ -2154,7 +2154,7 @@ ACTION_IF game_is_how OR game_is_totlm OR game_is_iwd-in-bg2 THEN BEGIN
     ADD_STORE_ITEM ~cdammo2~ LAST #0 #0 #0 ~IDENTIFIED~ #1
     BUT_ONLY
   
-END ELSE BEGIN
+END ELSE BEGIN // non-iwd content
 
   ACTION_IF FILE_EXISTS_IN_GAME ~bag05.sto~ THEN BEGIN // if ToB, clone existing items
   
@@ -2225,46 +2225,34 @@ END ELSE BEGIN
 
   END
   
-  ACTION_IF NOT game_is_bgee BEGIN // non-BGEE
+  ACTION_IF game_includes_soa BEGIN // bg2 content
+    
+    COPY ~cdtweaks/itm/bag04.itm~ ~override/cdbag04.itm~ // bag of holding
+         ~cdtweaks/sto/bag04.sto~ ~override/cdbag04.sto~
+  
+    COPY_EXISTING ~murcrag.sto~ ~override~ // Cragmoon
+      ADD_STORE_ITEM ~cdpotion~ LAST #0 #0 #0 ~identified&unstealable~ #1 // if store is cragmoon add potion case
+      BUT_ONLY
+  
+    COPY_EXISTING ~ribald.sto~  ~override~ // ribald, adventurer's mart
+      ADD_STORE_ITEM ~cdbag04~  LAST #0 #0 #0 ~identified&unstealable~ #1 // add bag of holding
+      BUT_ONLY
   
     COPY_EXISTING ~roger.sto~   ~override~ // roger
-                  ~murcrag.sto~ ~override~ // Cragmoon
-                  ~shop05.sto~  ~override~ // perter
-                  ~trmer04.sto~ ~override~ // trademeet blacksmith
-      READ_LONG  0x34 "sale_offset"
-      READ_LONG  0x38 "sale_number"
-      WRITE_LONG 0x38 ("%sale_number%" + 1)
-      READ_LONG  0x2c "purchase_offset"
-      READ_LONG  0x4c "drink_offset"
-      READ_LONG  0x70 "cure_offset"
-      INSERT_BYTES  ("%sale_offset%" +        ("%sale_number%" * 0x1c)) 28
-        PATCH_IF ("murcrag" STRING_COMPARE_CASE ~%SOURCE_RES%~ = 0) BEGIN // if store is cragmoon add potion case
-          WRITE_ASCII ("%sale_offset%" +        ("%sale_number%" * 0x1C)) ~cdpotion~
-        END ELSE
-        PATCH_IF ("roger" STRING_COMPARE_CASE ~%SOURCE_RES%~ = 0) BEGIN // if store is roger add potion case 2
-          WRITE_ASCII ("%sale_offset%" +        ("%sale_number%" * 0x1C)) ~cdpotio2~
-        END ELSE
-        PATCH_IF ("shop05" STRING_COMPARE_CASE ~%SOURCE_RES%~ = 0) BEGIN // if store is perter add ammo belt 1
-          WRITE_ASCII ("%sale_offset%" +        ("%sale_number%" * 0x1c)) ~cdammo~
-        END ELSE
-        PATCH_IF ("trmer04" STRING_COMPARE_CASE ~%SOURCE_RES%~ = 0) BEGIN // if store is Trademeet blacksmith add ammo belt 2
-          WRITE_ASCII ("%sale_offset%" +        ("%sale_number%" * 0x1c)) ~cdammo2~
-        END
-        WRITE_LONG  ("%sale_offset%" + 0x10 + ("%sale_number%" * 0x1c)) 3 // identified and unstealable
-        WRITE_LONG  ("%sale_offset%" + 0x14 + ("%sale_number%" * 0x1c)) 1 // quantity
-      PATCH_IF NOT ("%purchase_offset%" < "%sale_offset%") BEGIN
-        WRITE_LONG 0x2c ("%purchase_offset%" + 0x1c)
-      END
-      PATCH_IF NOT ("%drink_offset%" < "%sale_offset%") BEGIN
-        WRITE_LONG 0x4c ("%drink_offset%" + 0x1c)
-      END
-      PATCH_IF NOT ("%cure_offset%" < "%sale_offset%") BEGIN
-        WRITE_LONG 0x70 ("%cure_offset%" + 0x1c)
-      END
+      ADD_STORE_ITEM ~cdpotio2~ LAST #0 #0 #0 ~identified&unstealable~ #1 // if store is roger add potion case 2
+      BUT_ONLY
+      
+    COPY_EXISTING ~shop05.sto~  ~override~ // perter
+      ADD_STORE_ITEM ~cdammo~   LAST #0 #0 #0 ~identified&unstealable~ #1 // if store is perter add ammo belt 1
+      BUT_ONLY
+      
+    COPY_EXISTING ~trmer04.sto~ ~override~ // trademeet blacksmith
+      ADD_STORE_ITEM ~cdammo2~  LAST #0 #0 #0 ~identified&unstealable~ #1 // if store is Trademeet blacksmith add ammo belt 2
+      BUT_ONLY
       
   END
   
-  // if BGT, BGEE, or Tutu game, add bags to BG portion
+  // if BGT, BGEE, EET, or Tutu game, add bags to BG portion
   ACTION_IF game_includes_bg1 THEN BEGIN
   
     COPY_EXISTING ~cdammo.itm~   ~override/c!ammo.itm~   // ammo belt
@@ -2324,43 +2312,25 @@ END ELSE BEGIN
     
     END
   
-    COPY_EXISTING_REGEXP GLOB ~^_?friend\.sto$~    ~override~ // FAI
-                              ~^[_h]ighhedg\.sto$~ ~override~ // High Hedge
-                              ~^_?taerum\.sto$~    ~override~ // Thunderhammer Smithy
-                              ~^_?sto4803\.sto$~   ~override~ // Nashkel General Store
-                              ~^_?sto0703\.sto$~   ~override~ // Sorcerous Sundries
-      READ_LONG  0x34 "sale_offset"
-      READ_LONG  0x38 "sale_number"
-      WRITE_LONG 0x38 ("%sale_number%" + 1)
-      READ_LONG  0x2c "purchase_offset"
-      READ_LONG  0x4c "drink_offset"
-      READ_LONG  0x70 "cure_offset"
-      INSERT_BYTES  ("%sale_offset%" +        ("%sale_number%" * 0x1c)) 28
-        PATCH_IF (~%SOURCE_RES%~ STRING_COMPARE_REGEXP ~^_?friend$~ = 0) BEGIN // if store is FAI add c!bag02
-          WRITE_ASCII ("%sale_offset%" +        ("%sale_number%" * 0x1c)) ~c!bag02~
-        END ELSE
-        PATCH_IF (~%SOURCE_RES%~ STRING_COMPARE_REGEXP ~^[_h]ighhedg$~ = 0) BEGIN // if store is High Hedge add c!bag03
-          WRITE_ASCII ("%sale_offset%" +        ("%sale_number%" * 0x1c)) ~c!bag03~
-        END ELSE
-        PATCH_IF (~%SOURCE_RES%~ STRING_COMPARE_REGEXP ~^_?taerum$~ = 0) BEGIN // if store is Thunderhammer Smithy add c!ammo
-          WRITE_ASCII ("%sale_offset%" +        ("%sale_number%" * 0x1c)) ~c!ammo~
-        END ELSE
-        PATCH_IF (~%SOURCE_RES%~ STRING_COMPARE_REGEXP ~^_?sto4803$~ = 0) BEGIN // if store is Nashkel General Store add c!potion
-          WRITE_ASCII ("%sale_offset%" +        ("%sale_number%" * 0x1c)) ~c!potion~
-        END ELSE BEGIN // else sorcerous sundries
-          WRITE_ASCII ("%sale_offset%" +        ("%sale_number%" * 0x1c)) ~c!bag04~// if store is SS add c!bag04
-        END
-        WRITE_LONG  ("%sale_offset%" + 0x10 + ("%sale_number%" * 0x1c)) 3 // identified and unstealable
-        WRITE_LONG  ("%sale_offset%" + 0x14 + ("%sale_number%" * 0x1c)) 1 // quantity
-      PATCH_IF NOT ("%purchase_offset%" < "%sale_offset%") BEGIN
-        WRITE_LONG 0x2c ("%purchase_offset%" + 0x1c)
-      END
-      PATCH_IF NOT ("%drink_offset%" < "%sale_offset%") BEGIN
-        WRITE_LONG 0x4c ("%drink_offset%" + 0x1c)
-      END
-      PATCH_IF NOT ("%cure_offset%" < "%sale_offset%") BEGIN
-        WRITE_LONG 0x70 ("%cure_offset%" + 0x1c)
-      END
+    COPY_EXISTING ~%tutu_var%friend.sto~  ~override~ // FAI
+      ADD_STORE_ITEM ~c!bag02~  LAST #0 #0 #0 ~identified&unstealable~ #1 // add c!bag02
+      BUT_ONLY
+  
+    COPY_EXISTING ~%tutu_scripth%ighhedg.sto~  ~override~ // High Hedge
+      ADD_STORE_ITEM ~c!bag03~  LAST #0 #0 #0 ~identified&unstealable~ #1 // add c!bag03
+      BUT_ONLY
+  
+    COPY_EXISTING ~%tutu_var%taerum.sto~  ~override~ // Thunderhammer Smithy
+      ADD_STORE_ITEM ~c!ammo~  LAST #0 #0 #0 ~identified&unstealable~ #1 // add c!ammo
+      BUT_ONLY
+  
+    COPY_EXISTING ~%tutu_var%sto4803.sto~  ~override~ // Nashkel General Store
+      ADD_STORE_ITEM ~c!potion~  LAST #0 #0 #0 ~identified&unstealable~ #1 // add c!potion
+      BUT_ONLY
+  
+    COPY_EXISTING ~%tutu_var%sto0703.sto~  ~override~ // Sorcerous Sundries
+      ADD_STORE_ITEM ~c!bag04~  LAST #0 #0 #0 ~identified&unstealable~ #1 // add c!bag04
+      BUT_ONLY
   
   END
 
@@ -2410,7 +2380,7 @@ ACTION_IF ((MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~181~) OR (MOD_IS_INS
   END  
   OUTER_SET    string_offset = 300
   OUTER_SET    last          = 42
-  ACTION_FOR_EACH item IN ~c!bag04~ ~cdhold1~ ~cdhold2~ ~cdhold3~ BEGIN LAM cd_unique_legwork END  
+  ACTION_FOR_EACH item IN ~c!bag04~ ~cdbag04~ ~cdhold1~ ~cdhold2~ ~cdhold3~ BEGIN LAM cd_unique_legwork END  
   
   // ammo belts
   OUTER_SPRINT icon          ~t-bamm~
