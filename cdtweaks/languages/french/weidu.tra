@@ -369,8 +369,12 @@ ou rendues obsoletes par un autre mod deja installe.~
 @238000 = ~Suppression des restrictions raciales pour les kits~
 
 @239000 = ~Les paladins utilisent les tables de sort d'Icewind Dale - Heart of Winter (grogerson)~
+@239001 = ~Alteration de la progression de la table des sorts du paladin~
+@239100 = ~Progression de la table des sorts de BG2 (jusqu'au niveau six) (TotoR)~
 
 @240000 = ~Les rodeurs utilisent les tables de sort d'Icewind Dale - Heart of Winter (grogerson)~
+@240001 = ~Alteration de la progression de la table des sorts du rodeur~
+@240100 = ~Progression de la table des sorts de BG2 (jusqu'au niveau cinq) (TotoR)~
 
 @241000 = ~Les druides utilisent les restrictions d'alignement de la 3eme edition~
 
@@ -400,6 +404,10 @@ ou rendues obsoletes par un autre mod deja installe.~
 @255200 = ~Mage generique pour les gnome multi-classes, autorise tous les kits pour les mono-classes~
 
 @256000 = ~Autorise le port du casque pour les moines~
+
+// these components were abandoned due to bugs with dual-classes
+// @257000 = ~BGT : Limite d'experience supplementaire au cours de BG~
+// @257100 = ~BGT : Limite d'experience supplementaire au cours de SoA~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
