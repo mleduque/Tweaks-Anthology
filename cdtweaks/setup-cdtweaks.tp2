@@ -11,7 +11,7 @@ ALWAYS
   
 END
 
-VERSION ~v10~
+VERSION ~v10 [Unsupported WIP Build]~
 
 README ~cdtweaks/languages/%LANGUAGE%/readme-cdtweaks.html~ ~cdtweaks/readme-cdtweaks.html~
 
@@ -6758,8 +6758,8 @@ END
 
 BEGIN @223000 DESIGNATED 2230
 GROUP @9
-//REQUIRE_PREDICATE GAME_IS ~soa tob bgt~ @25
-//REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ @16
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt~ @25
+REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~cdbehbla.pro~ @16
 FORBID_COMPONENT ~item_rev/item_rev.tp2~ ~0~ @16
 LABEL ~cd_tweaks_consistent_x_y_items~
 
