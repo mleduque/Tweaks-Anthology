@@ -6,37 +6,39 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+
+
+
 @0 = ~Aggiustamenti ai PNG~
 @1 = ~Questa fase potrebbe richiedere qualche minuto...~
 @2 = ~Richiede che "Aggiungi Borse Conservanti a BG".~
-// @3 = ~Richiede: "Consenti il lancio di incantesimi arcani in armatura".~
+
 @4 = ~Aggiustamenti/Trucchi di convenienza~
-@5 = ~Richiede: "Oggetti esotici".~
-// @6 = ~Richiede: "Consenti l'utilizzo di Nascondersi nelle ombre e delle abilita' da ladro in armatura pesante secondo le regole di AD&D".~
+
 @7 = ~Questa componente non e' disponibile nella tua lingua.~
-// @8 = ~Questa componente e' solo per BGT.~
+
 @9 = ~Modifiche alle regole~
-// @10 = ~Questa componente non e' disponibile per Tutu.~
+
 @11 = ~Aggiustamenti estetici~
-// @12 = ~Richiede: Throne of Bhaal.~
+
 @13 = ~Modifiche al contenuto~
-// @14 = ~Questa componente e' solo per Tutu o BGT.~
-// @15 = ~Questa componente e' solo per Tutu.~
+
 @16 = ~La funzione di questa componente e' gia' inclusa
 o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
-@17 = ~Richiede: "Tratta le armi +x/+y coerentemente".~
+
 @18 = ~Questa componente e' superata.~
-// @19 = ~Regole personalizzate di Cam~
-// @20 = ~Visualizzare il Readme?
-// a) Si'
-// b) No~
+
 @21 = ~Richiede: Modifica il limite dei punti esperienza: rimuovi il limite dei punti esperienza.~
-@22 = ~Questo componente non e' disponibile per Baldur's Gate: Enhanced Edition.~
-@23 = ~Questo componente e' solo per Tutu o Baldur's Gate: Enhanced Edition.~
+
 @24 = ~Questo componente e' incompatibile con un altra mod gia' installata.~
 @25 = ~Questo componente non e' disponibile per il tuo gioco.~
 @26 = ~Usa i valori del file di configurazione cdtweaks.txt per questo componente ...~
-@27 = ~Ãˆ necessaria la modmerge prima che i mod possano essere installati su questo gioco. Controllare il readme per ulteriori informazioni e per un link per scaricare Modmerge.~
+@27 = ~E' necessario utilizzare Modmerge prima che i mod possano essere installati su questo gioco. Controllare il readme per ulteriori informazioni e per un link per scaricare Modmerge.~
+@28 = ~Non sono disponibili abbastanza slot per lo stato dell'incantesimo o di tipo secondario per installare questo componente.~ 
+
+// questo componente non è pronto, puoi saltare la traduzione di questo blocco
+//@100 = ~Programma di installazione automatizzato~
+//@101 = ~File di installazione automatica non trovato, sto saltando...~ 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -55,6 +57,7 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @4000 = ~Cambia il colore della pelle di Viconia in blu scuro~
 
 @5000 = ~Script per la trasformazione degli avatar~
+
 @6000 = ~Aggiustamenti alle animazioni delle armi~
 
 @7000 = ~Sostituisci gli effetti degli incantesimi di Baldur's Gate con quelli di Icewind Dale (Andyr)~
@@ -71,18 +74,18 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @11000 = ~Migliora l'aspetto delle icone~
 
+
 @12000 = ~Modifica l'avatar se indossa abiti o un'armatura (Galactygon)~
 
 @13000 = ~Forza tutti i dialoghi a mettere automaticamente in pausa il gioco~
 
 @14000 = ~Sistema il verso di Boo (Boo's Squeak)~
 
-@15000 = ~Altera il nome degli oggetti unici~
-@15001 = ~Usa nomi unici (i.e. Kondar)~
-
-@15100 = ~Usa nomi unici +x (i.e. Kondar +1)~
-
-@15200 = ~Usa nomi generici (i.e. Spada Bastarda +1, +3 vs. Shapeshifters)~
+// questo componente non è pronto, puoi saltare la traduzione di questo blocco
+//@15000 = ~Modifica il nome degli elementi univoci~ 
+//@15001 = ~Usa nomi unici (i.e. Kondar)~
+//@15100 = ~Usa nomi unici +x (i.e. Kondar +1)~
+//@15200 = ~Usa nomi generici (i.e. Spada Bastarda +1, +3 vs. Shapeshifters)~
 
 @16000 = ~Rendi brillanti gli scudi magici (plainab/grogerson)~
 
@@ -95,22 +98,23 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @18021 = ~Solo Icone Uniche~
 @18022 = ~Colori di BG2 per i PNG di BG1/Tutu~
 @18023 = ~Questo componente non e' adatto a BG2~
+
 @19000 = ~Per tutti gli scudi ed elmi~
 @19001 = ~Usa il colore dei personaggi anziche' quello degli oggetti~
-
 @19100 = ~Per scudi ed elmi non magici~
-
 @19200 = ~Per tutti gli elmi~            
-
 @19300 = ~Per gli elmi non magici~    
-
 @19400 = ~Per tutti gli scudi~            
-
 @19500 = ~Per tutti gli scudi non magici~
 
 @20000 = ~Rimuovi l'effetto sfocatura dagli oggetti~
+@20001 = ~Rimuovi i fastidiosi effetti visivi dagli oggetti equipaggiati~
+@20002 = ~Rimuovi le trappole magiche e gli effetti di riflessione~
+@20003 = ~Rimuovi tutto quanto sopra~ 
 
 @21000 = ~Varia le icone di Resistenza al Fuoco e al Freddo (Angel)~
+
+@22000 = ~Sovrapposizioni migliorate per i giocatori daltonici [Fouinto]~ 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -128,26 +132,35 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @103500 = ~Rendi accessibili le aree del Bosco Ammantato anche prima di essere stato al Campo di banditi~
 @103501 = ~Solo la prima area~         
-
 @103600 = ~Tutte le aree tranne le miniere~
 
 @104000 = ~Rendi piu' forti le guardie di Athkatla~
+
 @105000 = ~Disintegrazione graduale degli oggetti drow~
+
 @106000 = ~Rendi distruttibili armature, scudi ed elmi non magici~
+
 @107000 = ~Migliora i dialoghi per allontanare i PNG dal gruppo nelle partite multi giocatore~
+
 @107500 = ~Manda i PNG BioWare in una locanda (DavidW/Zed Nocear)~
+
 @108000 = ~Aggiungi Borse Conservanti a BG~
+
 @108500 = ~Contenitori Portabili (Zed Nocear)~
 
+
 @109000 = ~Pacchetto "Oggetti esotici" ~
-                   
 
 @110000 = ~Rivela le mappe della citta' all'entrata di ogni zona~
 
 @110100 = ~Non rivelare le mappe della citta' all'entrata di ogni zona~
 
 @111000 = ~Aggiungi appunti alla mappa~
+
 @112000 = ~Consenti ai negozi di vendere maggiori quantita' di determinati oggetti (i.e. piu' frecce, piu' proiettili, ecc...)~
+
+// deprecato: non devi tradurre @112500
+@112500 = ~Munizioni non magiche infinite per archi, balestre e fionde~ 
 
 @113000 = ~Reputazione resettata all'inizio di BG2 (solo per BGT)~
 
@@ -157,6 +170,7 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @114200 = ~Solo pozioni~
 
 @115000 = ~Ribilanciamento del Mutaforma~
+
 @116000 = ~Fortezze Multiple~          
 @116001 = ~Nessuna restrizione (Baldur dash)~
 @116100 = ~Mantieni le restrizioni dovute alla classe~
@@ -172,17 +186,33 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @121000 = ~Ripristina la velocita' di movimento originale di Baldur's Gate (BETA)~
 
 @122000 = ~Consenti a Cromwell di potenziare gli oggetti della Fortezza dell'Osservatore~
+
 @122500 = ~Regola il tempo di forgiatura di Cromwell~
 @122501 = ~Forgiatura istantanea (impostazione predefinita BG2 originale)~
 @122600 = ~Otto ore~
 @122700 = ~Completo 24 ore (impostazione predefinita per BG2EE, include riposo)~
 
 @123000 = ~Consenti a Cespenar di utilizzare le ricette di Cromwell~
+
 @124000 = ~Ripristino Contenitori Nascosti della Locanda del Braccio Amico (plainab)~
 
-@125000 = ~Muovi i PNG da Baldur's Gate~
-@125001 = ~Devi iniziare un nuovo gioco perche' questo componente abbia effetto.~
-@126000 = ~Aggiustamenti dei Tre Bardi alla Reputazione~
+
+@125000 = ~Muovi gli PNG da Baldur's Gate~
+
+@125100 = ~Sposta gli NPC in posizioni convenienti: sposta Alora a Gullykin~
+
+@125200 = ~Sposta gli NPC in posizioni convenienti: sposta Eldoth sulla Strada della Costa~
+
+@125300 = ~Sposta gli NPC in posizioni convenienti: sposta Quayle al Carnevale di Nashkel~
+
+@125400 = ~Sposta gli NPC in posizioni convenienti: sposta Shar-Teel sulla Strada Nord di Nashkel~
+
+@125500 = ~Sposta gli NPC in posizioni convenienti: sposta Tiax a Beregost~
+
+@125600 = ~Sposta gli NPC in posizioni convenienti: sposta Viconia sulla Strada Sud di Beregost~
+
+@126000 = ~Aggiustamenti dei bardi alla reputazione~
+
 @127000 = ~Modifica il finale del Capitolo della Miniera del Bosco Ammantato modifica attivatori per comportamenti non-TotSC (plainab) (BETA)~
 
 @128000 = ~Il gioco finisce quando il personaggio principale muore~
@@ -191,12 +221,29 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @130000 = ~Rendi Heart of Winter accessibile ad ogni livello~
 
-@131000 = ~Ripristina (la maggior parte) delle magie di BG2 e rendi disponibili le pergamene - ATTENZIONE: potrebbero risultare molto fuori contesto~
+@131000 = ~Ripristina (la maggior parte) delle magie di BG2 e rendi disponibili le pergamene
+  ATTENZIONE: potrebbero risultare molto fuori contesto~
 
 @132000 = ~Diario in stile BG2 [ancora in sviluppo]~
 
 @133000 = ~ I PNG non possono usare le porte~
 
+@134000 = ~Rendi la roccaforte della sfera planare disponibile a tutte le classi~
+
+@134100 = ~Rendi la roccaforte della fortezza de'Arnise disponibile a tutte le classi~
+
+@134200 = ~Rendi la roccaforte del tempio disponibili a tutte le classi~
+
+@134300 = ~Rendi la roccaforte della gilda dei ladri disponibile per tutte le classi~
+
+@134400 = ~Rendi la roccaforte del teatro disponibile a tutte le classi~
+
+@134500 = ~Rendi la roccaforte del Nobile Ordine della Fortezza del Cuore Radioso disponibile a tutte le classi~
+
+@134600 = ~Rendi la roccaforte di bosco dei druidi disponibile a tutte le classi~
+
+@134700 = ~Rendi la roccaforte della Capanna di Imnesvale disponibile a tutte le classi~
+ 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -208,14 +255,12 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @201000 = ~Tabelle di progressione degli incantesimi secondo le regole di AD&D~
 
 @202000 = ~Uso delle spade bastarde a due mani~
+
 @203000 = ~Usa le katane a due mani~   
 
 @203500 = ~Asce a due mani~            
 
 @204000 = ~Rendi le clave utilizzabili da chiunque~
-@205000 = ~Aggiorna la descrizione delle clave affinche' rispecchino la componente "Rendi le clave utilizzabili da chiunque"~
-@205001 = ~Questa componente richiede che "Rendi le clave utilizzabili da chiunque" sia installato.~
-@205002 = ~Il mod Ashes of Embers e' installato: non e' necessario aggiornare le descrizioni.~
 
 @206000 = ~Consenti a tutte le classi di specializzarsi negli stili di combattimento~
 
@@ -225,86 +270,58 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @209000 = ~Modifica il limite dei punti esperienza~
 @209001 = ~Rimuovi ogni limite ai punti esperienza~
-
 @209100 = ~Limita al 20simo livello~   
-
 @209200 = ~Limita al 30simo livello~   
 
 @210000 = ~Consenti l'uso di Nascondersi tra le Ombre e delle abilita' da ladro in armatura pesante secondo le regole di AD&D~
-// Moved from thieving_descripts.tpa
-// Typical weight line for an item, used for a search matching the whole line
-// Typical lock picking penalty line in original armors
-// Title for lock picking added after Weight line, penalty is added after this text
-// Typical find trap penalty line in original armors
-// Title for find trap added after Weight line, penalty is added after this text
-// Typical pick pocket penalty line in original armors
-// Title for pick pocket added after Weight line, penalty is added after this text
-// Typical hide en shadow penalty line in original armors
-// Title for hide in shadow added after Weight line, penalty is added after this text
-// Typical move silently penalty line in original armors
-// Title for move silently added after Weight line, penalty is added after this text
-// Typical move silently penalty line in original armors
-// Title for move silently added after Weight line, penalty is added after this text
-@211000 = ~Modifica la descrizione degli oggetti affinche' rispecchino la componente
-"Consenti l'utilizzo di Nascondersi tra le Ombre e delle abilita' da ladro in armatura pesante secondo le regole di AD&D"~
 
 @212000 = ~Consenti il lancio di incantesimi arcani in armatura~
-// Moved from arcane_descripts.tpa     
-// See English setup.tra for details on what should be matched by the regular expression
-// Title for miscast chance added after Weight line, value is added after this text
-@213000 = ~Modifica la descrizione degli oggetti affinche' rispecchino la componente
-"Consenti il lancio di incantesimi arcani in armatura"~
-
 
 @214000 = ~Aggiungi alcune combinazioni possibili per la classe duale~
+
 @215000 = ~Indossa contemporaneamente piu' oggetti protettivi~
 @215001 = ~Applica le restrizioni secondo le regole di AD&D~
 @215100 = ~Non applicare alcuna restrizione~
-
 @215200 = ~Consenti di utilizzare l'armatura con un oggetto protettivo (Angel)~
 
 @216000 = ~Ribilanciamento delle sfere di competenza nelle armi~
 @216006 = ~Modifica il sistema delle competenze con le armi~
 @216100 = ~Ripristina il sistema di Baldur's Gate conservando gli Stili di combattimento (the bigg)~
 @216200 = ~Ripristina il sistema di Baldur's Gate senza gli Stili di combattimento (the bigg)~
-
 @216300 = ~Competenze armi come in IWD con stile armi~
 @216400 = ~Competenze armi come in IWD senza stile armi~
 
 @217000 = ~Lancia incantesimi dalle pergamene (e da altri oggetti) al livello del personaggio~
 
+
 @218000 = ~Ripristina le tabelle originali di THAC0, tiri salvezza, maestria superiore e progressione degli incantesimi arcani e divini (Blucher)~
 
 @219000 = ~Limita la capacita' dei negozianti di identificare gli oggetti~
 @219001 = ~Limita la capacita' di identificare gli oggetti ai soli negozianti bardi o maghi~
-
 @219100 = ~Limita la capacita' di identificare gli oggetti in base al punteggio di Conoscenza dei negozianti~
-
 @219200 = ~Utilizza un ibrido di entrambi i sistemi~
 
 @220000 = ~Maestria Superiore per i personaggi multiclasse (Weimer)~
 
 @221000 = ~Ripristina la Maestria Superiore secondo le regole di AD&D (Baldurdash)~
 @221001 = ~Modifica i bonus della Maestria Superiore~
-
 @221100 = ~Regole di BG2 per Maestria Superiore~
 
 @222000 = ~Imposta a zero il peso delle armi magiche~
 
 @223000 = ~Tratta le armi +x/+y coerentemente~
-// next two strings used for matching and updating item descriptions
+
+
 @223100 = ~Modifica la descrizione degli oggetti affinche' rispecchi la componente "Tratta le armi +x/+y coerentemente"~
 
 @224000 = ~Modifica la progressione della THAC0~
 @224001 = ~Limita a un valore minimo di 0 (Blucher)~
-
 @224100 = ~Limita a un valore minimo di -10 (AD&D\BG1)~
 
 @225000 = ~Modifica la tabella di progressione degli incantesimi dello Stregone~
 
 @226000 = ~Modifica la tabella di progressione degli incantesimi del Mago~
 @226001 = ~Tabella migliorata (Blucher)~
-
 @226100 = ~Tabella secondo le regole di AD&D~
 
 @227000 = ~Modifica la tabella di progressione degli incantesimi del Bardo~
@@ -313,26 +330,18 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @229000 = ~Modifica la tabella di progressione degli incantesimi del Druido~
 @229001 = ~Nessuna modifica agli incantesimi per livello, set migliorato di incantesimi del Druido (Blucher)~
-
 @229100 = ~Nessuna modifica agli incantesimi per livello, set originale di incantesimi del Druido\Chierico (AD&D)~
-
 @229200 = ~Usa la tabella di progressione degli incantesimi del Chierico modificata con il normale set di incantesimi del Druido~
-
 @229300 = ~Usa la tabella di progressione degli incantesimi del Chierico modificata con il set migliorato di incantesimi del Druido (Blucher)~
-
 @229400 = ~Usa la tabella di progressione degli incantesimi del Chierico modificata con il set originale di incantesimi del Druido\Chierico (AD&D)~
-
 @229500 = ~Usa la tabella di progressione degli incantesimi del Chierico modificata con il set normale di incantesimi del Chierico~
-
 @229600 = ~Usa la tabella di progressione degli incantesimi del Chierico modificata con il set migliorato di incantesimi del Chierico (Blucher)~
 
 @230000 = ~Consenti ai personaggi con tre classi di accedere alle Abilita' di Alto Livello di tutte e tre le classi~
 
 @231000 = ~Applica penalita' ai tiri-salvezza contro incantesimi lanciati da incantatori di alto livello~
 @231001 = ~Solo per gli incantesimi arcani~
-
 @231100 = ~Solo per gli incantesimi divini~
-
 @231200 = ~Per gli incantesimi sia arcani che divini~
 
 @232000 = ~Rimuovi il limite massimo di trappole che possono essere piazzate (Ardanis/GeN1e)~
@@ -345,27 +354,27 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @235000 = ~Modifica le restrizioni multiclasse~
 @235001 = ~Permetti agli umani di multiclassare~
-
 @235100 = ~Permetti l'accesso ai non umani a tutte le combinazioni multiclasse~
-
 @235200 = ~Istalla entrambe le precedenti funzioni~
-
 @235300 = ~Consenti ai non umani di accedere a un multiclasse solo se possono accedere alle classi singole~
-
 @235800 = ~Installa le opzioni uno e tre (tutti possono essere multiclasse se possono accedere alla singola classe)~
 
 @236000 = ~Rimuovi le restrizioni razziali per le singole classi~
 
 @237000 = ~Modifica le restrizioni biclasse~
 @237001 = ~Gli umani non possono piu' biclassare~
-
 @237100 = ~Permetti ai non umani di biclassare~
+@237200 = ~Per entrambe le opzioni: *solo* i non umani possono fare la doppia classe~
 
 @238000 = ~Rimuovi le restrizioni di classe per i Kit~
 
 @239000 = ~I Paladini usano la tabella incantesimi di Icewind Dale-Heart of Winter (grogerson)~
+@239001 = ~Modifica tabella di progressione degli incantesimi del paladino~
+@239100 = ~Progressione in stile BG2 (incantesimi fino al livello sei) [TotoR]~
 
 @240000 = ~I Ranger usano la tabella incantesimi di Icewind Dale-Heart of Winter (grogerson)~
+@240001 = ~Modifica tabella di progressione degli incantesimi del ranger~
+@240100 = ~Progressione in stile BG2 (incantesimi fino al livello sei) [TotoR]~
 
 @241000 = ~I Druidi usano le restrizioni di allineamento della Terza edizione AD&D~
 
@@ -373,13 +382,10 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @243000 = ~I Druidi multiclasse non hanno restrizioni di equipaggiamento~
 @243001 = ~Modifica le restrizioni di equipaggiamento per i Druidi multiclasse~
-
 @243100 = ~Restrizioni di equipaggiamento di Tighten per i Druidi multiclasse (Angel)~
 
 @244000 = ~Chiunque ottiene i Bonus APR dalle specializzazioni~
-// translators - the next three strings are used to replace game text, so they need to be copied from the game itself
-// get @244001 and @244002 from strref 9588 in bgee/bg2ee/iwdee
-// get @244003 from string 32117 (bg2ee/iwdee) or 24220 (bgee)
+
 @245000 = ~Forza le regole di competenze nei personaggi bi-classe~
 
 @250000 = ~Variazioni limite peso con forza eccezionale~
@@ -391,6 +397,17 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @253000 = ~i fulmini non rimbalzano (Angel)~
 
 @254000 = ~SVelocizza le missioni della roccaforte de'Arnise~
+
+@255000 = ~Modifica kit gnomo mago/opzioni multi-classe~
+@255001 = ~Mantieni multiclasse illusionista gnomo, abilita tutti i kit per classe singola~
+@255100 = ~Mago generico multiclasse, tieni solo kit illusionista per classe singola~
+@255200 = ~Mago generico multiclasse, abilita tutti i kit per classe singola~
+
+@256000 = ~Consenti ai monaci di indossare elmi~
+
+// questi componenti sono stati abbandonati a causa di bug con le classi doppie
+// @257000 = ~BGT: Limite di esperienza aggiuntivo mentre sei in BG~
+// @257100 = ~BGT: Limite di esperienza aggiuntivo in SoA~ 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -404,27 +421,21 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @300000 = ~Guadagna piu' punti ferita al passaggio di livello~
 @300001 = ~Guadagna sempre punti ferita massimi~
-
 @300100 = ~Guadagna punti ferita in stile Neverwinter Nights~
-
 @300200 = ~Tiri dadi medi~
-
 @300300 = ~Bassa varianza tiri dadi~
 
 @300800 = ~Permetti il tiro dei dadi dopo il livello 20 (Angel)~
 
 @301000 = ~Tutti i PNG hanno punti ferita massimi (the bigg)~
 @301001 = ~Tutte le creature nel gioco hanno punti ferita massimi~
-
 @301100 = ~Solo i PNG che non possono unirsi al gruppo hanno punti ferita massimi~
-
 @301200 = ~Solo i PNG che possono unirsi al gruppo hanno punti ferita massimi~
 
 @302000 = ~Identifica automaticamente tutti gli oggetti~
 
 @303000 = ~Apprendimento semplificato degli incantesimi~
 @303001 = ~Imposta la possibilita' di imparare gli incantesimi al 100%~
-
 @303100 = ~Imposta la possibilita' di imparare gli incantesimi al 100% e rimuovi il limite al numero di incantesimi di ogni livello che e' possibile imparare~
 
 @304000 = ~Borse Conservanti senza fondo~
@@ -434,21 +445,16 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @306000 = ~Rimuovi l'effetto sonoro "Devi radunare il tuo gruppo..." (Weimer)~
 
 @307000 = ~Sconti ai negozi per una bassa reputazione (Sabre)~
+
 @307001 = ~Modifica l'effetto della reputazione sul prezzo degli oggetti~
-
 @307100 = ~La reputazione e' ininfluente, prezzi fissati al 100% (Luiz)~
-
 @307200 = ~La reputazione e' ininfluente, prezzi fissati all'80% (Luiz)~
-
 @307300 = ~La reputazione e' ininfluente, prezzi fissati al 60% (Luiz)~
 
 @308000 = ~Rimuovi il limite di 20 alla quantita' di munizioni che si possono impilare contemporaneamente~
 @308001 = ~Incrementa il limite alla quantita' di munizioni che si possono impilare contemporaneamente~
-
 @308100 = ~Limite di 40~
-
 @308200 = ~Limite di 80~
-
 @308300 = ~Limite di 120~
 
 @309000 = ~Consenti di impilare un numero illimitato di gemme e gioielli~
@@ -461,11 +467,8 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @311001 = ~Incrementa il limite alla quantita' di pergamene che si possono impilare contemporaneamente~
 
 @312000 = ~Patch dell'allegria (i membri del gruppo non si lamenteranno della reputazione del gruppo)~
-
 @312001 = ~I PNG non si contrariano mai per la reputazione del gruppo~
-
 @312100 = ~I PNG si contrariano per la reputazione, ma non abbandonano mai il gruppo per questo (Salk)~
-
 @312200 = ~I PNG sono sempre neutrali rispetto alla reputazione del gruppo (Anomaly)~
 
 @312300 = ~I membri del gruppo non combatteranno tra loro~
@@ -478,10 +481,7 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @314000 = ~Intermezzi e sogni piu' rapidi nei capitoli 1 e 2 (Karzak, Blucher) (LEGGI LE AVVERTENZE)~
 @314001 = ~Originali da EoU (Karzak, Blucher)~
-
 @314100 = ~Versione seria~ 
-
-@315000 = ~Disabilita la fastidiosa animazione del Mantello Speculare e degli incantesimi "Trappola Magica" e "Specchio fisico"~
 
 @316000 = ~Tieni l'equipaggiamento di Drizzt, disabilita Malchor Harpell~
 
@@ -492,17 +492,9 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @317600 = ~Accelera / Rallenta le romance~
 @317601 = ~Inserisci la percentuale che vorresti applicare all'intervallo di tempo tra i dialoghi amorosi,
 per esempio, 50% dimezza l'intervallo corrente tra i dialoghi, mentre 300% triplica l'intervallo.
-
 Inserisci una percentuale tra 20 e 500:~
 
 @317900 = ~Disabilita i requisiti di razza per le romance~
-
-@318000 = ~Trucchi per le romance~
-@318001 = ~Disabilita i requisiti di sesso e di razza~
-
-@318100 = ~Disabilita i requisiti di sesso e di razza, consenti piu' romance simultaneamente~
-
-@318200 = ~Disabilita i requisiti di sesso e di razza, consenti piu' romance simultaneamente, impossibile interrompere una romance~
 
 @318300 = ~Trucchi per le romance~     
 @318301 = ~Disabilita i requisiti di razza per le romance? (Selezionare 1 o 2)
@@ -529,19 +521,16 @@ Inserisci una percentuale tra 20 e 500:~
 1) Si
 2) No~
 @318312 = ~  * Consenti l'inizio di una romance nelle nuove partite di ToB~
+
 @319000 = ~Riposa ovunque (Japheth)~   
 
 @319100 = ~Disabilita gli incontri al riposo non ostili~
 
 @319400 = ~Modifica incontri al riposo ostili~
 @319401 = ~Disabilita completamente~
-
 @319500 = ~Riduci la frequenza del 50%~
-
 @319600 = ~Aumenta la frequenza del 50%~
-
 @319700 = ~Raddoppia la frequenza~
-
 @319800 = ~Quadruplica la frequenza~
 
 @320000 = ~Rendi bastoni, clave e fionde vendibili (Icelus)~
@@ -549,7 +538,6 @@ Inserisci una percentuale tra 20 e 500:~
 @320500 = ~ I negozi acquistano tutti i tipi di oggetti~
 
 @321000 = ~Imposta un punteggio minimo per le caratteristiche del personaggio~
-@321001 = ~Seleziona il valore minimo dei punteggi caratteristica, compreso tra 6 e 15:~
 @321002 = ~ Selezionare un valore minimo di FORZA tra 6 e 15, oppure 0 per nessun minimo:~
 @321003 = ~ Selezionare un valore minimo di DESTREZZA tra 6 e 15, oppure 0 per nessun minimo:~
 @321004 = ~ Selezionare un valore minimo di COSTITUZIONE tra 6 e 15, oppure 0 per nessun minimo:~
@@ -562,33 +550,27 @@ Inserisci una percentuale tra 20 e 500:~
 @321011 = ~ INTELLIGENZA minima:~
 @321012 = ~ SAGGEZZA minima:~
 @321013 = ~ CARISMA minima:~
-@321014 = ~ Nessuna modifica selezionata! Scegliere di nuovo.~
+@321014 = ~ Nessuna modifica selezionata! Scegli di nuovo.~
 
 @322000 = ~Punti d'entrata logici~     
+
 @323000 = ~Taerom crea armature di Ankheg aggiuntive (Icendoan/grogerson)~
 
 @324000 = ~Bottino casuale migliorato~
 @324001 = ~Randomizza in fase di caricamento~
-
 @324100 = ~Scegli il tuo bottino~
 @324200 = ~Scambia con mercanti~
-// 60 and 80 strings are identical, just with Flynn/Harrold and Lonelywood/Kuldahar exchanged
+
 @325000 = ~Non perdere mai l'accesso alla torre di Orrick il Grigio~
+
 @326000 = ~Munizioni recuperabili~
 @326001 = ~25% possibilita' di recupero dopo un tiro a segno~
-
 @326100 = ~50% possibilita' di recupero dopo un tiro a segno~
-
 @326200 = ~75% possibilita' di recupero dopo un tiro a segno~
-
 @326300 = ~100% possibilita' di recupero dopo un tiro a segno~
-
 @326400 = ~25% possibilita' di recupero dopo un tiro a segno, solo contro nemici~
-
 @326500 = ~50% possibilita' di recupero dopo un tiro a segno, solo contro nemici~
-
 @326600 = ~75% possibilita' di recupero dopo un tiro a segno, solo contro nemici~
-
 @326700 = ~100% possibilita' di recupero dopo un tiro a segno, solo contro nemici~
 
 @327000 = ~Armi da lancio recuperabili~
@@ -597,15 +579,10 @@ Inserisci una percentuale tra 20 e 500:~
 
 @329000 = ~Personalizza i nomi dei salvataggi automatici~
 @329001 = ~Usa schema: 000000000-Protagonista-Salvataggio-Nome~
-
 @329100 = ~Usa schema: 000000000-Protagonista Salvataggio-Nome~
-
 @329200 = ~Usa schema: 000000000-(Protagonista)-Salvataggio-Nome~
-
 @329300 = ~Usa schema: 000000000-(Protagonista) Salvataggio-Nome~
-
 @329400 = ~Usa schema: 000000000-[Protagonista]-Salvataggio-Nome~
-
 @329500 = ~Usa schema: 000000000-[Protagonista] Salvataggio-Nome~
 
 @330000 = ~Death Cam~
@@ -613,6 +590,37 @@ Inserisci una percentuale tra 20 e 500:~
 @331000 = ~Avvia nuove partite con AI del gruppo disattivata~
 
 @332000 = ~Nessun deprezzamento nei negozi~
+
+@333000 = ~Aumenta la velocità di movimento del gruppo e/o la velocità di lancio al di fuori del combattimento [argent77]~
+@333001 = ~Velocità di movimento del 50 percento~
+@333002 = ~Velocità di movimento del 100 percento~
+@333003 = ~Velocità di movimento del 150 percento~
+@333004 = ~Velocità di movimento del 50 percento e velocità di lancio~
+@333005 = ~Velocità di movimento del 100 percento e velocità di lancio~
+@333006 = ~Velocità di movimento del 150 percento e velocità di lancio~
+@333007 = ~Solo velocità di lancio~
+
+@335000 = ~Crea salvataggi intervallo [argent77]~
+@335001 = ~Ogni 15 minuti (un solo salvataggio)~
+@335002 = ~Ogni 30 minuti (un solo salvataggio)~
+@335003 = ~Ogni 60 minuti (un solo salvataggio)~
+@335004 = ~Ogni 120 minuti (un solo salvataggio)~
+@335005 = ~Ogni 15 minuti (passa attraverso quattro salvataggi)~
+@335006 = ~Ogni 30 minuti (passa attraverso quattro salvataggi)~
+@335007 = ~Ogni 60 minuti (passa attraverso quattro salvataggi)~
+@335008 = ~Ogni 120 minuti (passa attraverso quattro salvataggi)~
+@335009 = ~Personalizza (tramite cdtweaks.txt)~
+@335103 = ~Opzioni intervallo di salvataggio:
+Abilita intervallo salvataggio:      a7_interval_enable
+Intervallo tra salvataggi:           a7_interval_delay seconds
+Salvataggio durante combattimenti:   a7_interval_combat
+Numero di posizioni salvataggi:      a7_interval_slots
+Usa nomi particolari nei salvataggi: a7_interval_custom
+Mostra messaggi di feedback:         a7_interval_feedback
+Usa opzioni di Baldur.lua:           a7_interval_ini
+~
+
+@336000 = ~Ripristina la nebbia di guerra nei sotterranei di Sigil~ 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -630,7 +638,6 @@ Inserisci una percentuale tra 20 e 500:~
 
 @403000 = ~Rendi i punteggi caratteristica di Edwin coerenti con quelli che aveva in Baldur's Gate 1~
 @403001 = ~Usa i valori di Baldur's Gate~
-
 @403100 = ~Usa i valori di Baldur's Gate 2~
 
 @404000 = ~Rendi i punteggi caratteristica di Jaheira coerenti con quelli che aveva in Baldur's Gate 1~
@@ -642,6 +649,7 @@ Inserisci una percentuale tra 20 e 500:~
 @407000 = ~Rendi i punteggi caratteristica di Viconia coerenti con quelli che aveva in Baldur's Gate 1~
 
 @408000 = ~Rendi Khalid un Guerriero-Mago (Domi)~
+
 @409000 = ~Rendi Montaron un Assassino (Andyr)~
 
 @410000 = ~Cambia l'allineamento di Korgan in Neutrale Malvagio~
@@ -652,7 +660,16 @@ Inserisci una percentuale tra 20 e 500:~
 
 @413000 = ~Fai di Xan un Mago generico (Mike1072)~
 
+@413100 = ~Rendi Dynaheir una maga generica [Angelo]~
+
+@413200 = ~Rendi Xzar un mago generico [Angelo]~
+
+@413300 = ~Fai di Edwin un mago generico [Angelo]~ 
+
 @414000 = ~Non assegnare automaticamente AI avanzate al gruppo~
+
+@418000 = ~Oggetti NPC rimovibili~ 
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -661,39 +678,16 @@ Inserisci una percentuale tra 20 e 500:~
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+
 @500000 = ~Gusci di ankheg, pelli di lupo bianco e teste di Viverna impilabili~
+
 @501000 = ~Permette alle coppie di NPC di separarsi~
+
 @502000 = ~Rende meno probabile che i membri del gruppo muoiano irreversibilmente~
+
 @503000 = ~Sposta Boo nel bagaglio di Minsc~
+
 @504000 = ~Permettere a Yeslick di usare le asce~
+
 @505000 = ~Assicura che Shar-Teel non muoia nella sfida iniziale~
-@506000 = ~Rimuove l'animazione dal Mantello Speculare (lasciata per altri incantesimi ed effetti che utilizzano la stessa grafica)~
-@507001 = ~Rende il dungeon iniziale leggermente più difficile~
-@507002 = ~Permette a tutte le classi di accedere alla roccaforte del bardo~
-@507003 = ~Permette a tutte le classi di accedere alla roccaforte del chierico~
-@507004 = ~Permette a tutte le classi di accedere alla roccaforte del druido~
-@507005 = ~Permette a tutte le classi di accedere alla roccaforte del guerriero~
-@507006 = ~Permette a tutte le classi di accedere alla roccaforte del paladino~
-@507007 = ~Permette a tutte le classi di accedere alla roccaforte del ranger~
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// Ex componenti di SCS                             \\\\\
-///// Automaticamente copiati dai files tra di SCS     \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@500000 = ~Gusci di ankheg, pelli di lupo bianco e teste di Viverna impilabili~
-@501000 = ~Permette alle coppie di NPC di separarsi~
-@502000 = ~Rende meno probabile che i membri del gruppo muoiano irreversibilmente~
-@503000 = ~Sposta Boo nel bagaglio di Minsc~
-@504000 = ~Permettere a Yeslick di usare le asce~
-@505000 = ~Assicura che Shar-Teel non muoia nella sfida iniziale~
-@506000 = ~Rimuove l'animazione dal Mantello Speculare (lasciata per altri incantesimi ed effetti che utilizzano la stessa grafica)~
-@507001 = ~Permette a tutte le classi di accedere alla roccaforte del bardo~
-@507002 = ~Permette a tutte le classi di accedere alla roccaforte del chierico~
-@507003 = ~Permette a tutte le classi di accedere alla roccaforte del druido~
-@507004 = ~Permette a tutte le classi di accedere alla roccaforte del guerriero~
-@507005 = ~Permette a tutte le classi di accedere alla roccaforte del paladino~
-@507007 = ~Permette a tutte le classi di accedere alla roccaforte del ranger~
-@507008 = ~Permette a tutte le classi di accedere alla roccaforte del ladro~

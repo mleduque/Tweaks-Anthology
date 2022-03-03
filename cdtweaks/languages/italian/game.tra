@@ -1,25 +1,6 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// Messaggi di Setup                                \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
-// @3 = ~Richiede: "Consenti il lancio di incantesimi arcani in armatura".~
-// @6 = ~Richiede: "Consenti l'utilizzo di Nascondersi nelle ombre e delle abilita' da ladro in armatura pesante secondo le regole di AD&D".~
-// @8 = ~Questa componente e' solo per BGT.~
-// @10 = ~Questa componente non e' disponibile per Tutu.~
-// @12 = ~Richiede: Throne of Bhaal.~
-// @14 = ~Questa componente e' solo per Tutu o BGT.~
-// @15 = ~Questa componente e' solo per Tutu.~
-// @19 = ~Regole personalizzate di Cam~
-// @20 = ~Visualizzare il Readme?
-// a) Si'
-// b) No~
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
 ///// Componenti degli aggiustamenti estetici          \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -96,7 +77,6 @@
 @107502 = ~Le nostre strade si dividono per qualche tempo. Se mi servirà nuovamente il tuo aiuto, penso che ci dovremmo incontrare alla locanda del Giocoliere Gioviale a Beregost.~
 @107503 = ~Per il prossimo futuro dovremmo scoprire il nostro destino ognuno per conto proprio. Penso che, comunque, il tuo aiuto mi servirà di nuovo. Se prenderai alloggio alla locanda di Nashkel, ci incontreremo là, quando passerà da quelle parti.~
 @107504 = ~Dovremmo separarci ora. Ti cercherò la prossima volta che sarà in città. Incontriamoci alla taverna del Canto Elfico.~
-
 @107510 = ~Sarebbe un onore.~
 @107511 = ~Beh certo. Non voglio mettermi in nessun guaio mentre non ci siete, no signore.~
 @107512 = ~Come sai, ho alcuni affari da quelle parti. Cercami là, se mai avessi bisogno di più muscoli nanici.~
@@ -114,16 +94,12 @@
 @107524 = ~Farò così, ma spero di ricongiungermi con te al più presto. Io non ho ancora ripagato il mio debito.~
 @107525 = ~Tiax è soddisfatto dalla tua creativa sottomissione. Fino al tuo ritorno, gli umili abitanti di quella locanda adoreranno la gloria di Tiax!~
 @107526 = ~Lo farò, ma non volontariamente. Sono lontana dall'essere al sicuro in queste abitazioni della gente di superficie.~
-
 @107531 = ~Sì, oh onnipresente autorità.~
 @107532 = ~M-m-m-molto bene, allora. Buona fortuna e buon viaggio.~
-
 @107533 = ~Se tu lo desideri, lo farò. Mi hai dimostrato di essere un capo, e ora ho fiducia nelle tue decisioni.~
 @107534 = ~Sei sicuro? Boo non pensa che ci sia molto male da essere spietatamente preso a pugni in una locanda. Ma allora il male è molto intelligente, e spesso ben educato, e può nascondersi ovunque. Lo vedremo presto.~
-
 @107535 = ~Evviva! Un modo per poter essere utile alla nostra famiglia felice! E senza dover spendere altro tempo in compagnia degli sciocchi.~
 @107536 = ~Come vuoi. Un po' di tempo lontano da te sarà un bene per tutti noi, in ogni caso.~
-
 @107537 = ~Va bene - penso che questa sia una di quelle cose che fanno parte di ciò che fa un avventuriero, però non suona interessante...~
 @107538 = ~Un'occasione per un po' di lusso e un po' di riposo dalla strada? Certo, non la rifiuto.~
 
@@ -162,7 +138,7 @@ Speciale:
 
 Peso: 1
 Posizionala in uno slot degli Oggetti Rapidi per aprirla.~
-@108505 = ~Si sta aprendo la Borsa delle Gemme. Attendere prego.~
+@108505 = ~Si sta aprendo la Borsa delle Gemme. Attendi prego.~
 
 @108506 = ~Contenitore~
 @108507 = ~Contenitore per Pozioni~
@@ -570,7 +546,6 @@ Abilità speciali:
 @202002 = ~Impugna a due mani~         
 @202003 = ~^[ %TAB%]*Tipo[ %TAB%]*:[ % TAB%]*\(a[ %TAB%]+\)?\(1\|una\)[- %TAB%]*mano.*~
 @202004 = ~Tipo: A due mani~        
-
 @204001 = ~^[ %TAB%]*Non[ %TAB%]*utilizzabile[ %TAB%]*da[ %TAB%]*:.*~
 @204002 = ~Non utilizzabile da:~
 @204003 = ~[%LNL%%MNL%%WNL%][- %TAB%]*Mago.*~
@@ -603,7 +578,6 @@ Abilità speciali:
 // Title for move silently added after Weight line, penalty is added after this text
 @210013 = ~Furtività:~
 
-
 // Moved from arcane_descripts.tpa     
 // See English setup.tra for details on what should be matched by the regular expression
 @212001 = ~\(Peso:[ %tab%]*[0-9]+\)~
@@ -618,37 +592,31 @@ Abilità speciali:
 @215002 = ~[ %TAB%]*.?.?.?[ %TAB%]*Armou?r Class[^:]*:.*$~ // lone . at front to catch EE emdash
 
 @216001 = ~SPADA CORTA/NINJA-TO: Armi preferite di diversi ladri e halfling, la spada corta e il ninja-to sono utili e leggere.
-
 <DOTS1>                                
 <DOTS2>                                
 <DOTS3>                                
 <DOTS4>                                
 <DOTS5>~                               
 @216002 = ~KATANA/WAKIZASHI: Le katane e i wakizashi sono la più elevata manifestazione manifatturiera in campo di spade e il loro impiego richiede grande cura. A mano a mano che sviluppa la sua maestria, il proprietario e la lama diventano una cosa sola, interamente dedicata all'arte della guerra. Queste armi sono difficili da reperire al di fuori di Kara-Tur, perciò occorre ponderare oculatamente la scelta di tale competenza. Dopo tutto, essere abili nell'utilizzo di una katana o di un wakizashi è utile solo se si riesce a trovarli.
-
 ATTENZIONE: le katane magiche sono molto rare in Baldur's Gate 2!
-
 <DOTS1>                                
 <DOTS2>                                
 <DOTS3>                                
 <DOTS4>                                
 <DOTS5>~                               
 @216003 = ~SCIMITARRA: Questa classe di armi consente al personaggio di padroneggiare l'utilizzo di lame ricurve come, ad esempio, le scimitarre.
-
 <DOTS1>                                
 <DOTS2>                                
 <DOTS3>                                
 <DOTS4>                                
 <DOTS5>~                               
 @216004 = ~MAZZAFRUSTO: I mazzafrusti sono armi contundenti particolarmente adatte a stordire gli avversari. Non sono propriamente semplici da utilizzare ma con un po' di pratica possono essere letali.
-
 <DOTS1>                                
 <DOTS2>                                
 <DOTS3>                                
 <DOTS4>                                
 <DOTS5>~                               
 @216005 = ~MAZZA/MORNING STAR: La mazza è solitamente associata alla figura del chierico. È un'arma contundente molto potente, simile alla clava ma costruita in modo da arrecare un maggior danno. Una morning star è simile a una mazza con delle punte al posto delle flange.
-
 <DOTS1>                                
 <DOTS2>                                
 <DOTS3>                                
@@ -664,26 +632,24 @@ ATTENZIONE: le katane magiche sono molto rare in Baldur's Gate 2!
 
 @216301 = ~Spadone~
 @216302 = ~SPADONE: Questa classe di armi permette al personaggio di usare le Spade a Due Mani e le Spade Bastarde.
-
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
 @216303 = ~SPADA GRANDE: Questa classe di armi consente al personaggio di utilizzare le Spade Lunghe, le Spade Larghe e le Scimitarre. I ladri possono utilizzare questa classe di armi, ma solo per utilizzare la Spada Lunga e la Spada Larga. I druidi possono selezionare questa classe, ma solo per utilizzare la Scimitarra.
-
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
 @216304 = ~ARMI DA LANCIO: Questa classe di armi consente al personaggio di utilizzare Fionde e Dardi. I chierici possono scegliere questa classe ma possono utilizzare solo le Fionde.
-
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
+
 
 @218001 = ~Alchimia (Mago)~            
 @218002 = ~Alchimia (Sacerdote)~       
@@ -714,7 +680,6 @@ Questa abilità consente a un sacerdote  di creare pozioni. Le pozioni che il sac
 10) Pozione di Genio~                  
 @218006 = ~Alchimia (Vagabondo)        
 Grazie alla sua innata astuzia, un vagabondo esperto ha studiato abbastanza pozioni nel corso delle sue avventure per potersi permettere di simularne la creazione. Attraverso l'abilità Alchimia, il vagabondo può creare una pozione scelta da una gamma di otto tipologie, una volta al giorno.
-
 Le pozioni che il vagabondo può creare sono scelte casualmente da questa lista: 
 1) Pozione di Focalizzazione dei Pensieri
 2) Pozione di Percezione               
@@ -767,12 +732,21 @@ Questa abilità consente a un vagabondo di creare pergamene di incantesimi di bas
 @223001 = ~STATISTICHE:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
 @223002 = ~Viene considerata come un'arma +%ench% per determinare ciò che può colpire~
 
+// la stringa successiva dovrebbe corrispondere al contenuto DA RIMUOVERE dalla descrizione razziale degli esseri umani e dal riferimento di aiuto per la doppia classe
+@235002 = ~Gli esseri umani potrebbero non essere multiclasse.~ // da strref #9550
+
+// le due stringhe successive dovrebbero corrispondere al contenuto DA RIMUOVERE dalla descrizione razziale degli umani e dal riferimento di aiuto per la doppia classe
+// potrebbe essere necessario controllare gli EE, poiché oBG2 non menziona la doppia classe in #9550 o #32540
+@237002 = ~ e sono anche l'unica razza che può essere in classe doppia~ // da strref #9550
+@237003 = ~La doppia classe è un'abilità che solo gli umani possiedono. ~ // da strref #10811
+@237004 = ~, se il tuo personaggio è umano~ // Tutorial BG dialogo monaco monktu4 - 32540 in BGEE/SoD 
+
 // translators - the next three strings are used to replace game text, so they need to be copied from the game itself
 // get @244001 and @244002 from strref 9588 in bgee/bg2ee/iwdee
-@244001 = ~\* All extra attacks are only available to warrior classes.~ // last line; if there's a * included then add \ in front of it
-@244002 = ~Proficiency Slot Table:~                                     // line before <DOTS1>, exclude the * if present
+@244001 = ~\* Gli attacchi in più per round sono disponibili solo per le classi combattenti~ // last line; if there's a * included then add \ in front of it
+@244002 = ~Tavola slot competenze:~                                     // line before <DOTS1>, exclude the * if present
 // get @244003 from string 32117 (bg2ee/iwdee) or 24220 (bgee)
-@244003 = ~(for warriors only)~
+@244003 = ~(solo per classi combattenti)~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -781,8 +755,6 @@ Questa abilità consente a un vagabondo di creare pergamene di incantesimi di bas
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
-@315000 = ~Disabilita la fastidiosa animazione del Mantello Speculare e degli incantesimi "Trappola Magica" e "Specchio fisico"~
 
 @318313 = ~Portami la mia amante, Aerie.~
 @318314 = ~Portami la mia amante, Jaheira.~
@@ -794,7 +766,6 @@ Questa abilità consente a un vagabondo di creare pergamene di incantesimi di bas
 @318320 = ~Portami la mia amante, Neera.~
 @318321 = ~Portami il mio amante, Rasaad.~
 
-@321001 = ~Seleziona il valore minimo dei punteggi caratteristica, compreso tra 6 e 15:~
 @322001 = ~Atta~                  
 @322002 = ~Angel~
 
@@ -831,7 +802,6 @@ Questa abilità consente a un vagabondo di creare pergamene di incantesimi di bas
 @324226 = ~No, mi spiace. Cos'altro potremmo scambiare?~
 @324227 = ~Molto bene.~
 @324228 = ~Grazie e addio.~
-
 // 60 and 80 strings are identical, just with Flynn/Harrold and Lonelywood/Kuldahar exchanged
 @324260 = ~Mi chiamo Flynn, un agente della camera di commercio di Calimport, inviato alla ricerca di oggetti esotici ed unici.~
 @324261 = ~Credo di aver incontrato la tua controparte, Harrold, a Lonelywood.~
@@ -840,7 +810,6 @@ Questa abilità consente a un vagabondo di creare pergamene di incantesimi di bas
 @324264 = ~Salve di nuovo, Flynn. Vorresti scambiare qualcosa?~
 @324265 = ~No, non mi interessa. Addio Flynn.~
 @324266 = ~Grazie Flynn. C'è qualcos'altro che vorresti scambiare?~
-
 @324280 = ~Mi chiamo Harrold, un agente della camera di commercio di Calimport, inviato alla ricerca di oggetti esotici ed unici.~
 @324281 = ~Credo di aver incontrato la tua controparte, Flynn, a Kuldahar.~
 @324282 = ~Ben trovato, Harrold. Posso vedere la tua merce?~
@@ -852,6 +821,32 @@ Questa abilità consente a un vagabondo di creare pergamene di incantesimi di bas
 @325001 = ~Allora, possiamo vedere gli oggetti che avevi da offrire la prima volta che arrivammo in Kuldahar?~
 @325002 = ~Possiamo dare un'altra occhiata agli oggetti che avevi da offrire durante la nostra permanenza qui?~
 
+@333050 = ~Disattiva rapidità automatica~
+@333051 = ~Disattiva rapidità automatica
+
+Questa abilità controlla se la velocità di movimento viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilità per disattivarla.~
+@333052 = ~Disattiva rapidità automatica
+
+Questa abilità controlla se la velocità di movimento e la velocità di lancio vengono aumentate per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilità per disattivarla.~
+@333053 = ~Disattiva rapidità automatica
+
+Questa abilità controlla se la velocità di lancio viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilità per disattivarla.~
+@333060 = ~Abilita rapidità automatica~
+@333061 = ~Abilita rapidità automatica
+
+Questa abilità controlla se la velocità di movimento viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilità per attivarla.~
+@333062 = ~Abilita rapidità automatica
+
+Questa abilità controlla se la velocità di movimento e la velocità di lancio vengono aumentate per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilità per attivarla.~
+@333063 = ~Abilita rapidità automatica
+
+Questa abilità controlla se la velocità di lancio viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilità per attivarla.~
+@333070 = ~Rimossi i bonus di rapidità automatica~
+
+@335100 = ~Intervallo-Salvataggio~
+@335101 = ~Salvataggio intervallo creato~
+@335102 = ~Salvataggio intervallo (slot %slot_index%) creato~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -862,35 +857,14 @@ Questa abilità consente a un vagabondo di creare pergamene di incantesimi di bas
 
 @408001 = ~Se interrogato sul suo passato, KHALID rivela nervosamente di essere nato e cresciuto a Calimshan. Non parla molto dei suoi genitori, ma hai l'impressione che suo padre, un mercante, si occupasse poco di lui, dedicando invece molta più attenzione ai suoi fratellastri. Non potendo contare sul supporto paterno, Khalid non poté permettersi di diventare l'apprendista di un mago e si lanciò, quindi, nella carriera militare, addestrandosi sotto la guida dei membri della milizia cittadina. Non racconta i particolari del suo incontro con Jaheira, ma la sua adorazione per lei è evidente. Quando gli chiedi come ha conosciuto Gorion, si limita a dire che erano amici da lungo tempo e che molti dei loro conoscenti in comune piangeranno la sua perdita al suono dell'arpa.~
 
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// Ex componenti di SCS                             \\\\\
-///// Automaticamente copiati dai files tra di SCS     \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@506000 = ~Rimuove l'animazione dal Mantello Speculare (lasciata per altri incantesimi ed effetti che utilizzano la stessa grafica)~
-@507001 = ~Rende il dungeon iniziale leggermente più difficile~
-@507002 = ~Permette a tutte le classi di accedere alla roccaforte del bardo~
-@507003 = ~Permette a tutte le classi di accedere alla roccaforte del chierico~
-@507004 = ~Permette a tutte le classi di accedere alla roccaforte del druido~
-@507005 = ~Permette a tutte le classi di accedere alla roccaforte del guerriero~
-@507006 = ~Permette a tutte le classi di accedere alla roccaforte del paladino~
-@507007 = ~Permette a tutte le classi di accedere alla roccaforte del ranger~
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// Ex componenti di SCS                             \\\\\
-///// Automaticamente copiati dai files tra di SCS     \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@506000 = ~Rimuove l'animazione dal Mantello Speculare (lasciata per altri incantesimi ed effetti che utilizzano la stessa grafica)~
-@507001 = ~Permette a tutte le classi di accedere alla roccaforte del bardo~
-@507002 = ~Permette a tutte le classi di accedere alla roccaforte del chierico~
-@507003 = ~Permette a tutte le classi di accedere alla roccaforte del druido~
-@507004 = ~Permette a tutte le classi di accedere alla roccaforte del guerriero~
-@507005 = ~Permette a tutte le classi di accedere alla roccaforte del paladino~
-@507007 = ~Permette a tutte le classi di accedere alla roccaforte del ranger~
-@507008 = ~Permette a tutte le classi di accedere alla roccaforte del ladro~
+// traduttori: 418001 è strref #10232 da bgee o bg2ee senza il blocco "abilità equipaggiate".
+// Questo non viene utilizzato su giochi non EE poiché non menzionano gli effetti di equipaggiamento
+@418001 = ~Questo è il diritto di nascita di Edwin, intarsiato con la sua pietra di famiglia.
+
+Peso: 1~
+// traduttori: 418002 è strref #50818 in obg2 con la parte su
+// 'l'anello potrebbe non essere rimosso da nalia' cancellato
+// in inglese, questo è sovrascritto in ee.tra
+@418002 = ~Anello con sigillo de'Arnise
+
+Questo anello è stato donato a Nalia da suo padre al momento della sua ascesa all'età adulta. Legato al suo sangue non può essere usato da nessun altro. L'anello garantisce bonus +2 a tutti i tiri salvezza, bonus di classe armatura +2 e resistenza al fuoco del 50%.~ 

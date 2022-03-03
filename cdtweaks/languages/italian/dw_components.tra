@@ -1,3 +1,4 @@
+
 @20700 =~Io ho bisogno di te, Jaheira, ma devo chiederti di viaggiare senza Khalid, almeno per ora. Il gruppo non deve essere troppo numeroso e ci sono altri che sono ancor più necessari.~
 @20701 =~Viaggiare s-senza di me? Jaheira, sei sicura che sia s-s-saggio?~
 @20702 =~No, Khalid, non è saggio. Ma <CHARNAME> conduce questo gruppo e Gorion desidererebbe che lo aiutassimo. Ci rivedremo presto.~
@@ -55,3 +56,14 @@
 @20837 =~Ok - questa è una di quelle cose che sono parte di ciò che fa un avventuriero, però non suona interessante...~
 @20838 =~Un’occasione per un po' di lusso e di riposo dalla strada? Certo non la rifiuto.~
 @20840 =~Certamente! Ho molti giorni di lettura che dovrei recuperare. Ma attendo il momento in cui potremo viaggiare ancora insieme, però!~
+@20841 = ~Va bene! Quando penserai che sia giunto il momento di scusarti, mi troverai lì.~
+@20842 = ~Hmmph. Se cambi idea, io ci sarò.~
+@20843 = ~Molto bene. Se desideri saperne di più sull'Anima Solare, non esitare a parlare con me.~
+@20844 = ~Sul serio? Dopo tutto quello che abbiamo passato, <CHARNAME>? Ovviamente, avevo un'idea sbagliata della nostra amicizia.~ // 28125, meno la destinazione
+@20845 = ~Hmmm. Non dovresti prendere l'abitudine di commettere errori come questo. Si sommano.~ // 28392 meno la parte FAI
+@20846 = ~Mentre la luna piena cala e scompare, anche la nostra associazione finisce. Prego che un giorno rinascerà di nuovo e viaggeremo fianco a fianco per i regni. Se desideri saperne di più sull'Anima del Sole, non esitare a parlare con me.~ // 29019 meno Nashkel
+@20847 = ~Dirigiti verso Nashkel. Non è lontano e se ti nasconderai nelle fattorie dall'altra parte del fiume, probabilmente non verrai scoperto e ucciso. Probabilmente.~
+@20848 = ~Dirigiti verso Beregost. Non è lontano e se ti nasconderai dietro la locanda Feldpost, probabilmente non verrai scoperto e ucciso. Probabilmente.~
+@20849 = ~Dirigiti verso Baldur's Gate. Non è lontano e se ti nasconderai dietro a Chincaglierie Magiche, probabilmente non verrai scoperto e ucciso. Probabilmente.~
+@20850 = ~Rimani qui e tieni la testa bassa. Probabilmente non verrai scoperto e ucciso. Probabilmente.~
+@20851 = ~Bene! Ma aspetterò. Non lasciarmi morire per mano di barbari dalla pelle pallida!~ 
