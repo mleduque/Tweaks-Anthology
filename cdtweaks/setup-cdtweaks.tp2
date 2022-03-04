@@ -870,7 +870,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 
 BEGIN @17000 DESIGNATED 170
 GROUP @11
-REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2 soa tob bg2ee eet bgt ca~ @25
+REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2 soa tob bg2ee eet bgt ca bgee tutu tutu_totsc bg1 totsc~ @25
 LABEL ~cd_tweaks_unique_icons~
 
 INCLUDE ~cdtweaks/lib/unique_icons_v2.tpa~ // load reference array
@@ -878,72 +878,78 @@ INCLUDE ~cdtweaks/lib/unique_icons_v2.tpa~ // load reference array
 ACTION_PHP_EACH cd_unique_icons AS params => icon BEGIN
 
   ACTION_IF game_includes_iwd BEGIN
-    OUTER_SPRINT item ~%params_3%~
-    OUTER_SPRINT anim ~%params_4%~
+    OUTER_SPRINT item  ~%params_3%~
+    OUTER_SPRINT anim  ~%params_4%~
+    OUTER_SPRINT check ~%params_23%~
   END ELSE BEGIN  
-    OUTER_SPRINT item ~%params_1%~
-    OUTER_SPRINT anim ~%params_2%~
+    OUTER_SPRINT item   ~%params_1%~
+    OUTER_SPRINT anim   ~%params_2%~
+    OUTER_SPRINT check ~%params_22%~
   END  
   
   ACTION_IF FILE_EXISTS_IN_GAME ~%item%.itm~ BEGIN
   
-    ACTION_IF FILE_EXISTS ~cdtweaks/bam/%icon%.bam~ THEN BEGIN // in case it's getting an existing icon
+    COPY_EXISTING ~%item%.itm~ ~override~
+      SET replaced = 0
+      READ_ASCII   0x3a icon_old
+      PATCH_IF ("%icon_old%" STRING_COMPARE_CASE "%check%" = 0) BEGIN 
+        SET replaced = 1
+        PATCH_IF ("%anim%" STRING_COMPARE_CASE "null") BEGIN // if animation
+          WRITE_ASCIIE 0x22 ~%anim%~
+        END  
+        WRITE_ASCIIE 0x3a ~%icon%~ #8
+        READ_LONG    0x64 abil_off ELSE 0
+        READ_SHORT   0x68 abil_num ELSE 0
+        FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+          READ_ASCII (abil_off + 0x04 + (index * 0x38)) icon_abil
+          PATCH_IF ("%icon_abil%" STRING_COMPARE_CASE "%icon_old%" = 0) BEGIN // if ability uses old icon, update it
+            WRITE_ASCIIE (abil_off + 0x04 + (index * 0x38)) ~%icon%~ #8
+          END
+        END
+        CLEAR_ARRAY cd_unique_icons_coloring
+        PATCH_IF ("%params_8%" STRING_COMPARE_CASE "armor" = 0) BEGIN 
+          DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
+            0 => ~%params_9%~        
+            4 => ~%params_10%~        
+            5 => ~%params_11%~
+          END
+        END  
+        PATCH_IF ("%params_8%" STRING_COMPARE_CASE "weapon" = 0) BEGIN 
+          DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
+            16 => ~%params_12%~        
+            20 => ~%params_13%~        
+            21 => ~%params_14%~
+          END
+        END   
+        PATCH_IF ("%params_8%" STRING_COMPARE_CASE "shield" = 0) BEGIN 
+          DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
+            32 => ~%params_15%~        
+            33 => ~%params_16%~        
+            34 => ~%params_17%~      
+            37 => ~%params_18%~
+          END
+        END  
+        PATCH_IF ("%params_8%" STRING_COMPARE_CASE "helm" = 0) BEGIN 
+          DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
+            48 => ~%params_19%~      
+            52 => ~%params_20%~        
+            53 => ~%params_21%~
+          END
+        END   
+        PATCH_PHP_EACH cd_unique_icons_coloring AS loc => color BEGIN
+          LPF DELETE_EFFECT INT_VAR silent = 1 check_headers = 0 match_opcode = 7 match_parameter2 = loc END
+          PATCH_IF IS_AN_INT color BEGIN
+            LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 7 target = 1 parameter1 = color parameter2 = loc timing = 2 END
+          END  
+        END
+      END  
+      BUT_ONLY
+  
+    ACTION_IF ((FILE_EXISTS ~cdtweaks/bam/%icon%.bam~) AND (replaced = 1) AND (!FILE_EXISTS_IN_GAME ~%icon%.bam~)) THEN BEGIN // in case it's getting an existing icon; also only copy if needed
 
       COPY ~cdtweaks/bam/%icon%.bam~ ~override~
     
     END
-
-    COPY_EXISTING ~%item%.itm~ ~override~
-      PATCH_IF ("%anim%" STRING_COMPARE_CASE "null") BEGIN // if animation
-        WRITE_ASCIIE 0x22 ~%anim%~
-      END  
-      READ_ASCII   0x3a icon_old
-      WRITE_ASCIIE 0x3a ~%icon%~ #8
-      READ_LONG    0x64 abil_off ELSE 0
-      READ_SHORT   0x68 abil_num ELSE 0
-      FOR (index = 0 ; index < abil_num ; ++index) BEGIN
-        READ_ASCII (abil_off + 0x04 + (index * 0x38)) icon_abil
-        PATCH_IF ("%icon_abil%" STRING_COMPARE_CASE "%icon_old%" = 0) BEGIN // if ability uses old icon, update it
-          WRITE_ASCIIE (abil_off + 0x04 + (index * 0x38)) ~%icon%~ #8
-        END
-      END
-      CLEAR_ARRAY cd_unique_icons_coloring
-      PATCH_IF ("%params_8%" STRING_COMPARE_CASE "armor" = 0) BEGIN 
-        DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
-          0 => ~%params_9%~        
-          4 => ~%params_10%~        
-          5 => ~%params_11%~
-        END
-      END  
-      PATCH_IF ("%params_8%" STRING_COMPARE_CASE "weapon" = 0) BEGIN 
-        DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
-          16 => ~%params_12%~        
-          20 => ~%params_13%~        
-          21 => ~%params_14%~
-        END
-      END   
-      PATCH_IF ("%params_8%" STRING_COMPARE_CASE "shield" = 0) BEGIN 
-        DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
-          32 => ~%params_15%~        
-          33 => ~%params_16%~        
-          34 => ~%params_17%~      
-          37 => ~%params_18%~
-        END
-      END  
-      PATCH_IF ("%params_8%" STRING_COMPARE_CASE "helm" = 0) BEGIN 
-        DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN
-          48 => ~%params_19%~      
-          52 => ~%params_20%~        
-          53 => ~%params_21%~
-        END
-      END   
-      PATCH_PHP_EACH cd_unique_icons_coloring AS loc => color BEGIN
-        LPF DELETE_EFFECT INT_VAR silent = 1 check_headers = 0 match_opcode = 7 match_parameter2 = loc END
-        PATCH_IF IS_AN_INT color BEGIN
-          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 7 target = 1 parameter1 = color parameter2 = loc timing = 2 END
-        END  
-      END  
-      BUT_ONLY
   
   END
         
