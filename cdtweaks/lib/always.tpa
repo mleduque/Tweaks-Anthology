@@ -30,10 +30,7 @@ ACTION_IF game_is_tutu OR game_is_tutu_totsc           BEGIN OUTER_SET tutu_gen 
 ACTION_IF game_is_bgee OR game_is_bg2ee OR game_is_iwdee OR game_is_eet OR game_is_pstee BEGIN // ee games
 
   OUTER_SET enhanced_edition = 1 // re-using David's variables
-
-  // convert strings to UTF-8 for BGEE/BG2EE
-  ACTION_DEFINE_ARRAY cdnoconvert BEGIN weidu ee END // List of tra files that contain ONLY strings for the WeiDU installer and NOT game content
-  LAF HANDLE_CHARSETS INT_VAR infer_charsets = 1 STR_VAR tra_path = ~cdtweaks/languages~ noconvert_array = cdnoconvert END
+  OUTER_SPRINT ~tra_location~ ~cdtweaks/languages~
   
   LOAD_TRA ~cdtweaks/languages/%LANGUAGE%/ee.tra~
 
@@ -50,6 +47,11 @@ ACTION_IF game_is_bgee OR game_is_bg2ee OR game_is_iwdee OR game_is_eet OR game_
 END ELSE BEGIN
 
   OUTER_SET enhanced_edition = 0
+  OUTER_SPRINT ~tra_location~ ~weidu_external/cdtweaks/languages~
+
+  // convert strings from UTF-8 for originals  
+  LAF HANDLE_CHARSETS INT_VAR from_utf8 = 1 infer_charsets = 1 
+                      STR_VAR default_language = ~english~ tra_path = ~cdtweaks/languages~ out_path = ~weidu_external/cdtweaks/languages~ noconvert_array = cdnoconvert reload_array = cdreload END
 
   ACTION_IF game_is_soa OR game_is_tob OR game_is_bgt OR game_is_ca OR game_is_tutu OR game_is_tutu_totsc OR game_is_iwd-in-bg2 THEN BEGIN
 

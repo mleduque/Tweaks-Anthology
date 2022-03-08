@@ -15,7 +15,7 @@ VERSION ~v10 [Unsupported WIP Build]~
 
 README ~cdtweaks/languages/%LANGUAGE%/readme-cdtweaks.html~ ~cdtweaks/readme-cdtweaks.html~
 
-AUTO_TRA ~cdtweaks/languages/%s~
+AUTO_TRA ~%tra_location%/%s~
 
 LANGUAGE
   ~English~
@@ -732,7 +732,7 @@ SUBCOMPONENT @15000
 GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/unique.tra~ @7 // skip if tra file for language not available
 
-LOAD_TRA ~cdtweaks/languages/%LANGUAGE%/unique.tra~
+LOAD_TRA ~%tra_location%/%LANGUAGE%/unique.tra~
 
 INCLUDE ~cdtweaks/lib/unique.tpa~
 
@@ -745,7 +745,7 @@ SUBCOMPONENT @15000
 GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/uniqueplus.tra~ @7 // skip if tra file for language not available
 
-LOAD_TRA ~cdtweaks/languages/%LANGUAGE%/uniqueplus.tra~
+LOAD_TRA ~%tra_location%/%LANGUAGE%/uniqueplus.tra~
 
 INCLUDE ~cdtweaks/lib/unique.tpa~
 
@@ -758,7 +758,7 @@ SUBCOMPONENT @15000
 GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/uniquegeneric.tra~ @7 // skip if tra file for language not available
 
-LOAD_TRA ~cdtweaks/languages/%LANGUAGE%/uniquegeneric.tra~
+LOAD_TRA ~%tra_location%/%LANGUAGE%/uniquegeneric.tra~
 
 INCLUDE ~cdtweaks/lib/unique.tpa~
 */
@@ -2006,7 +2006,7 @@ ACTION_IF game_is_totsc BEGIN
    INCLUDE ~cdtweaks/lib/BG1areacheck_emulation.tpa~ // clever bit of code from Zed that allows us to check areas; should also work on IWD
    INCLUDE ~cdtweaks/lib/inns.tpa~
 END ELSE BEGIN
-    WITH_TRA "cdtweaks/languages/english/dw_components.tra" "cdtweaks/languages/%LANGUAGE%/dw_components.tra" BEGIN
+    WITH_TRA "%tra_location%/english/dw_components.tra" "%tra_location%/%LANGUAGE%/dw_components.tra" BEGIN
     INCLUDE ~cdtweaks/lib/inns_nonbg.tpa~
   END  
 END
@@ -2415,7 +2415,7 @@ ACTION_IF ((MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~181~) OR (MOD_IS_INS
 
   ACTION_IF names BEGIN
 
-    WITH_TRA ~cdtweaks/languages/%LANGUAGE%/unique_containers.tra~ BEGIN
+    WITH_TRA ~%tra_location%/%LANGUAGE%/unique_containers.tra~ BEGIN
       INCLUDE ~weidu_external/cdtweaks/unique_containers_working.tpa~
     END  
     
@@ -4734,19 +4734,19 @@ COPY_EXISTING ~volo.cre~ ~override/x#lp1rep.cre~
 
 /* scripts */
 COMPILE EVALUATE_BUFFER ~cdtweaks/baf/x#lp1r.baf~
-  USING ~cdtweaks/languages/%LANGUAGE%/x#lp1r.tra~
+  USING ~%tra_location%/%LANGUAGE%/x#lp1r.tra~
 COMPILE EVALUATE_BUFFER ~cdtweaks/baf/x#lp2r.baf~
-  USING ~cdtweaks/languages/%LANGUAGE%/x#lp2r.tra~
+  USING ~%tra_location%/%LANGUAGE%/x#lp2r.tra~
 COMPILE EVALUATE_BUFFER ~cdtweaks/baf/x#lp3r.baf~
-  USING ~cdtweaks/languages/%LANGUAGE%/x#lp3r.tra~
+  USING ~%tra_location%/%LANGUAGE%/x#lp3r.tra~
 
 /* dialogue */
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lp1rep.d~
-  USING ~cdtweaks/languages/%LANGUAGE%/x#lp1rep.tra~
+  USING ~%tra_location%/%LANGUAGE%/x#lp1rep.tra~
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lp2rep.d~
-  USING ~cdtweaks/languages/%LANGUAGE%/x#lp2rep.tra~
+  USING ~%tra_location%/%LANGUAGE%/x#lp2rep.tra~
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lp3rep.d~
-  USING ~cdtweaks/languages/%LANGUAGE%/x#lp2rep.tra~
+  USING ~%tra_location%/%LANGUAGE%/x#lp2rep.tra~
 
 /* Area Scripts for spawning */
 EXTEND_TOP ~ar2301.bcs~ ~cdtweaks/baf/x#lp1repas.baf~ // The Friendly Arm Inn
@@ -4755,7 +4755,7 @@ EXTEND_TOP ~ar0705.bcs~ ~cdtweaks/baf/x#lp3repas.baf~ // The Elfsong
 
 /* Ajantis Reputation Seller Reactions */
 COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lprcad.d~
-  USING ~cdtweaks/languages/%LANGUAGE%/x#lprcad.tra~
+  USING ~%tra_location%/%LANGUAGE%/x#lprcad.tra~
 
 EXTEND_BOTTOM ~ajantis.bcs~ ~cdtweaks/baf/x#lprcajr.baf~
 
@@ -5363,7 +5363,7 @@ ACTION_IF !enhanced_edition BEGIN
     END
   END
   
-  ACTION_IF FILE_CONTAINS_EVALUATED (~cdtweaks/languages/%LANGUAGE%/setup.tra~ ~^[ %TAB%]*@204001[ %TAB%]*=~) BEGIN // if translated strings are available...
+  ACTION_IF FILE_CONTAINS_EVALUATED (~%tra_location%/%LANGUAGE%/setup.tra~ ~^[ %TAB%]*@204001[ %TAB%]*=~) BEGIN // if translated strings are available...
 
     OUTER_SET modify_descript = 1 // ...then try to update item descriptions
   
@@ -13657,7 +13657,7 @@ ACTION_IF !original_bg1 BEGIN // originally modified a bunch of junk here, but e
   
   APPEND ~state.ids~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~^0x80101FEF[ %TAB]+CD_STATE_NOTVALID[ %TAB%%LNL%%MNL%%WNL%]~
 
-  WITH_TRA "cdtweaks/languages/english/dw_components.tra" "cdtweaks/languages/%LANGUAGE%/dw_components.tra" BEGIN
+  WITH_TRA "%tra_location%/english/dw_components.tra" "%tra_location%/%LANGUAGE%/dw_components.tra" BEGIN
     INCLUDE ~cdtweaks/lib/npc_separate.tpa~
   END
   
@@ -13665,7 +13665,7 @@ END ELSE BEGIN
   
   APPEND ~state.ids~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~^0x80101FEF[ %TAB]+CD_STATE_NOTVALID[ %TAB%%LNL%%MNL%%WNL%]~
   
-  COMPILE ~cdtweaks/dlg/pairsep_bg1.d~ USING "cdtweaks/languages/english/dw_components.tra" "cdtweaks/languages/%LANGUAGE%/dw_components.tra"
+  COMPILE ~cdtweaks/dlg/pairsep_bg1.d~ USING "%tra_location%/english/dw_components.tra" "%tra_location%/%LANGUAGE%/dw_components.tra"
   
 END
 

@@ -2,11 +2,11 @@
 // it will NOT be re-encoded for EE games, so put it in the correct charset for your language
 
 //#50818 in obg2
-@418002 = ~Questo anello è stato donato a Nalia da suo padre dopo la sua ascesa all'età adulta. Legato al suo sangue in quanto, l'anello non può essere usato da nessun altro. Garantisce un bonus di +2 a tutti i Tiri Salvezza, un bonus di +2 alla Classe Armatura e un bonus del 50% alla Resistenza al fuoco.
+@418002 = ~Questo anello Ã¨ stato donato a Nalia da suo padre dopo la sua ascesa all'etÃ Â adulta. Legato al suo sangue in quanto, l'anello non puÃ² essere usato da nessun altro. Garantisce un bonus di +2 a tutti i Tiri Salvezza, un bonus di +2 alla Classe Armatura e un bonus del 50% alla Resistenza al fuoco.
 
 STATISTICHE:
 
-Abilità durante l'uso:
+AbilitÃ  durante l'uso:
 - Classe armatura: +2
 - Tiri Salvezza: +2
 - Resistenza al fuoco: +50%

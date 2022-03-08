@@ -132,7 +132,7 @@ END
 
 ACTION_IF names BEGIN
 
-  WITH_TRA ~cdtweaks/languages/%LANGUAGE%/unique_containers.tra~ BEGIN
+  WITH_TRA ~%tra_location%/%LANGUAGE%/unique_containers.tra~ BEGIN
     INCLUDE ~weidu_external/cdtweaks/unique_containers_working.tpa~
   END  
   

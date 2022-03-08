@@ -58,7 +58,7 @@ COPY_EXISTING ~bbscardr.itm~ ~override~ //Scimitar of the Archdruid
         <<<<<<<< .../contain-inlined/t-temp.txt
 @18500 = ~%dc%~
 >>>>>>>>
-        COPY ~.../contain-inlined/t-temp.txt~ ~contain/backup/t-temp.tra~
+        COPY ~.../contain-inlined/t-temp.txt~ ~weidu_external/cdtweaks/t-temp.tra~
           EVALUATE_BUFFER
           REPLACE_TEXTUALLY EXACT_MATCH ~+2~ ~+1~
           REPLACE_TEXTUALLY EXACT_MATCH ~+ 3~ ~+ %bn%~
@@ -68,7 +68,7 @@ COPY_EXISTING ~bbscardr.itm~ ~override~ //Scimitar of the Archdruid
           REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~: 1k4~ ~: 50% 1k2~
           REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~: 1w4~ ~: 50% 1w2~
           REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~THACO~ ~THAC0~
-        STRING_SET_EVALUATE ~%d1%~ @18500 USING ~contain/backup/t-temp.tra~
+        STRING_SET_EVALUATE ~%d1%~ @18500 USING ~weidu_external/cdtweaks/t-temp.tra~
       END
     END
   END

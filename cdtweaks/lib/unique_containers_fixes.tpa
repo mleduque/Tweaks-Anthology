@@ -529,7 +529,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cb4287mj.cre~ BEGIN //SOS
             <<<<<<<< .../cdtweaks-inlined/t-temp.txt
 @18500 = ~%rt%~
 >>>>>>>>
-            COPY ~.../cdtweaks-inlined/t-temp.txt~ ~cdtweaks/backup/t-temp.tra~
+            COPY ~.../cdtweaks-inlined/t-temp.txt~ ~weidu_external/cdtweaks/t-temp.tra~
               EVALUATE_BUFFER
               REPLACE_TEXTUALLY EXACT_MATCH ~.  ~ ~. ~
               REPLACE_TEXTUALLY ~%27%~ ~%28%~ //a locker -> a safe place
@@ -537,7 +537,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~cb4287mj.cre~ BEGIN //SOS
               REPLACE_TEXTUALLY ~%30%~ ~%33%~ //this bag -> this trunk
               REPLACE_TEXTUALLY ~%31%~ ~%32%~ //the duffle -> the trunk
               REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~consficated~ ~confiscated~
-            STRING_SET_EVALUATE ~%sr%~ @18500 USING ~cdtweaks/backup/t-temp.tra~
+            STRING_SET_EVALUATE ~%sr%~ @18500 USING ~weidu_external/cdtweaks/t-temp.tra~
           END
         END
       END

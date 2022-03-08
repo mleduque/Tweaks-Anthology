@@ -22,7 +22,7 @@
     @13 = ~Cambios de Contenidos~
     @14 = ~Este componente es solo para Tutu o BGT.~
     @15 = ~Este componente es solo para Tutu.~
-    @16 = ~La funcionalidad de este componente esta ya incluída en algun mod instalado previamente.~
+    @16 = ~La funcionalidad de este componente esta ya incluÃ­da en algun mod instalado previamente.~
     @17 = ~Este componente requiere el hacer consistentes las armas +x/+y.~
     @18 = ~Este componente esta desactualizado.~
     @19 = ~Reglas de la casa de Cam~
@@ -64,9 +64,9 @@
 
  @11000 = ~Mejoras en los Iconos~
 
- @12000 = ~Diferente avatar al llevar túnica o armadura de cuero~
+ @12000 = ~Diferente avatar al llevar tÃºnica o armadura de cuero~
 
- @13000 = ~Forzar a pausa a todos los diálogos~
+ @13000 = ~Forzar a pausa a todos los diÃ¡logos~
 
  @18000 = ~Contenedores unicos~
  @18018 = ~Solo arreglos~
@@ -87,7 +87,7 @@
 
 @102000 = ~Hacer que la perdida de PG que activa los dialogos de PNJ heridos sea menor~
 
-@103000 = ~Revelar areas silvestres antes del Capítulo Seis~
+@103000 = ~Revelar areas silvestres antes del CapÃ­tulo Seis~
 
 @103500 = ~Hacer que las areas del Bosque de las Capas esten accesibles antes de completar el Campamento de los Bandidos~
 @103501 = ~Solo primer area~
@@ -106,11 +106,11 @@
 @111000 = ~Agregar notas al mapa~
 @112000 = ~Las tiendas venden mas cantidad de objetos apilados~
 
-@113000 = ~Reseteo de Reputación en BG2 (Sólo BGT)~
+@113000 = ~Reseteo de ReputaciÃ³n en BG2 (SÃ³lo BGT)~
 
 @114000 = ~Las gemas y pociones requieren ser identificadas~
 @115000 = ~Rebalanceo del Cambiaformas~
-@116000 = ~Múltiples fortalezas~
+@116000 = ~MÃºltiples fortalezas~
 @116001 = ~Sin Restricciones (Baldurdash)~
 @116100 = ~Mantener las restricciones de clase~
 
@@ -118,13 +118,13 @@
 
 @118000 = ~Edwina Femenina~
 
-@119000 = ~Romance: corrección de errores~
+@119000 = ~Romance: correcciÃ³n de errores~
 
-@120000 = ~Arreglo del diálogo de Imoen en ToB~
+@120000 = ~Arreglo del diÃ¡logo de Imoen en ToB~
 
 @121000 = ~Utilizar la velocidad de caminar de BG (BETA)~
 
-@122000 = ~Hacer que Cromwell mejore objetos del Torreón del Vigilante~
+@122000 = ~Hacer que Cromwell mejore objetos del TorreÃ³n del Vigilante~
     
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -134,10 +134,10 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@201000 = ~Progresiones de hechizos según tablas de PnP~
+@201000 = ~Progresiones de hechizos segÃºn tablas de PnP~
 
-@202000 = ~Espadas bastardas de dos puños~
-@203000 = ~Katanas de dos puños~
+@202000 = ~Espadas bastardas de dos puÃ±os~
+@203000 = ~Katanas de dos puÃ±os~
 
 @204000 = ~Palos universales~
 @205000 = ~Actualizaciones a las Descripciones para los Palos Universales~
@@ -146,7 +146,7 @@
 
 @206000 = ~Estilos de Armas para todos~
 
-@207000 = ~Druidas usan progresion de clérigos al subir niveles y hechizos~
+@207000 = ~Druidas usan progresion de clÃ©rigos al subir niveles y hechizos~
 
 @208000 = ~Demorar las habilidades de alto nivel~
 
@@ -157,7 +157,7 @@
 
 @209200 = ~Tope de nivel 30~
 
-@210000 = ~Permitir habilidades de ladrón con armadura pesada~
+@210000 = ~Permitir habilidades de ladrÃ³n con armadura pesada~
 // Moved from thieving_descripts.tpa
 // See English setup.tra for details on what should be matched by the regular expression
 @211000 = ~Alterar las descripciones para 'Permitir el robo y el uso de las habilidades de Ladron en Armadura Pesada'~
@@ -186,7 +186,7 @@
 
 @219100 = ~La habilidad de Identificar se basa en el Conocimiento del vendedor~
 
-@219200 = ~Hibrido de ambos métodos~
+@219200 = ~Hibrido de ambos mÃ©todos~
 
 @220000 = ~Gran Maestria en armas para los multi-clase (Weimer)~
 
@@ -203,7 +203,7 @@
 
 @224100 = ~Con tope, mejor GAC0 es -10 (PnP/Tabla BG1)~
 
-@225000 = ~Tabla de progresión de hechizos de hechicero extendida~
+@225000 = ~Tabla de progresiÃ³n de hechizos de hechicero extendida~
 
 @226000 = ~Alterar la tabla de progresion de hechizos de mago~
 @226001 = ~Tabla extendida (Blucher)~
@@ -215,26 +215,26 @@
 @228000 = ~Alterar la tabla de progresion de hechizos de clerigo~
 
 @229000 = ~Alterar las tablas de hechizos y progresion druidicas~
-@229001 = ~Sin cambios en la progresión de niveles, solo tabla de hechizos druidica extendida (Blucher)~
+@229001 = ~Sin cambios en la progresiÃ³n de niveles, solo tabla de hechizos druidica extendida (Blucher)~
 
-@229100 = ~Sin cambios en la progresión de niveles, solo tabla de hechizos PnP para druida/clérigo~
+@229100 = ~Sin cambios en la progresiÃ³n de niveles, solo tabla de hechizos PnP para druida/clÃ©rigo~
 
-@229200 = ~Usar los cambios a la progresion de niveles de clérigo con tabla de hechizos druidicos normal~
+@229200 = ~Usar los cambios a la progresion de niveles de clÃ©rigo con tabla de hechizos druidicos normal~
 
-@229300 = ~Usar los cambios a la progresion de niveles de clérigo con tabla de hechizos druidicos extendida (Blucher)~
+@229300 = ~Usar los cambios a la progresion de niveles de clÃ©rigo con tabla de hechizos druidicos extendida (Blucher)~
 
-@229400 = ~Usar los cambios a la progresion de niveles de clérigo con tabla de hechizos PnP Druida/Clerigo~
+@229400 = ~Usar los cambios a la progresion de niveles de clÃ©rigo con tabla de hechizos PnP Druida/Clerigo~
 
-@229500 = ~Usar los cambios a la progresion de niveles de clérigo con tabla de hechizos de clerigo normal~
+@229500 = ~Usar los cambios a la progresion de niveles de clÃ©rigo con tabla de hechizos de clerigo normal~
 
-@229600 = ~Usar los cambios a la progresion de niveles de clérigo con tabla de hechizos de clerigo extendida (Blucher)~
+@229600 = ~Usar los cambios a la progresion de niveles de clÃ©rigo con tabla de hechizos de clerigo extendida (Blucher)~
 
 @230000 = ~Tablas de Habilidades de Alto Nivel de clase triple~
 
-@231000 = ~Agregar penalizaciones de salvación para los hechizos lanzados por lanzadores de alto nivel~
-@231001 = ~Sólo magia arcana~
+@231000 = ~Agregar penalizaciones de salvaciÃ³n para los hechizos lanzados por lanzadores de alto nivel~
+@231001 = ~SÃ³lo magia arcana~
 
-@231100 = ~Sólo magia divina~
+@231100 = ~SÃ³lo magia divina~
 
 @231200 = ~Magias arcana y divina~
 
@@ -295,7 +295,7 @@
 @311000 = ~Apilacion de Hechizos ilimitada~
 
 @312000 = ~Parche Feliz (Los PNJ del grupo no se quejan cuando baja la reputacion)~
-@312001 = ~Los PNJ nunca se enfadan dependiendo de la reputación~
+@312001 = ~Los PNJ nunca se enfadan dependiendo de la reputaciÃ³n~
 
 @312100 = ~Los PNJ se enfadan dependiendo de la reputacion pero nunca abandonan el grupo (Salk)~
 
@@ -309,7 +309,7 @@
 
 @313000 = ~No trampas o Cerraduras (Weimer)~
 
-@314000 = ~Escenas y sueños del capítulo 1&2 mas rápidas~
+@314000 = ~Escenas y sueÃ±os del capÃ­tulo 1&2 mas rÃ¡pidas~
 @314001 = ~Originales de EoU (Karzak, Blucher)~
 
 @314100 = ~Version no-tonta~
@@ -358,8 +358,8 @@
 
 @320000 = ~Bastones, Palos y Hondas vendibles (Icelus)~
 
-@321000 = ~Truco de estadísticas mínimas~
-@321001 = ~Selecciona un valor mínimo de estadísticas, entre 6 y 15:~
+@321000 = ~Truco de estadÃ­sticas mÃ­nimas~
+@321001 = ~Selecciona un valor mÃ­nimo de estadÃ­sticas, entre 6 y 15:~
     
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

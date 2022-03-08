@@ -24,7 +24,7 @@
 @7000   = ~Grafiki rzucania zaklec z Icewind Dale (Andyr)~
 @7020   = ~Wyglad rzucania zaklec z Baldur's Gate II (Andyr)~
 @8000   = ~Przywroc ekran wczytywania z Cieni Amn (tylko dla Tronu Bhalla)~
-@8020   = ~Przywrócenie ekranów wczytywania z IWD~
+@8020   = ~PrzywrÃ³cenie ekranÃ³w wczytywania z IWD~
 @9000   = ~Wylacz ikony w portretach postaci dodane przez uzywane przedmioty~
 @10000  = ~Zwykli ludzie uzywaja szarych kolorow~
 @11000  = ~Poprawki ikon~
@@ -34,7 +34,7 @@
 @15000  = ~Zmien nazwy rzadkich przedmiotow~
 @15001  = ~Uzyj rzadkiej nazwy (tj. Kondar)~
 @15100  = ~Uzyj rzadkiej nazwy +x (tj. Kondar +1)~
-@15200  = ~Uzyj ogolnych nazw (tj. Miecz poltorareczny +1, +3 przeciw zmiennokszta³tnym)	 ~
+@15200  = ~Uzyj ogolnych nazw (tj. Miecz poltorareczny +1, +3 przeciw zmiennoksztaÂ³tnym)	 ~
 @101000 = ~Wiecej wtracen~
 @102000 = ~Zmiana punktow zycia uruchamia uszkodzone dialogi postaci przylaczalnych~
 @103000 = ~Odslon obszary dziczy przed rozdzialem szostym~
@@ -80,7 +80,7 @@
 @209001 = ~Usun ograniczenie doswiadczenia~
 @209100 = ~Ograniczenie doswiadczenia do 20 poziomu~
 @209200 = ~Ograniczenie doswiadczenia do 30 poziomu~
-@210000 = ~Pozwol na uzywanie umiejetnoœci zlodziejskich i krycia sie w cieniu ciezkich pancerzach~
+@210000 = ~Pozwol na uzywanie umiejetnoÅ“ci zlodziejskich i krycia sie w cieniu ciezkich pancerzach~
 @211000 = ~Zmien opis przedmiotow dla komponentu 'Pozwol na uzywanie umiejetnosci zlodziejskich i krycia sie w cieniu w ciezkich pancerzach'~
 @212000 = ~Pozwol rzucac czary maga w ciezkich pancerzach~
 @213000 = ~Zmien opis przedmiotow dla komponentu 'Pozwol rzucac czary mistyczne maga w ciezkich pancerzach'~

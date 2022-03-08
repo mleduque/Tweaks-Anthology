@@ -15,7 +15,7 @@
      @5 = ~Pro tuto komponentu  je vyzadovana 'Sada exotickych predmetu'~
      @6 = ~Vyzaduje komponentu 'Umozneni pouziti zlodejskych schopnosti
 a ukryvani v tezkych zbrojich'~
-     @7 = ~Tato cast není dostupna ve tvem jazyce~
+     @7 = ~Tato cast nenÃ­ dostupna ve tvem jazyce~
      @8 = ~Tato cast je pouze pro BGT(Baldur's Gate Trilogy)~
      @9 = ~Zmeny pravidel~
     @10 = ~Tato cast neni dostupna pro BG1Tutu~
@@ -102,7 +102,7 @@ je prekonana jinym, jiz nainstalovanym modem~
 @111000  = ~Pridat popisky do map~
 @112000  = ~Obchody nabizeji vetsi mnozstvi predmetu najednou~
 
-@113000 = ~Znovunastavení reputace pro BG2 (pouze BGT)~
+@113000 = ~ZnovunastavenÃ­ reputace pro BG2 (pouze BGT)~
 
 @114000 = ~Klenoty a lektvary vyzaduji identifikaci~
 @115000 = ~Vyladeni premenovatelu~

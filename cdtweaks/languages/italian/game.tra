@@ -51,21 +51,21 @@
 @104002 = ~Mago Autorizzato~           
 @104003 = ~Sacerdote della Milizia~    
 
-@105001 = ~Il tuo oggetto drow si Ë disintegrato~
+@105001 = ~Il tuo oggetto drow si √® disintegrato~
 
-@106001 = ~La tua armatura si Ë distrutta~
-@106002 = ~Il tuo scudo si Ë distrutto~
-@106003 = ~Il tuo elmo si Ë distrutto~ 
+@106001 = ~La tua armatura si √® distrutta~
+@106002 = ~Il tuo scudo si √® distrutto~
+@106003 = ~Il tuo elmo si √® distrutto~ 
 
-@107001 = ~Va ad aspettarci alla Locanda di Braccio Amico. Se le cose dovessero cambiare, ci incontreremo l‡.~
+@107001 = ~Va ad aspettarci alla Locanda di Braccio Amico. Se le cose dovessero cambiare, ci incontreremo l√†.~
 @107002 = ~Torna a viaggiare con noi.~
-@107003 = ~Ti rimander‡ nel piano extra dimensionale... aspettami l‡.~
-@107004 = ~Vai ad aspettarci alla locanda Culla d'Inverno. Se le cose cambieranno ci incontreremo l‡.~
-@107005 = ~Vai ad aspettarci alla Cantina della Radice. Se le cose cambieranno ci incontreremo l‡.~
-@107006 = ~Vai ad aspettarci alla locanda del Patibolo Fischiettante. Se le cose cambieranno ci incontreremo l‡.~
-@107007 = ~Salve di nuovo. » un vero piacere, come lo era gi‡ prima.~
+@107003 = ~Ti rimander√† nel piano extra dimensionale... aspettami l√†.~
+@107004 = ~Vai ad aspettarci alla locanda Culla d'Inverno. Se le cose cambieranno ci incontreremo l√†.~
+@107005 = ~Vai ad aspettarci alla Cantina della Radice. Se le cose cambieranno ci incontreremo l√†.~
+@107006 = ~Vai ad aspettarci alla locanda del Patibolo Fischiettante. Se le cose cambieranno ci incontreremo l√†.~
+@107007 = ~Salve di nuovo. √à un vero piacere, come lo era gi√† prima.~
 @107008 = ~Dovrai aspettare. Non ho camere per te, al momento.~ // bg2 strref 27251
-@107009 = ~» stato un vero piacere andare all'avventura al tuo fianco. Ben incontrato e a presto.~ // bg2 strref 43200
+@107009 = ~√à stato un vero piacere andare all'avventura al tuo fianco. Ben incontrato e a presto.~ // bg2 strref 43200
 @107010 = ~Salve a tutti.~ [genmg05] // bg2 strref 11082
 @107011 = ~Salve a tutti.~ [genfg12] // bg2 strref 11119
 @107012 = ~Alas, dobbiamo dividere le nostre strade. Fino alla prossima volta.~ // bg2 strref 43202
@@ -73,68 +73,68 @@
 @107014 = ~Se dovessi aver nuovamente bisogno dei tuoi servizi, incontriamoci alla Taverna del Canto Elfico a Baldur's Gate.~
 @107015 = ~Dovremo dividere le nostre strade, per il momento. Aspettami alla locanda Il Giocoliere Gioviale a Beregost.~
 
-@107501 = ~Ora non mi serve pi˘ il tuo aiuto, ma torneremo a viaggiare assieme presto. Fino a quel momento, aspettami alla Locanda del Braccio Amico.~
-@107502 = ~Le nostre strade si dividono per qualche tempo. Se mi servir‡ nuovamente il tuo aiuto, penso che ci dovremmo incontrare alla locanda del Giocoliere Gioviale a Beregost.~
-@107503 = ~Per il prossimo futuro dovremmo scoprire il nostro destino ognuno per conto proprio. Penso che, comunque, il tuo aiuto mi servir‡ di nuovo. Se prenderai alloggio alla locanda di Nashkel, ci incontreremo l‡, quando passer‡ da quelle parti.~
-@107504 = ~Dovremmo separarci ora. Ti cercherÚ la prossima volta che sar‡ in citt‡. Incontriamoci alla taverna del Canto Elfico.~
+@107501 = ~Ora non mi serve pi√π il tuo aiuto, ma torneremo a viaggiare assieme presto. Fino a quel momento, aspettami alla Locanda del Braccio Amico.~
+@107502 = ~Le nostre strade si dividono per qualche tempo. Se mi servir√† nuovamente il tuo aiuto, penso che ci dovremmo incontrare alla locanda del Giocoliere Gioviale a Beregost.~
+@107503 = ~Per il prossimo futuro dovremmo scoprire il nostro destino ognuno per conto proprio. Penso che, comunque, il tuo aiuto mi servir√† di nuovo. Se prenderai alloggio alla locanda di Nashkel, ci incontreremo l√†, quando passer√† da quelle parti.~
+@107504 = ~Dovremmo separarci ora. Ti cercher√≤ la prossima volta che sar√† in citt√†. Incontriamoci alla taverna del Canto Elfico.~
 @107510 = ~Sarebbe un onore.~
 @107511 = ~Beh certo. Non voglio mettermi in nessun guaio mentre non ci siete, no signore.~
-@107512 = ~Come sai, ho alcuni affari da quelle parti. Cercami l‡, se mai avessi bisogno di pi˘ muscoli nanici.~
-@107513 = ~Molto bene, accetto i termini del nostro accordo. (Meglio assecondarlo, non Ë abbastanza brillante per capire le mie contro argomentazioni.)~
+@107512 = ~Come sai, ho alcuni affari da quelle parti. Cercami l√†, se mai avessi bisogno di pi√π muscoli nanici.~
+@107513 = ~Molto bene, accetto i termini del nostro accordo. (Meglio assecondarlo, non √® abbastanza brillante per capire le mie contro argomentazioni.)~
 @107514 = ~L'inerzia mi irrita, ma io sono profondamente in debito con te. Torna presto da questa chierica di guerra.~
-@107515 = ~Certo, tesoro. Sono sicuro che sar‡ in grado divertirmi in tua assenza.~
-@107516 = ~Bene, potrei finire la mia canzone con un paio di tranquilli giorni di lavoro. Tornate presto, perÚ, c'Ë molto pi˘ da vedere, ne sono sicuro!~
+@107515 = ~Certo, tesoro. Sono sicuro che sar√† in grado divertirmi in tua assenza.~
+@107516 = ~Bene, potrei finire la mia canzone con un paio di tranquilli giorni di lavoro. Tornate presto, per√≤, c'√® molto pi√π da vedere, ne sono sicuro!~
 @107517 = ~Anche le cose migliori finiscono, si dice, ma forse possono tornare di nuovo? Attendo il momento in cui i nostri sentieri si incroceranno ancora una volta.~
-@107518 = ~FarÚ questa cosa, ma molto c'Ë ancora da fare. Non ritardare il tuo ritorno.~
-@107519 = ~» stato bello stare con te. Ma sono sicuro che stai agendo con saggezza... Eppure, c'Ë ancora molto da fare, quindi torniamo a lavorare insieme al pi˘ presto.~
+@107518 = ~Far√≤ questa cosa, ma molto c'√® ancora da fare. Non ritardare il tuo ritorno.~
+@107519 = ~√à stato bello stare con te. Ma sono sicuro che stai agendo con saggezza... Eppure, c'√® ancora molto da fare, quindi torniamo a lavorare insieme al pi√π presto.~
 @107520 = ~Non fa alcuna differenza in entrambi i casi. Sono in grado di attendere facilmente la morte, in un luogo come in un altro.~
-@107521 = ~Awww... devo? Non voglio andare... ma suppongo che dovrÚ fare quello che chiedi. TerrÚ il broncio fino al tuo ritorno perÚ!~
-@107522 = ~Vedo poche possibilit‡ di proteggere la Natura sotto un tetto di legno morto, circondata da tutto lo squallore degli uomini. » un segno della mia fiducia in te il fatto che farÚ quello che hai detto.~
-@107523 = ~Questa sembra un'idea molto stupida. Ma suppongo che l'unico modo di convincertene » di metterla in atto.~
-@107524 = ~FarÚ cosÏ, ma spero di ricongiungermi con te al pi˘ presto. Io non ho ancora ripagato il mio debito.~
-@107525 = ~Tiax Ë soddisfatto dalla tua creativa sottomissione. Fino al tuo ritorno, gli umili abitanti di quella locanda adoreranno la gloria di Tiax!~
-@107526 = ~Lo farÚ, ma non volontariamente. Sono lontana dall'essere al sicuro in queste abitazioni della gente di superficie.~
-@107531 = ~SÏ, oh onnipresente autorit‡.~
+@107521 = ~Awww... devo? Non voglio andare... ma suppongo che dovr√≤ fare quello che chiedi. Terr√≤ il broncio fino al tuo ritorno per√≤!~
+@107522 = ~Vedo poche possibilit√† di proteggere la Natura sotto un tetto di legno morto, circondata da tutto lo squallore degli uomini. √à un segno della mia fiducia in te il fatto che far√≤ quello che hai detto.~
+@107523 = ~Questa sembra un'idea molto stupida. Ma suppongo che l'unico modo di convincertene √à di metterla in atto.~
+@107524 = ~Far√≤ cos√¨, ma spero di ricongiungermi con te al pi√π presto. Io non ho ancora ripagato il mio debito.~
+@107525 = ~Tiax √® soddisfatto dalla tua creativa sottomissione. Fino al tuo ritorno, gli umili abitanti di quella locanda adoreranno la gloria di Tiax!~
+@107526 = ~Lo far√≤, ma non volontariamente. Sono lontana dall'essere al sicuro in queste abitazioni della gente di superficie.~
+@107531 = ~S√¨, oh onnipresente autorit√†.~
 @107532 = ~M-m-m-molto bene, allora. Buona fortuna e buon viaggio.~
-@107533 = ~Se tu lo desideri, lo farÚ. Mi hai dimostrato di essere un capo, e ora ho fiducia nelle tue decisioni.~
-@107534 = ~Sei sicuro? Boo non pensa che ci sia molto male da essere spietatamente preso a pugni in una locanda. Ma allora il male Ë molto intelligente, e spesso ben educato, e puÚ nascondersi ovunque. Lo vedremo presto.~
+@107533 = ~Se tu lo desideri, lo far√≤. Mi hai dimostrato di essere un capo, e ora ho fiducia nelle tue decisioni.~
+@107534 = ~Sei sicuro? Boo non pensa che ci sia molto male da essere spietatamente preso a pugni in una locanda. Ma allora il male √® molto intelligente, e spesso ben educato, e pu√≤ nascondersi ovunque. Lo vedremo presto.~
 @107535 = ~Evviva! Un modo per poter essere utile alla nostra famiglia felice! E senza dover spendere altro tempo in compagnia degli sciocchi.~
-@107536 = ~Come vuoi. Un po' di tempo lontano da te sar‡ un bene per tutti noi, in ogni caso.~
-@107537 = ~Va bene - penso che questa sia una di quelle cose che fanno parte di ciÚ che fa un avventuriero, perÚ non suona interessante...~
+@107536 = ~Come vuoi. Un po' di tempo lontano da te sar√† un bene per tutti noi, in ogni caso.~
+@107537 = ~Va bene - penso che questa sia una di quelle cose che fanno parte di ci√≤ che fa un avventuriero, per√≤ non suona interessante...~
 @107538 = ~Un'occasione per un po' di lusso e un po' di riposo dalla strada? Certo, non la rifiuto.~
 
 @108001 = ~Cintura delle munizioni~    
-@108002 = ~Questa bandoliera Ë l'ideale per tenere proiettili, dardi, frecce o quadrelli.
+@108002 = ~Questa bandoliera √® l'ideale per tenere proiettili, dardi, frecce o quadrelli.
 
 STATISTICHE:                          
 
-Capacit‡: 2000 unit‡ tra proiettili, dardi, frecce o quadrelli.
+Capacit√†: 2000 unit√† tra proiettili, dardi, frecce o quadrelli.
 Peso: 2~                               
 @108003 = ~Contenitore per Pozioni~       
-@108004 = ~Solitamente in possesso dei guaritori erranti, questo contenitore di cuoio si srotola e permette a chi lo utilizza di fissare delicate bottigliette per le pozioni, nel suo lato imbottito, con numerose strisce di cuoio per una custodia sicura durante il viaggio. Indipendentemente dalla quantit‡ di pozioni al suo interno, il peso dell'astuccio rimane invariato.
+@108004 = ~Solitamente in possesso dei guaritori erranti, questo contenitore di cuoio si srotola e permette a chi lo utilizza di fissare delicate bottigliette per le pozioni, nel suo lato imbottito, con numerose strisce di cuoio per una custodia sicura durante il viaggio. Indipendentemente dalla quantit√† di pozioni al suo interno, il peso dell'astuccio rimane invariato.
 
 STATISTICHE:                        
 
-Capacit‡: 100 bottigliette.
+Capacit√†: 100 bottigliette.
 Peso: 2~                               
 @108005 = ~Borsa Conservante~          
-@108006 = ~Come altre borse magiche, questa sembra essere un normale sacco di tela di circa 60 per 120 centimetri. La borsa conservante si apre in uno spazio nondimensionale e il suo interno Ë pi˘ grande delle sue dimensioni esterne. A prescindere da cosa sia messo in questo oggetto, la borsa ha sempre lo stesso peso.
+@108006 = ~Come altre borse magiche, questa sembra essere un normale sacco di tela di circa 60 per 120 centimetri. La borsa conservante si apre in uno spazio nondimensionale e il suo interno √® pi√π grande delle sue dimensioni esterne. A prescindere da cosa sia messo in questo oggetto, la borsa ha sempre lo stesso peso.
 
 STATISTICHE:
 
 Speciale:
-- PuÚ conservare qualsiasi arma, armatura o altro oggetto.
+- Pu√≤ conservare qualsiasi arma, armatura o altro oggetto.
 Peso: 5~
 
 @108501 = ~Borsa~
 @108502 = ~Borsa delle Gemme~
 @108503 = ~Una piccola borsa.~
-@108504 = ~Una Borsa Conservante amplia enormemente lo spazio per la conservazione degli oggetti. Questo robusto sacchetto Ë progettato per conservare gemme e gioielli. Rifiuter‡ qualsiasi altro tipo di oggetti.
+@108504 = ~Una Borsa Conservante amplia enormemente lo spazio per la conservazione degli oggetti. Questo robusto sacchetto √® progettato per conservare gemme e gioielli. Rifiuter√† qualsiasi altro tipo di oggetti.
 
 STATISTICHE:
 
 Speciale:
-- PuÚ conservare gemme, anelli, amuleti e collane.
+- Pu√≤ conservare gemme, anelli, amuleti e collane.
 
 Peso: 1
 Posizionala in uno slot degli Oggetti Rapidi per aprirla.~
@@ -143,12 +143,12 @@ Posizionala in uno slot degli Oggetti Rapidi per aprirla.~
 @108506 = ~Contenitore~
 @108507 = ~Contenitore per Pozioni~
 @108508 = ~Un contenitore rettangolare.~
-@108509 = ~Una Borsa Conservante amplia enormemente lo spazio per la conservazione degli oggetti. Solitamente in possesso dei guaritori girovaghi, questo contenitore di cuoio si srotola e permette a chi lo utilizza di fissare, nel suo lato imbottito, delicate bottigliette per le pozioni, con numerose strisce di cuoio per una custodia sicura durante il viaggio. La magia infusa nel contenitore rifiuter‡ ogni altro tipo di oggetti.
+@108509 = ~Una Borsa Conservante amplia enormemente lo spazio per la conservazione degli oggetti. Solitamente in possesso dei guaritori girovaghi, questo contenitore di cuoio si srotola e permette a chi lo utilizza di fissare, nel suo lato imbottito, delicate bottigliette per le pozioni, con numerose strisce di cuoio per una custodia sicura durante il viaggio. La magia infusa nel contenitore rifiuter√† ogni altro tipo di oggetti.
 
 STATISTICHE:
 
 Speciale:
-- PuÚ contenere pozioni e bottiglie. Per utilizzare il contenitore, posizionalo in uno slot rapido e clicca su di esso.
+- Pu√≤ contenere pozioni e bottiglie. Per utilizzare il contenitore, posizionalo in uno slot rapido e clicca su di esso.
 
 Peso: 3~
 @108510 = ~Si sta aprendo il Contenitore per Pozioni. Attendere prego.~
@@ -156,24 +156,24 @@ Peso: 3~
 @108511 = ~Astuccio~
 @108512 = ~Astuccio delle Pergamene~
 @108513 = ~Un astuccio.~
-@108514 = ~Una Borsa Conservante amplia enormemente lo spazio per la conservazione degli oggetti. Questo robusto contenitore Ë fatto in modo che dozzine di pergamene possano essere messe al suo interno e tenute al sicuro da fuoco, pioggia o elettricit‡ - il genere di problemi spesso affrontati da un mago avventuriero. Non accetter‡ nient'altro.
+@108514 = ~Una Borsa Conservante amplia enormemente lo spazio per la conservazione degli oggetti. Questo robusto contenitore √® fatto in modo che dozzine di pergamene possano essere messe al suo interno e tenute al sicuro da fuoco, pioggia o elettricit√† - il genere di problemi spesso affrontati da un mago avventuriero. Non accetter√† nient'altro.
 
 STATISTICHE:
 
 Speciale:
-- PuÚ conservare un gran numero di pergamene. Per utilizzare l'astuccio, posizionalo in uno slot rapido e clicca su di esso.
+- Pu√≤ conservare un gran numero di pergamene. Per utilizzare l'astuccio, posizionalo in uno slot rapido e clicca su di esso.
 
 Peso: 2~
 
 @108515 = ~Cintura~
 @108516 = ~Cintura per Munizioni~
 @108517 = ~Una cintura.~
-@108518 = ~Una Borsa Conservante amplia enormemente lo spazio per la conservazione degli oggetti. A causa delle molte tasche di ridotte dimensioni, questa cintura Ë particolarmente adatta per il trasporto di proiettili, dardi, frecce o quadrelli. Niente altro vi potrÚ essere riposto.
+@108518 = ~Una Borsa Conservante amplia enormemente lo spazio per la conservazione degli oggetti. A causa delle molte tasche di ridotte dimensioni, questa cintura √® particolarmente adatta per il trasporto di proiettili, dardi, frecce o quadrelli. Niente altro vi potr√≤ essere riposto.
 
 STATISTICHE:
 
 Speciale:
-- PuÚ contenere un numero elevato di munizioni (proiettili, dardi, frecce o quadrelli.) Indossa questa cintura per accedere alla sua speciale abilit‡.
+- Pu√≤ contenere un numero elevato di munizioni (proiettili, dardi, frecce o quadrelli.) Indossa questa cintura per accedere alla sua speciale abilit√†.
 
 Peso: 2~
 @108519 = ~Si sta aprendo la Cintura per Munizioni. Attendi un momento.~
@@ -181,12 +181,12 @@ Peso: 2~
 @108520 = ~Borsa~
 @108521 = ~Borsa Conservante~
 @108522 = ~Una borsa.~
-@108523 = ~Come altre borse magiche, questa sembra essere un normale sacco di tela di circa 60 per 120 centimetri. La borsa conservante si apre in uno spazio nondimensionale e il suo interno Ë pi˘ grande delle sue dimensioni esterne. A prescindere da cosa sia messo in questo oggetto, la borsa ha sempre lo stesso peso.
+@108523 = ~Come altre borse magiche, questa sembra essere un normale sacco di tela di circa 60 per 120 centimetri. La borsa conservante si apre in uno spazio nondimensionale e il suo interno √® pi√π grande delle sue dimensioni esterne. A prescindere da cosa sia messo in questo oggetto, la borsa ha sempre lo stesso peso.
 
 STATISTICHE:
 
 Speciale:
-- PuÚ conservare oggetti di tutti le dimensioni senza nessun limite. Per utilizzare la borsa, posizionala in uno slot rapido e clicca su di essa.
+- Pu√≤ conservare oggetti di tutti le dimensioni senza nessun limite. Per utilizzare la borsa, posizionala in uno slot rapido e clicca su di essa.
 
 Peso: 10~
 @108524 = ~Si sta aprendo la Borsa Conservante. Attendi un momento.~
@@ -322,7 +322,7 @@ Peso: 10~
 @111124 = ~Il Patibolo Fischiettante~
 @111125 = ~Baracca del Becchino~            
 
-@114001 = ~Una gemma Ë un minerale che, se intagliato e levigato, puÚ essere collezionato o usato come gioiello.~
+@114001 = ~Una gemma √® un minerale che, se intagliato e levigato, pu√≤ essere collezionato o usato come gioiello.~
 @115001 = ~Evocare Animali             
 (Evocazione/Attrazione)
 Livello: 6
@@ -333,7 +333,7 @@ Tempo di lancio: 9
 Area d'effetto: Speciale
 Tiro-salvezza: Nessuno
 
-Questo incantesimo consente al lanciatore di evocare e controllare due Orsi Mannari con 20 Dadi-vita. Gli orsi obbediranno ad ogni comando del sacerdote fino al termine dell'incantesimo. Gli Orsi Mannari sono pi˘ lenti dei Lupi Mannari Maggiori, ma sono anche pi˘ resistenti. Gli Orsi Mannari hanno una naturale resistenza agli attacchi magici ed elementali e rigenerano rapidamente.~
+Questo incantesimo consente al lanciatore di evocare e controllare due Orsi Mannari con 20 Dadi-vita. Gli orsi obbediranno ad ogni comando del sacerdote fino al termine dell'incantesimo. Gli Orsi Mannari sono pi√π lenti dei Lupi Mannari Maggiori, ma sono anche pi√π resistenti. Gli Orsi Mannari hanno una naturale resistenza agli attacchi magici ed elementali e rigenerano rapidamente.~
 @115002 = ~Orso Mannaro Maggiore~      
 @115003 = ~Orso Mannaro~               
 @115004 = ~Questa zampa rappresenta simbolicamente il controllo di un Druido Mutaforma sulla licantropia. Quando la zampa viene impugnata, il Mutaforma diventa un Lupo Mannaro. Quando la zampa viene rimossa, il Mutaforma ritorna alla sua forma umana. Le zampe di un Lupo Mannaro contano come armi +2.
@@ -342,11 +342,11 @@ STATISTICHE:
 
 Attributi: Forza 19, Destrezza 16, Costituzione 15
 Classe Armatura Base: 1                
-Resistenze: resistenza alla magia 20%, immunit‡ alle armi non magiche
+Resistenze: resistenza alla magia 20%, immunit√† alle armi non magiche
 Attacchi per round: 2                  
 Danno: 1d12                            
 Tipo di danno: tagliente               
-Fattore-velocit‡: 3                    
+Fattore-velocit√†: 3                    
 Tipo di competenza: Pugnale            
 Tipo: a una mano~                      
 
@@ -357,13 +357,13 @@ STATISTICHE:
 Attributi: Forza 21, Destrezza 20, Costituzione 25
 Classe Armatura Base: -6               
 Tiri-salvezza base: 1/1/1/2/1          
-Resistenze: resistenza alla magia 40%, resistenza ai danni elementali 50%, immunit‡ alle armi non magiche
+Resistenze: resistenza alla magia 40%, resistenza ai danni elementali 50%, immunit√† alle armi non magiche
 Rigenerazione: 3 punti ferita al secondo
 Attacchi per round: 3                  
 THAC0 base: 6                          
 Danno: 2d8                             
 Tipo di danno: tagliente               
-Fattore-velocit‡: 3                    
+Fattore-velocit√†: 3                    
 Tipo di competenza: Pugnale            
 Tipo: a una mano~
 
@@ -378,9 +378,9 @@ Classe Armatura Base: 1
 Numero di Attacchi: 2
 Danno: 1d12 (tagliente), come un'arma magica +2
 
-Abilit‡ speciali:
+Abilit√† speciali:
 - Resistenza alla magia: 20%
-- Immunit‡ alle armi non magiche~
+- Immunit√† alle armi non magiche~
 @115007 = ~Mutare forma in Lupo Mannaro Maggiore
 
 Forza: 21 
@@ -391,92 +391,92 @@ Classe Armatura Base: -6
 Numero di Attacchi: 3
 Danno: 2d8 (tagliente)
 
-Abilit‡ speciali:
+Abilit√† speciali:
 - Resistenza al Fuoco: 50%
 - Resistenza al Freddo: 50%
-- Resistenza all'Elettricit‡: 50%
+- Resistenza all'Elettricit√†: 50%
 - Resistenza all'Acido: 50%
 - Resistenza alla Magia: 40%
-- Immunit‡ alle armi non magiche~                      
+- Immunit√† alle armi non magiche~                      
 @115008 = ~ Zampa di Lupo Mannaro~
 @115009 = ~ Zampa di Lupo Mannaro Maggiore~
 
-@116002 = ~Ho l'atto di propriet‡ del teatro, se voleste mettere il vostro talento a disposizione di questa arte. Samuel » un buon uomo sarÚ lieto di cedervi la propriet‡.~
+@116002 = ~Ho l'atto di propriet√† del teatro, se voleste mettere il vostro talento a disposizione di questa arte. Samuel √à un buon uomo sar√≤ lieto di cedervi la propriet√†.~
 @116003 = ~Mi dispiace Raelis, ma non ne avrei davvero il tempo.~
 @116004 = ~Vi ringrazio della gentile offerta ma mi vedo costretto a declinare. Non saprei nemmeno da che parte cominciare a gestire un teatro.~
 @116005 = ~Il vostro teatro sotto i Cinque Boccali? Sarei onorato di prenderlo sotto la mia ala.~
-@116006 = ~D'accordo, fate quel che dovete. Non farei nulla per fermarvi. Vi devo molto pi˘ di un commiato, tuttavia.~
-@116007 = ~Ho l'atto di propriet‡ del teatro, se voleste mettere il vostro talento a disposizione di questa arte. Samuel Ë un buon uomo sarÚ lieto di cedervi la propriet‡.~
-@116008 = ~Allora dovrete accontentarvi dei nostri pi˘ sentiti ringraziamenti. Venite, miei Custodi del Fato, dobbiamo andarcene e alla svelta. Forse ci incontreremo di nuovo, <CHARNAME>.~
-@116009 = ~Mi dispiace, non posso. Devo ritrovare una mia amica e dubito di potermi permettere di stare cosÏ lontano da Athkatla molto spesso.~
-@116010 = ~Temo di non potere, ministro, in quanto non capiter‡ spesso da queste parti. Sto inseguendo un potente stregone e tutte le mie tracce migliori sono ad Athkatla.~
-@116011 = ~Devo declinare. Gli eventi di Athkatla richiedono la mia presenza e non posso allontanarmi cosÏ tanto regolarmente.~
-@116012 = ~Sarebbe un onore. Accetto, e farÚ del mio meglio per essere presente e aiutare il villaggio.~
+@116006 = ~D'accordo, fate quel che dovete. Non farei nulla per fermarvi. Vi devo molto pi√π di un commiato, tuttavia.~
+@116007 = ~Ho l'atto di propriet√† del teatro, se voleste mettere il vostro talento a disposizione di questa arte. Samuel √® un buon uomo sar√≤ lieto di cedervi la propriet√†.~
+@116008 = ~Allora dovrete accontentarvi dei nostri pi√π sentiti ringraziamenti. Venite, miei Custodi del Fato, dobbiamo andarcene e alla svelta. Forse ci incontreremo di nuovo, <CHARNAME>.~
+@116009 = ~Mi dispiace, non posso. Devo ritrovare una mia amica e dubito di potermi permettere di stare cos√¨ lontano da Athkatla molto spesso.~
+@116010 = ~Temo di non potere, ministro, in quanto non capiter√† spesso da queste parti. Sto inseguendo un potente stregone e tutte le mie tracce migliori sono ad Athkatla.~
+@116011 = ~Devo declinare. Gli eventi di Athkatla richiedono la mia presenza e non posso allontanarmi cos√¨ tanto regolarmente.~
+@116012 = ~Sarebbe un onore. Accetto, e far√≤ del mio meglio per essere presente e aiutare il villaggio.~
 @116013 = ~Mi dispiace, sindaco, ma non sono interessato. Ora vorrei essere pagato!~
 @116014 = ~Ammetto di essere amareggiato dalla vostra risposta ma d'altro canto mi rendo conto delle implicazioni della vostra professione, <CHARNAME>. Non invidio la strada che avete intrapreso.~
 @116015 = ~Voi, mio signore, siete un vero amico della terra. La stessa terra che potrebbe essere curata da una persona di polso come voi.~
 @116016 = ~Vorreste prendervi cura di questo bosco nel periodo della sua rinascita?~
-@116017 = ~FarÚ del mio meglio per ripristinare l'equilibrio in queste terre.~
-@116018 = ~Questa terra ha sofferto, e io farÚ del mio meglio per curarla dai danni provocati dalle azioni di Faldorn.~
-@116019 = ~Non sarei un buon Grande Druido. I miei affari mi riportano ad Athkatla, perciÚ mi vedo costretto a declinare.~
+@116017 = ~Far√≤ del mio meglio per ripristinare l'equilibrio in queste terre.~
+@116018 = ~Questa terra ha sofferto, e io far√≤ del mio meglio per curarla dai danni provocati dalle azioni di Faldorn.~
+@116019 = ~Non sarei un buon Grande Druido. I miei affari mi riportano ad Athkatla, perci√≤ mi vedo costretto a declinare.~
 @116020 = ~Sto dando la caccia ad un potente stregone e non posso lasciarmi distrarre da altri problemi.~
-@116021 = ~Una mia amica Ë stata rapita. Per quanto mi dispiaccia, non posso lasciarla perdere per curarmi del bosco.~
+@116021 = ~Una mia amica √® stata rapita. Per quanto mi dispiaccia, non posso lasciarla perdere per curarmi del bosco.~
 @116022 = ~Vi siete guadagnati la benedizione del Bosco e, da parte mia, il Bastone dei Tuoni e dei Fulmini.~
-@116023 = ~D'accordo. Continuer‡ a fungere da maestro di sfida e da Grande Druido finchÈ i riti di ascensione non saranno portati a termine.~
+@116023 = ~D'accordo. Continuer√† a fungere da maestro di sfida e da Grande Druido finch√© i riti di ascensione non saranno portati a termine.~
 
-@122001 = ~Ah, una Custodia dell'Abbondanza. Posso incantarla affinchÈ produca quadrelli ancora pi˘ potenti, ma vi coster‡. 5.000 monete, per la precisione.~
+@122001 = ~Ah, una Custodia dell'Abbondanza. Posso incantarla affinch√© produca quadrelli ancora pi√π potenti, ma vi coster√†. 5.000 monete, per la precisione.~
 @122002 = ~Beh, vediamo che altro avete.~
 @122003 = ~Un cappuccio da ladro, eh?~ 
-@122004 = ~Con una fiala di antidoto e un anello di invisibilit‡, posso renderlo molto utile.~
-@122005 = ~Avete un anello di invisibilit‡, vedo... e un antidoto. Avete tutto il necessario. Per 10.000 monete posso potenziarlo notevolmente.~
+@122004 = ~Con una fiala di antidoto e un anello di invisibilit√†, posso renderlo molto utile.~
+@122005 = ~Avete un anello di invisibilit√†, vedo... e un antidoto. Avete tutto il necessario. Per 10.000 monete posso potenziarlo notevolmente.~
 @122006 = ~Cosa abbiamo qui?~          
 @122007 = ~Ho una ricetta per potenziare l'Elmo della Roccia attaccandovi due corni. Quando avrete tutti i pezzi, ne riparleremo.~
 @122008 = ~Avete l'Elmo della Roccia e due corni da attaccarci. Per 5.000 monete potrei farne un ottimo elmo per ogni guerriero.~
 @122009 = ~Questi sono i Guanti del Bardo.~
-@122010 = ~Sbriciolando tre gemme, potrebbero essere notevolmente potenziati. Portatemi un diamante, uno smeraldo, una pietra del ladro, uno zaffiro stellato e vedrÚ cosa posso fare.~
+@122010 = ~Sbriciolando tre gemme, potrebbero essere notevolmente potenziati. Portatemi un diamante, uno smeraldo, una pietra del ladro, uno zaffiro stellato e vedr√≤ cosa posso fare.~
 @122011 = ~Sbriciolando un diamante, uno smeraldo, uno zaffiro stellato e una pietra del ladro potrei potenziarli. Vi costerebbe 5.000 monete.~
 @122012 = ~Questi sono bracciali per un paladino.~
 @122013 = ~Per 10.000 pezzi d'oro, posso riforgiarli in qualcosa di addirittura migliore.~
 @122014 = ~Mmh, un vecchio Manuale dei Golem.~
-@122015 = ~Con le pagine giuste, Ë possibile potenziare i golem evocati da questo libro.~
+@122015 = ~Con le pagine giuste, √® possibile potenziare i golem evocati da questo libro.~
 @122016 = ~Con questa pagina del Golem di Argilla e 5.000 monete, potrei rendere il vostro manuale in grado di evocare Golem di Argilla.~
-@122017 = ~Ach, questo sÏ che Ë un mantello di protezione come si deve.~
-@122018 = ~Con una pergamena di Invisibilit‡ e una di Velocit‡ Potenziata, potrei renderlo ancora migliore.~
-@122019 = ~Potremmo usare questa pergamena di Invisibilit‡ e quest'altra di Velocit‡ Potenziata per rendere questo mantello ancora pi˘ potente. Non Ë un lavoro semplice, tuttavia, perciÚ non posso farlo per meno di 20.000 monete d'oro.~
+@122017 = ~Ach, questo s√¨ che √® un mantello di protezione come si deve.~
+@122018 = ~Con una pergamena di Invisibilit√† e una di Velocit√† Potenziata, potrei renderlo ancora migliore.~
+@122019 = ~Potremmo usare questa pergamena di Invisibilit√† e quest'altra di Velocit√† Potenziata per rendere questo mantello ancora pi√π potente. Non √® un lavoro semplice, tuttavia, perci√≤ non posso farlo per meno di 20.000 monete d'oro.~
 @122020 = ~Wow, scaglie di drago bianco. Potrei usarle per forgiarvi una splendida armatura, se lo voleste. Vi costerebbe solo 5.000 monete d'oro.~
-@122021 = ~Questa cotta di maglia elfica Ë davvero di ottima fattura, persino per gli standard di un nano.~
-@122022 = ~Ma ci sono un paio di trucchetti nanici che le orecchie a punta ancora non conoscono. Con una pergamena di Protezione dalle Armi Normali, ci vorr‡ qualcosa di magico per riuscire a scalfirla.~
-@122023 = ~Con quella pergamena di Protezione dalle Armi Normali, questa cotta di maglia potrÚ resistere a tutto ciÚ che non Ë una lama magica. Applicare incantamenti nanici a una corazza elfica non sar‡ un'impresa facile, perÚ... vi coster‡ 40.000 monete.~
-@122024 = ~Questa Ë una fionda gnomica. Per 5.000 monete, ho un paio di assi nella manica che la renderanno mortalmente precisa.~
-@122025 = ~Cos'Ë questa faretra che avete qui? Oh, produce infinite frecce magiche.~
+@122021 = ~Questa cotta di maglia elfica √® davvero di ottima fattura, persino per gli standard di un nano.~
+@122022 = ~Ma ci sono un paio di trucchetti nanici che le orecchie a punta ancora non conoscono. Con una pergamena di Protezione dalle Armi Normali, ci vorr√† qualcosa di magico per riuscire a scalfirla.~
+@122023 = ~Con quella pergamena di Protezione dalle Armi Normali, questa cotta di maglia potr√≤ resistere a tutto ci√≤ che non √® una lama magica. Applicare incantamenti nanici a una corazza elfica non sar√† un'impresa facile, per√≤... vi coster√† 40.000 monete.~
+@122024 = ~Questa √® una fionda gnomica. Per 5.000 monete, ho un paio di assi nella manica che la renderanno mortalmente precisa.~
+@122025 = ~Cos'√® questa faretra che avete qui? Oh, produce infinite frecce magiche.~
 @122026 = ~Se doveste imbattervi in una pietra del ladro, potremmo potenziare ulteriormente quelle frecce.~
-@122027 = ~Con questa pietra del ladro e 10.000 monete posso portare quelle frecce a un livello di qualit‡ superiore.~
-@122028 = ~Ach, questa sÏ che Ë una visione! Il Mazzafrusto delle Ere!~
+@122027 = ~Con questa pietra del ladro e 10.000 monete posso portare quelle frecce a un livello di qualit√† superiore.~
+@122028 = ~Ach, questa s√¨ che √® una visione! Il Mazzafrusto delle Ere!~
 @122029 = ~Si mormora che esistano ancora altre teste per questo mazzafrusto. Se le trovaste, potrei aggiungervele.~
 @122030 = ~E vedo che avete trovato anche una testa aggiuntiva. Sembra avvelenata. Per 5.000 monete posso riattaccarla.~
-@122031 = ~E questo cosa potrebbe mai essere... ? Oh, Ë un Randello della Detonazione.~
+@122031 = ~E questo cosa potrebbe mai essere... ? Oh, √® un Randello della Detonazione.~
 @122032 = ~Se trovaste un anello della resistenza al fuoco, potremmo farne un randello eccezionale.~
-@122033 = ~Per 5.000 monete posso combinarlo con il vostro anello di resistenza al fuoco e ottenerne un randello ancora pi˘ potente.~
+@122033 = ~Per 5.000 monete posso combinarlo con il vostro anello di resistenza al fuoco e ottenerne un randello ancora pi√π potente.~
 @122034 = ~Ah, questo ha tutta l'aria di essere un oggetto di Ixil.~
-@122035 = ~In effetti Ë una parte della leggendaria lancia di Ixil. Se doveste trovare l'altra met‡, io potrei completare l'arma.~
+@122035 = ~In effetti √® una parte della leggendaria lancia di Ixil. Se doveste trovare l'altra met√†, io potrei completare l'arma.~
 @122036 = ~Avete trovato entrambe le parti della vecchia lancia di Ixil. Per 5.000 monete possiamo unire l'Unghia di Ixil e la Spina di Ixil.~
-@122037 = ~Ah, questo Ë un Pugnale delle Stelle.~
+@122037 = ~Ah, questo √® un Pugnale delle Stelle.~
 @122038 = ~Combinandolo con cinque zaffiri stellati, potremmo potenziarne ulteriormente l'incantamento.~
-@122039 = ~Con cinque di quegli zaffiri stellati e 5.000 monete potremmo renderlo ancora pi˘ efficiente.~
-@122040 = ~Hai tre teste qui... posso aggiungervi una testa del veleno e una dell'elettricit‡ tutte insieme. In tutto fanno cinque teste, sai? 10.000 monete e posso farlo. Che ne dici?~
+@122039 = ~Con cinque di quegli zaffiri stellati e 5.000 monete potremmo renderlo ancora pi√π efficiente.~
+@122040 = ~Hai tre teste qui... posso aggiungervi una testa del veleno e una dell'elettricit√† tutte insieme. In tutto fanno cinque teste, sai? 10.000 monete e posso farlo. Che ne dici?~
 @122041 = ~Non potresti aggiungere solo la testa elettrica, per ora? Ti daremo 5.000 monete.~
 @122042 = ~Non potresti aggiungere solo la testa del veleno, per ora? Ti daremo 5.000 monete.~
-@122043 = ~Conosco le ricette di due teste del Mazzafrusto delle Ere. Una per la testa del veleno... un'altra per la testa dell'elettricit‡. Sono le uniche che conosco, mi dispiace.~
-@122044 = ~Hai tre teste qui... posso aggiungervi una testa dell'elettricit‡. In tutto fanno quattro teste, sai? 5.000 monete e posso farlo. Ti va?~
+@122043 = ~Conosco le ricette di due teste del Mazzafrusto delle Ere. Una per la testa del veleno... un'altra per la testa dell'elettricit√†. Sono le uniche che conosco, mi dispiace.~
+@122044 = ~Hai tre teste qui... posso aggiungervi una testa dell'elettricit√†. In tutto fanno quattro teste, sai? 5.000 monete e posso farlo. Ti va?~
 @122045 = ~Oooh! Hai quattro teste e volendo posso aggiungergli la testa finale... Proprio velenosa questa. 5.000 mo e ci penso io. Ti va?~
-@122046 = ~Questa Ë una fionda gnomica. Ho qualche asso nella manica che puÚ renderla pi˘ precisa.~
+@122046 = ~Questa √® una fionda gnomica. Ho qualche asso nella manica che pu√≤ renderla pi√π precisa.~
 @122047 = ~Se vi imbattete in un Anello dell'Energia, posso aggiustarvelo.~
 @122048 = ~Dammi il tuo Anello dell'Energia e 5.000 gold e possiamo iniziare.~
 
 @123001 = ~Oh, sono lucenti scaglie rosse? Posso fare un'ottima armatura, per proteggerti dal mordente fuoco.~
-@123002 = ~Cos'Ë quell'oggetto scintillante? Ooh, illitium!~
+@123002 = ~Cos'√® quell'oggetto scintillante? Ooh, illitium!~
 @123003 = ~Posso fare un bel rivestimento per la Mazza della Distruzione. Torna da me quando ne hai una.~
-@123004 = ~Oh, e una Mazza della Distruzione! La posso fare ancora pi˘ spaventosa per solo 7.500 monete d'oro!~
+@123004 = ~Oh, e una Mazza della Distruzione! La posso fare ancora pi√π spaventosa per solo 7.500 monete d'oro!~
 @123005 = ~Ugh. Hai bisogno di lavare questa borsa.~
 @123006 = ~Wow, un mucchio di argento lucido e scintillante.~
 @123007 = ~Ow! Argento, lucido e tagliente. Ti serve un'elsa e posso creare una magnifica spada d'argento.~
@@ -485,47 +485,47 @@ Abilit‡ speciali:
 @123010 = ~Va bene, continuo a cercare.~
 @123011 = ~Ciao! Onda su Onda!~        
 @123012 = ~Hai un'ottima lama per alabarda, ma serve il resto.~
-@123013 = ~PerchÈ conservare questo bastone? Potresti ottenere una grande alabarda con la lama giusta.~
+@123013 = ~Perch√© conservare questo bastone? Potresti ottenere una grande alabarda con la lama giusta.~
 @123014 = ~L'asta e la lama dell'Onda. Posso forgiarle in una grande e scintillante alabarda per 7.500 monete d'oro.~
-@123015 = ~Continuo a cercare ... oops. Era cosÏ, gi‡!~
+@123015 = ~Continuo a cercare ... oops. Era cos√¨, gi√†!~
 @123016 = ~Huh, sembra essere qualcosa di Gesen.~
 @123017 = ~Sembra un bell'arco di Gesen, ma serve un po' di corda adatta.~
 @123018 = ~Ooh, ed un po' di magnifica corda. Con 7.500 monete d'oro avrai un bell'arco corto.~
-@123019 = ~Mi chiedo perchÈ si chiami corto? » ancora troppo grande per me! Continuo a cercare allora.~
-@123020 = ~Ooh, delle scintillanti parti dell'Equalizzatore. PerchÈ non mettere tutto assieme?~
-@123021 = ~Oh, perchÈ non disponi di tutte le parti. PotrÚ aiutarti quando le avrai.~
-@123022 = ~Forse non sai come? Cespenar lo sa, oh sÏ, e solo per 7.500 monete d'oro.~
+@123019 = ~Mi chiedo perch√© si chiami corto? √à ancora troppo grande per me! Continuo a cercare allora.~
+@123020 = ~Ooh, delle scintillanti parti dell'Equalizzatore. Perch√© non mettere tutto assieme?~
+@123021 = ~Oh, perch√© non disponi di tutte le parti. Potr√≤ aiutarti quando le avrai.~
+@123022 = ~Forse non sai come? Cespenar lo sa, oh s√¨, e solo per 7.500 monete d'oro.~
 @123023 = ~Va bene, posso controllare di nuovo la tua borsa.~
 @123024 = ~Ooh, un grosso martello dei fulmini. Bzzt! Bzzt!~
-@123025 = ~Se trovi la pergamena giusta, i guanti del potere orchesco e la cintura della forza del gigante dei ghiacci, Cepsenar lo renderÚ meraviglioso!~
-@123026 = ~Non lo puoi notare, ma Cespenar non Ë un nano. Cespenar conosce ancora alcuni trucchi dei nani perÚ.~
-@123027 = ~Prendi questo martello, la pergamena, i guanti del potere orchesco, 10.000 monete d'oro e la cintura delle forza del gigante dei ghiacci e Crom Faeyr Ë fatto. Grande, lucente martello!~
+@123025 = ~Se trovi la pergamena giusta, i guanti del potere orchesco e la cintura della forza del gigante dei ghiacci, Cepsenar lo render√≤ meraviglioso!~
+@123026 = ~Non lo puoi notare, ma Cespenar non √® un nano. Cespenar conosce ancora alcuni trucchi dei nani per√≤.~
+@123027 = ~Prendi questo martello, la pergamena, i guanti del potere orchesco, 10.000 monete d'oro e la cintura delle forza del gigante dei ghiacci e Crom Faeyr √® fatto. Grande, lucente martello!~
 @123028 = ~Cespenar sta ancora cercando.~
 @123029 = ~Schifose e puzzolenti scaglie di ankheg! Solo 5.000 monete d'oro e faccio una bella armatura, protegge bene dall'acido, brillante e molto verde. La vuoi?~
 @123030 = ~Va bene, Cespenar continua a cercare.~
 @123031 = ~Drago d'ombra? Faccio bei bagagli. Anche armature. Entrambi proteggono dall'acido.~
 @123032 = ~Oh, sono scaglie di drago blu. Puzzolenti. Faccio buona armatura, potente ... molto leggera, molto lucida.~
-@123033 = ~Oh, sono scaglie di drago bianco, Ë vero? Faccio buona armatura che protegge dal freddo, forse.~
+@123033 = ~Oh, sono scaglie di drago bianco, √® vero? Faccio buona armatura che protegge dal freddo, forse.~
 @123034 = ~Ogni armatura di drago solo 5.000 monete d'oro. La vuoi?~
 @123035 = ~Fai l'armatura di drago d'ombra.~
 @123036 = ~Fai l'armatura di drago rosso.~
 
 @125002 = ~Sparisci, halfling. Il tuo chiacchiericcio mi da sui nervi!~
-@125003 = ~Alla luce dei fatti, sÏ. PerchÈ lo chiedi?~
-@125004 = ~Sono gi‡ stato alle rovine e devo dire che sono molto sopravvalutate.~
-@125005 = ~Aspetta finchÈ non avrai sentito quello che ho da dirti. Quelle rovine sono ..cotte a puntino.. e sono pronte per essere saccheggiate senza troppo patimento. Forse dovremmo lavorare assieme. Vivendo con mia zia nei dintorni, ho potuto conoscerle piuttosto bene. Ho imparato un po' di segreti e so come individuare la maggior parte delle trappole. Dovrebbe essere divertente. Che ne dici?~
+@125003 = ~Alla luce dei fatti, s√¨. Perch√© lo chiedi?~
+@125004 = ~Sono gi√† stato alle rovine e devo dire che sono molto sopravvalutate.~
+@125005 = ~Aspetta finch√© non avrai sentito quello che ho da dirti. Quelle rovine sono ..cotte a puntino.. e sono pronte per essere saccheggiate senza troppo patimento. Forse dovremmo lavorare assieme. Vivendo con mia zia nei dintorni, ho potuto conoscerle piuttosto bene. Ho imparato un po' di segreti e so come individuare la maggior parte delle trappole. Dovrebbe essere divertente. Che ne dici?~
 @125006 = ~Una splendida idea! Benvenuta nel gruppo.~
-@125007 = ~Sono veramente spiacente, ma abbiamo gi‡ tutto quello che ci serve.~
-@125008 = ~Ridicolo! Di cosa dovrei aver bisogno secondo te? Mi hai gi‡ fatto perdere abbastanza tempo, ora sparisci!~
-@125009 = ~Bene! Non c'Ë bisogno di essere cosÏ scontroso! Hmph! Non si incontrano mai persone simpatiche in questo genere di lavori! Nessuna meraviglia che la gente odi gli avventurieri!  Addio!~
-@125010 = ~Doppio bene e doppio gusto! Oh, Ë un gran piacere avere qualcuno con cui parlare di affari! Sono di qui  e vivo con mia zia cercando di cambiare il mio destino, ma in realt‡ mi sto solo annoiando. Forse potremmo lavorare assieme. Conosco quel posto piuttosto bene, conosco i suoi segreti, come trovare uno scrigno o eludere una trappola. Potrebbe essere divertente. Che ne dici?~
-@125011 = ~Santa Cacofonia, cosa sento, sopravvalutate?! Ora, questo ..Ë.. eccitante!  Dovremmo. . .dobbiamo lavorare assieme! SÏ! Potrei esserti di aiuto. . .uh.  . credo che dovremmo aiutarci reciprocamente per un po' di tempo. Posso individuare i tesori per te. Potresti trovarne molti di pi˘ con il mio aiuto! Che ne dici?~
+@125007 = ~Sono veramente spiacente, ma abbiamo gi√† tutto quello che ci serve.~
+@125008 = ~Ridicolo! Di cosa dovrei aver bisogno secondo te? Mi hai gi√† fatto perdere abbastanza tempo, ora sparisci!~
+@125009 = ~Bene! Non c'√® bisogno di essere cos√¨ scontroso! Hmph! Non si incontrano mai persone simpatiche in questo genere di lavori! Nessuna meraviglia che la gente odi gli avventurieri!  Addio!~
+@125010 = ~Doppio bene e doppio gusto! Oh, √® un gran piacere avere qualcuno con cui parlare di affari! Sono di qui  e vivo con mia zia cercando di cambiare il mio destino, ma in realt√† mi sto solo annoiando. Forse potremmo lavorare assieme. Conosco quel posto piuttosto bene, conosco i suoi segreti, come trovare uno scrigno o eludere una trappola. Potrebbe essere divertente. Che ne dici?~
+@125011 = ~Santa Cacofonia, cosa sento, sopravvalutate?! Ora, questo ..√®.. eccitante!  Dovremmo. . .dobbiamo lavorare assieme! S√¨! Potrei esserti di aiuto. . .uh.  . credo che dovremmo aiutarci reciprocamente per un po' di tempo. Posso individuare i tesori per te. Potresti trovarne molti di pi√π con il mio aiuto! Che ne dici?~
 @125012 = ~Amici siamo, ed anche buoni! Uno per tutti e cose del genere! Divertimento per tutti, io *so* solo questo!~
 @125013 = ~Ah bene, dunque. Non mi sono fatta nuovi amici questa volta, credo. Specialmente quelli buoni. Arrivederci, credo.~
-@125014 = ~Credo che dovrÚ stare qui attorno ad annoiarmi per un po', finchÈ non avrai recuperato la ragione e mi tornerai a trovare.~
+@125014 = ~Credo che dovr√≤ stare qui attorno ad annoiarmi per un po', finch√© non avrai recuperato la ragione e mi tornerai a trovare.~
 @125015 = ~Bene, mi stai gironzolando attorno da tutto il giorno, forse potremmo lavorare assieme.~
 @125016 = ~No, non mi interessano le rovine.~
-@125017 = ~Hey, non siete di queste parti! Siii! Non c'Ë lucido sugli stivali, nessuna fibbia nelle bretelle. Non siete mercanti. Loro sono molto pi˘... presentabili. Aww coniglietti, avventurieri in Gullykin! Andate forse a saccheggiare le rovine di Firewine?~
+@125017 = ~Hey, non siete di queste parti! Siii! Non c'√® lucido sugli stivali, nessuna fibbia nelle bretelle. Non siete mercanti. Loro sono molto pi√π... presentabili. Aww coniglietti, avventurieri in Gullykin! Andate forse a saccheggiare le rovine di Firewine?~
 
 @126001  = ~Poeta del Lago Sam~
 @126002  = ~Sam~
@@ -574,9 +574,9 @@ Abilit‡ speciali:
 // Title for move silently added after Weight line, penalty is added after this text
 @210011 = ~Muoversi Silenziosamente:~
 // Typical move silently penalty line in original armors
-@210012 = ~^[ %TAB%]*.?.?.?[ %TAB%]*Furtivit‡:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
+@210012 = ~^[ %TAB%]*.?.?.?[ %TAB%]*Furtivit√†:.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 // Title for move silently added after Weight line, penalty is added after this text
-@210013 = ~Furtivit‡:~
+@210013 = ~Furtivit√†:~
 
 // Moved from arcane_descripts.tpa     
 // See English setup.tra for details on what should be matched by the regular expression
@@ -597,7 +597,7 @@ Abilit‡ speciali:
 <DOTS3>                                
 <DOTS4>                                
 <DOTS5>~                               
-@216002 = ~KATANA/WAKIZASHI: Le katane e i wakizashi sono la pi˘ elevata manifestazione manifatturiera in campo di spade e il loro impiego richiede grande cura. A mano a mano che sviluppa la sua maestria, il proprietario e la lama diventano una cosa sola, interamente dedicata all'arte della guerra. Queste armi sono difficili da reperire al di fuori di Kara-Tur, perciÚ occorre ponderare oculatamente la scelta di tale competenza. Dopo tutto, essere abili nell'utilizzo di una katana o di un wakizashi Ë utile solo se si riesce a trovarli.
+@216002 = ~KATANA/WAKIZASHI: Le katane e i wakizashi sono la pi√π elevata manifestazione manifatturiera in campo di spade e il loro impiego richiede grande cura. A mano a mano che sviluppa la sua maestria, il proprietario e la lama diventano una cosa sola, interamente dedicata all'arte della guerra. Queste armi sono difficili da reperire al di fuori di Kara-Tur, perci√≤ occorre ponderare oculatamente la scelta di tale competenza. Dopo tutto, essere abili nell'utilizzo di una katana o di un wakizashi √® utile solo se si riesce a trovarli.
 ATTENZIONE: le katane magiche sono molto rare in Baldur's Gate 2!
 <DOTS1>                                
 <DOTS2>                                
@@ -616,7 +616,7 @@ ATTENZIONE: le katane magiche sono molto rare in Baldur's Gate 2!
 <DOTS3>                                
 <DOTS4>                                
 <DOTS5>~                               
-@216005 = ~MAZZA/MORNING STAR: La mazza Ë solitamente associata alla figura del chierico. » un'arma contundente molto potente, simile alla clava ma costruita in modo da arrecare un maggior danno. Una morning star Ë simile a una mazza con delle punte al posto delle flange.
+@216005 = ~MAZZA/MORNING STAR: La mazza √® solitamente associata alla figura del chierico. √à un'arma contundente molto potente, simile alla clava ma costruita in modo da arrecare un maggior danno. Una morning star √® simile a una mazza con delle punte al posto delle flange.
 <DOTS1>                                
 <DOTS2>                                
 <DOTS3>                                
@@ -655,19 +655,19 @@ ATTENZIONE: le katane magiche sono molto rare in Baldur's Gate 2!
 @218002 = ~Alchimia (Sacerdote)~       
 @218003 = ~Alchimia (Vagabondo)~       
 @218004 = ~Alchimia (Mago)             
-Questa abilit‡ consente a un mago di creare pozioni. Le pozioni che il mago puÚ creare sono scelte casualmente da questa lista:
+Questa abilit√† consente a un mago di creare pozioni. Le pozioni che il mago pu√≤ creare sono scelte casualmente da questa lista:
 1)  Pozione di Assorbimento            
 2)  Pozione di Resistenza al Fuoco     
 3)  Pozione di Resistenza al Freddo    
-4)  Pozione di Invisibilit‡            
+4)  Pozione di Invisibilit√†            
 5)  Pozione di Forma di Pietra         
 6)  Pozione di Forza                   
-7)  Pozione di Agilit‡                 
+7)  Pozione di Agilit√†                 
 8)  Pozione di Soffio di Fuoco        
-9)  Olio di Velocit‡                   
+9)  Olio di Velocit√†                   
 10) Olio di Incendio Impetuoso~        
 @218005 = ~Alchimia (Sacerdote)        
-Questa abilit‡ consente a un sacerdote  di creare pozioni. Le pozioni che il sacerdote puÚ creare sono scelte casualmente da questa lista:
+Questa abilit√† consente a un sacerdote  di creare pozioni. Le pozioni che il sacerdote pu√≤ creare sono scelte casualmente da questa lista:
 1)  Pozione di Guarigione              
 2)  Pozione di Guarigione Extra        
 3)  Pozione di Guarigione Superiore    
@@ -679,71 +679,71 @@ Questa abilit‡ consente a un sacerdote  di creare pozioni. Le pozioni che il sac
 9)  Pozione di Focalizzazione dei Pensieri
 10) Pozione di Genio~                  
 @218006 = ~Alchimia (Vagabondo)        
-Grazie alla sua innata astuzia, un vagabondo esperto ha studiato abbastanza pozioni nel corso delle sue avventure per potersi permettere di simularne la creazione. Attraverso l'abilit‡ Alchimia, il vagabondo puÚ creare una pozione scelta da una gamma di otto tipologie, una volta al giorno.
-Le pozioni che il vagabondo puÚ creare sono scelte casualmente da questa lista: 
+Grazie alla sua innata astuzia, un vagabondo esperto ha studiato abbastanza pozioni nel corso delle sue avventure per potersi permettere di simularne la creazione. Attraverso l'abilit√† Alchimia, il vagabondo pu√≤ creare una pozione scelta da una gamma di otto tipologie, una volta al giorno.
+Le pozioni che il vagabondo pu√≤ creare sono scelte casualmente da questa lista: 
 1) Pozione di Focalizzazione dei Pensieri
 2) Pozione di Percezione               
-3) Pozione di Invisibilit‡             
+3) Pozione di Invisibilit√†             
 4) Pozione di Guarigione Superiore     
 5) Pozione di Rigenerazione            
 6) Antidoto                            
-7) Olio di Velocit‡                    
+7) Olio di Velocit√†                    
 8) Pozione di Forza del Gigante dei Ghiacci (vagabondo)~
 @218007 = ~Scrivere Pergamene (Mago)~  
 @218008 = ~Scrivere Pergamene (Sacerdote)~
 @218009 = ~Scrivere Pergamene (Vagabondo)~
 @218010 = ~Scrivere Pergamene (Mago)   
-Questa abilit‡ consente a un mago di creare pergamene di incantesimi arcani di basso o medio livello. Le pergamene che il mago puÚ creare sono scelte casualmente da questa lista:
+Questa abilit√† consente a un mago di creare pergamene di incantesimi arcani di basso o medio livello. Le pergamene che il mago pu√≤ creare sono scelte casualmente da questa lista:
 1)  Dardo Incantato                    
 2)  Scudo                              
 3)  Freccia Acida di Melf              
 4)  Immagine Riflessa                 
 5)  Piccole Meteore di Melf            
 6)  Respingi Incantesimo Minore        
-7)  Invisibilit‡ Potenziata            
+7)  Invisibilit√† Potenziata            
 8)  Tempesta di Ghiaccio               
 9)  Oracolo                            
 10) Caos~                              
 @218011 = ~Scrivere Pergamene (Sacerdote)
-Questa abilit‡ consente a un sacerdote di creare pergamene di incantesimi divini. Le pergamene che il sacerdote puÚ creare sono scelte casualmente da questa lista:
+Questa abilit√† consente a un sacerdote di creare pergamene di incantesimi divini. Le pergamene che il sacerdote pu√≤ creare sono scelte casualmente da questa lista:
 1)  Cura Ferite Critiche               
 2)  Colonna di Fuoco                   
 3)  Rianimare Morti                    
 4)  Ristorare                          
 5)  Protezione dall'Acido              
 6)  Protezione dal Freddo              
-7)  Protezione dall'Elettricit‡        
+7)  Protezione dall'Elettricit√†        
 8)  Protezione dal Fuoco               
 9)  Forza del Campione                 
 10) Dominio Mentale~                   
 @218012 = ~Scrivere Pergamene (Vagabondo)
-Questa abilit‡ consente a un vagabondo di creare pergamene di incantesimi di basso o medio livello. Le pergamene che il vagabondo puÚ creare sono scelte casualmente da questa lista:
+Questa abilit√† consente a un vagabondo di creare pergamene di incantesimi di basso o medio livello. Le pergamene che il vagabondo pu√≤ creare sono scelte casualmente da questa lista:
 1) Dardo Incantato                     
-2) Velocit‡                            
+2) Velocit√†                            
 3) Palla di Fuoco                      
 4) Dissolvi Magie                      
 5) Charme Estremo                      
-6) Invisibilit‡                       
+6) Invisibilit√†                       
 7) Cono di Freddo                      
 8) Evocare Mostri II                   
 9) Evocare Mostri III~                 
 
 // next two strings used for matching and updating item descriptions
 @223001 = ~STATISTICHE:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
-@223002 = ~Viene considerata come un'arma +%ench% per determinare ciÚ che puÚ colpire~
+@223002 = ~Viene considerata come un'arma +%ench% per determinare ci√≤ che pu√≤ colpire~
 
 // la stringa successiva dovrebbe corrispondere al contenuto DA RIMUOVERE dalla descrizione razziale degli esseri umani e dal riferimento di aiuto per la doppia classe
 @235002 = ~Gli esseri umani potrebbero non essere multiclasse.~ // da strref #9550
 
 // le due stringhe successive dovrebbero corrispondere al contenuto DA RIMUOVERE dalla descrizione razziale degli umani e dal riferimento di aiuto per la doppia classe
-// potrebbe essere necessario controllare gli EE, poichÈ oBG2 non menziona la doppia classe in #9550 o #32540
-@237002 = ~ e sono anche l'unica razza che puÚ essere in classe doppia~ // da strref #9550
-@237003 = ~La doppia classe Ë un'abilit‡ che solo gli umani possiedono. ~ // da strref #10811
-@237004 = ~, se il tuo personaggio Ë umano~ // Tutorial BG dialogo monaco monktu4 - 32540 in BGEE/SoD 
+// potrebbe essere necessario controllare gli EE, poich√© oBG2 non menziona la doppia classe in #9550 o #32540
+@237002 = ~ e sono anche l'unica razza che pu√≤ essere in classe doppia~ // da strref #9550
+@237003 = ~La doppia classe √® un'abilit√† che solo gli umani possiedono. ~ // da strref #10811
+@237004 = ~, se il tuo personaggio √® umano~ // Tutorial BG dialogo monaco monktu4 - 32540 in BGEE/SoD 
 
 // translators - the next three strings are used to replace game text, so they need to be copied from the game itself
 // get @244001 and @244002 from strref 9588 in bgee/bg2ee/iwdee
-@244001 = ~\* Gli attacchi in pi˘ per round sono disponibili solo per le classi combattenti~ // last line; if there's a * included then add \ in front of it
+@244001 = ~\* Gli attacchi in pi√π per round sono disponibili solo per le classi combattenti~ // last line; if there's a * included then add \ in front of it
 @244002 = ~Tavola slot competenze:~                                     // line before <DOTS1>, exclude the * if present
 // get @244003 from string 32117 (bg2ee/iwdee) or 24220 (bgee)
 @244003 = ~(solo per classi combattenti)~
@@ -772,7 +772,7 @@ Questa abilit‡ consente a un vagabondo di creare pergamene di incantesimi di bas
 @324101 = ~Simbolo del Genio~
 @324102 = ~Simbolo~
 @324103 = ~Un simbolo indefinibile, senza nessun segno.~
-@324104 = ~Salve! Per favore, scegli l'oggetto che il simbolo dovr‡ restituirti:~
+@324104 = ~Salve! Per favore, scegli l'oggetto che il simbolo dovr√† restituirti:~
 
 @324201 = ~Flynn~
 @324202 = ~Mercante Girovago~
@@ -783,15 +783,15 @@ Questa abilit‡ consente a un vagabondo di creare pergamene di incantesimi di bas
 @324207 = ~Tutto questo... per una piccola commissione, naturalmente.~
 @324208 = ~Un'altra volta.~
 @324209 = ~Che genere di commissione?~
-@324210 = ~Il mio usuale onorario Ë di 1000 monete, ma posso offristi un'ampia scelta di opzioni.~
-@324211 = ~Ma Ë terribilmente alto!~
+@324210 = ~Il mio usuale onorario √® di 1000 monete, ma posso offristi un'ampia scelta di opzioni.~
+@324211 = ~Ma √® terribilmente alto!~
 @324212 = ~Molto bene. Hai qualcosa di interessante?~
-@324213 = ~Certo, ma la scelta che offro io non Ë seconda a nessun'altra. E guardare non costa nulla.~
+@324213 = ~Certo, ma la scelta che offro io non √® seconda a nessun'altra. E guardare non costa nulla.~
 @324214 = ~Addio e fate buon viaggio.~
-@324215 = ~Fa piacere sentire che lo ha fatto in modo sicuro. Allora, sai gi‡ come funziona questo?~
-@324216 = ~Lo so. Puoi dare un'occhiata alla mia merce e vedere se c'Ë qualcosa che merita di essere scambiato?~
+@324215 = ~Fa piacere sentire che lo ha fatto in modo sicuro. Allora, sai gi√† come funziona questo?~
+@324216 = ~Lo so. Puoi dare un'occhiata alla mia merce e vedere se c'√® qualcosa che merita di essere scambiato?~
 @324217 = ~No, veramente.~
-@324218 = ~Vorrei scambiare i miei prodotti esotici con qualcosa che tu potresti trovare. Forse ho qualcosa che potrebbe essere pi˘ utile a qualcuno con il tuo talento.~
+@324218 = ~Vorrei scambiare i miei prodotti esotici con qualcosa che tu potresti trovare. Forse ho qualcosa che potrebbe essere pi√π utile a qualcuno con il tuo talento.~
 @324219 = ~Bene, lasciami guardare...~
 @324220 = ~Bentornati, viaggiatori.~
 @324221 = ~No, mi spiace ma non vedo nulla di interessante.~
@@ -806,42 +806,42 @@ Questa abilit‡ consente a un vagabondo di creare pergamene di incantesimi di bas
 @324260 = ~Mi chiamo Flynn, un agente della camera di commercio di Calimport, inviato alla ricerca di oggetti esotici ed unici.~
 @324261 = ~Credo di aver incontrato la tua controparte, Harrold, a Lonelywood.~
 @324262 = ~Ben trovato, Flynn. Posso vedere la tua merce?~
-@324263 = ~Grazie Flynn, Lo terrÚ a mente se trovassi qualcosa di interessante.~
+@324263 = ~Grazie Flynn, Lo terr√≤ a mente se trovassi qualcosa di interessante.~
 @324264 = ~Salve di nuovo, Flynn. Vorresti scambiare qualcosa?~
 @324265 = ~No, non mi interessa. Addio Flynn.~
-@324266 = ~Grazie Flynn. C'Ë qualcos'altro che vorresti scambiare?~
+@324266 = ~Grazie Flynn. C'√® qualcos'altro che vorresti scambiare?~
 @324280 = ~Mi chiamo Harrold, un agente della camera di commercio di Calimport, inviato alla ricerca di oggetti esotici ed unici.~
 @324281 = ~Credo di aver incontrato la tua controparte, Flynn, a Kuldahar.~
 @324282 = ~Ben trovato, Harrold. Posso vedere la tua merce?~
-@324283 = ~Grazie Harrold, Lo terrÚ a mente se trovassi qualcosa di interessante.~
+@324283 = ~Grazie Harrold, Lo terr√≤ a mente se trovassi qualcosa di interessante.~
 @324284 = ~Salve di nuovo, Harrold. Vorresti scambiare qualcosa?~
 @324285 = ~No, non mi interessa. Addio Harrold.~
-@324286 = ~Grazie Harrold. C'Ë qualcos'altro che vorresti scambiare?~
+@324286 = ~Grazie Harrold. C'√® qualcos'altro che vorresti scambiare?~
 
 @325001 = ~Allora, possiamo vedere gli oggetti che avevi da offrire la prima volta che arrivammo in Kuldahar?~
 @325002 = ~Possiamo dare un'altra occhiata agli oggetti che avevi da offrire durante la nostra permanenza qui?~
 
-@333050 = ~Disattiva rapidit‡ automatica~
-@333051 = ~Disattiva rapidit‡ automatica
+@333050 = ~Disattiva rapidit√† automatica~
+@333051 = ~Disattiva rapidit√† automatica
 
-Questa abilit‡ controlla se la velocit‡ di movimento viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit‡ per disattivarla.~
-@333052 = ~Disattiva rapidit‡ automatica
+Questa abilit√† controlla se la velocit√† di movimento viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit√† per disattivarla.~
+@333052 = ~Disattiva rapidit√† automatica
 
-Questa abilit‡ controlla se la velocit‡ di movimento e la velocit‡ di lancio vengono aumentate per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit‡ per disattivarla.~
-@333053 = ~Disattiva rapidit‡ automatica
+Questa abilit√† controlla se la velocit√† di movimento e la velocit√† di lancio vengono aumentate per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit√† per disattivarla.~
+@333053 = ~Disattiva rapidit√† automatica
 
-Questa abilit‡ controlla se la velocit‡ di lancio viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit‡ per disattivarla.~
-@333060 = ~Abilita rapidit‡ automatica~
-@333061 = ~Abilita rapidit‡ automatica
+Questa abilit√† controlla se la velocit√† di lancio viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit√† per disattivarla.~
+@333060 = ~Abilita rapidit√† automatica~
+@333061 = ~Abilita rapidit√† automatica
 
-Questa abilit‡ controlla se la velocit‡ di movimento viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit‡ per attivarla.~
-@333062 = ~Abilita rapidit‡ automatica
+Questa abilit√† controlla se la velocit√† di movimento viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit√† per attivarla.~
+@333062 = ~Abilita rapidit√† automatica
 
-Questa abilit‡ controlla se la velocit‡ di movimento e la velocit‡ di lancio vengono aumentate per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit‡ per attivarla.~
-@333063 = ~Abilita rapidit‡ automatica
+Questa abilit√† controlla se la velocit√† di movimento e la velocit√† di lancio vengono aumentate per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit√† per attivarla.~
+@333063 = ~Abilita rapidit√† automatica
 
-Questa abilit‡ controlla se la velocit‡ di lancio viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit‡ per attivarla.~
-@333070 = ~Rimossi i bonus di rapidit‡ automatica~
+Questa abilit√† controlla se la velocit√† di lancio viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilit√† per attivarla.~
+@333070 = ~Rimossi i bonus di rapidit√† automatica~
 
 @335100 = ~Intervallo-Salvataggio~
 @335101 = ~Salvataggio intervallo creato~
@@ -855,16 +855,16 @@ Questa abilit‡ controlla se la velocit‡ di lancio viene aumentata per i membri d
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@408001 = ~Se interrogato sul suo passato, KHALID rivela nervosamente di essere nato e cresciuto a Calimshan. Non parla molto dei suoi genitori, ma hai l'impressione che suo padre, un mercante, si occupasse poco di lui, dedicando invece molta pi˘ attenzione ai suoi fratellastri. Non potendo contare sul supporto paterno, Khalid non potÈ permettersi di diventare l'apprendista di un mago e si lanciÚ, quindi, nella carriera militare, addestrandosi sotto la guida dei membri della milizia cittadina. Non racconta i particolari del suo incontro con Jaheira, ma la sua adorazione per lei Ë evidente. Quando gli chiedi come ha conosciuto Gorion, si limita a dire che erano amici da lungo tempo e che molti dei loro conoscenti in comune piangeranno la sua perdita al suono dell'arpa.~
+@408001 = ~Se interrogato sul suo passato, KHALID rivela nervosamente di essere nato e cresciuto a Calimshan. Non parla molto dei suoi genitori, ma hai l'impressione che suo padre, un mercante, si occupasse poco di lui, dedicando invece molta pi√π attenzione ai suoi fratellastri. Non potendo contare sul supporto paterno, Khalid non pot√© permettersi di diventare l'apprendista di un mago e si lanci√≤, quindi, nella carriera militare, addestrandosi sotto la guida dei membri della milizia cittadina. Non racconta i particolari del suo incontro con Jaheira, ma la sua adorazione per lei √® evidente. Quando gli chiedi come ha conosciuto Gorion, si limita a dire che erano amici da lungo tempo e che molti dei loro conoscenti in comune piangeranno la sua perdita al suono dell'arpa.~
 
-// traduttori: 418001 Ë strref #10232 da bgee o bg2ee senza il blocco "abilit‡ equipaggiate".
-// Questo non viene utilizzato su giochi non EE poichÈ non menzionano gli effetti di equipaggiamento
-@418001 = ~Questo Ë il diritto di nascita di Edwin, intarsiato con la sua pietra di famiglia.
+// traduttori: 418001 √® strref #10232 da bgee o bg2ee senza il blocco "abilit√† equipaggiate".
+// Questo non viene utilizzato su giochi non EE poich√© non menzionano gli effetti di equipaggiamento
+@418001 = ~Questo √® il diritto di nascita di Edwin, intarsiato con la sua pietra di famiglia.
 
 Peso: 1~
-// traduttori: 418002 Ë strref #50818 in obg2 con la parte su
+// traduttori: 418002 √® strref #50818 in obg2 con la parte su
 // 'l'anello potrebbe non essere rimosso da nalia' cancellato
-// in inglese, questo Ë sovrascritto in ee.tra
+// in inglese, questo √® sovrascritto in ee.tra
 @418002 = ~Anello con sigillo de'Arnise
 
-Questo anello Ë stato donato a Nalia da suo padre al momento della sua ascesa all'et‡ adulta. Legato al suo sangue non puÚ essere usato da nessun altro. L'anello garantisce bonus +2 a tutti i tiri salvezza, bonus di classe armatura +2 e resistenza al fuoco del 50%.~ 
+Questo anello √® stato donato a Nalia da suo padre al momento della sua ascesa all'et√† adulta. Legato al suo sangue non pu√≤ essere usato da nessun altro. L'anello garantisce bonus +2 a tutti i tiri salvezza, bonus di classe armatura +2 e resistenza al fuoco del 50%.~ 

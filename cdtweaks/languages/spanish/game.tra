@@ -26,25 +26,25 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
   @5001 = ~SCRIPT DE POLIMORFAR AVATAR:~
-  @5002 = ~Este script deja que el usuario tenga el control sobre el avatar del personaje. Presionad 'S' para activar la pantalla de selecciÛn de avatar.(<script>)~
+  @5002 = ~Este script deja que el usuario tenga el control sobre el avatar del personaje. Presionad 'S' para activar la pantalla de selecci√≥n de avatar.(<script>)~
 
  @18001 = ~Archivos Arcanos~
  @18002 = ~Sio'chaire~
  @18003 = ~Tienda de Sio'chaire~
- @18004 = ~MercancÌa de Ikert~
+ @18004 = ~Mercanc√≠a de Ikert~
  @18005 = ~Bienes de Jayes~
  @18006 = ~Libros de Galoomp~
  @18007 = ~Bienes de Kich~
  @18008 = ~Productos de Min~
- @18009 = ~MercancÌa de Wallace~
- @18010 = ~MercancÌa de Joluv~
- @18011 = ~MercancÌa de Deidre~
+ @18009 = ~Mercanc√≠a de Wallace~
+ @18010 = ~Mercanc√≠a de Joluv~
+ @18011 = ~Mercanc√≠a de Deidre~
  @18012 = ~Suministros de Deli~
- @18013 = ~Objetos m·gicos Carnaval~
+ @18013 = ~Objetos m√°gicos Carnaval~
  @18014 = ~Tienda de descuento de Aello Afortunado~
  @18015 = ~Armas a distancia Carnaval~
  @18016 = ~Armadura Carnaval~
- @18017 = ~Armas m·gicas Carnaval~
+ @18017 = ~Armas m√°gicas Carnaval~
  @18024 = ~Productos de Mira~
  @18025 = ~Tienda de Lily la Negra~
  @18026 = ~Productos de Perter~
@@ -55,7 +55,7 @@
  @18031 = ~el macuto~
  @18032 = ~el cofre~
  @18033 = ~este cofre~
- @18034 = ~MercancÌa de Contrabando de Selence E.~
+ @18034 = ~Mercanc√≠a de Contrabando de Selence E.~
  @18035 = ~Equipo de campamento~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -68,7 +68,7 @@
 
 @104001 = ~Soldado de Amn~
 @104002 = ~Mago Aprobado~
-@104003 = ~ClÈrigo de la Milicia~
+@104003 = ~Cl√©rigo de la Milicia~
 
 @105001 = ~Vuestro objeto drow se ha desintegrado~
 
@@ -76,52 +76,52 @@
 @106002 = ~Vuestra escudo se ha roto~
 @106003 = ~Vuestra yelmo se ha roto~
 
-@107001 = ~Id y esperad en el MesÛn del Brazo Amigo. Si las cosas cambian, os verÈ allÌ.~
+@107001 = ~Id y esperad en el Mes√≥n del Brazo Amigo. Si las cosas cambian, os ver√© all√≠.~
 @107002 = ~Por favor, regresad al grupo.~
-@107003 = ~Os enviarÈ a la esfera planar. EspÈradme allÌ.~
+@107003 = ~Os enviar√© a la esfera planar. Esp√©radme all√≠.~
 
 @108001  = ~Faja de municiones~
 @108002  = ~Esta faja se usa para poder guardar balas, dardos, flechas o virotes.
 
-CARACTERÕSTICAS:
+CARACTER√çSTICAS:
 
 Capacidad: 2.000 virotes, dardos, flechas o balas en total
 Peso: 2 lbs~
 @108003  = ~Contenedor de Pociones~
-@108004  = ~TÌpicamente llevado por curanderos, este contenedor de cuero permite llevar delicadas botellas de pociones gracias a su interior acolchonado. No importa cuantas pociones lleve dentro, siempre tendr· el mismo peso.
+@108004  = ~T√≠picamente llevado por curanderos, este contenedor de cuero permite llevar delicadas botellas de pociones gracias a su interior acolchonado. No importa cuantas pociones lleve dentro, siempre tendr√° el mismo peso.
 
-CARACTERÕSTICAS:
+CARACTER√çSTICAS:
 
 Capacidad: 100 botellas
 Peso: 2 lbs~
 
 @111001 = ~Posada de Candelero~
-@111002 = ~Cuartel del ClÈrigo~
+@111002 = ~Cuartel del Cl√©rigo~
 @111003 = ~Templo de Oghma~
-@111004 = ~AlmacÈn~
+@111004 = ~Almac√©n~
 @111005 = ~Puerta Principal~
 @111006 = ~Biblioteca de Candelero~
 @111007 = ~Posada~
 @111008 = ~Cuartel~
-@111009 = ~EnfermerÌa~
+@111009 = ~Enfermer√≠a~
 @111010 = ~Finca de Entar Escudo de Plata~
 @111011 = ~Yelmo y Capa~
 @111012 = ~Taberna~
 @111013 = ~Templo de Helm~
-@111014 = ~Puerta del DragÛn Negro~
+@111014 = ~Puerta del Drag√≥n Negro~
 @111015 = ~Torre de Ramazith~
 @111016 = ~Palacio Ducal~
 @111017 = ~Tres Viejos Barriles~
 @111018 = ~Sirena Ruborizada~
-@111019 = ~EsturiÛn DerrochÛn~
+@111019 = ~Esturi√≥n Derroch√≥n~
 @111020 = ~Santuario de Ilmater~
 @111021 = ~Archivos de Comercio~
-@111022 = ~¡ticos~
+@111022 = ~√Åticos~
 @111023 = ~Caravana~
-@111024 = ~MesÛn del Brazo Amigo~
-@111025 = ~Templo de la SabidurÌa~
+@111024 = ~Mes√≥n del Brazo Amigo~
+@111025 = ~Templo de la Sabidur√≠a~
 @111026 = ~Malabarista Jovial~
-@111027 = ~MesÛn de Feldepost~
+@111027 = ~Mes√≥n de Feldepost~
 @111028 = ~Herrero Martillo Tronante~
 @111029 = ~Pluma Roja~
 @111030 = ~Brujo Ardiente~
@@ -130,18 +130,18 @@ Peso: 2 lbs~
 @111033 = ~Casa~
 @111034 = ~Cueva~
 @111035 = ~Casa Sumergida~
-@111036 = ~MesÛn de Nashkel~
+@111036 = ~Mes√≥n de Nashkel~
 @111037 = ~Tienda de Nashkel~
-@111038 = ~Taberna el Eructo del DragÛn~
+@111038 = ~Taberna el Eructo del Drag√≥n~
 @111039 = ~Casa del Alcalde~
-@111040 = ~GuarniciÛn~
+@111040 = ~Guarnici√≥n~
 @111041 = ~Fuerte Gnoll~
 @111042 = ~Entrada a la Mina~
 @111043 = ~Cabina~
 @111044 = ~Escultura~
 @111045 = ~Casa Abandonada~
-@111046 = ~VestÌbulo~
-@111047 = ~Templo CanciÛn de la MaÒana~
+@111046 = ~Vest√≠bulo~
+@111047 = ~Templo Canci√≥n de la Ma√±ana~
 @111048 = ~Ruinas de Ulcaster~
 @111049 = ~Salida~
 @111050 = ~Bajada al siguiente nivel~
@@ -153,33 +153,33 @@ Peso: 2 lbs~
 @111056 = ~Faro Abandonado~
 @111057 = ~Fosa~
 @111058 = ~Granja~
-@111059 = ~Cruce del DragÛn~
+@111059 = ~Cruce del Drag√≥n~
 @111060 = ~Tienda Grande~
-@111061 = ~Nido de AraÒas~
+@111061 = ~Nido de Ara√±as~
 @111062 = ~Casa del Arbol~
-@111063 = ~TapÛn del RÌo~
+@111063 = ~Tap√≥n del R√≠o~
 @111064 = ~Elevador de la Mina~
-@111065 = ~Taberna de la CanciÛn …lfica~
-@111066 = ~ArtÌculos Hechizados~
+@111065 = ~Taberna de la Canci√≥n √âlfica~
+@111066 = ~Art√≠culos Hechizados~
 @111067 = ~Tienda de Descuentos de Aello Suertudo~
 @111068 = ~Tienda de armas Maltz~
 @111069 = ~Taberna de Keexie~
 @111070 = ~Tienda de Silencio~
 @111071 = ~La Cuchilla y las Estrellas~
-@111072 = ~AlmacÈn General~
+@111072 = ~Almac√©n General~
 @111073 = ~Posada~
-@111074 = ~Edificio del Capit·n del Puerto~
+@111074 = ~Edificio del Capit√°n del Puerto~
 @111075 = ~Farol Bajo~
 @111076 = ~Casa de la Reina del Agua~
 @111077 = ~Trono de Hierro~
 @111078 = ~Taberna Jopalin~
 @111079 = ~Siete Soles~
-@111080 = ~PuÒo Ardiente~
+@111080 = ~Pu√±o Ardiente~
 @111081 = ~Liga de Mercaderes~
 @111082 = ~Vieja Posada~
 @111083 = ~La casa de la Dama~
-@111084 = ~VestÌbulo de las Maravillas~
-@111085 = ~Alto VestÌbulo de las Maravillas~
+@111084 = ~Vest√≠bulo de las Maravillas~
+@111085 = ~Alto Vest√≠bulo de las Maravillas~
 @111086 = ~Casa de Furiaveloz~
 @111087 = ~El Vidente~
 @111088 = ~Tienda de aves de corral~
@@ -192,124 +192,124 @@ Peso: 2 lbs~
 @111095 = ~Salida~
 @111096 = ~Templo de Bhaal~
 
-@114001 = ~Una gema es un mineral que al cortarse o facetarse y pulirse puede coleccionarse o ser usada en joyerÌa.~
+@114001 = ~Una gema es un mineral que al cortarse o facetarse y pulirse puede coleccionarse o ser usada en joyer√≠a.~
 
 @115001 = ~Conjurar Animales
-(ConjuraciÛn/ConvocaciÛn)
+(Conjuraci√≥n/Convocaci√≥n)
 Nivel: 6
-Esfera: ConvocaciÛn
+Esfera: Convocaci√≥n
 Alcance: 60 yardas
-DuraciÛn: 4 turnos
+Duraci√≥n: 4 turnos
 Tiempo de Lanzamiento: 9
-¡rea de Efecto: Especial
-Tirada de SalvaciÛn: Ninguna
+√Årea de Efecto: Especial
+Tirada de Salvaci√≥n: Ninguna
 
-DESCRIPCI”N:
+DESCRIPCI√ìN:
 
-Este conjuro permite al lanzador convocar y controlar dos Hombres-oso de 20 dados de vida. Los osos responder·n a todo capricho del lanzador durante toda la duraciÛn del conjuro. Los Hombres-oso son m·s lentos que los Hombres-lobo Mayor, pero tambiÈn son m·s duros. Los Hombres-oso son resistentes a los ataques elementales y m·gicos y se regeneran r·pidamente.~
+Este conjuro permite al lanzador convocar y controlar dos Hombres-oso de 20 dados de vida. Los osos responder√°n a todo capricho del lanzador durante toda la duraci√≥n del conjuro. Los Hombres-oso son m√°s lentos que los Hombres-lobo Mayor, pero tambi√©n son m√°s duros. Los Hombres-oso son resistentes a los ataques elementales y m√°gicos y se regeneran r√°pidamente.~
 @115002 = ~Hombre-oso Mayor~
 @115003 = ~Hombre-oso~
-@115004 = ~Esta garra simbÛlica representa el control de un Druida Cambiaformas sobre la licantropÌa. Mientras la garra sea portada, el Cambiaformas se vuelve un Hombre-lobo. Cuando la garra es removida, el Cambiaformas regresa a su forma humana. Las garras de un Hombre-lobo cuentan como armas +2.
+@115004 = ~Esta garra simb√≥lica representa el control de un Druida Cambiaformas sobre la licantrop√≠a. Mientras la garra sea portada, el Cambiaformas se vuelve un Hombre-lobo. Cuando la garra es removida, el Cambiaformas regresa a su forma humana. Las garras de un Hombre-lobo cuentan como armas +2.
 
-CARACTERÕSTICAS:
+CARACTER√çSTICAS:
 
 Atributos: FUE 19, DES 16, CON 15
 CA Base: 1
-Resistencias: 20% de resistencia m·gica, inmunidad a las armas no m·gicas
+Resistencias: 20% de resistencia m√°gica, inmunidad a las armas no m√°gicas
 Ataques por Asalto: 2
-DaÒo: 1D12
-Tipo de DaÒo: Cortante
+Da√±o: 1D12
+Tipo de Da√±o: Cortante
 Factor de Velocidad: 3
 Talento Marcial: Daga
 Tipo: A una mano
 ~
 
-@115005 = ~Esta garra simbÛlica representa el m·ximo control de un Druida Cambiaformas sobre la licantropÌa. Mientras es portada por el cambiaformas, Èste se convierte en un Hombre-lobo mayor. Cuando la garra sea removida, el Cambiaformas regresa a su forma humana. Las garras de un Hombre-lobo mayor cuentan como armas +3.
+@115005 = ~Esta garra simb√≥lica representa el m√°ximo control de un Druida Cambiaformas sobre la licantrop√≠a. Mientras es portada por el cambiaformas, √©ste se convierte en un Hombre-lobo mayor. Cuando la garra sea removida, el Cambiaformas regresa a su forma humana. Las garras de un Hombre-lobo mayor cuentan como armas +3.
 
-CARACTERÕSTICAS:
+CARACTER√çSTICAS:
 
 Atributos: FUE 21, DES 20, CON 25
 CA Base: -6
-Tiradas de SalvaciÛn Base: 1/1/1/2/1
-Resistencias: 40% de resistencia m·gica, 50% de resistencia elemental, inmunidad a las armas no m·gicas
-RegeneraciÛn: 3 puntos de vida por segundo
+Tiradas de Salvaci√≥n Base: 1/1/1/2/1
+Resistencias: 40% de resistencia m√°gica, 50% de resistencia elemental, inmunidad a las armas no m√°gicas
+Regeneraci√≥n: 3 puntos de vida por segundo
 Ataques por Asalto: 3
 GAC0 Base: 6
-DaÒo: 2D8
-Tipo de DaÒo: Cortante
+Da√±o: 2D8
+Tipo de Da√±o: Cortante
 Factor de Velocidad: 3
 Talento Marcial: Daga
 Tipo: A una mano
 ~
 
-@116002 = ~Tengo la escritura del teatro si es que querÈis probar vuestros talentos allÌ. Samuel es un buen hombre y honrar· la escritura en vuestras manos.~
+@116002 = ~Tengo la escritura del teatro si es que quer√©is probar vuestros talentos all√≠. Samuel es un buen hombre y honrar√° la escritura en vuestras manos.~
 @116003 = ~Lo siento Raelis, pero no tengo tiempo.~
-@116004 = ~Gracias por la oferta pero debo negarme. No sabrÌa por dÛnde empezar.~
-@116005 = ~øEl teatro de las Cinco Jarras? Me honrar· ser el dueÒo.~ ~øEl teatro de las Cinco Jarras? Me honrar· ser la dueÒa.~
-@116006 = ~SÌ, harÈ como me pedÌs. Nunca podrÈ deteneros. Sin embargo, debo a mi salvador m·s que un adiÛs.~ ~SÌ, harÈ como me pedÌs. Nunca podrÈ deteneros. Sin embargo, debo a mi salvadora m·s que un adiÛs.~
-@116007 = ~Tengo la escritura del teatro si es que querÈis probar vuestros talentos allÌ. Samuel es un buen hombre y honrar· la escritura en vuestras manos.~
-@116008 = ~Entonces espero que quedÈis satisfecho con nuestras gracias. Vamos, Guardia de la CondenaciÛn, debemos irnos r·pidamente. Tal vez nos volvamos a ver, <CHARNAME>.~ ~Entonces espero que quedÈis satisfecha con nuestras gracias. Vamos, Guardia de la CondenaciÛn, debemos irnos r·pidamente. Tal vez nos volvamos a ver, <CHARNAME>.~
+@116004 = ~Gracias por la oferta pero debo negarme. No sabr√≠a por d√≥nde empezar.~
+@116005 = ~¬øEl teatro de las Cinco Jarras? Me honrar√° ser el due√±o.~ ~¬øEl teatro de las Cinco Jarras? Me honrar√° ser la due√±a.~
+@116006 = ~S√≠, har√© como me ped√≠s. Nunca podr√© deteneros. Sin embargo, debo a mi salvador m√°s que un adi√≥s.~ ~S√≠, har√© como me ped√≠s. Nunca podr√© deteneros. Sin embargo, debo a mi salvadora m√°s que un adi√≥s.~
+@116007 = ~Tengo la escritura del teatro si es que quer√©is probar vuestros talentos all√≠. Samuel es un buen hombre y honrar√° la escritura en vuestras manos.~
+@116008 = ~Entonces espero que qued√©is satisfecho con nuestras gracias. Vamos, Guardia de la Condenaci√≥n, debemos irnos r√°pidamente. Tal vez nos volvamos a ver, <CHARNAME>.~ ~Entonces espero que qued√©is satisfecha con nuestras gracias. Vamos, Guardia de la Condenaci√≥n, debemos irnos r√°pidamente. Tal vez nos volvamos a ver, <CHARNAME>.~
 @116009 = ~Lo siento, pero no puedo. Debo encontrar a una amiga y no creo que pueda alejarme tanto de Athkatla.~
-@116010 = ~No puedo, pastor, porque no estarÈ tan lejos de la ciudad. Busco a un poderoso mago y las pistas me llevan a Athkatla.~
-@116011 = ~Debo negarme. Los eventos en Athkatla requieren mi presencia y no estarÈ lejos de la ciudad tan regularmente.~
-@116012 = ~Ser· un honor. Acepto y harÈ lo que pueda por el pueblo.~
-@116013 = ~Lo siento, pastor, no puedo. °Pero espero tener una recompensa!~
-@116014 = ~Admito que estoy decepcionado pero entiendo la dureza de vuestra profesiÛn, <CHARNAME>. No envidio el camino que habÈis elegido.~
-@116015 = ~Vos, mi seÒor, sois un amigo de la tierra. La tierra puede ser restituÌda con una mano tan firme como la vuestra.~ ~Vos, mi seÒora, sois una amiga de la tierra. La tierra puede ser restituÌda con una mano tan firme como la vuestra.~
-@116016 = ~øPodÈis guiar a esta arboleda en sus momentos de renacimiento?~
-@116017 = ~HarÈ lo que estÈ en mis manos para devolver el equilibrio.~
-@116018 = ~Esta tierra ha sufrido y pondrÈ todos mis esfuerzos en deshacer el daÒo de las acciones de Faldorn.~
-@116019 = ~SerÌa un pobre criado. Mis deberes est·n en Athkatla, y debo negarme.~ ~SerÌa una pobre criada. Mis deberes est·n en Athkatla, y debo negarme.~
+@116010 = ~No puedo, pastor, porque no estar√© tan lejos de la ciudad. Busco a un poderoso mago y las pistas me llevan a Athkatla.~
+@116011 = ~Debo negarme. Los eventos en Athkatla requieren mi presencia y no estar√© lejos de la ciudad tan regularmente.~
+@116012 = ~Ser√° un honor. Acepto y har√© lo que pueda por el pueblo.~
+@116013 = ~Lo siento, pastor, no puedo. ¬°Pero espero tener una recompensa!~
+@116014 = ~Admito que estoy decepcionado pero entiendo la dureza de vuestra profesi√≥n, <CHARNAME>. No envidio el camino que hab√©is elegido.~
+@116015 = ~Vos, mi se√±or, sois un amigo de la tierra. La tierra puede ser restitu√≠da con una mano tan firme como la vuestra.~ ~Vos, mi se√±ora, sois una amiga de la tierra. La tierra puede ser restitu√≠da con una mano tan firme como la vuestra.~
+@116016 = ~¬øPod√©is guiar a esta arboleda en sus momentos de renacimiento?~
+@116017 = ~Har√© lo que est√© en mis manos para devolver el equilibrio.~
+@116018 = ~Esta tierra ha sufrido y pondr√© todos mis esfuerzos en deshacer el da√±o de las acciones de Faldorn.~
+@116019 = ~Ser√≠a un pobre criado. Mis deberes est√°n en Athkatla, y debo negarme.~ ~Ser√≠a una pobre criada. Mis deberes est√°n en Athkatla, y debo negarme.~
 @116020 = ~Busco un mago poderoso y no puedo distraerme con otras responsabilidades.~
 @116021 = ~Han raptado a mi amiga. Aunque me duela, no puedo dar la espalda a este hecho para ayudar en la arboleda.~
-@116022 = ~TenÈis la bendiciÛn de la Arboleda y por eso os doy el BastÛn del Trueno y Rayo.~
-@116023 = ~Muy bien. ContinuarÈ siendo el Maestro de DesafÌos y el criado hasta que los ritos de ascensiÛn hayan sido completados.~
+@116022 = ~Ten√©is la bendici√≥n de la Arboleda y por eso os doy el Bast√≥n del Trueno y Rayo.~
+@116023 = ~Muy bien. Continuar√© siendo el Maestro de Desaf√≠os y el criado hasta que los ritos de ascensi√≥n hayan sido completados.~
 
-@122001 = ~Ah, un Carcaj de la abundancia. Puedo encantarlo para que cree mejores virotes, pero os costar·. Ser·n 5.000 piezas de oro.~
-@122002 = ~Veamos que m·s tenÈis.~
-@122003 = ~La capucha de un ladrÛn, øeh?~
-@122004 = ~Con una botella de antÌdoto y un anillo de invisibilidad esto podrÌa ser muy ˙til.~
-@122005 = ~SÌ que hay un anillo de invisibilidad... y el antÌdoto. TenÈis lo que necesito. Por 10.000 piezas de oro puedo hacer este objeto mucho m·s poderoso.~
-@122006 = ~øQuÈ es esto?~
-@122007 = ~Tengo una receta para ponerle cuernos al Yelmo de la Roca para hacerlo m·s poderoso. Cuando teng·is las piezas podrÈ construÌrlo.~
-@122008 = ~TenÈis el Yelmo de la Roca y los dos cuernos. Por 5,000 piezas de oro puedo aÒadir los cuernos para crear un yelmo para luchadores.~
+@122001 = ~Ah, un Carcaj de la abundancia. Puedo encantarlo para que cree mejores virotes, pero os costar√°. Ser√°n 5.000 piezas de oro.~
+@122002 = ~Veamos que m√°s ten√©is.~
+@122003 = ~La capucha de un ladr√≥n, ¬øeh?~
+@122004 = ~Con una botella de ant√≠doto y un anillo de invisibilidad esto podr√≠a ser muy √∫til.~
+@122005 = ~S√≠ que hay un anillo de invisibilidad... y el ant√≠doto. Ten√©is lo que necesito. Por 10.000 piezas de oro puedo hacer este objeto mucho m√°s poderoso.~
+@122006 = ~¬øQu√© es esto?~
+@122007 = ~Tengo una receta para ponerle cuernos al Yelmo de la Roca para hacerlo m√°s poderoso. Cuando teng√°is las piezas podr√© constru√≠rlo.~
+@122008 = ~Ten√©is el Yelmo de la Roca y los dos cuernos. Por 5,000 piezas de oro puedo a√±adir los cuernos para crear un yelmo para luchadores.~
 @122009 = ~Estos son guanteletes de Bardo.~
-@122010 = ~Los puedo mejorar con algunas gemas. Traedme un diamante, esmeralda, piedra de bribÛn, y zafiro estrella y os harÈ este favor.~
-@122011 = ~Machacando este diamante, esmeralda, piedra de bribÛn, y zafiro estrella puedo mejorarlos. Os costar· 5,000 piezas de oro.~
-@122012 = ~Estos son brazales para paladÌn.~
+@122010 = ~Los puedo mejorar con algunas gemas. Traedme un diamante, esmeralda, piedra de brib√≥n, y zafiro estrella y os har√© este favor.~
+@122011 = ~Machacando este diamante, esmeralda, piedra de brib√≥n, y zafiro estrella puedo mejorarlos. Os costar√° 5,000 piezas de oro.~
+@122012 = ~Estos son brazales para palad√≠n.~
 @122013 = ~Por 10.000 piezas de oro, puedo hacer algo mucho mejor.~
-@122014 = ~Hmm, un viejo manual de gÛlem.~
-@122015 = ~Con ciertas p·ginas se pueden mejorar los gÛlems convocados.~
-@122016 = ~Con esa p·gina de gÛlem de arcilla y 5.000 piezas de oro, puedo mejorar el manual.~
-@122017 = ~Ach, ahora sÌ que es una verdadera capa de protecciÛn.~
+@122014 = ~Hmm, un viejo manual de g√≥lem.~
+@122015 = ~Con ciertas p√°ginas se pueden mejorar los g√≥lems convocados.~
+@122016 = ~Con esa p√°gina de g√≥lem de arcilla y 5.000 piezas de oro, puedo mejorar el manual.~
+@122017 = ~Ach, ahora s√≠ que es una verdadera capa de protecci√≥n.~
 @122018 = ~Este objeto puede mejorar con hechizos de invisibilidad y celeridad mejorada.~
-@122019 = ~Podemos utilizar los hechizos de invisibilidad y celeridad mejorada para mejorar esta capa. Es un proceso difÌcil y os costar· 20.000 piezas de oro.~
-@122020 = ~SÌ, escamas de draco blanco. Puedo crear una armadura con estas escamas, si lo dese·is, tenÈis que pagar solamente 5.000 piezas de oro.~
-@122021 = ~Con que una cota de malla Èlfica de buena calidad... incluso con los est·ndares enanos.~
-@122022 = ~Pero no conocÈis algunos trucos enanos. Con un hechizo de protecciÛn contra armas normales, sÛlo habrÌa que utilizar un poco de magia para mejorarla.~
-@122023 = ~Con un hechizo de protecciÛn contra armas normales, puedo encantar esta armadura para resistirlo todo excepto una espada m·gica. No es facil agregar magia enana sobre una cota de mallas Èlfica y por eso os costar· 40,000 piezas de oro.~
-@122024 = ~Esta es una honda gnomo. Por 5.000 piezas de oro, puedo hacerla m·s exacta.~
-@122025 = ~øQuÈ es este carcaj? Ah, produce flechas m·gicas infinitas.~
-@122026 = ~Si encontr·is una piedra de bribÛn puedo mejorar esas flechas a˙n m·s.~
-@122027 = ~Con esta piedra de bribÛn y 10.000 piezas de oro puedo encantar las flechas.~
-@122028 = ~Ach, °vaya cosa! °El Mayal de las edades!~
-@122029 = ~Hay rumores que dicen que existen m·s cabezas para este mayal. Si las encontr·is puedo agregarlas.~
-@122030 = ~Veo que habÈis encontrado otra cabeza. Parece veneno. Por 5.000 piezas de oro puedo unirla al resto del arma.~
-@122031 = ~øPuede ser... ? SÌ, es un palo detonante.~
-@122032 = ~Si encontr·is un anillo de resistencia al fuego puedo combinarlo con ese palo.~
+@122019 = ~Podemos utilizar los hechizos de invisibilidad y celeridad mejorada para mejorar esta capa. Es un proceso dif√≠cil y os costar√° 20.000 piezas de oro.~
+@122020 = ~S√≠, escamas de draco blanco. Puedo crear una armadura con estas escamas, si lo dese√°is, ten√©is que pagar solamente 5.000 piezas de oro.~
+@122021 = ~Con que una cota de malla √©lfica de buena calidad... incluso con los est√°ndares enanos.~
+@122022 = ~Pero no conoc√©is algunos trucos enanos. Con un hechizo de protecci√≥n contra armas normales, s√≥lo habr√≠a que utilizar un poco de magia para mejorarla.~
+@122023 = ~Con un hechizo de protecci√≥n contra armas normales, puedo encantar esta armadura para resistirlo todo excepto una espada m√°gica. No es facil agregar magia enana sobre una cota de mallas √©lfica y por eso os costar√° 40,000 piezas de oro.~
+@122024 = ~Esta es una honda gnomo. Por 5.000 piezas de oro, puedo hacerla m√°s exacta.~
+@122025 = ~¬øQu√© es este carcaj? Ah, produce flechas m√°gicas infinitas.~
+@122026 = ~Si encontr√°is una piedra de brib√≥n puedo mejorar esas flechas a√∫n m√°s.~
+@122027 = ~Con esta piedra de brib√≥n y 10.000 piezas de oro puedo encantar las flechas.~
+@122028 = ~Ach, ¬°vaya cosa! ¬°El Mayal de las edades!~
+@122029 = ~Hay rumores que dicen que existen m√°s cabezas para este mayal. Si las encontr√°is puedo agregarlas.~
+@122030 = ~Veo que hab√©is encontrado otra cabeza. Parece veneno. Por 5.000 piezas de oro puedo unirla al resto del arma.~
+@122031 = ~¬øPuede ser... ? S√≠, es un palo detonante.~
+@122032 = ~Si encontr√°is un anillo de resistencia al fuego puedo combinarlo con ese palo.~
 @122033 = ~Por 5.000 piezas de oro puedo combinar este objeto con vuestro anillo de resistencia.~
 @122034 = ~Ah, ahora parece como algo de Ixil.~
-@122035 = ~Esta es una parte de la gran lanza de Ixil. Si encontr·is la otra parte puedo completarla.~
-@122036 = ~HabÈis encontrado partes de la vieja lanza de Ixil. Por 5.000 piezas de oro podemos mejorar la P˙a de Ixil y la UÒa de Ixil.~
+@122035 = ~Esta es una parte de la gran lanza de Ixil. Si encontr√°is la otra parte puedo completarla.~
+@122036 = ~Hab√©is encontrado partes de la vieja lanza de Ixil. Por 5.000 piezas de oro podemos mejorar la P√∫a de Ixil y la U√±a de Ixil.~
 @122037 = ~Ah, esta es la Daga de la estrella.~
 @122038 = ~Si la combinamos con cinco zafiros estrella, podemos mejorar su encantamiento.~
-@122039 = ~Con cinco zafiros estrella y .,000 piezas de oro puedo hacerla m·s efectiva.~
-@122040 = ~TenÈis tres cabezas aquÌ... puedo agregar la cabeza de veneno y elÈctrica a la vez. Para tener cinco, øvÈis? Dadme 10.000 piezas de oro y lo harÈ. øOs apetece?~
-@122041 = ~øPodrÌais agregar sÛlo la cabeza elÈctrica por ahora? Os darÈ 5.000 piezas de oro.~
-@122042 = ~øPodrÌais agregar sÛlo la cabeza de veneno por ahora? Os darÈ 5.000 piezas de oro.~
-@122043 = ~Conozco la receta para dos cabezas del Mayal de las edades. PodÈis agregar la cabeza de veneno... o la elÈctrica. Son las ˙nicas recetas que tengo, lo siento.~
-@122044 = ~TenÈis tres cabezas aquÌ... puedo agregar la elÈctrica. Para tener cuatro, øvÈis?  Dadme 5,000 piezas de oro y lo harÈ. øOs apetece?~
-@122045 = ~ °Ooo! TenÈis cuatro cabezas y puedo agregar la ˙ltima. Muy pestilente, sÌ. 5.000 piezas de oro solamente. øOs apetece?~
+@122039 = ~Con cinco zafiros estrella y .,000 piezas de oro puedo hacerla m√°s efectiva.~
+@122040 = ~Ten√©is tres cabezas aqu√≠... puedo agregar la cabeza de veneno y el√©ctrica a la vez. Para tener cinco, ¬øv√©is? Dadme 10.000 piezas de oro y lo har√©. ¬øOs apetece?~
+@122041 = ~¬øPodr√≠ais agregar s√≥lo la cabeza el√©ctrica por ahora? Os dar√© 5.000 piezas de oro.~
+@122042 = ~¬øPodr√≠ais agregar s√≥lo la cabeza de veneno por ahora? Os dar√© 5.000 piezas de oro.~
+@122043 = ~Conozco la receta para dos cabezas del Mayal de las edades. Pod√©is agregar la cabeza de veneno... o la el√©ctrica. Son las √∫nicas recetas que tengo, lo siento.~
+@122044 = ~Ten√©is tres cabezas aqu√≠... puedo agregar la el√©ctrica. Para tener cuatro, ¬øv√©is?  Dadme 5,000 piezas de oro y lo har√©. ¬øOs apetece?~
+@122045 = ~ ¬°Ooo! Ten√©is cuatro cabezas y puedo agregar la √∫ltima. Muy pestilente, s√≠. 5.000 piezas de oro solamente. ¬øOs apetece?~
     
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -319,7 +319,7 @@ Tipo: A una mano
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@202003 = ~^[ %TAB%]*Tipo[ %TAB%]*:[ %TAB%]*\(a \|de \)?\(una\|1\)[- %TAB%]*\(mano\|puÒo\).*~
+@202003 = ~^[ %TAB%]*Tipo[ %TAB%]*:[ %TAB%]*\(a \|de \)?\(una\|1\)[- %TAB%]*\(mano\|pu√±o\).*~
 @202004 = ~Tipo: a dos manos~
 
 @204001 = ~^[ %TAB%]*No \(lo puede usar\|utilizable por\|usable por\|permitido a\)[ %TAB%]*:.*~
@@ -345,23 +345,23 @@ Tipo: A una mano
 @212001 = ~\(Peso:[ %tab%]*[0-9]+\)~
 @212002 = ~Fallar Magia Arcana:~
 
-@214001 = ~B·rbaro/Mago~
-@214002 = ~B·rbaro/ClÈrigo~
-@214003 = ~B·rbaro/LadrÛn~
-@214004 = ~B·rbaro/Druida~
+@214001 = ~B√°rbaro/Mago~
+@214002 = ~B√°rbaro/Cl√©rigo~
+@214003 = ~B√°rbaro/Ladr√≥n~
+@214004 = ~B√°rbaro/Druida~
 
 @215002 = ~[%LNL%%MNL%%WNL%][ %TAB%]*\(Bonificador de \|Bonificador a la \)?Clase de armadura[ %TAB%]*:.*~
 
-@216001 = ~ESPADA CORTA/NINJA TO: Las armas preferidas de varios ladrones y medianos, las espadas cortas y ninja-tos son livianas pero muy ˙tiles.
+@216001 = ~ESPADA CORTA/NINJA TO: Las armas preferidas de varios ladrones y medianos, las espadas cortas y ninja-tos son livianas pero muy √∫tiles.
 
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216002 = ~KATANA/WAKIZASHI: Las katanas y wakizashis son los mejores ejemplos de la habilidad de un herrero, y requieren ser manejadas con cuidado. A medida que la habilidad se desarrolla, el portador y el arma se unen en un solo ser, dedicado completamente al arte de la guerra. Estas armas son difÌciles de encontrar fuera de Kara-Tur, y por debe considerarse seriamente al momento de elegir este talento. DespuÈs de todo, las katanas y wakizashis sÛlo son ˙tiles si las encuentras.
+@216002 = ~KATANA/WAKIZASHI: Las katanas y wakizashis son los mejores ejemplos de la habilidad de un herrero, y requieren ser manejadas con cuidado. A medida que la habilidad se desarrolla, el portador y el arma se unen en un solo ser, dedicado completamente al arte de la guerra. Estas armas son dif√≠ciles de encontrar fuera de Kara-Tur, y por debe considerarse seriamente al momento de elegir este talento. Despu√©s de todo, las katanas y wakizashis s√≥lo son √∫tiles si las encuentras.
 
-CUIDADO: °Las katanas m·gicas son difÌciles de encontrar en Baldur¥s Gate 2!
+CUIDADO: ¬°Las katanas m√°gicas son dif√≠ciles de encontrar en Baldur¬¥s Gate 2!
 
 <DOTS1>
 <DOTS2>
@@ -375,14 +375,14 @@ CUIDADO: °Las katanas m·gicas son difÌciles de encontrar en Baldur¥s Gate 2!
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216004 = ~MAYAL: Los mayales son armas contundentes que se usan para dejar sin sentido a los oponentes. Son difÌciles de usar pero con habilidad y pr·ctica son muy ˙tiles.
+@216004 = ~MAYAL: Los mayales son armas contundentes que se usan para dejar sin sentido a los oponentes. Son dif√≠ciles de usar pero con habilidad y pr√°ctica son muy √∫tiles.
 
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216005 = ~MAZA/MANGUAL: La maza es comunmente asociada con los clÈrigos. Es un arma contundente muy poderosa, similar al garrote, pero diseÒada para hacer m·s daÒo. El mangual es parecido a la maza, pero suele tener pinchos en lugar de pestaÒas.
+@216005 = ~MAZA/MANGUAL: La maza es comunmente asociada con los cl√©rigos. Es un arma contundente muy poderosa, similar al garrote, pero dise√±ada para hacer m√°s da√±o. El mangual es parecido a la maza, pero suele tener pinchos en lugar de pesta√±as.
 
 <DOTS1>
 <DOTS2>
@@ -390,84 +390,84 @@ CUIDADO: °Las katanas m·gicas son difÌciles de encontrar en Baldur¥s Gate 2!
 <DOTS4>
 <DOTS5>~
 @218001 = ~Alquimia (Mago)~
-@218002 = ~Alquimia (ClÈrigo)~
-@218003 = ~Alquimia (LadrÛn)~
+@218002 = ~Alquimia (Cl√©rigo)~
+@218003 = ~Alquimia (Ladr√≥n)~
 @218004 = ~Alquimia (Mago)
 Esta habilidad permite que un mago cree pociones. Las pociones que crea pueden ser cualquiera de las siguientes:
-1) PociÛn de AbsorciÛn
-2) PociÛn de Resistencia al Fuego
-3) PociÛn de Resistencia al FrÌo
-4) PociÛn de Invisibilidad
-5) PociÛn de Piel PÈtrea
-6) PociÛn de Fuerza
-7) PociÛn de Agilidad
-8) PociÛn de Aliento de Fuego
+1) Poci√≥n de Absorci√≥n
+2) Poci√≥n de Resistencia al Fuego
+3) Poci√≥n de Resistencia al Fr√≠o
+4) Poci√≥n de Invisibilidad
+5) Poci√≥n de Piel P√©trea
+6) Poci√≥n de Fuerza
+7) Poci√≥n de Agilidad
+8) Poci√≥n de Aliento de Fuego
 9) Aceite de Velocidad
 10) Aceite de Fuego Ardiente~
-@218005 = ~Alquimia (ClÈrigo)
-Esta habilidad permite que un clÈrigo cree pociones. Las pociones que crea pueden ser cualquiera de las siguientes:
-1) PociÛn de CuraciÛn
-2) PociÛn de CuraciÛn Extra
-3) PociÛn de CuraciÛn Superior
+@218005 = ~Alquimia (Cl√©rigo)
+Esta habilidad permite que un cl√©rigo cree pociones. Las pociones que crea pueden ser cualquiera de las siguientes:
+1) Poci√≥n de Curaci√≥n
+2) Poci√≥n de Curaci√≥n Extra
+3) Poci√≥n de Curaci√≥n Superior
 4) Elixir de Salud
-5) PociÛn de Perspicacia
-6) PociÛn de RegeneraciÛn
-7) PociÛn de Claridad
-8) AntÌdoto
-9) PociÛn de ConcentraciÛn Mental
-10) PociÛn de Genio~
-@218006 = ~Alquimia (LadrÛn)
-Esta habilidad permite que un ladrÛn cree pociones. Las pociones que crea pueden ser cualquiera de las siguientes:
-1) PociÛn de ConcentraciÛn Mental
-2) PociÛn de PercepciÛn
-3) PociÛn de Invisibilidad
-4) PociÛn de CuraciÛn Superior
-5) PociÛn de RegeneraciÛn
-6) AntÌdoto
+5) Poci√≥n de Perspicacia
+6) Poci√≥n de Regeneraci√≥n
+7) Poci√≥n de Claridad
+8) Ant√≠doto
+9) Poci√≥n de Concentraci√≥n Mental
+10) Poci√≥n de Genio~
+@218006 = ~Alquimia (Ladr√≥n)
+Esta habilidad permite que un ladr√≥n cree pociones. Las pociones que crea pueden ser cualquiera de las siguientes:
+1) Poci√≥n de Concentraci√≥n Mental
+2) Poci√≥n de Percepci√≥n
+3) Poci√≥n de Invisibilidad
+4) Poci√≥n de Curaci√≥n Superior
+5) Poci√≥n de Regeneraci√≥n
+6) Ant√≠doto
 7) Aceite de Velocidad
-8) PociÛn de Fuerza de Gigante de la Escarcha para Ladrones~
+8) Poci√≥n de Fuerza de Gigante de la Escarcha para Ladrones~
 @218007 = ~Inscribir hechizos (Mago)~
-@218008 = ~Inscribir hechizos (ClÈrigo)~
-@218009 = ~Inscribir hechizos (LadrÛn)~
+@218008 = ~Inscribir hechizos (Cl√©rigo)~
+@218009 = ~Inscribir hechizos (Ladr√≥n)~
 @218010 = ~Inscribir hechizos (Mago)
 Esta habilidad permite al mago crear hechizos. Los que puede crear son los siguientes en esta lista:
-1) Proyectil M·gico
+1) Proyectil M√°gico
 2) Escudo
-3) Flecha ¡cida de Melf
-4) Im·gen Espejada
+3) Flecha √Åcida de Melf
+4) Im√°gen Espejada
 5) Meteoritos de Melf
-6) DesvÌo Menor de Conjuros
+6) Desv√≠o Menor de Conjuros
 7) Invisibilidad Mejorada
 8) Tormenta de Hielo
-9) Or·culo
+9) Or√°culo
 10) Caos~
-@218011 = ~Inscribir hechizos (ClÈrigo)
-Esta habilidad permite al clÈrigo crear hechizos. Los que puede crear son los siguientes en esta lista:
-1) Curar Heridas CrÌticas
+@218011 = ~Inscribir hechizos (Cl√©rigo)
+Esta habilidad permite al cl√©rigo crear hechizos. Los que puede crear son los siguientes en esta lista:
+1) Curar Heridas Cr√≠ticas
 2) Golpe de Fuego
 3) Revivir a los muertos
 4) Restablecimiento
-5) ProtecciÛn contra el Acido
-6) ProtecciÛn contra el FrÌo
-7) ProtecciÛn contra la Electricidad
-8) ProtecciÛn contra el Fuego
-9) Fuerza de CampeÛn
-10) DominaciÛn Mental~
-@218012 = ~Inscribir hechizos (LadrÛn)
-Esta habilidad permite al ladrÛn crear hechizos. Los que puede crear son los siguientes en esta lista:
-1) Proyectil M·gico
+5) Protecci√≥n contra el Acido
+6) Protecci√≥n contra el Fr√≠o
+7) Protecci√≥n contra la Electricidad
+8) Protecci√≥n contra el Fuego
+9) Fuerza de Campe√≥n
+10) Dominaci√≥n Mental~
+@218012 = ~Inscribir hechizos (Ladr√≥n)
+Esta habilidad permite al ladr√≥n crear hechizos. Los que puede crear son los siguientes en esta lista:
+1) Proyectil M√°gico
 2) Celeridad
 3) Bola de Fuego
 4) Disipar Magia
 5) Hechizo Horrible
 6) Invisibilidad
-7) Cono de FrÌo
+7) Cono de Fr√≠o
 8) Convocar Monstruo II
 9) Convocar Monstruo III~
 
 // next two strings used for matching and updating item descriptions
-@223001 = ~CARACTERÕSTICAS:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
-@223002 = ~Siempre se la considera un arma +%ench% al determinar a quiÈn puede golpear.~
+@223001 = ~CARACTER√çSTICAS:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
+@223002 = ~Siempre se la considera un arma +%ench% al determinar a qui√©n puede golpear.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -482,10 +482,10 @@ Esta habilidad permite al ladrÛn crear hechizos. Los que puede crear son los sig
 @318313 = ~Deseo a mi amante, Aerie.~
 @318314 = ~Deseo a mi amante, Jaheira.~
 @318315 = ~Deseo a mi amante, Sir Anomen, Caballero de la Orden.~
-@318316 = ~Deseo a mi amante, Anomen, clÈrigo de Helm.~
+@318316 = ~Deseo a mi amante, Anomen, cl√©rigo de Helm.~
 @318317 = ~Deseo a mi amante, Viconia.~
 
-@321001 = ~Selecciona un valor mÌnimo de estadÌsticas, entre 6 y 15:~
+@321001 = ~Selecciona un valor m√≠nimo de estad√≠sticas, entre 6 y 15:~
     
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -495,6 +495,6 @@ Esta habilidad permite al ladrÛn crear hechizos. Los que puede crear son los sig
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@408001 = ~Cuando le pregunt·is por su pasado, KHALID nerviosamente os comenta que ha nacido en la naciÛn de Calimshan. No habla mucho de sus padres, pero os d·is cuenta que su padre comerciante no tenÌa mucho tiempo para Èl, d·ndole m·s atenciÛn a sus medio hermanos. Sin la aprobaciÛn de su padre, Khalid no pudo pagar las lecciones para ser aprendiz de mago, asÌ que se uniÛ a la milicia esperando ganar el dinero suficiente. No da muchos detalles de como conociÛ a Jaheira, pero su adoraciÛn hacia ella es obvia. Cuando le pregunt·is como conociÛ a Gorion sÛlo os dice que han sido amigos, y que muchos lloran su pÈrdida.~
+@408001 = ~Cuando le pregunt√°is por su pasado, KHALID nerviosamente os comenta que ha nacido en la naci√≥n de Calimshan. No habla mucho de sus padres, pero os d√°is cuenta que su padre comerciante no ten√≠a mucho tiempo para √©l, d√°ndole m√°s atenci√≥n a sus medio hermanos. Sin la aprobaci√≥n de su padre, Khalid no pudo pagar las lecciones para ser aprendiz de mago, as√≠ que se uni√≥ a la milicia esperando ganar el dinero suficiente. No da muchos detalles de como conoci√≥ a Jaheira, pero su adoraci√≥n hacia ella es obvia. Cuando le pregunt√°is como conoci√≥ a Gorion s√≥lo os dice que han sido amigos, y que muchos lloran su p√©rdida.~
 
 @411000 = ~Dar constitucion legal de 19 a Kagain~

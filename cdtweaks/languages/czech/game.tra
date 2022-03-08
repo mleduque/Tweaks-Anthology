@@ -29,8 +29,8 @@ a ukryvani v tezkych zbrojich'~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-  @5001 = ~Script zmìny avatara:~
-  @5002 = ~Tento skript dává uivateli kontrolu nad avatarem (animací postavy) charakteru. Stisknìte klávesu 'S' pro aktivování obrazovky vıbìru avatarù. (<script>)~
+  @5001 = ~Script zmÃ¬ny avatara:~
+  @5002 = ~Tento skript dÃ¡vÃ¡ uÅ¾ivateli kontrolu nad avatarem (animacÃ­ postavy) charakteru. StisknÃ¬te klÃ¡vesu 'S' pro aktivovÃ¡nÃ­ obrazovky vÃ½bÃ¬ru avatarÃ¹. (<script>)~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -40,246 +40,246 @@ a ukryvani v tezkych zbrojich'~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@104001 = ~Amnskı voják~
-@104002 = ~Schválenı mág~
-@104003 = ~Klerik mìstské stráe~
+@104001 = ~AmnskÃ½ vojÃ¡k~
+@104002 = ~SchvÃ¡lenÃ½ mÃ¡g~
+@104003 = ~Klerik mÃ¬stskÃ© strÃ¡Å¾e~
 
-@105001 = ~Tvùj drowí pøedmìt se rozloil~
+@105001 = ~TvÃ¹j drowÃ­ pÃ¸edmÃ¬t se rozloÅ¾il~
 
-@106001 = ~Tvá zbroj se rozbila~
-@106002 = ~Tvùj štít se rozbil~
-@106003 = ~Tvá pøilba se rozbila~
+@106001 = ~TvÃ¡ zbroj se rozbila~
+@106002 = ~TvÃ¹j Å¡tÃ­t se rozbil~
+@106003 = ~TvÃ¡ pÃ¸ilba se rozbila~
 
-@107001 = ~Jdi na mì èekat do Pøátelské náruèe. Jestli se situace zmìní, pøijdu tam za tebou.~
-@107002 = ~Pøidej se zpìt k druinì, prosím.~
-@107003 = ~Pošlu tì zpìt do Ukryte sféry... èekej tam na mì.~
+@107001 = ~Jdi na mÃ¬ Ã¨ekat do PÃ¸Ã¡telskÃ© nÃ¡ruÃ¨e. Jestli se situace zmÃ¬nÃ­, pÃ¸ijdu tam za tebou.~
+@107002 = ~PÃ¸idej se zpÃ¬t k druÅ¾inÃ¬, prosÃ­m.~
+@107003 = ~PoÅ¡lu tÃ¬ zpÃ¬t do Ukryte sfÃ©ry... Ã¨ekej tam na mÃ¬.~
 
 @108001 = ~Pas na munici~
-@108002 = ~Tento pás je ideální pro nošení kamenù do praku, šipek nebo šípù.
+@108002 = ~Tento pÃ¡s je ideÃ¡lnÃ­ pro noÅ¡enÃ­ kamenÃ¹ do praku, Å¡ipek nebo Å¡Ã­pÃ¹.
 
 VLASTNOSTI:
 
-Kapacita: celkovì 2000 støel do praku, vrhacích šipek, šípù nebo šipek
-Váha: 2~
-@108003  = ~Skøíòka na lektvary~
-@108004  = ~Obvykle ji nosí potulní léèitelé. Tuto koenou skøíòku je moné otevøít a uloit a pro bezpeènou pøepravu upevnit v jejích vypolstrovanıch úchytech mnoství køehkıch lahvièek s lektvary.
+Kapacita: celkovÃ¬ 2000 stÃ¸el do praku, vrhacÃ­ch Å¡ipek, Å¡Ã­pÃ¹ nebo Å¡ipek
+VÃ¡ha: 2~
+@108003  = ~SkÃ¸Ã­Ã²ka na lektvary~
+@108004  = ~Obvykle ji nosÃ­ potulnÃ­ lÃ©Ã¨itelÃ©. Tuto koÅ¾enou skÃ¸Ã­Ã²ku je moÅ¾nÃ© otevÃ¸Ã­t a uloÅ¾it a pro bezpeÃ¨nou pÃ¸epravu upevnit v jejÃ­ch vypolstrovanÃ½ch Ãºchytech mnoÅ¾stvÃ­ kÃ¸ehkÃ½ch lahviÃ¨ek s lektvary.
 
 VLASTNOSTI:
 
-Kapacita: 100 flakónkù
-Váha: 2~
+Kapacita: 100 flakÃ³nkÃ¹
+VÃ¡ha: 2~
 
 @111001  = ~Hostinec~
-@111002  = ~Ubytovna knìzích~
-@111003  = ~Oghmùv chrám~
-@111004  = ~Skladištì~
-@111005  = ~Pøední brána~
+@111002  = ~Ubytovna knÃ¬zÃ­ch~
+@111003  = ~OghmÃ¹v chrÃ¡m~
+@111004  = ~SkladiÅ¡tÃ¬~
+@111005  = ~PÃ¸ednÃ­ brÃ¡na~
 @111006  = ~Knihovna~
-@111007  = ~Noclehárna~
-@111008  = ~Kasárny~
-@111009  = ~Ošetøovna~
-@111010  = ~Sídlo Entara Støíbroštíta~
-@111011  = ~U Helmy a pláštì~
+@111007  = ~NoclehÃ¡rna~
+@111008  = ~KasÃ¡rny~
+@111009  = ~OÅ¡etÃ¸ovna~
+@111010  = ~SÃ­dlo Entara StÃ¸Ã­broÅ¡tÃ­ta~
+@111011  = ~U Helmy a plÃ¡Å¡tÃ¬~
 @111012  = ~Taverna~
-@111013  = ~Helmùv chrám~
-@111014  = ~Brána èerného draka~
-@111015  = ~Ramazithova vì~
-@111016  = ~Duchalùv palác~
-@111017  = ~U Tøí starıch sudù~
-@111018  = ~U Stydlivé moøské panny~
-@111019  = ~U Rozmaøilého jesetera~
+@111013  = ~HelmÃ¹v chrÃ¡m~
+@111014  = ~BrÃ¡na Ã¨ernÃ©ho draka~
+@111015  = ~Ramazithova vÃ¬Å¾~
+@111016  = ~DuchalÃ¹v palÃ¡c~
+@111017  = ~U TÃ¸Ã­ starÃ½ch sudÃ¹~
+@111018  = ~U StydlivÃ© moÃ¸skÃ© panny~
+@111019  = ~U RozmaÃ¸ilÃ©ho jesetera~
 @111020  = ~Ilmaterova kaple~
-@111021  = ~Úètárna~
-@111022  = ~Sklepení~
+@111021  = ~ÃšÃ¨tÃ¡rna~
+@111022  = ~SklepenÃ­~
 @111023  = ~Karavana~
-@111024  = ~Hostinec Pøátelská náruè~
-@111025  = ~Chrám moudrosti~
-@111026  = ~U Veselého kejklíøe~
-@111027  = ~Feldepostùv hostinec~
-@111028  = ~Kovárna hromového kladiva~
-@111029  = ~U Rudé otepy~
-@111030  = ~U Ohnivého èarodìje~
-@111031  = ~Zámeèek~
+@111024  = ~Hostinec PÃ¸Ã¡telskÃ¡ nÃ¡ruÃ¨~
+@111025  = ~ChrÃ¡m moudrosti~
+@111026  = ~U VeselÃ©ho kejklÃ­Ã¸e~
+@111027  = ~FeldepostÃ¹v hostinec~
+@111028  = ~KovÃ¡rna hromovÃ©ho kladiva~
+@111029  = ~U RudÃ© otepy~
+@111030  = ~U OhnivÃ©ho Ã¨arodÃ¬je~
+@111031  = ~ZÃ¡meÃ¨ek~
 @111032  = ~High Hedge~
-@111033  = ~Dùm~
-@111034  = ~Jeskynì~
-@111035  = ~Zaplavenı dùm~
-@111036  = ~Nashkelskı hostinec~
+@111033  = ~DÃ¹m~
+@111034  = ~JeskynÃ¬~
+@111035  = ~ZaplavenÃ½ dÃ¹m~
+@111036  = ~NashkelskÃ½ hostinec~
 @111037  = ~Obchod~
-@111038  = ~Krèma U Chrlícího dráèka~
+@111038  = ~KrÃ¨ma U ChrlÃ­cÃ­ho drÃ¡Ã¨ka~
 @111039  = ~Vila~
 @111040  = ~Pevnost~
-@111041  = ~Gnollí pevnost~
-@111042  = ~Vstup do dolù~
+@111041  = ~GnollÃ­ pevnost~
+@111042  = ~Vstup do dolÃ¹~
 @111043  = ~Chata~
 @111044  = ~Socha~
-@111045  = ~Opuštìnı dùm~
-@111046  = ~Pøedsíò~
-@111047  = ~Chrám ranní písnì~
+@111045  = ~OpuÅ¡tÃ¬nÃ½ dÃ¹m~
+@111046  = ~PÃ¸edsÃ­Ã²~
+@111047  = ~ChrÃ¡m rannÃ­ pÃ­snÃ¬~
 @111048  = ~Ruiny Ulcasteru~
-@111049  = ~Vıchod~
-@111050  = ~Do nišího patra~
-@111051  = ~Do vyššího patra~
-@111052  = ~Vıchod na povrch~
+@111049  = ~VÃ½chod~
+@111050  = ~Do niÅ¾Å¡Ã­ho patra~
+@111051  = ~Do vyÅ¡Å¡Ã­ho patra~
+@111052  = ~VÃ½chod na povrch~
 @111053  = ~Gullykin~
 @111054  = ~Vstup do ruin Firewine~
-@111055  = ~Ztroskotaná loï~
-@111056  = ~Opuštìnı maják~
-@111057  = ~Šachta~
+@111055  = ~ZtroskotanÃ¡ loÃ¯~
+@111056  = ~OpuÅ¡tÃ¬nÃ½ majÃ¡k~
+@111057  = ~Å achta~
 @111058  = ~Farma~
-@111059  = ~Wyrmùm pøechod~
-@111060  = ~Velkı stan~
-@111061  = ~Pavouèí hnízdo~
-@111062  = ~Dùm ve vìtvích~
-@111063  = ~Kolík vpustì øeky~
-@111064  = ~Dùlní vıtah~
-@111065  = ~Elfí píseò~
-@111066  = ~Èarodìjné rozmanitosti~
-@111067  = ~Levné zboí šastného Aella~
-@111068  = ~Maltzovo zbrojíøství~
+@111059  = ~WyrmÃ¹m pÃ¸echod~
+@111060  = ~VelkÃ½ stan~
+@111061  = ~PavouÃ¨Ã­ hnÃ­zdo~
+@111062  = ~DÃ¹m ve vÃ¬tvÃ­ch~
+@111063  = ~KolÃ­k vpustÃ¬ Ã¸eky~
+@111064  = ~DÃ¹lnÃ­ vÃ½tah~
+@111065  = ~ElfÃ­ pÃ­seÃ²~
+@111066  = ~ÃˆarodÃ¬jnÃ© rozmanitosti~
+@111067  = ~LevnÃ© zboÅ¾Ã­ Å¡ÂastnÃ©ho Aella~
+@111068  = ~Maltzovo zbrojÃ­Ã¸stvÃ­~
 @111069  = ~Keexiina taverna~
-@111070  = ~Tichı obchod~
-@111071  = ~Hostinec U Èepele a hvìzd~
-@111072  = ~Koloniál~
+@111070  = ~TichÃ½ obchod~
+@111071  = ~Hostinec U Ãˆepele a hvÃ¬zd~
+@111072  = ~KoloniÃ¡l~
 @111073  = ~Hostinec~
-@111074  = ~Dùm správce pøístavu~
-@111075  = ~Nízká lucerna~
-@111076  = ~Dùm vodní královny~
-@111077  = ~eleznı trùn~
-@111078  = ~Jopalinùv hostinec~
-@111079  = ~Sedm sluncí~
-@111080  = ~Ohnivá pìst~
-@111081  = ~Kupeckı svaz~
-@111082  = ~Ye Oldùv hostinec~
-@111083  = ~Dùm Dámy~
-@111084  = ~Síò zázrakù~
-@111085  = ~Velká síò zázrakù~
-@111086  = ~Ragefastùv dùm~
-@111087  = ~Vìštectví~
-@111088  = ~Drùbeí obchod~
+@111074  = ~DÃ¹m sprÃ¡vce pÃ¸Ã­stavu~
+@111075  = ~NÃ­zkÃ¡ lucerna~
+@111076  = ~DÃ¹m vodnÃ­ krÃ¡lovny~
+@111077  = ~Å½eleznÃ½ trÃ¹n~
+@111078  = ~JopalinÃ¹v hostinec~
+@111079  = ~Sedm sluncÃ­~
+@111080  = ~OhnivÃ¡ pÃ¬st~
+@111081  = ~KupeckÃ½ svaz~
+@111082  = ~Ye OldÃ¹v hostinec~
+@111083  = ~DÃ¹m DÃ¡my~
+@111084  = ~SÃ­Ã² zÃ¡zrakÃ¹~
+@111085  = ~VelkÃ¡ sÃ­Ã² zÃ¡zrakÃ¹~
+@111086  = ~RagefastÃ¹v dÃ¹m~
+@111087  = ~VÃ¬Å¡tectvÃ­~
+@111088  = ~DrÃ¹beÅ¾Ã­ obchod~
 @111089  = ~Drakonova taverna~
 @111090  = ~Vila Felonia Gista~
-@111091  = ~Hostinec Ulgothùv vous~
-@111092  = ~Neobydlená vì~
-@111093  = ~Vchod do Durlagovy vìe~
-@111094  = ~Vıchod z dolù~
-@111095  = ~Vıchod~
-@111096  = ~Bhaalùv chrám~
+@111091  = ~Hostinec UlgothÃ¹v vous~
+@111092  = ~NeobydlenÃ¡ vÃ¬Å¾~
+@111093  = ~Vchod do Durlagovy vÃ¬Å¾e~
+@111094  = ~VÃ½chod z dolÃ¹~
+@111095  = ~VÃ½chod~
+@111096  = ~BhaalÃ¹v chrÃ¡m~
 
-@114001 = ~Drahokam je ruda, po které je, kdy se obrousí nebo na ní vytvoøí fazety a vyleští, poptávka nebo se mùe uívat na šperky.~
+@114001 = ~Drahokam je ruda, po kterÃ© je, kdyÅ¾ se obrousÃ­ nebo na nÃ­ vytvoÃ¸Ã­ fazety a vyleÅ¡tÃ­, poptÃ¡vka nebo se mÃ¹Å¾e uÅ¾Ã­vat na Å¡perky.~
 
-@115001 = ~Vyvolej zvíøata (Stvoøení/Povolávání) 
-Úroveò: 6
-Sféra: Povolávání 
-Dosah: 60 metrù
-Trvání: 4 tahy
-Doba sesílání: 9
-Oblast pùsobení: zvláštní 
-Záchrannı hod: ádnı 
+@115001 = ~Vyvolej zvÃ­Ã¸ata (StvoÃ¸enÃ­/PovolÃ¡vÃ¡nÃ­) 
+ÃšroveÃ²: 6
+SfÃ©ra: PovolÃ¡vÃ¡nÃ­ 
+Dosah: 60 metrÃ¹
+TrvÃ¡nÃ­: 4 tahy
+Doba sesÃ­lÃ¡nÃ­: 9
+Oblast pÃ¹sobenÃ­: zvlÃ¡Å¡tnÃ­ 
+ZÃ¡chrannÃ½ hod: Å¾Ã¡dnÃ½ 
 
-Toto kouzlo umoòuje sesilateli povolat a ovládat dva  medvìdodlaky s ivotaschopností 20. Po dobu trvání kouzla plní medvìdodlaci kadé sesilatelovo pøání. Medvìdodlaci jsou pomalejší ne velcí vlkodlaci, ale jsou naproti tomu robustnìjší. Jsou té odolní na elementální a magické útoky a velmi rychle regenerují.~
-@115002 = ~Velkı medvìdodlak~
-@115003 = ~Medvìdodlak~
-@115004 = ~Tato symbolická packa reprezentuje pøemìòovatelovu schopnost ovládat lykantropii. Jakmile si ji pøemìòovatel nasadí, stane se vlkodlakem. Sundá-li si ji, stává se opìt èlovìkem. Packy jsou povaovány za zbraò +2.
-
-VLASTNOSTI:
-
-Stupnì vlastností:  19 SIL, 16 OBR, 15 ODL
-Základní tøída zbroje:  1
-Odolnosti:  20% odolnost na magii, imunita na nemagické zbranì
-Poèet útokù za kolo:  2
-Zranìní:  1K12
-Druh zranìn:  seèné
-Rychlost:  3
-Druh dovednosti:  dıka
-Druh:  jednoruèní
-Smí pouívat:  Pøemìòovatel~ 
-@115005 = ~Tato symbolická packa reprezentuje pøemìòovatelovu schopnost ovládat lykantropii. Jakmile si ji pøemìòovatel nasadí, stane se velkım vlkodlakem. Sundá-li si ji, stává se opìt èlovìkem. Packy jsou povaovány za zbraò +3.
+Toto kouzlo umoÅ¾Ã²uje sesilateli povolat a ovlÃ¡dat dva  medvÃ¬dodlaky s Å¾ivotaschopnostÃ­ 20. Po dobu trvÃ¡nÃ­ kouzla plnÃ­ medvÃ¬dodlaci kaÅ¾dÃ© sesilatelovo pÃ¸Ã¡nÃ­. MedvÃ¬dodlaci jsou pomalejÅ¡Ã­ neÅ¾ velcÃ­ vlkodlaci, ale jsou naproti tomu robustnÃ¬jÅ¡Ã­. Jsou tÃ©Å¾ odolnÃ­ na elementÃ¡lnÃ­ a magickÃ© Ãºtoky a velmi rychle regenerujÃ­.~
+@115002 = ~VelkÃ½ medvÃ¬dodlak~
+@115003 = ~MedvÃ¬dodlak~
+@115004 = ~Tato symbolickÃ¡ packa reprezentuje pÃ¸emÃ¬Ã²ovatelovu schopnost ovlÃ¡dat lykantropii. Jakmile si ji pÃ¸emÃ¬Ã²ovatel nasadÃ­, stane se vlkodlakem. SundÃ¡-li si ji, stÃ¡vÃ¡ se opÃ¬t Ã¨lovÃ¬kem. Packy jsou povaÅ¾ovÃ¡ny za zbraÃ² +2.
 
 VLASTNOSTI:
 
-Stupnì vlastností:  21 SIL, 20 OBR, 25 ODL
-Základní tøída zbroje:  -6
-Základní záchranné hody:  1/1/1/2/1
-Odolnosti:  40% odolnost na magii, 50% odolnost na elementy, imunita na nemagické zbranì
-Regenerace:  3 ivoty za sekundu
-Poèet útokù za kolo:  3
-Základní THAC0 packy:  6 
-Zranìní:  2K8
-Druh zranìní:  seèné
+StupnÃ¬ vlastnostÃ­:  19 SIL, 16 OBR, 15 ODL
+ZÃ¡kladnÃ­ tÃ¸Ã­da zbroje:  1
+Odolnosti:  20% odolnost na magii, imunita na nemagickÃ© zbranÃ¬
+PoÃ¨et ÃºtokÃ¹ za kolo:  2
+ZranÃ¬nÃ­:  1K12
+Druh zranÃ¬n:  seÃ¨nÃ©
 Rychlost:  3
-Druh dovednosti:  dıka 
-Druh:  jednoruèní
-Smí pouívat:  Pøemìòovatel~
+Druh dovednosti:  dÃ½ka
+Druh:  jednoruÃ¨nÃ­
+SmÃ­ pouÅ¾Ã­vat:  PÃ¸emÃ¬Ã²ovatel~ 
+@115005 = ~Tato symbolickÃ¡ packa reprezentuje pÃ¸emÃ¬Ã²ovatelovu schopnost ovlÃ¡dat lykantropii. Jakmile si ji pÃ¸emÃ¬Ã²ovatel nasadÃ­, stane se velkÃ½m vlkodlakem. SundÃ¡-li si ji, stÃ¡vÃ¡ se opÃ¬t Ã¨lovÃ¬kem. Packy jsou povaÅ¾ovÃ¡ny za zbraÃ² +3.
 
-@116002 = ~Mám vlastnickou smlouvu na divadla, pokud by sis pøál vyzkoušet svùj talent. Samuel je dobrı èlovìk a rád pøedá tuto smlouvu do tvıch rukou.~ ~Mám smlouvu v divadle, pokud by sis pøála vyzkoušet svùj talent. Samuel je dobrı èlovìk a rád pøedá tuto smlouvu do tvıch rukou.~
-@116003 = ~Je mi líto, Raelis, ale prostì nemám èas.~
-@116004 = ~Dìkuji za laskavou nabídku, ale musím odmítnout. Ani bych nevìdìl, kde zaèít pøi vedení divadla.~~Dìkuji za laskavou nabídku, ale musím odmítnout. Ani bych nevìdìla, kde zaèít pøi vedení divadla.~
-@116005 = ~Vaše divadlo pod Pìti dbánky? Bude mi ctí mít ho za své.~
-@116006 = ~Jo, dìlej co musíš. Bránit ti nemùu. Ale svému zachránci dluím více ne slova na rozlouèenou.~
-@116007 = ~Mám vlastnickou smlouvu na divadla, pokud by sis pøál vyzkoušet svùj talent. Samuel je dobrı èlovìk a rád pøedá tuto smlouvu do tvıch rukou.~ ~Mám smlouvu v divadle, pokud by sis pøála vyzkoušet svùj talent. Samuel je dobrı èlovìk a rád pøedá tuto smlouvu do tvıch rukou.~
-@116008 = ~Pak ti musí staèit naše srdeèné díky. Pojïte, vy Stráci zkázy, musíme vyrazit a rychle. Snad se ještì shledáme, <CHARNAME>.~
-@116009 = ~Je mi líto, ale nemohu. Potøebuji nalézt svou pøítelkyni a vsadím se, e budu èasto daleko od Athkatly.~
-@116010 = ~Nemùu, starosto, protoe se nebudu èasto v tìchto místech. Hledám mocného mága a nejlepší stopy jsou v Athkatle.~
-@116011 = ~Musím odmítnout. Události v Athkatle si vyadují mou pøítomnost a nemùu bıt pravidelnì tak daleko.~
-@116012 = ~Bude mi ctí. Pøijímám a vynasnaím se udìlat co nejvíce pro vesnici svou pøítomností.~
-@116013 = ~Sory, nezájem. Chci zaplatit!~
-@116014 = ~Pøipouštím své zklamání, ale rozumím obtínostem tvé prohlášení, <CHARNAME>. Nezávidím ti zvolenou cestu.~
-@116015 = ~Vy, mùj <LADYLORD>, jste pravım pøítelem zemì. Zem mùe bıt obnovena vedena pevnou rukou nìkoho jako vy.~
-@116016 = ~Mùeš vést tento hájek bìhem èasu obrození?~
-@116017 = ~Vynasnaím se navrátit rovnováhu této zemi.~
-@116018 = ~Tato zem trpìla, a já se vynasnaím odèinit škody napáchané Faldorninımi èiny.~
-@116019 = ~Byl bych špatnım správcem. Mé záleitosti v Athkatla mì nutí odmítnout.~
-@116020 = ~Hledám mocného mága, a nemohu se nechat rozptylovat jinımi záleitostmi.~
-@116021 = ~Má pøítelkynì byla unesena. Aèkoliv mì to mrzí, nemùu tuto záleitost odsunout a pomáhat hájku.~
-@116022 = ~Obdrel jsi poehnání Háje, a já ti pøedávám Hùl hromu a blesku.~
-@116023 = ~Dobrá tedy. Zùstanu zde nadále jako Mistr vyzyvatel, a budu spravovat Háj dokud obøadní nástup nebude splnìn.~
+VLASTNOSTI:
 
-@122001 = ~Ah, Schránka hojnosti. Mùu ji oèarovat tak, aby vytváøela silnìjší šipky, ale bude tì to nìco stát. 5,000 zlatıch.~
-@122002 = ~Nue, mrknìme se, co dalšího tam máš.~
-@122003 = ~Zlodìjská kápì, jo?~
-@122004 = ~S lahvièkou protijedu a prstenem neviditelnosti, mùe bıt uiteènìjší.~
-@122005 = ~Dobrá, tady je prsten neviditelnosti... a protijed. Máš vše, co potøebuju. Za 10,000 zlatıch, mùu ji udìlat mnohem mocnìjší.~
+StupnÃ¬ vlastnostÃ­:  21 SIL, 20 OBR, 25 ODL
+ZÃ¡kladnÃ­ tÃ¸Ã­da zbroje:  -6
+ZÃ¡kladnÃ­ zÃ¡chrannÃ© hody:  1/1/1/2/1
+Odolnosti:  40% odolnost na magii, 50% odolnost na elementy, imunita na nemagickÃ© zbranÃ¬
+Regenerace:  3 Å¾ivoty za sekundu
+PoÃ¨et ÃºtokÃ¹ za kolo:  3
+ZÃ¡kladnÃ­ THAC0 packy:  6 
+ZranÃ¬nÃ­:  2K8
+Druh zranÃ¬nÃ­:  seÃ¨nÃ©
+Rychlost:  3
+Druh dovednosti:  dÃ½ka 
+Druh:  jednoruÃ¨nÃ­
+SmÃ­ pouÅ¾Ã­vat:  PÃ¸emÃ¬Ã²ovatel~
+
+@116002 = ~MÃ¡m vlastnickou smlouvu na divadla, pokud by sis pÃ¸Ã¡l vyzkouÅ¡et svÃ¹j talent. Samuel je dobrÃ½ Ã¨lovÃ¬k a rÃ¡d pÃ¸edÃ¡ tuto smlouvu do tvÃ½ch rukou.~ ~MÃ¡m smlouvu v divadle, pokud by sis pÃ¸Ã¡la vyzkouÅ¡et svÃ¹j talent. Samuel je dobrÃ½ Ã¨lovÃ¬k a rÃ¡d pÃ¸edÃ¡ tuto smlouvu do tvÃ½ch rukou.~
+@116003 = ~Je mi lÃ­to, Raelis, ale prostÃ¬ nemÃ¡m Ã¨as.~
+@116004 = ~DÃ¬kuji za laskavou nabÃ­dku, ale musÃ­m odmÃ­tnout. Ani bych nevÃ¬dÃ¬l, kde zaÃ¨Ã­t pÃ¸i vedenÃ­ divadla.~~DÃ¬kuji za laskavou nabÃ­dku, ale musÃ­m odmÃ­tnout. Ani bych nevÃ¬dÃ¬la, kde zaÃ¨Ã­t pÃ¸i vedenÃ­ divadla.~
+@116005 = ~VaÅ¡e divadlo pod PÃ¬ti dÅ¾bÃ¡nky? Bude mi ctÃ­ mÃ­t ho za svÃ©.~
+@116006 = ~Jo, dÃ¬lej co musÃ­Å¡. BrÃ¡nit ti nemÃ¹Å¾u. Ale svÃ©mu zachrÃ¡nci dluÅ¾Ã­m vÃ­ce neÅ¾ slova na rozlouÃ¨enou.~
+@116007 = ~MÃ¡m vlastnickou smlouvu na divadla, pokud by sis pÃ¸Ã¡l vyzkouÅ¡et svÃ¹j talent. Samuel je dobrÃ½ Ã¨lovÃ¬k a rÃ¡d pÃ¸edÃ¡ tuto smlouvu do tvÃ½ch rukou.~ ~MÃ¡m smlouvu v divadle, pokud by sis pÃ¸Ã¡la vyzkouÅ¡et svÃ¹j talent. Samuel je dobrÃ½ Ã¨lovÃ¬k a rÃ¡d pÃ¸edÃ¡ tuto smlouvu do tvÃ½ch rukou.~
+@116008 = ~Pak ti musÃ­ staÃ¨it naÅ¡e srdeÃ¨nÃ© dÃ­ky. PojÃ¯te, vy StrÃ¡Å¾ci zkÃ¡zy, musÃ­me vyrazit a rychle. Snad se jeÅ¡tÃ¬ shledÃ¡me, <CHARNAME>.~
+@116009 = ~Je mi lÃ­to, ale nemohu. PotÃ¸ebuji nalÃ©zt svou pÃ¸Ã­telkyni a vsadÃ­m se, Å¾e budu Ã¨asto daleko od Athkatly.~
+@116010 = ~NemÃ¹Å¾u, starosto, protoÅ¾e se nebudu Ã¨asto v tÃ¬chto mÃ­stech. HledÃ¡m mocnÃ©ho mÃ¡ga a nejlepÅ¡Ã­ stopy jsou v Athkatle.~
+@116011 = ~MusÃ­m odmÃ­tnout. UdÃ¡losti v Athkatle si vyÅ¾adujÃ­ mou pÃ¸Ã­tomnost a nemÃ¹Å¾u bÃ½t pravidelnÃ¬ tak daleko.~
+@116012 = ~Bude mi ctÃ­. PÃ¸ijÃ­mÃ¡m a vynasnaÅ¾Ã­m se udÃ¬lat co nejvÃ­ce pro vesnici svou pÃ¸Ã­tomnostÃ­.~
+@116013 = ~Sory, nezÃ¡jem. Chci zaplatit!~
+@116014 = ~PÃ¸ipouÅ¡tÃ­m svÃ© zklamÃ¡nÃ­, ale rozumÃ­m obtÃ­Å¾nostem tvÃ© prohlÃ¡Å¡enÃ­, <CHARNAME>. NezÃ¡vidÃ­m ti zvolenou cestu.~
+@116015 = ~Vy, mÃ¹j <LADYLORD>, jste pravÃ½m pÃ¸Ã­telem zemÃ¬. Zem mÃ¹Å¾e bÃ½t obnovena vedena pevnou rukou nÃ¬koho jako vy.~
+@116016 = ~MÃ¹Å¾eÅ¡ vÃ©st tento hÃ¡jek bÃ¬hem Ã¨asu obrozenÃ­?~
+@116017 = ~VynasnaÅ¾Ã­m se navrÃ¡tit rovnovÃ¡hu tÃ©to zemi.~
+@116018 = ~Tato zem trpÃ¬la, a jÃ¡ se vynasnaÅ¾Ã­m odÃ¨init Å¡kody napÃ¡chanÃ© FaldorninÃ½mi Ã¨iny.~
+@116019 = ~Byl bych Å¡patnÃ½m sprÃ¡vcem. MÃ© zÃ¡leÅ¾itosti v Athkatla mÃ¬ nutÃ­ odmÃ­tnout.~
+@116020 = ~HledÃ¡m mocnÃ©ho mÃ¡ga, a nemohu se nechat rozptylovat jinÃ½mi zÃ¡leÅ¾itostmi.~
+@116021 = ~MÃ¡ pÃ¸Ã­telkynÃ¬ byla unesena. AÃ¨koliv mÃ¬ to mrzÃ­, nemÃ¹Å¾u tuto zÃ¡leÅ¾itost odsunout a pomÃ¡hat hÃ¡jku.~
+@116022 = ~ObdrÅ¾el jsi poÅ¾ehnÃ¡nÃ­ HÃ¡je, a jÃ¡ ti pÃ¸edÃ¡vÃ¡m HÃ¹l hromu a blesku.~
+@116023 = ~DobrÃ¡ tedy. ZÃ¹stanu zde nadÃ¡le jako Mistr vyzyvatel, a budu spravovat HÃ¡j dokud obÃ¸adnÃ­ nÃ¡stup nebude splnÃ¬n.~
+
+@122001 = ~Ah, SchrÃ¡nka hojnosti. MÃ¹Å¾u ji oÃ¨arovat tak, aby vytvÃ¡Ã¸ela silnÃ¬jÅ¡Ã­ Å¡ipky, ale bude tÃ¬ to nÃ¬co stÃ¡t. 5,000 zlatÃ½ch.~
+@122002 = ~NuÅ¾e, mrknÃ¬me se, co dalÅ¡Ã­ho tam mÃ¡Å¡.~
+@122003 = ~ZlodÃ¬jskÃ¡ kÃ¡pÃ¬, jo?~
+@122004 = ~S lahviÃ¨kou protijedu a prstenem neviditelnosti, mÃ¹Å¾e bÃ½t uÅ¾iteÃ¨nÃ¬jÅ¡Ã­.~
+@122005 = ~DobrÃ¡, tady je prsten neviditelnosti... a protijed. MÃ¡Å¡ vÅ¡e, co potÃ¸ebuju. Za 10,000 zlatÃ½ch, mÃ¹Å¾u ji udÃ¬lat mnohem mocnÃ¬jÅ¡Ã­.~
 @122006 = ~Copak je tohle?~
-@122007 = ~Mám návod jak pøipevnit dva rohy k Helmì kamene, co ji uèiní silnìjší. A najdeš ty èásti, mùu to pro tebe udìlat.~
-@122008 = ~Máš Helmu kamene a dva rohy na pøipevnìní. Za 5,000 zlatıch mùu ty rohy pøipevnit, a vytvoøit tak skvìlou helmu pro bojovníky.~
-@122009 = ~Tohle jsou rukavice bardù.~
-@122010 = ~Mùou bıt vylepšeny nìjakımi drcenımi drahokami. Pøines mi diamant, smaragd, kámen darebákù a hvìzdnı safír, a mùu to pro tebe udìlat.~
-@122011 = ~Rozdrcením diamantu, smaragdu, hvìzdného safíru a kamene darebákù je mùu vylepšit. Bude tì to stát 5,000 zlatıch.~
+@122007 = ~MÃ¡m nÃ¡vod jak pÃ¸ipevnit dva rohy k HelmÃ¬ kamene, coÅ¾ ji uÃ¨inÃ­ silnÃ¬jÅ¡Ã­. AÅ¾ najdeÅ¡ ty Ã¨Ã¡sti, mÃ¹Å¾u to pro tebe udÃ¬lat.~
+@122008 = ~MÃ¡Å¡ Helmu kamene a dva rohy na pÃ¸ipevnÃ¬nÃ­. Za 5,000 zlatÃ½ch mÃ¹Å¾u ty rohy pÃ¸ipevnit, a vytvoÃ¸it tak skvÃ¬lou helmu pro bojovnÃ­ky.~
+@122009 = ~Tohle jsou rukavice bardÃ¹.~
+@122010 = ~MÃ¹Å¾ou bÃ½t vylepÅ¡eny nÃ¬jakÃ½mi drcenÃ½mi drahokami. PÃ¸ines mi diamant, smaragd, kÃ¡men darebÃ¡kÃ¹ a hvÃ¬zdnÃ½ safÃ­r, a mÃ¹Å¾u to pro tebe udÃ¬lat.~
+@122011 = ~RozdrcenÃ­m diamantu, smaragdu, hvÃ¬zdnÃ©ho safÃ­ru a kamene darebÃ¡kÃ¹ je mÃ¹Å¾u vylepÅ¡it. Bude tÃ¬ to stÃ¡t 5,000 zlatÃ½ch.~
 @122012 = ~Tohle jsou rukavice pro paladina.~
-@122013 = ~Za 10,000 zlatıch, je mùu pøetvoøit v nìco daleko lepšího.~
-@122014 = ~Hmm, stará kniha golemù.~
-@122015 = ~Urèitımi stránkami mùeš vylepšit golema vyvolaného tìmito knihami.~
-@122016 = ~Se stránkou hlinìného golema a 5,000 zlatımi, mùu tvou knihu vylepšit, aby vyvolávala hlinìné golemy.~
-@122017 = ~Ach, tohle je opravdovı pláš ochrany.~
-@122018 = ~Se svitky neviditelnosti a zdokonaleného spìchu, mùe bıt dokonce vylepšen.~
-@122019 = ~Mùeme pouít ty svitky neviditelnosti a zdokonaleného spìchu k vylepšení toho pláštì. Je to sloitı proces a bude tì to stát 20,000 zlatıch.~
-@122020 = ~Aj, šupiny bílého draka. Mùu z onìch šupin vytvoøit brnìní, pokud chceš, za pouhıch 5,000 zlatıch.~
-@122021 = ~Tak tohle je jedno skvìlé elfí brnìní, dokonce i podle trpaslièích standartù.~
-@122022 = ~Ale ještì je pár trpaslièích trikù, které jsi ještì nespatøil. Se svitkem ochrany pøed normálními zbranìmi, to bude vyadovat trochu magie.~
-@122023 = ~S tím svitkem ochrany pøed normálními zbranìmi, mùeme brnìní oèarovat tak, aby odolalo všemu krom magickıch èepelí. Není jednoduché spojit trpaslièí kouzlo s elfím brnìním, bude tì to stát 40,000 zlatıch.~
-@122024 = ~Tohle je gnómskı prak. Mám pár trikù v rukávu jak jej, za 5,000 zlatıch, udìlat pøesnìjším.~
-@122025 = ~A copak je tohle za toulec? Aj, vytváøí nekoneènı poèet magickıch šípù.~
-@122026 = ~Kdy narazíš na kámen darebákù, mùeme ty šípy dále vylepšit.~
-@122027 = ~S kamenem darebákù a 10,000 zlatımi mùu šípùm zvıšit oèarování.~
-@122028 = ~Ach, tak tohle je skvìlı pohled! Cep vìkù!~
-@122029 = ~Jdou zvìsti, e exituje více hlav pro tento cep. Pokud nìjaké najdeš, mùu je pøipojit.~
-@122030 = ~Vidím, es pro nìj našel další hlavu. Vypadá na jedovou. Za 5,000 zlatıch ji pøipojím.~
-@122031 = ~Mohl by to bıt... ? Jo, je to Vıbušnı kyj.~
-@122032 = ~Kdy najdeš prsten ohnivé odolnosti, mùeme vytvoøit pìknì efektní kyj.~
-@122033 = ~Za 5,000 zlatıch ho mùeme zkombinovat s tvım prstenem ohnivé odolnosti, a bude z toho ještì lepší kyj.~
-@122034 = ~Ah, tak tohle vypadá jako nìco od Ixila.~
-@122035 = ~Toto je èást skvìlého Ixilova kopí. Jestlie se ti podaøí nalézt další èást, dokáu je spojit ve zbraò.~
-@122036 = ~Našels obì èásti Ixilova starého kopí. Za 5,000 zlatıch mùeme spojit Ixilùv høeb s Ixilovım bodcem.~
-@122037 = ~Ah, tak tohle je Dıka hvìzd.~
-@122038 = ~Pokud ji spojíme s pìti hvìzdımi safíry, mùeme dále vylepšit její oèarování.~
-@122039 = ~S tìmi pìti hvìzdnımi safíry a 5,000 zlatımi ji mùeme uèinit dokonce efektivnìjší.~
-@122040 = ~Oni maj tøi hlavice...v miku k tomu pøidám otrávenou a elektrickou hlavu. Pìt hlav, chápaj to? 10,000 zlaákù a já to zvládnu. Chtìj to?~
-@122041 = ~Mùeš tam prozatím pøipojit pouze elektrickou hlavici? Dám ti 5,000 zlatıch.~
-@122042 = ~Mùeš tam prozatím pøipojit pouze otrávenou hlavici? Dám ti 5,000 zlatıch.~
-@122043 = ~Znám recepic pro dvì hlavice k Cepu vìkù. Nejdøív pøidaj otrávenou hlavici... nebo elektrickou hlavici. Jedinı recepicy, co mám, je mi líto~
-@122044 = ~Maj tam tøi hlavice...v miku k tomu pøidám elektrickou hlavu. Ètyry hlavy, chápaj to? 5,000 zlaákù a já to zvládnu. Chtìj to?~
-@122045 = ~Óóó! Oni maj ètyry hlavice a já mùu pøidat poslední hlavu. Fakt šokr, tadle. 5 000 zl a já to udìlám. Chtìj?~
+@122013 = ~Za 10,000 zlatÃ½ch, je mÃ¹Å¾u pÃ¸etvoÃ¸it v nÃ¬co daleko lepÅ¡Ã­ho.~
+@122014 = ~Hmm, starÃ¡ kniha golemÃ¹.~
+@122015 = ~UrÃ¨itÃ½mi strÃ¡nkami mÃ¹Å¾eÅ¡ vylepÅ¡it golema vyvolanÃ©ho tÃ¬mito knihami.~
+@122016 = ~Se strÃ¡nkou hlinÃ¬nÃ©ho golema a 5,000 zlatÃ½mi, mÃ¹Å¾u tvou knihu vylepÅ¡it, aby vyvolÃ¡vala hlinÃ¬nÃ© golemy.~
+@122017 = ~Ach, tohle je opravdovÃ½ plÃ¡Å¡Â ochrany.~
+@122018 = ~Se svitky neviditelnosti a zdokonalenÃ©ho spÃ¬chu, mÃ¹Å¾e bÃ½t dokonce vylepÅ¡en.~
+@122019 = ~MÃ¹Å¾eme pouÅ¾Ã­t ty svitky neviditelnosti a zdokonalenÃ©ho spÃ¬chu k vylepÅ¡enÃ­ toho plÃ¡Å¡tÃ¬. Je to sloÅ¾itÃ½ proces a bude tÃ¬ to stÃ¡t 20,000 zlatÃ½ch.~
+@122020 = ~Aj, Å¡upiny bÃ­lÃ©ho draka. MÃ¹Å¾u z onÃ¬ch Å¡upin vytvoÃ¸it brnÃ¬nÃ­, pokud chceÅ¡, za pouhÃ½ch 5,000 zlatÃ½ch.~
+@122021 = ~Tak tohle je jedno skvÃ¬lÃ© elfÃ­ brnÃ¬nÃ­, dokonce i podle trpasliÃ¨Ã­ch standartÃ¹.~
+@122022 = ~Ale jeÅ¡tÃ¬ je pÃ¡r trpasliÃ¨Ã­ch trikÃ¹, kterÃ© jsi jeÅ¡tÃ¬ nespatÃ¸il. Se svitkem ochrany pÃ¸ed normÃ¡lnÃ­mi zbranÃ¬mi, to bude vyÅ¾adovat trochu magie.~
+@122023 = ~S tÃ­m svitkem ochrany pÃ¸ed normÃ¡lnÃ­mi zbranÃ¬mi, mÃ¹Å¾eme brnÃ¬nÃ­ oÃ¨arovat tak, aby odolalo vÅ¡emu krom magickÃ½ch Ã¨epelÃ­. NenÃ­ jednoduchÃ© spojit trpasliÃ¨Ã­ kouzlo s elfÃ­m brnÃ¬nÃ­m, bude tÃ¬ to stÃ¡t 40,000 zlatÃ½ch.~
+@122024 = ~Tohle je gnÃ³mskÃ½ prak. MÃ¡m pÃ¡r trikÃ¹ v rukÃ¡vu jak jej, za 5,000 zlatÃ½ch, udÃ¬lat pÃ¸esnÃ¬jÅ¡Ã­m.~
+@122025 = ~A copak je tohle za toulec? Aj, vytvÃ¡Ã¸Ã­ nekoneÃ¨nÃ½ poÃ¨et magickÃ½ch Å¡Ã­pÃ¹.~
+@122026 = ~KdyÅ¾ narazÃ­Å¡ na kÃ¡men darebÃ¡kÃ¹, mÃ¹Å¾eme ty Å¡Ã­py dÃ¡le vylepÅ¡it.~
+@122027 = ~S kamenem darebÃ¡kÃ¹ a 10,000 zlatÃ½mi mÃ¹Å¾u Å¡Ã­pÃ¹m zvÃ½Å¡it oÃ¨arovÃ¡nÃ­.~
+@122028 = ~Ach, tak tohle je skvÃ¬lÃ½ pohled! Cep vÃ¬kÃ¹!~
+@122029 = ~Jdou zvÃ¬sti, Å¾e exituje vÃ­ce hlav pro tento cep. Pokud nÃ¬jakÃ© najdeÅ¡, mÃ¹Å¾u je pÃ¸ipojit.~
+@122030 = ~VidÃ­m, Å¾es pro nÃ¬j naÅ¡el dalÅ¡Ã­ hlavu. VypadÃ¡ na jedovou. Za 5,000 zlatÃ½ch ji pÃ¸ipojÃ­m.~
+@122031 = ~Mohl by to bÃ½t... ? Jo, je to VÃ½buÅ¡nÃ½ kyj.~
+@122032 = ~KdyÅ¾ najdeÅ¡ prsten ohnivÃ© odolnosti, mÃ¹Å¾eme vytvoÃ¸it pÃ¬knÃ¬ efektnÃ­ kyj.~
+@122033 = ~Za 5,000 zlatÃ½ch ho mÃ¹Å¾eme zkombinovat s tvÃ½m prstenem ohnivÃ© odolnosti, a bude z toho jeÅ¡tÃ¬ lepÅ¡Ã­ kyj.~
+@122034 = ~Ah, tak tohle vypadÃ¡ jako nÃ¬co od Ixila.~
+@122035 = ~Toto je Ã¨Ã¡st skvÃ¬lÃ©ho Ixilova kopÃ­. JestliÅ¾e se ti podaÃ¸Ã­ nalÃ©zt dalÅ¡Ã­ Ã¨Ã¡st, dokÃ¡Å¾u je spojit ve zbraÃ².~
+@122036 = ~NaÅ¡els obÃ¬ Ã¨Ã¡sti Ixilova starÃ©ho kopÃ­. Za 5,000 zlatÃ½ch mÃ¹Å¾eme spojit IxilÃ¹v hÃ¸eb s IxilovÃ½m bodcem.~
+@122037 = ~Ah, tak tohle je DÃ½ka hvÃ¬zd.~
+@122038 = ~Pokud ji spojÃ­me s pÃ¬ti hvÃ¬zdÃ½mi safÃ­ry, mÃ¹Å¾eme dÃ¡le vylepÅ¡it jejÃ­ oÃ¨arovÃ¡nÃ­.~
+@122039 = ~S tÃ¬mi pÃ¬ti hvÃ¬zdnÃ½mi safÃ­ry a 5,000 zlatÃ½mi ji mÃ¹Å¾eme uÃ¨init dokonce efektivnÃ¬jÅ¡Ã­.~
+@122040 = ~Oni maj tÃ¸i hlavice...v mÅ¾iku k tomu pÃ¸idÃ¡m otrÃ¡venou a elektrickou hlavu. PÃ¬t hlav, chÃ¡paj to? 10,000 zlaÂÃ¡kÃ¹ a jÃ¡ to zvlÃ¡dnu. ChtÃ¬j to?~
+@122041 = ~MÃ¹Å¾eÅ¡ tam prozatÃ­m pÃ¸ipojit pouze elektrickou hlavici? DÃ¡m ti 5,000 zlatÃ½ch.~
+@122042 = ~MÃ¹Å¾eÅ¡ tam prozatÃ­m pÃ¸ipojit pouze otrÃ¡venou hlavici? DÃ¡m ti 5,000 zlatÃ½ch.~
+@122043 = ~ZnÃ¡m recepic pro dvÃ¬ hlavice k Cepu vÃ¬kÃ¹. NejdÃ¸Ã­v pÃ¸idaj otrÃ¡venou hlavici... nebo elektrickou hlavici. JedinÃ½ recepicy, co mÃ¡m, je mi lÃ­to~
+@122044 = ~Maj tam tÃ¸i hlavice...v mÅ¾iku k tomu pÃ¸idÃ¡m elektrickou hlavu. Ãˆtyry hlavy, chÃ¡paj to? 5,000 zlaÂÃ¡kÃ¹ a jÃ¡ to zvlÃ¡dnu. ChtÃ¬j to?~
+@122045 = ~Ã“Ã³Ã³! Oni maj Ã¨tyry hlavice a jÃ¡ mÃ¹Å¾u pÃ¸idat poslednÃ­ hlavu. Fakt Å¡okr, tadle. 5 000 zl a jÃ¡ to udÃ¬lÃ¡m. ChtÃ¬j?~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -291,13 +291,13 @@ Smí pouívat:  Pøemìòovatel~
 
 // Moved from thieving_descripts.tpa
 // See English setup.tra for details on what should be matched by the regular expression
-@210001  = ~\(Váha:[ %TAB%]*[0-9]+\)~
-@210002 = ~^[ %TAB%]*Otevírání zámku:.+$[%MNL%%LNL%%WNL%]+~
-@210003 = ~Otevírání zámku:~
+@210001  = ~\(VÃ¡ha:[ %TAB%]*[0-9]+\)~
+@210002 = ~^[ %TAB%]*OtevÃ­rÃ¡nÃ­ zÃ¡mku:.+$[%MNL%%LNL%%WNL%]+~
+@210003 = ~OtevÃ­rÃ¡nÃ­ zÃ¡mku:~
 @210004 = ~^[ %TAB%]*Najdi pasti:.+$[%MNL%%LNL%%WNL%]+~
 @210005 = ~Najdi pasti:~
-@210006 = ~^[ %TAB%]*Vykrádánú:.+$[%MNL%%LNL%%WNL%]+~
-@210007 = ~Vykrádánú:~
+@210006 = ~^[ %TAB%]*VykrÃ¡dÃ¡nÃº:.+$[%MNL%%LNL%%WNL%]+~
+@210007 = ~VykrÃ¡dÃ¡nÃº:~
 // Texts remaining in English in the original czech thieving_descripts.tpa
 @210008 = ~^[ %TAB%]*Hide in Shadows:.+$[%MNL%%LNL%%WNL%]+~
 @210009 = ~Hide in Shadows:~
@@ -306,128 +306,128 @@ Smí pouívat:  Pøemìòovatel~
 
 // Moved from arcane_descripts.tpa
 // See English setup.tra for details on what should be matched by the regular expression
-@212001 = ~\(Váha:[ %tab%]*[0-9]+\)~
-@212002 = ~Selhání seslání arkánních kouzel:~
+@212001 = ~\(VÃ¡ha:[ %tab%]*[0-9]+\)~
+@212002 = ~SelhÃ¡nÃ­ seslÃ¡nÃ­ arkÃ¡nnÃ­ch kouzel:~
 
 @214001 = ~barbar / mag~
 @214002 = ~barbar / klerik~
 @214003 = ~barbar / zlodej~
 @214004 = ~barbar / druid~
 
-@216001 = ~KRÁTKİ MEÈ/NINJA-TO:  Této zbrani dává pøednost vìtšina zlodìjù a pùlèíkù. Krátkı meè i ninja-to je lehká, ale uiteèná zbraò.
+@216001 = ~KRÃTKÃ MEÃˆ/NINJA-TO:  TÃ©to zbrani dÃ¡vÃ¡ pÃ¸ednost vÃ¬tÅ¡ina zlodÃ¬jÃ¹ a pÃ¹lÃ¨Ã­kÃ¹. KrÃ¡tkÃ½ meÃ¨ i ninja-to je lehkÃ¡, ale uÅ¾iteÃ¨nÃ¡ zbraÃ².
 
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216002 = ~KATANA/WAKIZASHI:  Katana a wakizashi je dùkazem kováøova mistrovství a vyaduje velkou péèi. Jak se dovednost vyvíjí, zbraò a majitel se stávají jedinou bytostí, naprosto oddanou umìní boje. Tyto zbranì se mimo Kara-Tur tìko hledají, take bys mìl nad touto dovedností popøemıšlet. Koneckoncù, dovednost s katanou èi wakizshi ti bude uiteèná, jedinì kdy nìjakou najdeš.
+@216002 = ~KATANA/WAKIZASHI:  Katana a wakizashi je dÃ¹kazem kovÃ¡Ã¸ova mistrovstvÃ­ a vyÅ¾aduje velkou pÃ©Ã¨i. Jak se dovednost vyvÃ­jÃ­, zbraÃ² a majitel se stÃ¡vajÃ­ jedinou bytostÃ­, naprosto oddanou umÃ¬nÃ­ boje. Tyto zbranÃ¬ se mimo Kara-Tur tÃ¬Å¾ko hledajÃ­, takÅ¾e bys mÃ¬l nad touto dovednostÃ­ popÃ¸emÃ½Å¡let. KoneckoncÃ¹, dovednost s katanou Ã¨i wakizshi ti bude uÅ¾iteÃ¨nÃ¡, jedinÃ¬ kdyÅ¾ nÃ¬jakou najdeÅ¡.
 
-VAROVÁNÍ:  Magické katany jsou Baldur's Gate 2 velmi vzácné!
-
-<DOTS1>
-<DOTS2>
-<DOTS3>
-<DOTS4>
-<DOTS5>~
-@216003 = ~SCIMITAR:  Tato dovednost umoòuje postavì pouívat zakøivené ostré zbranì, jako scimitary.
+VAROVÃNÃ:  MagickÃ© katany jsou Baldur's Gate 2 velmi vzÃ¡cnÃ©!
 
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216004 = ~CEP:  Cepy jsou drtivá zbranì pouívané k omráèení nepøátel. Obtínì se pouívají, ale staèí trocha cviku a jsou to vıborné zbranì.
+@216003 = ~SCIMITAR:  Tato dovednost umoÅ¾Ã²uje postavÃ¬ pouÅ¾Ã­vat zakÃ¸ivenÃ© ostrÃ© zbranÃ¬, jako scimitary.
 
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216005 = ~PALCÁT/ØEMDICH:  Palcát je èasto spojován s kleriky. Je to tupá zbraò podobná kyji, ale nebezpeènìjší. Øemdih je podobnı palcátu, jeho hlavice je posázena bodci.
+@216004 = ~CEP:  Cepy jsou drtivÃ¡ zbranÃ¬ pouÅ¾Ã­vanÃ© k omrÃ¡Ã¨enÃ­ nepÃ¸Ã¡tel. ObtÃ­Å¾nÃ¬ se pouÅ¾Ã­vajÃ­, ale staÃ¨Ã­ trocha cviku a jsou to vÃ½bornÃ© zbranÃ¬.
 
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@218001 = ~Alchymie (Mág)~
-@218002 = ~Alchymie (Knìz)~
-@218003 = ~Alchymie (Tulák)~
-@218004 = ~Alchymie (Mág)
-Tato dovednost umoòuje mágovi vytváøet lektvary. Lektvar, kterı mág vyrobí, je náhodnì vybrán z následujícího seznamu:
-1)  Lektvar pohlcení
-2)  Lektvar ohnivé odolnosti
-3)  Lektvar odolnosti na mráz
+@216005 = ~PALCÃT/Ã˜EMDICH:  PalcÃ¡t je Ã¨asto spojovÃ¡n s kleriky. Je to tupÃ¡ zbraÃ² podobnÃ¡ kyji, ale nebezpeÃ¨nÃ¬jÅ¡Ã­. Ã˜emdih je podobnÃ½ palcÃ¡tu, jehoÅ¾ hlavice je posÃ¡zena bodci.
+
+<DOTS1>
+<DOTS2>
+<DOTS3>
+<DOTS4>
+<DOTS5>~
+@218001 = ~Alchymie (MÃ¡g)~
+@218002 = ~Alchymie (KnÃ¬z)~
+@218003 = ~Alchymie (TulÃ¡k)~
+@218004 = ~Alchymie (MÃ¡g)
+Tato dovednost umoÅ¾Ã²uje mÃ¡govi vytvÃ¡Ã¸et lektvary. Lektvar, kterÃ½ mÃ¡g vyrobÃ­, je nÃ¡hodnÃ¬ vybrÃ¡n z nÃ¡sledujÃ­cÃ­ho seznamu:
+1)  Lektvar pohlcenÃ­
+2)  Lektvar ohnivÃ© odolnosti
+3)  Lektvar odolnosti na mrÃ¡z
 4)  Lektvar neviditelnosti
-5)  Lektvar kamenné podoby
-6)  Lektvar síly
+5)  Lektvar kamennÃ© podoby
+6)  Lektvar sÃ­ly
 7)  Lektvar hbitosti
-8)  Lektvar ohnivého dechu
+8)  Lektvar ohnivÃ©ho dechu
 9)  Olej rychlosti
 10) Olej plamene~
-@218005 = ~Alchymie (Knìz)
-Tato dovednost umoòuje knìzi vytváøet lektvary. Lektvar, kterı knìz vyrobí, je náhodnì vybrán z následujícího seznamu:
-1)  Lektvar léèení
-2)  Lektvar mimoøádného léèení
-3)  Lektvar neuvìøitelného léèení
-4)  Elixír zdraví
-5)  Lektvar pochopení
+@218005 = ~Alchymie (KnÃ¬z)
+Tato dovednost umoÅ¾Ã²uje knÃ¬zi vytvÃ¡Ã¸et lektvary. Lektvar, kterÃ½ knÃ¬z vyrobÃ­, je nÃ¡hodnÃ¬ vybrÃ¡n z nÃ¡sledujÃ­cÃ­ho seznamu:
+1)  Lektvar lÃ©Ã¨enÃ­
+2)  Lektvar mimoÃ¸Ã¡dnÃ©ho lÃ©Ã¨enÃ­
+3)  Lektvar neuvÃ¬Ã¸itelnÃ©ho lÃ©Ã¨enÃ­
+4)  ElixÃ­r zdravÃ­
+5)  Lektvar pochopenÃ­
 6)  Lektvar regenerace
-7)  Lektvar jasné mysli
+7)  Lektvar jasnÃ© mysli
 8)  Protijed
-9)  Lektvar zaostøení mysli
+9)  Lektvar zaostÃ¸enÃ­ mysli
 10) Lektvar geniality~
-@218006 = ~Alchymie (Tulák)
-Zlodìji jsou ji od pøírody dùmyslní a zkušenı zlodìj ji bìhem svıch cest vidìl spousty lektvarù na to, aby je dokázal také vyrábìt. S touto dovedností mùe zlodìj jednou dennì vytvoøit jeden z osmi lektvarù. 
+@218006 = ~Alchymie (TulÃ¡k)
+ZlodÃ¬ji jsou jiÅ¾ od pÃ¸Ã­rody dÃ¹myslnÃ­ a zkuÅ¡enÃ½ zlodÃ¬j jiÅ¾ bÃ¬hem svÃ½ch cest vidÃ¬l spousty lektvarÃ¹ na to, aby je dokÃ¡zal takÃ© vyrÃ¡bÃ¬t. S touto dovednostÃ­ mÃ¹Å¾e zlodÃ¬j jednou dennÃ¬ vytvoÃ¸it jeden z osmi lektvarÃ¹. 
 
-Vytvoøenı lektvar se urèí náhodnì z tohoto seznamu: 
-1) Lektvar zaostøení mysli
-2) Lektvar vnímavosti
+VytvoÃ¸enÃ½ lektvar se urÃ¨Ã­ nÃ¡hodnÃ¬ z tohoto seznamu: 
+1) Lektvar zaostÃ¸enÃ­ mysli
+2) Lektvar vnÃ­mavosti
 3) Lektvar neviditelnosti
-4) lektvar neuvìøitelného léèení
+4) lektvar neuvÃ¬Ã¸itelnÃ©ho lÃ©Ã¨enÃ­
 5) Lektvar regenerace
 6) Protijed
 7) Olej rychlosti
-8) Tulákùv lektvar síly mrazivého obra~
-@218007 = ~Psaní svitkù (Mág)~
-@218008 = ~Psaní svitkù (Knìz)~
-@218009 = ~Psaní svitkù (Tulák)~
-@218010 = ~Psaní svitkù (Mág)
-Tato dovednost mágovi umoòuje vytváøet svitky kouzel niších a støedních úrovní. Svitek, kterı mág vyrobí, je náhodnì vybrán z následujícího seznamu:
-1)  Magická støela
-2)  Štít
-3)  Melfùv kyselinovı šíp
-4)  Zrcadlovı obraz
-5)  Melfovy drobné meteory
-6)  Menší odvracení kouzla
-7)  Vylepšená neviditelnost
-8)  Ledová bouøe
-9)  Vìštírna
+8) TulÃ¡kÃ¹v lektvar sÃ­ly mrazivÃ©ho obra~
+@218007 = ~PsanÃ­ svitkÃ¹ (MÃ¡g)~
+@218008 = ~PsanÃ­ svitkÃ¹ (KnÃ¬z)~
+@218009 = ~PsanÃ­ svitkÃ¹ (TulÃ¡k)~
+@218010 = ~PsanÃ­ svitkÃ¹ (MÃ¡g)
+Tato dovednost mÃ¡govi umoÅ¾Ã²uje vytvÃ¡Ã¸et svitky kouzel niÅ¾Å¡Ã­ch a stÃ¸ednÃ­ch ÃºrovnÃ­. Svitek, kterÃ½ mÃ¡g vyrobÃ­, je nÃ¡hodnÃ¬ vybrÃ¡n z nÃ¡sledujÃ­cÃ­ho seznamu:
+1)  MagickÃ¡ stÃ¸ela
+2)  Å tÃ­t
+3)  MelfÃ¹v kyselinovÃ½ Å¡Ã­p
+4)  ZrcadlovÃ½ obraz
+5)  Melfovy drobnÃ© meteory
+6)  MenÅ¡Ã­ odvracenÃ­ kouzla
+7)  VylepÅ¡enÃ¡ neviditelnost
+8)  LedovÃ¡ bouÃ¸e
+9)  VÃ¬Å¡tÃ­rna
 10) Zmatek~
-@218011 = ~Psaní svitkù (Knìz)
-Tato dovednost knìzi umoòuje vytváøet svitky knìskıch kouzel. Svitek, kterı knìz vyrobí, je náhodnì vybrán z následujícího seznamu:
-1)  Vyleè kritická zranìní
-2)  Plamennı úder
-3)  Oiv mrtvého
+@218011 = ~PsanÃ­ svitkÃ¹ (KnÃ¬z)
+Tato dovednost knÃ¬zi umoÅ¾Ã²uje vytvÃ¡Ã¸et svitky knÃ¬Å¾skÃ½ch kouzel. Svitek, kterÃ½ knÃ¬z vyrobÃ­, je nÃ¡hodnÃ¬ vybrÃ¡n z nÃ¡sledujÃ­cÃ­ho seznamu:
+1)  VyleÃ¨ kritickÃ¡ zranÃ¬nÃ­
+2)  PlamennÃ½ Ãºder
+3)  OÅ¾iv mrtvÃ©ho
 4)  Obnova
-5)  Ochrana pøed kyselinou
-6)  Ochrana pøed mrazem
-7)  Ochrana pøed elektøinou
-8)  Ochrana pøed ohnìm
-9)  Hrdinská síla
-10) Duševní ovládnutí~
-@218012 = ~Psaní svitkù (Tulák)
-Tato dovednost tulákovi umoòuje vytváøet svitky knìskıch kouzel. Svitek, kterı tulák vyrobí, je náhodnì vybrán z následujícího seznamu:
-1) Magická støela
-2) Spìch
-3) Ohnivá koule
+5)  Ochrana pÃ¸ed kyselinou
+6)  Ochrana pÃ¸ed mrazem
+7)  Ochrana pÃ¸ed elektÃ¸inou
+8)  Ochrana pÃ¸ed ohnÃ¬m
+9)  HrdinskÃ¡ sÃ­la
+10) DuÅ¡evnÃ­ ovlÃ¡dnutÃ­~
+@218012 = ~PsanÃ­ svitkÃ¹ (TulÃ¡k)
+Tato dovednost tulÃ¡kovi umoÅ¾Ã²uje vytvÃ¡Ã¸et svitky knÃ¬Å¾skÃ½ch kouzel. Svitek, kterÃ½ tulÃ¡k vyrobÃ­, je nÃ¡hodnÃ¬ vybrÃ¡n z nÃ¡sledujÃ­cÃ­ho seznamu:
+1) MagickÃ¡ stÃ¸ela
+2) SpÃ¬ch
+3) OhnivÃ¡ koule
 4) Roztyl magie
-5) Silná náklonost
+5) SilnÃ¡ nÃ¡klonost
 6) Neviditelnost
-7) Kuel chladu
-8) Pøivolávání pøíšer II
-9) Pøivolávání pøíšer III~
+7) KuÅ¾el chladu
+8) PÃ¸ivolÃ¡vÃ¡nÃ­ pÃ¸Ã­Å¡er II
+9) PÃ¸ivolÃ¡vÃ¡nÃ­ pÃ¸Ã­Å¡er III~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -439,11 +439,11 @@ Tato dovednost tulákovi umoòuje vytváøet svitky knìskıch kouzel. Svitek, kterı
 
 @315000 = ~Vypnout prisernou animaci u Plaste zrcadleni, Kouzelne pasti a Fyzickeho zrcadla~
 
-@318313 = ~Pøiveï mi mou milovanou Aerii.~
-@318314 = ~Pøiveï mi mou milovanou Jaheiru.~
-@318315 = ~Pøiveï mi mého milovaného sira Anomena, Rytíøe øádu.~
-@318316 = ~Pøiveï mi mého milovaného Anomena, Helmova knìze.~
-@318317 = ~Pøiveï mi mou milovanou Viconii.~
+@318313 = ~PÃ¸iveÃ¯ mi mou milovanou Aerii.~
+@318314 = ~PÃ¸iveÃ¯ mi mou milovanou Jaheiru.~
+@318315 = ~PÃ¸iveÃ¯ mi mÃ©ho milovanÃ©ho sira Anomena, RytÃ­Ã¸e Ã¸Ã¡du.~
+@318316 = ~PÃ¸iveÃ¯ mi mÃ©ho milovanÃ©ho Anomena, Helmova knÃ¬ze.~
+@318317 = ~PÃ¸iveÃ¯ mi mou milovanou Viconii.~
 
 @321001 = ~Zvol minimalni hodnotu vlastnosti, v rozmezi 6 az 15:~
 
@@ -455,6 +455,6 @@ Tato dovednost tulákovi umoòuje vytváøet svitky knìskıch kouzel. Svitek, kterı
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@408001 = ~Kdy se ho zeptáš na minulost, KHALID nervóznì odhalí, e se narodil a vyrostl ve státì Calimshan. O rodièích toho moc nepoví, ale máš dojem, e jeho otec obchodník o nìm nemìl valné mínìní a vìnoval mnohem více pozornosti Khalidovım bratrùm. Bez otcovi podpory nebyl Khalid zaplatit, aby se mohl dát do uèení k mágovi. Pøidal se tedy k mìstské strái a doufal, e vydìlá dostatek penìz. Podrobnosti o setkání s Jaheirou si nechává pro sebe, ale jeho láska k ní je více ne? z?ejmá. Kdy se ho zeptáš, jak dobøe znal Goriona, øekne jen, e byli dlouhou dobu pøátelé a e mnoho jejich spoleènıch známıch truchlí nad jeho ztrátou.~
+@408001 = ~KdyÅ¾ se ho zeptÃ¡Å¡ na minulost, KHALID nervÃ³znÃ¬ odhalÃ­, Å¾e se narodil a vyrostl ve stÃ¡tÃ¬ Calimshan. O rodiÃ¨Ã­ch toho moc nepovÃ­, ale mÃ¡Å¡ dojem, Å¾e jeho otec obchodnÃ­k o nÃ¬m nemÃ¬l valnÃ© mÃ­nÃ¬nÃ­ a vÃ¬noval mnohem vÃ­ce pozornosti KhalidovÃ½m bratrÃ¹m. Bez otcovi podpory nebyl Khalid zaplatit, aby se mohl dÃ¡t do uÃ¨enÃ­ k mÃ¡govi. PÃ¸idal se tedy k mÃ¬stskÃ© strÃ¡Å¾i a doufal, Å¾e vydÃ¬lÃ¡ dostatek penÃ¬z. Podrobnosti o setkÃ¡nÃ­ s Jaheirou si nechÃ¡vÃ¡ pro sebe, ale jeho lÃ¡ska k nÃ­ je vÃ­ce ne? z?ejmÃ¡. KdyÅ¾ se ho zeptÃ¡Å¡, jak dobÃ¸e znal Goriona, Ã¸ekne jen, Å¾e byli dlouhou dobu pÃ¸Ã¡telÃ© a Å¾e mnoho jejich spoleÃ¨nÃ½ch znÃ¡mÃ½ch truchlÃ­ nad jeho ztrÃ¡tou.~
 
 @411000 = ~Dej Kagain legalni odolnost 19~

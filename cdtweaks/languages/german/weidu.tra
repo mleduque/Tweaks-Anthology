@@ -32,7 +32,7 @@ oder durch einen Eurer installlierten Mods bereits ersetzt worden.~
 @7000   = ~Icewind Dale Zaubergrafiken (Andyr)]~
 @7020   = ~Zaubergrafiken von Baldu's Gate (Andyr)~
 @8000   = ~Logo des SvA Ladebildschirms wieder herstellen (nur TdB)~
-@8020   = ~Wiederhergestellte IWD Bilder während des Ladens~
+@8020   = ~Wiederhergestellte IWD Bilder wÃ¤hrend des Ladens~
 @9000   = ~Zusaetzliche Portraetsymbole der Ausruestungsgegenstaende 
 entfernen~
 @10000  = ~Buerger verwenden graue Farben~
@@ -108,7 +108,7 @@ erlauben~
 @216100 = ~BG-Stil Waffenfertigkeiten mit Kampfstile (the bigg)~
 @216200 = ~BG-Stil Waffenfertigkeiten ohne Kampfstile (the bigg)~
 @217000 = ~Zauber von Schriftrollen (und anderen Gegenstaenden) auf der Stufe des Charakters wirken~
-@218000 = ~Regeltreue ETW0-Tabelle, Rettungswuerfe, Großmeisterschaft und magischer sowie goettlicher Zauberfortschritt (Blucher)~
+@218000 = ~Regeltreue ETW0-Tabelle, Rettungswuerfe, GroÃŸmeisterschaft und magischer sowie goettlicher Zauberfortschritt (Blucher)~
 @219000 = ~Begrenzte Faehigkeit der Ladenbesitzer Gegenstaende zu 
 identifizieren~
 @219001 = ~Nur Magier und Barden Ladenbesitzer koennen Gegenstaende identifizieren~
@@ -263,20 +263,20 @@ durchschnittlichem Ruf~
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@500000 = ~Stapelbare Ankheg-Panzer, Winterwolf-Pelze und Drachenköpfe~
+@500000 = ~Stapelbare Ankheg-Panzer, Winterwolf-Pelze und DrachenkÃ¶pfe~
 @501000 = ~NPC-Paaren erlauben, sich zu trennen~
-@502000 = ~Gruppenmitglieder werden weniger wahrscheinlich unabänderlich sterben~
-@503000 = ~Verschiebt Boo in Misks Gepäck~
-@504000 = ~Yeslick erlauben, Äxte zu benutzen~
-@505000 = ~Sicherstellen, dass Shar-Teel nicht bei der ursprünglichen Herausforderung stirbt~
-@506000 = ~Animation vom Spiegelumhang entfernen (belasst ihn für andere Zauber und Wirkungen, die dieselbe Graphik verwenden)~
+@502000 = ~Gruppenmitglieder werden weniger wahrscheinlich unabÃ¤nderlich sterben~
+@503000 = ~Verschiebt Boo in Misks GepÃ¤ck~
+@504000 = ~Yeslick erlauben, Ã„xte zu benutzen~
+@505000 = ~Sicherstellen, dass Shar-Teel nicht bei der ursprÃ¼nglichen Herausforderung stirbt~
+@506000 = ~Animation vom Spiegelumhang entfernen (belasst ihn fÃ¼r andere Zauber und Wirkungen, die dieselbe Graphik verwenden)~
 @507001 = ~Macht den Anfangs-Kerker ein bisschen schwerer~
-@507002 = ~Macht die Bardenfestung für alle Klassen zugänglich~
-@507003 = ~Macht die Klerikerfestung für alle Klassen zugänglich~
-@507004 = ~Macht die Druidenfestung für alle Klassen zugänglich~
-@507005 = ~Macht die Kämpferfestung für alle Klassen zugänglich~
-@507006 = ~Macht die Paladinfestung für alle Klassen zugänglich~
-@507007 = ~Macht die Waldläuferfestung für alle Klassen zugänglich~
+@507002 = ~Macht die Bardenfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507003 = ~Macht die Klerikerfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507004 = ~Macht die Druidenfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507005 = ~Macht die KÃ¤mpferfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507006 = ~Macht die Paladinfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507007 = ~Macht die WaldlÃ¤uferfestung fÃ¼r alle Klassen zugÃ¤nglich~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -285,17 +285,17 @@ durchschnittlichem Ruf~
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-@500000 = ~Stapelbare Ankheg-Panzer, Winterwolf-Pelze und Drachenköpfe~
+@500000 = ~Stapelbare Ankheg-Panzer, Winterwolf-Pelze und DrachenkÃ¶pfe~
 @501000 = ~NPC-Paaren erlauben, sich zu trennen~
-@502000 = ~Gruppenmitglieder werden weniger wahrscheinlich unabänderlich sterben~
-@503000 = ~Verschiebt Boo in Misks Gepäck~
-@504000 = ~Yeslick erlauben, Äxte zu benutzen~
-@505000 = ~Sicherstellen, dass Shar-Teel nicht bei der ursprünglichen Herausforderung stirbt~
-@506000 = ~Animation vom Spiegelumhang entfernen (belasst ihn für andere Zauber und Wirkungen, die dieselbe Graphik verwenden)~
-@507001 = ~Macht die Bardenfestung für alle Klassen zugänglich~
-@507002 = ~Macht die Klerikerfestung für alle Klassen zugänglich~
-@507003 = ~Macht die Druidenfestung für alle Klassen zugänglich~
-@507004 = ~Macht die Kämpferfestung für alle Klassen zugänglich~
-@507005 = ~Macht die Paladinfestung für alle Klassen zugänglich~
-@507007 = ~Macht die Waldläuferfestung für alle Klassen zugänglich~
-@507008 = ~Macht die Diebesfestung für alle Klassen zugänglich~
+@502000 = ~Gruppenmitglieder werden weniger wahrscheinlich unabÃ¤nderlich sterben~
+@503000 = ~Verschiebt Boo in Misks GepÃ¤ck~
+@504000 = ~Yeslick erlauben, Ã„xte zu benutzen~
+@505000 = ~Sicherstellen, dass Shar-Teel nicht bei der ursprÃ¼nglichen Herausforderung stirbt~
+@506000 = ~Animation vom Spiegelumhang entfernen (belasst ihn fÃ¼r andere Zauber und Wirkungen, die dieselbe Graphik verwenden)~
+@507001 = ~Macht die Bardenfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507002 = ~Macht die Klerikerfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507003 = ~Macht die Druidenfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507004 = ~Macht die KÃ¤mpferfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507005 = ~Macht die Paladinfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507007 = ~Macht die WaldlÃ¤uferfestung fÃ¼r alle Klassen zugÃ¤nglich~
+@507008 = ~Macht die Diebesfestung fÃ¼r alle Klassen zugÃ¤nglich~
