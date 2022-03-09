@@ -1,417 +1,417 @@
 @5001   = ~SKRYPT PRZEMIANY AWATARÓW:~
-@5002   = ~Ten skrypt pozwala graczowi kontrolowaæ awatara postaci. Wciœnij 'S' aby w³¹czyæ ekran wyboru awatarów. (<skrypt>)~ 
-@104001 = ~Amnijski ¿o³nierz~
+@5002   = ~Ten skrypt pozwala graczowi kontrolować awatara postaci. Wciśnij 'S' aby włączyć ekran wyboru awatarów. (<skrypt>)~ 
+@104001 = ~Amnijski żołnierz~
 @104002 = ~Sankcjonowany czarodziej~
-@104003 = ~Kap³an ze stra¿y miejskiej~
-@105001 = ~Twój drowi przedmiot rozpad³ siê~
-@106001 = ~Twój pancerz rozpad³ siê~
-@106002 = ~Twoja tarcza rozpad³a siê~
-@106003 = ~Twój he³m rozpad³ siê~
-@107001 = ~IdŸ i poczekaj na nas w gospodzie Pod Pomocn¹ D³oni¹. Jeœli siê coœ zmieni, spotkamy siê tam z tob¹.~
-@107002 = ~Proszê, do³¹cz do dru¿yny.~
-@107003 = ~Wyœlê ciê spowrotem do sfery kieszonkowej... czekaj tam na mnie.~
-@107004 = ~Czekaj na nas w Zimowej Ko³ysce. Jeœli siê coœ zmieni, przyjdziemy tam po ciebie.~
-@107005 = ~Czekaj na nas w Korzennej Piwnicy. Jeœli siê coœ zmieni, przyjdziemy tam po ciebie.~
-@107006 = ~Czekaj na nas w Gwi¿d¿¹cej Szubienicy. Jeœli siê coœ zmieni, przyjdziemy tam po ciebie.~
+@104003 = ~Kapłan ze straży miejskiej~
+@105001 = ~Twój drowi przedmiot rozpadł się~
+@106001 = ~Twój pancerz rozpadł się~
+@106002 = ~Twoja tarcza rozpadła się~
+@106003 = ~Twój hełm rozpadł się~
+@107001 = ~Idź i poczekaj na nas w gospodzie Pod Pomocną Dłonią. Jeśli się coś zmieni, spotkamy się tam z tobą.~
+@107002 = ~Proszę, dołącz do drużyny.~
+@107003 = ~Wyślę cię spowrotem do sfery kieszonkowej... czekaj tam na mnie.~
+@107004 = ~Czekaj na nas w Zimowej Kołysce. Jeśli się coś zmieni, przyjdziemy tam po ciebie.~
+@107005 = ~Czekaj na nas w Korzennej Piwnicy. Jeśli się coś zmieni, przyjdziemy tam po ciebie.~
+@107006 = ~Czekaj na nas w Gwiżdżącej Szubienicy. Jeśli się coś zmieni, przyjdziemy tam po ciebie.~
 @108001 = ~Pasy na amunicje~
-@108002 = ~Ten pas na ramiê jest idealny do przechowywania pocisków do procy, strza³ek, strza³ i be³tów.
+@108002 = ~Ten pas na ramię jest idealny do przechowywania pocisków do procy, strzałek, strzał i bełtów.
 PARAMETRY:
-Pojemnoœæ: w sumie 2,000 pocisków do procy, strza³ek, strza³ i be³tów.
+Pojemność: w sumie 2,000 pocisków do procy, strzałek, strzał i bełtów.
 Waga: 2
-Nie mo¿e u¿ywaæ:~
+Nie może używać:~
 @108003 = ~Torba na mikstury~
-@108004 = ~Zwykle noszone przez podró¿nych uzdrowicieli, to skórzana torba otwiera siê i pozwala w³aœcicielowi przypi¹æ buteleczki z mikstur¹ do jego wyœcie³anego boku przy pomocy licznych skórzanych rzemyków, by bezpiecznie mog³y byæ przechowywane w czasie podró¿y. Niezale¿nie od tego, ile mikstur mieœci siê w torbie, zawsze wa¿y tyle samo.
+@108004 = ~Zwykle noszone przez podróżnych uzdrowicieli, to skórzana torba otwiera się i pozwala właścicielowi przypiąć buteleczki z miksturą do jego wyściełanego boku przy pomocy licznych skórzanych rzemyków, by bezpiecznie mogły być przechowywane w czasie podróży. Niezależnie od tego, ile mikstur mieści się w torbie, zawsze waży tyle samo.
 PARAMETRY:
-Pojemnoœæ: 100 butelek
+Pojemność: 100 butelek
 Waga: 2
-Nie mo¿e u¿ywaæ:~
+Nie może używać:~
 @108005 = ~Torba przechowywania~
-@108006 = ~Podobnie jak w przypadku innych magicznych toreb, ta równie¿ wygl¹da jak zwyk³y zgrzebny worek o wymiarach 50 cm na metr. Wewn¹trz sakwy istnieje jednak przestrzeñ pozawymiarowa, dziêki czemu wewn¹trz jest znacznie wiêksza ni¿ wskazywa³yby na to jej zewnêtrzne wymiary. Niezale¿nie co w³o¿y siê do wnêtrza, sakwa zawsze wa¿y tyle samo.~
+@108006 = ~Podobnie jak w przypadku innych magicznych toreb, ta również wygląda jak zwykły zgrzebny worek o wymiarach 50 cm na metr. Wewnątrz sakwy istnieje jednak przestrzeń pozawymiarowa, dzięki czemu wewnątrz jest znacznie większa niż wskazywałyby na to jej zewnętrzne wymiary. Niezależnie co włoży się do wnętrza, sakwa zawsze waży tyle samo.~
 @111001 = ~Gospoda Candlekeep~
-@111002 = ~Kwatery kap³anów~
-@111003 = ~Œwi¹tynia Oghmy~
+@111002 = ~Kwatery kapłanów~
+@111003 = ~Świątynia Oghmy~
 @111004 = ~Magazyn~
-@111005 = ~G³ówna brama~
+@111005 = ~Główna brama~
 @111006 = ~Biblioteka Candlekeep~
 @111007 = ~Sypialnia~
 @111008 = ~Baraki~
 @111009 = ~Szpital~
-@111010 = ~Posiad³oœæ Entara Srebrnej Tarczy~
-@111011 = ~Helm i P³aszcz~
+@111010 = ~Posiadłość Entara Srebrnej Tarczy~
+@111011 = ~Helm i Płaszcz~
 @111012 = ~Tawerna~
-@111013 = ~Œwi¹tynia Helma~
+@111013 = ~Świątynia Helma~
 @111014 = ~Brama Czarnego Smoka~
-@111015 = ~Wie¿a Ramazitha~
-@111016 = ~Pa³ac Duchalów~
-@111017 = ~Pod Trzema Bary³kami~
-@111018 = ~Sp³oniona Syrena~
+@111015 = ~Wieża Ramazitha~
+@111016 = ~Pałac Duchalów~
+@111017 = ~Pod Trzema Baryłkami~
+@111018 = ~Spłoniona Syrena~
 @111019 = ~Pod Napuszonym Jesiotrem~
 @111020 = ~Kaplica Ilmatera~
 @111021 = ~Dom Rozliczeniowy~
 @111022 = ~Piwnice~
 @111023 = ~Karawana~
-@111024 = ~Gospoda Pod Pomocn¹ D³oni¹~
-@111025 = ~Œwi¹tynia Wiedzy~
-@111026 = ~Wso³y ¯ongler~
+@111024 = ~Gospoda Pod Pomocną Dłonią~
+@111025 = ~Świątynia Wiedzy~
+@111026 = ~Wsoły Żongler~
 @111027 = ~Gospoda Feldeposta~
-@111028 = ~KuŸnia Grzmi¹cego M³ota~
+@111028 = ~Kuźnia Grzmiącego Młota~
 @111029 = ~Czerwony Bukiet~
-@111030 = ~P³on¹cy Czarodziej~
+@111030 = ~Płonący Czarodziej~
 @111031 = ~Rezydencja~
-@111032 = ~Wysoki ¯ywop³ot~
+@111032 = ~Wysoki Żywopłot~
 @111033 = ~Dom~
 @111034 = ~Jaskinia~
 @111035 = ~Zatopiony dom~
 @111036 = ~Gospoda Nashkel~
 @111037 = ~Sklep Nashkel~
-@111038 = ~Pod Bekaj¹cym Smokiem~
-@111039 = ~Posiad³oœæ~
+@111038 = ~Pod Bekającym Smokiem~
+@111039 = ~Posiadłość~
 @111040 = ~Garnizon~
 @111041 = ~Twierdza gnolii~
-@111042 = ~Wejœcie do kopalni~
+@111042 = ~Wejście do kopalni~
 @111043 = ~Chata~
-@111044 = ~RzeŸba~
+@111044 = ~Rzeźba~
 @111045 = ~Opuszczony dom~
-@111046 = ~Westybu³~
-@111047 = ~Œwi¹tynia Pieœni Poranka~
+@111046 = ~Westybuł~
+@111047 = ~Świątynia Pieśni Poranka~
 @111048 = ~Ruiny Ulcaster~
-@111049 = ~Wyjœcie~
-@111050 = ~Zejœcie na nastêpny poziom~
-@111051 = ~Wejœcie na wy¿szy poziom~
-@111052 = ~Wyjœcie na powierzchniê~
+@111049 = ~Wyjście~
+@111050 = ~Zejście na następny poziom~
+@111051 = ~Wejście na wyższy poziom~
+@111052 = ~Wyjście na powierzchnię~
 @111053 = ~Wioska Gullykin~
-@111054 = ~Wejœcie do Ruin Firewine~
+@111054 = ~Wejście do Ruin Firewine~
 @111055 = ~Wrak statku~
 @111056 = ~Opuszczona latarnia morska~
 @111057 = ~Jama~
 @111058 = ~Farma~
-@111059 = ~Skrzy¿owanie ¯mija~
-@111060 = ~Du¿y namiot~
-@111061 = ~Gniazdo paj¹ków~
+@111059 = ~Skrzyżowanie Żmija~
+@111060 = ~Duży namiot~
+@111061 = ~Gniazdo pająków~
 @111062 = ~Domek na drzewie~
-@111063 = ~Œluza~
+@111063 = ~Śluza~
 @111064 = ~Winda kopalni~
-@111065 = ~Tawerna Elfia Pieœñ ~
-@111066 = ~Czarodziejskie Rozmajtoœci~
-@111067 = ~Tanie towary szczêœciarza Aello~
-@111068 = ~Sklep z broni¹ Maltza~
+@111065 = ~Tawerna Elfia Pieśń ~
+@111066 = ~Czarodziejskie Rozmajtości~
+@111067 = ~Tanie towary szczęściarza Aello~
+@111068 = ~Sklep z bronią Maltza~
 @111069 = ~Tawerna Keexie~
 @111070 = ~Sklep ciszy~
 @111071 = ~Ostrze i Gwiazdy~
 @111072 = ~Sklep~
 @111073 = ~Gospoda~
 @111074 = ~Budynek kapitanatu~
-@111075 = ~Pochy³a Latarnia~
+@111075 = ~Pochyła Latarnia~
 @111076 = ~Dom Królowej Wód~
-@111077 = ~¯elazny Tron~
+@111077 = ~Żelazny Tron~
 @111078 = ~Tawerna Jopalina~
-@111079 = ~Siedem S³oñc~
-@111080 = ~P³on¹ca Piêœæ~
+@111079 = ~Siedem Słońc~
+@111080 = ~Płonąca Pięść~
 @111081 = ~Liga Kupiecka~
 @111082 = ~Stara karczma~
 @111083 = ~Dom Pani~
 @111084 = ~Komnata Cudów~
 @111085 = ~Wielka Komnata Cudów~
 @111086 = ~Dom Ragefasta~
-@111087 = ~Wró¿bita~
+@111087 = ~Wróżbita~
 @111088 = ~Sklep z drobiem~
 @111089 = ~Tawerna Drakon~
 @111090 = ~Reydencja Feloniusa Gista~
 @111091 = ~Gospoda Brody Ulgotha~
-@111092 = ~Opuszczona wie¿a~
-@111093 = ~Wejœcie do Wie¿y Durlaga~
-@111094 = ~Wyjœcie z kopalni~
-@111095 = ~Wyjœcie~
-@111096 = ~Œwi¹tynia Bhaala~
-@114001 = ~Klejnot jest to minera³, który pociêty lub oszlifowany i wypolerowny mo¿e s³u¿yæ jako obiekt kolekcjonerski lub jako bi¿uteria.~
-@115001 = ~Sprowadzenie Zwierz¹t (Sprowadzenie/Przywo³ywanie) 
+@111092 = ~Opuszczona wieża~
+@111093 = ~Wejście do Wieży Durlaga~
+@111094 = ~Wyjście z kopalni~
+@111095 = ~Wyjście~
+@111096 = ~Świątynia Bhaala~
+@114001 = ~Klejnot jest to minerał, który pocięty lub oszlifowany i wypolerowny może służyć jako obiekt kolekcjonerski lub jako biżuteria.~
+@115001 = ~Sprowadzenie Zwierząt (Sprowadzenie/Przywoływanie) 
 Poziom: 6
-Sfera: Przywo³ywanie 
-Zasiêg: 60 metrów
-Czas dzia³ania: 4 tury
+Sfera: Przywoływanie 
+Zasięg: 60 metrów
+Czas działania: 4 tury
 Czas rzucania: 9
-Obszar dzia³ania: specjalny 
+Obszar działania: specjalny 
 Rzut obronny: brak 
-Zaklêcie to pozwala rzucaj¹cemu na przywo³anie i kontrolowanie jednego lub dwóch niedŸwiedzio³aków. Odpowiedz¹ one na ka¿d¹ zachciankê rzucaj¹cego w czasie dzia³ania czaru. S¹ wolniejsze ni¿ wiêksze ³akowilki, ale te¿ wytrzymalsze. S¹ odporne na ¿ywio³y i magiê oraz szybko siê regeneruj¹.~
-@115002 = ~Wiêkszy niedŸwiedzio³ak~
-@115003 = ~NiedŸwiedzio³ak~
-@115004 = ~Ta symboliczna ³apa reprezentuje u druida zmiennokszta³tnego kontrolê nad likantropi¹. Kiedy jest u¿ywana zmiennokszta³tny staje siê wilko³akiem. Kiedy j¹ zdejmuje wraca do swojej poprzedniej formy. £apy wilko³aka licz¹ siê jako bronie +2.
+Zaklęcie to pozwala rzucającemu na przywołanie i kontrolowanie jednego lub dwóch niedźwiedziołaków. Odpowiedzą one na każdą zachciankę rzucającego w czasie działania czaru. Są wolniejsze niż większe łakowilki, ale też wytrzymalsze. Są odporne na żywioły i magię oraz szybko się regenerują.~
+@115002 = ~Większy niedźwiedziołak~
+@115003 = ~Niedźwiedziołak~
+@115004 = ~Ta symboliczna łapa reprezentuje u druida zmiennokształtnego kontrolę nad likantropią. Kiedy jest używana zmiennokształtny staje się wilkołakiem. Kiedy ją zdejmuje wraca do swojej poprzedniej formy. Łapy wilkołaka liczą się jako bronie +2.
 PARAMETRY:
-Cechy: Si³a 19, Zrêcznoœæ 16, Kondycja 15
+Cechy: Siła 19, Zręczność 16, Kondycja 15
 Klasa Pancerza: 1
-Odpornoœci: 20% odpornoœci na magiê, odpornoœæ na niemagiczne bronie
-Ataki na rundê: 2
-Obra¿enia: 1k12
-Typ obra¿eñ: sieczne
-OpóŸnienie: 3
-Rodzaj bieg³oœci: sztylet 
-Typ broni: 1-rêczna~
-@115005 = ~Ta symboliczna ³apa reprezentuje u druida zmiennokszta³tnego kontrolê nad likantropi¹. Kiedy jest u¿ywana zmiennokszta³tny staje siê wiêkszym wilko³akiem. Kiedy j¹ zdejmuje powraca do swojej poprzedniej formy. £apy wiêkszego wilko³aka licz¹ siê jako bronie +3.
+Odporności: 20% odporności na magię, odporność na niemagiczne bronie
+Ataki na rundę: 2
+Obrażenia: 1k12
+Typ obrażeń: sieczne
+Opóźnienie: 3
+Rodzaj biegłości: sztylet 
+Typ broni: 1-ręczna~
+@115005 = ~Ta symboliczna łapa reprezentuje u druida zmiennokształtnego kontrolę nad likantropią. Kiedy jest używana zmiennokształtny staje się większym wilkołakiem. Kiedy ją zdejmuje powraca do swojej poprzedniej formy. Łapy większego wilkołaka liczą się jako bronie +3.
 PARAMETRY:
-Cechy: Si³a 21, Zrêcznoœæ 20, Kondycja 25
+Cechy: Siła 21, Zręczność 20, Kondycja 25
 Klasa Pancerza: -6
 Rzuty obronne: 1/1/1/2/1
-Odpornoœci: 40% odpornoœci na magiê, 50% odpornoœci na ¿ywio³y, odpornoœæ na niemagiczne bronie
-Regeneracja: 3 Punkty ¯ycia na rundê
-Ataki na rundê: 3
+Odporności: 40% odporności na magię, 50% odporności na żywioły, odporność na niemagiczne bronie
+Regeneracja: 3 Punkty Życia na rundę
+Ataki na rundę: 3
 TraK0: 6 
-Obra¿enia: 2k8
-Typ obra¿eñ:  sieczne
-OpóŸnienie:  3
-Rodzaj bieg³oœci: sztylet 
-Typ broni: 1-rêczna~
-@116002 = ~Nadal mam akt w³asnoœci sceny, byæ mo¿e chcia³byœ spróbowaæ swych talentów w teatrze. Samuel to dobry cz³owiek i uszanuje tytu³ prawny, który spoczywa w twoich rêkach.~
+Obrażenia: 2k8
+Typ obrażeń:  sieczne
+Opóźnienie:  3
+Rodzaj biegłości: sztylet 
+Typ broni: 1-ręczna~
+@116002 = ~Nadal mam akt własności sceny, być może chciałbyś spróbować swych talentów w teatrze. Samuel to dobry człowiek i uszanuje tytuł prawny, który spoczywa w twoich rękach.~
 @116003 = ~Przykro mi Raelis, po prostu nie mam na to czasu.~
-@116004 = ~Dziêkujê za t¹ hojn¹ ofertê, ale muszê odmówiæ. Nie wiedzia³bym nawet jak zarz¹dzaæ teatrem.~
-@116005 = ~Twój teatr pod ober¿¹ Piêæ Dzbanów? Jestem zaszczycony, ¿e bêdê jego w³aœcicielem.~
-@116006 = ~Tak, zrobisz jak chcesz. Nie mogê ciê zatrzymaæ. Jestem winna naszemu wybawcy coœ wiêcej, ni¿ tylko po¿egnalne s³owa.~
-@116007 = ~Nadal mam akt w³asnoœci sceny, byæ mo¿e chcia³byœ spróbowaæ swych talentów w teatrze. Samuel to dobry cz³owiek i uszanuje tytu³ prawny, który spoczywa w twoich rêkach.~
-@116008 = ~Zatem wystarczy³y ci nasze szczere podziêkowania. ChodŸ mój Stra¿niku zguby, musimy ju¿ iœæ. Mo¿e siê jeszcze kiedyœ spotkamy, <CHARNAME>.~
-@116009 = ~Przykro mi, ale nie mogê. Muszê odnaleŸæ moj¹ przyjació³kê i obawiam siê, ¿e mo¿e mnie nie byæ zbyt czêsto w Athkatli.~
-@116010 = ~Nie mogê, pastorze, gdy¿ nie bêdzie mnie tu zbyt czêsto. Poszukujê potê¿nego czarodzieja, a moje tropy prowadz¹ spowrotem do Athkatli.~
-@116011 = ~Muszê odmówiæ. Wydarzenia w Athkatli wymagaj¹ mojej obecnoœci i zwyczajnie nie mogê byæ daleko poza ni¹.~
-@116012 = ~To bêdzie dla mnie zaszczyt. Zgadzam siê i uczyniê wszystko, co tylko bêdê móg³ dla tej wioski.~
-@116013 = ~Wybacz burmistrzu, nie jestem zainteresowany. Oczekujê zap³aty!~
-@116014 = ~Przyznam, ¿e jestem zawiedziony, jednak rozumiem trudy towarzysz¹ce twej profesji, <CHARNAME>. Nie zazdroszczê ci wybranej przez ciebie œcie¿ki.~
-@116015 = ~Ty, mój panie, jesteœ prawdziwym przyjacielem tych ziem. Przy pomocy rz¹dów silnej rêki, ziemia mo¿e zostaæ odnowiona.~
-@116016 = ~Czy móg³byœ przewodziæ gajem przez ten czas odrodzenia?~
-@116017 = ~Uczyniê co bêdê móg³, by przywróciæ równowagê tych ziem.~
-@116018 = ~Ta ziemia wiele wycierpia³a, ale obiecujê usun¹æ szkody dokonane przez dzia³ania Faldorn.~
-@116019 = ~By³bym nik³ym zarz¹dc¹. Muszê odmówiæ, gdy¿ sprawy prowadz¹ mnie do Athkatli.~
-@116020 = ~Poszukujê potê¿nego czarodzieja i nie chcê, aby roprasza³y mnie inne sprawy.~
-@116021 = ~Moja przyjació³ka zosta³a porwana. To dla mnie bardzo bolesne, ale nie mogê od³o¿yæ tych spraw na bok i pomóc gajowi.~
-@116022 = ~Otrzyma³eœ b³ogos³awieñstwo gaju, ja zaœ wrêczam ci Kostur Gromu i Piorunów.~
-@116023 = ~Dobrze. Pozostanê mistrzem wyzwañ i rz¹dc¹, do czasu kiedy dope³ni¹ siê rytua³y wyniesienia.~
-@122001 = ~Ach, torba obfitoœci. Mogê j¹ umagiczniæ, by tworzy³a jeszcze lepsze be³ty, ale to bêdzie ciê kosztowaæ 5000 sztuk z³ota.~
+@116004 = ~Dziękuję za tą hojną ofertę, ale muszę odmówić. Nie wiedziałbym nawet jak zarządzać teatrem.~
+@116005 = ~Twój teatr pod oberżą Pięć Dzbanów? Jestem zaszczycony, że będę jego właścicielem.~
+@116006 = ~Tak, zrobisz jak chcesz. Nie mogę cię zatrzymać. Jestem winna naszemu wybawcy coś więcej, niż tylko pożegnalne słowa.~
+@116007 = ~Nadal mam akt własności sceny, być może chciałbyś spróbować swych talentów w teatrze. Samuel to dobry człowiek i uszanuje tytuł prawny, który spoczywa w twoich rękach.~
+@116008 = ~Zatem wystarczyły ci nasze szczere podziękowania. Chodź mój Strażniku zguby, musimy już iść. Może się jeszcze kiedyś spotkamy, <CHARNAME>.~
+@116009 = ~Przykro mi, ale nie mogę. Muszę odnaleźć moją przyjaciółkę i obawiam się, że może mnie nie być zbyt często w Athkatli.~
+@116010 = ~Nie mogę, pastorze, gdyż nie będzie mnie tu zbyt często. Poszukuję potężnego czarodzieja, a moje tropy prowadzą spowrotem do Athkatli.~
+@116011 = ~Muszę odmówić. Wydarzenia w Athkatli wymagają mojej obecności i zwyczajnie nie mogę być daleko poza nią.~
+@116012 = ~To będzie dla mnie zaszczyt. Zgadzam się i uczynię wszystko, co tylko będę mógł dla tej wioski.~
+@116013 = ~Wybacz burmistrzu, nie jestem zainteresowany. Oczekuję zapłaty!~
+@116014 = ~Przyznam, że jestem zawiedziony, jednak rozumiem trudy towarzyszące twej profesji, <CHARNAME>. Nie zazdroszczę ci wybranej przez ciebie ścieżki.~
+@116015 = ~Ty, mój panie, jesteś prawdziwym przyjacielem tych ziem. Przy pomocy rządów silnej ręki, ziemia może zostać odnowiona.~
+@116016 = ~Czy mógłbyś przewodzić gajem przez ten czas odrodzenia?~
+@116017 = ~Uczynię co będę mógł, by przywrócić równowagę tych ziem.~
+@116018 = ~Ta ziemia wiele wycierpiała, ale obiecuję usunąć szkody dokonane przez działania Faldorn.~
+@116019 = ~Byłbym nikłym zarządcą. Muszę odmówić, gdyż sprawy prowadzą mnie do Athkatli.~
+@116020 = ~Poszukuję potężnego czarodzieja i nie chcę, aby ropraszały mnie inne sprawy.~
+@116021 = ~Moja przyjaciółka została porwana. To dla mnie bardzo bolesne, ale nie mogę odłożyć tych spraw na bok i pomóc gajowi.~
+@116022 = ~Otrzymałeś błogosławieństwo gaju, ja zaś wręczam ci Kostur Gromu i Piorunów.~
+@116023 = ~Dobrze. Pozostanę mistrzem wyzwań i rządcą, do czasu kiedy dopełnią się rytuały wyniesienia.~
+@122001 = ~Ach, torba obfitości. Mogę ją umagicznić, by tworzyła jeszcze lepsze bełty, ale to będzie cię kosztować 5000 sztuk złota.~
 @122002 = ~Zobaczmy jeszcze, co my tu mamy.~
-@122003 = ~Kaptur z³odziei, ta?~
-@122004 = ~Wraz z butelk¹ antidotum i pierœcieniem niewidzialnoœci, mo¿e staæ siê bardzo u¿yteczny.~
-@122005 = ~Mamy tu pierœcieñ niewidzialnoœci... i antidotum. To wszystko czego mi potrzeba! Za 10000 sztuk z³ota zrobi³bym go znacznie potê¿niejszym.~
-@122006 = ~A có¿ to?~
-@122007 = ~Mam przepis, jak przymocowaæ do He³mu Ska³y dwa rogi i uczyniæ go jeszcze potê¿niejszym. Jak bêdziesz mia³ te kawa³ki, mogê to dla ciebie zrobiæ.~
-@122008 = ~Masz He³m Ska³y i dwa rogi. Za 5000 sztuk z³ota mogê je przymocowaæ, tworz¹c niezrównany he³m dla wojowników.~
-@122009 = ~A to Rêkawice barda.~
-@122010 = ~Jakbyœ mia³ pare pociêtych klejnotów, móg³bym je ulepszyæ. Przynieœ mi diament, szmaragd, kamieñ ³otrzyków i szafir gwiaŸdzisty, to mo¿e coœ z tego bêdzie.~
-@122011 = ~Ze skruszonym diamentem, szmaragdem, szafirem gwiaŸdzistym i kamieniem ³otrzyków, mogê to dla ciebie ulepszyæ. Bêdzie ciê to kosztowaæ 5000 sztuk z³ota.~
-@122012 = ~To s¹ bransolety dla paladyna.~
-@122013 = ~Za 10000 sztuk z³ota mogê je przekuæ w coœ znacznie lepszego.~
-@122014 = ~Hmm, jakiœ stary podrêcznik o golemach.~
-@122015 = ~Jakbyœ mia³ jakieœ nowe strony, móg³bym ulepszyæ przyzwane golemy z tej ksi¹¿ki.~
-@122016 = ~Ze stron¹ glinianego golema i 5000 sztuk z³ota, móg³bym ulepszyæ t¹ ksiêge tak, by przyzywa³a gliniane golemy.~
-@122017 = ~Acha! Teraz to dopiero prawdziwy p³aszcz ochrony.~
-@122018 = ~Mogê go ulepszyæ, jeœli przyniesiesz mi zwoje niewidzialnoœci i ulepszonego przyspieszenia ruchów.~
-@122019 = ~Mo¿emy u¿yæ zwoju niewidzialnoœci i ulepszonego przyspieszenia ruchów i jeszcze bardziej ulepszyæ ten p³aszcz. To doœæ trudny proces, wiêc p³acisz 20000 sztuk z³ota.~
-@122020 = ~Ta, ³uski z bia³ego ¿mija. Jeœli chcesz, mogê stworzyæ z nich pancerz za jedyne 5000 sztuk z³ota.~
-@122021 = ~Ta elfia kolczuga jest porz¹dnie wykonana, nawet jak na krasnoludzkie standardy.~
-@122022 = ~Ale jest wci¹¿ pare krasnoludzkich sztuczek, których jeszcze nie znasz. Potrzeba mi zwoju ochrony przed zwyk³ymi broniami i mogê j¹ jeszcze bardziej ulepszyæ.~
-@122023 = ~Ze zwojem ochrony przed zwyk³ymi broniami, móg³bym umagiczniæ pancerz tak, by opar³ siê ka¿demu magicznemu ostrzu. Nie ³atwo jest wpleœæ krasnoludzk¹ magiê w elfi¹ kolczugê. Bêdzie ciê to kosztowaæ 40000 sztuk z³ota.~
-@122024 = ~To gnomia proca. Za 5000 sztuk z³ota wyci¹gnê parê sztuczek z rêkawa i mogê poprawiæ jej celnoœæ.~
-@122025 = ~A co to za ko³czan? Ta, wytwarza nieskoñczon¹ iloœæ magicznych strza³.~
-@122026 = ~Jakbyœ natkn¹³ siê gdzieœ na kamieñ ³otrzyków, móg³bym ulepszyæ jeszcze bardziej te strza³y.~
-@122027 = ~Z kamieniem ³otrzyków i 10000 sztuk z³ota móg³bym umagiczniæ te strza³y.~
-@122028 = ~Ach, teraz to dopiero niez³y widok! Cep bojowy Wieków!~
-@122029 = ~Kr¹¿¹ pog³oski, ¿e istnieje wiêcej kul do tego cepa. Jakbyœ jak¹œ znalaz³, to móg³bym j¹ tu dodaæ.~
-@122030 = ~Widzê, ¿e znalaz³eœ nastêpn¹ kulê. Wygl¹da na jak¹œ z trucizn¹. Za 5000 sztuk z³ota mogê j¹ do³¹czyæ do pozosta³ych.~
+@122003 = ~Kaptur złodziei, ta?~
+@122004 = ~Wraz z butelką antidotum i pierścieniem niewidzialności, może stać się bardzo użyteczny.~
+@122005 = ~Mamy tu pierścień niewidzialności... i antidotum. To wszystko czego mi potrzeba! Za 10000 sztuk złota zrobiłbym go znacznie potężniejszym.~
+@122006 = ~A cóż to?~
+@122007 = ~Mam przepis, jak przymocować do Hełmu Skały dwa rogi i uczynić go jeszcze potężniejszym. Jak będziesz miał te kawałki, mogę to dla ciebie zrobić.~
+@122008 = ~Masz Hełm Skały i dwa rogi. Za 5000 sztuk złota mogę je przymocować, tworząc niezrównany hełm dla wojowników.~
+@122009 = ~A to Rękawice barda.~
+@122010 = ~Jakbyś miał pare pociętych klejnotów, mógłbym je ulepszyć. Przynieś mi diament, szmaragd, kamień łotrzyków i szafir gwiaździsty, to może coś z tego będzie.~
+@122011 = ~Ze skruszonym diamentem, szmaragdem, szafirem gwiaździstym i kamieniem łotrzyków, mogę to dla ciebie ulepszyć. Będzie cię to kosztować 5000 sztuk złota.~
+@122012 = ~To są bransolety dla paladyna.~
+@122013 = ~Za 10000 sztuk złota mogę je przekuć w coś znacznie lepszego.~
+@122014 = ~Hmm, jakiś stary podręcznik o golemach.~
+@122015 = ~Jakbyś miał jakieś nowe strony, mógłbym ulepszyć przyzwane golemy z tej książki.~
+@122016 = ~Ze stroną glinianego golema i 5000 sztuk złota, mógłbym ulepszyć tą księge tak, by przyzywała gliniane golemy.~
+@122017 = ~Acha! Teraz to dopiero prawdziwy płaszcz ochrony.~
+@122018 = ~Mogę go ulepszyć, jeśli przyniesiesz mi zwoje niewidzialności i ulepszonego przyspieszenia ruchów.~
+@122019 = ~Możemy użyć zwoju niewidzialności i ulepszonego przyspieszenia ruchów i jeszcze bardziej ulepszyć ten płaszcz. To dość trudny proces, więc płacisz 20000 sztuk złota.~
+@122020 = ~Ta, łuski z białego żmija. Jeśli chcesz, mogę stworzyć z nich pancerz za jedyne 5000 sztuk złota.~
+@122021 = ~Ta elfia kolczuga jest porządnie wykonana, nawet jak na krasnoludzkie standardy.~
+@122022 = ~Ale jest wciąż pare krasnoludzkich sztuczek, których jeszcze nie znasz. Potrzeba mi zwoju ochrony przed zwykłymi broniami i mogę ją jeszcze bardziej ulepszyć.~
+@122023 = ~Ze zwojem ochrony przed zwykłymi broniami, mógłbym umagicznić pancerz tak, by oparł się każdemu magicznemu ostrzu. Nie łatwo jest wpleść krasnoludzką magię w elfią kolczugę. Będzie cię to kosztować 40000 sztuk złota.~
+@122024 = ~To gnomia proca. Za 5000 sztuk złota wyciągnę parę sztuczek z rękawa i mogę poprawić jej celność.~
+@122025 = ~A co to za kołczan? Ta, wytwarza nieskończoną ilość magicznych strzał.~
+@122026 = ~Jakbyś natknął się gdzieś na kamień łotrzyków, mógłbym ulepszyć jeszcze bardziej te strzały.~
+@122027 = ~Z kamieniem łotrzyków i 10000 sztuk złota mógłbym umagicznić te strzały.~
+@122028 = ~Ach, teraz to dopiero niezły widok! Cep bojowy Wieków!~
+@122029 = ~Krążą pogłoski, że istnieje więcej kul do tego cepa. Jakbyś jakąś znalazł, to mógłbym ją tu dodać.~
+@122030 = ~Widzę, że znalazłeś następną kulę. Wygląda na jakąś z trucizną. Za 5000 sztuk złota mogę ją dołączyć do pozostałych.~
 @122031 = ~Czy to nie jest... ? Ta, to maczuga wybuchu.~
-@122032 = ~Jakbyœ znalaz³ pierœcieñ odpornoœci na ogieñ, móg³bym ulepszyæ tê maczugê.~
-@122033 = ~Za 5000 sztuk z³ota mogê po³¹czyæ to z pierœcieniem odpornoœci na ogieñ i stworzyæ jeszcze lepsz¹ maczugê.~
-@122034 = ~Ach, to wygl¹da na coœ od Ixila.~
-@122035 = ~To czêœæ wspania³ej w³óczni Ixila. Jakbyœ znalaz³ drug¹ po³owê, to móg³bym ukoñczyæ ca³¹ broñ.~
-@122036 = ~Znalaz³eœ obie czêœci starej w³óczni Ixila. Za 5000 sztuk z³ota mogê po³¹czyæ gwóŸdŸ z kolcem Ixila.~
-@122037 = ~Ach, to¿ to Sztylet Gwiazdy.~
-@122038 = ~Jeœli po³¹czymy go z piêcioma szafirami gwiaŸdzistymi, to mo¿naby go jeszcze bardziej umagiczniæ.~
-@122039 = ~Z tymi piêcioma szafirami gwiaŸdzistymi i 5000 sztuk z³ota mogê zrobiæ go jeszcze skuteczniejszym.~
-@122040 = ~Masz trzy kule... mogê od razu dodaæ do niego kulê z trucizn¹ i z elektrycznoœci¹. Razem bêdzie piêæ kul? 10000 sztuk z³ota i zrobiê to. Chcesz?~
-@122041 = ~Móg³byœ na razie przytwierdziæ tylko kulê z elektrycznoœci¹? Damy ci 5000 sztuk z³ota. ~
-@122042 = ~Móg³byœ na razie przytwierdziæ tylko kulê z trucizn¹? Damy ci 5000 sztuk z³ota. ~
-@122043 = ~Znam przepisy na dwie kule do Cepa bojowego Wieków. Mo¿esz dodaæ kulê z trucizn¹... albo kulê z elektrycznoœci¹. Mam tylko przepisy, wybacz.~
-@122044 = ~Masz tu trzy kule... mogê dodaæ do nich kulê z elektrycznoœci¹. Razem bêd¹ cztery kule? 5000 sztuk z³ota i sprawa za³atwiona. Chcesz?~
-@122045 = ~Ooo! Masz cztery kule i mogê dodaæ ostatni¹. Ta jest naprawdê œmiertelna. 5000 sztuk z³ota i sprawa za³atwiona. Chcesz?~
-@123001 = ~Ach, œwiec¹ce czerwone ³uski, co? Zrobiê ci dobr¹ zbroje ³uskow¹, ochroni ciê przed ogniem. ~
-@123002 = ~Co to za œwiec¹ca kupka? Ach, illith!~
-@123003 = ~Zrobiê ci ³adne œwiecuszko, pokrywaj¹c wekierê zniszczeñ ilithem. Wróæ, jeœli j¹ znajdziesz.~
-@123004 = ~Ach, wekiera zniszczeñ! Zrobiê ci j¹ jeszcze straszniejsz¹ za jedyne 7500 sztuk z³ota!~
-@123005 = ~Ugh. Musisz umyæ tê torbê.~
-@123006 = ~Ojej, du¿o œwiec¹cego, b³yszcz¹cego srebra.~
-@123007 = ~A³! Ostre to b³yszcz¹ce srebro. Potrzebujê rekojeœci i mogê wykuæ ³adny, œwiec¹cy srebrny miecz.~
-@123008 = ~Niez³a ta œwiec¹ca rêkojeœæ, ale potrzebujesz ostrza.~
-@123009 = ~Posiadasz rêkojêœæ i osrze. Za 7500 sztuk z³ota mogê po³¹czyæ je w miecz.~
+@122032 = ~Jakbyś znalazł pierścień odporności na ogień, mógłbym ulepszyć tę maczugę.~
+@122033 = ~Za 5000 sztuk złota mogę połączyć to z pierścieniem odporności na ogień i stworzyć jeszcze lepszą maczugę.~
+@122034 = ~Ach, to wygląda na coś od Ixila.~
+@122035 = ~To część wspaniałej włóczni Ixila. Jakbyś znalazł drugą połowę, to mógłbym ukończyć całą broń.~
+@122036 = ~Znalazłeś obie części starej włóczni Ixila. Za 5000 sztuk złota mogę połączyć gwóźdź z kolcem Ixila.~
+@122037 = ~Ach, toż to Sztylet Gwiazdy.~
+@122038 = ~Jeśli połączymy go z pięcioma szafirami gwiaździstymi, to możnaby go jeszcze bardziej umagicznić.~
+@122039 = ~Z tymi pięcioma szafirami gwiaździstymi i 5000 sztuk złota mogę zrobić go jeszcze skuteczniejszym.~
+@122040 = ~Masz trzy kule... mogę od razu dodać do niego kulę z trucizną i z elektrycznością. Razem będzie pięć kul? 10000 sztuk złota i zrobię to. Chcesz?~
+@122041 = ~Mógłbyś na razie przytwierdzić tylko kulę z elektrycznością? Damy ci 5000 sztuk złota. ~
+@122042 = ~Mógłbyś na razie przytwierdzić tylko kulę z trucizną? Damy ci 5000 sztuk złota. ~
+@122043 = ~Znam przepisy na dwie kule do Cepa bojowego Wieków. Możesz dodać kulę z trucizną... albo kulę z elektrycznością. Mam tylko przepisy, wybacz.~
+@122044 = ~Masz tu trzy kule... mogę dodać do nich kulę z elektrycznością. Razem będą cztery kule? 5000 sztuk złota i sprawa załatwiona. Chcesz?~
+@122045 = ~Ooo! Masz cztery kule i mogę dodać ostatnią. Ta jest naprawdę śmiertelna. 5000 sztuk złota i sprawa załatwiona. Chcesz?~
+@123001 = ~Ach, świecące czerwone łuski, co? Zrobię ci dobrą zbroje łuskową, ochroni cię przed ogniem. ~
+@123002 = ~Co to za świecąca kupka? Ach, illith!~
+@123003 = ~Zrobię ci ładne świecuszko, pokrywając wekierę zniszczeń ilithem. Wróć, jeśli ją znajdziesz.~
+@123004 = ~Ach, wekiera zniszczeń! Zrobię ci ją jeszcze straszniejszą za jedyne 7500 sztuk złota!~
+@123005 = ~Ugh. Musisz umyć tę torbę.~
+@123006 = ~Ojej, dużo świecącego, błyszczącego srebra.~
+@123007 = ~Ał! Ostre to błyszczące srebro. Potrzebuję rekojeści i mogę wykuć ładny, świecący srebrny miecz.~
+@123008 = ~Niezła ta świecąca rękojeść, ale potrzebujesz ostrza.~
+@123009 = ~Posiadasz rękojęść i osrze. Za 7500 sztuk złota mogę połączyć je w miecz.~
 @123010 = ~Dobra, szukam dalej.~
 @123011 = ~Hej! Macham do Fali!~
-@123012 = ~Posiadasz niez³e ostrze halabardy, ale potrzebujê resztê.~
-@123013 = ~Czemu trzymasz ten kij? Gdybyœ znalaz³ do niego ostrze, móg³byœ mieæ niez³¹ halabardê.~
-@123014 = ~Stylisko i ostrze Fali. Móg³bym je po³¹czyæ w niez³¹ b³yszcz¹c¹ halabardê za 7500 sztuk z³ota.~
-@123015 = ~Szukam dalej... ups. To ju¿ tak by³o?!~
-@123016 = ~Hê? Wygl¹da na coœ od Gesena.~
-@123017 = ~Wygl¹da na niez³y ³uk Gesena, ale potrzebujesz ciêciwy.~
-@123018 = ~Ach, jakaœ œwiec¹ca ciêciwa. 7500 sztuk z³ota i mo¿esz mieæ niez³y krótki ³uk.~
-@123019 = ~Ciekawe, czemu nazywaj¹ go krótkim? Dla mnie wci¹¿ jest za wielki! Szukam dalej.~
-@123020 = ~Ach, œwiec¹ce kawa³ki Wyrównywacza. Dlaczego tego nie z³o¿ysz?~
-@123021 = ~Ach, pewnie dlatego, ¿e nie masz wszystkich czêœci miecza. Mogê ci w tym pomóc póŸniej, jeœli je zdobêdziesz.~
-@123022 = ~Mo¿e nie wiesz, jak? Cespenar wie, o tak, i to za jedyne 7500 sztuk z³ota.~
-@123023 = ~Dobra, przeszukam ci torbê jeszcze raz.~
-@123024 = ~Ach, wielki m³ot gromów. Bzz! Bzz!~
-@123025 = ~Posiadasz zwój z prawdziwym imieniem m³ota gromów, rêkawice si³y ogra, pas si³y lodowego olbrzyma i Cespenar znacznie go ulepszy!~
-@123026 = ~Mo¿esz tego nie wiedzieæ, ale Cespenar nie jest krasnoludem. Wci¹¿ jednak zna kilka krasnoludzkich sztuczek.~
-@123027 = ~Daj mi ten m³ot, zwój, rêkawice si³y ogra, 10000 sztuk z³ota i pas si³y lodowego olbrzyma, a zrobiê ci Crom Fayer. Wielki, b³yszcz¹cy m³ot!~
-@123028 = ~Cespenar wci¹¿ szuka.~
-@123029 = ~Œmierdz¹ce ³uski ankhega! Za jedyne 5000 sztuk z³ota zrobiê zbrojê p³ytow¹, ochroni ciê przed kwasem, lœni¹c¹ i bardzo zielon¹. Chcesz? ~
+@123012 = ~Posiadasz niezłe ostrze halabardy, ale potrzebuję resztę.~
+@123013 = ~Czemu trzymasz ten kij? Gdybyś znalazł do niego ostrze, mógłbyś mieć niezłą halabardę.~
+@123014 = ~Stylisko i ostrze Fali. Mógłbym je połączyć w niezłą błyszczącą halabardę za 7500 sztuk złota.~
+@123015 = ~Szukam dalej... ups. To już tak było?!~
+@123016 = ~Hę? Wygląda na coś od Gesena.~
+@123017 = ~Wygląda na niezły łuk Gesena, ale potrzebujesz cięciwy.~
+@123018 = ~Ach, jakaś świecąca cięciwa. 7500 sztuk złota i możesz mieć niezły krótki łuk.~
+@123019 = ~Ciekawe, czemu nazywają go krótkim? Dla mnie wciąż jest za wielki! Szukam dalej.~
+@123020 = ~Ach, świecące kawałki Wyrównywacza. Dlaczego tego nie złożysz?~
+@123021 = ~Ach, pewnie dlatego, że nie masz wszystkich części miecza. Mogę ci w tym pomóc później, jeśli je zdobędziesz.~
+@123022 = ~Może nie wiesz, jak? Cespenar wie, o tak, i to za jedyne 7500 sztuk złota.~
+@123023 = ~Dobra, przeszukam ci torbę jeszcze raz.~
+@123024 = ~Ach, wielki młot gromów. Bzz! Bzz!~
+@123025 = ~Posiadasz zwój z prawdziwym imieniem młota gromów, rękawice siły ogra, pas siły lodowego olbrzyma i Cespenar znacznie go ulepszy!~
+@123026 = ~Możesz tego nie wiedzieć, ale Cespenar nie jest krasnoludem. Wciąż jednak zna kilka krasnoludzkich sztuczek.~
+@123027 = ~Daj mi ten młot, zwój, rękawice siły ogra, 10000 sztuk złota i pas siły lodowego olbrzyma, a zrobię ci Crom Fayer. Wielki, błyszczący młot!~
+@123028 = ~Cespenar wciąż szuka.~
+@123029 = ~Śmierdzące łuski ankhega! Za jedyne 5000 sztuk złota zrobię zbroję płytową, ochroni cię przed kwasem, lśniącą i bardzo zieloną. Chcesz? ~
 @123030 = ~Dobra. Cespenar szuka dalej.~
-@123031 = ~Smok cienia? Zrobiê niez³¹ torbê. Zbrojê te¿. Oba ochrani¹ ciê przed kwasem.~
-@123032 = ~O, masz ³uski niebieskiego smoka. Œmierdz¹, ale mo¿na z nich zrobiæ œwietn¹ zbrojê p³ytow¹... bardzo lekk¹, bardzo lœni¹c¹.~
-@123033 = ~Ach, to ³uski bia³ego smoka, co? Zrobiê ci dobr¹ zbroje ³uskow¹, mo¿e ochroni ciê przed zimnem. ~
-@123034 = ~Chcesz jak¹œ zbrojê ze smoka za jedyne 5000 sztuk z³ota. Chcesz?~
-@123035 = ~Zrób zbrojê z ³usek smoka cienia.~
-@123036 = ~Zrób zbrojê z ³usek czerwonego smoka.~
-@202001 = ~W³ada jednorêcznym~
-@202002 = ~W³ada dwurêcznym~
-@202003 = ~^[ %TAB%]*Rodzaj broni[ %TAB%]*:[ %TAB%]*\(1\|jedno\)[- %TAB%]*rêczna.*~
-@202004 = ~Rodzaj broni: 2-rêczna~
+@123031 = ~Smok cienia? Zrobię niezłą torbę. Zbroję też. Oba ochranią cię przed kwasem.~
+@123032 = ~O, masz łuski niebieskiego smoka. Śmierdzą, ale można z nich zrobić świetną zbroję płytową... bardzo lekką, bardzo lśniącą.~
+@123033 = ~Ach, to łuski białego smoka, co? Zrobię ci dobrą zbroje łuskową, może ochroni cię przed zimnem. ~
+@123034 = ~Chcesz jakąś zbroję ze smoka za jedyne 5000 sztuk złota. Chcesz?~
+@123035 = ~Zrób zbroję z łusek smoka cienia.~
+@123036 = ~Zrób zbroję z łusek czerwonego smoka.~
+@202001 = ~Włada jednoręcznym~
+@202002 = ~Włada dwuręcznym~
+@202003 = ~^[ %TAB%]*Rodzaj broni[ %TAB%]*:[ %TAB%]*\(1\|jedno\)[- %TAB%]*ręczna.*~
+@202004 = ~Rodzaj broni: 2-ręczna~
 @210001 = ~\(Waga:[ %TAB%]*[0-9]+\)~
 @210002 = ~^[ %TAB%]*Otwieranie zamków:.+$[%MNL%%LNL%%WNL%]+~
 @210003 = ~Otwieranie zamków:~
-@210004 = ~^[ %TAB%]*Wykrywanie pu³apek:.+$[%MNL%%LNL%%WNL%]+~
-@210005 = ~Wykrywanie pu³apek:~
-@210006 = ~^[ %TAB%]*Kradzie¿ kieszonkowa:.+$[%MNL%%LNL%%WNL%]+~
-@210007 = ~Kradzie¿ kieszonkowa:~
-@210008 = ~^[ %TAB%]*Krycie siê w cieniu:.+$[%MNL%%LNL%%WNL%]+~
-@210009 = ~Krycie siê w cieniu:~
+@210004 = ~^[ %TAB%]*Wykrywanie pułapek:.+$[%MNL%%LNL%%WNL%]+~
+@210005 = ~Wykrywanie pułapek:~
+@210006 = ~^[ %TAB%]*Kradzież kieszonkowa:.+$[%MNL%%LNL%%WNL%]+~
+@210007 = ~Kradzież kieszonkowa:~
+@210008 = ~^[ %TAB%]*Krycie się w cieniu:.+$[%MNL%%LNL%%WNL%]+~
+@210009 = ~Krycie się w cieniu:~
 @210010 = ~^[ %TAB%]*Ciche chodzenie:.+$[%MNL%%LNL%%WNL%]+~
 @210011 = ~Ciche chodzenie:~
 @212001 = ~\(Waga:[ %tab%]*[0-9]+\)~
 @212002 = ~Nieudane rzucenie czarów mistycznych:~
-@214001 = ~barbarzyñca / mag~
-@214002 = ~barbarzyñca / kap³an~
-@214003 = ~barbarzyñca / z³odziej~
-@214004 = ~barbarzyñca / druid~
-@215002 = ~[%LNL%%MNL%%WNL%][ %TAB%]*\(â€“\)? *Klasa Pancerza[^:]*:.*~
-@216001 = ~KRÓTKI MIECZ/NINJA-TO: Ulubiony orê¿ wielu z³odziei i nizio³ków. Krótki miecz i ninja-to to lekkie lecz u¿yteczne bronie.
+@214001 = ~barbarzyńca / mag~
+@214002 = ~barbarzyńca / kapłan~
+@214003 = ~barbarzyńca / złodziej~
+@214004 = ~barbarzyńca / druid~
+@215002 = ~[%LNL%%MNL%%WNL%][ %TAB%]*\(–\)? *Klasa Pancerza[^:]*:.*~
+@216001 = ~KRÓTKI MIECZ/NINJA-TO: Ulubiony oręż wielu złodziei i niziołków. Krótki miecz i ninja-to to lekkie lecz użyteczne bronie.
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216002 = ~KATANA/WAKIZASHI: Katany i wakizashi to najwspanialszy przyk³ad p³atnerskiego rzemios³a. Trzeba o nie dbaæ. Wraz z rozwojem umiejêtnoœci szermierz i klinga staj¹ siê jedn¹ istot¹, ca³kowicie poœwiêcon¹ sztuce wojennej. Te bronie trudno znaleŸæ poza Kara-Tur, wiêc przed wyborem tej umiejêtnoœci nale¿y siê powa¿nie zastanowiæ. Przecie¿ bieg³oœæ w katanie i wakizashi przyda ci siê tylko, jeœli jak¹œ znajdziesz.
-Ostrze¿enie: Magiczne katany s¹ bardzo rzadkie w Baldur`s Gate 2!
+@216002 = ~KATANA/WAKIZASHI: Katany i wakizashi to najwspanialszy przykład płatnerskiego rzemiosła. Trzeba o nie dbać. Wraz z rozwojem umiejętności szermierz i klinga stają się jedną istotą, całkowicie poświęconą sztuce wojennej. Te bronie trudno znaleźć poza Kara-Tur, więc przed wyborem tej umiejętności należy się poważnie zastanowić. Przecież biegłość w katanie i wakizashi przyda ci się tylko, jeśli jakąś znajdziesz.
+Ostrzeżenie: Magiczne katany są bardzo rzadkie w Baldur`s Gate 2!
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216003 = ~SEJMTAR: Ta klasa broni pozwala postaci u¿ywaæ zakrzywionych broni siecznych jak na przyk³ad sejmtarów.
+@216003 = ~SEJMTAR: Ta klasa broni pozwala postaci używać zakrzywionych broni siecznych jak na przykład sejmtarów.
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216004 = ~CEP BOJOWY: Cepy bojowe s¹ broni¹ obuchow¹ u¿ywan¹ do pozbawienia wroga przytomnoœci. S¹ ciê¿kie w u¿yciu, ale z umiejêtnoœciami i praktyk¹ staj¹ siê bardzo przydatne.
+@216004 = ~CEP BOJOWY: Cepy bojowe są bronią obuchową używaną do pozbawienia wroga przytomności. Są ciężkie w użyciu, ale z umiejętnościami i praktyką stają się bardzo przydatne.
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216005 = ~WEKIERA/MORGENSZTERN: Maczuga jest najczêœciej kojarzona z kap³anami. To potê¿na broñ obuchowa podobna do maczugi lecz stworzona do zadawania powa¿niejszych obra¿eñ. Morgensztern jest podobny do wekiery, ale ma zazwyczaj kolce.
+@216005 = ~WEKIERA/MORGENSZTERN: Maczuga jest najczęściej kojarzona z kapłanami. To potężna broń obuchowa podobna do maczugi lecz stworzona do zadawania poważniejszych obrażeń. Morgensztern jest podobny do wekiery, ale ma zazwyczaj kolce.
 <DOTS1>
 <DOTS2>
 <DOTS3>
 <DOTS4>
 <DOTS5>~
-@216007 = ~Rodzaj\( bieg³oœci\)?[:-] *~
-@216008 = ~Rodzaj bieg³oœci:~
+@216007 = ~Rodzaj\( biegłości\)?[:-] *~
+@216008 = ~Rodzaj biegłości:~
 @218001 = ~Alchemia (Mag)~
-@218002 = ~Alchemia (Kap³an)~
-@218003 = ~Alchemia (£otrzyk)~
+@218002 = ~Alchemia (Kapłan)~
+@218003 = ~Alchemia (Łotrzyk)~
 @218004 = ~Alchemia (Mag)
-Ta umiejêtnoœæ pozwala magowi tworzyæ mikstury. Mikstury produkowane przez maga s¹ wybierane losowo z poni¿szej listy:
-1)  Mikstura wch³aniania
-2)  Mikstura odpornoœci na ogieñ
-3)  Mikstura odpornoœci na zimno
-4)  Mikstura niewidzialnoœci
-5)  Mikstura kamiennego cia³a
-6)  Mikstura si³y
-7)  Mikstura zrêcznoœci
+Ta umiejętność pozwala magowi tworzyć mikstury. Mikstury produkowane przez maga są wybierane losowo z poniższej listy:
+1)  Mikstura wchłaniania
+2)  Mikstura odporności na ogień
+3)  Mikstura odporności na zimno
+4)  Mikstura niewidzialności
+5)  Mikstura kamiennego ciała
+6)  Mikstura siły
+7)  Mikstura zręczności
 8)  Mikstura ognistego oddechu
-9)  Olej szybkoœci
-10) Olej wœciek³ego p³omienia~
-@218005 = ~Alchemia (Kap³an)
-Ta umiejêtnoœæ pozwala kap³anowi tworzyæ mikstury. Mikstury produkowane przez kap³ana s¹ wybierane losowo z poni¿szej listy:
+9)  Olej szybkości
+10) Olej wściekłego płomienia~
+@218005 = ~Alchemia (Kapłan)
+Ta umiejętność pozwala kapłanowi tworzyć mikstury. Mikstury produkowane przez kapłana są wybierane losowo z poniższej listy:
 1)  Mikstura leczenia
 2)  Mikstura dodatkowego leczenia
-3)  Mikstura wiêkszego leczenia
+3)  Mikstura większego leczenia
 4)  Eliksir zdrowia
 5)  Mikstura intuicji
 6)  Mikstura regeneracji
-7)  Mikstura klarownoœci
+7)  Mikstura klarowności
 8)  Antidotum
 9)  Mikstura skupienia
 10) Mikstura geniuszu~
-@218006 = ~Alchemia (£otrzyk)
-Wykorzystuj¹c wrodzony spryt, doœwiadczony ³otrzyk, który widzia³ w ¿yciu wiele ró¿nego rodzaju mikstur, sam tak¿e mo¿e siê pokusiæ o stworzenie eliksiru. Posiadaj¹c umiejêtnoœæ Alchemia, ³otrzyk mo¿e raz dziennie stworzyæ jeden z oœmiu typów mikstur.
-Mikstury produkowane przez ³otrzyka s¹ wybierane losowo z poni¿szej listy:
+@218006 = ~Alchemia (Łotrzyk)
+Wykorzystując wrodzony spryt, doświadczony łotrzyk, który widział w życiu wiele różnego rodzaju mikstur, sam także może się pokusić o stworzenie eliksiru. Posiadając umiejętność Alchemia, łotrzyk może raz dziennie stworzyć jeden z ośmiu typów mikstur.
+Mikstury produkowane przez łotrzyka są wybierane losowo z poniższej listy:
 1) Mikstura skupienia
 2) Mikstura percepcji
-3) Mikstura niewidzialnoœci
-4) Mikstura wiêkszego leczenia
+3) Mikstura niewidzialności
+4) Mikstura większego leczenia
 5) Mikstura regeneracji
 6) Antdotum
-7) Olej szybkoœci
-8) £otrzykowska mikstura si³y lodowego olbrzyma~
+7) Olej szybkości
+8) Łotrzykowska mikstura siły lodowego olbrzyma~
 @218007 = ~Pisanie zwojów (Mag)~
-@218008 = ~Pisanie zwojów (Kap³an)~
-@218009 = ~Pisanie zwojów (£otrzyk)~
+@218008 = ~Pisanie zwojów (Kapłan)~
+@218009 = ~Pisanie zwojów (Łotrzyk)~
 @218010 = ~Pisanie zwojów (Mag)
-Ta umiejêtnoœæ pozwala magowi zapisaæ czary niskiego i œredniego poziomu na zwoje. Czary, które zapisze s¹ losowo wybrane z poni¿szej listy:
+Ta umiejętność pozwala magowi zapisać czary niskiego i średniego poziomu na zwoje. Czary, które zapisze są losowo wybrane z poniższej listy:
 1)  Magiczny pocisk
 2)  Tarcza
-3)  Kwasowa strza³a Melfa
+3)  Kwasowa strzała Melfa
 4)  Lustrzane odbicie
 5)  Miniaturowe meteory Melfa
 6)  Mniejsze odchylenie czaru
-7)  Ulepszona niewidzialnoœæ
-8)  Lodowa nawa³nica
+7)  Ulepszona niewidzialność
+8)  Lodowa nawałnica
 9)  Wyrocznia
 10) Chaos~
-@218011 = ~Pisanie zwojów (Kap³an)
-Ta umiejêtnoœæ pozwala kap³anowi tworzyæ œwiête zwoje. Czary, które mo¿e zapisaæ s¹ losowo wybrane z poni¿szej listy:
+@218011 = ~Pisanie zwojów (Kapłan)
+Ta umiejętność pozwala kapłanowi tworzyć święte zwoje. Czary, które może zapisać są losowo wybrane z poniższej listy:
 1)  Leczenie krytycznych ran
-2)  S³up ognia
+2)  Słup ognia
 3)  Wskrzeszenie
 4)  Przywrócenie
 5)  Ochrona przed kwasem
 6)  Ochrona przed imnem
-7)  Ochrona przed elektrycznoœci¹
+7)  Ochrona przed elektrycznością
 8)  Ochrona przed ogniem
-9)  Si³a czempiona
-10) Dominacja umys³owa~
-@218012 = ~Pisanie zwojów (£otrzyk)
-Ta umiejêtnoœæ pozwala ³otrzykowi zapisaæ czary niskiego i œredniego poziomu na zwoje. Czary, które zapisze s¹ losowo wybrane z poni¿szej listy:
+9)  Siła czempiona
+10) Dominacja umysłowa~
+@218012 = ~Pisanie zwojów (Łotrzyk)
+Ta umiejętność pozwala łotrzykowi zapisać czary niskiego i średniego poziomu na zwoje. Czary, które zapisze są losowo wybrane z poniższej listy:
 1) Magiczny pocisk
 2) Przyspieszenie
 3) Kula ognia
 4) Rozproszenie magii
 5) Okropne zauroczenie
-6) Niewidzialnoœæ
-7) Sto¿ek zimna
-8) Przywo³anie potwora II
-9) Przywo³anie potwora III~
+6) Niewidzialność
+7) Stożek zimna
+8) Przywołanie potwora II
+9) Przywołanie potwora III~
 // next two strings used for matching and updating item descriptions
 @223001 = ~PARAMETRY:~ // this is used for mataching in the item descripiton, so copy this from an oBG2 item description
-@223002 = ~Przy rzutach na trafienie, zawsze zachowuje siê jak broñ +%ench%~
+@223002 = ~Przy rzutach na trafienie, zawsze zachowuje się jak broń +%ench%~
 
 @315000 = ~Wylacz okropne animacje Plaszcza odwzwierciedlen, Pulapki na czary i Lustra materii~
-@318313 = ~SprowadŸ tu moj¹ ukochan¹, Aerie.~
-@318314 = ~SprowadŸ tu moj¹ ukochan¹, Jaheirê.~
-@318315 = ~SprowadŸ tu mojego ukochanego Rycerza Zakonu, Sir Anomena.~
-@318316 = ~SprowadŸ tu mojego ukochanego, Anomena, kap³ana Helma.~
-@318317 = ~SprowadŸ tu moj¹ ukochan¹, Viconiê.~
-@318318 = ~SprowadŸ tu mojego ukochanego, Dorna.~
-@318319 = ~SprowadŸ tu moj¹ ukochan¹, Hexxat.~
-@318320 = ~SprowadŸ tu moj¹ ukochan¹, Neerê.~
-@318321 = ~SprowadŸ tu mojego ukochanego, Rassada.~
+@318313 = ~Sprowadź tu moją ukochaną, Aerie.~
+@318314 = ~Sprowadź tu moją ukochaną, Jaheirę.~
+@318315 = ~Sprowadź tu mojego ukochanego Rycerza Zakonu, Sir Anomena.~
+@318316 = ~Sprowadź tu mojego ukochanego, Anomena, kapłana Helma.~
+@318317 = ~Sprowadź tu moją ukochaną, Viconię.~
+@318318 = ~Sprowadź tu mojego ukochanego, Dorna.~
+@318319 = ~Sprowadź tu moją ukochaną, Hexxat.~
+@318320 = ~Sprowadź tu moją ukochaną, Neerę.~
+@318321 = ~Sprowadź tu mojego ukochanego, Rassada.~
 @321001 = ~Wybierz minimalna wartosc dla cech z przedzialu od 6 do 15:~
 @322001 = ~Dziewczynka Atta~
 @322002 = ~Angel~
-@408001 = ~Zapytany o przesz³oœæ, KHALID nerwowym g³osem wyjaœni³, i¿ urodzi³ siê i wychowa³ w Calimshanie. Nie wspomnia³ zbyt wiele o rodzicach, masz jednak wra¿enie, ¿e ojciec - kupiec - zwraca³ na niego niewiele uwagi, wiêkszoœæ czasu poœwiêcaj¹c jego przyrodniemu bratu. Khalid postanowi³ wiêc zaj¹æ siê karier¹ wojskow¹, bior¹c nauki od miejscowej stra¿y. Nie wchodzi³ w szczegó³y spotkania z Jaheir¹, ale jego zauroczenie t¹ kobiet¹ wydaje siê oczywiste. Zapytany o Goriona, odpowiedzia³ tylko, ¿e byli przyjació³mi od dawna i ¿e wyrazi swój ¿al w pieœni i muzyce harfy.~
+@408001 = ~Zapytany o przeszłość, KHALID nerwowym głosem wyjaśnił, iż urodził się i wychował w Calimshanie. Nie wspomniał zbyt wiele o rodzicach, masz jednak wrażenie, że ojciec - kupiec - zwracał na niego niewiele uwagi, większość czasu poświęcając jego przyrodniemu bratu. Khalid postanowił więc zająć się karierą wojskową, biorąc nauki od miejscowej straży. Nie wchodził w szczegóły spotkania z Jaheirą, ale jego zauroczenie tą kobietą wydaje się oczywiste. Zapytany o Goriona, odpowiedział tylko, że byli przyjaciółmi od dawna i że wyrazi swój żal w pieśni i muzyce harfy.~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
