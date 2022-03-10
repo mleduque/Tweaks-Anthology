@@ -11,7 +11,7 @@ ALWAYS
   
 END
 
-VERSION ~v11~
+VERSION ~v12~
 
 README ~cdtweaks/languages/%LANGUAGE%/readme-cdtweaks.html~ ~cdtweaks/readme-cdtweaks.html~
 
@@ -23,28 +23,28 @@ LANGUAGE
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
 LANGUAGE
-  ~Czech (Translation by Razfallow and Vlasák)~
+  ~Czech (Translation by Razfallow, Vlasák)~
   ~czech~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
   ~cdtweaks/languages/czech/game.tra~
   ~cdtweaks/languages/czech/weidu.tra~
 LANGUAGE
-  ~Francais (Translation by Anomaly, Elgaern the Dragon Slayer, Isaya and elminster)~
+  ~Francais (Translation by Anomaly, Elgaern the Dragon Slayer, elminster, Isaya)~
   ~french~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
   ~cdtweaks/languages/french/game.tra~
   ~cdtweaks/languages/french/weidu.tra~
 LANGUAGE
-  ~Deutsch (Uebersetzung von Leonardo Watson, Caswallon und Jester)~
+  ~Deutsch (Uebersetzung von Caswallon, Jester, Leonardo Watson)~
   ~german~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
   ~cdtweaks/languages/german/game.tra~
   ~cdtweaks/languages/german/weidu.tra~
 LANGUAGE
-  ~Italiano (translation by Andrea Colombo and improb@bile; original EoU by Antonio Favata)~
+  ~Italiano (translation by Andrea Colombo, ilot, improb@bile; original EoU by Antonio Favata)~
   ~italian~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
@@ -58,28 +58,28 @@ LANGUAGE
   ~cdtweaks/languages/korean/game.tra~
   ~cdtweaks/languages/korean/weidu.tra~
 LANGUAGE
-  ~Polski (Translation by yarpen, Artanis, dragionian, Evendur, Grjgori, and Neminus)~
+  ~Polski (Translation by Artanis, Cuttoth, dragionian, Evendur, Grjgori, Neminus, yarpen)~
   ~polish~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
   ~cdtweaks/languages/polish/game.tra~
   ~cdtweaks/languages/polish/weidu.tra~
 LANGUAGE
-  ~Russian (Translation by Creepin, Domi, Kulyok, Serdrick, and aerie.ru)~
+  ~Russian (Translation by aerie.ru, abalabokhin, Creepin, Domi, Kulyok, prowler, Saigon1983, Serdrick)~
   ~russian~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
   ~cdtweaks/languages/russian/game.tra~
   ~cdtweaks/languages/russian/weidu.tra~
 LANGUAGE
-  ~Espanol (traducido por Clan DLAN)~
+  ~Espanol (traducido por Clan DLAN, Bhasbuto, Ghildrean, Immortality, Januskza)~
   ~spanish~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
   ~cdtweaks/languages/spanish/game.tra~
   ~cdtweaks/languages/spanish/weidu.tra~
 LANGUAGE
-  ~Simplified Chinese (Translation from bg2_tweaks by Miranda, distance20 and c4_angel)~
+  ~Simplified Chinese (Translation by c4_angel, distance20; oriignal BG2 Tweaks by Miranda)~
   ~schinese~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
