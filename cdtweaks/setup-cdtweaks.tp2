@@ -5438,13 +5438,35 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~weapprof.2da~ THEN BEGIN
 
-  COPY_EXISTING ~weapprof.2da~ ~override~ // allows mage proficiency in clubs
-    FOR (column = 22; column < 30; column = column + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~weapprof~ 20 column ~1~ // Specialist Mage
-    END
-    SET_2DA_ENTRY_LATER ~weapprof~ 20  4 ~1~ // Mage
-    SET_2DA_ENTRY_LATER ~weapprof~ 20 53 ~1~ // Wild Mage
-    SET_2DA_ENTRIES_NOW ~weapprof~ 1
+  ACTION_CLEAR_ARRAY style_kits
+  OUTER_SET $style_kits(MAGE)     =  1 // add straight mage
+  OUTER_SET $style_kits(SORCERER) = 19 // shouldn't be in weapprof, but let's be safe
+  COPY_EXISTING ~kitlist.2da~ ~override~
+    SET col_check = (9 + enhanced_edition)
+    COUNT_2DA_ROWS col_check rows
+    FOR (row = 1 ; row < rows ; ++row) BEGIN
+      READ_2DA_ENTRY row 8 col_check class
+      PATCH_IF ((class = 1) OR (class = 19)) BEGIN // mage or sorcerer kit
+        READ_2DA_ENTRY row 1 col_check kit
+        SET $style_kits("%kit%") = class
+      END
+    END   
+    BUT_ONLY
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    REPLACE_TEXTUALLY ~\(ID[ %TAB%]+NAME_REF\)~ ~CD_DELETE_ME \1~ // adding column to header column
+    COUNT_2DA_COLS col_count
+    FOR (col = 4 ; col < col_count ; ++col) BEGIN
+      READ_2DA_ENTRY 0 col col_count kit
+      PATCH_IF VARIABLE_IS_SET $style_kits("%kit%") BEGIN
+        READ_2DA_ENTRY 18 col col_count club_check
+        PATCH_IF !club_check BEGIN // only if 0 pips
+          SET_2DA_ENTRY 18 col col_count 1
+        END  
+      END
+    END  
+    REPLACE_TEXTUALLY ~CD_DELETE_ME~ ~~ // removing it
+    PRETTY_PRINT_2DA
     BUT_ONLY
 
 END
