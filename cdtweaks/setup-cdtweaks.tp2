@@ -8855,10 +8855,10 @@ BUT_ONLY
 
 ACTION_PHP_EACH mod_kit_clabs AS clab => clas BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~%clab%.2da~ THEN BEGIN
-    APPEND ~%clab%.2da~ ~ABILITY     ****        ****        ****        ****        ****        ****        AP_D5_NUMAT ****        ****        ****        ****        ****        AP_D5_NUMAT ****  D5REPLACE ~ UNLESS ~AP_D5_NUMAT~
+    APPEND ~%clab%.2da~ ~ABILITY     ****        ****        ****        ****        ****        ****        AP_D5_NUMAT ****        ****        ****        ****        ****        AP_D5_NUMAT D5REPLACE ~ UNLESS ~AP_D5_NUMAT~
     COPY_EXISTING ~%clab%.2da~ ~override~
       COUNT_2DA_COLS cols
-      FOR (index = 16 ; index < cols ; ++index) BEGIN
+      FOR (index = 15 ; index < cols ; ++index) BEGIN
         REPLACE_TEXTUALLY ~D5REPLACE~ ~**** D5REPLACE~
       END
       REPLACE_TEXTUALLY ~D5REPLACE~ ~****~
