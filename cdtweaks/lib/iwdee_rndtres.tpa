@@ -37,6 +37,7 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
   REPLACE_TEXTUALLY ~SH8Tres~  ~RNDTRE65~ // ShadowedOrcChiefta
   REPLACE_TEXTUALLY ~ShT_Clr~  ~RNDTRE37~ // Container1
   REPLACE_TEXTUALLY ~ShT_Mag~  ~RNDTRE38~ // Container2
+  REPLACE_TEXTUALLY ~TFGTres~  ~RNDTRE43~ // Container11, not present on wandering merchant component
   REPLACE_TEXTUALLY ~TG1Tres~  ~RNDTRE44~ // Container10
   REPLACE_TEXTUALLY ~TG2Tres~  ~RNDTRE45~ // AR3602Chest2
   REPLACE_TEXTUALLY ~TG3Tres~  ~RNDTRE46~ // AR3602Chest4
@@ -53,3 +54,8 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
   REPLACE_TEXTUALLY ~WT1Tres~  ~RNDTRE62~ // Joril
   REPLACE_TEXTUALLY ~WT2Tres~  ~RNDTRE63~ // Kontik
   REPLACE_TEXTUALLY ~WT3Tres~  ~RNDTRE64~ // Kerish
+
+// in oiwd, this creature gets a dv from the area file, but he's spawned via script in iwdee so gets no DV
+COPY_EXISTING ~sdorcax3.cre~ ~override~
+  WRITE_ASCII 0x280 ~ShadowedOrcChiefta~ #32
+  BUT_ONLY

@@ -62,6 +62,12 @@ ar9100   EXTRES3  Alpheus~
 
 END
 
+ACTION_IF tfg_bows THEN BEGIN // add extra chest in TotFG if we're not in the wandering merchant option
+
+  APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~ ~ar3601   TFGTres  Container11~
+  
+END
+
 // first, a couple of areas have random drops in non-uniquely named containers
 ACTION_IF NOT (game_is_iwdee OR game_is_iwd-in-bg2) THEN BEGIN
 

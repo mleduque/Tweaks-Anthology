@@ -12109,6 +12109,7 @@ REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
 LABEL ~cd_tweaks_friendly_random_drops_reload~
 
+OUTER_SET tfg_bows = 1 // randomize bows in TotFG (skip on merchant option)
 INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
 
 ACTION_IF enhanced_edition THEN BEGIN
@@ -12185,6 +12186,7 @@ REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
 LABEL ~cd_tweaks_friendly_random_drops_tokens~
 
+OUTER_SET tfg_bows = 1 // randomize bows in TotFG (skip on merchant option)
 INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
 
 COPY ~cdtweaks/bam/cdtokeni.bam~ ~override~
@@ -12254,6 +12256,9 @@ ACTION_IF enhanced_edition THEN BEGIN
 END
 
 COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
+  PATCH_IF NOT (game_is_iwd OR game_is_how) BEGIN
+    REPLACE_TEXTUALLY ~ShadowedElvenPriest~ ~Priest_0~ // dv changes with totlm installed
+  END
   COUNT_2DA_ROWS 3 "rows"
   FOR (index = 1 ; index < rows ; ++index) BEGIN
     READ_2DA_ENTRY index 0 3 "area"
@@ -12352,6 +12357,7 @@ REQUIRE_PREDICATE GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
 SUBCOMPONENT @324000 // friendly random drops
 LABEL ~cd_tweaks_friendly_random_drops_merchant~
 
+OUTER_SET tfg_bows = 0 // randomize bows in TotFG (skip on merchant option)
 INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
 
 COPY_EXISTING ~katown1.cre~ ~override/cdrndm1.cre~
@@ -12379,6 +12385,9 @@ END
 COPY ~cdtweaks/dlg/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm1.d~
 
 COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
+  PATCH_IF NOT (game_is_iwd OR game_is_how) BEGIN
+    REPLACE_TEXTUALLY ~ShadowedElvenPriest~ ~Priest_0~ // dv changes with totlm installed
+  END
   COUNT_2DA_ROWS 3 "rows"
   FOR (index = 1 ; index < rows ; ++index) BEGIN
     READ_2DA_ENTRY index 1 3 "item"
