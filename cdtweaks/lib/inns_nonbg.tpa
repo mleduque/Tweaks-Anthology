@@ -28,9 +28,9 @@ XZAR     0           1             4         5                    4             
 MONTARON 0           1             4         5                    4              5              20836                855             1030             667            725             706            396            734            397          lookitup
 SKIE     0           1             4         5                    4              5              20837                846             1050             571            428             583            260            822            355          lookitup
 ELDOTH   0           1             4         5                    4              5              20838                834             1070             621            466             525            278            873            377          lookitup
-NEERA    -1          -1            -1        -1                   1             -1              20841                756             1156             669            421             181            406            878            568          NEERAP
-DORN     -1          -1            -1        -1                   0             -1              20842                789             1155             755            419             371            424            939            607          DORNP
-RASAAD   -1          -1            -1        -1                   0             -1              20843                701             1038             1088           757             629            475            981            645          RASAADP
+NEERA    -1          -1            -1        -1                   1             -1              20841                756             1156             669            421             181            406            878            568          lookitup
+DORN     -1          -1            -1        -1                   0             -1              20842                789             1155             755            419             371            424            939            607          lookitup
+RASAAD   -1          -1            -1        -1                   0             -1              20843                701             1038             1088           757             629            475            981            645          lookitup
 >>>>>>>>
 
 ACTION_IF ((game_is_bgt) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~4025~)) BEGIN

@@ -1,5 +1,7 @@
 REPLACE_ACTION_TEXT ~%NEERA_POST%~   ~EscapeAreaMove("%FriendlyArmInn_L1%",755,390,SW)~  ~~
+REPLACE_ACTION_TEXT ~%NEERA_POST%~   ~MoveToPoint(\[755\.390\])~  ~~
 REPLACE_ACTION_TEXT ~%RASAAD_POST%~  ~EscapeAreaMove("%Nashkel%",1100,782,S)~  ~~
+REPLACE_ACTION_TEXT ~%RASAAD_POST%~  ~SetGlobal("RASAADKicked","%Nashkel%",1)~  ~~
 REPLACE_ACTION_TEXT ~%DORN_POST%~    ~EscapeAreaMove("%FriendlyArmInn_L1%",1132,727,S)~  ~~
 ALTER_TRANS ~%DORN_POST%~ BEGIN 2 END BEGIN 0 END BEGIN ~JOURNAL~ ~~ END // remove journal entry about going to FAI
 
