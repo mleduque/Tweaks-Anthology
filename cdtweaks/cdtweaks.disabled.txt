@@ -103,3 +103,12 @@ OUTER_SET interval_save_ini = 1
 // Set this to 1 to change the INT penalty for half-orcs to -1 to allow for easier dual-classing 
 // into mages, which also requires the "Alter Dual-class Restrictions" component to be installed
 OUTER_SET halforc_dual_to_mage = 0
+
+
+
+
+// The following variables will be used for "Unique Icons"
+// This component will only install a new icon for an item if it's re-using an icon from another
+// item. If another mod has already item it will be skipped. Set this variable to 1 if you want
+// Tweaks to ALWAYS install a new icon even if another mod has updated it. 
+OUTER_SET always_install_unique_icons = 0
