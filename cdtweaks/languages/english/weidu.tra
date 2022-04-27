@@ -87,6 +87,8 @@
 //@15100 = ~Use unique name +x (i.e. Kondar +1)~
 //@15200 = ~Use generic name (i.e. Bastard Sword +1, +3 vs. Shapeshifters)~
 
+@15002 = ~Remove "+x" From Unique Item Names~
+
 @16000 = ~Make Magic Shields Glow [plainab/grogerson]~
 
 @17000 = ~Unique Icons [Lava]~

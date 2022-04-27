@@ -714,7 +714,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @2
 LABEL ~cd_tweaks_fix_boo_squeak~
 
 COPY ~cdtweaks/wav/gam_48.wav~ ~override~
-/*
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -723,45 +723,50 @@ COPY ~cdtweaks/wav/gam_48.wav~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-/////                                                  \\\\\
-///// unique name                                      \\\\\
-/////                                                  \\\\\
+BEGIN @15002 DESIGNATED 150
+//SUBCOMPONENT @15000
+GROUP @11 
+REQUIRE_PREDICATE GAME_IS ~bgee eet bg2ee~ @25
 
-BEGIN @15001 DESIGNATED 150
-SUBCOMPONENT @15000
-GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/unique.tra~ @7 // skip if tra file for language not available
+ACTION_IF game_is_eet OR game_is_bgee BEGIN
 
-LOAD_TRA ~%tra_location%/%LANGUAGE%/unique.tra~
+  COPY ~cdtweaks/lib/unique_names_bgee.tph~ ~weidu_external/cdtweaks/unique_names_bgee.tph~ 
+    PATCH_IF game_is_eet BEGIN
+      REPLACE_EVALUATE ~^ +\([0-9]+\) +=>~ BEGIN // adjust srrefs if eet game
+        SET string = MATCH1 + 200000
+      END ~    %string% =>~
+    END
+    
+  INCLUDE ~weidu_external/cdtweaks/unique_names_bgee.tph~
 
-INCLUDE ~cdtweaks/lib/unique.tpa~
+END 
 
-/////                                                  \\\\\
-///// unique name                                      \\\\\
-/////                                                  \\\\\
+ACTION_IF game_is_eet OR game_is_bg2ee BEGIN
+    
+  INCLUDE ~cdtweaks/lib/unique_names_bg2ee.tph~ // no processing needed for bg2ee
+  
+END
 
-BEGIN @15100 DESIGNATED 151
-SUBCOMPONENT @15000
-GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/uniqueplus.tra~ @7 // skip if tra file for language not available
+<<<<<<<<./inline/unique_names.tph
+>>>>>>>>
 
-LOAD_TRA ~%tra_location%/%LANGUAGE%/uniqueplus.tra~
+COPY ~./inline/unique_names.tph~ ~weidu_external/cdtweaks/unique_names.tph~ 
 
-INCLUDE ~cdtweaks/lib/unique.tpa~
+ACTION_PHP_EACH cd_unique_names AS strref => process BEGIN
 
-/////                                                  \\\\\
-///// generic names                                    \\\\\
-/////                                                  \\\\\
+  ACTION_IF process BEGIN
+    APPEND_OUTER ~weidu_external/cdtweaks/unique_names.tph~ ~STRING_SET %strref% @%process%~
+  END ELSE BEGIN
+    ACTION_GET_STRREF strref text  
+    OUTER_INNER_PATCH_SAVE text ~%text%~ BEGIN
+      REPLACE_TEXTUALLY ~[ %TAB%]+\+[0-9]+[ %TAB%]*$~ ~~ // eliminate +x at eol
+    END
+    APPEND_OUTER ~weidu_external/cdtweaks/unique_names.tph~ "STRING_SET %strref% ~%text%~"
+  END  
 
-BEGIN @15200 DESIGNATED 152
-SUBCOMPONENT @15000
-GROUP @11 // REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee ca~ @25
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/uniquegeneric.tra~ @7 // skip if tra file for language not available
-
-LOAD_TRA ~%tra_location%/%LANGUAGE%/uniquegeneric.tra~
-
-INCLUDE ~cdtweaks/lib/unique.tpa~
-*/
+END     
+    
+INCLUDE ~weidu_external/cdtweaks/unique_names.tph~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
