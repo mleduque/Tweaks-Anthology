@@ -141,13 +141,11 @@ BEGIN
         END
 
       // Apply to selected familiar-type followers
-      ACTION_DEFINE_ASSOCIATIVE_ARRAY cre_defs BEGIN
-        // CRE resref => CRE script name
-        ~a7afaaq~ => ~a7afaaq~
-        ~c#bran01~ => ~c#brandock~
-        ~c#grey02~ => ~c#grey~
-        ~c#sola12~ => ~c#solaufein~
+      LAF __A7_GET_FOLLOWER_LIST
+        INT_VAR include_familiars = 0
+        RET_ARRAY cre_defs
       END
+
       ACTION_PHP_EACH cre_defs AS resref => name BEGIN
         ACTION_IF (FILE_EXISTS_IN_GAME ~%resref%.cre~) BEGIN
           COPY ~cdtweaks/baf/a7#haste_splstate_special.baf~ ~cdtweaks/baf/a7#haste_splstate_special.baf~
@@ -299,21 +297,11 @@ BEGIN
         END
 
       // Apply to familiars and selected familiar-type followers
-      ACTION_DEFINE_ASSOCIATIVE_ARRAY cre_defs BEGIN
-        // CRE resref => CRE script name
-        ~famcat~ => ~famcat~
-        ~famdust~ => ~famdust~
-        ~famfair~ => ~famfair~
-        ~famfer~ => ~famfer~
-        ~famimp~ => ~famimp~
-        ~fampsd~ => ~fampsd~
-        ~famquas~ => ~famquas~
-        ~famrab~ => ~famrab~
-        ~a7afaaq~ => ~a7afaaq~
-        ~c#bran01~ => ~c#brandock~
-        ~c#grey02~ => ~c#grey~
-        ~c#sola12~ => ~c#solaufein~
+      LAF __A7_GET_FOLLOWER_LIST
+        INT_VAR include_familiars = 1
+        RET_ARRAY cre_defs
       END
+
       ACTION_PHP_EACH cre_defs AS resref => name BEGIN
         ACTION_IF (FILE_EXISTS_IN_GAME ~%resref%.cre~) BEGIN
           COPY ~cdtweaks/baf/a7#haste_sectype_special.baf~ ~cdtweaks/baf/a7#haste_sectype_special.baf~
@@ -454,4 +442,51 @@ BEGIN
     INT_VAR extend_top = 1
     STR_VAR script_file = ~cdtweaks/baf/a7#haste_ability.baf~
   END
+END
+
+
+// Used internally. Returns a list of resref/script_name pairs for potential follower-type creatures.
+DEFINE_ACTION_FUNCTION __A7_GET_FOLLOWER_LIST
+INT_VAR
+  include_familiars = 0 // whether to include regular familiars in the list
+RET_ARRAY
+  cre_defs              // array consisting of cre resref => script name associations
+BEGIN
+  ACTION_CLEAR_ARRAY ~cre_defs~
+
+  ACTION_IF (include_familiars) BEGIN
+    // needed for original games and EE games before patch 2.0
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cre_defs BEGIN
+      ~famcat~   => ~famcat~
+      ~famdust~  => ~famdust~
+      ~famfair~  => ~famfair~
+      ~famfer~   => ~famfer~
+      ~famimp~   => ~famimp~
+      ~fampsd~   => ~fampsd~
+      ~famquas~  => ~famquas~
+      ~famrab~   => ~famrab~
+    END
+  END
+
+  // Apply to familiars and selected familiar-type followers
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cre_defs BEGIN
+    // CRE resref => CRE script name
+    ~a7afaaq~  => ~a7afaaq~
+    ~c#bran01~ => ~c#brandock~
+    ~c#grey02~ => ~c#grey~
+    ~c#sola12~ => ~c#solaufein~
+  END
+
+  // Include additions from NPC Generator
+  COPY_EXISTING ~a7-npc.2da~ ~override~
+    COUNT_2DA_ROWS 1 num_rows
+    READ_2DA_ENTRIES_NOW npc_table 1
+    FOR (row = 3; row < num_rows; ++row) BEGIN
+      READ_2DA_ENTRY_FORMER npc_table row 1 resref
+      TO_LOWER ~resref~
+      READ_2DA_ENTRY_FORMER npc_table row 2 script_var
+      TO_LOWER ~script_var~
+      TEXT_SPRINT $cre_defs(~%resref%~) ~%script_var%~
+    END
+  BUT_ONLY IF_EXISTS
 END
