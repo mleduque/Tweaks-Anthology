@@ -5403,7 +5403,7 @@ ACTION_IF !enhanced_edition BEGIN
     END
   END
   
-  ACTION_IF FILE_CONTAINS_EVALUATED (~%tra_location%/%LANGUAGE%/setup.tra~ ~^[ %TAB%]*@204001[ %TAB%]*=~) BEGIN // if translated strings are available...
+  ACTION_IF FILE_CONTAINS_EVALUATED (~%tra_location%/%LANGUAGE%/game.tra~ ~^[ %TAB%]*@204001[ %TAB%]*=~) BEGIN // if translated strings are available...
 
     OUTER_SET modify_descript = 1 // ...then try to update item descriptions
   
