@@ -29,42 +29,42 @@ ACTION_IF ((MOD_IS_INSTALLED ~iwdfixpack/setup-iwdfixpack.tp2~ ~0~) AND     // f
            (FILE_EXISTS ~iwdfixpack/languages/english/dplanar.tra~))  BEGIN // and it's >= v7
 
   APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~ // as of v7, replaces the ar9601 dupe of EXTRES4
-~ar9200   EXTRES4  Container7
-ar9601   EXTRES1  Container1~
+~ar9200   EXTRES4  Container7               0
+ar9601   EXTRES1  Container1               0~
 
 END ELSE BEGIN// previous fixpacks, IWDEE replace the ar9200 dupe of EXTRES4
 
   APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~
-~ar9200   EXTRES1  Container7
-ar9601   EXTRES4  Container1~
+~ar9200   EXTRES1  Container7               0
+ar9601   EXTRES4  Container1               0~
 
 END 
 
 ACTION_IF MOD_IS_INSTALLED ~ub_iwd/setup-ub_iwd.tp2~ ~1500~ THEN BEGIN // if restored random drops from UB
 
   APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~
-~ar3201   TG4Tres  Sarcophagus1
-ar4005   DE5Tres  Yuan-tiChampion1
-ar8002   UD6Tres  Kelly
-ar3001   TG5Tres  Lysan
-ar9100   EXTRES3  Alpheus~
+~ar3201   TG4Tres  Sarcophagus1             0
+ar4005   DE5Tres  Yuan-tiChampion1         1
+ar8002   UD6Tres  Kelly                    1
+ar3001   TG5Tres  Lysan                    0
+ar9100   EXTRES3  Alpheus                  1~
   
 END
 
 ACTION_IF game_is_iwdee THEN BEGIN // iwdee uses slightly different placement for TG4/5Tres from ub's restored random drops
 
   APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~
-~ar3602   TG4Tres  AR3602Chest3
-ar4005   DE5Tres  Yuan-tiChampion1
-ar8002   UD6Tres  Kelly
-AR4001   TG5Tres  Chest2
-ar9100   EXTRES3  Alpheus~
+~ar3602   TG4Tres  AR3602Chest3             0
+ar4005   DE5Tres  Yuan-tiChampion1         1
+ar8002   UD6Tres  Kelly                    1
+AR4001   TG5Tres  Chest2                   0
+ar9100   EXTRES3  Alpheus                  1~
 
 END
 
 ACTION_IF tfg_bows THEN BEGIN // add extra chest in TotFG if we're not in the wandering merchant option
 
-  APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~ ~ar3601   TFGTres  Container11~
+  APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~ ~ar3601   TFGTres  Container11              0~
   
 END
 

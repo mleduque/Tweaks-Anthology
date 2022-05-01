@@ -12162,11 +12162,11 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
   PATCH_IF NOT (game_is_iwd OR game_is_how) BEGIN
     REPLACE_TEXTUALLY ~ShadowedElvenPriest~ ~Priest_0~ // dv changes with totlm installed
   END
-  COUNT_2DA_ROWS 3 "rows"
+  COUNT_2DA_ROWS 4 "rows"
   FOR (index = 2 ; index < rows ; ++index) BEGIN // start at 2 to skip orktres
-    READ_2DA_ENTRY index 0 3 "area"
-    READ_2DA_ENTRY index 1 3 "item"
-    READ_2DA_ENTRY index 2 3 "cont"
+    READ_2DA_ENTRY index 0 4 "area"
+    READ_2DA_ENTRY index 1 4 "item"
+    READ_2DA_ENTRY index 2 4 "cont"
     PATCH_IF FILE_EXISTS_IN_GAME ~%area%.are~ BEGIN
       INNER_ACTION BEGIN
 
@@ -12253,6 +12253,12 @@ ACTION_IF game_is_iwdee OR game_is_iwd-in-bg2 THEN BEGIN // if modern engine
     INCLUDE ~cdtweaks/lib/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema in random.2da
 
   END
+  
+  ACTION_FOR_EACH item IN gopoof mring1 BEGIN // ee lacks these items
+    ACTION_IF !FILE_EXISTS_IN_GAME ~%item%.itm~ BEGIN
+      COPY ~cdtweaks/itm/%item%.itm~ ~override~
+    END
+  END    
 
   COPY ~weidu_external/cdtweaks/random/cdrandom.baf~ ~weidu_external/cdtweaks/random/cdrandom.baf~
     REPLACE_TEXTUALLY ~EquipItem("gopoof",1)~ ~DestroyItem("gopoof")~
@@ -12275,35 +12281,21 @@ COPY_EXISTING ~telanis.cre~ ~override/cdrandom.cre~
     WRITE_BYTE  0x271 1 // undead > humanoid
     WRITE_ASCII 0x280 ~cdrandom~ #32
     WRITE_ASCII 0x2cc ~cdrandom~ #8
+    REPLACE_CRE_ITEM ~minhp1~ #0 #0 #0 ~NONE~ ~LRING~
   END
   REPLACE_CRE_ITEM ~gopoof~ #0 #0 #0 ~NONE~ ~RRING~
   ADD_CRE_ITEM ~mring1~ #0 #0 #0 ~NONE~ ~INV1~
-
-ACTION_IF enhanced_edition THEN BEGIN
-
-  // add unused random drop to one of yxonmei's champions (halberd or 2h axe); see also ar4005.are patch; replaces generic yuan-ti halberd
-  COPY_EXISTING ~cdyucham.cre~ ~override~
-    ADD_CRE_ITEM ~u2hAx3a~ #0 #0 #0 ~UNDROPPABLE~ ~WEAPON1~ EQUIP TWOHANDED // give undroppable axe, push token to inventory
-  
-  // replace generic composite long bow with long bow +3: repeater or long bow +3: defender
-  COPY_EXISTING ~kelly.cre~ ~override~
-    ADD_CRE_ITEM ~uLBow4a~ #0 #0 #0 ~UNDROPPABLE~ ~WEAPON1~ EQUIP TWOHANDED // give undroppable bow, push token to inventory
-
-  // add unused random drop to one of alpheus (choice of two mage staves)
-  COPY_EXISTING ~alpheus.cre~  ~override~
-    ADD_CRE_ITEM ~quost~ #0 #0 #0 ~UNDROPPABLE~ ~WEAPON1~ EQUIP TWOHANDED // give undroppable staff, push token to inventory
-
-END
 
 COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
   PATCH_IF NOT (game_is_iwd OR game_is_how) BEGIN
     REPLACE_TEXTUALLY ~ShadowedElvenPriest~ ~Priest_0~ // dv changes with totlm installed
   END
-  COUNT_2DA_ROWS 3 "rows"
+  COUNT_2DA_ROWS 4 "rows"
   FOR (index = 1 ; index < rows ; ++index) BEGIN
-    READ_2DA_ENTRY index 0 3 "area"
-    READ_2DA_ENTRY index 1 3 "item"
-    READ_2DA_ENTRY index 2 3 "cont"
+    READ_2DA_ENTRY index 0 4 "area"
+    READ_2DA_ENTRY index 1 4 "item"
+    READ_2DA_ENTRY index 2 4 "cont"
+    READ_2DA_ENTRY index 3 4 "quip"
     PATCH_IF FILE_EXISTS_IN_GAME ~%area%.are~  BEGIN
       INNER_ACTION BEGIN
 
@@ -12428,9 +12420,9 @@ COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random
   PATCH_IF NOT (game_is_iwd OR game_is_how) BEGIN
     REPLACE_TEXTUALLY ~ShadowedElvenPriest~ ~Priest_0~ // dv changes with totlm installed
   END
-  COUNT_2DA_ROWS 3 "rows"
+  COUNT_2DA_ROWS 4 "rows"
   FOR (index = 1 ; index < rows ; ++index) BEGIN
-    READ_2DA_ENTRY index 1 3 "item"
+    READ_2DA_ENTRY index 1 4 "item"
     INNER_ACTION BEGIN
 
       COPY_EXISTING ~%table%.2da~ ~override~

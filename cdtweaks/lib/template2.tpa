@@ -38,6 +38,11 @@ insert_reply
     END ELSE BEGIN
 
       ACTION_IF game_is_iwdee BEGIN
+        ACTION_IF !quip BEGIN
+          OUTER_SPRINT destroy ~ActionOverride("%cont%",DestroyItem("%drop%"))~
+        END ELSE BEGIN  
+          OUTER_SPRINT destroy ~ActionOverride("%cont%",SetItemFlags("%drop%",NONDROPABLE,TRUE))~
+        END  
         EXTEND_BOTTOM ~%area%.bcs~ ~cdtweaks/baf/token_swap.baf~ EVALUATE_BUFFER
       END
     

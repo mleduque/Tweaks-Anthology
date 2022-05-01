@@ -5,7 +5,7 @@ IF
   HasItem("%drop%","%cont%")
 THEN
   RESPONSE #100
-    ActionOverride("%cont%",DestroyItem("%drop%"))
+    %destroy%
     ActionOverride("%cont%",CreateItem("%token_item%",0,0,0))
     SetGlobal("CDTokenSwap%token_item%","MYAREA",1)
 END
