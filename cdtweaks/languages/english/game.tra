@@ -9,8 +9,8 @@
 @5001 = ~AVATAR MORPHING SCRIPT:~
 @5002 = ~This script lets the user have control over the avatar of the character. Press 'S' to activate the avatar selection screen. (<script>)~
 
-@15003 = ~Redshield~
-@15004 = ~Bone Club~
+@15003 = ~Redshield~ // adpated from bgee strref #27592
+@15004 = ~Bone Club~ // adapted from bg2ee strref #35105
 
 @18001 = ~Arcana Archives~
 @18002 = ~Sio'chaire~
