@@ -107,8 +107,6 @@ OUTER_SET halforc_dual_to_mage = 0
 
 
 
-// The following variables will be used for "Unique Icons"
-// This component will only install a new icon for an item if it's re-using an icon from another
-// item. If another mod has already item it will be skipped. Set this variable to 1 if you want
-// Tweaks to ALWAYS install a new icon even if another mod has updated it. 
-OUTER_SET always_install_unique_icons = 0
+// DEPRECATED. This variable is ignored by the mod, as it's now handled directly by the installer. 
+// Enabling it or setting a value will have no effect. 
+// OUTER_SET always_install_unique_icons = 0

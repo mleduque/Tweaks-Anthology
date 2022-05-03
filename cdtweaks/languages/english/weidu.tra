@@ -92,6 +92,9 @@
 @16000 = ~Make Magic Shields Glow [plainab/grogerson]~
 
 @17000 = ~Unique Icons [Lava]~
+@17001 = ~Only replace icons that aren't already unique~
+@17010 = ~Replace all icons~
+
 
 @18000 = ~Unique Containers [Miloch]~
 @18018 = ~Fixes only~
