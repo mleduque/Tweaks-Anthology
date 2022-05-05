@@ -87,9 +87,13 @@ ou rendues obsoletes par un autre mod deja installe.~
 //@15100 = ~Utiliser le nom unique +x (i.e. Kondar +1)~
 //@15200 = ~Utiliser le nom generique (i.e. Epee batarde +1, +3 contre les metamorphes)~
 
+@15002 = ~Supprimer "+x" dans les noms des objets uniques~
+
 @16000 = ~Rendre rougeoyants les boucliers magiques (plainab/grogerson)~
 
 @17000 = ~Icones uniques~
+@17001 = ~Ne remplacer que les icones qui ne sont pas deja uniques~
+@17010 = ~Remplacer toutes les icones~
 
 @18000 = ~Recipients uniques~
 @18018 = ~Corrections uniquement~
