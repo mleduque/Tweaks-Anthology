@@ -9,6 +9,9 @@
 @5001 = ~SCRIPT DE CHANGEMENT D'AVATAR :~
 @5002 = ~Ce script permet à l'utilisateur d'avoir un contrôle sur l'avatar du personnage. Enfoncez 'S' pour activer l'écran de sélection d'un avatar. (<script>)~
 
+@15003 = ~Bouclier rouge~ // adpated from bgee strref #27592
+@15004 = ~Gourdin d'os~ // adapted from bg2ee strref #35105
+
 @18001 = ~Archives d'Arcane~
 @18002 = ~Sio'chaire~
 @18003 = ~Boutique de Sio'chaire~
