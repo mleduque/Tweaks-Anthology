@@ -50,6 +50,8 @@ END ELSE BEGIN
   OUTER_SPRINT ~tra_location~ ~weidu_external/cdtweaks/languages~
 
   // convert strings from UTF-8 for originals  
+  ACTION_DEFINE_ARRAY cdnoconvert BEGIN weidu ee END
+  ACTION_DEFINE_ARRAY cdreload BEGIN game END
   LAF HANDLE_CHARSETS INT_VAR from_utf8 = 1 infer_charsets = 1 
                       STR_VAR default_language = ~english~ tra_path = ~cdtweaks/languages~ out_path = ~weidu_external/cdtweaks/languages~ noconvert_array = cdnoconvert reload_array = cdreload END
 
