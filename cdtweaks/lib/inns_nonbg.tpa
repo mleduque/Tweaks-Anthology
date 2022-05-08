@@ -105,5 +105,13 @@ ACTION_IF enhanced_edition BEGIN
     END
     BUT_ONLY    
 
+  // as does rasaad
+  COPY_EXISTING ~rasaad%eet_var%.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~\(!InParty(Myself)[ %TAB%%LNL%%MNL%%WNL%]+ActionListEmpty()[ %TAB%%LNL%%MNL%%WNL%]+Global("RASAAD_IN_PARTY","GLOBAL",0)\)~ ~False() \1~
+      REPLACE_TEXTUALLY ~\(!InParty(Myself)[ %TAB%%LNL%%MNL%%WNL%]+ActionListEmpty()[ %TAB%%LNL%%MNL%%WNL%]+Global("GAMAZ_DEFEATED","GLOBAL",2)\)~  ~False() \1~
+    END
+    BUT_ONLY    
+
 END  
 
