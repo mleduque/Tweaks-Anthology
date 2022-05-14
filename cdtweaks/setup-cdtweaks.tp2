@@ -150,25 +150,35 @@ GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
 LABEL ~cd_tweaks_remove_helmets~
 
-ACTION_IF enhanced_edition OR game_includes_soa OR game_is_ca OR tutu_gen OR game_is_iwd-in-bg2 BEGIN
-  OUTER_SET check_anim = 1
-END ELSE BEGIN
-  OUTER_SET check_anim = 0
-END
+ACTION_IF enhanced_edition BEGIN
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-  READ_SHORT 0x1c itemtype ELSE 0
-  PATCH_IF (itemtype = 7) BEGIN
-    PATCH_IF check_anim = 1 BEGIN
-      READ_SHORT 0x22 anim ELSE 0
-      PATCH_IF NOT ((anim = 0x5759) OR (anim = 0x575a)) BEGIN
+  COPY_EXISTING_REGEXP GLOB ~^[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]\.ini$~ ~override~
+    REPLACE_TEXTUALLY ~equip_helmet[ %TAB%]*=[ %TAB%]*1~ ~equip_helmet=0~
+    BUT_ONLY
+
+END ELSE BEGIN
+
+  ACTION_IF game_includes_soa OR game_is_ca OR tutu_gen OR game_is_iwd-in-bg2 BEGIN
+    OUTER_SET check_anim = 1
+  END ELSE BEGIN
+    OUTER_SET check_anim = 0
+  END
+
+  COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+    READ_SHORT 0x1c itemtype ELSE 0
+    PATCH_IF (itemtype = 7) BEGIN
+      PATCH_IF check_anim = 1 BEGIN
+        READ_SHORT 0x22 anim ELSE 0
+        PATCH_IF NOT ((anim = 0x5759) OR (anim = 0x575a)) BEGIN // exclude zw, yw for 1pp Wings
+          WRITE_SHORT 0x22 0
+        END  
+      END ELSE BEGIN
         WRITE_SHORT 0x22 0
       END
-    END ELSE BEGIN
-      WRITE_SHORT 0x22 0
     END
-  END
-  BUT_ONLY
+    BUT_ONLY
+  
+END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -9299,8 +9309,8 @@ ACTION_IF !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~10~ THEN BEGIN // ski
   // helmets don't work on monk animation, so replace with cleric animation
   ACTION_CLEAR_ARRAY cd_new_anims
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_new_anims BEGIN
-    6000, 6500, CHMB, CHMM => monk_male_human    // clone cleric animations into monk animations
-    6010, 6510, CHFB, CHFM => monk_female_human 
+    6000, 6500, CHMC, CHMM => monk_male_human    // clone cleric animations into monk animations
+    6010, 6510, CHFC, CHFM => monk_female_human 
   END
     
   ACTION_PHP_EACH cd_new_anims AS anims => entry BEGIN
@@ -9309,8 +9319,9 @@ ACTION_IF !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~10~ THEN BEGIN // ski
 
     ACTION_IF enhanced_edition BEGIN
 
-      COPY_EXISTING ~%anims_0%.ini~ ~override/%anims_1%.ini~
-        REPLACE_TEXTUALLY ~^\(//[ %TAB%]+[A-Z]+[ %TAB%]+\)cleric_[a-z]+_[a-z]+[ %TAB%]*~ ~\1%entry%~
+      COPY_EXISTING ~%anims_1%.ini~ ~override~ // remove helmet animations from monk animations
+        REPLACE_TEXTUALLY ~equip_helmet[ %TAB%]*=[ %TAB%]*1~ ~equip_helmet=0~
+        BUT_ONLY
       
     END ELSE BEGIN
     
