@@ -57,6 +57,9 @@ ACTION_IF game_includes_soa THEN BEGIN
 
   ACTION_IF enhanced_edition THEN BEGIN // for new npcs
   
+    // viconia-rasaad
+    COMPILE ~cdtweaks/dlg/happy_bg2ee.d~
+  
     // edwin-neera ultimatum
     EXTEND_BOTTOM ~edwin.bcs~  ~cdtweaks/baf/edwineer.baf~
     EXTEND_BOTTOM ~edwi25.bcs~ ~cdtweaks/baf/edwineer.baf~

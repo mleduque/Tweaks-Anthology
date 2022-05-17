@@ -1,0 +1,2 @@
+ALTER_TRANS rasaa25j BEGIN 95 END BEGIN 1 3 END BEGIN TRIGGER ~False()~ END // scuttle IVFPD Viconia check
+ALTER_TRANS rasaa25j BEGIN 95 END BEGIN 2 4 END BEGIN TRIGGER ~True()~  END // always proceed wtih replies as if Viconia isn't present
