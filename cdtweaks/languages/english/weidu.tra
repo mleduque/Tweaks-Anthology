@@ -416,9 +416,11 @@
 // @257000 = ~BGT: Additional Experience Cap While in BG~
 // @257100 = ~BGT: Additional Experience Cap While in SoA~
 
-@258000 = ~Alter Bonus Divine Spells from Wisdom~
+@258000 = ~Alter Wisdom-Based Divine Bonus Spell Table~
 @258001 = ~Use PnP/PsT Table~
 @258100 = ~Use BG/BG2/IWD Table~
+
+@259000 = ~Thieves Can Backstab With More Weapons With "Use Any Item"~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
