@@ -11,7 +11,7 @@ ALWAYS
   
 END
 
-VERSION ~v14~
+VERSION ~v15~
 
 README ~cdtweaks/languages/%LANGUAGE%/readme-cdtweaks.html~ ~cdtweaks/readme-cdtweaks.html~
 
@@ -30,7 +30,7 @@ LANGUAGE
   ~cdtweaks/languages/czech/game.tra~
   ~cdtweaks/languages/czech/weidu.tra~
 LANGUAGE
-  ~Francais (Translation by Anomaly, Elgaern the Dragon Slayer, elminster, Isaya)~
+  ~Francais (Translation by Anomaly, Elgaern the Dragon Slayer, elminster, Isaya, mickabouille)~
   ~french~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
@@ -65,7 +65,7 @@ LANGUAGE
   ~cdtweaks/languages/polish/game.tra~
   ~cdtweaks/languages/polish/weidu.tra~
 LANGUAGE
-  ~Russian (Translation by aerie.ru, abalabokhin, Creepin, Domi, Kulyok, prowler, Saigon1983, Serdrick)~
+  ~Russian (Translation by abalabokhin, aerie.ru, arcanecoast.ru, Creepin, Domi, Kulyok, prowler, Saigon1983, Serdrick, yota13)~
   ~russian~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
