@@ -120,6 +120,8 @@ ou rendues obsoletes par un autre mod deja installe.~
 
 @22000 = ~Superpositions ameliorees pour les joueurs daltoniens (Fouinto)~
 
+@23000 = ~Restaurer les tooltips d'IWD~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -412,6 +414,13 @@ ou rendues obsoletes par un autre mod deja installe.~
 // these components were abandoned due to bugs with dual-classes
 // @257000 = ~BGT : Limite d'experience supplementaire au cours de BG~
 // @257100 = ~BGT : Limite d'experience supplementaire au cours de SoA~
+
+@258000 = ~Modifier la table des sorts divins en bonus lies à la sagesse~
+@258001 = ~Utiliser la table PnP/PsT~
+@258100 = ~Utiliser la table BG/BG2/IWD~
+
+
+@259000 = ~Les voleurs peuvent executer des attaques sournoises avec plus d'armes grace a "Utilisation d'objet"~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
