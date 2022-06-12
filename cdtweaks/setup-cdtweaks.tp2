@@ -152,7 +152,7 @@ LABEL ~cd_tweaks_remove_helmets~
 
 ACTION_IF enhanced_edition BEGIN
 
-  COPY_EXISTING_REGEXP GLOB ~^[56][125][0-9A-Fa-f][0-9A-Fa-f]\.ini$~ ~override~
+  COPY_EXISTING_REGEXP GLOB ~^[56][01235][0-9A-Fa-f][0-9A-Fa-f]\.ini$~ ~override~
     REPLACE_TEXTUALLY ~equip_helmet[ %TAB%]*=[ %TAB%]*1~ ~equip_helmet=0~
     BUT_ONLY
 
