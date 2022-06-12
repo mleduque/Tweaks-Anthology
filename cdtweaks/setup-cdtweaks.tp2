@@ -9464,7 +9464,7 @@ END
 
 BEGIN @259000 DESIGNATED 2590
 GROUP @9
-REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @25 // EE games with HLAs so no iwdee, bgee, or pstee
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25 // EE games with HLAs so no iwdee, bgee, or pstee
 LABEL ~cd_tweaks_thieves_backstab_uai~
     
 OUTER_SET alt_profs = 0
@@ -9508,18 +9508,21 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   END  
   BUT_ONLY  
   
-// to try and prevent staff of the magi backstab abuse
-COPY_EXISTING ~staf11.itm~ ~override~
-  READ_LONG  0x6a fx_off
-  READ_SHORT 0x70 fx_num
-  FOR (index = 0 ; index < fx_num ; ++index) BEGIN
-    READ_SHORT (fx_off + 0x00 + (index * 0x30)) opcode
-    PATCH_IF opcode = 20 BEGIN // sanity check: only add invisibility timeout if the staff still causes invis on equip
-      LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 101 target = 1 parameter2 = 20 duration = 5 END // successful attack prevents application if invis for five seconds
-      SET index = fx_num // kill loop
-    END  
-  END
-  BUT_ONLY  
+ACTION_IF game_is_bg2ee OR game_is_eet BEGIN // to try and prevent staff of the magi backstab abuse
+
+  COPY_EXISTING ~staf11.itm~ ~override~
+    READ_LONG  0x6a fx_off
+    READ_SHORT 0x70 fx_num
+    FOR (index = 0 ; index < fx_num ; ++index) BEGIN
+      READ_SHORT (fx_off + 0x00 + (index * 0x30)) opcode
+      PATCH_IF opcode = 20 BEGIN // sanity check: only add invisibility timeout if the staff still causes invis on equip
+        LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 101 target = 1 parameter2 = 20 duration = 5 END // successful attack prevents application if invis for five seconds
+        SET index = fx_num // kill loop
+      END  
+    END
+    BUT_ONLY  
+    
+END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
