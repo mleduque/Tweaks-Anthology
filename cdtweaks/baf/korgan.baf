@@ -1,10 +1,8 @@
 IF
-	InParty("Korgan")
-	InParty("Aerie")
-	!Global("KorganAerieGrump","GLOBAL",0)
+	!Global("BKorgan18","LOCALS",1)
 THEN
 	RESPONSE #100
-		SetGlobal("KorganAerieGrump","GLOBAL",0)
+		SetGlobal("BKorgan18","LOCALS",1)
 		Continue()
 END
 
