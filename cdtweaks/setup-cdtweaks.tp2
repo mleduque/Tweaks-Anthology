@@ -9524,6 +9524,24 @@ ACTION_IF game_is_bg2ee OR game_is_eet BEGIN // to try and prevent staff of the 
     
 END
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Make certain creatures immune to backstab / sneak attack   \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @262000 DESIGNATED 2620
+GROUP @9
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+LABEL ~cd_tweaks_backstab_immunity~
+
+WITH_SCOPE BEGIN
+  INCLUDE "cdtweaks/lib/backstab_immunity.tph"
+  LAF "BACKSTAB_IMMUNITY" END
+END
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
