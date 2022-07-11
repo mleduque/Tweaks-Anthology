@@ -9534,7 +9534,7 @@ END
 
 BEGIN @262000 DESIGNATED 2620
 GROUP @9
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee soa tob tutu tutu_totsc bgt iwd2 how totlm iwd_in_bg2~ @25 // exclude iwd base as op 287 was introdced in how
 LABEL ~cd_tweaks_backstab_immunity~
 
 WITH_SCOPE BEGIN
