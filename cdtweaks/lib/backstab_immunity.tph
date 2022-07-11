@@ -1,0 +1,115 @@
+DEFINE_ACTION_FUNCTION "BACKSTAB_IMMUNITY"
+BEGIN
+	WITH_SCOPE BEGIN
+		COPY_EXISTING_REGEXP "^.+\.cre$" "override"
+			SET "found" = 0
+			PATCH_MATCH BYTE_AT 0x271 WITH // GENERAL check
+				IDS_OF_SYMBOL ("GENERAL" "UNDEAD")
+				IDS_OF_SYMBOL ("GENERAL" "PLANT")
+				IDS_OF_SYMBOL ("GENERAL" "WEAPON")
+				BEGIN
+					SET "found" = 1
+					LPF "BACKSTAB_IMMUNITY_HELPER" END
+				END
+				DEFAULT
+			END
+			PATCH_IF !("%found%") BEGIN
+				PATCH_MATCH BYTE_AT 0x272 WITH // RACE check
+					IDS_OF_SYMBOL ("RACE" "SLIME")
+					IDS_OF_SYMBOL ("RACE" "BEHOLDER")
+					IDS_OF_SYMBOL ("RACE" "DEMONIC")
+					IDS_OF_SYMBOL ("RACE" "MEPHIT")
+					IDS_OF_SYMBOL ("RACE" "IMP")
+					IDS_OF_SYMBOL ("RACE" "DRAGON")
+					IDS_OF_SYMBOL ("RACE" "ELEMENTAL")
+					IDS_OF_SYMBOL ("RACE" "SALAMANDER")
+					IDS_OF_SYMBOL ("RACE" "MIST")
+					IDS_OF_SYMBOL ("RACE" "SOLAR")
+					IDS_OF_SYMBOL ("RACE" "ANTISOLAR")
+					IDS_OF_SYMBOL ("RACE" "PLANATAR")
+					IDS_OF_SYMBOL ("RACE" "DARKPLANATAR")
+					BEGIN
+						LPF "BACKSTAB_IMMUNITY_HELPER" END
+					END
+					IDS_OF_SYMBOL ("RACE" "GOLEM")
+					BEGIN
+						PATCH_MATCH BYTE_AT 0x273 WITH
+							IDS_OF_SYMBOL ("CLASS" "GOLEM_CLAY")
+							IDS_OF_SYMBOL ("CLASS" "GOLEM_STONE")
+							IDS_OF_SYMBOL ("CLASS" "GOLEM_IRON")
+							BEGIN
+								LPF "BACKSTAB_IMMUNITY_HELPER" END
+							END
+							DEFAULT
+						END
+					END
+					DEFAULT
+				END
+			END
+		BUT_ONLY_IF_IT_CHANGES
+	END
+END
+
+/////////////////////////////////////////////////////////////////
+/*
+
+Auxiliary function
+
+*/
+//////////////////////////////////////////////////////////////////
+
+DEFINE_PATCH_FUNCTION "BACKSTAB_IMMUNITY_HELPER"
+BEGIN
+	// Initialize
+	SET "found" = 0
+	// Check if the immunity is already granted by its equipment
+	GET_OFFSET_ARRAY "cre_v10_items" CRE_V10_ITEMS
+	PHP_EACH "cre_v10_items" AS "itm_ind" => "itm_off" BEGIN
+		PATCH_MATCH "%itm_ind%" WITH
+			SSHORT_AT (LONG_AT 0x2B8 + 0x0) // Helmet
+			SSHORT_AT (LONG_AT 0x2B8 + 0x2) // Armor
+			SSHORT_AT (LONG_AT 0x2B8 + 0x4) // Shield
+			SSHORT_AT (LONG_AT 0x2B8 + 0x6) // Gloves
+			SSHORT_AT (LONG_AT 0x2B8 + 0x8) // Left ring
+			SSHORT_AT (LONG_AT 0x2B8 + 0xA) // Right ring
+			SSHORT_AT (LONG_AT 0x2B8 + 0xC) // Amulet
+			SSHORT_AT (LONG_AT 0x2B8 + 0xE) // Belt
+			SSHORT_AT (LONG_AT 0x2B8 + 0x10) // Boots
+			SSHORT_AT (LONG_AT 0x2B8 + 0x12) // Weapon 1
+			SSHORT_AT (LONG_AT 0x2B8 + 0x14) // Weapon 2
+			SSHORT_AT (LONG_AT 0x2B8 + 0x16) // Weapon 3
+			SSHORT_AT (LONG_AT 0x2B8 + 0x18) // Weapon 4
+			SSHORT_AT (LONG_AT 0x2B8 + 0x22) // Cloak
+			BEGIN
+				READ_ASCII "%itm_off%" "itm_resref"
+				INNER_PATCH_FILE "%itm_resref%.itm" BEGIN
+					GET_OFFSET_ARRAY "fx_array" ITM_V10_GEN_EFFECTS
+					PHP_EACH "fx_array" AS "fx_ind" => "fx_off" BEGIN
+						PATCH_IF (SHORT_AT "%fx_off%" == 292) BEGIN
+							PATCH_IF (SLONG_AT ("%fx_off%" + 0x8) > 0) BEGIN
+								SET "found" = 1
+							END
+						END
+					END
+				END
+			END
+			DEFAULT
+		END
+	END
+	// Check if the immunity is already present amongst its effects
+	PATCH_IF !("%found%") BEGIN
+		LPF "FJ_CRE_VALIDITY" END // force the CRE file to use EFF V2 effects internally
+		GET_OFFSET_ARRAY "fx_array" CRE_V10_EFFECTS
+		PHP_EACH "fx_array" AS "fx_ind" => "fx_off" BEGIN
+			// NB.: Unlike ordinary V2 EFF files, CRE effect V2 structures omit the 8-byte EFF V2 header!!!
+			PATCH_IF (LONG_AT ("%fx_off%" + (0x10 - 0x8)) == 292) BEGIN
+				PATCH_IF (SLONG_AT ("%fx_off%" + (0x20 - 0x8)) > 0) BEGIN
+					SET "found" = 1
+				END
+			END
+		END
+	END
+	PATCH_IF !("%found%") BEGIN
+		LPF "ADD_CRE_EFFECT" INT_VAR "opcode" = 292 "target" = 1 "parameter2" = 1 "timing" = 9 END
+	END
+END
