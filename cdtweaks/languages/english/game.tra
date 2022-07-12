@@ -791,6 +791,8 @@ This ability controls whether movement speed and casting speed are increased for
 @333053 = ~Disable Auto-haste
 
 This ability controls whether casting speed is increased for party members outside of combat. Click on the ability to turn it OFF.~
+@333054 = ~Auto-haste~
+@333055 = ~Improved Alacrity~ // bg2 strref #63217
 @333060 = ~Enable Auto-haste~
 @333061 = ~Enable Auto-haste
 
