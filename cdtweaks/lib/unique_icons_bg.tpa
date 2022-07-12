@@ -60,6 +60,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons BEGIN
   cdunb51, ~ihamm02~, ~hamm13~, ~null~, weapon, null, null, null, 1, 2, 115, null, null, null, null, null, null, null => ~hamm13~ // Hammer of Dawn +1, has icon from War Hammer +1
   cdunb52, ~iblun20~, ~hlolth~, ~null~, weapon, null, null, null, 84, 84, 80, null, null, null, null, null, null, null => ~hlolth~ // Handmaiden's Mace +2, has icon from Ardulia's Fall +1
   cdunb53, ~isw1h05~, ~sw1h79~, ~null~, weapon, null, null, null, 64, 63, 27, null, null, null, null, null, null, null => ~sw1h79~ // Harrower +1, has icon from Long Sword +1
+  cdunb54, ~%tutu_var%isw1h04~, ~c#lchul1~, ~null~, weapon, null, null, null, 63, 22, 5, null, null, null, null, null, null, null => ~c#lchul1~ // Hull's Long Sword (BG1RE version), has icon from Long Sword
   cdunb54, ~%tutu_var%isw1h04~, ~%tutu_var%sw1h12~, ~null~, weapon, null, null, null, 63, 22, 5, null, null, null, null, null, null, null => ~%tutu_var%sw1h12~ // Hull's Long Sword, has icon from Long Sword
   cdunb55, ~%tutu_var%idagg01~, ~%tutu_var%dagg07~, ~null~, weapon, null, null, null, 30, 93, 27, null, null, null, null, null, null, null => ~%tutu_var%dagg07~ // Kylee's Dagger, has icon from Dagger
   cdunb56, ~idagg10~, ~dagg20~, ~null~, weapon, null, null, null, 81, 100, 7, null, null, null, null, null, null, null => ~dagg20~ // Life-Stealer +4, has icon from Soultaker Dagger
