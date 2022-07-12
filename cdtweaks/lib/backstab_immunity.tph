@@ -7,11 +7,11 @@ BEGIN
       OUTER_SET ~general_%entry%~ = IDS_OF_SYMBOL ("GENERAL" "%entry%")
     END
   
-    ACTION_FOR_EACH entry IN slime beholder demonic mephit imp dragon elemental salamander mist solar antisolar planatar darkplanatar golem shambling_mound BEGIN
+    ACTION_FOR_EACH entry IN slime beholder demonic mephit imp dragon elemental salamander mist solar antisolar planatar darkplanatar golem shambling_mound drake tanari BEGIN
       OUTER_SET ~race_%entry%~ = IDS_OF_SYMBOL ("RACE" "%entry%")
     END
   
-    ACTION_FOR_EACH entry IN golem_clay golem_stone golem_iron BEGIN
+    ACTION_FOR_EACH entry IN golem_flesh BEGIN
       OUTER_SET ~class_%entry%~ = IDS_OF_SYMBOL ("CLASS" "%entry%")
     END
     
@@ -83,21 +83,26 @@ BEGIN
           race_solar       
           race_antisolar   
           race_planatar    
-          race_darkplanatar
+          race_darkplanatar    
+          race_shambling_mound     
+          race_drake     
+          race_tanari
           BEGIN
             LPF "BACKSTAB_IMMUNITY_HELPER" END
           END
           race_golem
           BEGIN
-            PATCH_MATCH BYTE_AT offset_class WITH
-              class_golem_clay  
-              class_golem_stone 
-              class_golem_iron  
-              BEGIN
+            PATCH_IF game_is_iwd2 BEGIN
+              READ_LONG 0x08 name_str
+              PATCH_IF ((name_str != 13834) AND    // iwd2 has no easy way to discern flesh golems from others, so use explicit name checks
+                        (name_str != 34849)) BEGIN // 13834 is "flesh golem", 34849 is "enhanced flesh golem"
                 LPF "BACKSTAB_IMMUNITY_HELPER" END
               END
-              DEFAULT
-            END
+            END ELSE BEGIN
+              PATCH_IF BYTE_AT offset_class != class_golem_flesh BEGIN
+                LPF "BACKSTAB_IMMUNITY_HELPER" END
+              END
+            END  
           END
           DEFAULT
         END
@@ -121,7 +126,11 @@ BEGIN
   READ_LONG offset_item_slot off_slots
   READ_LONG offset_item_list off_items
   READ_LONG offset_item_num  num_items
-  READ_BYTE 0x33 fx_type
+  PATCH_IF offset_general = 0x271 BEGIN // cre v1 (bg2/ee)
+    READ_BYTE 0x33 fx_type
+  END ELSE BEGIN
+    SET fx_type = 0
+  END    
   FOR (index = 0 ; index < item_slot_cloak ; ++index) BEGIN
     PATCH_IF index > item_slot_cont BEGIN SET index = item_slot_cloak END // skip over quivers
     READ_SHORT (off_slots + (index * 0x02)) item_idx
@@ -130,6 +139,7 @@ BEGIN
       PATCH_PHP_EACH cd_backstab_items AS itm_check => foo BEGIN
         PATCH_IF ("%itm_resref%" STRING_COMPARE_CASE "%itm_check%" = 0) BEGIN
           SET found = 1
+          SET index = item_slot_cloak // kill loop
         END
       END   
     END
