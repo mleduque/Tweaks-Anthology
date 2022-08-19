@@ -60,8 +60,8 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons BEGIN
   cdunb51, ~ihamm02~, ~hamm13~, ~null~, weapon, null, null, null, 1, 2, 115, null, null, null, null, null, null, null => ~hamm13~ // Hammer of Dawn +1, has icon from War Hammer +1
   cdunb52, ~iblun20~, ~hlolth~, ~null~, weapon, null, null, null, 84, 84, 80, null, null, null, null, null, null, null => ~hlolth~ // Handmaiden's Mace +2, has icon from Ardulia's Fall +1
   cdunb53, ~isw1h05~, ~sw1h79~, ~null~, weapon, null, null, null, 64, 63, 27, null, null, null, null, null, null, null => ~sw1h79~ // Harrower +1, has icon from Long Sword +1
-  cdunb54, ~%tutu_var%isw1h04~, ~c#lchul1~, ~null~, weapon, null, null, null, 63, 22, 5, null, null, null, null, null, null, null => ~c#lchul1~ // Hull's Long Sword (BG1RE version), has icon from Long Sword
   cdunb54, ~%tutu_var%isw1h04~, ~%tutu_var%sw1h12~, ~null~, weapon, null, null, null, 63, 22, 5, null, null, null, null, null, null, null => ~%tutu_var%sw1h12~ // Hull's Long Sword, has icon from Long Sword
+  cdunb54, ~%tutu_var%isw1h04~, ~c#lchul1~, ~null~, weapon, null, null, null, 63, 22, 5, null, null, null, null, null, null, null => ~c#lchul1~ // Hull's Long Sword (BG1RE version), has icon from Long Sword
   cdunb55, ~%tutu_var%idagg01~, ~%tutu_var%dagg07~, ~null~, weapon, null, null, null, 30, 93, 27, null, null, null, null, null, null, null => ~%tutu_var%dagg07~ // Kylee's Dagger, has icon from Dagger
   cdunb56, ~idagg10~, ~dagg20~, ~null~, weapon, null, null, null, 81, 100, 7, null, null, null, null, null, null, null => ~dagg20~ // Life-Stealer +4, has icon from Soultaker Dagger
   cdunb57, ~iblun31~, ~ohbblun1~, ~null~, weapon, null, null, null, 49, 49, 47, null, null, null, null, null, null, null => ~ohbblun1~ // Marduuk's Mallet +3, has icon from Club +3
@@ -87,6 +87,12 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons BEGIN
   cdunb75, ~iblun13~, ~blun39~, ~null~, weapon, null, null, null, 65, 65, 1, null, null, null, null, null, null, null => ~blun39~ // The Thresher +2, has icon from Flail +1
   cdunb76, ~%tutu_var%isw1h05~, ~%tutu_var%sw1h19~, ~null~, weapon, null, null, null, 65, 63, 72, null, null, null, null, null, null, null => ~%tutu_var%sw1h19~ // The Vampire's Revenge +1, has icon from Long Sword +1
   cdunb77, ~%tutu_var%isw1h15~, ~%tutu_var%sw1h16~, ~null~, weapon, null, null, null, 87, 67, 17, null, null, null, null, null, null, null => ~%tutu_var%sw1h16~ // Twinkle +3, has icon from Icingdeath +3
+  cdunb77, ~%tutu_var%isw1h15~, ~cdtwnkl0~, ~null~, weapon, null, null, null, 87, 67, 17, null, null, null, null, null, null, null => ~cdtwnkl0~ // Twinkle +3, has icon from Icingdeath +3
+  cdunb77, ~%tutu_var%isw1h15~, ~cdtwnkl1~, ~null~, weapon, null, null, null, 87, 67, 17, null, null, null, null, null, null, null => ~cdtwnkl1~ // Twinkle +3, has icon from Icingdeath +3
+  cdunb77, ~%tutu_var%isw1h15~, ~cdtwnkl2~, ~null~, weapon, null, null, null, 87, 67, 17, null, null, null, null, null, null, null => ~cdtwnkl2~ // Twinkle +3, has icon from Icingdeath +3
+  cdunb77, ~%tutu_var%isw1h15~, ~cdtwnkl3~, ~null~, weapon, null, null, null, 87, 67, 17, null, null, null, null, null, null, null => ~cdtwnkl3~ // Twinkle +3, has icon from Icingdeath +3
+  cdunb77, ~%tutu_var%isw1h15~, ~cdtwnkl4~, ~null~, weapon, null, null, null, 87, 67, 17, null, null, null, null, null, null, null => ~cdtwnkl4~ // Twinkle +3, has icon from Icingdeath +3
+  cdunb77, ~%tutu_var%isw1h15~, ~cdtwnkl5~, ~null~, weapon, null, null, null, 87, 67, 17, null, null, null, null, null, null, null => ~cdtwnkl5~ // Twinkle +3, has icon from Icingdeath +3
   cdunb78, ~isw1h15~, ~sw1h52~, ~null~, weapon, null, null, null, 79, 64, 68, null, null, null, null, null, null, null => ~sw1h52~ // Water's Edge +3, has icon from Icingdeath +3
   cdunb79, ~iax1h01~, ~ensw2h~, ~null~, weapon, null, null, null, 105, 105, 105, null, null, null, null, null, null, null => ~ensw2h~ // Battle Axe +3 (via Enchanted Weapon), has icon from Battle Axe
   cdunb80, ~isw1h05~, ~ensw1h01~, ~null~, weapon, null, null, null, 105, 105, 105, null, null, null, null, null, null, null => ~ensw1h01~ // Long Sword +3 (via Enchanted Weapon), has icon from Long Sword +1
