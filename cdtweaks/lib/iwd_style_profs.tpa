@@ -96,9 +96,8 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ // item changes
     PATCH_IF ((prof = 95) OR (prof = 98) OR (prof = 99) OR (prof = 102) OR (prof = 103) OR (prof = 104)) BEGIN
       // update descriptions
       PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
-        READ_LONG ~%offset%~ desc_strref
-        PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-          READ_STRREF ~%offset%~ desc
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
           INNER_PATCH_SAVE desc ~%desc%~ BEGIN
             LAUNCH_PATCH_MACRO ~prof_descripts~
           END

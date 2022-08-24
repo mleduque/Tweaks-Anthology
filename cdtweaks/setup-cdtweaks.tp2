@@ -5420,9 +5420,8 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 
         // update descriptions
         PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
-          READ_LONG ~%offset%~ desc_strref
-          PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-            READ_STRREF ~%offset%~ desc
+          READ_STRREF ~%offset%~ desc
+          PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
             INNER_PATCH_SAVE desc ~%desc%~ BEGIN
               REPLACE_TEXTUALLY ~%unusable_regexp_text%~ ~%unusable_replacement_text%~
             END
@@ -5991,9 +5990,8 @@ ACTION_PHP_EACH cd_common_armor_list AS params => item BEGIN
         END
         // adjust descriptions
         PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
-          READ_LONG ~%offset%~ desc_strref
-          PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-            READ_STRREF ~%offset%~ desc
+          READ_STRREF ~%offset%~ desc
+          PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
             INNER_PATCH_SAVE desc ~%desc%~ BEGIN
               LAUNCH_PATCH_MACRO ~thieving_descripts~
             END
@@ -6038,9 +6036,8 @@ ACTION_PHP_EACH cd_common_armor_list AS params => item BEGIN
         LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 60 target = 1 parameter1 = params_3 timing = 2 END
         // adjust descriptions
         PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
-          READ_LONG ~%offset%~ desc_strref
-          PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-            READ_STRREF ~%offset%~ desc
+          READ_STRREF ~%offset%~ desc
+          PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
             INNER_PATCH_SAVE desc ~%desc%~ BEGIN
               LAUNCH_PATCH_MACRO ~arcane_descripts~
             END
@@ -6379,10 +6376,9 @@ ACTION_PHP_EACH cd_pnp_table AS params => orig BEGIN
       WRITE_ASCIIE (fx_off + 0x4c + (new_fx * 0x30)) ~%params_1%~ #8 // exploit the fact that fx_off and new_fx carry over
       LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 0 END
       // update descriptions
-      PATCH_FOR_EACH offset IN  0x54 BEGIN
-        READ_LONG ~%offset%~ desc_strref
-        PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-          READ_STRREF ~%offset%~ desc
+      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
           INNER_PATCH_SAVE desc ~%desc%~ BEGIN
             LAUNCH_PATCH_MACRO ~pnp_descripts~
           END
@@ -6822,9 +6818,8 @@ ACTION_PHP_EACH cd_magical_items AS item => foo BEGIN
         WRITE_LONG 0x4c 0        
         // adjust descriptions
         PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
-          READ_LONG ~%offset%~ desc_strref
-          PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-            READ_STRREF ~%offset%~ desc
+          READ_STRREF ~%offset%~ desc
+          PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
             INNER_PATCH_SAVE desc ~%desc%~ BEGIN
               REPLACE_TEXTUALLY ~%weight%[0-9]+~  ~\10~
             END
@@ -6876,15 +6871,16 @@ ACTION_PHP_EACH cd_enchantment AS item => ench BEGIN
 
     COPY_EXISTING ~%item%.itm~ ~override~
       WRITE_LONG 0x60 ench
-      READ_LONG  0x54 desc_strref
-      PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-        READ_STRREF 0x54 desc
-        INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-          REPLACE_TEXTUALLY ~\(%text_stats%[ %TAB%%LNL%%MNL%%WNL%]+\)\([^ %TAB%%LNL%%MNL%%WNL%]\)~
-            ~\1%text_ench%
+      PATCH_FOR_EACH offset IN 0x54 BEGIN
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY ~\(%text_stats%[ %TAB%%LNL%%MNL%%WNL%]+\)\([^ %TAB%%LNL%%MNL%%WNL%]\)~
+              ~\1%text_ench%
 \2~
+          END
+          SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
         END
-        SAY_EVALUATED 0x54 ~%desc%~ // write changes
       END
       BUT_ONLY
 
