@@ -1,51 +1,54 @@
-sw1h01    cdbs1   c!bs1
-_sw1h01   cdbs2   c!bs2
-sw1h02    cdbs3   c!bs3
-sw1h03    cdbs4   c!bs4
-sw1h18    cdbs5   c!bs5
-sw1h34    cdbs6   c!bs6
-sw1h37    cdbs7   c!bs7
-sw1h38    cdbs8   c!bs8
-sw1h39    cdbs9   c!bs9
-sw1h42    cdbs10  c!bs10
-sw1h62    cdbs11  c!bs11
-sw1h63    cdbs12  c!bs12
-sw1h64    cdbs13  c!bs13
-sw1h65    cdbs14  c!bs14
-sw1h72    cdbs15  c!bs15
-_sw1h02   cdbs16  c!bs16
-_sw1h03   cdbs17  c!bs17
-_sw1h18   cdbs18  c!bs18
-iplot01k  cdbs19  c!bs19
-iplot04g  cdbs20  c!bs20
-iplot04h  cdbs21  c!bs21
-iplot04i  cdbs22  c!bs22
-ttsword3  cdbs23  c!bs23
-amaunat   cdbs24  c!bs24
-hqbswrd   cdbs25  c!bs25
-reaver    cdbs26  c!bs26
-ubswd1a   cdbs27  c!bs27
-ubswd2a   cdbs28  c!bs28
-ubswd2b   cdbs29  c!bs29
-ubswd3a   cdbs30  c!bs30
-ubswd3b   cdbs31  c!bs31
-ubswd4a   cdbs32  c!bs32
-ubswd4b   cdbs33  c!bs33
-ubswd4c   cdbs34  c!bs34
-ubswd5a   cdbs35  c!bs35
-ubswd5b   cdbs36  c!bs36
-zzg7ts    cdbs37  c!bs37
-ohdsw03   cdbs38  c!bs38
-champion  cdbs39  c!bs39 // ntotsc
-dragslay  cdbs40  c!bs40 // com dsotsc & ntotsc item
-sw1dis    cdbs41  c!bs41 // vault
-sw1h01h   cdbs42  c!bs42 // fotd
-sw1h01l   cdbs43  c!bs43 // fotd
-sw1h01q   cdbs44  c!bs44 // twm
-sw1h26    cdbs45  c!bs45 // com dsotsc
-sw1hds01  cdbs46  c!bs46 // com dsotsc
-sw1hcm01  cdbs47  c!bs47
-sw1hcm05  cdbs48  c!bs48
-sw1hgr04  cdbs49  c!bs49
-bdsw1h22  cdbs50  c!bs50
-misc4q    cdbs51  c!bs51
+sw1h01    cdbs1   c!bs1   // Bastard Sword [bg2]
+_sw1h01   cdbs2   c!bs2   // Bastard Sword [tutu]
+sw1h02    cdbs3   c!bs3   // Bastard Sword +1 [bg2]
+sw1h03    cdbs4   c!bs4   // Kondar +1 [bg2]
+sw1h18    cdbs5   c!bs5   // Sword of Balduran [bg2]
+sw1h34    cdbs6   c!bs6   // Albruin +1 [bg2]
+sw1h37    cdbs7   c!bs7   // Taragarth the Bloodbrand +1 [bg2]
+sw1h38    cdbs8   c!bs8   // Jhor the Bleeder +2 [bg2]
+sw1h39    cdbs9   c!bs9   // Blade of Searing +3 [bg2]
+sw1h42    cdbs10  c!bs10  // Bastard Sword +2 [bg2]
+sw1h62    cdbs11  c!bs11  // Foebane +3 [bg2]
+sw1h63    cdbs12  c!bs12  // Foebane +5 [bg2]
+sw1h64    cdbs13  c!bs13  // Purifier +4 [bg2]
+sw1h65    cdbs14  c!bs14  // Purifier +5 [bg2]
+sw1h72    cdbs15  c!bs15  // Bastard Sword +3 [bg2]
+_sw1h02   cdbs16  c!bs16  // Bastard Sword +1 [tutu]
+_sw1h03   cdbs17  c!bs17  // Kondar +1 [tutu]
+_sw1h18   cdbs18  c!bs18  // Sword of Balduran [tutu]
+iplot01k  cdbs19  c!bs19  // Bastard Sword [old mod placeholder]
+iplot04g  cdbs20  c!bs20  // Bastard Sword [old mod placeholder]
+iplot04h  cdbs21  c!bs21  // Bastard Sword [old mod placeholder]
+iplot04i  cdbs22  c!bs22  // Bastard Sword [old mod placeholder]
+ttsword3  cdbs23  c!bs23  // Bastard Sword [sod]
+amaunat   cdbs24  c!bs24  // Amaunator's Legacy +3 [iwd]
+hqbswrd   cdbs25  c!bs25  // High Quality Bastard Sword [iwd]
+reaver    cdbs26  c!bs26  // The Snow Maiden's Reaver +2 [iwd]
+ubswd1a   cdbs27  c!bs27  // Fang [iwd]
+ubswd2a   cdbs28  c!bs28  // Phasing Bastard Sword +1 [iwd]
+ubswd2b   cdbs29  c!bs29  // Flaming Bastard Sword +1 [iwd]
+ubswd3a   cdbs30  c!bs30  // Bastard Sword +2: Life Giver [iwd]
+ubswd3b   cdbs31  c!bs31  // Bastard Sword of Action +1 [iwd]
+ubswd4a   cdbs32  c!bs32  // Bastard Sword +3: Defender [iwd]
+ubswd4b   cdbs33  c!bs33  // Bastard Sword of Greater Phasing +3 [iwd]
+ubswd4c   cdbs34  c!bs34  // Bastard Sword +2: Conflagration [iwd]
+ubswd5a   cdbs35  c!bs35  // Cancerous Bastard Sword +4 [iwd]
+ubswd5b   cdbs36  c!bs36  // Bastard Sword +3: Incinerator [iwd]
+zzg7ts    cdbs37  c!bs37  // Trollslayer +1, +4 vs. trolls [iwd]
+ohdsw03   cdbs38  c!bs38  // The Brass Blade +5 [bg2]
+champion  cdbs39  c!bs39  // [ntotsc]
+dragslay  cdbs40  c!bs40  // [com dsotsc & ntotsc item]
+sw1dis    cdbs41  c!bs41  // [vault]
+sw1h01h   cdbs42  c!bs42  // [fotd]
+sw1h01l   cdbs43  c!bs43  // [fotd]
+sw1h01q   cdbs44  c!bs44  // Quality Bastard Sword [sod]
+sw1h26    cdbs45  c!bs45  // [com dsotsc]
+sw1hds01  cdbs46  c!bs46  // [com dsotsc]
+sw1hcm01  cdbs47  c!bs47  // 
+sw1hcm05  cdbs48  c!bs48  // 
+sw1hgr04  cdbs49  c!bs49  // 
+bdsw1h22  cdbs50  c!bs50  // Severance +2 [sod]
+misc4q    cdbs51  c!bs51  // The Ogre's Sword [bg2]
+u#swdb94  cdbs52  c!bs52  // Miasmic Bastard Sword [Under-rep items]
+u#swdb95  cdbs53  c!bs53  // Bastard Sword of Wrath [Under-rep items]
+u#swdb94  cdbs54  c!bs54  // Rage of Chaos [Under-rep items]

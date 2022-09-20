@@ -1,29 +1,32 @@
-_amul14  cdpp1    c!pp1
-_clck01  cdpp2    c!pp2
-_clck02  cdpp3    c!pp3
-_ring06  cdpp4    c!pp4
-_ring07  cdpp5    c!pp5
-_ring25  cdpp6    c!pp6
-amul14   cdpp7    c!pp7
-clck01   cdpp8    c!pp8
-clck02   cdpp9    c!pp9
-clck31   cdpp10   c!pp10
-ring06   cdpp11   c!pp11
-ring07   cdpp12   c!pp12
-ring25   cdpp13   c!pp13
-ring41   cdpp14   c!pp14
-mirror2  cdpp15   c!pp15
-cloakmi  cdpp16   c!pp16
-uring2a  cdpp17   c!pp17
-uring4b  cdpp18   c!pp18
-uring5a  cdpp19   c!pp19
-mantlecs cdpp20   c!pp20
-glimglm  cdpp21   c!pp21
-shldrng  cdpp22   c!pp22
-ohnamul2 cdpp23   c!pp23
-amfaith  cdpp24   c!pp24
-amulcm03 cdpp25   c!pp25
-bdamul24  cdpp26  c!pp26
-bdamul25  cdpp27  c!pp27
-bdring06  cdpp28  c!pp28
-bdring07  cdpp29  c!pp29
+_amul14  cdpp1    c!pp1   // The Protector +1 [tutu]
+_clck01  cdpp2    c!pp2   // Cloak of Protection +1 [tutu]
+_clck02  cdpp3    c!pp3   // The Spirit's Shield +2 [tutu]
+_ring06  cdpp4    c!pp4   // Ring of the Princes +1 [tutu]
+_ring07  cdpp5    c!pp5   // The Guard's Ring +2 [tutu]
+_ring25  cdpp6    c!pp6   // Koveras's Ring of Protection [tutu]
+amul14   cdpp7    c!pp7   // The Protector +1 [bg2]
+clck01   cdpp8    c!pp8   // Cloak of Protection +1 [bg2]
+clck02   cdpp9    c!pp9   // The Spirit's Shield +2 [bg2]
+clck31   cdpp10   c!pp10  // Improved Cloak of Protection +2 [bg2]
+ring06   cdpp11   c!pp11  // Ring of the Princes +1 [bg2]
+ring07   cdpp12   c!pp12  // The Guard's Ring +2 [bg2]
+ring25   cdpp13   c!pp13  // Koveras's Ring of Protection [bg2]
+ring41   cdpp14   c!pp14  // The Warder's Signet +3 [bg2]
+mirror2  cdpp15   c!pp15  // Mirror of Black Ice Amulet [iwd]
+cloakmi  cdpp16   c!pp16  // Mithran's Cloak [iwd]
+uring2a  cdpp17   c!pp17  // Greater Ring of the Warrior [iwd]
+uring4b  cdpp18   c!pp18  // Ring of the Protector +2 [iwd]
+uring5a  cdpp19   c!pp19  // Ring of Greater Resistance [iwd]
+mantlecs cdpp20   c!pp20  // Mantle of the Coming Storm [iwd]
+glimglm  cdpp21   c!pp21  // Glimglam's Cloak +1 [iwd]
+shldrng  cdpp22   c!pp22  // Shield Ring [iwd]
+ohnamul2 cdpp23   c!pp23  // Wooden Horse Necklace [bg2]
+amfaith  cdpp24   c!pp24  // 
+amulcm03 cdpp25   c!pp25  // 
+bdamul24  cdpp26  c!pp26  // Amulet of Protection +1 [sod]
+bdamul25  cdpp27  c!pp27  // Amulet of Protection +2 [sod]
+bdring06  cdpp28  c!pp28  // Ring of Protection +1 [sod]
+bdring07  cdpp29  c!pp29  // Ring of Protection +2 [sod]
+c2ring01  cdpp30  c!pp30  // Ring of Preservation +1 [item upgrade]
+c2ring02  cdpp31  c!pp31  // Ring of Preservation +2 [item upgrade]
+c2ring04  cdpp32  c!pp32  // Sorcerian Ring [item upgrade]

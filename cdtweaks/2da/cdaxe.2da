@@ -1,42 +1,42 @@
-ax1h01   cdax1   c!ax1
-ax1h02   cdax2   c!ax2
-ax1h03   cdax3   c!ax3
-ax1h07   cdax4   c!ax4
-ax1h11   cdax5   c!ax5
-ax1h12   cdax6   c!ax6
-ax1h13   cdax7   c!ax7
-ax1h14   cdax8   c!ax8
-ax1h15   cdax9   c!ax9
-ax1h17   cdax10  c!ax10
-ensw2h   cdax11  c!ax11
-korax01  cdax12  c!ax12
-waaxe    cdax13  c!ax13
-_ax1h01  cdax14  c!ax14
-_ax1h02  cdax15  c!ax15
-_ax1h03  cdax16  c!ax16
-_ax1h07  cdax17  c!ax17
-iax1h01  cdax18  c!ax18
-bruenaxe cdax19  c!ax19
-ax1h19   cdax20  c!ax20
-ttaxe1   cdax21  c!ax21
-axemino  cdax22  c!ax22
-cdyoung  cdax23  c!ax23
-celebra  cdax24  c!ax24
-fkiller  cdax25  c!ax25
-hqaxe    cdax26  c!ax26
-u1hax1a  cdax27  c!ax27
-u1hax2a  cdax28  c!ax28
-u1hax3a  cdax29  c!ax29
-u1hax3b  cdax30  c!ax30
-u1hax4a  cdax31  c!ax31
-u1hax4b  cdax32  c!ax32
-xax1h03  cdax33  c!ax33
-young    cdax34  c!ax34
-zzn6gc   cdax35  c!ax35
-zzu6cs   cdax36  c!ax36
-ohrax1h1 cdax37  c!ax37
-ohraxe01 cdax38  c!ax38
-_iax1h01 cdax39  c!ax39
-ax1h01q  cdax40  c!ax40
-bdax1h01 cdax41  c!ax41
-bdax1h03 cdax42  c!ax42
+ax1h01   cdax1   c!ax1   // Battle Axe [bg2]
+ax1h02   cdax2   c!ax2   // Battle Axe +1 [bg2]
+ax1h03   cdax3   c!ax3   // Battle Axe of Mauletar +2 [bg2]
+ax1h07   cdax4   c!ax4   // Wizard Slayer [bg2]
+ax1h11   cdax5   c!ax5   // Battle Axe +2 [bg2]
+ax1h12   cdax6   c!ax6   // Stonefire +3 [bg2]
+ax1h13   cdax7   c!ax7   // Frostreaver +3 [bg2]
+ax1h14   cdax8   c!ax8   // Axe of the Unyielding +3 [bg2]
+ax1h15   cdax9   c!ax9   // Axe of the Unyielding +5 [bg2]
+ax1h17   cdax10  c!ax10  // Battle Axe +3 [bg2]
+ensw2h   cdax11  c!ax11  // Battle Axe +3 [bg2, enchanted weapon]
+korax01  cdax12  c!ax12  // Battle Axe +1 [bg2, korgan]
+waaxe    cdax13  c!ax13  // Axe of Hrothgar +3 [bg2]
+_ax1h01  cdax14  c!ax14  // Battle Axe [tutu]
+_ax1h02  cdax15  c!ax15  // Battle Axe +1 [tutu]
+_ax1h03  cdax16  c!ax16  // Battle Axe of Mauletar +2 [tutu]
+_ax1h07  cdax17  c!ax17  // Wizard Slayer [tutu]
+iax1h01  cdax18  c!ax18  // Battle Axe [bg2]
+bruenaxe cdax19  c!ax19  // Battle Axe +3 [bg2]
+ax1h19   cdax20  c!ax20  // Golden Axe +1 [sod]
+ttaxe1   cdax21  c!ax21  // Battle Axe [bg2]
+axemino  cdax22  c!ax22  // Axe of the Minotaur Lord +4 [iwd]
+cdyoung  cdax23  c!ax23  // Young Rage +5 [iwd/iwdiu]
+celebra  cdax24  c!ax24  // The Celebrant's Blade +4 [iwd]
+fkiller  cdax25  c!ax25  // Faith Killer +2 [iwd]
+hqaxe    cdax26  c!ax26  // High Quality Battle Axe [iwd]
+u1hax1a  cdax27  c!ax27  // Flawless Battle Axe [iwd]
+u1hax2a  cdax28  c!ax28  // Charged Battle Axe +2 [iwd]
+u1hax3a  cdax29  c!ax29  // Poisonous Battle Axe +2 [iwd]
+u1hax3b  cdax30  c!ax30  // Battle Axe +2: Defender [iwd]
+u1hax4a  cdax31  c!ax31  // Battle Axe +3: Fatigue [iwd]
+u1hax4b  cdax32  c!ax32  // Benorg's Truth +3 [iwd]
+xax1h03  cdax33  c!ax33  // Battle Axe +2 [iwd]
+young    cdax34  c!ax34  // Young Rage +5 [iwd]
+zzn6gc   cdax35  c!ax35  // Guktok's Chopper +2 [iwd]
+zzu6cs   cdax36  c!ax36  // Axe of Caged Souls +3 [iwd]
+ohrax1h1 cdax37  c!ax37  // Hojar's Fame +1 [bg2]
+ohraxe01 cdax38  c!ax38  // Dwarven Pickaxe +1 [bg2]
+_iax1h01 cdax39  c!ax39  // Battle Axe [tutu]
+ax1h01q  cdax40  c!ax40  // Quality Battle Axe [bg]
+bdax1h01 cdax41  c!ax41  // Battle Axe [sod]
+bdax1h03 cdax42  c!ax42  // Chill Axe +2 [sod]
