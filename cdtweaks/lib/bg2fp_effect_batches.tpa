@@ -128,7 +128,7 @@ DEFINE_PATCH_FUNCTION ~cd_apply_batch~
     SET min_size       = cre_min_size
     SET cosmetic       = 0
   END ELSE BEGIN
-    PATCH_PRINT ~Warning: %macro_name% macro halting; file type not recognized (%type%)~
+    PATCH_PRINT ~Warning: macro halting; file type not recognized (%type%) on %SOURCE_FILE%~
   END
   // if user overrides normal cosmetic stuff with function var
   PATCH_IF force_cosmetic = 1 BEGIN 
