@@ -5,7 +5,8 @@ AUTO_EVAL_STRINGS
 ALWAYS
 
   ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @27 END // DLC Merger check
-  ACTION_IF NOT VARIABLE_IS_SET enhanced_edition THEN BEGIN // check to make this happen only once per install
+  ACTION_IF NOT VARIABLE_IS_SET cd_tweaks_always THEN BEGIN // check to make this happen only once per install
+    OUTER_SET cd_tweaks_always = 1
     INCLUDE ~cdtweaks/lib/always.tpa~
   END
   
