@@ -17,7 +17,7 @@ BEGIN
     
     OUTER_SET backstab_op = 292
     OUTER_SET offset_general = 0x271 // cre v1 (bg2/ee)
-    OUTER_SET offset_item_slot = 0x2b8 // cre v1/v9 (bg2/ee/iwd)
+    OUTER_SET offset_item_slot = 0x2b8 // cre v1 (bg2/ee)
     OUTER_SET offset_fx = 0x2c4 // cre v1 (bg2/ee)
     OUTER_SET item_slot_cont = 13 // go from 0 to this number for equipped items
     OUTER_SET item_slot_cloak = 17 // plus the cloak 
@@ -34,6 +34,7 @@ BEGIN
         OUTER_SET item_slot_cloak = 22 // plus the cloak 
       END ELSE BEGIN   
         OUTER_SET offset_general = 0x2d9 // cre v9 (iwd)
+        OUTER_SET offset_item_slot = 0x320 //  cre v9 (iwd)
         OUTER_SET offset_fx = 0x32c // cre v9 (iwd)
       END  
     END      

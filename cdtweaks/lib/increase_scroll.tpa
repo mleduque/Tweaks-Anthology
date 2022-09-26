@@ -31,20 +31,20 @@ END
 
 PRINT @1
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ // looking for scrolls
-  READ_SHORT  0x1C "type" ELSE 0
+  READ_SHORT  0x1c "type" ELSE 0
   PATCH_IF ("%type%" = 11) BEGIN // scrolls
     READ_SHORT 0x38 current
     PATCH_IF (stack > current) BEGIN
       WRITE_SHORT  0x38 stack
       DEFINE_ASSOCIATIVE_ARRAY cd_stackables BEGIN ~%SOURCE_RES%~ => ~%current%~ END
     END
-  END
-  READ_SHORT 0x68 abil_num ELSE 1
-  PATCH_IF ((needs_header = 1) AND (abil_num = 0)) BEGIN // old engines need a header to be able to stack items
-    WRITE_SHORT  0x68 1 // one ability
-    WRITE_LONG   0x6a (THIS + 0x38) // fx offset
-    READ_LONG    0x64 abil_off
-    INSERT_BYTES abil_off 0x38 // inserts new ability of type default (0)
+    READ_SHORT 0x68 abil_num ELSE 1
+    PATCH_IF ((needs_header = 1) AND (abil_num = 0)) BEGIN // old engines need a header to be able to stack items
+      WRITE_SHORT  0x68 1 // one ability
+      WRITE_LONG   0x6a (THIS + 0x38) // fx offset
+      READ_LONG    0x64 abil_off
+      INSERT_BYTES abil_off 0x38 // inserts new ability of type default (0)
+    END
   END
   BUT_ONLY
   

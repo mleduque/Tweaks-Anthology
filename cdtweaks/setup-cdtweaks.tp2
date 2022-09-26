@@ -6394,8 +6394,13 @@ END
 // add charges to items in game
 COPY_EXISTING_REGEXP GLOB ~^.+\.[ac]re$~ ~override~
   PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.cre$" = 0) BEGIN // if creature
-    READ_LONG 0x2bc itm_off ELSE 0
-    READ_LONG 0x2c0 itm_num ELSE 0
+    PATCH_IF original_iwd BEGIN
+      READ_LONG 0x324 itm_off ELSE 0
+      READ_LONG 0x328 itm_num ELSE 0
+    END ELSE BEGIN
+      READ_LONG 0x2bc itm_off ELSE 0
+      READ_LONG 0x2c0 itm_num ELSE 0
+    END  
   END ELSE BEGIN
     READ_LONG  0x78 itm_off ELSE 0
     READ_SHORT 0x76 itm_num ELSE 0
