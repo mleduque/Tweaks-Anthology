@@ -6237,7 +6237,6 @@ ACTION_CLEAR_ARRAY cd_pnp_table
 ACTION_CLEAR_ARRAY cd_pnp_charges
 
 INCLUDE ~cdtweaks/lib/pnp_descripts.tpa~  // text replacement macros
-INCLUDE ~cdtweaks/lib/fj_spl_itm_reindex.tpa~
 
 // first, eliminate iwd items on list without AC bonuses
 COPY_EXISTING ~itemexcl.2da~ ~override~
