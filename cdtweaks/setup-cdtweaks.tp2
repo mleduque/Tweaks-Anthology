@@ -12,7 +12,7 @@ ALWAYS
   
 END
 
-VERSION ~v15~
+VERSION ~v16~
 
 README ~cdtweaks/languages/%LANGUAGE%/readme-cdtweaks.html~ ~cdtweaks/readme-cdtweaks.html~
 
