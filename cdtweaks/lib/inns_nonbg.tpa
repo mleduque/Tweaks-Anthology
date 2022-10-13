@@ -37,6 +37,10 @@ ACTION_IF ((game_is_bgt) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~4
   COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/depart_bgt.d~ 
 END
 
+ACTION_IF enhanced_edition BEGIN  
+  COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/depart_ee.d~ // do this early, otherwise might erase neera's new action move to FAI
+END
+
 COPY ~./inline/inn_data.2da~ ~./inline/inn_data.2da~
   COUNT_2DA_ROWS 17 row_count
   FOR (row = 1 ; row < row_count ; ++row) BEGIN
@@ -93,23 +97,24 @@ ACTION_IF enhanced_edition BEGIN
     STRING_SET 29019 @20846 // remove the part about Rasaad going to Nashkel
     OUTER_SET baelothreply = 31931
   END  
+  
   // handle Baeloth here, since he's a special case regardless
   //COPY ~cdtweaks/dlg/depart_ee.d~ ~weidu_external/cdtweaks/dlg/depart_ee.d~ EVALUATE_BUFFER
-  COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/depart_ee.d~ 
+  COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/depart_baeloth.d~ 
 
   // neera has additional scripting to bail
   COPY_EXISTING ~neera%eet_var%.bcs~ ~override~
     DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~\(!InPartyAllowDead("NEERA")[ %TAB%%LNL%%MNL%%WNL%]+Global("AdoyLeft","OH2010",3)\)~ ~False() \1~
-      REPLACE_TEXTUALLY ~\(!InParty("NEERA")[ %TAB%%LNL%%MNL%%WNL%]+Global("NEERA_START","GLOBAL",1)\)~       ~False() \1~
+      REPLACE_TEXTUALLY ~\(\(!I[fs]ValidForPartyDialog\(ue\)?\|InParty\)("NEERA")[ %TAB%%LNL%%MNL%%WNL%]+Global("NEERA_START","GLOBAL",1)\)~ ~False() \1~ // with more banters, may decompile as IVFPD
     END
     BUT_ONLY    
 
   // as does rasaad
   COPY_EXISTING ~rasaad%eet_var%.bcs~ ~override~
     DECOMPILE_AND_PATCH BEGIN
-      REPLACE_TEXTUALLY ~\(!InParty(Myself)[ %TAB%%LNL%%MNL%%WNL%]+ActionListEmpty()[ %TAB%%LNL%%MNL%%WNL%]+Global("RASAAD_IN_PARTY","GLOBAL",0)\)~ ~False() \1~
-      REPLACE_TEXTUALLY ~\(!InParty(Myself)[ %TAB%%LNL%%MNL%%WNL%]+ActionListEmpty()[ %TAB%%LNL%%MNL%%WNL%]+Global("GAMAZ_DEFEATED","GLOBAL",2)\)~  ~False() \1~
+      REPLACE_TEXTUALLY ~\(\(!I[fs]ValidForPartyDialog\(ue\)?\|InParty\)(Myself)[ %TAB%%LNL%%MNL%%WNL%]+ActionListEmpty()[ %TAB%%LNL%%MNL%%WNL%]+Global("RASAAD_IN_PARTY","GLOBAL",0)\)~ ~False() \1~ // with more banters, may decompile as IVFPD
+      REPLACE_TEXTUALLY ~\(\(!I[fs]ValidForPartyDialog\(ue\)?\|InParty\)(Myself)[ %TAB%%LNL%%MNL%%WNL%]+ActionListEmpty()[ %TAB%%LNL%%MNL%%WNL%]+Global("GAMAZ_DEFEATED","GLOBAL",2)\)~  ~False() \1~ // with more banters, may decompile as IVFPD
     END
     BUT_ONLY    
 
