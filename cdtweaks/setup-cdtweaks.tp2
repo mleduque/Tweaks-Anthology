@@ -2582,7 +2582,7 @@ BEGIN @109000 DESIGNATED 1090 DEPRECATED @18 // permanently moved to The Calling
 
 BEGIN @110000 DESIGNATED 1100
 GROUP @13
-REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgee pst pstee iwdee iwd-in-bg2 iwd how totlm bgt~ @25
+REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bgee pst pstee iwdee iwd-in-bg2 iwd how totlm bgt eet~ @25
 LABEL ~cd_tweaks_reveal_city_areas~
 
 ACTION_IF game_includes_pst THEN BEGIN
