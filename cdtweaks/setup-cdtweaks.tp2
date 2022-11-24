@@ -5778,10 +5778,108 @@ ACTION_IF FILE_EXISTS_IN_GAME ~kitlist.2da~ THEN BEGIN // if kits are present
             WRITE_ASCIIE pos $lines(~%row%~) (size)
             SET pos += size
           END
+          
+          // attempt to populate newly extended table with meaningful entries
+          PATCH_IF num_cols > 37 BEGIN // don't bother unless we're already at 40-ish columns
+            COUNT_2DA_ROWS (num_cols - 1) num_rows
+            FOR (col = num_cols ; col < 51 ; ++col) BEGIN
+              SET entries = 0
+              CLEAR_ARRAY cd_add_abilities
+              SET ref_col = col - 8
+              FOR (row = 0 ; row < num_rows ; ++row) BEGIN // loop of per-8-levels (leave 4 for last loop)
+                READ_2DA_ENTRY row ref_col num_cols entry
+                PATCH_IF (("%entry%" STRING_COMPARE_REGEXP "^[0-9]+$") AND ( // safety check to make sure we don't grab the header row
+                         ("%entry%" STRING_COMPARE_CASE "AP_OHRBEAR6" = 0)
+                )) BEGIN 
+                  PATCH_IF entries <= num_rows BEGIN
+                    SET entries += 1
+                    DEFINE_ASSOCIATIVE_ARRAY cd_add_abilities BEGIN ~%entry%~, ~%entries%~ => 0 END
+                  END ELSE BEGIN
+                    SET row = num_rows // kill loop
+                  END  
+                END
+              END    
+              SET ref_col = col - 10
+              FOR (row = 0 ; row < num_rows ; ++row) BEGIN // loop of per-10-levels (also catches per 5)
+                READ_2DA_ENTRY row ref_col num_cols entry
+                PATCH_IF (("%entry%" STRING_COMPARE_REGEXP "^[0-9]+$") AND ( // safety check to make sure we don't grab the header row
+                          ("%entry%" STRING_COMPARE_CASE "AP_SPCL122" = 0) OR  // +1 missile to-hit, damage (clabrn02)
+                          ("%entry%" STRING_COMPARE_CASE "AP_SPCL441" = 0) OR  // +1 AC (clabth04)
+                          ("%entry%" STRING_COMPARE_CASE "AP_SPCL813" = 0) OR  // +1 movement speed (clabmo01, clabmo02, clabmo03)
+                          ("%entry%" STRING_COMPARE_CASE "AP_SPCL822" = 0) OR  // base AC (clabmo01, clabmo02, clabmo03)
+                          ("%entry%" STRING_COMPARE_CASE "GA_OHTMPS1" = 0) OR  // holy power (ohtempus)
+                          ("%entry%" STRING_COMPARE_CASE "GA_OHTMPS2" = 0) OR  // chaos of battle (ohtempus)
+                          ("%entry%" STRING_COMPARE_CASE "GA_OHTYR1" = 0) OR   // exaltation (ohtyr)
+                          ("%entry%" STRING_COMPARE_CASE "GA_OHTYR2" = 0) OR   // divine favor (ohtyr)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL412" = 0) OR  // set snare (clabth01, clabth02, clabth03, clabth04)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL414" = 0) OR  // set special snare (clabth03)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL621" = 0) OR  // summon spirit animal (clabdr02)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL721" = 0) OR  // storm shield (clabpr02)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL722" = 0) OR  // lightning bolt (clabpr02)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL731" = 0) OR  // seeking sword (clabpr03)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL732" = 0) OR  // true sight (clabpr03)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL741" = 0) OR  // boon of lathander (clabpr04)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL742" = 0) OR  // hold undead (clabpr04)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPSD02" = 0) OR   // shadowstep (clabth05)
+                         (("%entry%" STRING_COMPARE_CASE "AP_SPCL141" = 0) AND ("%SOURCE_RES%" STRING_COMPARE_CASE "clabth04" = 0)) OR // +1 to-hit, damage (clabfi04, clabth04)
+                         (("%entry%" STRING_COMPARE_CASE "GA_SPCL423" = 0) AND ("%SOURCE_RES%" STRING_COMPARE_CASE "clabpa06" = 0))    // poison weapon (clabpa06, clabth02)
+                )) BEGIN
+                  PATCH_IF entries <= num_rows BEGIN
+                    SET entries += 1
+                    DEFINE_ASSOCIATIVE_ARRAY cd_add_abilities BEGIN ~%entry%~, ~%entries%~ => 0 END
+                  END ELSE BEGIN
+                    SET row = num_rows // kill loop
+                  END  
+                END
+              END          
+              SET ref_col = col - 12
+              FOR (row = 0 ; row < num_rows ; ++row) BEGIN // loop of per-10-levels (also catches per 5)
+                READ_2DA_ENTRY row ref_col num_cols entry
+                PATCH_IF (("%entry%" STRING_COMPARE_REGEXP "^[0-9]+$") AND NOT ( // safety check to make sure we don't grab the header rowNOT (
+                          ("%entry%" STRING_COMPARE_CASE "****" = 0) OR        // blank entry
+                          ("%entry%" STRING_COMPARE_CASE "AP_OHRBEAR6" = 0) OR // regen, AC
+                          ("%entry%" STRING_COMPARE_CASE "AP_SPCL122" = 0) OR  // +1 missile to-hit, damage (clabrn02)
+                          ("%entry%" STRING_COMPARE_CASE "AP_SPCL441" = 0) OR  // +1 AC (clabth04)
+                          ("%entry%" STRING_COMPARE_CASE "AP_SPCL813" = 0) OR  // +1 movement speed (clabmo01, clabmo02, clabmo03)
+                          ("%entry%" STRING_COMPARE_CASE "AP_SPCL822" = 0) OR  // base AC (clabmo01, clabmo02, clabmo03)
+                          ("%entry%" STRING_COMPARE_CASE "GA_OHTMPS1" = 0) OR  // holy power (ohtempus)
+                          ("%entry%" STRING_COMPARE_CASE "GA_OHTMPS2" = 0) OR  // chaos of battle (ohtempus)
+                          ("%entry%" STRING_COMPARE_CASE "GA_OHTYR1" = 0) OR   // exaltation (ohtyr)
+                          ("%entry%" STRING_COMPARE_CASE "GA_OHTYR2" = 0) OR   // divine favor (ohtyr)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL412" = 0) OR  // set snare (clabth01, clabth02, clabth03, clabth04)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL414" = 0) OR  // set special snare (clabth03)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL621" = 0) OR  // summon spirit animal (clabdr02)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL721" = 0) OR  // storm shield (clabpr02)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL722" = 0) OR  // lightning bolt (clabpr02)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL731" = 0) OR  // seeking sword (clabpr03)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL732" = 0) OR  // true sight (clabpr03)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL741" = 0) OR  // boon of lathander (clabpr04)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPCL742" = 0) OR  // hold undead (clabpr04)
+                          ("%entry%" STRING_COMPARE_CASE "GA_SPSD02" = 0) OR   // shadowstep (clabth05)
+                         (("%entry%" STRING_COMPARE_CASE "AP_SPCL141" = 0) AND ("%SOURCE_RES%" STRING_COMPARE_CASE "clabth04" = 0)) OR // +1 to-hit, damage (clabfi04, clabth04)
+                         (("%entry%" STRING_COMPARE_CASE "GA_SPCL423" = 0) AND ("%SOURCE_RES%" STRING_COMPARE_CASE "clabpa06" = 0))    // poison weapon (clabpa06, clabth02)
+                )) BEGIN
+                  PATCH_IF entries <= num_rows BEGIN
+                    SET entries += 1
+                    DEFINE_ASSOCIATIVE_ARRAY cd_add_abilities BEGIN ~%entry%~, ~%entries%~ => 0 END
+                  END ELSE BEGIN
+                    SET row = num_rows // kill loop
+                  END  
+                END
+              END            
+              PATCH_IF entries > 0 BEGIN
+                PATCH_PHP_EACH cd_add_abilities AS params => foo BEGIN
+                  PATCH_IF params_1 <= num_rows BEGIN
+                    SET_2DA_ENTRY params_1 col num_cols ~%params_0%~
+                  END  
+                END
+              END
+            END // end column loop
+          END // end routine to add populate table extension 
           PRETTY_PRINT_2DA
         END
         BUT_ONLY
-  
+          
     END
   
   END
