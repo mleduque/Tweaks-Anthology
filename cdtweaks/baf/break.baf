@@ -1,6 +1,0 @@
-IF
-  PartyHasItem("CDDELHLM")
-THEN
-  RESPONSE #100
-    TakePartyItem("CDDELHLM")
-END    
