@@ -1,0 +1,6 @@
+IF
+	!Global("oh_drow_items_safe","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("oh_drow_items_safe","GLOBAL",2)
+END

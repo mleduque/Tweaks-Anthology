@@ -1683,91 +1683,119 @@ ACTION_IF ((FILE_EXISTS_IN_GAME ~baldur25.bcs~) AND NOT (game_is_eet)) THEN BEGI
 
 END
 
-COPY ~cdtweaks/spl/cdsw1h01.spl~ ~override/cdsw1h01.spl~
-     ~cdtweaks/spl/cdsw1h01.spl~ ~override/cdsw1h02.spl~
-     ~cdtweaks/spl/cdsw1h01.spl~ ~override/cdblun01.spl~
-     ~cdtweaks/spl/cdsw1h01.spl~ ~override/cdhalb01.spl~
-     ~cdtweaks/spl/cdsw1h01.spl~ ~override/cdsper01.spl~
-  WRITE_ASCIIE 0xae ~%DEST_RES%~ #8
-  WRITE_ASCIIE 0xae ~dw~ #2
-  SAY 0xfe @105001
+ACTION_IF enhanced_edition BEGIN
+
+  COPY_EXISTING ~ar4500.bcs~ ~override~
+                ~ar6014.bcs~ ~override~
+                ~ar6100.bcs~ ~override~
+                ~ar6101.bcs~ ~override~
+                ~ar6102.bcs~ ~override~
+                ~ar6103.bcs~ ~override~
+                ~ar6104.bcs~ ~override~
+                ~ar6105.bcs~ ~override~
+                ~ar6106.bcs~ ~override~
+                ~ar6107.bcs~ ~override~
+                ~ar6108.bcs~ ~override~
+                ~ar6109.bcs~ ~override~
+                ~ar6110.bcs~ ~override~
+                ~ar6111.bcs~ ~override~ // ees use this check instead for sendai's enclave
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~!Global("oh_drow_items_safe","GLOBAL",[01])~ ~False()~
+    END
+    BUT_ONLY IF_EXISTS 
+    
+  EXTEND_BOTTOM ~baldur.bcs~   ~cdtweaks/baf/drow_ee.baf~
+  EXTEND_BOTTOM ~baldur25.bcs~ ~cdtweaks/baf/drow_ee.baf~
+
+END 
+
+OUTER_SET drow_msg = RESOLVE_STR_REF(@105001)
 
 COPY ~cdtweaks/spl/cdbreak1.spl~ ~override~ // armor
-  SAY 0x9e @105001
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = drow_msg END
+  PATCH_IF enhanced_edition BEGIN // make non-PCs immune to the breakage (presumably they're drow, wielding weapons in drow areas)
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 parameter1 = 2 parameter2 = 112 STR_VAR resource = ~cdbreak1~ END
+  END  
 
 COPY_EXISTING ~cdbreak1.spl~ ~override/cdbreak4.spl~  // cloak
-  WRITE_LONG 0xce 4
+  LPF ALTER_EFFECT INT_VAR match_opcode = 143 parameter1 = 4 END
+  PATCH_IF enhanced_edition BEGIN 
+    LPF ALTER_EFFECT INT_VAR match_opcode = 318 STR_VAR resource = EVAL ~%DEST_RES%~ END
+  END  
 
 COPY_EXISTING ~cdbreak1.spl~ ~override/cdbreak9.spl~  // shield
-  WRITE_LONG 0xce 9
+  LPF ALTER_EFFECT INT_VAR match_opcode = 143 parameter1 = 9 END
+  PATCH_IF enhanced_edition BEGIN 
+    LPF ALTER_EFFECT INT_VAR match_opcode = 318 STR_VAR resource = EVAL ~%DEST_RES%~ END
+  END  
 
-// melee weapons have chance of failing when used in combat
-COPY_EXISTING ~dwsw1h01.itm~ ~override~
-              ~dwsw1h02.itm~ ~override~
-              ~dwblun01.itm~ ~override~
-              ~dwhalb01.itm~ ~override~
-              ~dwsper01.itm~ ~override~
-  READ_LONG  0x64 "abil_off" ELSE 0
-  READ_SHORT 0x68 "abil_num" ELSE 0
-  READ_LONG  0x6a "fx_off"   ELSE 0
-  SET "abil_length" = 0x38
-  SET "fx_delta" = 0
-  FOR (index = 0 ; index < abil_num ; index = index + 1) BEGIN // start iterating through abilities
-    READ_SHORT  ("%abil_off%" +        ("%abil_length%" * "%index%")) "type"
-    READ_SHORT  ("%abil_off%" + 0x1e + ("%abil_length%" * "%index%")) "abil_fx_num"
-    READ_SHORT  ("%abil_off%" + 0x20 + ("%abil_length%" * "%index%")) "abil_fx_idx"
-    SET "abil_fx_idx" = ("%abil_fx_idx%" + "%fx_delta%")
-    WRITE_SHORT ("%abil_off%" + 0x20 + ("%abil_length%" * "%index%")) ("%abil_fx_idx%")
-    PATCH_IF ("%type%" = 1) BEGIN // melee
-      INSERT_BYTES            ("%fx_off%"        + (0x30 * "%abil_fx_idx%")) 0x30
-        WRITE_SHORT           ("%fx_off%"        + (0x30 * "%abil_fx_idx%")) 146 // opcode: 146 cast spell
-        WRITE_BYTE            ("%fx_off%" + 0x02 + (0x30 * "%abil_fx_idx%")) 1   // target: self
-        WRITE_LONG            ("%fx_off%" + 0x04 + (0x30 * "%abil_fx_idx%")) 1   // cast at level: 1
-        WRITE_BYTE            ("%fx_off%" + 0x0c + (0x30 * "%abil_fx_idx%")) 1   // timing: instant permanent
-        WRITE_BYTE            ("%fx_off%" + 0x12 + (0x30 * "%abil_fx_idx%")) 1   // probability: 1%
-        WRITE_EVALUATED_ASCII ("%fx_off%" + 0x14 + (0x30 * "%abil_fx_idx%")) ~%SOURCE_RES%~ #8 // name of spell to cast (same as item name)
-        WRITE_EVALUATED_ASCII ("%fx_off%" + 0x14 + (0x30 * "%abil_fx_idx%")) ~cd~ #2           // replace dw with cd
-      SET "abil_fx_num" = "%abil_fx_num%" + 1
-      SET "fx_delta" = "%fx_delta%" + 1
-    END
-    WRITE_SHORT  ("%abil_off%" + 0x1e + ("%abil_length%" * "%index%")) "%abil_fx_num%"
-  END
-  BUT_ONLY
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_drow_items BEGIN // items have chance of failing when used in combat
+  dwblun01, 1 => cdblun01
+  dwbolt01, 2 => cdbolt01
+  dwbolt02, 2 => cdbolt02
+  dwbolt03, 2 => cdbolt03
+  dwchan01, 0 => cdbreak1
+  dwchan02, 0 => cdbreak1
+  dwclck01, 0 => cdbreak4
+  dwhalb01, 1 => cdhalb01
+  dwplat01, 0 => cdbreak1
+  dwshld01, 0 => cdbreak9
+  dwsper01, 1 => cdsper01
+  dwsw1h01, 1 => cdsw1h01
+  dwsw1h02, 1 => cdsw1h02
+  dwxbow01, 4 => cdxbow01
+  misc9w,   0 => cdbreak4
+END
 
-// armor/shield/cloak has a chance to break when attacked
-COPY_EXISTING ~dwchan01.itm~ ~override~
-              ~dwchan02.itm~ ~override~
-              ~dwclck01.itm~ ~override~
-              ~dwplat01.itm~ ~override~
-              ~dwshld01.itm~ ~override~
-              ~misc9w.itm~   ~override~
-  PATCH_IF (SOURCE_SIZE > 0x71) THEN BEGIN // protects against invalid files
-    READ_SHORT  0x1c "type"
-    READ_LONG   0x64 "abil_off"
-    READ_SHORT  0x68 "abil_num"
-    READ_LONG   0x6a "fx_off"
-    READ_SHORT  0x70 "fx_num"
-    WRITE_SHORT 0x70 ("%fx_num%" + 1)
-    FOR (index = 0 ; index < abil_num ; index = index + 1) BEGIN
-      READ_SHORT  ("%abil_off%" + 0x20 + (0x38 * "%index%")) "abil_fx_idx"
-      WRITE_SHORT ("%abil_off%" + 0x20 + (0x38 * "%index%")) ("%abil_fx_idx%" + 1)
-    END
-    INSERT_BYTES  ("%fx_off%"       ) 0x30
-      WRITE_SHORT ("%fx_off%"       ) 232          // effect type - 232 cast spell on condition
-      WRITE_BYTE  ("%fx_off%" + 0x02) 1            // target - 1 targetself
-      WRITE_LONG  ("%fx_off%" + 0x04) 1            // cast at level - 1
-      WRITE_BYTE  ("%fx_off%" + 0x0c) 2            // duration - 2 instant while equipped
-      WRITE_BYTE  ("%fx_off%" + 0x12) 1            // probability 1 - 1%
-      PATCH_IF ("%type%" = 2) BEGIN                // if armor
-        WRITE_ASCII ("%fx_off%" + 0x14) ~cdbreak1~ // name of spell to cast
-      END ELSE
-      PATCH_IF ("%type%" = 12) BEGIN               // if shield
-        WRITE_ASCII ("%fx_off%" + 0x14) ~cdbreak9~ // name of spell to cast
-      END ELSE BEGIN                               // if cloak
-        WRITE_ASCII ("%fx_off%" + 0x14) ~cdbreak4~ // name of spell to cast
+ACTION_PHP_EACH cd_drow_items AS params => spell BEGIN  
+
+  ACTION_IF params_1 != 0 BEGIN // weapon
+  
+    COPY_EXISTING ~%params_0%.itm~ ~override~   
+      LPF ADD_ITEM_EFFECT INT_VAR type = params_1 opcode = 146 target = 1 parameter1 = 1 timing = 1 probability1 = 0 STR_VAR resource = EVAL ~%spell%~ END
+      BUT_ONLY IF_EXISTS
+
+    COPY ~cdtweaks/spl/cdsw1h01.spl~ ~override/%spell%.spl~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = drow_msg END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 112 STR_VAR resource = EVAL ~%params_0%~ END
+      PATCH_IF enhanced_edition BEGIN // make non-PCs immune to the breakage (presumably they're drow, wielding weapons in drow areas) 
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 parameter1 = 2 parameter2 = 112 STR_VAR resource = EVAL ~%spell%~ END
+      END  
+  
+  END ELSE BEGIN // armor
+  
+    COPY_EXISTING ~%params_0%.itm~ ~override~     
+      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 232 target = 1 parameter1 = 1 timing = 2 STR_VAR resource = EVAL ~%spell%~ END
+      BUT_ONLY IF_EXISTS
+    
+  END  
+  
+END
+
+ACTION_IF !enhanced_edition BEGIN // no fancy filtering for oBG2, so make drow creatures immune to breakage spells
+
+  COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // make non-PCs immune to the breakage (presumably they're drow, wielding weapons in drow areas)
+    READ_LONG  0x1cc bio
+    PATCH_IF ((bio >= 2147483647) OR (bio <= 0)) BEGIN // don't do this for joinables
+      CLEAR_ARRAY cd_drow_cre_patch
+      READ_LONG 0x2bc item_off
+      READ_LONG 0x2c0 item_num
+      FOR (index = 0 ; index < item_num ; ++index) BEGIN
+        READ_ASCII (item_off + (index * 0x14)) item
+        PATCH_PHP_EACH cd_drow_items AS params => spell BEGIN
+          PATCH_IF ("%item%" STRING_COMPARE_CASE "%params_0%" = 0) BEGIN
+            DEFINE_ASSOCIATIVE_ARRAY cd_drow_cre_patch BEGIN ~%spell%~ => 0 END
+          END
+        END      
       END
-  END
-  BUT_ONLY
+      PATCH_PHP_EACH cd_drow_cre_patch AS spell => foo BEGIN    
+// PATCH_PRINT ~ == adding protection to %spell% on %SOURCE_RES%~
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = EVAL ~%spell%~ END 
+      END
+    END // bio check  
+    BUT_ONLY
+
+END      
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
