@@ -452,12 +452,11 @@ GROUP @11
 REQUIRE_PREDICATE GAME_IS ~tob~ @25
 LABEL ~cd_tweaks_restore_soa_loading_screen~
 
-//Force the game to use the SoA files in the biffs
-MOVE ~override/loadcntr.bam~ ~cdtweaks/backup~
-     ~override/gprogbar.mos~ ~cdtweaks/backup~
-     ~override/gtrspsk.mos~  ~cdtweaks/backup~
-     ~override/gtrspsk2.mos~ ~cdtweaks/backup~
-     ~override/stoneopt.mos~ ~cdtweaks/backup~
+COPY ~cdtweaks/bam/loadcntr.bam~     ~override~
+     ~cdtweaks/mos/gprogbar_soa.mos~ ~override/gprogbar.mos~
+     ~cdtweaks/mos/gtrspsk.mos~      ~override~
+     ~cdtweaks/mos/gtrspsk2.mos~     ~override~
+     ~cdtweaks/mos/stoneopt.mos~     ~override~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
