@@ -7,8 +7,7 @@ ACTION_IF game_includes_pst THEN BEGIN
   END
 
   // scrolls
-  COPY_EXISTING ~aclue.itm~    ~override~ // a clue!
-                ~breast1.itm~  ~override~ // rune of lesser warding
+  COPY_EXISTING ~breast1.itm~  ~override~ // rune of lesser warding
                 ~breast2.itm~  ~override~ // rune of armor
                 ~breast3.itm~  ~override~ // rune of greater warding
                 ~breast4.itm~  ~override~ // rune of shielding
