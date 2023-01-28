@@ -7,11 +7,44 @@ ACTION_IF game_includes_pst THEN BEGIN
   END
 
   // potions
-  COPY_EXISTING ~acid.itm~   ~override~ // scent of the storm
-                ~embalm.itm~ ~override~ // jar of embalming fluid
-                ~murk.itm~   ~override~ // murk
-                ~spice.itm~  ~override~ // whispering flask
-                ~tears.itm~  ~override~ // tears of sorrow
+  COPY_EXISTING ~acid.itm~     ~override~ // scent of the storm
+                ~addrtear.itm~ ~override~ // adder's tear
+                ~bandage.itm~  ~override~ // bandages
+                ~bbchrm.itm~   ~override~ // black-barbed charm
+                ~bbseed.itm~   ~override~ // black-barbed seed
+                ~bloochrm.itm~ ~override~ // blood charm
+                ~bloodfly.itm~ ~override~ // blood fly charm
+                ~bonechrm.itm~ ~override~ // bone charm
+                ~c_1101.itm~   ~override~ // blessed candy
+                ~c_1106.itm~   ~override~ // holy candy
+                ~c_1301.itm~   ~override~ // mechanus candy
+                ~c_2102.itm~   ~override~ // crunchity candy
+                ~c_2114.itm~   ~override~ // frosty mint candy
+                ~c_2211.itm~   ~override~ // quivering candy
+                ~c_2212.itm~   ~override~ // minaurosian chocolate
+                ~c_2214.itm~   ~override~ // lucky candy
+                ~c_2501.itm~   ~override~ // stinky chocolate
+                ~cerepara.itm~ ~override~ // kasseg, cerebral parasite
+                ~cflychrm.itm~ ~override~ // corpse fly charm
+                ~charchrm.itm~ ~override~ // charcoal charm as sold in stores
+                ~chchar.itm~   ~override~ // charcoal charm, likely unused
+                ~clotchrm.itm~ ~override~ // clot charm
+                ~cratchrm.itm~ ~override~ // cranium rat charm
+                ~dratchrm.itm~ ~override~ // dirty rat charm
+                ~embalm.itm~   ~override~ // jar of embalming fluid
+                ~embchrm.itm~  ~override~ // dustman embalming charm, lesser
+                ~embchrm2.itm~ ~override~ // dustmen embalming charm, greater
+                ~hearchrm.itm~ ~override~ // heart charm
+                ~knotchrm.itm~ ~override~ // knot charm
+                ~lore.itm~     ~override~ // charm of infinite recall
+                ~manacle.itm~  ~override~ // shackles of light
+                ~murk.itm~     ~override~ // murk
+                ~needle.itm~   ~override~ // needle and thread
+                ~ratcharm.itm~ ~override~ // rat charm
+                ~rochchrm.itm~ ~override~ // cockroach charm
+                ~spice.itm~    ~override~ // whispering flask
+                ~tbchrm.itm~   ~override~ // thrice-blind charm
+                ~tears.itm~    ~override~ // tears of sorrow
     READ_SHORT 0x38 current
     PATCH_IF (stack > current) BEGIN
       WRITE_SHORT  0x38 stack
