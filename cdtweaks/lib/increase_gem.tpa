@@ -12,11 +12,11 @@ ACTION_IF game_includes_pst THEN BEGIN
                 ~bagocoin.itm~ ~override~ // bag of coins
                 ~brobra.itm~   ~override~ // bronze bracelet
                 ~broring.itm~  ~override~ // bronze ring
-                ~clipcop.itm~  ~override~ // clipped copper coin
+                //~clipcop.itm~  ~override~ // clipped copper coin, unique
                 ~copear.itm~   ~override~ // copper earring
                 ~costume.itm~  ~override~ // dustman costume
-                ~costume1.itm~ ~override~ // dustman costume
-                ~costume2.itm~ ~override~ // godsman costume
+                //~costume1.itm~ ~override~ // dustman costume for the tailor quest, unique
+                //~costume2.itm~ ~override~ // godsman costume for the tailor quest, unique
                 ~dustrobe.itm~ ~override~ // dustman robes
                 ~golbra.itm~   ~override~ // gold bracelet
                 ~golear.itm~   ~override~ // gold earring
