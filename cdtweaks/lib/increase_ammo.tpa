@@ -5,14 +5,14 @@ ACTION_IF game_is_pst THEN BEGIN // pst but not pstee
 END
 
 ACTION_IF game_includes_pst THEN BEGIN
-  // Nordom's default bolts are automatic defaults and infinite
-  OUTER_SPRINT ammopattern = ~^(?!nordbolt).+\.itm$~
+  // Nordom's default bolts (nordbolt) are automatic defaults and infinite
+  OUTER_SPRINT ammopattern ~^bolt[0-9]+\.itm$~
 END ELSE BEGIN
-  OUTER_SPRINT ammopattern = ~^.+\.itm$~
+  OUTER_SPRINT ammopattern ~^.+\.itm$~
 END
 
 PRINT @1
-COPY_EXISTING_REGEXP GLOB %ammopattern% ~override~ // looking for ammo
+COPY_EXISTING_REGEXP GLOB ~%ammopattern%~ ~override~ // looking for ammo
   READ_SHORT  0x1C "type" ELSE 0
   READ_SHORT  0x38 "max"  ELSE 0
   PATCH_IF (

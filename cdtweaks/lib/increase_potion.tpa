@@ -27,7 +27,7 @@ ACTION_IF game_includes_pst THEN BEGIN
                 ~cerepara.itm~ ~override~ // kasseg, cerebral parasite
                 ~cflychrm.itm~ ~override~ // corpse fly charm
                 ~charchrm.itm~ ~override~ // charcoal charm as sold in stores
-                ~chchar.itm~   ~override~ // charcoal charm, likely unused
+                // ~chchar.itm~   ~override~ // charcoal charm, likely unused
                 ~clotchrm.itm~ ~override~ // clot charm
                 ~cratchrm.itm~ ~override~ // cranium rat charm
                 ~dratchrm.itm~ ~override~ // dirty rat charm

@@ -6,9 +6,9 @@ ACTION_IF game_includes_pst THEN BEGIN
   
   END
 
-  OUTER_SPRINT scrollpattern = ~^sp(?!spwi914)(pr|wi)[0-9]+\.itm$~
+  OUTER_SPRINT scrollpattern ~^sp\(pr\|wi\)[0-9]+\.itm$~
 END ELSE BEGIN
-  OUTER_SPRINT scrollpattern = ~^.+\.itm$~
+  OUTER_SPRINT scrollpattern ~^.+\.itm$~
 END
 
 ACTION_CLEAR_ARRAY cd_stackables
@@ -20,7 +20,7 @@ END ELSE BEGIN
 END
 
 PRINT @1
-COPY_EXISTING_REGEXP GLOB %scrollpattern% ~override~ // looking for scrolls
+COPY_EXISTING_REGEXP GLOB ~%scrollpattern%~ ~override~ // looking for scrolls
   READ_SHORT  0x1c "type" ELSE 0
   PATCH_IF ("%type%" = 11) BEGIN // scrolls
     READ_SHORT 0x38 current
