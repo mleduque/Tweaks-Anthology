@@ -809,6 +809,10 @@ This ability controls whether casting speed is increased for party members outsi
 @335101 = ~Interval save created~
 @335102 = ~Interval save (slot %slot_index%) created~
 
+@337001 = ~000000003-Mortuary~
+@337002 = ~000000004-Lower Ward~
+@337003 = ~000000005-To Ravel's Maze~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

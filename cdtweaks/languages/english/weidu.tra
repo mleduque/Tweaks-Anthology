@@ -637,6 +637,8 @@ Use Baldur.lua options: a7_interval_ini
 
 @336000 = ~Reset UnderSigil Fog of War~
 
+@337000 = ~Automatic "Chapter Saves" in PsT:EE~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

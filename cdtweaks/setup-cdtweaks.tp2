@@ -13730,6 +13730,23 @@ LABEL ~cd_tweaks_reset_undersigil_fow~
 
 INCLUDE ~cdtweaks/lib/undersigil_fow.tpa~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Automatic "Chapter Saves" in PsT:EE                        \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @337000 DESIGNATED 3370
+GROUP @4
+REQUIRE_PREDICATE GAME_IS ~pstee~ @25
+LABEL ~cd_tweaks_chapter_saves_in_pstee~
+
+WITH_SCOPE BEGIN
+  INCLUDE ~cdtweaks/lib/pstee_chapter_saves.tpa~
+END
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
