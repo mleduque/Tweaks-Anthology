@@ -2,6 +2,7 @@
 
 IF
   Global("A7_AutoHasteActive","GLOBAL",1)
+  !GlobalTimerNotExpired("A7_AutoHasteTimerPartyCombatCD","GLOBAL")
   !Name("%name%",Familiar)
   Allegiance("%name%",FAMILIAR)
   InMyArea("%name%")
@@ -26,6 +27,7 @@ IF
 THEN
   RESPONSE #100
     ApplySpellRES("a7_wlk2","%name%")
+    SetGlobalTimer("A7_AutoHasteTimerPartyCombatCD","GLOBAL",12)
     Continue()
 END
 
@@ -35,5 +37,6 @@ IF
 THEN
   RESPONSE #100
     ApplySpellRES("a7_wlk2","%name%")
+    SetGlobal("A7_AutoHasteActive","GLOBAL",2)
     Continue()
 END
