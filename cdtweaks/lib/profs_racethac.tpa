@@ -32,8 +32,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~racethac.2da~ BEGIN // EEs
     
     COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
       READ_BYTE 0x31 prof
-	  READ_SHORT 0x1c category
-      PATCH_IF ((prof > 88) AND (prof < 135) AND (category !=5) AND (category !=14) AND (category !=31)) BEGIN
+      PATCH_IF ((prof > 88) AND (prof < 135)) BEGIN
         PATCH_PHP_EACH ~cd_racethac_%prof%~ AS race => pips BEGIN
           SPRINT eff cdgthac0
           PATCH_IF pips < 0 BEGIN  
