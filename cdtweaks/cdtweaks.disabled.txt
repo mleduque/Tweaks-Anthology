@@ -66,6 +66,22 @@ OUTER_SET minimum_stats_charisma     = 0
 
 
 
+// The following variables will be used for the subcomponent "Increased party movement speed and/or
+// casting speed outside of combat".
+// Set this value to 1 to enable the movement speed bonus outside of combat. Default: 1
+OUTER_SET party_movement_speed_enabled = 1
+
+// Set this value to the speed value in percent. 100 percent indicates normal movement speed.
+// Lower values will apply a movement speed penalty. Higher values will apply a movement speed bonus.
+// Negative values or 0 are not allowed. Default: 200 (same as Boots of Speed)
+OUTER_SET party_movement_speed_value = 200
+
+// Set this value to 1 to enable casting spells at increased speed. Default: 0
+OUTER_SET party_casting_speed_enabled = 0
+
+
+
+
 // The following variables will be used for the subcomponent "Create interval saves -> Customize":
 // Set this value to 1 to activate interval save. Set it to 0 to deactivate interval save. Default: 1
 OUTER_SET interval_save_enabled = 1
