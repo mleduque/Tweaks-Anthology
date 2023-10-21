@@ -144,7 +144,7 @@ DEFINE_PATCH_FUNCTION ~cd_apply_batch~
       // always clear your arrays
       CLEAR_ARRAY cd_immunity_batches_key
       CLEAR_ARRAY cd_immunity_batches_extras
-      CLEAR_ARRAY cd_immunity_batches_deletes
+      CLEAR_ARRAY cd_immunity_batches_delete
       LAUNCH_PATCH_MACRO ~%array_name%~ // loads up arrays with effects to match
       PATCH_IF (index < 0) BEGIN // if loop through globals needed
         SET abil_fx_idx = 0
