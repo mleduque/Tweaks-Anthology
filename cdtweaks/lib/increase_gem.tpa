@@ -7,58 +7,26 @@ ACTION_IF game_includes_pst THEN BEGIN
   END
 
   // gems/jewelry/misc
-  COPY_EXISTING ~addrtear.itm~ ~override~ // adder's tear
+  COPY_EXISTING ~aclue.itm~    ~override~ // a clue!
                 ~agoody.itm~   ~override~ // a goody!
                 ~bagocoin.itm~ ~override~ // bag of coins
-                ~bandage.itm~  ~override~ // bandages
-                ~bbchrm.itm~   ~override~ // black-barbed charm
-                ~bbseed.itm~   ~override~ // black-barbed seed
-                ~bloochrm.itm~ ~override~ // blood charm
-                ~bloodfly.itm~ ~override~ // blood fly charm
-                ~bonechrm.itm~ ~override~ // bone charm
                 ~brobra.itm~   ~override~ // bronze bracelet
                 ~broring.itm~  ~override~ // bronze ring
-                ~c_1101.itm~   ~override~ // blessed candy
-                ~c_1106.itm~   ~override~ // holy candy
-                ~c_1301.itm~   ~override~ // mechanus candy
-                ~c_2102.itm~   ~override~ // crunchity candy
-                ~c_2114.itm~   ~override~ // frosty mint candy
-                ~c_2211.itm~   ~override~ // quivering candy
-                ~c_2212.itm~   ~override~ // minaurosian chocolate
-                ~c_2214.itm~   ~override~ // lucky candy
-                ~c_2501.itm~   ~override~ // stinky chocolate
-                ~cerepara.itm~ ~override~ // kasseg, cerebral parasite
-                ~cflychrm.itm~ ~override~ // corpse fly charm
-                ~charchrm.itm~ ~override~ // charcoal charm
-                ~chchar.itm~   ~override~ // charcoal charm
-                ~clipcop.itm~  ~override~ // clipped copper coin
-                ~clotchrm.itm~ ~override~ // clot charm
-                ~copear.itm~   ~override~ // ancient copper earring
+                //~clipcop.itm~  ~override~ // clipped copper coin, unique
+                ~copear.itm~   ~override~ // copper earring
                 ~costume.itm~  ~override~ // dustman costume
-                ~costume1.itm~ ~override~ // dustman costume
-                ~costume2.itm~ ~override~ // godsman costume
-                ~cratchrm.itm~ ~override~ // cranium rat charm
-                ~dratchrm.itm~ ~override~ // dirty rat charm
+                //~costume1.itm~ ~override~ // dustman costume for the tailor quest, unique
+                //~costume2.itm~ ~override~ // godsman costume for the tailor quest, unique
                 ~dustrobe.itm~ ~override~ // dustman robes
-                ~embchrm.itm~  ~override~ // dustman embalming charm, lesser
-                ~embchrm2.itm~ ~override~ // dustmen embalming charm, greater
                 ~golbra.itm~   ~override~ // gold bracelet
                 ~golear.itm~   ~override~ // gold earring
                 ~golring.itm~  ~override~ // gold ring
-                ~hearchrm.itm~ ~override~ // heart charm
                 ~junk.itm~     ~override~ // junk
-                ~knotchrm.itm~ ~override~ // knot charm
-                ~lore.itm~     ~override~ // charm of infinite recall
                 ~magitm.itm~   ~override~ // a magic item!
-                ~manacle.itm~  ~override~ // shackles of light
-                ~needle.itm~   ~override~ // needle and thread
-                ~ratcharm.itm~ ~override~ // rat charm
-                ~rochchrm.itm~ ~override~ // cockroach charm
                 ~silbra.itm~   ~override~ // silver bracelet
                 ~silear.itm~   ~override~ // silver earring
                 ~silring.itm~  ~override~ // silver ring
                 ~tail.itm~     ~override~ // cranium rat tail
-                ~tbchrm.itm~   ~override~ // thrice-blind charm
                 ~tsilbra.itm~  ~override~ // tarnished silver bracelet
     READ_SHORT 0x38 current
     PATCH_IF (stack > current) BEGIN

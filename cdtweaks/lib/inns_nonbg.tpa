@@ -106,15 +106,15 @@ ACTION_IF enhanced_edition BEGIN
   COPY_EXISTING ~neera%eet_var%.bcs~ ~override~
     DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY ~\(!InPartyAllowDead("NEERA")[ %TAB%%LNL%%MNL%%WNL%]+Global("AdoyLeft","OH2010",3)\)~ ~False() \1~
-      REPLACE_TEXTUALLY ~\(\(!I[fs]ValidForPartyDialog\(ue\)?\|InParty\)("NEERA")[ %TAB%%LNL%%MNL%%WNL%]+Global("NEERA_START","GLOBAL",1)\)~ ~False() \1~ // with more banters, may decompile as IVFPD
+      REPLACE_TEXTUALLY ~\(!\(I[fs]ValidForPartyDialog\(ue\)?\|InParty\)("NEERA")[ %TAB%%LNL%%MNL%%WNL%]+Global("NEERA_START","GLOBAL",1)\)~ ~False() \1~ // with more banters, may decompile as IVFPD
     END
     BUT_ONLY    
 
   // as does rasaad
   COPY_EXISTING ~rasaad%eet_var%.bcs~ ~override~
     DECOMPILE_AND_PATCH BEGIN
-      REPLACE_TEXTUALLY ~\(\(!I[fs]ValidForPartyDialog\(ue\)?\|InParty\)(Myself)[ %TAB%%LNL%%MNL%%WNL%]+ActionListEmpty()[ %TAB%%LNL%%MNL%%WNL%]+Global("RASAAD_IN_PARTY","GLOBAL",0)\)~ ~False() \1~ // with more banters, may decompile as IVFPD
-      REPLACE_TEXTUALLY ~\(\(!I[fs]ValidForPartyDialog\(ue\)?\|InParty\)(Myself)[ %TAB%%LNL%%MNL%%WNL%]+ActionListEmpty()[ %TAB%%LNL%%MNL%%WNL%]+Global("GAMAZ_DEFEATED","GLOBAL",2)\)~  ~False() \1~ // with more banters, may decompile as IVFPD
+      REPLACE_TEXTUALLY ~\(!\(I[fs]ValidForPartyDialog\(ue\)?\|InParty\)(Myself)[ %TAB%%LNL%%MNL%%WNL%]+ActionListEmpty()[ %TAB%%LNL%%MNL%%WNL%]+Global("RASAAD_IN_PARTY","GLOBAL",0)\)~ ~False() \1~ // with more banters, may decompile as IVFPD
+      REPLACE_TEXTUALLY ~\(!\(I[fs]ValidForPartyDialog\(ue\)?\|InParty\)(Myself)[ %TAB%%LNL%%MNL%%WNL%]+ActionListEmpty()[ %TAB%%LNL%%MNL%%WNL%]+Global("GAMAZ_DEFEATED","GLOBAL",2)\)~  ~False() \1~ // with more banters, may decompile as IVFPD
     END
     BUT_ONLY    
 

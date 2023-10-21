@@ -9676,6 +9676,24 @@ WITH_SCOPE BEGIN
   LAF "BACKSTAB_IMMUNITY" END
 END
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Improved Cure / Cause Wounds                               \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @262001 DESIGNATED 2621
+GROUP @9
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+LABEL ~cd_tweaks_cure_cause_wounds~
+
+WITH_SCOPE BEGIN
+  INCLUDE "cdtweaks/lib/cure_cause_wounds.tph"
+  LAF "CURE_CAUSE_WOUNDS" END
+END
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -13785,6 +13803,23 @@ LABEL ~cd_tweaks_reset_undersigil_fow~
 
 INCLUDE ~cdtweaks/lib/undersigil_fow.tpa~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Automatic "Chapter Saves" in PsT:EE                        \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @337000 DESIGNATED 3370
+GROUP @4
+REQUIRE_PREDICATE GAME_IS ~pstee~ @25
+LABEL ~cd_tweaks_chapter_saves_in_pstee~
+
+WITH_SCOPE BEGIN
+  INCLUDE ~cdtweaks/lib/pstee_chapter_saves.tpa~
+END
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -15048,9 +15083,9 @@ COPY_EXISTING ~partyai.2da~ ~override~
   REPLACE_TEXTUALLY ~\([ %TAB%]+\)BD[A-Z]+[ %TAB%]*~ ~\1DEFAULT~
   BUT_ONLY
 
-COPY_EXISTING ~ar0602.bcs~ ~override~ // irenicus's dungeon
-              ~ar2600.bcs~ ~override~ // candlekeep
-              ~ar4000.bcs~ ~override~ // tob heads
+COPY_EXISTING ~ar0602.bcs~           ~override~ // irenicus's dungeon
+              ~%Candlekeep_BCS%.bcs~ ~override~ // candlekeep
+              ~ar4000.bcs~           ~override~ // tob heads
   DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~[ %TAB%]Global("BD_DEFAI","\(MYAREA\|GLOBAL\)",0)~ ~ False()~ // nuke block that assigns 'advanced ai' to player1
   END
