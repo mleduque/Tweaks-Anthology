@@ -616,6 +616,12 @@ Enter a percentage between 20 and 500:~
 @333005 = ~Movement speed by 100 percent and casting speed~
 @333006 = ~Movement speed by 150 percent and casting speed~
 @333007 = ~Casting speed only~
+@333008 = ~Customize (via cdtweaks.txt)~
+@333009 = ~Applying values:
+Movement speed enabled: a7_movement_speed_enable
+Movement speed percent: a7_movement_speed_value
+Casting speed enabled:  a7_casting_speed_enable
+~
 
 @335000 = ~Create Interval Saves [argent77]~
 @335001 = ~Every 15 minutes (one save only)~

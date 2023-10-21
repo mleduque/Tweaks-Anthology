@@ -13514,6 +13514,61 @@ ACTION_IF (NOT success) BEGIN
   ABORT @28
 END
 
+/////                                                  \\\\\
+///// Customize                                        \\\\\
+/////                                                  \\\\\
+
+BEGIN @333008 DESIGNATED 3347
+GROUP @4
+REQUIRE_PREDICATE (NOT GAME_IS ~pstee~ && VALID_SCRIPT_TRIGGERS ~NextTriggerObject(Player1)~) @25
+SUBCOMPONENT @333000
+LABEL ~cd_tweaks_noncombat_casting_increase_custom~
+
+INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
+
+ACTION_IF (FILE_EXISTS ~cdtweaks/cdtweaks.txt~) THEN BEGIN
+  INCLUDE ~cdtweaks/cdtweaks.txt~ // config file
+END
+
+ACTION_IF (NOT VARIABLE_IS_SET ~party_movement_speed_enabled~) BEGIN
+  OUTER_SET party_movement_speed_enabled = 1
+END
+ACTION_IF (NOT VARIABLE_IS_SET ~party_movement_speed_value~ || party_movement_speed_value <= 0) BEGIN
+  OUTER_SET party_movement_speed_value = 200
+END
+ACTION_IF (NOT VARIABLE_IS_SET ~party_casting_speed_enabled~) BEGIN
+  OUTER_SET party_casting_speed_enabled = 0
+END
+
+// Show configuration details
+OUTER_SPRINT msg @333009
+OUTER_PATCH_SAVE msg ~%msg%~ BEGIN
+  PATCH_IF (party_movement_speed_enabled) BEGIN
+    REPLACE_TEXTUALLY ~a7_movement_speed_enable~ ~yes~
+  END ELSE BEGIN
+    REPLACE_TEXTUALLY ~a7_movement_speed_enable~ ~no~
+  END
+  REPLACE_TEXTUALLY ~a7_movement_speed_value~ ~%party_movement_speed_value%~
+  PATCH_IF (party_casting_speed_enabled) BEGIN
+    REPLACE_TEXTUALLY ~a7_casting_speed_enable~ ~yes~
+  END ELSE BEGIN
+    REPLACE_TEXTUALLY ~a7_casting_speed_enable~ ~no~
+  END
+END
+PRINT ~%msg%~
+
+LAF A7_INSTALL_AUTOHASTE
+  INT_VAR
+    casting_speed = party_casting_speed_enabled
+    movement_speed = party_movement_speed_enabled
+    speed_percent = party_movement_speed_value
+  RET success
+END
+
+ACTION_IF (NOT success) BEGIN
+  ABORT @28
+END
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

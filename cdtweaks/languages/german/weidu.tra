@@ -241,6 +241,20 @@ durchschnittlichem Ruf~
 @329300 = ~Schema anwenden: 000000000-(Protagonist) Save-Name~
 @329400 = ~Schema anwenden: 000000000-[Protagonist]-Save-Name~
 @329500 = ~Schema anwenden: 000000000-[Protagonist] Save-Name~
+@333000 = ~Erhoehe Laufgeschwindigkeit und/oder Zauberrate ausserhalb von Kaempfen [argent77]~
+@333001 = ~Erhoehe Laufgeschwindigkeit um 50 Prozent~
+@333002 = ~Erhoehe Laufgeschwindigkeit um 100 Prozent~
+@333003 = ~Erhoehe Laufgeschwindigkeit um 150 Prozent~
+@333004 = ~Erhoehe Laufgeschwindigkeit um 50 Prozent und Zauberrate~
+@333005 = ~Erhoehe Laufgeschwindigkeit um 100 Prozent und Zauberrate~
+@333006 = ~Erhoehe Laufgeschwindigkeit um 150 Prozent und Zauberrate~
+@333007 = ~Erhoehe nur Zauberrate~
+@333008 = ~Benutzerdefiniert (siehe cdtweaks.txt)~
+@333009 = ~Folgende Werte werden angewendet:
+Aktiviere Laufgeschwindigkeit: a7_movement_speed_enable
+Laufgeschwindigkeit (Prozent): a7_movement_speed_value
+Aktiviere Zauberrate:          a7_casting_speed_enable
+~
 @337000 = ~Automatische "Kapitelspeicherstaende" in PsT:EE~
 @400000 = ~Reaktionswuerfe von anschlussfaehigen boesen NSCs anpassen~
 @401000 = ~Verbessertes Herbeirufen beim Geist des Schicksals~
