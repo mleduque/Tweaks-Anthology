@@ -6,19 +6,9 @@ ACTION_IF game_includes_pst THEN BEGIN
   
   END
 
-  // scrolls
-  COPY_EXISTING ~aclue.itm~    ~override~ // a clue!
-                ~breast1.itm~  ~override~ // rune of lesser warding
-                ~breast2.itm~  ~override~ // rune of armor
-                ~breast3.itm~  ~override~ // rune of greater warding
-                ~breast4.itm~  ~override~ // rune of shielding
-                ~dlegacy2.itm~ ~override~ // healing scroll
-    READ_SHORT 0x38 current
-    PATCH_IF (stack > current) BEGIN
-      WRITE_SHORT  0x38 stack
-    END
-    BUT_ONLY
-
+  OUTER_SPRINT scrollpattern ~^sp\(pr\|wi\)[0-9]+\.itm$~
+END ELSE BEGIN
+  OUTER_SPRINT scrollpattern ~^.+\.itm$~
 END
 
 ACTION_CLEAR_ARRAY cd_stackables
@@ -30,7 +20,7 @@ END ELSE BEGIN
 END
 
 PRINT @1
-COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ // looking for scrolls
+COPY_EXISTING_REGEXP GLOB ~%scrollpattern%~ ~override~ // looking for scrolls
   READ_SHORT  0x1c "type" ELSE 0
   PATCH_IF ("%type%" = 11) BEGIN // scrolls
     READ_SHORT 0x38 current
@@ -47,5 +37,5 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ // looking for scrolls
     END
   END
   BUT_ONLY
-  
+
 INCLUDE ~cdtweaks/lib/increase_scripts.tpa~
