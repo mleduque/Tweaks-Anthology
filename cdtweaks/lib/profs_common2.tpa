@@ -123,10 +123,11 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
       FOR (index2 = 0 ; index2 < counter ; index2 = index2 + 1) BEGIN
         READ_SHORT ("%fx_off%"        + (0x08 * "%fx_type%") + (("%abil_fx_idx%" + "%index2%") * (0x30 + (0xd8 * "%fx_type%")))) "opcode"
         PATCH_IF (opcode = 233) BEGIN
-          READ_LONG  ("%fx_off%" + 0x08 + (0x10 * "%fx_type%") + (("%abil_fx_idx%" + "%index2%") * (0x30 + (0xd8 * "%fx_type%")))) "param2"
+          READ_SHORT  ("%fx_off%" + 0x08 + (0x10 * "%fx_type%") + (("%abil_fx_idx%" + "%index2%") * (0x30 + (0xd8 * "%fx_type%")))) "param2"
           PHP_EACH cd_prof_numeric_map AS old => new BEGIN
             PATCH_IF (param2 = old) BEGIN
-              WRITE_LONG  ("%fx_off%" + 0x08 + (0x10 * "%fx_type%") + (("%abil_fx_idx%" + "%index2%") * (0x30 + (0xd8 * "%fx_type%")))) new
+              WRITE_SHORT  ("%fx_off%" + 0x08 + (0x10 * "%fx_type%") + (("%abil_fx_idx%" + "%index2%") * (0x30 + (0xd8 * "%fx_type%")))) new
+              SET param2 = 0 // only make a change once
             END
           END
         END
