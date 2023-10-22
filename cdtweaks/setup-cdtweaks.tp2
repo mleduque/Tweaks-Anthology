@@ -3671,6 +3671,13 @@ COPY_EXISTING ~baldur.bcs~ ~override~ // non-druids not getting great druid mess
   END
   BUT_ONLY
 
+// have faldorn actually fight non-druids
+COPY_EXISTING ~cefald01.bcs~ ~override~ // non-druids not getting great druid messenger
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~See(NearestEnemyOfType(\[0\.0\.0\.DRUID_ALL\]))~ ~See(NearestEnemyOf(Myself))~
+  END
+  BUT_ONLY
+
 /////                                                  \\\\\
 ///// keep class restrictions                          \\\\\
 /////                                                  \\\\\
@@ -3802,6 +3809,13 @@ COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~             // removes stro
 COPY_EXISTING ~baldur.bcs~ ~override~ // non-druids not getting great druid messenger
   DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~Class(Player1,DRUID_ALL)[%TAB% %LNL%%MNL%%WNL%]+\(LevelGT(Player1,13)[%TAB% %LNL%%MNL%%WNL%]+Global("DruidADSpawn","GLOBAL",0)\)~ ~\1~
+  END
+  BUT_ONLY
+
+// have faldorn actually fight non-druids
+COPY_EXISTING ~cefald01.bcs~ ~override~ // non-druids not getting great druid messenger
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~See(NearestEnemyOfType(\[0\.0\.0\.DRUID_ALL\]))~ ~See(NearestEnemyOf(Myself))~
   END
   BUT_ONLY
 
