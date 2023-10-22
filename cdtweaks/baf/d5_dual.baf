@@ -5,6 +5,7 @@ IF
     Class(LastSummonerOf(Myself),FIGHTER_DRUID)
     Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
   Kit(LastSummonerOf(Myself),TRUECLASS)
+  %fdc%
 THEN
   RESPONSE #100
     ActionOverride(LastSummonerOf(Myself),AddKit(D5FIGHT))
@@ -14,6 +15,7 @@ END
 IF
   Class(LastSummonerOf(Myself),CLERIC_RANGER)
   Kit(LastSummonerOf(Myself),TRUECLASS)
+  %rdc%
 THEN
   RESPONSE #100
     ActionOverride(LastSummonerOf(Myself),AddKit(D5RANGE))

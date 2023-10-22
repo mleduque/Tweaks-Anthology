@@ -9089,6 +9089,13 @@ BEGIN @245000 DESIGNATED 2450
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~kitlist.2da~ @25
 REQUIRE_PREDICATE NOT GAME_IS ~soa iwd2~ @25 // needs tob until ADD_KIT/luabbr is fixed
+// for non-ee, use race=human to detect dual-class, if we can't (because tobex-enabled changes) disallow install:
+// https://www.gibberlings3.net/forums/topic/36465-bug-pnp-proficiency-for-dual-classes-grants-fm-1-extra-spell-per-level/
+REQUIRE_PREDICATE ((GAME_IS ~bgee bg2ee eet iwdee~) OR 
+                  (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2371~ AND   // Allow Non-Humans to Dual-Class
+                   !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2350~ AND   // Allow humans to multiclass
+                   !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2357~ AND   // multiclass madness (includes 2350)
+                   !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2358~)) @25 // multiclass semimadness (includes 2350)
 LABEL ~cd_tweaks_pnp_prof_restrictions_for_dualclasses~
 
 INCLUDE ~cdtweaks/lib/sod_25stweap_fix.tpa~
@@ -9139,7 +9146,14 @@ COPY ~cdtweaks/spl/d5_duafc.spl~ ~override~
 COPY ~cdtweaks/cre/d5_dual.cre~ ~override~
      ~cdtweaks/eff/d5_dual.eff~ ~override~
 
-COMPILE ~cdtweaks/baf/d5_dual.baf~
+ACTION_IF enhanced_edition BEGIN 
+  OUTER_SPRINT fdc ~OriginalClass(LastSummonerOf(Myself),FIGHTER)~
+  OUTER_SPRINT rdc ~OriginalClass(LastSummonerOf(Myself),RANGER)~
+END ELSE BEGIN
+  OUTER_SPRINT fdc ~Race(LastSummonerOf(Myself),HUMAN)~
+  OUTER_SPRINT rdc ~Race(LastSummonerOf(Myself),HUMAN)~
+END
+COMPILE ~cdtweaks/baf/d5_dual.baf~ EVALUATE_BUFFER
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~clabma01.2da~ THEN BEGIN
   COPY ~cdtweaks/2da/clabmaxx.2da~ ~override/clabma01.2da~
