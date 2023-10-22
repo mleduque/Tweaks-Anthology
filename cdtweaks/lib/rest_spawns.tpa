@@ -17,7 +17,7 @@ END
 COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
   PATCH_IF factor != 100 BEGIN // don't bother if no change
     READ_LONG rest_offr rest_off
-	PATCH_IF rest_off BEGIN // in case area has no rest encounter section, skip attempted patching
+	PATCH_IF (rest_off > 0) AND (rest_off < SOURCE_SIZE) BEGIN // in case area has no rest encounter section, skip attempted patching
       READ_SHORT (rest_off + 0xa6) active
       PATCH_IF active BEGIN // don't bother with inactive rest spawns
         SET hostile = 0
