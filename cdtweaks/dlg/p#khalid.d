@@ -5,12 +5,12 @@ APPEND ~%KHALID_BANTER%~
 IF WEIGHT #-2 ~
 Global("P#KhalidMage","GLOBAL",2)~ THEN BEGIN KHMAGE1
 SAY @0
-++ @1 + KHMAPC1.1
-+~!Class(Player1,FIGHTER_MAGE)~+ @2 + KHMAPC1.2
-+~Class(Player1,FIGHTER_MAGE)~+ @3 + KHMAPC1.2M
-+~Class(Player1,FIGHTER_ALL) Race(Player1, HUMAN) CheckStatGT(Player1,16,INT)~+ @4 + KHMAPC1.2F
-++ @5 + KHMAPC1.3
-+~InParty("jaheira")~+ @6 + KHMAPC1.4
+++ @1 DO ~SetGlobal("P#KhalidMage","GLOBAL",3)~ + KHMAPC1.1
++~!Class(Player1,FIGHTER_MAGE)~+ @2 DO ~SetGlobal("P#KhalidMage","GLOBAL",3)~ + KHMAPC1.2
++~Class(Player1,FIGHTER_MAGE)~+ @3 DO ~SetGlobal("P#KhalidMage","GLOBAL",3)~ + KHMAPC1.2M
++~Class(Player1,FIGHTER_ALL) Race(Player1, HUMAN) CheckStatGT(Player1,16,INT)~+ @4 DO ~SetGlobal("P#KhalidMage","GLOBAL",3)~ + KHMAPC1.2F
+++ @5 DO ~SetGlobal("P#KhalidMage","GLOBAL",3)~ + KHMAPC1.3
++~InParty("jaheira")~+ @6 DO ~SetGlobal("P#KhalidMage","GLOBAL",3)~ + KHMAPC1.4
 END
 IF ~~ KHMAPC1.1
 SAY @7
