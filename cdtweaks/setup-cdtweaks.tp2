@@ -1160,8 +1160,15 @@ GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
 LABEL ~cd_tweaks_replace_fire_cold_resist_icons~
 
+ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~90~ BEGIN
+  OUTER_SET portrait_icons_set = 0
+END ELSE BEGIN  
+  OUTER_SET portrait_icons_set = 1
+END
+
 INCLUDE ~cdtweaks/lib/bg2fp_effect_batches.tpa~
 
+PRINT @1
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
                           ~^.+\.itm$~ ~override~
                           ~^.+\.spl$~ ~override~
