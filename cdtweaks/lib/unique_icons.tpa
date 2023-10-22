@@ -88,7 +88,8 @@ ACTION_PHP_EACH cd_unique_icons AS params => item BEGIN
           DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN     
             53 => ~%params_17%~    
             52 => ~%params_16%~  
-            48 => ~%params_15%~   
+            48 => ~%params_15%~  
+            50 => ~%params_18%~   
           END
           PATCH_IF ((original_bg1 OR original_iwd) AND ("%anim%" STRING_COMPARE_CASE "h3" = 0)) BEGIN // plumed helmets
             DEFINE_ASSOCIATIVE_ARRAY cd_unique_icons_coloring BEGIN    
