@@ -1918,6 +1918,12 @@ ACTION_IF enhanced_edition BEGIN // bgee, eet
     LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 206 target = 1 parameter1 = `0 timing = 2 STR_VAR resource = cdbrak7 END
     BUT_ONLY
 
+  COPY_EXISTING ~bprng1.itm~ ~override~ // slave ring from black pits - prevents weapon breakage; add armor/helm/shield
+    PATCH_FOR_EACH int IN 2 7 12 BEGIN
+      LPF CLONE_EFFECT INT_VAR match_opcode = 206 multi_match = 1 STR_VAR resource = EVAL ~cdbrak%int%~ END
+    END  
+    BUT_ONLY
+
 END
 
 COPY ~cdtweaks/spl/cdbreak1.spl~ ~override/cdbrak2.spl~ // armor
