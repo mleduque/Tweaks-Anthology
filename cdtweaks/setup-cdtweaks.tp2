@@ -9332,6 +9332,10 @@ GROUP @9
 REQUIRE_PREDICATE GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
 LABEL ~cd_tweaks_level_locked_scrolls~
 
+// skip freedom scrolls to help post-kangaxx recovery
+OUTER_SET freedom_num = IDS_OF_SYMBOL (~spell~ ~WIZARD_FREEDOM~) - 2000
+ACTION_IF freedom_num > 0 BEGIN OUTER_SPRINT freedom ~spwi%freedom_num%~ END ELSE BEGIN OUTER_SPRINT freedom ~not_murica~ END
+
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_SHORT 0x1c type
   READ_SHORT 0x24 level
@@ -9349,11 +9353,15 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
           PATCH_IF (("%spell%" STRING_COMPARE_REGEXP ~^[Ss][Pp][Ww][Ii][3-9][0-9][0-9]$~ = 0) OR
                     ("%spell%" STRING_COMPARE_REGEXP ~^[Ss][Pp][Pp][Rr][3-7][0-9][0-9]$~ = 0)) BEGIN // levels 1&2 usable by level 0/1, so no need for level requirements
             PATCH_IF ("%spell%" STRING_COMPARE_REGEXP ~^[Ss][Pp][Ww][Ii][3-9][0-9][0-9]$~ = 0) BEGIN SET level_break = 11 END ELSE BEGIN SET level_break = 13 END // account for extra level for priest 6>7 and wizard 5>6
-            READ_BYTE  (fx_off + 0x18 + (0x30 * (abil_fx_idx + index2))) level
-            SET level = ((level - 0x31) * 2) // 0x31 is ascii 1, 0x32 is ascii 2, etc. This basically uses a level one below the numerical value and then doubles it
-            PATCH_IF level < level_break BEGIN
-              SET level -= 1
-            END
+            PATCH_IF ("%spell%" STRING_COMPARE_CASE "%freedom%" = 0) BEGIN // exclude freedom scrolls
+              SET level = 0
+            END ELSE BEGIN  
+              READ_BYTE  (fx_off + 0x18 + (0x30 * (abil_fx_idx + index2))) level
+              SET level = ((level - 0x31) * 2) // 0x31 is ascii 1, 0x32 is ascii 2, etc. This basically uses a level one below the numerical value and then doubles it
+              PATCH_IF level < level_break BEGIN
+                SET level -= 1
+              END
+            END  
           END
         END
       END
