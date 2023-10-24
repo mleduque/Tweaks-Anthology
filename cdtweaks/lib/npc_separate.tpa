@@ -21,6 +21,9 @@ kicked_out_variable    KickedOut     KickedOut      IWasKickedOut       KickedOu
 
 ACTION_IF game_is_bgee BEGIN
   OUTER_SET column = 1
+  ACTION_IF game_includes_sod BEGIN
+    COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/pairsep_sod.d~ 
+  END  
 END ELSE
 ACTION_IF game_is_bgt BEGIN
   OUTER_SET column = 3
