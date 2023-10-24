@@ -246,7 +246,7 @@ COPY_EXISTING ~newgame.bcs~ ~override~
     REPLACE_TEXTUALLY ~//.+$~ ~~
     REPLACE_TEXTUALLY ~[ %TAB%%LNL%%MNL%%WNL%]+~ ~ ~
     REPLACE_TEXTUALLY
-      ~DisplayStringWait(Myself,5388).+PlaySound("EFF_P18") Wait(3)~
+      ~DisplayString\(Wait\|Head\)(Myself,5388).+PlaySound("EFF_P18") Wait(3)~
       ~%newgame_sub%~
   END
   BUT_ONLY
