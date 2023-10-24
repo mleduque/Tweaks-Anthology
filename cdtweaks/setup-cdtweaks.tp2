@@ -11035,7 +11035,7 @@ INCLUDE ~cdtweaks/lib/faster_start.tpa~
 BEGIN @314100 DESIGNATED 3141 // original EoU
 GROUP @4
 SUBCOMPONENT @314000 // faster chap 1&2 cutscenes
-REQUIRE_PREDICATE GAME_IS ~soa tob bg2ee~ @25 // non-Tutu, non-BGT
+REQUIRE_PREDICATE GAME_IS ~soa tob bg2ee bgt eet~ @25 // non-Tutu, non-BGT
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~mrimrin1.itm~ @24 // imoen romance compatibility code
 LABEL ~cd_tweaks_faster_ch1_cutscenes_nonsilly~
 
