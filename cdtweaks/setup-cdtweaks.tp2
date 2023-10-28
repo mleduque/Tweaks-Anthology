@@ -8941,6 +8941,8 @@ LABEL ~cd_tweaks_druid_multis_tighten_equipment_restrictions~
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   PATCH_IF (("%SOURCE_RES%" STRING_COMPARE_CASE "cdrelm") AND
             ("%SOURCE_RES%" STRING_COMPARE_CASE "d1brac02") AND
+            ("%SOURCE_RES%" STRING_COMPARE_CASE "dstdruid") AND // dsotsc: tiara of the chanah'rea
+            ("%SOURCE_RES%" STRING_COMPARE_CASE "dscdruid") AND // dsotsc: crown of the archdruid
             ("%SOURCE_RES%" STRING_COMPARE_CASE "gauntem") AND
             ("%SOURCE_RES%" STRING_COMPARE_CASE "helm34") AND
             ("%SOURCE_RES%" STRING_COMPARE_CASE "mh#ioun1") AND
