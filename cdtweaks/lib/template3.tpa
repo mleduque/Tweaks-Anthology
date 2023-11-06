@@ -70,7 +70,7 @@ insert_eof~~~~~
 
           COPY ~weidu_external/cdtweaks/random/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm1.d~
             REPLACE_TEXTUALLY ~~~~~insert_eof~~~~~
-~~~~~  IF ~~ THEN REPLY #%string2% DO ~TakePartyItem("%drop%") TakePartyGold(1000) DestroyItem("%drop%") GiveItemCreate("%otherstuff%",LastTalkedToBy,percentagecharge0percentage,percentagecharge1percentage,percentagecharge2percentage) SetGlobal("CDExchanged%item%","GLOBAL",1)~ GOTO CDPostExchange
+~~~~~  IF ~~ THEN REPLY #%string2% %reply_flags% DO ~TakePartyItem("%drop%") TakePartyGold(1000) DestroyItem("%drop%") GiveItemCreate("%otherstuff%",LastTalkedToBy,percentagecharge0percentage,percentagecharge1percentage,percentagecharge2percentage) SetGlobal("CDExchanged%item%","GLOBAL",1)~ GOTO CDPostExchange
 insert_eof~~~~~
             EVALUATE_BUFFER
 

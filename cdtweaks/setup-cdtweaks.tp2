@@ -12775,9 +12775,12 @@ COPY_EXISTING ~katown1.cre~ ~override/cdrndm1.cre~
 
 EXTEND_BOTTOM ~ar2100.bcs~ ~cdtweaks/baf/ar2100.baf~
 
+OUTER_SPRINT reply_flags ~~
 ACTION_IF game_is_iwdee THEN BEGIN
 
   INCLUDE ~cdtweaks/lib/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema in random.2da
+  OUTER_SPRINT reply_flags ~FLAGS 517~
+  
 
 END
 
