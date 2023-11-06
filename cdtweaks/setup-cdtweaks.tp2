@@ -12832,7 +12832,7 @@ ACTION_IF NOT game_is_iwd THEN BEGIN // add lonelywood merchant
   EXTEND_BOTTOM ~ar9100.bcs~ ~cdtweaks/baf/ar9100.baf~
 
   COPY ~weidu_external/cdtweaks/random/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm2.d~
-    REPLACE_TEXTUALLY ~31426\([0-9]\)~ ~31428\1~
+    REPLACE_TEXTUALLY ~32426\([0-9]\)~ ~32428\1~
     REPLACE_TEXTUALLY ~CDRNDM1~ ~CDRNDM3~
     REPLACE_TEXTUALLY ~CDRNDM2~ ~CDRNDM1~
     REPLACE_TEXTUALLY ~CDRNDM3~ ~CDRNDM2~
