@@ -10371,6 +10371,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 
 BEGIN @302000 DESIGNATED 3020
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~15~ @16 // iwd2 eou All Items Identified
 LABEL ~cd_tweaks_id_all_items~
 
 // SoS item needs to be un-ID'd for one quest - part 1
@@ -10617,6 +10618,7 @@ COPY ~cdtweaks/2da/repmodst_060.2da~ ~override/repmodst.2da~
 
 BEGIN @308000 DESIGNATED 3080
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @308001 // increase ammo stacks
 LABEL ~cd_tweaks_increase_ammo_stacks_infinite~
 
@@ -10629,6 +10631,7 @@ INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
 
 BEGIN @308100 DESIGNATED 3081
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @308001 // increase ammo stacks
 LABEL ~cd_tweaks_increase_ammo_stacks_40~
 
@@ -10641,6 +10644,7 @@ INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
 
 BEGIN @308200 DESIGNATED 3082
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @308001 // increase ammo stacks
 LABEL ~cd_tweaks_increase_ammo_stacks_80~
 
@@ -10653,6 +10657,7 @@ INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
 
 BEGIN @308300 DESIGNATED 3083
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @308001 // increase ammo stacks
 LABEL ~cd_tweaks_increase_ammo_stacks_120~
 
@@ -10673,6 +10678,7 @@ INCLUDE ~cdtweaks/lib/increase_ammo.tpa~
 
 BEGIN @309000 DESIGNATED 3090
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @309001 // increase misc stacks
 LABEL ~cd_tweaks_increase_gem_stacks_infinite~
 
@@ -10685,6 +10691,7 @@ INCLUDE ~cdtweaks/lib/increase_gem.tpa~
 
 BEGIN @308100 DESIGNATED 3091
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @309001 // increase misc stacks
 LABEL ~cd_tweaks_increase_gem_stacks_40~
 
@@ -10697,6 +10704,7 @@ INCLUDE ~cdtweaks/lib/increase_gem.tpa~
 
 BEGIN @308200 DESIGNATED 3092
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @309001 // increase misc stacks
 LABEL ~cd_tweaks_increase_gem_stacks_80~
 
@@ -10709,6 +10717,7 @@ INCLUDE ~cdtweaks/lib/increase_gem.tpa~
 
 BEGIN @308300 DESIGNATED 3093
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @309001 // increase misc stacks
 LABEL ~cd_tweaks_increase_gem_stacks_120~
 
@@ -10729,6 +10738,7 @@ INCLUDE ~cdtweaks/lib/increase_gem.tpa~
 
 BEGIN @310000 DESIGNATED 3100
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @310001 // increase potion stacks
 LABEL ~cd_tweaks_increase_potion_stacks_infinite~
 
@@ -10741,6 +10751,7 @@ INCLUDE ~cdtweaks/lib/increase_potion.tpa~
 
 BEGIN @308100 DESIGNATED 3101
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @310001 // increase potion stacks
 LABEL ~cd_tweaks_increase_potion_stacks_40~
 
@@ -10753,6 +10764,7 @@ INCLUDE ~cdtweaks/lib/increase_potion.tpa~
 
 BEGIN @308200 DESIGNATED 3102
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @310001 // increase potion stacks
 LABEL ~cd_tweaks_increase_potion_stacks_80~
 
@@ -10765,6 +10777,7 @@ INCLUDE ~cdtweaks/lib/increase_potion.tpa~
 
 BEGIN @308300 DESIGNATED 3103
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @310001 // increase potion stacks
 LABEL ~cd_tweaks_increase_potion_stacks_120~
 
@@ -10785,6 +10798,7 @@ INCLUDE ~cdtweaks/lib/increase_potion.tpa~
 
 BEGIN @311000 DESIGNATED 3110
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @311001 // increase scroll stacks
 LABEL ~cd_tweaks_increase_scroll_stacks_infinite~
 
@@ -10797,6 +10811,7 @@ INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
 
 BEGIN @308100 DESIGNATED 3111
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @311001 // increase scroll stacks
 LABEL ~cd_tweaks_increase_scroll_stacks_40~
 
@@ -10809,6 +10824,7 @@ INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
 
 BEGIN @308200 DESIGNATED 3112
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @311001 // increase scroll stacks
 LABEL ~cd_tweaks_increase_scroll_stacks_80~
 
@@ -10821,6 +10837,7 @@ INCLUDE ~cdtweaks/lib/increase_scroll.tpa~
 
 BEGIN @308300 DESIGNATED 3113
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~setup-iwd2-ease.tp2~ ~1~ @16 // iwd2 eou infinite stacking
 SUBCOMPONENT @311001 // increase scroll stacks
 LABEL ~cd_tweaks_increase_scroll_stacks_120~
 
