@@ -21,6 +21,17 @@ DEFINE_ACTION_FUNCTION 2h_weapons
           2h_paperdoll = S2
 BEGIN
 
+  ACTION_IF MOD_IS_INSTALLED ~amber.tp2~ ~0~ AND prof_check != 92 BEGIN // amber compat, but only for 2h bastard swords and 2h katanas
+    WITH_TRA ~amber/tra/english/dialogs.tra~ ~amber/tra/%LANGUAGE%/dialogs.tra~ BEGIN
+      OUTER_SET amber_name    = RESOLVE_STR_REF(@100)
+      OUTER_SET amber_2hsword = RESOLVE_STR_REF(@331)
+    END
+    ACTION_CLEAR_ARRAY cd_amber_restrictions
+  END ELSE BEGIN
+    OUTER_SET amber_name    = 0
+    OUTER_SET amber_2hsword = 0
+  END
+
   ACTION_IF FILE_EXISTS_IN_GAME ~achand1a.itm~ BEGIN OUTER_SET braegar_compat = 1 END ELSE BEGIN OUTER_SET braegar_compat = 0 END // braegar compatability 
 
   ACTION_IF use_type THEN BEGIN OUTER_SET prof_check = bg1_type END
@@ -272,6 +283,13 @@ BEGIN
                   SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
                 END
               END
+              PATCH_IF amber_name BEGIN // compat: amber won't use 2h swords
+                PATCH_IF enhanced_edition BEGIN 
+                  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter2 = 11 timing = 2 special = amber_name STR_VAR resource = ~m#amber~ END
+                END ELSE BEGIN
+                  DEFINE_ASSOCIATIVE_ARRAY cd_amber_restrictions BEGIN "%SOURCE_RES%" => 20 END // array handled below
+                END  
+              END  
 
             ACTION_IF (game_is_eet) AND (FILE_CONTAINS_EVALUATED (~K#SHATWE.BCS~ ~"%1h%"~)) BEGIN
               EXTEND_BOTTOM ~K#SHATWE.BCS~ ~cdtweaks/baf/eet_shattering.baf~ EVALUATE_BUFFER
@@ -326,6 +344,17 @@ BEGIN
       END
     END
     BUT_ONLY
+
+  // wrap up amber compat for non-ee
+  ACTION_IF amber_name AND !enhanced_edition BEGIN // ees are done directly as 319s on the weapon
+  
+    COPY_EXISTING ~m#ear.itm~ ~override~ // add new 2h swords as restrictions to amber's earrings
+      PATCH_PHP_EACH cd_amber_restrictions AS item => type BEGIN
+        LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 180 parameter1 = amber_2hsword target = 1 timing = 2 STR_VAR resource = EVAL "%item%" END // 2h sword
+      END
+      BUT_ONLY
+      
+  END    
 
   COPY + ~weidu_external/cdtweaks/2da/%2da_file%.2da~ ~weidu_external/cdtweaks/2da/%2da_file%_final.2da~
   
