@@ -647,6 +647,9 @@ Use Baldur.lua options: a7_interval_ini
 
 @337000 = ~Automatic "Chapter Saves" in PsT:EE~
 
+@338000 = ~Sensible Regeneration when Traveling~
+@338001 = ~No regeneration items found: component installed but no changes made.~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

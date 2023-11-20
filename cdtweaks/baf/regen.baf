@@ -1,0 +1,61 @@
+// initialize timers
+IF
+  Global("cd_regen_area","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cd_regen_long","GLOBAL","600")
+    SetGlobalTimer("cd_regen_short","GLOBAL","300")
+    SetGlobal("cd_regen_area","GLOBAL",%num%)
+END
+
+// traveled to a new area with regen items and long travel: heal everyone, reset timers
+IF
+  GlobalTimerExpired("cd_regen_long","GLOBAL")
+  !Global("cd_regen_area","GLOBAL",%num%)
+  OR(%regen_items%)
+    %items_yes%
+THEN
+  RESPONSE #100
+    ApplySpellRES("cdregen",Player1)
+    ApplySpellRES("cdregen",Player2)
+    ApplySpellRES("cdregen",Player3)
+    ApplySpellRES("cdregen",Player4)
+    ApplySpellRES("cdregen",Player5)
+    ApplySpellRES("cdregen",Player6)
+    SetGlobalTimer("cd_regen_long","GLOBAL","600")
+    SetGlobalTimer("cd_regen_short","GLOBAL","300")
+    SetGlobal("cd_regen_area","GLOBAL",%num%)
+END
+
+// traveled to a new area without regen items: reset timers
+IF
+  GlobalTimerExpired("cd_regen_long","GLOBAL")
+  !Global("cd_regen_area","GLOBAL",%num%)
+  %items_no%
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cd_regen_long","GLOBAL",600)
+    SetGlobalTimer("cd_regen_short","GLOBAL",300)
+    SetGlobal("cd_regen_area","GLOBAL",%num%)
+END
+
+// traveled to a new area without long travel: reset timers
+IF 
+  !GlobalTimerExpired("cd_regen_long","GLOBAL")
+  !Global("cd_regen_area","GLOBAL",%num%)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cd_regen_long","GLOBAL",600)
+    SetGlobalTimer("cd_regen_short","GLOBAL",300)
+    SetGlobal("cd_regen_area","GLOBAL",%num%)
+END
+
+// reset the long timer if short timer expires without wmp travel
+IF 
+  !GlobalTimerExpired("cd_regen_short","GLOBAL")
+  Global("cd_regen_area","GLOBAL",%num%)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cd_regen_long","GLOBAL",600)
+    SetGlobalTimer("cd_regen_short","GLOBAL",300)
+END
