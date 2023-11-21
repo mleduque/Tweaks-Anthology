@@ -11514,6 +11514,8 @@ END
 // allow multiple romances
 ACTION_IF (romance_multiple = 1) THEN BEGIN
 
+  COMPILE ~cdtweaks/dlg/romance_multi.d~ // remove LT sniping killing romances
+
   ACTION_PHP_EACH cd_romances AS npc => tob BEGIN
     
     COPY_EXISTING ~%npc%.bcs~ ~override~
