@@ -5240,7 +5240,6 @@ GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 LABEL ~cd_tweaks_2h_bastard_swords~
 
-ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
 
 ACTION_IF original_iwd THEN BEGIN
@@ -5305,7 +5304,6 @@ GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 LABEL ~cd_tweaks_2h_katanas~
 
-ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
 
 LAUNCH_ACTION_FUNCTION 2h_weapons // defaults are bastard sword settings
@@ -5368,7 +5366,6 @@ GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 LABEL ~cd_tweaks_2h_axes~
 
-ACTION_IF original_bg1 OR original_iwd THEN BEGIN OUTER_SET use_type = 1 END ELSE BEGIN OUTER_SET use_type = 0 END
 INCLUDE ~cdtweaks/lib/2h_weapons.tpa~  // text replacement macros
 
 LAUNCH_ACTION_FUNCTION 2h_weapons // defaults are bastard sword settings
