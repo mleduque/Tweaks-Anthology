@@ -6769,7 +6769,7 @@ LABEL ~cd_tweaks_item_spells_at_char_level~
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   PATCH_FOR_EACH op IN 146 148 BEGIN
-    LPF ALTER_EFFECT INT_VAR headers = 1 check_globals = 0 header_type = 3 match_opcode = op parameter1 = 0 silent = 1 END
+    LPF ALTER_EFFECT INT_VAR check_headers = 1 check_globals = 0 header_type = 3 match_opcode = op parameter1 = 0 silent = 1 END
   END
   BUT_ONLY
 
