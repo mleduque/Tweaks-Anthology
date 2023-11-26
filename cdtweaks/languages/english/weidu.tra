@@ -38,6 +38,7 @@
 
 @100 = ~Batch Installer -- EXPERIMENTAL, use at own risk. Check the readme.~
 @101 = ~This component is only available for interactive installations.~
+@102 = ~Some parts of this mod are already installed; batch mode not available.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

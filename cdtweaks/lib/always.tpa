@@ -1,5 +1,7 @@
 MKDIR ~weidu_external/cdtweaks~
 
+COPY ~cdtweaks/cdtweaks.ini~ ~weidu_external/cdtweaks/no_batch.ini~ // disable batch mode once we have a component "really" installed
+
 INCLUDE ~cdtweaks/lib/fj_spl_itm_reindex.tpa~ // wisp functions
 
 <<<<<<<< ./inline/always_checks.tpa

@@ -120,6 +120,7 @@ GROUP @9
 GROUP @4
 GROUP @0
 //REQUIRE_PREDICATE ~%INTERACTIVE%~ @101
+REQUIRE_PREDICATE !FILE_EXISTS ~weidu_external/cdtweaks/no_batch.ini~ @102
 LABEL ~cd_tweaks_batch_install~
 
 OUTER_SET cd_tweaks_batch_install = 1 
