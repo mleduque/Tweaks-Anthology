@@ -166,7 +166,7 @@ END
 >>>>>>>>
  
 ACTION_IF ("%WEIDU_OS%" STRING_COMPARE_CASE "win32") BEGIN // make batch file executable for non-windows
-  AT_EXIT ~chmod +x ./weidu_external/cdwteaks/%batch_file%~
+  AT_EXIT ~chmod +x ./weidu_external/cdtweaks/%batch_file%~
 END
  
 AT_EXIT ~%WEIDU_EXECUTABLE% %batch_args% --force-uninstall-list 0 --language %batch_lang% --noautoupdate~
