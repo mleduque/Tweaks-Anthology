@@ -89,19 +89,3 @@ OUTER_FOR (i=1; i<=10; i=i+1) BEGIN
   OUTER_SPRINT name_source ~bg2_chapter_%i%~
   OUTER_SET EVAL ~%name_source%~ = bg2_chapter
 END
-
-ACTION_IF FILE_EXISTS ~cdtweaks/cdtweaks.txt~ THEN BEGIN
-  
-  INCLUDE ~cdtweaks/cdtweaks.txt~ // config file
-
-  ACTION_IF !VARIABLE_IS_SET romance_speed_use_config_values THEN BEGIN OUTER_SET romance_speed_use_config_values = 0 END
-  ACTION_IF !VARIABLE_IS_SET minimum_stats_use_config_values THEN BEGIN OUTER_SET minimum_stats_use_config_values = 0 END
-  ACTION_IF !VARIABLE_IS_SET romance_use_config_values       THEN BEGIN OUTER_SET romance_use_config_values = 0 END
-
-END ELSE BEGIN
-
-  OUTER_SET romance_speed_use_config_values = 0
-  OUTER_SET minimum_stats_use_config_values = 0
-  OUTER_SET romance_use_config_values = 0
-
-END

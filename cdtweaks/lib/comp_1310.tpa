@@ -1,0 +1,111 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// restore all  BG2 spells, and make scrolls available        \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+//LAF make_label STR_VAR label=~i#bg2spells~ END
+
+      COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
+          PATCH_IF ~SOURCE_SIZE~ >0x71 BEGIN
+
+              READ_SHORT 0x1c ~type~
+              PATCH_IF ~type~=11 BEGIN // only check scrolls
+                       GET_OFFSET_ARRAY ab_array 0x64 4 0x68 2 0 0 0x38
+                       PHP_EACH ab_array AS int => ab_off BEGIN
+                                CLEAR_ARRAY fx_array
+                                GET_OFFSET_ARRAY2 fx_array ab_off ITM_V10_HEAD_EFFECTS
+                                PHP_EACH fx_array AS int => fx_off BEGIN
+                                         READ_SHORT fx_off fx_type
+                                         PATCH_IF fx_type = 147 BEGIN
+                                             READ_ASCII fx_off + 0x14 spell
+                                             TO_LOWER ~spell~
+                                             SPRINT $scrollmap(~%spell%~) ~%SOURCE_RES%~
+                                         END
+                                END
+                       END
+              END
+          END
+      BUT_ONLY
+
+ACTION_FOR_EACH ~magespell~ IN
+120 123 125
+220 221 223 224
+301 302 307 318 319 320 321 322 324 325
+403 409 415 416 417 418 419 420 421 423 424 425
+505 510 511 512 513 515 517 518 519 520 522
+606 607 608 609 611 613 617 618 619 620 621 622 623 624
+701 702 703 704 705 707 708 710 711 712 717 718 719 720 722
+803 804 805 807 808 809 811 813 816 817 818 // not odd Spell Deflection (802)
+902 903 905 907 908 909 910 911 913 914 915 916 917 918 919
+BEGIN
+     OUTER_SET ~level~=~magespell~ / 100
+     COPY_EXISTING ~hidespl.2da~ ~override~
+        REPLACE_TEXTUALLY CASE_INSENSITIVE ~SPWI%magespell%[ ]+[\*]+~ ~~
+     BUT_ONLY
+     ACTION_IF ~level~=1 OR ~level~=2 BEGIN
+         OUTER_SPRINT ~store~ ~kuork1~
+         OUTER_SPRINT ~after~ ~spwi223a~
+     END
+     ACTION_IF ~level~=3 OR ~level~=4 BEGIN
+         OUTER_SPRINT ~store~ ~kuork2~
+         OUTER_SPRINT ~after~ ~spwi517x~
+     END
+     ACTION_IF ~level~=5 OR ~level~=6 BEGIN
+         OUTER_SPRINT ~store~ ~kuork3~
+         OUTER_SPRINT ~after~ ~scstor~
+     END
+     ACTION_IF ~level~>6 BEGIN
+        RANDOM_SEED 3.14
+        OUTER_SET ~randnum~=RANDOM (1 4)
+        ACTION_IF ~randnum~=1 BEGIN
+            OUTER_SPRINT ~store~ ~edion~
+            OUTER_SPRINT ~after~ ~spwi808x~
+        END
+        ACTION_IF ~randnum~=2 BEGIN
+            OUTER_SPRINT ~store~ ~bandoth~
+            OUTER_SPRINT ~after~ ~scssha~
+        END
+        ACTION_IF ~randnum~=3 BEGIN
+            OUTER_SPRINT ~store~ ~ldd_nym~
+            OUTER_SPRINT ~after~ ~scprism~
+        END
+        ACTION_IF ~randnum~=4 BEGIN
+            OUTER_SPRINT ~store~ ~kieran2~
+            OUTER_SPRINT ~after~ ~spwi805x~
+        END
+     END
+     OUTER_SPRINT ~file~ ~spwi%magespell%~
+     OUTER_SPRINT ~scroll~ $scrollmap(EVALUATE_BUFFER ~%file%~)
+     COPY_EXISTING ~%store%.sto~ ~override~
+         ADD_STORE_ITEM ~%scroll%~ AFTER ~%after%~ #0 #0 #0 ~IDENTIFIED~ #2
+END
+
+ACTION_FOR_EACH ~priestspell~ IN
+111 113 315 318 319 409 410 412 413 415 417 505 506
+513 514 515 516 601 604 609 610 611 612 613 701 703
+704 706 708 711 713 718 719
+BEGIN
+     COPY_EXISTING ~hidespl.2da~ ~override~
+        REPLACE_TEXTUALLY CASE_INSENSITIVE ~SPPR%priestspell%[ ]+[\*]+~ ~~
+     BUT_ONLY
+END
+
+COPY_EXISTING ~splsrckn.2da~ ~override~
+      FOR (i=20;i<25;i=i+1) BEGIN
+         SET_2DA_ENTRY i 9 9 3
+      END
+      FOR (i=25;i<36;i=i+1) BEGIN
+         SET_2DA_ENTRY i 9 9 4
+      END
+      FOR (i=36;i<41;i=i+1) BEGIN
+         SET_2DA_ENTRY i 9 9 5
+      END
+      
+COPY_EXISTING ~tobex_ini/tobexcore.ini~ ~tobex_ini~ 
+   REPLACE_TEXTUALLY ~Scrollable Mage Spellbook=0~ ~Scrollable Mage Spellbook=1~
+   REPLACE_TEXTUALLY ~Scrollable Priest Spellbook=0~ ~Scrollable Priest Spellbook=1~
+   
+COMPILE ~cdtweaks/dlg/iib_famil.d~ // disables BG2 advice from familiars

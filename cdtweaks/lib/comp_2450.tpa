@@ -1,0 +1,179 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// PnP Prof restrictions for dual-classes                     \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+INCLUDE ~cdtweaks/lib/sod_25stweap_fix.tpa~
+INCLUDE ~cdtweaks/lib/iwdee_25stweap_fix.tpa~
+INCLUDE ~cdtweaks/lib/remove_lines.tpa~
+INCLUDE ~cdtweaks/lib/fl#add_kit_ee.tpa~
+
+COPY ~cdtweaks/lib/pnp_dual_core.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~
+
+// look up default fighter/ranger stuff
+COPY_EXISTING ~weapprof.2da~  ~override~
+  REPLACE_TEXTUALLY ~NAME_REF~ ~CDDELETEME NAME_REF~
+  FOR (row = 9; row < 33; ++row) BEGIN
+    READ_2DA_ENTRY row  5 22 prof_fgt
+    READ_2DA_ENTRY row 11 22 prof_rgr
+    PATCH_IF prof_fgt > 2 BEGIN SET prof_fgt = 2 END
+    PATCH_IF prof_rgr > 2 BEGIN SET prof_rgr = 2 END
+    INNER_ACTION BEGIN
+      COPY ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~
+        REPLACE_TEXTUALLY ~prof_fgt_%row%~ ~%prof_fgt%~
+        REPLACE_TEXTUALLY ~prof_rgr_%row%~ ~%prof_rgr%~
+    END
+  END
+  BUT_ONLY
+
+// these strings are the same on bgee/bg2ee/iwdee/vanilla bg2; leaving externalized in case we discover otherwise and need to if/else here
+OUTER_SET fgt_strref1 = 10086
+OUTER_SET fgt_strref2 = 10174 // 16799, 40921, 40922
+OUTER_SET fgt_strref3 = 9556
+OUTER_SET rgr_strref1 = 7200
+OUTER_SET rgr_strref2 = 10173 // 1077, 2184-5
+OUTER_SET rgr_strref3 = 9557
+
+COPY ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~
+  REPLACE_TEXTUALLY ~fgt_strref1~ ~%fgt_strref1%~
+  REPLACE_TEXTUALLY ~fgt_strref2~ ~%fgt_strref2%~
+  REPLACE_TEXTUALLY ~fgt_strref3~ ~%fgt_strref3%~
+  REPLACE_TEXTUALLY ~fgt_strref4~ ~%fgt_strref4%~
+  REPLACE_TEXTUALLY ~rgr_strref1~ ~%rgr_strref1%~
+  REPLACE_TEXTUALLY ~rgr_strref2~ ~%rgr_strref2%~
+  REPLACE_TEXTUALLY ~rgr_strref3~ ~%rgr_strref3%~
+  REPLACE_TEXTUALLY ~rgr_strref4~ ~%rgr_strref4%~
+
+REINCLUDE ~weidu_external/cdtweaks/lib/pnp_dual_core.tpa~
+
+COPY ~cdtweaks/spl/d5_duafc.spl~ ~override~
+
+COPY ~cdtweaks/cre/d5_dual.cre~ ~override~
+     ~cdtweaks/eff/d5_dual.eff~ ~override~
+
+ACTION_IF enhanced_edition BEGIN 
+  OUTER_SPRINT fdc ~OriginalClass(LastSummonerOf(Myself),FIGHTER)~
+  OUTER_SPRINT rdc ~OriginalClass(LastSummonerOf(Myself),RANGER)~
+END ELSE BEGIN
+  OUTER_SPRINT fdc ~Race(LastSummonerOf(Myself),HUMAN)~
+  OUTER_SPRINT rdc ~Race(LastSummonerOf(Myself),HUMAN)~
+END
+COMPILE ~cdtweaks/baf/d5_dual.baf~ EVALUATE_BUFFER
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~clabma01.2da~ THEN BEGIN
+  COPY ~cdtweaks/2da/clabmaxx.2da~ ~override/clabma01.2da~
+END
+
+COPY_EXISTING ~clabdr01.2da~ ~override~
+              ~clabma01.2da~ ~override~
+              ~clabpr01.2da~ ~override~
+              ~clabth01.2da~ ~override~
+  LPM remove_blank_lines
+  APPEND_FILE ~cdtweaks/2da/dualfc.2da~
+  BUT_ONLY
+
+// now for original and mod kits
+OUTER_SET cd_kit_count = 0
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS 9 rows
+  FOR (row2 = 0 ; row2 < rows ; ++row2) BEGIN
+    READ_2DA_ENTRY row2 8 9 class
+    READ_2DA_ENTRY row2 0 9 kitno
+    PATCH_IF IS_AN_INT class BEGIN // this is to screen out header junk
+      PATCH_IF ((class = 2) OR (class = 12)) BEGIN // looking for fighter/ranger kits
+        READ_2DA_ENTRY row2 1 9 name
+        READ_2DA_ENTRY row2 5 9 clab
+        SET ids = (0x4000 + kitno)
+        PATCH_IF (class = 2) BEGIN // looking for fighter/ranger kits
+          SPRINT letter  f
+          SPRINT class ~OR(4) Class(LastSummonerOf(Myself),FIGHTER_THIEF) Class(LastSummonerOf(Myself),FIGHTER_MAGE) Class(LastSummonerOf(Myself),FIGHTER_DRUID) Class(LastSummonerOf(Myself),FIGHTER_CLERIC)~
+        END ELSE BEGIN
+          SPRINT letter  r
+          SPRINT class ~Class(LastSummonerOf(Myself),CLERIC_RANGER)~
+        END
+        SET sanity_check = 0
+        // sanity check before we proceed - make sure kit is not purely internal
+        PATCH_FOR_EACH race IN d e g he hl ho BEGIN
+          PATCH_IF FILE_EXISTS_IN_GAME ~k_%letter%_%race%.2da~ BEGIN
+            INNER_ACTION BEGIN
+
+              COPY_EXISTING ~k_%letter%_%race%.2da~ ~override~
+                COUNT_2DA_ROWS 2 rows_inner
+                FOR (row_inner = 0 ; row_inner < rows_inner ; ++row_inner) BEGIN
+                  READ_2DA_ENTRY row_inner 0 2 index
+                  READ_2DA_ENTRY row_inner 1 2 kitcheck
+                  PATCH_IF IS_AN_INT kitcheck BEGIN // sanity check
+                    PATCH_IF kitcheck = kitno BEGIN
+                      SET sanity_check = 1
+                      SET row_inner = rows_inner // kill loop
+                    END
+                  END
+                END
+                BUT_ONLY
+  
+            END
+          END
+        END
+        PATCH_IF sanity_check = 1 BEGIN
+          INNER_ACTION BEGIN // sanity check two - don't bother if kit doesn't allow > 2 pips in anything
+
+            COPY ~cdtweaks/lib/pnp_dual_kit.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~
+
+            COPY_EXISTING ~weapprof.2da~  ~override~
+              COUNT_2DA_COLS weapprof_cols
+              FOR (index_col = 20 ; index_col < weapprof_cols ; ++index_col) BEGIN
+                READ_2DA_ENTRY 0 index_col weapprof_cols col_name
+                PATCH_IF ("%col_name%" STRING_COMPARE_CASE ~%name%~ = 0) BEGIN
+                  FOR (row = 9; row < 33; ++row) BEGIN
+                    READ_2DA_ENTRY row index_col weapprof_cols prof_fgt
+                    PATCH_IF prof_fgt > 2 BEGIN SET prof_fgt = 2 SET sanity_check = 2 END
+                    INNER_ACTION BEGIN
+
+                      COPY ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~
+                        REPLACE_TEXTUALLY ~prof_fgt_%row%~ ~%prof_fgt%~
+
+                    END
+
+                  END
+                  SET index_col = weapprof_cols // kill loop
+                END
+              END
+              BUT_ONLY
+
+          END
+          PATCH_IF sanity_check = 1 BEGIN // if no > 2 pips profs available, simply edit invis creature script
+            INNER_ACTION BEGIN
+
+              COPY_EXISTING ~d5_dual.bcs~ ~override~
+                DECOMPILE_AND_PATCH BEGIN
+                  REPLACE_EVALUATE ~OR(\([0-9]+\))\([ %TAB%%LNL%%MNL%%WNL%]+Kit(LastSummonerOf(Myself),D5FIGHT)\)~ BEGIN
+                    SET new_or = (%MATCH1% + 1)
+                  END ~OR(%new_or%) %MATCH2% Kit(LastSummonerOf(Myself),%ids%)~
+                END
+                BUT_ONLY
+
+            END
+          END ELSE BEGIN // if we do indeed need shadow kit
+            INNER_ACTION BEGIN
+
+              COPY ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~ ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~
+                REPLACE_TEXTUALLY ~REPLACE_ME_KIT_NAME~ ~%name%~
+                REPLACE_TEXTUALLY ~CD_NEW_KIT_NAME~ ~CDSK%cd_kit_count%~
+
+              REINCLUDE ~weidu_external/cdtweaks/lib/pnp_dual_working.tpa~
+
+            END
+          END // sanity check 2
+        END // sanity check 1
+      END // fighter/ranger class check
+    END // is_an_int check
+  END // for loop
+  BUT_ONLY
+
+COPY_EXISTING ~weapprof.2da~  ~override~
+  REPLACE_TEXTUALLY ~CDDELETEME~ ~~
+  PRETTY_PRINT_2DA

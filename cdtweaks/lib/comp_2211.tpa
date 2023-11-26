@@ -1,0 +1,32 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Change grandmastery bonuses                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// bg2 grandmastery                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~wspecial.2da~ ~[ %TAB%]*SPEED[ %TAB%]*~) THEN BEGIN OUTER_SET dump_speed = 0 END ELSE BEGIN OUTER_SET dump_speed = 1 END
+
+COPY ~cdtweaks/2da/bg2_wspatck.2da~  ~override/wspatck.2da~
+     ~cdtweaks/2da/bg2_wspecial.2da~ ~override/wspecial.2da~
+
+ACTION_IF dump_speed THEN BEGIN
+
+  COPY_EXISTING ~wspecial.2da~ ~override~ // remove speed column
+    REPLACE_TEXTUALLY ~[ %TAB%]*SPEED[ %TAB%]*~ ~~
+    REPLACE_TEXTUALLY ~^\([0-5]+[ %TAB%]+-?[0-9]+[ %TAB%]+-?[0-9]+\)[ %TAB%]+-?[0-9]+~ ~\1~
+    BUT_ONLY
+
+END
+
+// if grandmastery has been moved directly to BBoD
+INCLUDE ~cdtweaks/lib/macro_alter_header.tpa~
+COPY_EXISTING ~blakblad.itm~ ~override~
+  LPF ALTER_EFFECT INT_VAR silent = 1 check_headers = 0 match_opcode = 1 parameter1 = 6 END // +0.5 APR  
+  LPF ALTER_HEADER INT_VAR silent = 1 match_damage = 10 match_to_hit = 8 speed = 0 damage = 9 to_hit = 7 END // from +3 to-hit, +5 damage > +2 to-hit, +4 damage 
+  BUT_ONLY IF_EXISTS

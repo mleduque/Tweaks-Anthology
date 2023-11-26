@@ -1,0 +1,30 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Speed Up de'Arnise Keep Stronghold Quests                  \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY_EXISTING ~cut32b.bcs~   ~override~
+              ~cut32c.bcs~   ~override~
+              ~cut32d.bcs~   ~override~
+              ~cut32e.bcs~   ~override~
+              ~cut32e2.bcs~  ~override~
+              ~cut32g.bcs~   ~override~
+              ~cut32h.bcs~   ~override~
+              ~cut32i.bcs~   ~override~
+              ~cut32j.bcs~   ~override~
+              ~cut32k.bcs~   ~override~
+              ~kpdomo01.dlg~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_EVALUATE ~SetGlobalTimer("KPPlotTime","GLOBAL",\([^)]+\))~ BEGIN
+      PATCH_IF IS_AN_INT MATCH1 BEGIN
+        SET time = MATCH1
+      END ELSE BEGIN
+        SET time = IDS_OF_SYMBOL (~GTIMES~ ~%MATCH1%~) // should convert stuff like EIGHT_HOURS to numeric value
+      END
+      SET time = ((time * 67) / 100) 
+    END ~SetGlobalTimer("KPPlotTime","GLOBAL",%time%)~  
+  END
+  BUT_ONLY

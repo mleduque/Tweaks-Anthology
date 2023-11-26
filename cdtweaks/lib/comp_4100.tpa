@@ -1,0 +1,17 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Change Korgan to NE                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY_EXISTING_REGEXP GLOB ~^korgan[0-9]*.*\.cre$~ ~override~
+  WRITE_BYTE 0x27b 35 // neutral evil
+  BUT_ONLY
+  
+ACTION_IF FILE_EXISTS_IN_GAME ~korga25p.dlg~ BEGIN
+  
+  COMPILE ~cdtweaks/dlg/ne_korgan.d~
+
+END  

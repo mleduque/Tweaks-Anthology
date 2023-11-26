@@ -1,0 +1,14 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// new games start with party ai turned off         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY_EXISTING ~baldur.gam~   ~override~ // all others
+              ~icewind.gam~  ~override~ // iwd
+              ~icewind2.gam~ ~override~ // iwd2
+              ~torment.gam~  ~override~ // pstee
+  WRITE_LONG 0x60 (THIS | BIT0) // set party ai disabled bit
+  BUT_ONLY IF_EXISTS

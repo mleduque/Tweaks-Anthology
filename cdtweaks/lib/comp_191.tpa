@@ -1,0 +1,23 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Maintain character colors                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// non-magical helmets and shields                  \\\\\
+/////                                                  \\\\\
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  READ_SHORT 0x1c type
+  READ_LONG 0x18 flags
+  PATCH_IF (((flags & BIT6) = 0) AND ((type = 7) OR (type = 12) OR (type = 41) OR (type = 47) OR (type = 49) OR (type = 53))) BEGIN // item type helm or shield, flagged as non-magical
+    PATCH_FOR_EACH loc IN 33 34 49 50 BEGIN // 33 - shield interior, 34 - shield panel, 49 - helm detail/plume, 50 - helm wings
+      LPF DELETE_EFFECT INT_VAR match_opcode = 7 match_timing = 2 match_parameter2 = loc END                                    // delete color effect
+      LPF ALTER_EFFECT  INT_VAR match_opcode = 8 match_timing = 2 match_parameter2 = loc parameter1 = 0x64646400 silent = 1 END // change to generic white glow
+      LPF ALTER_EFFECT  INT_VAR match_opcode = 9 match_timing = 2 match_parameter2 = loc parameter1 = 0x64646400 silent = 1 END // change to generic white pulse
+    END
+  END
+  BUT_ONLY

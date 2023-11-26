@@ -1,0 +1,17 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// HoW accessible at 1st level                                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+LAM cd_tweaks_install
+
+COPY_EXISTING ~dhjollde.dlg~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~LevelPartyGT(8)~      ~True()~  // iwd-in-bg2, also converts inverse to !True
+    REPLACE_TEXTUALLY ~CheckPartyLevel(9)~   ~True()~  // iwd; also converts inverse check to !True
+    REPLACE_TEXTUALLY ~XPLT(Player1,250000)~ ~False()~ // iwdee
+    REPLACE_TEXTUALLY ~XPGT(Player1,249999)~ ~True()~  // iwdee
+  END

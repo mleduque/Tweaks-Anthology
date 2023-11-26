@@ -1,0 +1,82 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Change Equipment Restrictions for Druid Multis             \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// Tighten Equipment Restrictions for Druid Multis            \\\\\
+/////                                                            \\\\\
+  
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  PATCH_IF (("%SOURCE_RES%" STRING_COMPARE_CASE "cdrelm") AND
+            ("%SOURCE_RES%" STRING_COMPARE_CASE "d1brac02") AND
+            ("%SOURCE_RES%" STRING_COMPARE_CASE "dstdruid") AND // dsotsc: tiara of the chanah'rea
+            ("%SOURCE_RES%" STRING_COMPARE_CASE "dscdruid") AND // dsotsc: crown of the archdruid
+            ("%SOURCE_RES%" STRING_COMPARE_CASE "gauntem") AND
+            ("%SOURCE_RES%" STRING_COMPARE_CASE "helm34") AND
+            ("%SOURCE_RES%" STRING_COMPARE_CASE "mh#ioun1") AND
+            ("%SOURCE_RES%" STRING_COMPARE_CASE "misc5x")) BEGIN // exclude jaheira's harper pin
+    READ_SHORT 0x1c type
+    READ_LONG  0x1e use
+    PATCH_IF type = 7 BEGIN // helmets
+      PATCH_IF ((use BAND BIT6) = BIT6) BEGIN        // if unusable by bards (regular helmet)...
+        WRITE_LONG 0x1e ((THIS BOR BIT12) BOR BIT30) // adds f/d, druid flags
+      END ELSE BEGIN                                 // if not helmet, assume ioun stone
+        PATCH_IF ((use BAND BIT30) = BIT30) BEGIN    // if unusable by druids...
+          WRITE_LONG 0x1e (THIS BOR BIT12)           // adds f/d flag
+        END 
+      END
+    END ELSE
+    PATCH_IF ((type = 1) OR      // amulets
+              (type = 3) OR      // belts
+              (type = 4) OR      // boots
+              (type = 6) OR      // bracers
+              (type = 9) OR      // potions
+              (type = 10) OR     // rings
+              (type = 32) OR     // cloaks
+              (type = 35)) BEGIN // wands
+      PATCH_IF (((use BAND BIT30) = BIT30) AND    // if unusable by druids...
+                ((use BAND BIT11) = BIT11)) BEGIN // ...and unusable by fighters...
+        WRITE_LONG 0x1e (THIS BOR BIT12)          // adds f/d flag
+      END
+    END ELSE BEGIN // all other item types
+      PATCH_IF ((use BAND BIT30) = BIT30) BEGIN // if unusable by druids...
+        WRITE_LONG 0x1e (THIS BOR BIT12)        // adds f/d flag
+      END
+    END
+  END
+  BUT_ONLY
+
+COPY_EXISTING ~clasweap.2da~ ~override~
+  PATCH_IF original_iwd BEGIN
+    SET col_num = 16
+  END ELSE BEGIN
+    SET col_num = 9
+  END
+  READ_2DA_ENTRY 0 0 (col_num - 1) val                  // weidu seems to freak out with a top line w/ one less entry
+  SET_2DA_ENTRY  0 0 (col_num - 1) ~CD_DELETE_ME %val%~ // temp
+  FOR (col = 1; col < col_num; ++col) BEGIN
+    READ_2DA_ENTRY  7 col col_num druid
+    PATCH_IF (druid = 0) BEGIN
+      SET_2DA_ENTRY 16 col col_num 0 // fd
+    END
+  END
+  REPLACE_TEXTUALLY ~CD_DELETE_ME ~ ~~
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+
+ACTION_IF FILE_EXISTS_IN_GAME ~weapprof.2da~ THEN BEGIN
+
+  COPY_EXISTING ~weapprof.2da~  ~override~
+    FOR (row = 9; row < 28; ++row) BEGIN // exclude weapon styles
+      READ_2DA_ENTRY row 10 22 dru // druid stars
+      PATCH_IF (dru = 0) BEGIN
+        SET_2DA_ENTRY row 19 22 0
+      END
+    END
+    BUT_ONLY
+
+END

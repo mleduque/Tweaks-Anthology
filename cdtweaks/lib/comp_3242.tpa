@@ -1,0 +1,101 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// friendly random drops                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// wandering merchant style                         \\\\\
+/////                                                  \\\\\
+
+OUTER_SET tfg_bows = 0 // randomize bows in TotFG (skip on merchant option)
+INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
+
+COPY_EXISTING ~katown1.cre~ ~override/cdrndm1.cre~
+  SAY 0x08 @324201
+  SAY 0x0c @324202
+  WRITE_ASCII 0x248 ~eftwnchk~ #8
+  WRITE_ASCII 0x250 ~kuatkfle~ #32 // add script, blank other fields
+  PATCH_IF original_iwd BEGIN
+    WRITE_BYTE  0x270 0 // make visible
+    WRITE_ASCII 0x2e8 ~cdrndm1~ #32 // dv
+    WRITE_ASCII 0x334 ~cdrndm1~ #8  // dialogue
+  END ELSE BEGIN
+    WRITE_ASCII 0x280 ~cdrndm1~ #32 // dv
+    WRITE_ASCII 0x2cc ~cdrndm1~ #8  // dialogue
+  END
+
+EXTEND_BOTTOM ~ar2100.bcs~ ~cdtweaks/baf/ar2100.baf~
+
+OUTER_SPRINT reply_flags ~~
+ACTION_IF game_is_iwdee THEN BEGIN
+
+  INCLUDE ~cdtweaks/lib/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema in random.2da
+  OUTER_SPRINT reply_flags ~FLAGS 517~
+  
+
+END
+
+COPY ~cdtweaks/dlg/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm1.d~
+
+COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
+  PATCH_IF NOT (game_is_iwd OR game_is_how) BEGIN
+    REPLACE_TEXTUALLY ~ShadowedElvenPriest~ ~Priest_0~ // dv changes with totlm installed
+  END
+  COUNT_2DA_ROWS 4 "rows"
+  FOR (index = 1 ; index < rows ; ++index) BEGIN
+    READ_2DA_ENTRY index 1 4 "item"
+    INNER_ACTION BEGIN
+
+      COPY_EXISTING ~%table%.2da~ ~override~
+        REPLACE_EVALUATE CASE_INSENSITIVE ~^\(%item%[ %TAB%]\)\(.+\)\([ %TAB%]*\)$~
+        BEGIN SPRINT "list" "%MATCH2%" END ~%MATCH1%%MATCH2%%MATCH3%~
+        BUT_ONLY
+
+      COPY ~cdtweaks/lib/template3.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
+        REPLACE_TEXTUALLY ~replacemelist~ ~%list%~ //EVALUATE_BUFFER
+        REPLACE_TEXTUALLY ~\([ %TAB%]+\*\)*~ ~~
+        REPLACE_TEXTUALLY ~multiply~ ~*~
+        REPLACE_TEXTUALLY ~percentage~ ~%~
+
+      INCLUDE ~weidu_external/cdtweaks/random/%item%.tpa~
+
+    END
+  END
+  BUT_ONLY
+
+COPY ~weidu_external/cdtweaks/random/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm1.d~
+  REPLACE_TEXTUALLY ~insert_eof~ ~END~
+
+ACTION_IF NOT game_is_iwd THEN BEGIN // add lonelywood merchant
+
+  COPY_EXISTING ~cdrndm1.cre~ ~override/cdrndm2.cre~
+    SAY 0x08 @324203
+    SAY 0x0c @324202
+    WRITE_ASCII 0x248 ~efpikwrn~ #8
+    WRITE_ASCII 0x250 ~eftwnchk~ #8
+    WRITE_ASCII 0x258 ~efflee00~ #24
+    PATCH_IF original_iwd BEGIN
+      WRITE_ASCII 0x2e8 ~cdrndm2~ #32 // dv
+      WRITE_ASCII 0x334 ~cdrndm2~ #8  // dialogue
+      WRITE_BYTE  0x270 0 // make visible
+    END ELSE BEGIN
+      WRITE_ASCII 0x280 ~cdrndm2~ #32 // dv
+      WRITE_ASCII 0x2cc ~cdrndm2~ #8  // dialogue
+    END
+
+  EXTEND_BOTTOM ~ar9100.bcs~ ~cdtweaks/baf/ar9100.baf~
+
+  COPY ~weidu_external/cdtweaks/random/cdrndm1.d~ ~weidu_external/cdtweaks/random/cdrndm2.d~
+    REPLACE_TEXTUALLY ~32426\([0-9]\)~ ~32428\1~
+    REPLACE_TEXTUALLY ~CDRNDM1~ ~CDRNDM3~
+    REPLACE_TEXTUALLY ~CDRNDM2~ ~CDRNDM1~
+    REPLACE_TEXTUALLY ~CDRNDM3~ ~CDRNDM2~
+
+  COMPILE ~weidu_external/cdtweaks/random/cdrndm2.d~
+
+END
+
+COMPILE ~weidu_external/cdtweaks/random/cdrndm1.d~

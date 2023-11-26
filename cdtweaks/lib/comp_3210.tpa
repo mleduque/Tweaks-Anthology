@@ -1,0 +1,30 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Min Stats Tweak                                  \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_min_stats BEGIN
+  1 => "%minimum_stats_strength%"
+  2 => "%minimum_stats_dexterity%"
+  3 => "%minimum_stats_constitution%"
+  4 => "%minimum_stats_intelligence%"
+  5 => "%minimum_stats_wisdom%"
+  6 => "%minimum_stats_charisma%"
+END
+
+COPY_EXISTING ~abclasrq.2da~ ~override~
+  COUNT_2DA_ROWS ~7~ "rows"
+  FOR (index = 0 ; index < rows ; ++index) BEGIN
+    PATCH_PHP_EACH cd_min_stats AS col => val BEGIN
+      PATCH_IF val != 0 BEGIN
+        READ_2DA_ENTRY index col 7 min
+        PATCH_IF (min < val) BEGIN
+          SET_2DA_ENTRY index col 7 "%val%"
+        END
+      END
+    END
+  END
+  BUT_ONLY

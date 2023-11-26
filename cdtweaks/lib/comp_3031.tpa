@@ -1,0 +1,28 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Easy Spell Learning                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// 100% learn spells & no spell caps                \\\\\
+/////                                                  \\\\\
+
+PRINT @1
+COPY_EXISTING ~intmod.2da~ ~override~
+  COUNT_2DA_ROWS ~3~ "rows"
+  FOR (index = 3; index < rows ; index = index + 1) BEGIN
+    SET_2DA_ENTRY_LATER ~intmod~ index 1 ~150~
+    SET_2DA_ENTRY_LATER ~intmod~ index 2 ~9~
+    SET_2DA_ENTRY_LATER ~intmod~ index 3 ~99~
+  END
+  SET_2DA_ENTRIES_NOW ~intmod~ 1
+  BUT_ONLY
+
+ACTION_IF game_is_iwd THEN BEGIN // allows player to learn lev8-9 spells in non-HoW games
+
+  INCLUDE ~cdtweaks/lib/learn_all.tpa~
+
+END

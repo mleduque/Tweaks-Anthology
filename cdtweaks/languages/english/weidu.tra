@@ -36,9 +36,8 @@
 @27 = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
 @28 = ~There are not enough free spell state or secondary type slots available to install this component.~
 
-// this component is not ready, you can skip translating this block
-//@100 = ~Automated Installer~
-//@101 = ~Automated install file not found, skipping...~
+@100 = ~Batch Installer -- EXPERIMENTAL, use at own risk. Check the readme.~
+@101 = ~This component is only available for interactive installations.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

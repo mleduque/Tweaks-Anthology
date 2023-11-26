@@ -1,0 +1,26 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Alter THAC0 Table                                          \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF game_is_iwd2 THEN BEGIN
+
+  COPY ~cdtweaks/2da/iwd2_thac0.2da~ ~override~
+
+END ELSE BEGIN
+
+  ACTION_IF FILE_CONTAINS_EVALUATED (~thac0.2da~ ~^SHAMAN~) THEN BEGIN OUTER_SET dump_shaman = 0 END ELSE BEGIN OUTER_SET dump_shaman = 1 END
+  ACTION_IF FILE_CONTAINS_EVALUATED (~xpcap.2da~ ~^MONK~)   THEN BEGIN OUTER_SET dump_monk   = 0 END ELSE BEGIN OUTER_SET dump_monk   = 1 END
+
+  COPY ~cdtweaks/2da/thac0.2da~ ~override~
+    PATCH_IF dump_monk BEGIN
+      REPLACE_TEXTUALLY ~^\(MONK\|SORCERER\).+[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
+    END
+    PATCH_IF dump_shaman BEGIN
+      REPLACE_TEXTUALLY ~^SHAMAN.+[0-9]+[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
+    END
+
+END

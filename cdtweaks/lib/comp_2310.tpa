@@ -1,0 +1,22 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// save penalties for powerful spellcasters                   \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// arcane only                                                \\\\\
+/////                                                            \\\\\
+
+INCLUDE ~cdtweaks/lib/saves_macro.tpa~
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+    READ_SHORT 0x1c "spell_type" ELSE 0
+    PATCH_IF ("%spell_type%" = 1) BEGIN // arcane only
+      LAUNCH_PATCH_MACRO ~save_via_level~ // contains rest of patch
+    END
+  END
+  BUT_ONLY

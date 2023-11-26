@@ -1,0 +1,18 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Alter Dual-class Restrictions                              \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// Humans can no longer dual-class                            \\\\\
+/////                                                            \\\\\
+
+COPY_EXISTING ~clsrcreq.2da~ ~override~
+  REPLACE_TEXTUALLY ~^DUALCLASS[ %TAB%]+1~ ~DUALCLASS 0~
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+
+INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class

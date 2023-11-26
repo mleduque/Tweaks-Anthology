@@ -1,0 +1,17 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Delay High Level Abilities                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY_EXISTING ~lunumab.2da~ ~override~
+  COUNT_2DA_ROWS 5 rows
+  FOR (row = 0; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY row 1 5 level
+    PATCH_IF (level < 21) BEGIN
+      SET_2DA_ENTRY row 1 5 ~21~
+    END
+  END
+  BUT_ONLY

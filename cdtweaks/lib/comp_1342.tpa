@@ -1,0 +1,25 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// individual Stronghold allowances                 \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// temples (cleric)                                 \\\\\
+/////                                                  \\\\\
+
+COMPILE ~cdtweaks/dlg/stronghold1.d~        // removes stronghold var
+        ~cdtweaks/dlg/stronghold_temples.d~ // removes class check
+  
+COPY_EXISTING ~ar0900.bcs~ ~override~
+              ~ar0901.bcs~ ~override~
+              ~ar0902.bcs~ ~override~
+              ~ar0904.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~OR([56])[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,FIGHTER_CLERIC)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_MAGE)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_THIEF)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,FIGHTER_MAGE_CLERIC)\([%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_RANGER)\)?~
+      ~~ // deletes positive class checks for oisig/arval/nalla/telwyn spawn
+    REPLACE_TEXTUALLY ~!Class(Player1,CLERIC)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,FIGHTER_CLERIC)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_MAGE)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_THIEF)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,FIGHTER_MAGE_CLERIC)\([%TAB% %LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_RANGER)\)?~
+      ~False()~ // removes oisig spawn for non-clerics, who should get the regular spawn from the previous change
+  END

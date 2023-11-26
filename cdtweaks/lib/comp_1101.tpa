@@ -1,0 +1,69 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Do Not Reveal City Areas                         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_FOR_EACH file IN
+  ar0015   // bgt: candlekeep prologue
+  ar0300   // bg2: docks
+  ar0400   // bg2: slums
+  ar0500   // bg2: bridge district
+  ar0900   // bg2: temple district
+  ar1000   // bg2: government district
+  ar2000   // bg2: trademeet
+  ar2200   // bg2: ust natha
+  ar2800   // bg2: suldanesselar
+  ar3700   // bgt: nashkel
+  ar5000   // bg2: saradush
+  ar5500   // bg2: amkethran
+  ar6526   // bgt: candlekeep chapter 6
+  ar6700   // bgt: beregost
+  ar7200   // bgt: nw baldur's gate
+  ar7300   // bgt: n baldur's gate
+  ar7400   // bgt: ne baldur's gate
+  ar7600   // bgt: w baldur's gate
+  ar7700   // bgt: central baldur's gate
+  ar7800   // bgt: e baldur's gate
+  ar8000   // bgt: sw baldur's gate
+  ar8100   // bgt: s baldur's gate
+  ar8200   // bgt: se baldur's gate
+  aru000   // bgt: ulgoth's beard
+  oh4010   // bg2ee
+  oh4290   // bg2ee
+  oh5400   // bg2ee
+  oh6010   // bg2ee
+  oh8000   // bg2ee
+  cut01    // promenade destruction cutscene
+  cut01bgt // promenade destruction cutscene
+  cutd1    // promenade destruction cutscene
+  cut220a  // pp transport to saradush
+  bg2600   // eet: candlekeep prologue
+  bg2626   // eet: candlekeep chapter 6
+  bg3300   // eet: beregost
+  bg0100   // eet: nw baldur's gate
+  bg0200   // eet: n baldur's gate
+  bg0300   // eet: ne baldur's gate
+  bg0600   // eet: w baldur's gate
+  bg0700   // eet: central baldur's gate
+  bg0800   // eet: e baldur's gate
+  bg1100   // eet: sw baldur's gate
+  bg1200   // eet: s baldur's gate
+  bg1300   // eet: se baldur's gate
+  bg1000   // eet: ulgoth's beard
+
+  BEGIN
+  
+  ACTION_IF FILE_EXISTS_IN_GAME ~%file%.bcs~ BEGIN
+
+    COPY_EXISTING ~%file%.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN
+        REPLACE_TEXTUALLY ~[ %TAB%]Explore()~ ~Continue()~
+      END
+      BUT_ONLY
+
+  END
+
+END

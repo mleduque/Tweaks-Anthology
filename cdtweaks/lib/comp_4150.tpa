@@ -1,0 +1,50 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Move Boo out of Minsc's quick-access             \\\\\
+///// (SCS borrowing)                                  \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY_EXISTING_REGEXP ~^_?minsc.*\.cre$~ ~override~
+  SET boo = "-1"
+  READ_LONG 0x2bc item_off
+  READ_LONG 0x2c0 item_num
+  FOR (index = 0 ; index < item_num ; ++index) BEGIN
+    READ_ASCII (item_off + 0x00 + (index * 0x14)) item
+    PATCH_IF ("%item%" STRING_COMPARE_CASE "misc84" = 0) BEGIN
+      SET boo = index
+      SET index = item_num // kill loop
+    END
+  END
+  PATCH_IF boo >= 0 BEGIN
+    READ_LONG 0x2b8 slot_off
+    FOR (index = 0 ; index < 37 ; ++index) BEGIN
+      READ_SHORT (slot_off + (index * 0x02)) item_idx
+      PATCH_IF item_idx = boo BEGIN
+        WRITE_SHORT (slot_off + (index * 0x02)) "-1" // delete all existing boo references
+      END
+    END    
+    FOR (index = 21 ; index < 37 ; ++index) BEGIN  
+      READ_SHORT (slot_off + (index * 0x02)) item_idx
+      PATCH_IF item_idx = 0xffff BEGIN              // if empty slot...
+        WRITE_SHORT (slot_off + (index * 0x02)) boo // add boo
+        SET index = 37 // kill loop
+      END
+    END    
+  END
+  BUT_ONLY  
+
+// bg2 ub compat
+ACTION_FOR_EACH spell IN wwboo wwfboo wwnoboo BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%spell%.spl~ BEGIN
+  
+    COPY_EXISTING "%spell%.spl" override
+      LPF ALTER_EFFECT STR_VAR check_globals = 0 match_opcode = 143 opcode = 122 parameter1 = 0 END
+      BUT_ONLY
+
+  END
+
+END

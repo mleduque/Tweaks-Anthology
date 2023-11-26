@@ -1,0 +1,91 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Make Magic Shields Glow                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+OUTER_SET column = 4
+INCLUDE ~cdtweaks/lib/mpalette.tpa~
+
+OUTER_SET primary    = 34 // doubles as pulse location
+OUTER_SET secondary  = 37
+OUTER_SET tertiary   = 32
+OUTER_SET quaternary = 36
+OUTER_SET quinary    = 33
+
+ACTION_IF original_iwd THEN BEGIN // swap primary/secondary for iwd
+
+  OUTER_SET primary    = 37 // doubles as pulse location
+  OUTER_SET secondary  = 34
+
+END
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  READ_SHORT 0x1c type
+  PATCH_IF ((type = 12) OR (type = 41) OR (type = 47) OR (type = 49) OR (type = 53)) BEGIN // 12 is bg shield type, all others are iwd
+    READ_BYTE 0x18 flags
+    PATCH_IF ((flags & BIT6) = BIT6) BEGIN // magical
+      SET color_primary = "-1"
+      SET color_secondary = "-1"
+      SET color_tertiary = "-1"
+      SET color_quaternary = "-1"
+      SET color_quinary = "-1"
+      SET color_pulse = 0
+      READ_LONG  0x6a fx_off
+      READ_SHORT 0x70 fx_num
+      FOR (index = 0 ; index < fx_num ; ++index) BEGIN
+        READ_SHORT (fx_off +        (index * 0x30)) opcode
+        READ_LONG  (fx_off + 0x04 + (index * 0x30)) parameter1
+        READ_LONG  (fx_off + 0x08 + (index * 0x30)) parameter2
+        PATCH_IF (opcode = 9) BEGIN
+          SET color_pulse = 1
+          SET index = fx_num // kill search
+        END
+        PATCH_IF ((opcode = 7) AND (color_primary < 0)) BEGIN // if we have a primary color, stop caring (though keep searching in case of pulse)
+          PATCH_IF (parameter2 = primary) BEGIN
+            SET color_primary = parameter1
+          END ELSE
+          PATCH_IF (parameter2 = secondary) BEGIN
+            SET color_secondary = parameter1
+          END ELSE
+          PATCH_IF (parameter2 = tertiary) BEGIN
+            SET color_tertiary = parameter1
+          END ELSE
+          PATCH_IF (parameter2 = quaternary) BEGIN
+            SET color_quaternary = parameter1
+          END ELSE
+          PATCH_IF (parameter2 = quinary) BEGIN
+            SET color_quinary = parameter1
+          END
+        END
+      END
+      PATCH_IF (color_pulse = 0) BEGIN // don't change anything if we already have a pulse of any kind
+        PATCH_IF color_primary < 0 BEGIN // if no primary color set, use one of the existing colors for pulse basis
+          PATCH_IF (color_secondary >= 0) BEGIN
+            SET color_primary = color_secondary
+          END ELSE
+          PATCH_IF (color_tertiary >= 0) BEGIN
+            SET color_primary = color_tertiary
+          END ELSE
+          PATCH_IF (color_quaternary >= 0) BEGIN
+            SET color_primary = color_quaternary
+          END ELSE
+          PATCH_IF (color_quinary >= 0) BEGIN
+            SET color_primary = color_quinary
+          END
+        END ELSE BEGIN // if we do have a primary color, remove it
+          LPF DELETE_EFFECT INT_VAR check_headers = 0 match_opcode = 7 match_parameter2 = primary END
+        END
+        PATCH_IF color_primary >= 0 BEGIN // if there's still no color set, it means item has no shield coloring at all and we won't mess with it (think lyre.itm from IWD)
+          SET color_pulse = 0x64646400  // set to generic white, try to pick better in next step
+          PATCH_IF ((color_primary < height) AND (color_primary >= 0)) BEGIN
+            SET color_pulse = $cdcolors(~%color_primary%~) // set pulse to match mpalette entry
+          END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 9 target = 1 parameter1 = color_pulse parameter2 = (primary + (40 << 16)) timing = 2 END // now actually add pulse effect
+        END
+      END
+    END
+  END
+  BUT_ONLY

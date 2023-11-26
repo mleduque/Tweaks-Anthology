@@ -1,0 +1,44 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Maximum HP for NPCs                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Maximum HP for Non-Party-Joinable NPCs           \\\\\
+/////                                                  \\\\\
+
+// load patch macro
+INCLUDE ~cdtweaks/lib/max_hp_creatures.tpa~
+
+PRINT @1
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
+    PATCH_IF (NOT ~%SOURCE_RES%~ STRING_EQUAL_CASE ~riftcr04~) BEGIN // skip creatures meant to have lower hp
+      READ_SHORT 0x24  "currenthp" ELSE 0
+      READ_SHORT 0x26  "maxhp"     ELSE 0
+      SET joinable = 0
+      PATCH_IF (game_includes_pst = 1) BEGIN
+        PATCH_IF ((~%SOURCE_RES%~ STRING_COMPARE_CASE ~annah~ = 0) OR
+                  (~%SOURCE_RES%~ STRING_COMPARE_CASE ~morte~ = 0) OR
+                  (~%SOURCE_RES%~ STRING_COMPARE_CASE ~nordom~ = 0) OR
+                  (~%SOURCE_RES%~ STRING_COMPARE_CASE ~dakkon~ = 0) OR
+                  (~%SOURCE_RES%~ STRING_COMPARE_CASE ~grace~ = 0) OR
+                  (~%SOURCE_RES%~ STRING_COMPARE_CASE ~ignus~ = 0) OR
+                  (~%SOURCE_RES%~ STRING_COMPARE_CASE ~vhail~ = 0)) BEGIN
+          SET joinable = 1
+        END
+      END ELSE BEGIN
+        READ_LONG  0x1cc "biography" ELSE 0
+        PATCH_IF (("%biography%" < 2147483647) AND ("%biography%" > 0)) BEGIN // legit bio string
+          SET joinable = 1
+        END
+      END
+      PATCH_IF (("%maxhp%" > 0) AND ("%currenthp%" > 0) AND (joinable = 0)) BEGIN
+        LAUNCH_PATCH_MACRO ~max_hp_creatures~ // contains rest of patch
+      END
+    END
+  END
+  BUT_ONLY

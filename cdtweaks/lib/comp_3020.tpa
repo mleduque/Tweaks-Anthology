@@ -1,0 +1,41 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Identify All Items                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+PRINT @1
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_CASE "cbltcnt2") THEN BEGIN // exclude SoS item whose quest revolves around identifying it
+    WRITE_SHORT 0x42 0
+  END
+  BUT_ONLY
+
+// i've learned that GAME_IS checks in a regexp copy are very slooooow, so...
+OUTER_SET itm_off_are = 0x078 // are v1.0
+OUTER_SET itm_off_cre = 0x2bc // cre v1.0
+ACTION_IF game_is_pst BEGIN // pstee uses v1.0
+  OUTER_SET itm_off_cre = 0x360 // creV1.2
+END
+ACTION_IF game_is_iwd2 BEGIN          // V2.2 cre, v9.1 are
+  OUTER_SET itm_off_cre = 0x616 // cre v2.2
+  OUTER_SET itm_off_are = 0x88  // are v9.1
+END
+ACTION_IF original_iwd BEGIN // V9.0
+  OUTER_SET itm_off_cre = 0x324 // cre v9.0
+END
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.[ac]re$~ ~override~
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.cre$" = 0) BEGIN // if creature
+    READ_LONG (itm_off_cre       ) itm_off ELSE 0
+    READ_LONG (itm_off_cre + 0x04) itm_num ELSE 0
+  END ELSE BEGIN
+    READ_LONG  (itm_off_are       ) itm_off ELSE 0
+    READ_SHORT (itm_off_are - 0x02) itm_num ELSE 0
+  END
+  FOR (index = 0 ; index < itm_num ; ++index) BEGIN
+    WRITE_BYTE (itm_off + 0x10 + (0x14 * index)) (THIS BOR 0b00000001) // adds identified flag
+  END
+  BUT_ONLY

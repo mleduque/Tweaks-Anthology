@@ -1,0 +1,30 @@
+DEFINE_ACTION_MACRO cd_tweaks_install BEGIN
+
+  ACTION_IF cd_tweaks_batch_install BEGIN
+  
+    OUTER_SPRINT ~comp_list~ ~%comp_list% %COMPONENT_NUMBER%~
+    COPY + ~./inline/batch_installer.txt~ ~weidu_external/cdtweaks/%batch_file%~ EVALUATE_BUFFER
+    
+  END ELSE BEGIN 
+
+    INCLUDE ~cdtweaks/lib/comp_%COMPONENT_NUMBER%.tpa~
+
+  END
+
+END  
+
+ACTION_IF FILE_EXISTS ~cdtweaks/cdtweaks.txt~ THEN BEGIN
+  
+  INCLUDE ~cdtweaks/cdtweaks.txt~ // config file
+
+  ACTION_IF !VARIABLE_IS_SET romance_speed_use_config_values THEN BEGIN OUTER_SET romance_speed_use_config_values = 0 END
+  ACTION_IF !VARIABLE_IS_SET minimum_stats_use_config_values THEN BEGIN OUTER_SET minimum_stats_use_config_values = 0 END
+  ACTION_IF !VARIABLE_IS_SET romance_use_config_values       THEN BEGIN OUTER_SET romance_use_config_values = 0 END
+
+END ELSE BEGIN
+
+  OUTER_SET romance_speed_use_config_values = 0
+  OUTER_SET minimum_stats_use_config_values = 0
+  OUTER_SET romance_use_config_values = 0
+
+END

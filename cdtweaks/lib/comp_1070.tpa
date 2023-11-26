@@ -1,0 +1,43 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Multi-player kickout patch                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF game_is_totsc BEGIN // old IE engines - can be extended to IWD?
+
+  INCLUDE ~cdtweaks/lib/BG1areacheck_emulation.tpa~ // clever bit of code from Zed that allows us to check areas; should also work on IWD
+  COMPILE ~cdtweaks/dlg/multi_bg.d~ // adds FAI, Nashkel, BG, Beregost options
+
+END ELSE BEGIN // bg2-based engines
+
+  COMPILE ~cdtweaks/dlg/multi_base.d~ // basic kick out/re-join/wait here framework
+
+  // now add additional 'go to x' options for various games
+  ACTION_IF game_is_bgt OR game_is_bg2ee OR original_bg2 OR game_is_eet THEN BEGIN
+
+    COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/multi_bg2.d~ // adds copper coronet, pocket plane options
+
+  END
+
+  ACTION_IF game_is_bgee OR game_is_bgt OR game_is_eet OR tutu_gen THEN BEGIN
+
+    COMPILE ~cdtweaks/dlg/multi_bgee.d~ EVALUATE_BUFFER // adds FAI, Nashkel, BG, Beregost options
+
+    ACTION_IF game_is_bgt OR game_is_eet THEN BEGIN
+
+      COMPILE ~cdtweaks/dlg/multi_bgt.d~ // adds EndOfBG var checks
+
+    END
+
+  END
+
+  ACTION_IF game_is_iwdee OR game_is_iwd-in-bg2 THEN BEGIN
+
+    COMPILE ~cdtweaks/dlg/multi_iwdee.d~ // adds winter's cradle, whistling gallows, root tavern cellar options
+
+  END
+
+END

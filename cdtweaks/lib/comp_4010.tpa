@@ -1,0 +1,81 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Improved Fate Spirit Summoning                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// end of SoA cutscenes set extra variable
+COPY_EXISTING ~cut100a.bcs~ ~override~
+              ~cut100b.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~MultiPlayerSync()~ ~SetGlobal("G#G3.CompletedSoA","GLOBAL",1) MultiPlayerSync()~
+  END
+  UNLESS ~SetGlobal("G#G3.CompletedSoA","GLOBAL",1)~
+  BUT_ONLY
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_fate_spirit BEGIN
+  ~aerie~    => ~aerie~
+  ~anomen~   => ~anomen~
+  ~cernd~    => ~cernd~
+  ~d#silver~ => ~silverstar~
+  ~d0alassa~ => ~alassa~
+  ~dorn~     => ~dorn~
+  ~edwin~    => ~edwin~
+  ~fwghar~   => ~ghareth~
+  ~haerdali~ => ~HaerDalis~
+  ~hexxat~   => ~hexxat~
+  ~imoen~    => ~imoen~
+  ~imoen2~   => ~imoen~
+  ~j#klsy~   => ~kelsey~
+  ~jaheira~  => ~jaheira~
+  ~jan~      => ~jan~
+  ~jcbru~    => ~JCBruce~
+  ~keldorn~  => ~keldorn~
+  ~kido~     => ~kido~
+  ~kindrek~  => ~kindrek~
+  ~korgan~   => ~korgan~
+  ~mazzy~    => ~mazzy~
+  ~minsc~    => ~minsc~
+  ~nalia~    => ~nalia~
+  ~neera~    => ~neera~
+  ~o#xans~   => ~xan~
+  ~p#deh~    => ~deheriana~
+  ~p#kiv01~  => ~kivan~
+  ~rasaad~   => ~rasaad~
+  ~sc#hub~   => ~hubelpot~
+  ~sola~     => ~Solaufein~
+  ~subru~    => ~BonsBruce~
+  ~tashia~   => ~tashia~
+  ~valygar~  => ~valygar~
+  ~vanim~    => ~vanim~
+  ~viconia~  => ~viconia~
+  ~wilson~  =>  ~wilson~
+END
+
+ACTION_PHP_EACH cd_fate_spirit AS script => var BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME "%script%.bcs" BEGIN
+
+    COPY_EXISTING ~%script%.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN
+        APPEND_FILE ~cdtweaks/baf/fatespirit.baf~
+        REPLACE_TEXTUALLY ~"G3Met_VARIABLE_NAME"~ ~"G3Met_%var%"~
+      END
+      BUT_ONLY
+    
+  END
+
+END
+
+COPY_EXISTING ~fatesp.dlg~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~~~~~!Dead("\([^"]+\)")[ |%TAB%|%LNL%|%MNL%|%WNL%]*Global("\([^"]+\)","GLOBAL",0)~ THEN REPLY #\([0-9]+\)~~~~~
+    ~~~~~Dead("\1")~ THEN REPLY #\3 DO ~SetGlobal("\2","GLOBAL",2)~ GOTO 7
+    IF ~!Dead("\1") Global("\2","GLOBAL",0)~ THEN REPLY #\3~~~~~
+  END
+  BUT_ONLY
+
+// add extra triggers to fate spirit dialogue
+COMPILE ~cdtweaks/dlg/fatesp.d~

@@ -1,0 +1,98 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Allow Thief Skills and Stealth in Heavy Armor    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+INCLUDE ~cdtweaks/lib/thieving_descripts.tpa~ // text replacement macros
+INCLUDE ~cdtweaks/lib/thieving_to_50.tpa~     // extend bard, ranger pickpocketing to 200 and levels to 50
+
+// to get unarmored bonuses to work, bonuses are added in the race bonus tables
+// all non-robe armor offsets these
+COPY_EXISTING ~skillrac.2da~ ~override~
+  PATCH_IF original_bg1 OR original_iwd OR game_is_pst OR game_is_pstee BEGIN // games that use stealth
+    SET use_stealth = 1
+    SET max_col = 5
+  END ELSE BEGIN
+    SET use_stealth = 0
+    SET max_col = 8
+  END
+  COUNT_2DA_ROWS max_col rows // five columns in bg/iwd, eight otherwise
+  FOR (index = 0 ; index < rows ; ++index) BEGIN
+    READ_2DA_ENTRY index 1 max_col val
+    SET_2DA_ENTRY  index 1 max_col (val + 5) // pickpocket
+    READ_2DA_ENTRY index 4 max_col val
+    SET_2DA_ENTRY  index 4 max_col (val + 10) // move silently
+    PATCH_IF max_col > 5 BEGIN // skip old games that use stealth
+      READ_2DA_ENTRY index 5 max_col val
+      SET_2DA_ENTRY  index 5 max_col (val + 5) // HiS
+    END
+  END
+  BUT_ONLY
+     
+INCLUDE ~cdtweaks/lib/common_armor_list.tpa~
+
+ACTION_PHP_EACH cd_common_armor_list AS params => item BEGIN
+
+  ACTION_IF use_stealth BEGIN
+    OUTER_SET params_7 = params_9 // use 'stealth' value for move silently
+    OUTER_SET params_8 = 255      // ignore hide in shadows
+  END 
+
+  // make sure we have something to do, e.g. not futzing with a robe
+  ACTION_IF ((params_4 != 255) OR     // pickpocketing 
+             (params_5 != 255) OR     // locks
+             (params_6 != 255) OR     // traps
+             (params_7 != 255) OR     // move silently
+             (params_8 != 255)) BEGIN // hide in shadows
+  
+    COPY_EXISTING ~%item%.itm~ ~override~
+      READ_SHORT 0x1c sanity_check
+      PATCH_IF sanity_check = 2 BEGIN // type 2 is armor
+        LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 144 END // delete disable thieving buttons
+        PATCH_IF (use_stealth = 0) BEGIN
+          PATCH_IF (params_8 != 255) BEGIN
+            LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 275 END
+            LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 275 target = 1 parameter1 = (0 - params_8 - 5) timing = 2 END // extra 5 to offset unarmored bonus
+          END ELSE BEGIN
+            LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 275 target = 1 parameter1 = "-5"               timing = 2 END // extra 5 to offset unarmored bonus
+          END
+        END
+        PATCH_IF (params_4 != 255) BEGIN
+          LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 92 END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 92 target = 1 parameter1 = (0 - params_4 - 5) timing = 2 END // extra 5 to offset unarmored bonus
+        END ELSE BEGIN
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 92 target = 1 parameter1 = "-5"               timing = 2 END // extra 5 to offset unarmored bonus
+        END
+        PATCH_IF (params_6 != 255) BEGIN
+          LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 91 END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 91  target = 1 parameter1 = (0 - params_6) timing = 2 END
+        END
+        PATCH_IF (params_5 != 255) BEGIN
+          LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 90 END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 90  target = 1 parameter1 = (0 - params_5) timing = 2 END
+        END
+        PATCH_IF (params_7 != 255) BEGIN
+          LPF DELETE_ITEM_EQEFFECT INT_VAR opcode_to_delete = 59 END
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 59  target = 1 parameter1 = (0 - params_7 - 10) timing = 2 END // extra 10 to offset unarmored bonus
+        END ELSE BEGIN
+          LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 59 target = 1 parameter1 = "-10"                timing = 2 END // extra 10 to offset unarmored bonus
+        END
+        // adjust descriptions
+        PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+          READ_STRREF ~%offset%~ desc
+          PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+            INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+              LAUNCH_PATCH_MACRO ~thieving_descripts~
+            END
+            SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
+          END
+        END
+      END
+      BUT_ONLY
+
+  END // end skill check
+    
+END // end php_each

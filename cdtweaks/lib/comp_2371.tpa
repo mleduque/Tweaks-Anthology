@@ -1,0 +1,28 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Alter Dual-class Restrictions                              \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// Allow Non-Humans to Dual-Class                             \\\\\
+/////                                                            \\\\\
+
+ACTION_IF FILE_EXISTS ~tobex_ini/tobextweak.ini~ THEN BEGIN
+
+  COPY ~tobex_ini/tobextweak.ini~ ~tobex_ini/tobextweak.ini~
+    REPLACE_TEXTUALLY ~Engine:Allow All Races to Dual Class=0~ ~Engine:Allow All Races to Dual Class=1~
+    BUT_ONLY
+
+END ELSE BEGIN
+
+  COPY_EXISTING ~clsrcreq.2da~ ~override~
+    REPLACE_TEXTUALLY ~^\(DUALCLASS[ %TAB%]+[0-9]+[ %TAB%]+\).+$~ ~\1 1 1 1 1 1 1~
+    PRETTY_PRINT_2DA
+    BUT_ONLY
+
+END
+
+INCLUDE ~cdtweaks/lib/dualclass_text.tpa~ // update text that mentions only humans can dual-class

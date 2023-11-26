@@ -1,0 +1,34 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// cespenar gets cromwell recipes                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1220~ BEGIN
+
+  EXTEND_BOTTOM ~botsmith.bcs~ ~cdtweaks/baf/botsmith.baf~
+
+  COPY_EXISTING ~botsmith.dlg~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~OR(2)\([%TAB% %LNL%%MNL%%WNL%]*PartyHasItem("blun14")[%TAB% %LNL%%MNL%%WNL%]*PartyHasItem("blun30c")\)~
+                        ~OR(3)\1 PartyHasItem("blun30d")~
+    END
+    BUT_ONLY
+
+  COMPILE ~cdtweaks/dlg/cespy0.d~ // cespenar FoA head order
+
+END
+
+// compiled in serial so that COPY_TRANS will get the one before it
+COMPILE ~cdtweaks/dlg/cespy1.d~ // red & shadow dragon scale (bg2ee already has shadow)
+COMPILE ~cdtweaks/dlg/cespy2.d~ // ankheg scale
+COMPILE ~cdtweaks/dlg/cespy3.d~ // crom faeyr
+COMPILE ~cdtweaks/dlg/cespy4.d~ // equalizer
+COMPILE ~cdtweaks/dlg/cespy5.d~ // gesen bow
+COMPILE ~cdtweaks/dlg/cespy6.d~ // wave halberd
+COMPILE ~cdtweaks/dlg/cespy7.d~ // silver sword
+COMPILE ~cdtweaks/dlg/cespy8.d~ // mace of disruption
+
+EXTEND_BOTTOM ~botsmith.bcs~ ~cdtweaks/baf/cespy.baf~

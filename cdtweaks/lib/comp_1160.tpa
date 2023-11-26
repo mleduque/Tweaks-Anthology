@@ -1,0 +1,48 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Multiple Strongholds                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// no restrictions                                  \\\\\
+/////                                                  \\\\\
+
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/stronghold1.d~                 // removes stronghold var
+                        ~cdtweaks/dlg/stronghold_cabin_choice.d~     // allows choice for ranger stronghold
+                        ~cdtweaks/dlg/stronghold_grove_choice.d~     // allows choice for druid stronghold
+                        ~cdtweaks/dlg/stronghold_playhouse_choice.d~ // allows choice for bard stronghold
+                        ~cdtweaks/dlg/stronghold_cabin.d~            // removes class check: ranger
+                        ~cdtweaks/dlg/stronghold_dearnise.d~         // removes class check: fighter, blackguard
+                        ~cdtweaks/dlg/stronghold_grove.d~            // removes class check: druid
+                        ~cdtweaks/dlg/stronghold_guild.d~            // removes class check: thief
+                        ~cdtweaks/dlg/stronghold_norh.d~             // removes class check: paladin
+                        ~cdtweaks/dlg/stronghold_playhouse.d~        // removes class check: bard
+                        ~cdtweaks/dlg/stronghold_sphere.d~           // removes class check: mage, sorcerer
+                        ~cdtweaks/dlg/stronghold_temples.d~          // removes class check: cleric
+
+COPY_EXISTING ~ar0900.bcs~ ~override~
+              ~ar0901.bcs~ ~override~
+              ~ar0902.bcs~ ~override~
+              ~ar0904.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~OR([56])[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,FIGHTER_CLERIC)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_MAGE)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_THIEF)[%TAB% %LNL%%MNL%%WNL%]+Class(Player1,FIGHTER_MAGE_CLERIC)\([%TAB% %LNL%%MNL%%WNL%]+Class(Player1,CLERIC_RANGER)\)?~
+      ~~ // deletes positive class checks for oisig/arval/nalla/telwyn spawn
+    REPLACE_TEXTUALLY ~!Class(Player1,CLERIC)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,FIGHTER_CLERIC)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_MAGE)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_THIEF)[ %TAB%%LNL%%MNL%%WNL%]+!Class(Player1,FIGHTER_MAGE_CLERIC)\([%TAB% %LNL%%MNL%%WNL%]+!Class(Player1,CLERIC_RANGER)\)?~
+      ~False()~ // removes oisig spawn for non-clerics, who should get the regular spawn from the previous change
+  END
+
+COPY_EXISTING ~baldur.bcs~ ~override~ // non-druids not getting great druid messenger
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~Class(Player1,DRUID_ALL)[%TAB% %LNL%%MNL%%WNL%]+\(LevelGT(Player1,13)[%TAB% %LNL%%MNL%%WNL%]+Global("DruidADSpawn","GLOBAL",0)\)~ ~\1~
+  END
+  BUT_ONLY
+
+// have faldorn actually fight non-druids
+COPY_EXISTING ~cefald01.bcs~ ~override~ // non-druids not getting great druid messenger
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~See(NearestEnemyOfType(\[0\.0\.0\.DRUID_ALL\]))~ ~See(NearestEnemyOf(Myself))~
+  END
+  BUT_ONLY

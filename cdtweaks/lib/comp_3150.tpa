@@ -1,0 +1,16 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Remove Annoying Visual Effects fr Equipped Items \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Remove Spell Trap and Reflection Effects         \\\\\
+/////                                                  \\\\\
+
+OUTER_SET remove_blur      = 0
+OUTER_SET remove_spelltrap = 1
+
+INCLUDE ~cdtweaks/lib/annoying_equipped_fx.tpa~

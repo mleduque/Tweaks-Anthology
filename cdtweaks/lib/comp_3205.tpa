@@ -1,0 +1,213 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// stores buy all items                                       \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// item types common to all games
+ACTION_CLEAR_ARRAY cd_buyable_item_types
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN
+   0 => 0 // miscellaneous
+   6 => 0 // bracers and gauntlets
+  10 => 0 // rings
+  11 => 0 // scrolls
+  16 => 0 // daggers
+  17 => 0 // maces
+  19 => 0 // small swords
+  21 => 0 // hammers
+  25 => 0 // axes
+  27 => 0 // crossbows
+  28 => 0 // hand-to-hand weapons
+  29 => 0 // greatswords (pst)/spears (non-pst)
+  31 => 0 // bolts
+//  33 => 1 // copper commons (pst)/gold pieces (bg2)
+  35 => 0 // wands
+END
+
+ACTION_IF game_includes_pst THEN BEGIN
+
+  ACTION_IF game_is_pst THEN BEGIN
+  
+    OUTER_SET store_match = "-1" // no containers in PsT
+  
+  END ELSE BEGIN
+  
+    OUTER_SET store_match = 4 // containers in PsTEE
+
+  END
+
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN // pst exclusives
+     2 => 0 // armor
+     8 => 0 // keys
+    36 => 0 // eyeballs (pst)
+    37 => 0 // bracelets (pst)
+    38 => 0 // earrings (pst)
+    39 => 0 // tattoos
+    40 => 0 // lenses
+    41 => 0 // teeth
+  END
+
+END ELSE BEGIN // non-pst
+
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN // common to everything except pst
+     1 => 0 // amulets
+     3 => 0 // belts and girdles
+     4 => 0 // boots
+     5 => 0 // arrows
+     7 => 0 // headgear
+     9 => 0 // potions
+    14 => 0 // bullets
+    15 => 0 // bows
+    18 => 0 // slings
+    20 => 0 // large swords
+    22 => 0 // morning stars
+    23 => 0 // flails
+    24 => 0 // darts
+    26 => 0 // staves
+    30 => 0 // halberds
+    32 => 0 // cloaks and robes
+    34 => 0 // gems
+  END
+
+  ACTION_IF original_iwd OR game_is_iwd2 THEN BEGIN
+
+    OUTER_SET store_match = 4 // container type in iwd/iwd2
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN // iwd & iwd2
+       8 => 0 // keys
+      36 => 0 // * containers (bg2)
+      38 => 0 // * broken weapons (iwd)
+      41 => 0 // bucklers
+      42 => 0 // candles
+      44 => 0 // clubs
+      47 => 0 // large shields
+      49 => 0 // medium shields
+      53 => 0 // small shields
+      55 => 0 // telescopes
+      56 => 0 // bottles
+      57 => 0 // great swords
+//      58 => 1 // bags
+    END
+
+    ACTION_IF game_is_iwd2 THEN BEGIN
+
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN // iwd2 but not iwd
+        50 => 0 // notes
+        60 => 0 // leather armor
+        61 => 0 // studded leather
+        62 => 0 // chain mail
+        63 => 0 // splint mail
+        64 => 0 // plate mail
+        65 => 0 // full plate
+        66 => 0 // hide armor
+        67 => 0 // robes
+        69 => 0 // bastard swords
+        70 => 0 // scarves
+        71 => 0 // rations
+        72 => 0 // hats
+        73 => 0 // gloves
+      END
+
+    END ELSE BEGIN // iwd but not iwd2
+
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN // iwd but not iwd2
+         2 => 0 // armor
+      END
+
+    END
+    
+  END ELSE BEGIN // non-iwd, non-iwd2
+
+    OUTER_SET store_match = 5 // container type in other games
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN // common to bg(ee)/bg2(ee)/iwdee/tutu/bgt/ca
+       2 => 0 // armor
+      12 => 0 // shields
+    END
+
+    ACTION_IF NOT (original_bg1) BEGIN
+
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN // common to all but bg1
+         8 => 0 // keys
+        13 => 0 // food
+//        36 => 1 // containers (bg2)
+        37 => 0 // books (bg2)
+//        38 => 1 // familiars (bg2)
+      END
+
+      ACTION_IF game_is_bgee OR game_is_eet BEGIN
+
+        ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN
+          39 => 0 // bandit scalps
+//          43 => 1 // child bodies
+//          45 => 1 // female bodies
+//          48 => 1 // male bodies
+          50 => 0 // notes
+          54 => 0 // spider bodies
+          55 => 0 // telescopes
+          56 => 0 // bottles
+          72 => 0 // hats
+        END
+      
+      END
+
+      ACTION_IF game_is_bg2ee OR game_is_eet BEGIN
+
+        ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN
+//          45 => 1 // female bodies
+          51 => 0 // rods
+        END
+      
+      END
+
+      ACTION_IF game_is_iwdee OR game_is_eet BEGIN
+
+        ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN
+          74 => 0 // broken junk
+          56 => 0 // bottles
+          59 => 0 // furs and pelts
+        END
+      
+      END
+    
+    END
+ 
+  END
+
+END
+
+// thankfully store formats are similar enough that there are no game-specific checks here other than the container check
+COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
+  READ_LONG 0x08 store_type
+  READ_LONG 0x10 flags
+  READ_LONG 0x14 markup_sell
+  READ_LONG 0x18 markup_buy
+  PATCH_IF ((store_type != store_match) AND ((flags & BIT1) = BIT1) AND  // don't bother if store can't buy, or if it's a container
+            (markup_sell > 119) AND (markup_buy < 81)) BEGIN // don't mess with stores with exploitable buy/sell markups
+    SET delta = 0
+    READ_LONG 0x2c purch_off
+    READ_LONG 0x30 purch_num
+    // first, look at what store already sells and push items into array
+    FOR (index = 0 ; index < purch_num ; ++index) BEGIN
+      READ_LONG (purch_off + (index * 0x04)) type
+      DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN "%type%" => 1 END
+    END
+    PATCH_PHP_EACH cd_buyable_item_types AS item => val BEGIN
+      PATCH_IF val = 0 BEGIN
+        SET delta += 1
+        INSERT_BYTES purch_off 0x04
+        WRITE_LONG   purch_off item
+      END ELSE BEGIN
+        DEFINE_ASSOCIATIVE_ARRAY cd_buyable_item_types BEGIN "%item%" => 0 END // reset for next store
+      END
+    END
+    WRITE_LONG 0x30 (THIS + delta) // update number of items purchased
+    // fix offsets for rest of file to account for new bytes
+    PATCH_FOR_EACH off IN 0x34 0x4c 0x70 BEGIN
+      READ_LONG off offset
+      PATCH_IF offset >= purch_off BEGIN
+        WRITE_LONG off (THIS + (delta * 0x04))
+      END
+    END
+  END
+  BUT_ONLY
