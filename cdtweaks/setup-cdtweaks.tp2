@@ -139,32 +139,37 @@ ACTION_MATCH ~%LANGUAGE%~ WITH
 END  
 
 ACTION_IF ("%WEIDU_OS%" STRING_COMPARE_CASE "win32" = 0) BEGIN
-  OUTER_SPRINT batch_exe ~setup-cdtweaks.exe~
+  //OUTER_SPRINT batch_exe ~setup-cdtweaks.exe~
   OUTER_SPRINT batch_file ~cd_tweaks_batch_installer.bat~
   OUTER_SPRINT batch_file_preamble ~~
 END ELSE BEGIN
   ACTION_IF ("%WEIDU_OS%" STRING_COMPARE_CASE "unix" = 0) BEGIN
-    OUTER_SPRINT batch_exe ~weidu --log setup-cdtweaks.DEBUG cdtweaks/setup-cdtweaks.tp2~ // need to point to the log and tp2 if using weidu directly
+    //OUTER_SPRINT batch_exe ~weidu --log setup-cdtweaks.DEBUG cdtweaks/setup-cdtweaks.tp2~ // need to point to the log and tp2 if using weidu directly
     OUTER_SPRINT batch_file ~cd_tweaks_batch_installer.sh~
     OUTER_SPRINT batch_file_preamble ~#!/bin/sh -e~
   END ELSE BEGIN  
-    OUTER_SPRINT batch_exe ~.\setup-cdtweaks~
+    //OUTER_SPRINT batch_exe ~.\setup-cdtweaks~
     OUTER_SPRINT batch_file ~cd_tweaks_batch_installer.command~
     OUTER_SPRINT batch_file_preamble ~command_path=${0%/*}
 cd "$command_path"~
   END  
 END
 
+OUTER_SPRINT batch_args ~~
+ACTION_IF ("%WEIDU_EXECUTABLE%" STRING_COMPARE_CASE "setup-cdtweaks") BEGIN // if invoked via a weidu executable and not a setup-program
+  OUTER_SPRINT batch_args ~ --log SETUP-CDTWEAKS.DEBUG cdtweaks/setup-cdtweaks.tp2~
+END
+
 <<<<<<<<./inline/batch_installer.txt
 %batch_file_preamble%
-%batch_exe% --language %batch_lang% --force-install-list%comp_list%
+%WEIDU_EXECUTABLE% %batch_args% --language %batch_lang% --force-install-list%comp_list%
 >>>>>>>>
  
 ACTION_IF ("%WEIDU_OS%" STRING_COMPARE_CASE "win32") BEGIN // make batch file executable for non-windows
   AT_EXIT ~chmod +x ./weidu_external/cdwteaks/%batch_file%~
 END
  
-AT_EXIT ~%batch_exe% --force-uninstall-list 0 --language %batch_lang% --noautoupdate~
+AT_EXIT ~%WEIDU_EXECUTABLE% %batch_args% --force-uninstall-list 0 --language %batch_lang% --noautoupdate~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
