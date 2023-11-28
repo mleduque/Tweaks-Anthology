@@ -2700,15 +2700,14 @@ LAM cd_tweaks_install
 ///// BG2-Style Progression (Up To Level Five Spells)            \\\\\
 /////                                                            \\\\\
 
-ACTION_IF game_is_iwd2 THEN BEGIN
+BEGIN @240100 DESIGNATED 2401
+GROUP @9
+REQUIRE_PREDICATE NOT GAME_IS ~iwdee iwd how totlm iwd-in-bg2~ @25
+REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~170~ @16
+SUBCOMPONENT @240001
+LABEL ~cd_tweaks_ranger_spell_progression_alt~
 
-  COPY ~cdtweaks/2da/alt_mxsplran.2da~ ~override/mxsplrgr.2da~
-
-END ELSE BEGIN
-
-  COPY ~cdtweaks/2da/alt_mxsplran.2da~ ~override/mxsplran.2da~
-
-END
+LAM cd_tweaks_install
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
