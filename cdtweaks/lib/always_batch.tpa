@@ -2,8 +2,9 @@ DEFINE_ACTION_MACRO cd_tweaks_install BEGIN
 
   ACTION_IF cd_tweaks_batch_install BEGIN
   
-    OUTER_SPRINT ~comp_list~ ~%comp_list% %COMPONENT_NUMBER%~
-    COPY + ~./inline/batch_installer.txt~ ~weidu_external/cdtweaks/%batch_file%~ EVALUATE_BUFFER
+    COPY + ~%script_file%~ ~%script_file%~
+      REPLACE_TEXTUALLY ~\(components=["]?[0-9 ]*\)~ ~\1%COMPONENT_NUMBER% ~
+    ABORT @101
     
   END ELSE BEGIN 
 

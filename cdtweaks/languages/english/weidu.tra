@@ -37,8 +37,13 @@
 @28 = ~There are not enough free spell state or secondary type slots available to install this component.~
 
 @100 = ~Batch Installer -- EXPERIMENTAL, use at own risk. Check the readme.~
-@101 = ~This component is only available for interactive installations.~
-@102 = ~Some parts of this mod are already installed; batch mode not available.~
+@101 = ~
+
+Registering component for batch installation.
+
+The uninstall messages above are normal and expected.
+
+~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
