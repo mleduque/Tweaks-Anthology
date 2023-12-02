@@ -24,6 +24,8 @@ ACTION_FOR_EACH gamecheck IN bg1 totsc soa tob iwd how totlm iwd2 pst ca sod BEG
   REINCLUDE ~weidu_external/cdtweaks/always_checks.tpa~
 END
 
+DELETE ~weidu_external/cdtweaks/always_checks.tpa~ // tidying up
+
 ACTION_IF game_is_iwd  OR game_is_how OR game_is_totlm BEGIN OUTER_SET original_iwd = 1 END ELSE BEGIN OUTER_SET original_iwd = 0 END 
 ACTION_IF game_is_bg1  OR game_is_totsc                BEGIN OUTER_SET original_bg1 = 1 END ELSE BEGIN OUTER_SET original_bg1 = 0 END 
 ACTION_IF game_is_soa  OR game_is_tob                  BEGIN OUTER_SET original_bg2 = 1 END ELSE BEGIN OUTER_SET original_bg2 = 0 END 

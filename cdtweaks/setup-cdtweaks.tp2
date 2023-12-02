@@ -10,7 +10,6 @@ ALWAYS
 
     ACTION_IF !VARIABLE_IS_SET cd_tweaks_batch_install BEGIN // if we're not in batch mode, set mode = 0 (easier than !var_is_set checks)
       OUTER_SET cd_tweaks_batch_install = 0
-      UNINSTALL ~cdtweaks.tp2~ ~0~ // just in case
     END
     
     ACTION_IF !VARIABLE_IS_SET cd_tweaks_always THEN BEGIN // check to make this happen only once per install
@@ -1100,7 +1099,11 @@ LAM cd_tweaks_install
 BEGIN @134000 DESIGNATED 1340
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+// skip if 1160/1161 are installed--have to use var checks in batch mode since the components aren't really installed
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_1160_installed OR !cdtweaks_1160_installed) AND (!VARIABLE_IS_SET cdtweaks_1161_installed OR !cdtweaks_1161_installed))) @24
 LABEL ~cd_tweaks_sole_stronghold_mage~
 
 LAM cd_tweaks_install
@@ -1112,7 +1115,11 @@ LAM cd_tweaks_install
 BEGIN @134100 DESIGNATED 1341
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+// skip if 1160/1161 are installed--have to use var checks in batch mode since the components aren't really installed
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_1160_installed OR !cdtweaks_1160_installed) AND (!VARIABLE_IS_SET cdtweaks_1161_installed OR !cdtweaks_1161_installed))) @24
 LABEL ~cd_tweaks_sole_stronghold_fighter~
 
 LAM cd_tweaks_install
@@ -1124,7 +1131,11 @@ LAM cd_tweaks_install
 BEGIN @134200 DESIGNATED 1342
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+// skip if 1160/1161 are installed--have to use var checks in batch mode since the components aren't really installed
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_1160_installed OR !cdtweaks_1160_installed) AND (!VARIABLE_IS_SET cdtweaks_1161_installed OR !cdtweaks_1161_installed))) @24
 LABEL ~cd_tweaks_sole_stronghold_cleric~
 
 LAM cd_tweaks_install
@@ -1136,7 +1147,11 @@ LAM cd_tweaks_install
 BEGIN @134300 DESIGNATED 1343
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+// skip if 1160/1161 are installed--have to use var checks in batch mode since the components aren't really installed
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_1160_installed OR !cdtweaks_1160_installed) AND (!VARIABLE_IS_SET cdtweaks_1161_installed OR !cdtweaks_1161_installed))) @24
 LABEL ~cd_tweaks_sole_stronghold_thief~
 
 LAM cd_tweaks_install
@@ -1148,7 +1163,11 @@ LAM cd_tweaks_install
 BEGIN @134400 DESIGNATED 1344
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+// skip if 1160/1161 are installed--have to use var checks in batch mode since the components aren't really installed
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_1160_installed OR !cdtweaks_1160_installed) AND (!VARIABLE_IS_SET cdtweaks_1161_installed OR !cdtweaks_1161_installed))) @24
 LABEL ~cd_tweaks_sole_stronghold_bard~
 
 LAM cd_tweaks_install
@@ -1160,7 +1179,11 @@ LAM cd_tweaks_install
 BEGIN @134500 DESIGNATED 1345
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+// skip if 1160/1161 are installed--have to use var checks in batch mode since the components aren't really installed
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_1160_installed OR !cdtweaks_1160_installed) AND (!VARIABLE_IS_SET cdtweaks_1161_installed OR !cdtweaks_1161_installed))) @24
 LABEL ~cd_tweaks_sole_stronghold_paladin~
 
 LAM cd_tweaks_install
@@ -1172,7 +1195,11 @@ LAM cd_tweaks_install
 BEGIN @134600 DESIGNATED 1346
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+// skip if 1160/1161 are installed--have to use var checks in batch mode since the components aren't really installed
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_1160_installed OR !cdtweaks_1160_installed) AND (!VARIABLE_IS_SET cdtweaks_1161_installed OR !cdtweaks_1161_installed))) @24
 LABEL ~cd_tweaks_sole_stronghold_druid~
 
 LAM cd_tweaks_install
@@ -1184,7 +1211,11 @@ LAM cd_tweaks_install
 BEGIN @134700 DESIGNATED 1347
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
-REQUIRE_PREDICATE ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) @24
+// skip if 1160/1161 are installed--have to use var checks in batch mode since the components aren't really installed
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1160~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1161~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_1160_installed OR !cdtweaks_1160_installed) AND (!VARIABLE_IS_SET cdtweaks_1161_installed OR !cdtweaks_1161_installed))) @24
 LABEL ~cd_tweaks_sole_stronghold_ranger~
 
 LAM cd_tweaks_install
@@ -1643,8 +1674,11 @@ LAM cd_tweaks_install
 BEGIN @206000 DESIGNATED 2060
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2162~ @16 // bg profs w/o weapon styles
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2164~ @16 // iwd profs w/o weapon styles
+// skip if 2162/2164 are installed--have to use var checks in batch mode since the components aren't really installed
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2162~) AND (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2164~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_2162_installed OR !cdtweaks_2162_installed) AND (!VARIABLE_IS_SET cdtweaks_2164_installed OR !cdtweaks_2164_installed))) @16
 LABEL ~cd_tweaks_weapon_styles_for_all~
 
 LAM cd_tweaks_install
@@ -2362,7 +2396,11 @@ LAM cd_tweaks_install
 
 BEGIN @230000 DESIGNATED 2300
 GROUP @9
-REQUIRE_PREDICATE     MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2090~ @21 // xp cap must be removed
+// only offer to install if 1090 is installed--have to use var checks in batch mode since the components aren't really installed
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2090~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (VARIABLE_IS_SET cdtweaks_2090_installed AND cdtweaks_2090_installed))) @21
 REQUIRE_PREDICATE     GAME_IS ~tob bgt bg2ee eet~   @25 // ToB required
 LABEL ~cd_tweaks_triple_class_hla_table~
 
@@ -2822,11 +2860,17 @@ REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~kitlist.2da~ @25
 REQUIRE_PREDICATE NOT GAME_IS ~soa iwd2~ @25 // needs tob until ADD_KIT/luabbr is fixed
 // for non-ee, use race=human to detect dual-class, if we can't (because tobex-enabled changes) disallow install:
 // https://www.gibberlings3.net/forums/topic/36465-bug-pnp-proficiency-for-dual-classes-grants-fm-1-extra-spell-per-level/
-REQUIRE_PREDICATE ((GAME_IS ~bgee bg2ee eet iwdee~) OR 
-                  (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2371~ AND   // Allow Non-Humans to Dual-Class
-                   !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2350~ AND   // Allow humans to multiclass
-                   !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2357~ AND   // multiclass madness (includes 2350)
-                   !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2358~)) @25 // multiclass semimadness (includes 2350)
+REQUIRE_PREDICATE ((GAME_IS ~bgee bg2ee eet iwdee~) OR // if we're on EEs, no further checks needed
+                   (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2371~) AND             // Allow Non-Humans to Dual-Class
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2350~) AND             // Allow humans to multiclass
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2357~) AND             // multiclass madness (includes 2350)
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2358~)) OR             // multiclass semimadness (includes 2350)
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND        // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_2371_installed OR !cdtweaks_2371_installed) AND    // Allow Non-Humans to Dual-Class
+                       (!VARIABLE_IS_SET cdtweaks_2350_installed OR !cdtweaks_2350_installed) AND    // Allow humans to multiclass
+                       (!VARIABLE_IS_SET cdtweaks_2357_installed OR !cdtweaks_2357_installed) AND    // multiclass madness (includes 2350)
+                       (!VARIABLE_IS_SET cdtweaks_2358_installed OR !cdtweaks_2358_installed)))) @25 // multiclass semimadness (includes 2350)
 LABEL ~cd_tweaks_pnp_prof_restrictions_for_dualclasses~
 
 LAM cd_tweaks_install
@@ -3665,7 +3709,10 @@ LAM cd_tweaks_install
 BEGIN @317600 DESIGNATED 3176
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgee bgt soa tob bg2ee eet~ @25
-REQUIRE_PREDICATE !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~3175~ @16
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~3175~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_3175_installed OR !cdtweaks_3175_installed))) @16
 LABEL ~cd_tweaks_change_romance_speed~
 
 INCLUDE ~cdtweaks/lib/comp_%COMPONENT_NUMBER%_prompts.tpa~ // still need to gather varsiables in batch installs
@@ -3682,7 +3729,10 @@ LAM cd_tweaks_install
 BEGIN @318300 DESIGNATED 3183
 GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgt soa tob bg2ee eet~ @25
-REQUIRE_PREDICATE !MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~3175~ @16
+REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batch_install) AND // straight component checks if not in batch mode
+                       (!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~3175~)) OR
+                   ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
+                       (!VARIABLE_IS_SET cdtweaks_3175_installed OR !cdtweaks_3175_installed))) @16
 LABEL ~cd_tweaks_romance_cheats~
 
 INCLUDE ~cdtweaks/lib/comp_%COMPONENT_NUMBER%_prompts.tpa~ // still need to gather varsiables in batch installs
