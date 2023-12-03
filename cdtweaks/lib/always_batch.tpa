@@ -1,5 +1,11 @@
 DEFINE_ACTION_MACRO cd_tweaks_install BEGIN
 
+  ACTION_IF FILE_EXISTS ~cdtweaks/lib/comp_%COMPONENT_NUMBER%_prompts.tpa~ BEGIN // cover prompts in batch and non-batch modes
+  
+    INCLUDE ~cdtweaks/lib/comp_%COMPONENT_NUMBER%_prompts.tpa~
+    
+  END  
+  
   ACTION_IF cd_tweaks_batch_install BEGIN
   
     OUTER_SET ~cdtweaks_%COMPONENT_NUMBER%_installed~ = 1
@@ -8,7 +14,7 @@ DEFINE_ACTION_MACRO cd_tweaks_install BEGIN
     ABORT @101
     
   END ELSE BEGIN 
-
+    
     INCLUDE ~cdtweaks/lib/comp_%COMPONENT_NUMBER%.tpa~
 
   END

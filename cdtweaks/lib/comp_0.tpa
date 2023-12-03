@@ -1,0 +1,79 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Automated Installer                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+OUTER_SET cd_tweaks_batch_install = 1 
+
+// global initializations
+OUTER_TEXT_SPRINT WORK_FOLDER ~weidu_external~
+OUTER_SPRINT script_dir ~%WORK_FOLDER%/batch/%MOD_FOLDER%~
+ACTION_IF (~%WEIDU_OS%~ STR_EQ ~win32~) BEGIN
+  OUTER_SPRINT script_file ~%script_dir%/batch_run.bat~
+END ELSE BEGIN
+  OUTER_SPRINT script_file ~%script_dir%/batch_run.sh~
+END
+
+ACTION_MATCH ~%LANGUAGE%~ WITH
+  ~czech~    BEGIN OUTER_SET batch_lang = 1 END
+  ~french~   BEGIN OUTER_SET batch_lang = 2 END
+  ~german~   BEGIN OUTER_SET batch_lang = 3 END
+  ~italian~  BEGIN OUTER_SET batch_lang = 4 END
+  ~korean~   BEGIN OUTER_SET batch_lang = 5 END
+  ~polish~   BEGIN OUTER_SET batch_lang = 6 END
+  ~russian~  BEGIN OUTER_SET batch_lang = 7 END
+  ~spanish~  BEGIN OUTER_SET batch_lang = 8 END
+  ~schinese~ BEGIN OUTER_SET batch_lang = 9 END
+  DEFAULT OUTER_SET batch_lang = 0 // english
+END  
+
+// detecting auto-setup mode
+OUTER_PATCH_SAVE bin_file ~%WEIDU_EXECUTABLE%~ BEGIN
+  // stripping path elements from executable
+  SET idx = RINDEX_BUFFER(~[/\\]~)
+  PATCH_IF (idx >= 0) BEGIN
+    DELETE_BYTES 0 (idx + 1)
+  END
+END
+ACTION_TO_LOWER ~bin_file~
+OUTER_SET is_setup = (~%bin_file%~ STRING_MATCHES_REGEXP ~^setup-.*~ = 0) || (~%bin_file%~ STR_EQ ~weinstall~)
+OUTER_SET is_unix = (NOT ~%WEIDU_OS%~ STR_EQ ~win32~)
+
+// generating WeiDU installation script
+OUTER_SPRINT run ~"%WEIDU_EXECUTABLE%" "%MOD_FOLDER%/%TP2_FILE_NAME%"~
+ACTION_IF (is_setup) BEGIN
+  OUTER_SPRINT run ~%run% --noautoupdate~
+END ELSE BEGIN
+  OUTER_SPRINT run ~%run% --log "setup-%TP2_BASE_NAME%.debug"~
+END
+
+ACTION_IF (is_unix) BEGIN
+  // compatible with Linux and macOS
+  OUTER_SPRINT script ~#!/bin/sh%LNL%~
+  OUTER_SPRINT script ~%script%components=""%LNL%~
+  OUTER_SPRINT script ~%script%if test -z "$components"; then exit; fi%LNL%~
+  OUTER_SPRINT script ~%script%%run% --language %batch_lang% --force-install-list ${components}%LNL%~
+END ELSE BEGIN
+  OUTER_PATCH_SAVE percent ~ ~ BEGIN WRITE_BYTE 0 37 END  // "%" needed as literal character
+  OUTER_SPRINT script ~@echo off%WNL%~
+  OUTER_SPRINT script ~%script%set components=%WNL%~
+  OUTER_SPRINT script ~%script%if "%percent%components%percent%"=="" exit /b%WNL%~
+  OUTER_SPRINT script ~%script%%run% --language %batch_lang% --force-install-list %percent%components%percent%%WNL%~
+END
+
+<<<<<<<< .../blank
+>>>>>>>>
+MKDIR ~%script_dir%~
+COPY + ~.../blank~ ~%script_file%~
+  SET len = STRING_LENGTH ~%script%~
+  INSERT_BYTES 0 len
+  WRITE_ASCIIE 0 ~%script%~ (len)
+
+ACTION_IF (is_unix) BEGIN
+  AT_NOW ~chmod +x "%script_file%"~
+END
+
+AT_EXIT ~%script_file%~
