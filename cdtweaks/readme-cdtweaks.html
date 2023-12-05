@@ -920,7 +920,62 @@
             </ul>
           </li>
         </ul>
-      <p></p>
+      <p> <strong>PnP Potions [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">BGEE, BG2EE</abbr>, <abbr title="Enhanced Edition Trilogy">EET</abbr>, <abbr title="Icewind Dale: Enhanced Edition">IWDEE</abbr></em></p>
+      <p> This component aims at implementing PnP potion behavior.
+        As a result, after installing this mod component, all in-game potions will behave as follows. Quaffing a potion while the effects of any potion were still active might trigger one of the following events:</p>
+      <ul>
+        <li>
+          <u>1% chance to explode</u>
+          <ul>
+            <li><code>5d10</code> fire damage on the drinker, <code>+1d10</code> fire damage in 5' radius (small fireball) (total of <code>6d10</code> on the drinker, no save).</li>
+          </ul>
+        </li>
+        <li>
+          <u>2% chance for instant poison death</u>
+          <ul>
+            <li>Unless the drinker is completely immune to poison damage.</li>
+          </ul>
+        </li>
+        <li>
+          <u>5% chance for Strength and Dexterity loss</u>
+          <ul>
+            <li>It will cause <code>1</code> Strength and <code>1</code> Dexterity loss (permanent, undispellable).</li>
+          </ul>
+        </li>
+        <li>
+          <u>7% chance to cancel/remove all active potion effects</u>
+        </li>
+        <li>
+          <u>10% chance the current potion does nothing</u>
+        </li>
+        <li>
+          <u>10% chance the current potion has -50% efficacy</u>
+          <ul>
+            <li>For instance, Potion of Magic Blocking would last for <code>15</code> seconds (instead of <code>30</code>).</li>
+            <li>For instance, Elixir of Health would heal the drinker for <code>5</code> Hit Points (instead of <code>10</code>).</li>
+          </ul>
+        </li>
+        <li>
+          <u>8% chance the current potion has +50% efficacy</u>
+          <ul>
+            <li>For instance, Potion of Magic Blocking would last for <code>45</code> seconds (instead of <code>30</code>).</li>
+            <li>For instance, Elixir of Health would heal the drinker for <code>15</code> Hit Points (instead of <code>10</code>).</li>
+          </ul>
+        </li>
+        <li>
+          <u>1% chance the current potion has +100% efficacy / permanent duration</u>
+          <ul>
+            <li>For instance, Potion of Magic Blocking would last indefinitely (until dispelled or removed by the "7% chance to cancel/remove all active potion effects" event).</li>
+            <li>For instance, Elixir of Health would heal the drinker for <code>20</code> Hit Points (instead of <code>10</code>).</li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        Permanent potions, such as potions of healing, and potions that can end prematurely, such as Potion of Invisibility, would be considered still in effect for <code>1</code> turn (<code>60</code> seconds) after drinking them.
+
+        The aforementioned special events can occur only upon quaffing potions. As a result, there is no risk in using 1 Oil (f.i. Oil of Speed) and 1 Potion, as oils are applied to the skin, not consumed, so they wouldn't mix.
+      </p>
     </div>
     <div class="ribbon_rectangle_h3">
       <h3> <a id="contents_convenience" name="contents_convenience"></a>Convenience Tweaks and/or Cheats </h3>

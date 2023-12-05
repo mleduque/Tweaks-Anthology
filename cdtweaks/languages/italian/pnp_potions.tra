@@ -1,0 +1,13 @@
+@0 = "Sotto gli effetti di una pozione"
+
+@1 = "La pozione che hai appena bevuto ti va di traverso... Forza e Destrezza ridotte di 1 punto in maniera permanente" [choke]
+
+@2 = "La pozione che hai appena bevuto ti va di traverso... Tutti gli effetti derivanti da pozioni sono stati rimossi" [choke]
+
+@3 = "La pozione che hai appena bevuto non sembra garantirti alcun effetto..." [eff_m10]
+
+@4 = "%value% : Efficacia diminuita del 50%" [eff_m29]
+
+@5 = "%value% : Efficacia aumentata del 50%" [eff_hand]
+
+@6 = "%value% : Efficacia aumentata del 100% / Durata permanente" [eff_hand]
