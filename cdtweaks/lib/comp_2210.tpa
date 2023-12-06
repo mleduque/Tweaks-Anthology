@@ -1,0 +1,30 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Change grandmastery bonuses                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// true grandmastery                                \\\\\
+/////                                                  \\\\\
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~wspecial.2da~ ~[ %TAB%]*SPEED[ %TAB%]*~) THEN BEGIN OUTER_SET dump_speed = 0 END ELSE BEGIN OUTER_SET dump_speed = 1 END
+
+COPY ~cdtweaks/2da/wspatck.2da~  ~override~
+     ~cdtweaks/2da/wspecial.2da~ ~override~
+
+ACTION_IF dump_speed THEN BEGIN
+
+  COPY_EXISTING ~wspecial.2da~ ~override~ // remove speed column
+    REPLACE_TEXTUALLY ~[ %TAB%]*SPEED[ %TAB%]*~ ~~
+    REPLACE_TEXTUALLY ~^\([0-5]+[ %TAB%]+-?[0-9]+[ %TAB%]+-?[0-9]+\)[ %TAB%]+-?[0-9]+~ ~\1~
+    BUT_ONLY
+
+END
+
+// if grandmastery has been moved directly to BBoD
+COPY_EXISTING ~blakblad.itm~ ~override~
+  LPF ALTER_EFFECT INT_VAR silent = 1 check_headers = 0 match_opcode = 1 parameter1 = 7 END // +1.5 APR  
+  BUT_ONLY IF_EXISTS

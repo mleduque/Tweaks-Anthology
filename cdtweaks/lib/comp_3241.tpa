@@ -1,0 +1,164 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// friendly random drops                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// pick via dialogue                                \\\\\
+/////                                                  \\\\\
+
+OUTER_SET tfg_bows = 1 // randomize bows in TotFG (skip on merchant option)
+INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
+
+COPY ~cdtweaks/bam/cdtokeni.bam~ ~override~
+COPY_EXISTING ~de1tres.itm~ ~override~
+  SAY 0x08 @324102
+  SAY 0x0c @324102
+  SAY 0x50 @324103
+  SAY 0x54 @324103
+  WRITE_ASCII 0x3a ~cdtokeni~
+  WRITE_ASCII 0x44 ~gtreas01~
+  
+COPY ~cdtweaks/dlg/cdrandom.d~   ~weidu_external/cdtweaks/random/cdrandom.d~
+COPY ~cdtweaks/baf/cdrandom.baf~ ~weidu_external/cdtweaks/random/cdrandom.baf~
+
+ACTION_IF game_is_iwdee OR game_is_iwd-in-bg2 THEN BEGIN // if modern engine
+
+  ACTION_IF game_is_iwd-in-bg2 THEN BEGIN // if IWD-in-BG2 instead of true IWD...
+
+    COPY ~weidu_external/cdtweaks/random/cdrandom.d~ ~weidu_external/cdtweaks/random/cdrandom.d~
+      REPLACE_TEXTUALLY ~SAY #288~ ~SAY #74388~ // normally we'd replace_eval, but only one replacement
+
+  END ELSE BEGIN
+
+    INCLUDE ~cdtweaks/lib/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema in random.2da
+
+  END
+  
+  ACTION_FOR_EACH item IN gopoof mring1 BEGIN // ee lacks these items
+    ACTION_IF !FILE_EXISTS_IN_GAME ~%item%.itm~ BEGIN
+      COPY ~cdtweaks/itm/%item%.itm~ ~override~
+    END
+  END    
+
+  COPY ~weidu_external/cdtweaks/random/cdrandom.baf~ ~weidu_external/cdtweaks/random/cdrandom.baf~
+    REPLACE_TEXTUALLY ~EquipItem("gopoof",1)~ ~DestroyItem("gopoof")~
+    REPLACE_TEXTUALLY ~EquipItem("mring1",0)~ ~EquipItem("mring1")~
+    REPLACE_TEXTUALLY ~SetDialogueRange(300)[ %TAB%%LNL%%MNL%%WNL]+Dialogue(~ ~StartDialogueNoSet(~
+
+  OUTER_SET rand_num = 1
+
+END
+
+COPY_EXISTING ~telanis.cre~ ~override/cdrandom.cre~
+  SAY 0x08 @324101
+  SAY 0x0c @324101
+  WRITE_ASCII 0x248 ~cdrandom~ #8
+  PATCH_IF original_iwd BEGIN
+    WRITE_BYTE  0x2d9 1 // undead > humanoid
+    WRITE_ASCII 0x2e8 ~cdrandom~ #32
+    WRITE_ASCII 0x334 ~cdrandom~ #8
+  END ELSE BEGIN
+    WRITE_BYTE  0x271 1 // undead > humanoid
+    WRITE_ASCII 0x280 ~cdrandom~ #32
+    WRITE_ASCII 0x2cc ~cdrandom~ #8
+    REPLACE_CRE_ITEM ~minhp1~ #0 #0 #0 ~NONE~ ~LRING~
+  END
+  REPLACE_CRE_ITEM ~gopoof~ #0 #0 #0 ~NONE~ ~RRING~
+  ADD_CRE_ITEM ~mring1~ #0 #0 #0 ~NONE~ ~INV1~
+
+COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
+  PATCH_IF NOT (game_is_iwd OR game_is_how) BEGIN
+    REPLACE_TEXTUALLY ~ShadowedElvenPriest~ ~Priest_0~ // dv changes with totlm installed
+  END
+  COUNT_2DA_ROWS 4 "rows"
+  FOR (index = 1 ; index < rows ; ++index) BEGIN
+    READ_2DA_ENTRY index 0 4 "area"
+    READ_2DA_ENTRY index 1 4 "item"
+    READ_2DA_ENTRY index 2 4 "cont"
+    READ_2DA_ENTRY index 3 4 "quip"
+    PATCH_IF FILE_EXISTS_IN_GAME ~%area%.are~  BEGIN
+      INNER_ACTION BEGIN
+
+        ACTION_IF game_is_iwdee BEGIN // iwdee will swap any RNDTRExx even if it's not on the table, so in iwdee we have to swap the rndtreXX item ref for a different item
+          OUTER_SPRINT token_item ~CDRAND%rand_num%~
+          OUTER_SET rand_num += 1
+        END ELSE BEGIN
+          OUTER_SPRINT token_item ~%item%~
+        END
+
+        OUTER_FOR (index2 = 1 ; index2 < 7 ; ++index2) BEGIN
+
+          EXTEND_BOTTOM ~%area%.bcs~ ~cdtweaks/baf/cdrandom_extend.baf~ EVALUATE_BUFFER
+
+        END
+
+        ACTION_IF index = 1 BEGIN // special for orrick's random-via-dialogue
+
+          COMPILE ~cdtweaks/dlg/dorrick.d~ EVALUATE_BUFFER
+        
+        END
+
+        COPY_EXISTING ~%table%.2da~ ~override~
+          PATCH_IF game_is_iwdee BEGIN
+            REPLACE_EVALUATE CASE_INSENSITIVE ~^\(%item%[ %TAB%]\)\(.+\)\([ %TAB%]*[%LNL%%MNL%%WNL%]+\)~
+              BEGIN SPRINT "list" "%MATCH2%" END ~%MATCH1%%MATCH2%%MATCH3%~ // preserve line
+          END ELSE BEGIN
+            REPLACE_EVALUATE CASE_INSENSITIVE ~^\(%item%[ %TAB%]\)\(.+\)\([ %TAB%]*[%LNL%%MNL%%WNL%]+\)~
+            BEGIN SPRINT "list" "%MATCH2%" END ~~ // delete line from table
+          END
+          BUT_ONLY
+
+        COPY_EXISTING ~de1tres.itm~ ~override/%token_item%.itm~
+
+        COPY ~weidu_external/cdtweaks/random/cdrandom.d~ ~weidu_external/cdtweaks/random/cdrandom.d~
+          REPLACE_TEXTUALLY ~insert_reply~ ~~
+          REPLACE_TEXTUALLY ~~~~~insert_state~~~~~ ~~~~~
+IF ~PartyHasItem("%token_item%")~ THEN BEGIN CDState%token_item% SAY @324104
+  insert_reply
+END
+insert_state
+~~~~~
+
+        COPY ~cdtweaks/lib/template2.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
+          REPLACE_TEXTUALLY ~replacemelist~ ~%list%~ //EVALUATE_BUFFER
+//          REPLACE_TEXTUALLY ~drop~ ~drop%item%~ EVALUATE_BUFFER
+          REPLACE_TEXTUALLY ~\([ %TAB%]+\*\)*~ ~~
+          REPLACE_TEXTUALLY ~multiply~ ~*~
+          REPLACE_TEXTUALLY ~percentage~ ~%~
+
+        INCLUDE ~weidu_external/cdtweaks/random/%item%.tpa~
+          
+        COPY_EXISTING ~%area%.are~ ~override~
+          WRITE_ASCIIE 0x94 ~%area%~ #8
+          BUT_ONLY
+
+      END
+
+    END
+  END
+  BUT_ONLY
+
+COPY ~weidu_external/cdtweaks/random/cdrandom.d~ ~weidu_external/cdtweaks/random/cdrandom.d~
+  REPLACE_TEXTUALLY ~insert_state~ ~~
+  REPLACE_TEXTUALLY ~insert_reply~ ~~
+
+COMPILE ~weidu_external/cdtweaks/random/cdrandom.d~
+        ~weidu_external/cdtweaks/random/cdrandom.baf~
+
+ACTION_IF game_is_iwd-in-bg2 BEGIN
+
+  COPY_EXISTING ~ar3501.bcs~ ~override~
+                ~ar3502.bcs~ ~override~
+                ~ar3503.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_EVALUATE ~"CDKT\([123]\)Tres"~ BEGIN
+        SET new_ref = (%MATCH1% + 17)
+      END ~"CDRNDTRE%new_ref%"~
+    END
+    BUT_ONLY
+
+END

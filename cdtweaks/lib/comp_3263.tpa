@@ -1,0 +1,22 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Recoverable ammunition                           \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// 100% chance to recover after a successful hit    \\\\\
+/////                                                  \\\\\
+
+INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
+
+LAF MAKE_AMMO_RECOVERABLE
+  INT_VAR
+    probability       = 100
+    ids_target        = 2
+    ids_value         = 0
+  STR_VAR
+    eff_template_file = ~cdtweaks/eff/a7_hitfx.eff~
+END

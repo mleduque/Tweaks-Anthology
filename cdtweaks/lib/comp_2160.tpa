@@ -1,0 +1,15 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Altered weapon proficiencies                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Rebalanced weapon proficiencies                  \\\\\
+/////                                                  \\\\\
+
+INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
+INCLUDE ~cdtweaks/lib/profs_common.tpa~
+INCLUDE ~cdtweaks/lib/rebalanced_profs.tpa~

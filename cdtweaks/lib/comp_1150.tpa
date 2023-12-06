@@ -1,0 +1,198 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Shapeshifter rebalancing                         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF tutu_gen THEN BEGIN // Tutu
+
+  COPY_EXISTING ~_b1-3.itm~    ~override~ // adds magical flag to misc weapons
+                ~_b2-16.itm~   ~override~
+                ~_b1-20.itm~   ~override~
+                ~_drizzts.itm~ ~override~
+                ~_fblade.itm~  ~override~
+                ~_s1-10.itm~   ~override~
+                ~_s1-12.itm~   ~override~
+                ~_s2-16.itm~   ~override~
+                ~_sarevo.itm~  ~override~
+    PATCH_IF (SOURCE_SIZE > 0x71) THEN BEGIN // protects against invalid files
+      READ_BYTE  0x18 "flags"
+      WRITE_BYTE 0x18 ("%flags%" BOR 0b01000000)
+    END
+    BUT_ONLY
+
+END
+
+COPY_EXISTING ~sppr604.spl~ ~override~
+  WRITE_SHORT 0x20 16384
+  SAY IDENTIFIED_DESC @115001
+  BUT_ONLY
+
+COPY ~cdtweaks/cre/wwbearwe.cre~ ~override~
+  SAY NAME1 @115002
+  SAY NAME2 @115002
+
+COPY ~cdtweaks/cre/wwbear.cre~ ~override~
+  SAY NAME1 @115003
+  SAY NAME2 @115003
+
+COPY_EXISTING ~wwbearwe.cre~ ~override~
+              ~wwbear.cre~   ~override~
+  PATCH_IF ((IDS_OF_SYMBOL (~animate~ ~WEREBEAR_D2~)) >= 0) BEGIN // if werebear animation from Infinity animations available...
+    WRITE_LONG 0x28 (IDS_OF_SYMBOL (~animate~ ~WEREBEAR_D2~))     // then use it
+  END ELSE BEGIN
+    PATCH_IF game_is_iwdee OR game_is_iwd-in-bg2 BEGIN // if not, use polar bears for IWD games
+      WRITE_LONG 0x28 29187 // bear_polar
+    END
+  END
+  BUT_ONLY  
+
+COPY ~cdtweaks/2da/anisum04.2da~ ~override~
+     ~cdtweaks/2da/anisum05.2da~ ~override~
+     ~cdtweaks/eff/spanim5.eff~  ~override~
+
+// patch shapeshifter table instead of overwriting it
+APPEND ~clabdr03.2da~ ~ABILITY1 CDnewreplace3 **** **** **** **** **** **** **** **** **** **** **** CDnewreplace4 CDREPLACE~
+COPY_EXISTING ~clabdr03.2da~ ~override~
+  REPLACE_TEXTUALLY ~GA_SPCL64[34]~ ~****~
+  REPLACE_TEXTUALLY ~CDnewreplace~ ~GA_SPCL64~
+  COUNT_2DA_COLS cols
+  FOR (index = 15 ; index < cols ; ++index) BEGIN
+    REPLACE_TEXTUALLY ~CDREPLACE~ ~**** CDREPLACE~
+  END
+  REPLACE_TEXTUALLY ~CDREPLACE~ ~****~
+  PRETTY_PRINT_2DA  
+  
+ACTION_FOR_EACH spell IN spcl643 spcl644 BEGIN // grab existing strrefs
+
+  COPY_EXISTING ~%spell%.spl~ ~override~
+    READ_ASCII 0x08 name (8)
+    READ_ASCII 0x50 desc (8)
+
+  COPY ~cdtweaks/spl/%spell%.spl~  ~override~
+    WRITE_ASCIIE 0x08 ~%name%~
+    WRITE_ASCIIE 0x50 ~%desc%~
+
+END
+
+ACTION_IF enhanced_edition BEGIN // since descript actually matters in EE innates
+
+  COPY_EXISTING ~spcl643.spl~ ~override~
+    SAY 0x50 @115006
+
+  COPY_EXISTING ~spcl644.spl~ ~override~
+    SAY 0x50 @115007
+
+END
+
+// if DR > v3  is installed prior to srb
+ACTION_IF ((FILE_EXISTS_IN_GAME ~cdnegpp.spl~) AND (FILE_EXISTS ~Divine_Remix/lib/macro_reindex_clab.tph~)) THEN BEGIN
+
+  INCLUDE ~Divine_Remix/lib/macro_reindex_clab.tph~
+  INCLUDE ~Divine_Remix/lib/macro_add_druid_spells.tph~
+  COPY_EXISTING ~clabdr03.2da~ ~override~
+    LAUNCH_PATCH_MACRO ~add_druid_spells~ // add generic druid spells
+    LAUNCH_PATCH_MACRO ~reindex_clab~     // re-index lines
+    BUT_ONLY
+
+END ELSE BEGIN
+
+  // makes spells castable by rangers and druids
+  COPY_EXISTING ~sppr109.spl~ ~override~
+                ~sppr203.spl~ ~override~
+                ~sppr304.spl~ ~override~
+                ~sppr318.spl~ ~override~
+                ~sppr513.spl~ ~override~
+    WRITE_BYTE 0x21 (THIS & `BIT7)
+    BUT_ONLY
+
+  // update spellbooks for druids for new druid-allowed spells
+  COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+    READ_LONG 0x1cc joinable ELSE 0
+    READ_BYTE 0x273 class
+    PATCH_IF ((joinable > 0) AND ((class = 11) OR (class = 16))) BEGIN // check for non-null bio string, druid class
+      PATCH_IF (class = 16) BEGIN // fighter-druids
+        READ_BYTE 0x235 level
+      END ELSE BEGIN              // vanilla druids
+        READ_BYTE 0x234 level
+      END
+      ADD_KNOWN_SPELL ~sppr109~ #0 ~priest~
+      PATCH_IF (level > 2) BEGIN
+        ADD_KNOWN_SPELL ~sppr203~ #1 ~priest~
+      END
+      PATCH_IF (level > 4) BEGIN
+        ADD_KNOWN_SPELL ~sppr304~ #2 ~priest~
+        ADD_KNOWN_SPELL ~sppr318~ #2 ~priest~
+      END
+      PATCH_IF (level > 8) BEGIN
+        ADD_KNOWN_SPELL ~sppr513~ #4 ~priest~
+      END
+    END
+    BUT_ONLY
+
+END
+
+COPY ~cdtweaks/itm/wwwere.itm~ ~override~
+  SAY 0x08 @115008
+  SAY 0x0c @115008
+  SAY 0x50 @115004
+  SAY 0x54 @115004
+
+COPY ~cdtweaks/itm/wwweregr.itm~ ~override~
+  SAY 0x08 @115009
+  SAY 0x0c @115009
+  SAY 0x50 @115005
+  SAY 0x54 @115005
+
+// if something installed that allows shapeshifters to be non-TN alignments, adjust the paw usability
+COPY_EXISTING ~alignmnt.2da~ ~override~
+  READ_2DA_ENTRY 42 1 10 "lg"
+  READ_2DA_ENTRY 42 2 10 "ln"
+  READ_2DA_ENTRY 42 3 10 "le"
+  READ_2DA_ENTRY 42 4 10 "ng"
+  READ_2DA_ENTRY 42 6 10 "ne"
+  READ_2DA_ENTRY 42 7 10 "cg"
+  READ_2DA_ENTRY 42 8 10 "cn"
+  READ_2DA_ENTRY 42 9 10 "ce"
+
+ACTION_IF (("%lg%" = 1) OR ("%ln%" = 1) OR ("%le%" = 1)) THEN BEGIN // remove lawful flag
+
+  COPY_EXISTING ~wwwere.itm~   ~override~
+                ~wwweregr.itm~ ~override~
+    READ_BYTE  0x1e "use"
+    WRITE_BYTE 0x1e ("%use%" BAND 0b11101111) // removes lawful flag
+    BUT_ONLY
+
+END
+
+ACTION_IF (("%cg%" = 1) OR ("%cn%" = 1) OR ("%ce%" = 1)) THEN BEGIN // remove chaotic flag
+
+  COPY_EXISTING ~wwwere.itm~   ~override~
+                ~wwweregr.itm~ ~override~
+    READ_BYTE  0x1e "use"
+    WRITE_BYTE 0x1e ("%use%" BAND 0b11111110) // removes chaotic flag
+    BUT_ONLY
+
+END
+
+ACTION_IF (("%lg%" = 1) OR ("%ng%" = 1) OR ("%cg%" = 1)) THEN BEGIN // remove good flag
+
+  COPY_EXISTING ~wwwere.itm~   ~override~
+                ~wwweregr.itm~ ~override~
+    READ_BYTE  0x1e "use"
+    WRITE_BYTE 0x1e ("%use%" BAND 0b11111011) // removes good flag
+    BUT_ONLY
+
+END
+
+ACTION_IF (("%le%" = 1) OR ("%ne%" = 1) OR ("%ce%" = 1)) THEN BEGIN // remove evil flag
+
+  COPY_EXISTING ~wwwere.itm~   ~override~
+                ~wwweregr.itm~ ~override~
+    READ_BYTE  0x1e "use"
+    WRITE_BYTE 0x1e ("%use%" BAND 0b11111101) // removes evil flag
+    BUT_ONLY
+
+END

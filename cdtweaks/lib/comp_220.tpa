@@ -1,0 +1,11 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Enhanced Overlays for Colorblind Players                   \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY ~cdtweaks/bam/stortint.bam~ ~override~ // red, unusable
+     ~cdtweaks/bam/stortin2.bam~ ~override~ // blue, needs ID
+     ~cdtweaks/bam/stortin3.bam~ ~override~ // green, learnable scroll

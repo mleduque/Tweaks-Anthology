@@ -1,0 +1,19 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// remove delay on magical traps                              \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_FOR_EACH proj IN dfirebl iceglyp idpro96 trapglyp trapskul BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%proj%.pro~ THEN BEGIN
+
+    COPY_EXISTING ~%proj%.pro~ ~override~
+      WRITE_SHORT 0x210 1
+      BUT_ONLY
+
+  END
+
+END

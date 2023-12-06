@@ -1,0 +1,32 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// wear multiple protection items                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// armor + one item                                 \\\\\
+/////                                                  \\\\\
+
+COPY_EXISTING ~itemexcl.2da~ ~override~
+  COUNT_2DA_ROWS 2 rows
+  FOR (index = 0 ; index < rows ; ++index) BEGIN // start at 1 to skip header row
+    SET type = 0
+    READ_2DA_ENTRY index 0 2 file
+    PATCH_IF FILE_EXISTS_IN_GAME ~%file%.itm~ BEGIN
+      INNER_ACTION BEGIN
+
+        COPY_EXISTING ~%file%.itm~ ~override~
+          READ_SHORT 0x1c type
+          BUT_ONLY
+
+      END
+    END
+    PATCH_IF type = 2 BEGIN
+      SET_2DA_ENTRY index 1 2 CD_DELETE_ME
+    END
+  END
+  REPLACE_TEXTUALLY ~^.+[ %TAB%]+CD_DELETE_ME[ %TAB%%LNL%%MNL%%WNL%]+~ ~~
+  BUT_ONLY

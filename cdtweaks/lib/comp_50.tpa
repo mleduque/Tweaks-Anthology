@@ -1,0 +1,23 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Avatar Morphing Script                           \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COMPILE ~cdtweaks/baf/0ikmorph.baf~
+        ~cdtweaks/baf/ikmorph.baf~
+        ~cdtweaks/dlg/ikmorph.d~
+
+MOVE ~override/0ikmorph.bcs~ ~scripts/0ikmorph.bs~
+
+APPEND ~scrpdesc.2da~ ~0IKMorph IKMorph1 IKMorph2~
+
+COPY_EXISTING ~scrpdesc.2da~ ~override~
+  REPLACE ~IKMorph1~ @5001
+  REPLACE ~IKMorph2~ @5002
+
+COPY ~cdtweaks/cre/ikmorph.cre~  ~override~
+     ~cdtweaks/eff/ikmorph.eff~  ~override~
+     ~cdtweaks/spl/ikmorph.spl~  ~override~

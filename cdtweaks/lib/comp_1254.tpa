@@ -1,0 +1,64 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Move NPCs From Baldur's Gate                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Move NPCs From Baldur's Gate: shar-teel          \\\\\
+/////                                                  \\\\\
+
+COPY_EXISTING ~%SHARTEEL_BCS%.bcs~ ~override~ // catching and updating area variables
+              ~shartel2.bcs~       ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~,"%MutaminsGarden%",~ ~,"%NorthNashkelRoad%",~
+  END
+  BUT_ONLY      
+
+ACTION_IF !game_is_bgt THEN BEGIN // all other platforms use GAM file
+
+  COPY_EXISTING ~baldur.gam~ ~override~
+    READ_LONG 0x30 npc_off
+    READ_LONG 0x34 npc_num
+    FOR (index = 0; index < npc_num; ++index) BEGIN
+      READ_ASCII (npc_off + 0x0c + (index * 0x160)) ~CREName~
+      PATCH_IF (~%CREName%~ STRING_COMPARE_CASE ~%tutu_var%SHARTE~ = 0) BEGIN // Quayle Starts at the Nashkel Carnival
+        WRITE_ASCIIE (npc_off + 0x18 + (index * 0x160)) ~%NorthNashkelRoad%~ #8
+        WRITE_SHORT  (npc_off + 0x20 + (index * 0x160)) 1391
+        WRITE_SHORT  (npc_off + 0x22 + (index * 0x160)) 2524
+      END
+    END
+    BUT_ONLY
+    
+  ACTION_IF enhanced_edition BEGIN // her joining combat script is in the area script
+
+    COPY_EXISTING ~shartel2.bcs~ ~override~ // shar-teel's combat script for the initial fight
+      DECOMPILE_AND_PATCH BEGIN
+        REPLACE_TEXTUALLY ~"%MutaminsGarden%"~ ~"%NorthNashkelRoad%"~ // change area variable to new area
+      END
+      BUT_ONLY
+
+    COPY_EXISTING ~%MutaminsGarden_BCS%.bcs~     ~override~ // ar3500, mutamin's garden
+      DECOMPILE_AND_PATCH BEGIN
+        REPLACE_TEXTUALLY ~\(IF[ %TAB%%LNL%%MNL%%WNL%]+\)\(Global("SharteelFight","GLOBAL",[12])\)~ ~\1 False() \2~ // disable existing scripting
+      END
+      BUT_ONLY
+      
+    EXTEND_BOTTOM ~%NorthNashkelRoad_BCS%.bcs~ ~cdtweaks/baf/bgee_spawn_sharteel.baf~ EVALUATE_BUFFER
+
+  END
+  
+END ELSE BEGIN // bgt
+
+  // disable spawns
+  COPY_EXISTING ~%MutaminsGarden_BCS%.bcs~     ~override~ // ar9400, mutamin's garden
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~Global("BGTNPC[0-9]+","GLOBAL",0)~ ~False()~
+    END
+    BUT_ONLY
+
+  EXTEND_BOTTOM ~%NorthNashkelRoad_BCS%.bcs~           ~cdtweaks/baf/bgt_spawn_sharteel.baf~
+
+END

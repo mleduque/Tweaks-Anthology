@@ -1,0 +1,13 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// BGT: Additional Experience Cap While in BG       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+OUTER_SET xp_cap = 161000 // modify as desired
+
+OUTER_SPRINT trigger ~GlobalLT("ENDOFBG1","GLOBAL",2)~ // don't modify as desired
+OUTER_SPRINT spell   ~cdxpbg~ 
+INCLUDE ~cdtweaks/lib/bgt_xp_caps.tpa~

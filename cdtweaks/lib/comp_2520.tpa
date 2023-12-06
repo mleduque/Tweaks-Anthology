@@ -1,0 +1,68 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// loosen shield restrictions                                 \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+    
+INCLUDE ~cdtweaks/lib/common_armor_list.tpa~
+
+ACTION_PHP_EACH cd_common_armor_list AS params => item BEGIN
+  
+  ACTION_IF (("%params_2%" STRING_COMPARE_CASE "shield_buckler" = 0) OR
+             ("%params_2%" STRING_COMPARE_CASE "shield_small" = 0)) BEGIN
+
+    COPY_EXISTING ~%item%.itm~ ~override~
+      READ_SHORT 0x1c type
+      PATCH_IF ((type = 12) OR (type = 41) OR (type = 47) OR (type = 49) OR (type = 53)) BEGIN // 12 is bg shield type, all others are iwd
+        READ_LONG 0x1e use
+        PATCH_IF (("%params_2%" STRING_COMPARE_CASE "shield_buckler" = 0) AND // buckler that's usable by...
+                  ((use BAND BIT8)  = 0) AND                                  // cleric-mages and
+                  ((use BAND BIT13) = 0) AND                                  // fighter-mages and
+                  ((use BAND BIT15) = 0) AND                                  // fighter-mage-clerics and
+                  ((use BAND BIT16) = 0) AND                                  // fighter-mage-thieves and
+                  ((use BAND BIT19) = 0)) BEGIN                               // mage-thieves
+          WRITE_LONG 0x1e (THIS BAND `BIT18)                                  // removes mage flag
+        END ELSE
+        PATCH_IF (("%params_2%" STRING_COMPARE_CASE "shield_small" = 0) AND // small shield that's usable by...
+                  ((use BAND BIT9)  = 0) AND                                // cleric-thieves and
+                  ((use BAND BIT16) = 0) AND                                // fighter-mage-thieves and
+                  ((use BAND BIT17) = 0)) BEGIN                             // fighter-thieves
+          WRITE_LONG 0x1e (((THIS BAND `BIT22) BAND `BIT19) BAND `BIT6)     // removes bard, thief, mage-thief flags
+        END
+      END  
+      BUT_ONLY
+      
+  END // appearance check
+  
+END // php_each
+  
+ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2060~ THEN BEGIN // weapon styles for all
+
+  OUTER_SET $mage_kit(MAGE) = 1
+  OUTER_SET $mage_kit(SORCERER) = 1 // shouldn't be in weapprof, but let's be safe
+  COPY_EXISTING ~kitlist.2da~ ~override~
+    SET col_check = (9 + enhanced_edition)
+    COUNT_2DA_ROWS col_check rows
+    FOR (row = 1 ; row < rows ; ++row) BEGIN
+      READ_2DA_ENTRY row 8 col_check class
+      PATCH_IF ((class = 1) OR (class = 19)) BEGIN // mage or sorcerer
+        READ_2DA_ENTRY row 1 col_check kit
+        SET $mage_kit("%kit%") = 1
+      END
+    END   
+    BUT_ONLY
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    COUNT_2DA_COLS col_count
+    SET col_check = col_count - 1 // header row has one less entry than rest of file
+    FOR (col = 3 ; col < col_check ; ++col) BEGIN
+      READ_2DA_ENTRY 0 col col_check kit
+      PATCH_IF VARIABLE_IS_SET $mage_kit("%kit%") BEGIN
+        SET_2DA_ENTRY 29 (col + 1) col_count 2
+      END
+    END  
+    BUT_ONLY
+
+END

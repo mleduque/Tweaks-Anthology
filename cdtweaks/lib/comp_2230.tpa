@@ -1,0 +1,47 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Make +x/+y weapons consistent                              \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// to update descriptions; if not translated it'll try in English and not change anything
+OUTER_SPRINT text_stats @223001
+OUTER_SPRINT text_ench  @223002
+
+// get enchantments from lookup table
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_enchantment BEGIN
+
+  blun10 => 3 // Root of the Problem +1/+3 vs unnatural
+  blun23 => 3 // Bone Club +2/+3 vs undead
+  hamm04 => 4 // hammer +1/+4 vs giantkin
+  sw1h03 => 3 // bastard sword +1/+3 vs shapeshifters
+  sw1h31 => 4 // daystar
+  sw1h54 => 3 // Equalizer
+  wamace => 5 // jerrod's mace
+
+END
+
+ACTION_PHP_EACH cd_enchantment AS item => ench BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%item%.itm~ THEN BEGIN
+
+    COPY_EXISTING ~%item%.itm~ ~override~
+      WRITE_LONG 0x60 ench
+      PATCH_FOR_EACH offset IN 0x54 BEGIN
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY ~\(%text_stats%[ %TAB%%LNL%%MNL%%WNL%]+\)\([^ %TAB%%LNL%%MNL%%WNL%]\)~
+              ~\1%text_ench%
+\2~
+          END
+          SAY_EVALUATED ~%offset%~ ~%desc%~ // write changes
+        END
+      END
+      BUT_ONLY
+
+  END
+
+END

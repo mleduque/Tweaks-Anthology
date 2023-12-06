@@ -1,0 +1,156 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// More dual-classes                                          \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+INCLUDE ~cdtweaks/lib/kit_ids_fixer.tpa~
+
+// first it replaces WILDMAGE and BARBARIAN values in these files if they're present
+COPY_EXISTING ~dualclas.2da~ ~override~
+  REPLACE_TEXTUALLY
+    ~\bWILDMAGE\b.*~
+    ~WILDMAGE                1       1       0       1       0       0~
+  REPLACE_TEXTUALLY
+    ~\bBARBARIAN\b.*~
+    ~BARBARIAN               0       1       1       1       1       0~
+  BUT_ONLY
+
+COPY_EXISTING ~abdcdsrq.2da~ ~override~
+  REPLACE_TEXTUALLY
+    ~\bWILDMAGE\b.*~
+    ~WILDMAGE                0       0       0       17      0       0~
+  REPLACE_TEXTUALLY
+    ~\bBARBARIAN\b.*~
+    ~BARBARIAN               17      0       0       0       0       0~
+  BUT_ONLY
+
+COPY_EXISTING ~abdcscrq.2da~ ~override~
+  REPLACE_TEXTUALLY
+    ~\bWILDMAGE\b.*~
+    ~WILDMAGE                0       0       0       15      0       0~
+  REPLACE_TEXTUALLY
+    ~\bBARBARIAN\b.*~
+    ~BARBARIAN               15      0       0       0       0       0~
+  BUT_ONLY
+
+// if they're not then it appends them to the files
+APPEND ~dualclas.2da~ ~WILDMAGE                1       1       0       1       0       0~
+  UNLESS ~\bWILDMAGE\b~
+
+APPEND ~abdcdsrq.2da~ ~WILDMAGE                0       0       0       17      0       0~
+  UNLESS ~\bWILDMAGE\b~
+
+APPEND ~abdcscrq.2da~ ~WILDMAGE                0       0       0       15      0       0~
+  UNLESS ~\bWILDMAGE\b~
+
+APPEND ~dualclas.2da~ ~BARBARIAN               0       1       1       1       1       0~
+  UNLESS ~\bBARBARIAN\b~
+
+APPEND ~abdcdsrq.2da~ ~BARBARIAN               17      0       0       0       0       0~
+  UNLESS ~\bBARBARIAN\b~
+
+APPEND ~abdcscrq.2da~ ~BARBARIAN               15      0       0       0       0       0~
+  UNLESS ~\bBARBARIAN\b~
+
+PRINT @1
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x71) THEN BEGIN // protects against invalid files
+    READ_BYTE 0x1f "usa2"
+    READ_BYTE 0x29 "kit1"
+    PATCH_IF ((("%kit1%" BAND 0b01000000) = 0b01000000) AND // if unusable by fighters and barbarians
+              (("%usa2%" BAND 0b00001000) = 0b00001000)) THEN BEGIN
+      WRITE_BYTE 0x29 ("%kit1%" BAND 0b10111111) //remove redundant barb flag
+    END
+  END
+  BUT_ONLY
+
+
+ACTION_IF FILE_EXISTS ~refinements/hlab/thief/clab/clabempt.2da~ AND NOT FILE_EXISTS ~refinements/lib/kit.tpa~ THEN BEGIN
+
+  INCLUDE ~cdtweaks/lib/sod_25stweap_fix.tpa~ // for broken 25stweap.2da in SoD
+  INCLUDE ~cdtweaks/lib/iwdee_25stweap_fix.tpa~ // for broken 25stweap.2da in SoD
+
+  COPY ~cdtweaks/spl/cdtitle0.spl~ ~override~ // spell to fix title and class name for d/c barbarians. Calls one of the EFFs below as appropriate
+  
+  COPY ~cdtweaks/eff/cdtitle1.eff~ ~override~
+    SAY 0x1C @214001
+  
+  COPY_EXISTING ~cdtitle1.eff~ ~override/cdtitle2.eff~
+    SAY 0x1C @214002
+  
+  COPY_EXISTING ~cdtitle1.eff~ ~override/cdtitle3.eff~
+    SAY 0x1C @214003
+  
+  COPY_EXISTING ~cdtitle1.eff~ ~override/cdtitle4.eff~
+    SAY 0x1C @214004
+
+  ADD_KIT ~barbtF~
+    ~barbtF   1 1 1 1 1 0 0 0~
+    ~barbtF  0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+    ~barbtF     0       9       0       0       0       0~
+    ~barbtF     0       0       0       0       0       0~
+    ~barbtF     0       17      0       0       0       0~
+    ~barbtF     0       15      0       0       0       0~
+    ~barbtF     0       1       1       1       1       1       1       1       1~
+    ~barbtF     1       1       1       0       0       0~
+    ~Refinements/Hlab/Thief/clab/CLABEMPT.2DA~
+    ~~
+    ~0x40000000 2~
+    ~BRB~
+    ~* * * * * * * * * * * * * * * * * * * *~
+    SAY #45855
+    SAY #45859
+    SAY #45869
+
+  ADD_KIT ~barbtw~
+    ~barbtw   1 1 1 1 1 0 0 0~
+    ~barbtw  0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+    ~barbtw     0       9       0       0       0       0~
+    ~barbtw     0       0       0       0       0       0~
+    ~barbtw     0       17      0       0       0       0~
+    ~barbtw     0       15      0       0       0       0~
+    ~barbtw     0       1       1       1       1       1       1       1       1~
+    ~barbtw     1       1       1       0       0       0~
+    ~Refinements/Hlab/Thief/clab/CLABTEMP.2DA~
+    ~~
+    ~0x40000000 2~
+    ~BRB~
+    ~* * * * * * * * * * * * * * * * * * * *~
+    SAY #45855
+    SAY #45859
+    SAY #45869
+
+  COPY_EXISTING ~kitlist.2da~ ~override~
+    REPLACE_TEXTUALLY ~45855 45859 45869 CLABTEMP ~     ~45855 45859 45869 CLABFI05 ~
+    SET_2DA_ENTRY 34 7 1 0x400000020
+
+  EXTEND_TOP ~dplayer.bcs~  ~cdtweaks/baf/dplayer.baf~
+  EXTEND_TOP ~dplayer2.bcs~ ~cdtweaks/baf/dplayer.baf~
+  EXTEND_TOP ~dplayer3.bcs~ ~cdtweaks/baf/dplayer.baf~
+  //EXTEND_BOTTOM ~baldur.bcs~   ~cdtweaks/baf/Runcheck.baf~
+  //EXTEND_BOTTOM ~baldur25.bcs~ ~cdtweaks/baf/Runcheck.baf~
+  EXTEND_BOTTOM ~li#stri.bcs~  ~cdtweaks/baf/li#stri.baf~
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+  // Full compatibility with all weapprof modifiers (like, say, AOE)
+    FOR (row = 3; row < 35; row = row + 1) BEGIN
+      READ_2DA_ENTRY "%row%" 52 1 "barb"
+      SET_2DA_ENTRY "%row%" (22+"%barbtF%") 1 "%barb%"
+      SET_2DA_ENTRY "%row%" (22+"%barbtw%") 1 "%barb%"
+    END
+
+  COPY_EXISTING  ~kitlist.2da~ ~override~
+    READ_2DA_ENTRY 34 2 1 "lower"
+    READ_2DA_ENTRY 34 3 1 "mixed"
+    READ_2DA_ENTRY 34 4 1 "help"
+    SET_2DA_ENTRY "%barbtF%"+3 2 1 "%lower%"
+    SET_2DA_ENTRY "%barbtw%"+3 2 1 "%lower%"
+    SET_2DA_ENTRY "%barbtF%"+3 3 1 "%mixed%"
+    SET_2DA_ENTRY "%barbtw%"+3 3 1 "%mixed%"
+    SET_2DA_ENTRY "%barbtF%"+3 4 1 "%help%"
+    SET_2DA_ENTRY "%barbtw%"+3 4 1 "%help%"
+
+END

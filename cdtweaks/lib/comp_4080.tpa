@@ -1,0 +1,262 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Make Khalid a Fighter-Mage                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF original_bg1 BEGIN
+
+  COPY_EXISTING ~khalid.cre~  ~override~
+                ~khalid2.cre~ ~override~
+                ~khalid4.cre~ ~override~
+                ~khalid6.cre~ ~override~
+    SAY BIO @408001
+    PATCH_IF (%SOURCE_SIZE% > 724) BEGIN //ensure file is at least header size
+      WRITE_BYTE 0x70 2    // raise longbow prof
+      WRITE_BYTE 0x74 0    // remove axe prof
+      WRITE_BYTE 0x236 0   // remove 3rd class level
+      WRITE_BYTE 0x23a 15  // increase intelligence
+      WRITE_BYTE 0x273 7   // change class to fighter/mage
+    READ_LONG 0x2a8 memoff
+    READ_LONG 0x2ac memnum
+    FOR (x=0;x<%memnum%;x+=1) BEGIN
+      READ_SHORT (%memoff% + (0x10 * %x%) + 0x0) level
+      READ_SHORT (%memoff% + (0x10 * %x%) + 0x6) type
+      PATCH_IF ((%level% = 0) AND (%type% = 1)) BEGIN //add info to have a mem spell slot available
+        WRITE_SHORT (%memoff% + (0x10 * %x%) + 0x2) 1
+        WRITE_SHORT (%memoff% + (0x10 * %x%) + 0x4) 1
+      END
+    END
+    READ_LONG 0x2b0 memspellsoff
+      PATCH_IF (%memspellsoff% >= %memoff%) BEGIN
+        WRITE_LONG 0x2b0 (%memspellsoff% - 0x10)
+      END
+    READ_LONG 0x2b8 itemslots
+      PATCH_IF (%itemslots% >= %memoff%) BEGIN
+        WRITE_LONG 0x2b8 (%itemslots% - 0x10)
+      END
+    READ_LONG 0x2bc itemoff
+      PATCH_IF (%itemoff% >= %memoff%) BEGIN
+        WRITE_LONG 0x2bc (%itemoff% - 0x10)
+      END
+    READ_LONG 0x2c4 fxoff
+      PATCH_IF (%fxoff% >= %memoff%) BEGIN
+        WRITE_LONG 0x2c4 (%fxoff% - 0x10)
+      END
+    END
+    BUT_ONLY
+  
+  // add in spells and items
+  COPY_EXISTING ~khalid.cre~  ~override~
+                ~khalid2.cre~ ~override~
+                ~khalid4.cre~ ~override~
+                ~khalid6.cre~ ~override~
+    WRITE_LONG 0x18 4888  // raise XP
+    WRITE_SHORT 0x24 10   // current hp
+    WRITE_SHORT 0x26 10   // max hp
+    WRITE_BYTE 0x52 19    // lower thac0
+    WRITE_BYTE 0x66 3     // lower lore
+    WRITE_BYTE 0x234 2    // 1st class level
+    WRITE_BYTE 0x235 1    // 2nd class level
+    REMOVE_CRE_ITEMS
+    ADD_CRE_ITEM ~helm01~ #1  #0 #0 ~IDENTIFIED~ ~HELMET~
+    ADD_CRE_ITEM ~sw1h01~ #1  #0 #0 ~IDENTIFIED~ ~WEAPON1~
+    ADD_CRE_ITEM ~bow03~  #1  #0 #0 ~IDENTIFIED~ ~WEAPON2~ EQUIP TWOHANDED
+    ADD_CRE_ITEM ~arow01~ #40 #0 #0 ~IDENTIFIED~ ~QUIVER1~
+    ADD_CRE_ITEM ~potn08~ #1  #0 #0 ~IDENTIFIED~ ~QITEM1~
+    ADD_KNOWN_SPELL ~SPWI114~ #0 ~wizard~
+    ADD_KNOWN_SPELL ~SPWI116~ #0 ~wizard~
+    ADD_KNOWN_SPELL ~SPWI108~ #0 ~wizard~
+    ADD_KNOWN_SPELL ~SPWI112~ #0 ~wizard~
+    ADD_KNOWN_SPELL ~SPWI119~ #0 ~wizard~
+    ADD_KNOWN_SPELL ~SPWI110~ #0 ~wizard~
+    ADD_KNOWN_SPELL ~SPWI102~ #0 ~wizard~
+    ADD_MEMORIZED_SPELL ~SPWI102~ #0 ~wizard~ (1)
+
+  COPY_EXISTING ~khalid2.cre~ ~override~
+                ~khalid4.cre~ ~override~
+                ~khalid6.cre~ ~override~
+    WRITE_LONG 0x18 9944  // raise XP
+    WRITE_SHORT 0x24 12   // current hp
+    WRITE_SHORT 0x26 12   // max hp
+    WRITE_BYTE 0x52 18    // lower thac0
+    WRITE_BYTE 0x54 13    // improve save (khalid2)
+    WRITE_BYTE 0x66 6     // lower lore
+    WRITE_BYTE 0x72 1     // raise blunt prof (khalid2, 4, 6)
+    WRITE_BYTE 0x234 3    // 1st class level
+    WRITE_BYTE 0x235 2    // 2nd class level
+    ADD_CRE_ITEM ~brac01~ #0  #0 #0 ~IDENTIFIED~ ~GLOVES~
+    ADD_MEMORIZED_SPELL ~SPWI112~ #0 ~wizard~ (1)
+
+  COPY_EXISTING ~khalid4.cre~ ~override~
+                ~khalid6.cre~ ~override~
+    WRITE_LONG 0x18 18822 // raise XP
+    WRITE_SHORT 0x24 16   // current hp
+    WRITE_SHORT 0x26 16   // max hp
+    WRITE_BYTE 0x66 9     // lower lore
+    WRITE_BYTE 0x6e 2     // lower large sword prof (khalid4, 6)
+    WRITE_BYTE 0x72 1     // raise blunt prof (khalid2, 4, 6)
+    WRITE_BYTE 0x234 4    // 1st class level
+    WRITE_BYTE 0x235 3    // 2nd class level
+    ADD_CRE_ITEM ~clck14~ #0  #0 #0 ~IDENTIFIED~ ~ARMOR~
+    ADD_KNOWN_SPELL ~SPWI212~ #0 ~wizard~
+    ADD_MEMORIZED_SPELL ~SPWI212~ #1 ~wizard~ (1)
+
+  COPY_EXISTING ~khalid6.cre~ ~override~
+    WRITE_LONG 0x18 43588 // raise XP
+    WRITE_SHORT 0x24 20   // current hp
+    WRITE_SHORT 0x26 20   // max hp
+    WRITE_BYTE 0x52 16    // lower thac0
+    WRITE_BYTE 0x66 15    // lower lore
+    WRITE_BYTE 0x6e 2     // lower large sword prof (khalid4, 6)
+    WRITE_BYTE 0x72 1     // raise blunt prof (khalid2, 4, 6)
+    WRITE_BYTE 0x234 5    // 1st class level
+    WRITE_BYTE 0x235 5    // 2nd class level
+    ADD_CRE_ITEM ~ring06~ #0  #0 #0 ~IDENTIFIED~ ~LRING~
+    ADD_KNOWN_SPELL ~SPWI213~ #0 ~wizard~
+    ADD_KNOWN_SPELL ~SPWI303~ #0 ~wizard~
+    ADD_MEMORIZED_SPELL ~SPWI112~ #0 ~wizard~ (2)
+    ADD_MEMORIZED_SPELL ~SPWI213~ #1 ~wizard~ (1)
+    ADD_MEMORIZED_SPELL ~SPWI303~ #2 ~wizard~ (1)
+
+END ELSE BEGIN // tutu, bgt, bgee
+
+  COPY_EXISTING ~%tutu_var%khalid2.cre~ ~override~
+    READ_ASCII 0x034 portrait (16) // read portrait from existing cre file
+    READ_ASCII 0x0a4 soundset (396) // read soundset from existing cre file
+    // detect if walking speed altered
+    READ_BYTE  0x033 fx_type
+    READ_LONG  0x2c4 fx_off
+    READ_LONG  0x2c8 fx_num
+    FOR (index = 0 ; index < fx_num ; ++index) BEGIN
+      READ_SHORT (fx_off + (0x08 * fx_type) + (index * ((fx_type * 0xd8) + 0x30))) op
+      PATCH_IF ((op = 176) OR (op = 126)) BEGIN
+        SET index = fx_num // kill loop
+        SET fx_type = 4
+      END
+    END
+    BUT_ONLY
+  
+  COPY ~cdtweaks/cre/khalid.cre~  ~override/%tutu_var%khalid.cre~
+       ~cdtweaks/cre/khalid2.cre~ ~override/%tutu_var%khalid2.cre~
+       ~cdtweaks/cre/khalid4.cre~ ~override/%tutu_var%khalid4.cre~
+       ~cdtweaks/cre/khalid6.cre~ ~override/%tutu_var%khalid6.cre~
+    WRITE_EVALUATED_ASCII 0x34 "%portrait%" #16
+    WRITE_EVALUATED_ASCII 0xa4 "%soundset%" #396
+    SAY BIO @408001
+    WRITE_ASCIIE 0x248 ~%tutu_var%khalid~  // override script
+    WRITE_ASCIIE 0x250 ~%tutu_var%shout~   // class script
+    WRITE_ASCIIE 0x260 ~%tutu_scriptw%tasight~// general script
+    WRITE_ASCIIE 0x268 ~%tutu_var%dplayer~ // default script
+    WRITE_ASCIIE 0x2cc ~%tutu_var%khalid~  // dialogue file
+    ADD_CRE_ITEM ~%tutu_var%BOW03~  #0  #0 #0 ~IDENTIFIED~ ~WEAPON2~ EQUIP TWOHANDED
+    ADD_CRE_ITEM ~%tutu_var%AROW01~ #40 #0 #0 ~IDENTIFIED~ ~QUIVER1~
+    ADD_CRE_ITEM ~%tutu_var%HELM01~ #0  #0 #0 ~IDENTIFIED~ ~HELMET~
+    ADD_CRE_ITEM ~%tutu_var%SW1H01~ #0  #0 #0 ~IDENTIFIED~ ~WEAPON1~
+    ADD_CRE_ITEM ~%tutu_var%POTN08~ #0  #0 #0 ~IDENTIFIED~ ~QITEM1~
+    READ_LONG 0x18 xp
+    PATCH_IF (xp > 5000) BEGIN // all but khalid
+      ADD_CRE_ITEM ~%tutu_var%BRAC03~ #0 #0 #0 ~IDENTIFIED~ ~GLOVES~
+      PATCH_IF (xp > 10000) BEGIN // now exclude khalid2
+        ADD_CRE_ITEM ~%tutu_var%CLCK14~ #0 #0 #0 ~IDENTIFIED~ ~ARMOR~
+        PATCH_IF (xp > 20000) BEGIN // now exclude khalid4
+          ADD_CRE_ITEM ~%tutu_var%RING06~ #0 #0 #0 ~IDENTIFIED~ ~LRING~
+        END
+      END        
+    END
+    PATCH_IF fx_type = 4 BEGIN
+      LPF ADD_CRE_EFFECT INT_VAR opcode = 176 target = 1 parameter1 = 0xfffffffd timing = 9 END
+    END
+  
+  COMPILE ~cdtweaks/dlg/p#khalid.d~ EVALUATE_BUFFER
+
+  ACTION_IF enhanced_edition BEGIN
+  
+    COPY_EXISTING ~%KHALID_BCS%.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN
+        REPLACE_TEXTUALLY ~\(ChangeStat(Myself,XP,32000,SET)\)~ ~\1 AddSpecialAbility("SPWI211") AddSpecialAbility("SPWI212")~
+        REPLACE_TEXTUALLY ~\(ChangeStat(Myself,XP,16000,SET)\)~ ~\1 AddSpecialAbility("SPWI212")~
+      END 
+      BUT_ONLY
+      
+    ACTION_IF FILE_EXISTS_IN_GAME ~khalid7.cre~ BEGIN // sod khalid
+  
+      COPY ~cdtweaks/cre/khalid7.cre~ ~override~
+        SAY BIO @408001
+        PATCH_IF fx_type = 4 BEGIN
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 176 target = 1 parameter1 = 0xfffffffd timing = 9 END
+        END
+    
+    END
+    
+  END  
+
+  EXTEND_TOP    ~%KHALID_BCS%.bcs~ ~cdtweaks/baf/p#khalid.baf~
+  
+  // if bg-style or iwd-style proficiencies are installed, adjust proficiencies to match new system
+  ACTION_IF (((MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2161~) OR (MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2162~)) OR // bg-style profs
+             ((MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2163~) OR (MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2164~))) THEN BEGIN // iwd-style profs
+    
+    ACTION_IF ((MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2161~) OR (MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2162~)) THEN BEGIN // bg-style profs
+    
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_khalid_profs BEGIN
+        104 => 100 // longbow > bow
+         89 => 103 // bastard sword > large swords
+//      106 => 106 // dart > missile
+      END 
+
+    END ELSE BEGIN // iwd-style profs  
+    
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_khalid_profs BEGIN
+        104 =>  95 // longbow > bow
+         89 =>  99 // bastard sword > great swords
+        106 => 104 // dart > missile
+      END 
+      
+    END 
+
+    COPY_EXISTING ~%tutu_var%khalid.cre~  ~override~
+                  ~%tutu_var%khalid2.cre~ ~override~
+                  ~%tutu_var%khalid4.cre~ ~override~
+                  ~%tutu_var%khalid6.cre~ ~override~
+                  ~khalid7.cre~           ~override~
+      PATCH_PHP_EACH cd_khalid_profs AS old => new BEGIN
+        LPF ALTER_EFFECT INT_VAR match_opcode = 233 match_parameter2 = old parameter2 = new silent = 1 END
+      END
+      BUT_ONLY IF_EXISTS
+      
+  END
+
+END // end bg1 vs. bg2 check
+  
+// if tob-style npcs are installed, then adjust higher level creatures
+ACTION_IF (MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~4020~) THEN BEGIN
+
+  // load patch macro
+  INCLUDE ~cdtweaks/lib/tob_style_npcs.tpa~
+  
+  ACTION_CLEAR_ARRAY cd_tob_style_npcs
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_tob_style_npcs BEGIN
+    ~_khalid2~ => ~_khalid~
+    ~_khalid4~ => ~_khalid~
+    ~_khalid6~ => ~_khalid~
+    ~khalid2~  => ~khalid~
+    ~khalid4~  => ~khalid~
+    ~khalid6~  => ~khalid~
+  END
+  
+  ACTION_PHP_EACH cd_tob_style_npcs AS dest => orig BEGIN
+  
+    ACTION_IF ((FILE_EXISTS_IN_GAME ~%orig%.cre~) AND (FILE_EXISTS_IN_GAME ~%dest%.cre~)) THEN BEGIN
+
+      COPY_EXISTING ~%orig%.cre~ ~override/%dest%.cre~
+        LAUNCH_PATCH_MACRO ~tob_style_npcs~
+        BUT_ONLY
+  
+    END
+
+  END
+
+END

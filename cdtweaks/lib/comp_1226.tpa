@@ -1,0 +1,41 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Adjust Cromwell forging time                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// eight hours                                      \\\\\
+/////                                                  \\\\\
+
+ACTION_IF enhanced_edition THEN BEGIN
+
+  COPY_EXISTING ~cromwell.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~RestParty\(Ex\)?(\(0,0,FALSE\)?)[ %TAB%%LNL%%MNL%%WNL%]+AdvanceTime(SIXTEEN_HOURS)~ ~AdvanceTime(EIGHT_HOURS)~ // remove rest, change advance to 8
+    END
+    BUT_ONLY
+
+  COPY_EXISTING ~cutskip2.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~ActionOverride("wsmith01",Face(SE))[ %TAB%%LNL%%MNL%%WNL%]+RestParty\(Ex\)?(\(0,0,FALSE\)?)[ %TAB%%LNL%%MNL%%WNL%]+AdvanceTime(SIXTEEN_HOURS)~ // remove rest, change advance to 8
+                        ~ActionOverride("wsmith01",Face(SE)) AdvanceTime(EIGHT_HOURS)~ // remove rest/advancetime
+    END
+    BUT_ONLY
+
+END ELSE BEGIN
+  
+  OUTER_FOR (index = 0 ; index < 24 ; ++index) BEGIN
+  
+    OUTER_SET index2 = index + 8
+    ACTION_IF index2 > 23 BEGIN OUTER_SET index2 -= 24 END
+
+    EXTEND_TOP ~ar0334.bcs~ ~cdtweaks/baf/ar0334_nosleep.baf~ EVALUATE_BUFFER
+  
+  END
+  
+  EXTEND_TOP ~ar0334.bcs~ ~cdtweaks/baf/ar0334_cromwell.baf~
+
+END

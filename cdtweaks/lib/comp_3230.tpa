@@ -1,0 +1,15 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Allow Taerom to Make Additional Ankheg Armors    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF NOT (original_bg1) THEN BEGIN // change fenten/taerom to only take one shell at a time
+  COMPILE ~cdtweaks/dlg/ankheg.d~ EVALUATE_BUFFER // use TakePartyItemNum when we can
+END ELSE BEGIN
+  COMPILE ~cdtweaks/dlg/ankheg_bg1.d~ // otherwise stuck with TakePartyItem
+END
+
+EXTEND_TOP ~%tutu_var%taerom.bcs~ ~cdtweaks/baf/taerom.baf~ EVALUATE_BUFFER // reset timer/vars after completing armor

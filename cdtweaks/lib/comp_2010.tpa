@@ -1,0 +1,23 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Replace Resist Fire/Cold Icon                              \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~90~ BEGIN
+  OUTER_SET portrait_icons_set = 0
+END ELSE BEGIN  
+  OUTER_SET portrait_icons_set = 1
+END
+
+INCLUDE ~cdtweaks/lib/bg2fp_effect_batches.tpa~
+
+PRINT @1
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+                          ~^.+\.itm$~ ~override~
+                          ~^.+\.spl$~ ~override~
+  LPF cd_apply_batch STR_VAR array_name = cd_cold_icons END
+  LPF cd_apply_batch STR_VAR array_name = cd_fire_icons END
+  BUT_ONLY

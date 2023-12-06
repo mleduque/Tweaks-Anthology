@@ -1,0 +1,78 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// friendly random drops                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// re-randomize on reload                           \\\\\
+/////                                                  \\\\\
+
+OUTER_SET tfg_bows = 1 // randomize bows in TotFG (skip on merchant option)
+INCLUDE ~cdtweaks/lib/random_common.tpa~ // ar9200 fix, UB detection
+
+ACTION_IF enhanced_edition THEN BEGIN
+
+  INCLUDE ~cdtweaks/lib/iwdee_rndtres.tpa~ // replaces IWD references with IWDEE's RNDTRE schema
+
+END
+
+COPY ~weidu_external/cdtweaks/random/random.2da~ ~weidu_external/cdtweaks/random/random.2da~
+  PATCH_IF NOT (game_is_iwd OR game_is_how) BEGIN
+    REPLACE_TEXTUALLY ~ShadowedElvenPriest~ ~Priest_0~ // dv changes with totlm installed
+  END
+  COUNT_2DA_ROWS 4 "rows"
+  FOR (index = 2 ; index < rows ; ++index) BEGIN // start at 2 to skip orktres
+    READ_2DA_ENTRY index 0 4 "area"
+    READ_2DA_ENTRY index 1 4 "item"
+    READ_2DA_ENTRY index 2 4 "cont"
+    PATCH_IF FILE_EXISTS_IN_GAME ~%area%.are~ BEGIN
+      INNER_ACTION BEGIN
+
+        COPY_EXISTING ~%table%.2da~ ~override~
+          REPLACE_EVALUATE CASE_INSENSITIVE ~^\(%item%[ %TAB%]\)\(.+\)\([ %TAB%]*\)$~
+          BEGIN SPRINT "list" "%MATCH2%" END ~%MATCH1%%MATCH2%%MATCH3%~
+          BUT_ONLY
+
+        COPY ~cdtweaks/baf/areabottom.baf~ ~weidu_external/cdtweaks/random/%item%.baf~
+
+        COPY ~cdtweaks/lib/template.tpa~ ~weidu_external/cdtweaks/random/%item%.tpa~
+          REPLACE_TEXTUALLY ~replacemelist~ ~%list%~ EVALUATE_BUFFER
+          REPLACE_TEXTUALLY ~drop~ ~drop%item%~ EVALUATE_BUFFER
+          REPLACE_TEXTUALLY ~\([ %TAB%]+\*\)*~ ~~
+          REPLACE_TEXTUALLY ~multiply~ ~*~
+          REPLACE_TEXTUALLY ~percentage~ ~%~
+      
+        INCLUDE ~weidu_external/cdtweaks/random/%item%.tpa~
+
+        COPY_EXISTING ~%area%.are~ ~override~
+          WRITE_ASCIIE 0x94 ~%area%~ #8
+          BUT_ONLY
+      
+        COPY ~weidu_external/cdtweaks/random/%item%.baf~ ~weidu_external/cdtweaks/random/%item%.baf~
+          REPLACE_TEXTUALLY ~replaceme[12]~ ~~
+      
+        EXTEND_TOP    ~%area%.bcs~ ~cdtweaks/baf/areatop.baf~ EVALUATE_BUFFER
+        EXTEND_BOTTOM ~%area%.bcs~ ~weidu_external/cdtweaks/random/%item%.baf~  EVALUATE_BUFFER
+
+      END
+
+    END
+  END
+  BUT_ONLY
+
+ACTION_IF game_is_iwd-in-bg2 BEGIN
+  
+  COPY_EXISTING ~ar3501.bcs~ ~override~
+                ~ar3502.bcs~ ~override~
+                ~ar3503.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_EVALUATE ~"CDKT\([123]\)Tres"~ BEGIN
+        SET new_ref = (%MATCH1% + 17)
+      END ~"CDRNDTRE%new_ref%"~
+    END
+    BUT_ONLY
+
+END

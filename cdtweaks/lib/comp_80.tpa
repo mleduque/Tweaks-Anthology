@@ -1,0 +1,13 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Restore SoA Logo for ToB Games                             \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY ~cdtweaks/bam/loadcntr.bam~     ~override~
+     ~cdtweaks/mos/gprogbar_soa.mos~ ~override/gprogbar.mos~
+     ~cdtweaks/mos/gtrspsk.mos~      ~override~
+     ~cdtweaks/mos/gtrspsk2.mos~     ~override~
+     ~cdtweaks/mos/stoneopt.mos~     ~override~

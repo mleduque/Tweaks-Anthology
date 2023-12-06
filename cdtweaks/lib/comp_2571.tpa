@@ -1,0 +1,13 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// BGT: Additional Experience Cap While in SoA      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+OUTER_SET xp_cap = 2950000 // modify as desired
+
+OUTER_SPRINT trigger ~Global("ENDOFBG1","GLOBAL",2) GlobalLT("Chapter","GLOBAL",8)~ // don't modify as desired
+OUTER_SPRINT spell   ~cdxpsoa~ 
+INCLUDE ~cdtweaks/lib/bgt_xp_caps.tpa~

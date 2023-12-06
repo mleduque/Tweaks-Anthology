@@ -1,0 +1,14 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Restore original Logo for HoW Games                        \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY ~cdtweaks/mos/gprogbar.mos~ ~override~
+     ~cdtweaks/mos/gtrbpbar.mos~ ~override~
+     ~cdtweaks/mos/gtrbpbg.mos~  ~override~
+     ~cdtweaks/mos/gtrbpcap.mos~ ~override~
+     ~cdtweaks/mos/gtrbpsk2.mos~ ~override~
+     ~cdtweaks/mos/gtrbpsk.mos~  ~override~

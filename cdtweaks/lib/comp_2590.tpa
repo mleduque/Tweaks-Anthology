@@ -1,0 +1,64 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Thieves Can Backstab With More Weapons With "Use Any Item" \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+   
+OUTER_SET alt_profs = 0
+ACTION_IF ((MOD_IS_INSTALLED ~cdtweaks.tp2~ ~2161~) OR 
+           (MOD_IS_INSTALLED ~cdtweaks.tp2~ ~2162~)) BEGIN // bg profs
+  OUTER_SET alt_profs = 1           
+END
+ACTION_IF ((MOD_IS_INSTALLED ~cdtweaks.tp2~ ~2163~) OR 
+           (MOD_IS_INSTALLED ~cdtweaks.tp2~ ~2164~)) BEGIN // iwd profs
+  OUTER_SET alt_profs = 2           
+END
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  READ_SHORT 0x1c type
+  READ_ASCII 0x22 anim (2)
+  READ_BYTE  0x31 prof
+  PATCH_IF ((type =  16) OR                                                                                         // daggers (all cases)
+            (type =  26) OR                                                                                         // staves (all cases)
+            ((prof =  90) AND                                                               (alt_profs = 0)) OR     // long swords (base, rebalanced)
+            ((type =  20) AND (prof =  103) AND ("%anim%" STRING_COMPARE_CASE "s1" = 0) AND (alt_profs = 1)) OR     // long swords, ninjato (bg)
+            ((type =  20) AND (prof =  102) AND ("%anim%" STRING_COMPARE_CASE "s1" = 0) AND (alt_profs = 2)) OR     // long swords, ninjato (iwd)
+            ((prof =  91) AND                                                               (alt_profs = 0)) OR     // short swords (base, rebalanced)
+            ((type =  19) AND (prof =  102) AND                                             (alt_profs = 1)) OR     // short swords (bg)
+            ((type =  19) AND (prof =  105) AND                                             (alt_profs = 2)) OR     // short swords (iwd)
+            ((prof =  94) AND                                                               (alt_profs = 0)) OR     // katanas (base, rebalanced) + wakizashi (rebalanced)
+            ((type =  20) AND (prof =  103) AND ("%anim%" STRING_COMPARE_CASE "s3" = 0) AND (alt_profs = 1)) OR     // katanas (bg)
+            ((type =  20) AND (prof =  102) AND ("%anim%" STRING_COMPARE_CASE "s3" = 0) AND (alt_profs = 2)) OR     // katanas (iwd)
+            ((prof =  95) AND                                                               (alt_profs = 0)) OR     // scimitar/ninjato (base, rebalanced) + wakizashi (base)
+            ((type =  19) AND (prof =  103) AND ("%anim%" STRING_COMPARE_CASE "ss" = 0) AND (alt_profs = 1)) OR     // wakizashi (bg)
+            ((type =  19) AND (prof =  102) AND ("%anim%" STRING_COMPARE_CASE "ss" = 0) AND (alt_profs = 2)) OR     // wakizashi (iwd)
+            ((type =  20) AND (prof =  103) AND ("%anim%" STRING_COMPARE_CASE "sc" = 0) AND (alt_profs = 1)) OR     // scimitar (bg)
+            ((type =  20) AND (prof =  102) AND ("%anim%" STRING_COMPARE_CASE "sc" = 0) AND (alt_profs = 2)) OR     // scimitar (iwd)
+            ((prof = 115) AND                                                               (alt_profs = 0)) OR     // club (base, rebalanced)
+            ((type =  17) AND (prof =  105) AND ("%anim%" STRING_COMPARE_CASE "cl" = 0) AND (alt_profs = 1)) OR     // club (bg)
+            ((type =  17) AND (prof =   96) AND ("%anim%" STRING_COMPARE_CASE "cl" = 0) AND (alt_profs = 2))) BEGIN // club (iwd)
+    READ_LONG 0x1e usability
+    PATCH_IF ((usability & BIT22) = BIT22) BEGIN // if unusable by thieves
+      WRITE_LONG 0x1e (THIS BAND `BIT22) // remove thief flag
+      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 parameter1 = 4 parameter2 = 5 timing = 2 special = 1082 END // add back as 319
+    END
+  END  
+  BUT_ONLY  
+  
+ACTION_IF game_is_bg2ee OR game_is_eet BEGIN // to try and prevent staff of the magi backstab abuse
+
+  COPY_EXISTING ~staf11.itm~ ~override~
+    READ_LONG  0x6a fx_off
+    READ_SHORT 0x70 fx_num
+    FOR (index = 0 ; index < fx_num ; ++index) BEGIN
+      READ_SHORT (fx_off + 0x00 + (index * 0x30)) opcode
+      PATCH_IF opcode = 20 BEGIN // sanity check: only add invisibility timeout if the staff still causes invis on equip
+        LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 101 target = 1 parameter2 = 20 duration = 5 END // successful attack prevents application if invis for five seconds
+        SET index = fx_num // kill loop
+      END  
+    END
+    BUT_ONLY  
+    
+END

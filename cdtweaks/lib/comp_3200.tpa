@@ -1,0 +1,96 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// sellable items                                             \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+PRINT @1
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  READ_SHORT 0x1c "type"  ELSE 0 // 17 - mace, 18 - sling, 26 - staff, 37 - book
+  READ_LONG  0x34 "price" ELSE 0
+  PATCH_IF ((("%type%" = 17) OR ("%type%" = 18) OR ("%type%" = 26) OR ("%type%" = 37)) AND ("%price%" = 0)) BEGIN
+    WRITE_LONG 0x34 1 // set price to 1 gp
+  END
+  BUT_ONLY
+
+// stores which buy arrows now buy bolts (mainly affects BGT/Tutu)
+COPY_EXISTING_REGEXP GLOB ~^.+\.sto$~ ~override~
+  READ_LONG 0x2c buy_off   ELSE 0
+  READ_LONG 0x30 buy_num   ELSE 0
+  SET bolts = 0
+  FOR (index = 0 ; index < buy_num ; ++index) BEGIN
+    READ_LONG (buy_off + (index * 0x04)) item
+    PATCH_IF (item = 5) BEGIN // arrows
+      SET bolts = 1
+    END ELSE
+    PATCH_IF (item = 31) BEGIN // bolts
+      SET bolts = 2
+      SET index = buy_num // kills loop
+    END
+  END
+  PATCH_IF (bolts = 1) BEGIN // if arrows but no bolts
+    INSERT_BYTES buy_off 0x04
+      WRITE_LONG buy_off 31
+    WRITE_LONG 0x30 (buy_num + 1)
+    PATCH_FOR_EACH offset IN 0x34 0x4c 0x70 BEGIN // adjust offsets if needed, thankfully the same in v9, v1, and v1.1
+      READ_LONG offset off
+      PATCH_IF off > buy_off BEGIN
+        WRITE_LONG offset (off + 0x04)
+      END
+    END
+  END
+  BUT_ONLY
+
+// get prices from lookup table
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_prices BEGIN
+  _blun01  =>    1 // club, tutu
+  _blun10  => 2750 // root of the problem, Tutu
+  _staf01  =>    1 // generic staff, tutu
+  _sw1h13  =>  100 // xan's moonblade, tutu
+  blun01   =>    1 // club
+  blun10   => 2750 // root of the problem
+  deck     => 2500 // deck of many things
+  flolth   =>  575 // drow flail +3
+  key20    =>   20 // king strohm iii's burial mask
+  kuobolt  =>   30 // kuo-toa bolts
+  kuobolt2 =>   30 // kuo-toa bolts
+  kuobolt3 =>   30 // kuo-toa bolts
+  misc3a1  => 3200 // book of infinite spells
+  misc3a2  => 3200 // book of infinite spells
+  misc3a3  => 3200 // book of infinite spells
+  misc3a4  => 3200 // book of infinite spells
+  misc3a5  => 3200 // book of infinite spells
+  misc3a6  => 3200 // book of infinite spells
+  misc3a7  => 3200 // book of infinite spells
+  misc3a8  => 3200 // book of infinite spells
+  misc3a9  =>  800 // book of infinite spells, final page
+  misc3aa  => 3200 // book of infinite spells, 0 lore copy from BG2FP
+  misc3c   => 2000 // efreeti bottle
+  misc3h   => 1000 // horn of blasting
+  misc3l   => 2000 // horn of silence
+  misc3o   => 1000 // methlid's harp
+  misc9q   =>   55 // habib's scimitar
+  npmisc1  =>  200 // jan jansen's goggles
+  npmisc2  =>  150 // jan jansen's gloves
+  npshld   => 2000 // anomen's shield
+  sahbolt  =>   30 // sahuagin bolts
+  staf01   =>    1 // generic staff
+  sw1h13   =>  100 // xan's moonblade
+END
+
+ACTION_PHP_EACH cd_prices AS item => price BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME "%item%.itm" BEGIN
+
+    COPY_EXISTING "%item%.itm" ~override~
+      READ_LONG  0x34 current
+      PATCH_IF (current = 0) BEGIN // in case someone else sets a price
+        WRITE_LONG 0x34 price
+      END
+      BUT_ONLY
+
+  END
+
+END

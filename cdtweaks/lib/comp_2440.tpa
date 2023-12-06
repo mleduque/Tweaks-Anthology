@@ -1,0 +1,124 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Everyone Gets Bonus APR from Specialization                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+INCLUDE ~cdtweaks/lib/remove_lines.tpa~
+
+COPY ~cdtweaks/spl/d5_numat.spl~ ~override/d5_numat.spl~
+     ~cdtweaks/spl/d5_numat.spl~ ~override/d5_numa2.spl~
+  LPF ALTER_EFFECT INT_VAR match_opcode = 321 STR_VAR resource = EVAL ~%DEST_RES%~ END
+
+// sets GETS_PROF_APR to 1 for all classes/kits
+COPY_EXISTING ~clswpbon.2da~ ~override~
+  COUNT_2DA_ROWS 4 rows
+  FOR (index = 0 ; index < rows ; ++index) BEGIN
+    SET_2DA_ENTRY index 1 4 1
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+
+COPY_EXISTING ~wspatck.2da~ ~override~
+  COUNT_2DA_COLS col_num
+  READ_2DA_ENTRY 0 1 col_num row0 // read in level 1 bonuses
+  READ_2DA_ENTRY 1 1 col_num row1
+  READ_2DA_ENTRY 2 1 col_num row2
+  READ_2DA_ENTRY 3 1 col_num row3
+  READ_2DA_ENTRY 4 1 col_num row4
+  READ_2DA_ENTRY 5 1 col_num row5
+  FOR (index = 2 ; index < col_num ; ++index) BEGIN // write level 1 bonuses to all other levels (no apr from levelling)
+    SET_2DA_ENTRY 0 index col_num row0
+    SET_2DA_ENTRY 1 index col_num row1
+    SET_2DA_ENTRY 2 index col_num row2
+    SET_2DA_ENTRY 3 index col_num row3
+    SET_2DA_ENTRY 4 index col_num row4
+    SET_2DA_ENTRY 5 index col_num row5
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+
+// update prof strings in game
+ACTION_CLEAR_ARRAY cd_prof_strings
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_prof_strings BEGIN
+  dots0 => 9588  // default iwdee/bg2ee/bgee prof string
+  dots2 => 32117 // default iwdee/bg2ee specialization string
+  dots3 => 32118 // default iwdee/bg2ee mastery string
+  dots4 => 32119 // default iwdee/bg2ee high mastery string
+  dots5 => 32120 // default iwdee/bg2ee grandmastery string
+END
+
+ACTION_IF NOT (game_is_iwdee OR game_is_bg2ee OR game_is_eet) BEGIN // override dots2-5 for bgee, sod
+
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_prof_strings BEGIN
+    dots2 => 24220 // default iwdee/bg2ee specialization string
+    dots3 => 24221 // default iwdee/bg2ee mastery string
+    dots4 => 24222 // default iwdee/bg2ee high mastery string
+    dots5 => 24223 // default iwdee/bg2ee grandmastery string
+  END
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~enginest.2da~ BEGIN // if ee v2 and above, override above with actual lookups
+
+  COPY_EXISTING ~enginest.2da~ ~override~
+    REPLACE_EVALUATE ~^\(STRREF_GUI_HELP_PROFICIENCIES[ TAB%]+\)\([0-9]+\)~ BEGIN DEFINE_ASSOCIATIVE_ARRAY cd_prof_strings BEGIN dots0 => "%MATCH2%" END END ~%MATCH1%%MATCH2%~
+    REPLACE_EVALUATE ~^\(STRREF_GUI_MIXED_DOTS2[ TAB%]+\)\([0-9]+\)~        BEGIN DEFINE_ASSOCIATIVE_ARRAY cd_prof_strings BEGIN dots2 => "%MATCH2%" END END ~%MATCH1%%MATCH2%~
+    REPLACE_EVALUATE ~^\(STRREF_GUI_MIXED_DOTS3[ TAB%]+\)\([0-9]+\)~        BEGIN DEFINE_ASSOCIATIVE_ARRAY cd_prof_strings BEGIN dots3 => "%MATCH2%" END END ~%MATCH1%%MATCH2%~
+    REPLACE_EVALUATE ~^\(STRREF_GUI_MIXED_DOTS4[ TAB%]+\)\([0-9]+\)~        BEGIN DEFINE_ASSOCIATIVE_ARRAY cd_prof_strings BEGIN dots4 => "%MATCH2%" END END ~%MATCH1%%MATCH2%~
+    REPLACE_EVALUATE ~^\(STRREF_GUI_MIXED_DOTS5[ TAB%]+\)\([0-9]+\)~        BEGIN DEFINE_ASSOCIATIVE_ARRAY cd_prof_strings BEGIN dots5 => "%MATCH2%" END END ~%MATCH1%%MATCH2%~
+    BUT_ONLY
+
+END
+
+OUTER_SPRINT forbidden1 @244001
+OUTER_SPRINT forbidden2 @244002
+OUTER_SPRINT forbidden3 @244003
+
+ACTION_PHP_EACH cd_prof_strings AS prof => strref BEGIN
+
+  ACTION_GET_STRREF strref raw
+  OUTER_INNER_PATCH_SAVE string ~%raw%~ BEGIN
+    REPLACE_TEXTUALLY ~%forbidden1%~ ~~
+    REPLACE_TEXTUALLY ~%forbidden2%[ %TAB%]+\*~ ~%forbidden2%~
+    REPLACE_TEXTUALLY ~[ %TAB%]+%forbidden3%[ %TAB%]+~ ~ ~
+  END
+  STRING_SET_EVALUATE strref ~%string%~
+
+END
+
+ACTION_CLEAR_ARRAY mod_kit_clabs
+ACTION_DEFINE_ASSOCIATIVE_ARRAY mod_kit_clabs BEGIN
+  clabfi01 =>  2 // generic fighter
+  clabpa01 =>  6 // generic paladin
+  clabpa05 =>  6 // fallen paladin
+  clabrn01 => 12 // generic ranger
+  clabrn05 => 12 // fallen ranger
+END
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS ~10~ "rows"
+  FOR ( index = 1 ; index < rows ; index = index + 1 ) BEGIN
+    READ_2DA_ENTRY %index% 8 10 modclass
+    PATCH_IF ((modclass = 2) OR (modclass = 6) OR (modclass = 12)) BEGIN
+      READ_2DA_ENTRY %index% 5 10 modclab
+      SPRINT $mod_kit_clabs(~%modclab%~)~%modclass%~
+    END
+  END
+BUT_ONLY
+
+ACTION_PHP_EACH mod_kit_clabs AS clab => clas BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%clab%.2da~ THEN BEGIN
+    APPEND ~%clab%.2da~ ~ABILITY     ****        ****        ****        ****        ****        ****        AP_D5_NUMAT ****        ****        ****        ****        ****        AP_D5_NUMA2 D5REPLACE ~ UNLESS ~AP_D5_NUMAT~
+    COPY_EXISTING ~%clab%.2da~ ~override~
+      COUNT_2DA_COLS cols
+      FOR (index = 15 ; index < cols ; ++index) BEGIN
+        REPLACE_TEXTUALLY ~D5REPLACE~ ~**** D5REPLACE~
+      END
+      REPLACE_TEXTUALLY ~D5REPLACE~ ~****~
+      PRETTY_PRINT_2DA
+    BUT_ONLY
+  END
+END

@@ -1,0 +1,20 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// end game when Player1 dies                                 \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF game_is_iwd-in-bg2 THEN BEGIN // easy solution!
+
+  COPY ~tobex_ini/tobextweak.ini~ ~tobex_ini~
+    REPLACE_TEXTUALLY ~Engine:Disable End On Player1 Dead=1~ ~Engine:Disable End On Player1 Dead=0~
+
+END ELSE BEGIN // iwdee
+
+  COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
+    WRITE_BYTE 0x14 (THIS & `BIT4) // remove 'player1 can die' bit from all alreas
+    BUT_ONLY
+
+END
