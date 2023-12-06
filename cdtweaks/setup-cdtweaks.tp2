@@ -2582,7 +2582,7 @@ LABEL ~cd_tweaks_backstab_immunity~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @262001 DESIGNATED 2621
+BEGIN @263000 DESIGNATED 2630
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 LABEL ~cd_tweaks_cure_cause_wounds~
@@ -2595,9 +2595,10 @@ LABEL ~cd_tweaks_cure_cause_wounds~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @262002 DESIGNATED 2622
+BEGIN @264000 DESIGNATED 2640
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/pnp_potions.tra~ @7
 LABEL ~cd_tweaks_pnp_potions~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

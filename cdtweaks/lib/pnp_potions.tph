@@ -285,6 +285,9 @@ BEGIN
 				"potn14" // Oil of Speed
 				"potn23" // Oil of Speed (fake)
 				"wand16" // Potion of Icedust (AoE potion)
+				"chance"  // oil of second chances [iwdee]
+				"pnull"   // oil of null effect [iwdee]
+        "serpsca" // oil of the serpent's scales [iwdee]
 				BEGIN
 					//PATCH_PRINT "Skipping '%DEST_FILE%' since it is a special case / oil..."
 				END
