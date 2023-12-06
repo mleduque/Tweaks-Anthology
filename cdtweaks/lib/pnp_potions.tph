@@ -388,7 +388,7 @@ BEGIN
 						WRITE_SHORT "%fx_off%" 999 // mark it for later deletion
 						SET "alter_efficacy" = 1
 					END
-					ANY WHEN ("%fx_duration%" > 5) BEGIN
+					ANY ("%fx_duration%" > 5) BEGIN
 						TEXT_SPRINT $"default_efficacy"("%fx_opcode%" "%fx_target%" "%fx_power%" "%fx_parameter1%" "%fx_parameter2%" "%fx_timing%" "%fx_resist_dispel%" "%fx_duration%" "%fx_probability1%" "%fx_probability2%" "%fx_resource%" "%fx_dicenumber%" "%fx_dicesize%" "%fx_savetype%" "%fx_savebonus%" "%fx_special%" "%fx_ind%" "%ab_ind%") ""
 						WRITE_SHORT "%fx_off%" 999 // mark it for later deletion
 						SET "alter_efficacy" = 1
