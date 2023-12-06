@@ -1,0 +1,82 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Sensible Regeneration When Traveling                       \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+OUTER_SET regen_items = 0
+OUTER_SPRINT items_yes ~~
+OUTER_SPRINT items_no ~~
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  READ_BYTE 0x18 flags
+  PATCH_IF ((flags & BIT2) = BIT2) BEGIN // droppable
+    READ_LONG  0x6a fx_off
+    READ_SHORT 0x70 fx_num
+    FOR (index = 0 ; index < fx_num ; ++index) BEGIN
+      READ_SHORT (fx_off +        (index * 0x30)) opcode
+      PATCH_IF opcode = 98 BEGIN
+        READ_LONG  (fx_off + 0x04 + (index * 0x30)) parameter1
+        READ_LONG  (fx_off + 0x08 + (index * 0x30)) parameter2
+        PATCH_IF ((parameter2 < 3) OR                             // any HP per second OR
+                  ((parameter2 = 3) AND (parameter1 < 10))) BEGIN // 1 HP per 9 seconds or better
+          SET regen_items += 1 // up the count
+          DEFINE_ASSOCIATIVE_ARRAY cd_regen_items BEGIN ~%SOURCE_RES%~ => 0 END
+          SPRINT items_yes ~%items_yes%%WNL%PartyHasItem("%SOURCE_RES%")~
+          SPRINT items_no ~%items_no%%WNL%!PartyHasItem("%SOURCE_RES%")~
+        END // param check
+      END // opcode check
+    END // fx loop
+  END // droppable
+  BUT_ONLY
+
+ACTION_IF !regen_items BEGIN // don't bother if no items
+
+  PRINT @338001
+  
+END ELSE BEGIN
+
+  COPY_EXISTING ~action.ids~ ~override~
+    REPLACE_TEXTUALLY ~^\([^ %TAB%]+[ %TAB%]+\)\(ApplySpell(O:Target,I:Spell\*Spell)\)~ ~\1\2%WNL%\1ApplySpellRES(S:RES*,O:Target)~
+    UNLESS ~^[^ %TAB%]+[ %TAB%]+ApplySpellRES(~
+    BUT_ONLY
+
+  OUTER_SET area_script_offset = 0x94 + (0x10 * game_is_iwd2) // iwd2 offst is at 0xa4, all others 0x94
+
+  OUTER_SET mastarea_count = 0 
+  COPY_EXISTING ~mastarea.2da~ ~override~
+    REPLACE_EVALUATE ~^\([^ %TAB%]+\)\([ %TAB%]+value\)~ BEGIN 
+      SET mastarea_count += 1
+      DEFINE_ASSOCIATIVE_ARRAY cd_regen_areas BEGIN ~%MATCH1%~ => ~%mastarea_count%~ END
+    END ~%MATCH1%%MATCH2%~
+    BUT_ONLY
+
+  ACTION_PHP_EACH cd_regen_areas AS area => num BEGIN
+
+    COPY_EXISTING ~%area%.are~ ~override~
+      READ_ASCII area_script_offset script
+      PATCH_IF (("%script%" STRING_COMPARE_CASE "" = 0) OR ("%script%" STRING_COMPARE_CASE "None" = 0)) BEGIN
+        PATCH_IF ("%area%" STRING_COMPARE_CASE "^fw[0-9][0-9][0-9][0-9]$" = 0) BEGIN // tutu area
+          INNER_PATCH_SAVE script "%area%" BEGIN
+            REPLACE_TEXTUALLY "fw" "_ar"
+          END 
+        END ELSE BEGIN
+          SPRINT script ~%area%~
+        END
+        WRITE_ASCIIE area_script_offset ~%script%~ #8
+      END      
+      DEFINE_ASSOCIATIVE_ARRAY cd_regen_area_scripts BEGIN ~%script%~ => ~%num%~ END
+      BUT_ONLY IF_EXISTS
+      
+  END
+
+  ACTION_PHP_EACH cd_regen_area_scripts AS script => num BEGIN
+
+    EXTEND_BOTTOM ~%script%.bcs~ ~cdtweaks/baf/regen.baf~ EVALUATE_BUFFER
+    
+  END
+
+  COPY ~cdtweaks/spl/cdregen.spl~ ~override~
+  
+END

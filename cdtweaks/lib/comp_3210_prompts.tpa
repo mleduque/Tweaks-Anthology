@@ -1,0 +1,150 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Min Stats Tweak                                  \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// questions for player input                       \\\\\
+/////                                                  \\\\\
+
+ACTION_IF FILE_EXISTS ~weidu_external/cdtweaks/batch_%COMPONENT_NUMBER%.tpa~ BEGIN
+
+  INCLUDE ~weidu_external/cdtweaks/batch_%COMPONENT_NUMBER%.tpa~
+  DELETE + ~weidu_external/cdtweaks/batch_%COMPONENT_NUMBER%.tpa~
+  
+END ELSE BEGIN
+
+  OUTER_SPRINT minimum_stats_strength_text     @321008
+  OUTER_SPRINT minimum_stats_dexterity_text    @321009
+  OUTER_SPRINT minimum_stats_constitution_text @321010
+  OUTER_SPRINT minimum_stats_intelligence_text @321011
+  OUTER_SPRINT minimum_stats_wisdom_text       @321012
+  OUTER_SPRINT minimum_stats_charisma_text     @321013
+
+  ACTION_IF ((minimum_stats_use_config_values = 1) AND // if we should use the config file
+             (((minimum_stats_strength > 5)     AND (minimum_stats_strength < 16))     OR (minimum_stats_strength = 0))     AND // STR is either 0 or 6-15
+             (((minimum_stats_dexterity > 5)    AND (minimum_stats_dexterity < 16))    OR (minimum_stats_dexterity = 0))    AND // DEX is either 0 or 6-15
+             (((minimum_stats_constitution > 5) AND (minimum_stats_constitution < 16)) OR (minimum_stats_constitution = 0)) AND // CON is either 0 or 6-15
+             (((minimum_stats_intelligence > 5) AND (minimum_stats_intelligence < 16)) OR (minimum_stats_intelligence = 0)) AND // INT is either 0 or 6-15
+             (((minimum_stats_wisdom > 5)       AND (minimum_stats_wisdom < 16))       OR (minimum_stats_wisdom = 0))       AND // WIS is either 0 or 6-15
+             (((minimum_stats_charisma > 5)     AND (minimum_stats_charisma < 16))     OR (minimum_stats_charisma = 0))     AND // CHR is either 0 or 6-15
+             (minimum_stats_strength + minimum_stats_dexterity + minimum_stats_constitution + minimum_stats_intelligence + minimum_stats_wisdom + minimum_stats_charisma != 0)) THEN BEGIN // make sure we have some changes
+    // print summary of options for the debug file
+    PRINT @26
+    PRINT @318309
+    ACTION_IF (minimum_stats_strength != 0) THEN BEGIN
+      PRINT ~%minimum_stats_strength_text% %minimum_stats_strength%~
+    END
+    ACTION_IF (minimum_stats_dexterity != 0) THEN BEGIN
+      PRINT ~%minimum_stats_dexterity_text% %minimum_stats_dexterity%~
+    END
+    ACTION_IF (minimum_stats_constitution != 0) THEN BEGIN
+      PRINT ~%minimum_stats_constitution_text% %minimum_stats_constitution%~
+    END
+    ACTION_IF (minimum_stats_intelligence != 0) THEN BEGIN
+      PRINT ~%minimum_stats_intelligence_text% %minimum_stats_intelligence%~
+    END
+    ACTION_IF (minimum_stats_wisdom != 0) THEN BEGIN
+      PRINT ~%minimum_stats_wisdom_text% %minimum_stats_wisdom%~
+    END
+    ACTION_IF (minimum_stats_charisma != 0) THEN BEGIN
+      PRINT ~%minimum_stats_charisma_text% %minimum_stats_charisma%~
+    END
+
+  END ELSE BEGIN
+
+    OUTER_SET minimum_stats_strength = 1
+    OUTER_SET minimum_stats_dexterity = 1
+    OUTER_SET minimum_stats_constitution = 1
+    OUTER_SET minimum_stats_intelligence = 1
+    OUTER_SET minimum_stats_wisdom = 1
+    OUTER_SET minimum_stats_charisma = 1
+    OUTER_SET minimum_stats_proceed = 0
+
+    OUTER_WHILE (minimum_stats_proceed != 1) BEGIN
+      OUTER_WHILE ((NOT IS_AN_INT minimum_stats_strength) OR ((minimum_stats_strength < 6) AND (minimum_stats_strength != 0)) OR (minimum_stats_strength > 15)) BEGIN
+        PRINT @321002
+        ACTION_READLN minimum_stats_strength
+      END
+      OUTER_WHILE ((NOT IS_AN_INT minimum_stats_dexterity) OR ((minimum_stats_dexterity < 6) AND (minimum_stats_dexterity != 0)) OR (minimum_stats_dexterity > 15)) BEGIN
+        PRINT @321003
+        ACTION_READLN minimum_stats_dexterity
+      END
+      OUTER_WHILE ((NOT IS_AN_INT minimum_stats_constitution) OR ((minimum_stats_constitution < 6) AND (minimum_stats_constitution != 0)) OR (minimum_stats_constitution > 15)) BEGIN
+        PRINT @321004
+        ACTION_READLN minimum_stats_constitution
+      END
+      OUTER_WHILE ((NOT IS_AN_INT minimum_stats_intelligence) OR ((minimum_stats_intelligence < 6) AND (minimum_stats_intelligence != 0)) OR (minimum_stats_intelligence > 15)) BEGIN
+        PRINT @321005
+        ACTION_READLN minimum_stats_intelligence
+      END
+      OUTER_WHILE ((NOT IS_AN_INT minimum_stats_wisdom) OR ((minimum_stats_wisdom < 6) AND (minimum_stats_wisdom != 0)) OR (minimum_stats_wisdom > 15)) BEGIN
+        PRINT @321006
+        ACTION_READLN minimum_stats_wisdom
+      END
+      OUTER_WHILE ((NOT IS_AN_INT minimum_stats_charisma) OR ((minimum_stats_charisma < 6) AND (minimum_stats_charisma != 0)) OR (minimum_stats_charisma > 15)) BEGIN
+        PRINT @321007
+        ACTION_READLN minimum_stats_charisma
+      END
+      ACTION_IF ((minimum_stats_strength = 0) AND (minimum_stats_dexterity = 0) AND (minimum_stats_constitution = 0) AND (minimum_stats_intelligence = 0) AND (minimum_stats_wisdom = 0) AND (minimum_stats_charisma = 0)) BEGIN
+        PRINT @321014
+        OUTER_SET minimum_stats_proceed = 2
+      END ELSE BEGIN
+        // print summary of options before proceeding
+        PRINT @318309
+        ACTION_IF (minimum_stats_strength != 0) THEN BEGIN
+          PRINT ~%minimum_stats_strength_text% %minimum_stats_strength%~
+        END
+        ACTION_IF (minimum_stats_dexterity != 0) THEN BEGIN
+          PRINT ~%minimum_stats_dexterity_text% %minimum_stats_dexterity%~
+        END
+        ACTION_IF (minimum_stats_constitution != 0) THEN BEGIN
+          PRINT ~%minimum_stats_constitution_text% %minimum_stats_constitution%~
+        END
+        ACTION_IF (minimum_stats_intelligence != 0) THEN BEGIN
+          PRINT ~%minimum_stats_intelligence_text% %minimum_stats_intelligence%~
+        END
+        ACTION_IF (minimum_stats_wisdom != 0) THEN BEGIN
+          PRINT ~%minimum_stats_wisdom_text% %minimum_stats_wisdom%~
+        END
+        ACTION_IF (minimum_stats_charisma != 0) THEN BEGIN
+          PRINT ~%minimum_stats_charisma_text% %minimum_stats_charisma%~
+        END
+        OUTER_WHILE ((NOT IS_AN_INT minimum_stats_proceed) OR ((minimum_stats_proceed != 1) AND (minimum_stats_proceed != 2))) BEGIN
+          PRINT @318310
+          ACTION_READLN minimum_stats_proceed
+        END
+      END
+      ACTION_IF (minimum_stats_proceed = 2) THEN BEGIN
+        OUTER_SET minimum_stats_strength = 1
+        OUTER_SET minimum_stats_dexterity = 1
+        OUTER_SET minimum_stats_constitution = 1
+        OUTER_SET minimum_stats_intelligence = 1
+        OUTER_SET minimum_stats_wisdom = 1
+        OUTER_SET minimum_stats_charisma = 1
+        OUTER_SET minimum_stats_proceed = 0
+      END
+    END
+
+  END
+  
+END
+
+ACTION_IF cd_tweaks_batch_install BEGIN
+
+<<<<<<<<./inline/cdtweaks_batch.tpa
+OUTER_SET minimum__stats_strength = %minimum_stats_strength%
+OUTER_SET minimum__stats_dexterity = %minimum_stats_dexterity%
+OUTER_SET minimum__stats_constitution = %minimum_stats_constitution%
+OUTER_SET minimum__stats_intelligence = %minimum_stats_intelligence%
+OUTER_SET minimum__stats_wisdom = %minimum_stats_wisdom%
+OUTER_SET minimum__stats_charisma = %minimum_stats_charisma%
+>>>>>>>>
+
+  COPY + ~./inline/cdtweaks_batch.tpa~ ~weidu_external/cdtweaks/batch_%COMPONENT_NUMBER%.tpa~ EVALUATE_BUFFER
+    REPLACE_TEXTUALLY ~__~ ~_~
+    
+END

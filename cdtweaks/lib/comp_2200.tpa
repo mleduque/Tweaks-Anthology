@@ -1,0 +1,71 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Multi-Class Grand Mastery                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF original_bg1 OR original_iwd THEN BEGIN
+
+  COPY_EXISTING ~profsmax.2da~  ~override~
+    SET_2DA_ENTRY_LATER ~profsmax~  9 2 ~5~ // fm
+    SET_2DA_ENTRY_LATER ~profsmax~ 10 2 ~5~ // fc
+    SET_2DA_ENTRY_LATER ~profsmax~ 11 2 ~5~ // ft
+    SET_2DA_ENTRY_LATER ~profsmax~ 12 2 ~5~ // fmt
+    SET_2DA_ENTRY_LATER ~profsmax~ 18 2 ~5~ // fd
+    SET_2DA_ENTRY_LATER ~profsmax~ 19 2 ~5~ // fmc
+    SET_2DA_ENTRIES_NOW ~profsmax~ 1
+    BUT_ONLY
+
+END ELSE BEGIN
+
+  ACTION_CLEAR_ARRAY cd_mc_gm
+  ACTION_CLEAR_ARRAY cd_mc_kitnames // multiclass kits
+  OUTER_FOR (index = 12 ; index < 21 ; ++index) BEGIN
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_mc_gm BEGIN ~%index%~ => ~%index%~ END // bogstandard multis
+  END  
+
+  ACTION_IF enhanced_edition BEGIN // only bother checking for MC kits on EE games
+
+    COPY_EXISTING ~kitlist.2da~ ~override~
+      COUNT_2DA_ROWS 9 rows
+      FOR (row = 0 ; row < rows ; ++row) BEGIN
+        READ_2DA_ENTRY row 8 9 class
+        PATCH_IF (IS_AN_INT class) AND ((class = 7) OR (class = 8) OR (class = 9) OR (class = 10) OR (class = 16) OR (class = 17)) BEGIN
+          READ_2DA_ENTRY row 1 9 kitname
+          DEFINE_ASSOCIATIVE_ARRAY cd_mc_kitnames BEGIN ~%kitname%~ => ~%kitname%~ END
+        END
+      END
+      BUT_ONLY   
+
+  END      
+        
+  COPY_EXISTING ~weapprof.2da~  ~override~
+    COUNT_2DA_COLS col_count
+    SET col_check = col_count - 1
+    PATCH_IF enhanced_edition BEGIN // only bother checking for MC kits on EE games
+      COUNT_2DA_COLS col_count
+      PATCH_PHP_EACH cd_mc_kitnames AS match_name => foo BEGIN
+        FOR (column = 50; column < col_check; ++column) BEGIN
+          READ_2DA_ENTRY 0 column col_check name
+          PATCH_IF ("%name%" STRING_COMPARE_CASE "%match_name%" = 0) BEGIN
+            SET column += 1 // row with names has an empty entry for the first column
+            DEFINE_ASSOCIATIVE_ARRAY cd_mc_gm BEGIN ~%column%~ => ~%column%~ END
+            SET column = col_count // kill loop
+          END
+        END
+      END
+    END
+    PATCH_PHP_EACH cd_mc_gm AS column => foo BEGIN
+      FOR (row = 8; row < 28; ++row) BEGIN
+        READ_2DA_ENTRY row column col_count stars
+        PATCH_IF (stars > 1) BEGIN
+          SET_2DA_ENTRY row column col_count 5
+        END
+      END
+    END
+    PRETTY_PRINT_2DA
+    BUT_ONLY
+
+END

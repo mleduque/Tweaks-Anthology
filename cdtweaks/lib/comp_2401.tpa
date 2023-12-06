@@ -1,0 +1,21 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Alter Ranger Spell Progression Table                       \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// BG2-Style Progression (Up To Level Five Spells)            \\\\\
+/////                                                            \\\\\
+
+ACTION_IF game_is_iwd2 THEN BEGIN
+
+  COPY ~cdtweaks/2da/alt_mxsplran.2da~ ~override/mxsplrgr.2da~
+
+END ELSE BEGIN
+
+  COPY ~cdtweaks/2da/alt_mxsplran.2da~ ~override/mxsplran.2da~
+
+END

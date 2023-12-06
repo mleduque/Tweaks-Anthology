@@ -1,0 +1,57 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Friendly Arm Inn Hidden Container Restoration    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY_EXISTING ~ar2300.are~ ~override~
+  //first determine that the container truly is not there  if it is, we don't do anything
+  SET container_exists = 0
+  READ_LONG 0x70 container_off
+  READ_SHORT 0x74 container_num
+  FOR (i = 0; i < %container_num%; i += 1) BEGIN
+    READ_ASCII (%container_off% + %i% * 0xc0) container_name (12)
+    READ_SHORT (%container_off% + (%i% * 0xc0) + 0x20) locX //2527 //locX
+    READ_SHORT (%container_off% + (%i% * 0xc0) + 0x22) locY //3781 //locY
+    PATCH_IF ("%container_name%" STRING_EQUAL_CASE "Container 1")
+             OR ( (%locX% =2527) AND (%locY% = 3781) ) BEGIN
+     PATCH_PRINT ~A container already exists with the same name and/or at the same location. Canceling installation...~
+     SET container_exists = 1
+    END
+  END
+  //so long as container does not exist
+  PATCH_IF (%container_exists% = 0 ) BEGIN
+    // PATCH_PRINT ~Adding hidden container~
+    // add new container
+    LAUNCH_PATCH_FUNCTION ~fj_are_structure~
+    INT_VAR fj_loc_x = 2527 //locX
+                    fj_loc_y = 3781 //locY
+                    fj_type = 1 //Type
+                    fj_lock_diff = 100 //Lock difficulty
+                    fj_trap_remove_diff = 100 //Trap removal difficulty
+                    fj_trap_loc_x = 2528 //Trap locX
+                    fj_trap_loc_y = 3775 //Trap locY
+                    fj_box_left = 2551 //Bound left
+                    fj_box_top = 3757 //Bound top
+                    fj_box_right = 2555 //Bound right
+                    fj_box_bottom = 3762 //Bound bottom
+                    fj_vertex_0 = (2552 + (3757 << 16))
+                    fj_vertex_1 = (2555 + (3757 << 16))
+                    fj_vertex_2 = (2555 + (3759 << 16))
+                    fj_vertex_3 = (2553 + (3762 << 16))
+                    fj_vertex_4 = (2551 + (3759 << 16))
+    STR_VAR fj_structure_type = ~container~
+                    fj_name = ~Container 1~ //Name
+    END //ends lpf
+    // PATCH_PRINT ~Placing Ring of Wizardy into hidden container~
+    // put ring into container
+    LAUNCH_PATCH_FUNCTION ~fj_are_structure~
+          INT_VAR fj_charge0 = 1
+                          fj_con_itm_idx  = SHORT_AT 0x74 - 1
+          STR_VAR fj_name = ~RING08~
+                          fj_structure_type = ~itm~
+    END //ends lpf
+  END
+  BUT_ONLY

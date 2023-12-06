@@ -1,0 +1,15 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// unique containers                                \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// icons and fixes                                  \\\\\
+/////                                                  \\\\\
+
+OUTER_SET names = 0 // don't set names
+INCLUDE ~cdtweaks/lib/unique_containers_fixes.tpa~ // misc store fixes 
+INCLUDE ~cdtweaks/lib/unique_containers_v2.tpa~ // do the thing

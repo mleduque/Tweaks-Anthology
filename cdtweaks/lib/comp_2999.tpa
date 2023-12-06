@@ -1,0 +1,57 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// max hp at level one                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_CLEAR_ARRAY cd_hp_tables
+
+ACTION_IF FILE_EXISTS_IN_GAME hpclass.2da THEN BEGIN // if tobex/ee, look up and patch tables
+
+  ACTION_DEFINE_ARRAY cd_hp_tables BEGIN END
+
+  COPY_EXISTING ~hpclass.2da~ ~override~
+    COUNT_2DA_ROWS 2 rows2
+    FOR (index2 = 0 ; index2 < rows2 ; ++index2) BEGIN
+      READ_2DA_ENTRY index2 1 2 table
+      PATCH_IF FILE_EXISTS_IN_GAME ~%table%.2da~ BEGIN
+        DEFINE_ASSOCIATIVE_ARRAY cd_hp_tables BEGIN "%table%" => 0 END
+      END
+    END
+    BUT_ONLY
+
+END ELSE BEGIN // otherwise use fixed list
+
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_hp_tables BEGIN
+
+    hpbarb   => 0 // barbarian hp table
+    hpmonk   => 0 // monk hp table
+    hpprs    => 0 // priest hp table
+    hprog    => 0 // rogue hp table
+    hpwar    => 0 // warrior hp table
+    hpwiz    => 0 // mage hp table
+  
+  END
+
+END
+
+ACTION_PHP_EACH cd_hp_tables AS tables => foo BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%tables%.2da~ THEN BEGIN
+
+    COPY_EXISTING ~%tables%.2da~ ~override~
+      READ_2DA_ENTRY 0 2 4 rolls
+      PATCH_IF (rolls != 0) BEGIN
+        READ_2DA_ENTRY 0 1 4 sides
+        READ_2DA_ENTRY 0 3 4 modifier
+        SET_2DA_ENTRY  0 2 4 0
+        SET_2DA_ENTRY  0 3 4 ((rolls * sides) + modifier)
+      END
+      PRETTY_PRINT_2DA
+      BUT_ONLY
+
+  END
+
+END

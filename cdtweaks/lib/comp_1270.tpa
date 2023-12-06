@@ -1,0 +1,114 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Change Cloakwood Mines Chapter End Trigger                 \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY_EXISTING ~%CloakwoodMines_L4%.are~ override // AR1803, 8603bgt
+  READ_ASCII 0x94 areascript (8) NULL
+  PATCH_IF FILE_EXISTS_IN_GAME ~%areascript%.bcs~ BEGIN
+    INNER_ACTION BEGIN
+     COPY_EXISTING ~%areascript%.bcs~ override
+      DECOMPILE_AND_PATCH BEGIN
+        REPLACE_TEXTUALLY CASE_INSENSITIVE EVALUATE_REGEXP ~Dead("Davaeorn")~ ~False() Dead("Davaeorn")~
+//        REPLACE_EVALUATE
+//          ~\(IF[ %TAB%%LNL%%MNL%%WLN%]+Dead("Davaeorn")[ %TAB%%LNL%%MNL%%WLN%]+Global("Chapter","GLOBAL",[45])[ %TAB%%LNL%%MNL%%WLN%]+THEN[ %TAB%%LNL%%MNL%%WLN%]+RESPONSE #100[ %TAB%%LNL%%MNL%%WLN%]+\)\(.+END\)~
+//          BEGIN SPRINT actions "%MATCH2%" END
+//          ~\1\2~
+      END
+     BUT_ONLY
+    END
+  END
+  LPF fj_are_structure
+      INT_VAR
+      fj_type              = 0    //trap
+      fj_box_left  = 380
+      fj_box_top    = 1062
+      fj_box_right    = 541
+      fj_box_bottom   = 1277
+      fj_cursor_idx   = 0   //no cursor
+      fj_vertex_0  = 380 + (1076 << 16)
+      fj_vertex_1  = 510 + (1160 << 16)
+      fj_vertex_2  = 439 + (1263 << 16)
+      fj_vertex_3  = 468 + (1277 << 16)
+      fj_vertex_4  = 541 + (1148 << 16)
+      fj_vertex_5  = 393 + (1062 << 16)
+      fj_flags        = 0b0000000000000010
+      fj_trap_detect  = 100
+      fj_trap_remove  = 100
+      fj_trap_active  = 1
+      fj_trap_status  = 0
+      fj_loc_x        = 404
+      fj_loc_y        = 1300
+      STR_VAR
+      fj_structure_type   = region
+      fj_name                      = ~Chapter trigger 1~
+      fj_reg_script          = endch4
+  END
+  LPF fj_are_structure
+      INT_VAR
+      fj_type              = 0    //trap
+      fj_box_left  = 1523
+      fj_box_top    = 272
+      fj_box_right    = 1629
+      fj_box_bottom   = 356
+      fj_cursor_idx   = 0   //no cursor
+      fj_vertex_0  = 1523 + (292 << 16)
+      fj_vertex_1  = 1607 + (356 << 16)
+      fj_vertex_2  = 1629 + (334 << 16)
+      fj_vertex_3  = 1550 + (272 << 16)
+      fj_flags        = 0b0000000000000010
+      fj_trap_detect  = 100
+      fj_trap_remove  = 100
+      fj_trap_active  = 1
+      fj_trap_status  = 0
+      fj_loc_x        = 1620
+      fj_loc_y        = 340
+      STR_VAR
+      fj_structure_type   = region
+      fj_name                      = ~Chapter trigger 2~
+      fj_reg_script          = endch4
+  END
+  BUT_ONLY
+
+//endch4.bcs should exist in game, but in case it does not
+ACTION_IF !FILE_EXISTS_IN_GAME ~endch4.bcs~ THEN BEGIN
+  COMPILE ~cdtweaks/baf/endch4.baf~ EVALUATE_BUFFER
+END
+
+// non-bg games also purge journal strings here
+ACTION_IF !game_is_totsc THEN BEGIN
+
+  COPY_EXISTING ~endch4.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      PATCH_IF tutu_gen BEGIN
+        PATCH_FOR_EACH string IN 78162 85754 85767 80561 80565 86317 86297 85810 85824 85868 BEGIN
+          REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
+        END
+      END ELSE
+      PATCH_IF game_is_bgt BEGIN
+        PATCH_FOR_EACH string IN 
+          74951 74952 74953 74954 74955 74956 74957 74958 74959 74960 74961 74962 74963
+          74964 74965 74966 74967 74968 74969 74970 74971 74972 74973 74974 74975 74976
+          74977 74978 74979 74980 74981 74982 74983 74984 74985 74986 74987 74988 74989
+          74990 74991 74992 74993 74994 74995 74773 74775 74777 74996 74997 74784
+        BEGIN
+          REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
+        END
+      END ELSE
+      PATCH_IF game_is_bgee BEGIN
+        PATCH_FOR_EACH string IN 27047 27046 27060 27059 26829 27455 27173 BEGIN
+          REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
+        END
+      END ELSE
+      PATCH_IF game_is_eet BEGIN
+        PATCH_FOR_EACH string IN 227047 227046 227060 227059 226829 227455 227173 BEGIN
+          REPLACE_TEXTUALLY ~\(IncrementChapter(\)~ ~EraseJournalEntry(%string%) \1~
+        END
+      END
+    END
+    BUT_ONLY
+
+END

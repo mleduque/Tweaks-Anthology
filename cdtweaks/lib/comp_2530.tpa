@@ -1,0 +1,112 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Lightning bolts don't bounce                               \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+OUTER_SET proj_protect = 1
+ACTION_IF ((FILE_EXISTS_IN_GAME ~lightb.pro~) OR (FILE_EXISTS_IN_GAME ~idpro40.pro~)) THEN BEGIN // for EE games w/o hardcoded projectile...
+
+  COPY_EXISTING ~idpro40.pro~ ~override~ // iwdee lightning bolt
+                ~lightb.pro~  ~override~ // bgee/bg2ee lightning bolt
+    READ_SHORT 0x21a bounce
+    PATCH_IF bounce BEGIN // if bounce projectile set (basically 2.6+)
+      WRITE_SHORT 0x21a 0 // blank bounce projectile
+    END ELSE BEGIN  // if no bounce projectile (2.5 or earlier)
+      WRITE_LONG  0x02c (THIS BAND `BIT0)  // remove bounce from walls flag
+      WRITE_SHORT 0x200 (THIS BAND `BIT4)  // remove secondary projectile flag
+      WRITE_SHORT 0x214 0                  // blank secondary projectile reference
+    END  
+    BUT_ONLY IF_EXISTS
+
+    OUTER_SET cdlightb = 40
+
+END ELSE BEGIN
+
+  ACTION_IF original_bg2 OR tutu_gen OR game_is_bgt OR game_is_ca OR game_is_iwd-in-bg2 BEGIN // engines that support pro files
+
+    ADD_PROJECTILE ~cdtweaks/pro/cdlightb.pro~ // lightning bolt w/o bouncing
+
+    ACTION_IF NOT FILE_EXISTS_IN_GAME ~tra_09.wav~   BEGIN COPY ~cdtweaks/wav/tra_09.wav~   ~override~ END // sound for projectile
+    ACTION_IF NOT FILE_EXISTS_IN_GAME ~splightb.bam~ BEGIN COPY ~cdtweaks/bam/splightb.bam~ ~override~ END // BAM for projectile
+
+  END ELSE BEGIN // if engine without projectile files, we'll just change to hardcoded call lightning projectile
+
+    OUTER_SET cdlightb = 23
+    OUTER_SET proj_protect = 0
+
+  END
+
+  INCLUDE ~cdtweaks/lib/macro_alter_header.tpa~
+
+  // update anything that is immune/reflects original lightning bolt to do the same with new projectile
+  COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+    LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode =  83 match_parameter2 = 39 parameter2 = (cdlightb - 1) END // immunity to projectile
+    LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 197 match_parameter2 = 39 parameter2 = (cdlightb - 1) END // reflect projectile
+    BUT_ONLY
+
+END
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+                          ~^.+\.spl$~ ~override~
+  READ_ASCII 0x00 type (3)
+  SET counter_offset = 0x70
+  READ_LONG  0x64 abil_off ELSE 0
+  READ_SHORT 0x68 abil_num ELSE 0
+  READ_LONG  0x6a fx_off   ELSE 0
+  PATCH_IF ("%type%" STRING_COMPARE_CASE "spl" = 0) BEGIN
+    SET abil_length    = 0x28
+    SET global_loop    = 0
+  END ELSE BEGIN // item
+    SET abil_length    = 0x38
+    SET global_loop    = 1
+  END
+  SET pro_off = abil_length = 0x38 ? 0x2a : 0x26
+  SET new_fx = 0
+  FOR (index = (0 - global_loop) ; index < abil_num ; ++index) BEGIN
+    PATCH_IF (index < 0) BEGIN // if loop through globals needed
+      SET abil_fx_idx = 0
+    END ELSE BEGIN // otherwise normal ability
+      SET proj_protect_add = 0
+      SET counter_offset = (abil_off + 0x1e + (abil_length * index))
+      READ_SHORT  (abil_off + 0x20 + (abil_length * index)) abil_fx_idx
+      SET abil_fx_idx += new_fx
+      WRITE_SHORT (abil_off + 0x20 + (abil_length * index)) (abil_fx_idx)
+    END
+    READ_SHORT counter_offset counter // fx_num on global loop, otherwise abil_fx_num
+    PATCH_IF (cdlightb != 40) BEGIN // don't bother with updating immunity/reflection if EE game where projectile number doesn't change
+      FOR (index2 = 0 ; index2 < counter ; ++index2) BEGIN
+        READ_SHORT (fx_off        + ((abil_fx_idx + index2) * 0x30)) opcode
+        READ_LONG  (fx_off + 0x08 + ((abil_fx_idx + index2) * 0x30)) param2
+        PATCH_IF (((opcode = 83) OR (opcode = 197)) AND (param2 = 39)) BEGIN            // reflect/immunity to existing lightning bolt
+          READ_ASCII   (fx_off        + ((abil_fx_idx + index2) * 0x30)) clone (48)     // read existing effect
+          INSERT_BYTES (fx_off        + ((abil_fx_idx + index2) * 0x30)) 0x30           // insert bytes
+          WRITE_ASCIIE (fx_off        + ((abil_fx_idx + index2) * 0x30)) "%clone%" #48  // write existing effect
+          WRITE_LONG   (fx_off + 0x08 + ((abil_fx_idx + index2) * 0x30)) (cdlightb - 1) // update to new projectile
+          SET new_fx += 1
+          SET index2 += 1
+          SET counter += 1
+        END
+      END
+    END
+    PATCH_IF (index >= 0) BEGIN // skip on globals loop
+      READ_SHORT  (abil_off + pro_off + (abil_length * index)) projectile
+      PATCH_IF projectile = 40 BEGIN
+        WRITE_SHORT  (abil_off + pro_off + (abil_length * index)) cdlightb
+        PATCH_IF proj_protect BEGIN
+          INSERT_BYTES (fx_off        + (abil_fx_idx * 0x30)) 0x30           // insert bytes for new effect
+          WRITE_SHORT  (fx_off        + (abil_fx_idx * 0x30)) 83             // immunity to projectile
+          WRITE_BYTE   (fx_off + 0x02 + (abil_fx_idx * 0x30)) 1              // target:self
+          WRITE_LONG   (fx_off + 0x08 + (abil_fx_idx * 0x30)) (cdlightb - 1) // new lightning projectile
+          WRITE_LONG   (fx_off + 0x0e + (abil_fx_idx * 0x30)) 2              // duration
+          WRITE_BYTE   (fx_off + 0x12 + (abil_fx_idx * 0x30)) 100            // probability
+          SET new_fx += 1
+          SET counter += 1
+        END
+      END
+    END
+    WRITE_SHORT counter_offset counter // fx_num on global loop, otherwise abil_fx_num
+  END
+  BUT_ONLY

@@ -1,0 +1,43 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Force all dialogue to pause                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+PRINT @1
+COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x2f) THEN BEGIN // protects against invalid files
+    READ_LONG  0x0c offset_state ELSE 0
+    PATCH_IF (offset_state = 0x30) BEGIN // adds pause field to older dlg formats
+      PATCH_FOR_EACH offset IN 0x18 0x20 0x28 BEGIN // loop through state, response trigger offsets
+        READ_LONG offset loop_off
+        READ_LONG (offset + 0x04) loop_num
+        FOR (index = 0 ; index < loop_num ; ++index) BEGIN
+          WRITE_LONG (loop_off + (index * 0x08)) (THIS + 0x04)
+        END
+      END
+      // push all other offsets back 0x04
+      PATCH_FOR_EACH offset IN 0x0c 0x14 0x18 0x20 0x28 BEGIN
+        WRITE_LONG offset (THIS + 0x04)
+      END
+      INSERT_BYTES 0x30 0x04
+    END ELSE
+    PATCH_IF (offset_state = 0x34) BEGIN // otherwise just sets to pause
+      WRITE_LONG 0x30 0
+    END
+  END
+  BUT_ONLY
+
+// pausing actually causing issues with drow duels, so:
+ACTION_IF FILE_EXISTS_IN_GAME ~udlesa.bcs~ BEGIN
+
+  COPY_EXISTING ~udlesa.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~\(IF[%TAB% %LNL%%MNL%%WNL%]+!CombatCounter(0)[%TAB% %LNL%%MNL%%WNL%]+Global("DuelOn","AR2202",0)\)\([%TAB% %LNL%%MNL%%WNL%]+\)\(THEN\)~
+        ~\1\2Global("PlayerDuelingLesaonar","GLOBAL",0)\2\3~
+    END
+    BUT_ONLY
+
+END

@@ -1,0 +1,29 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Edwina                                           \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF enhanced_edition THEN BEGIN
+
+  COPY ~cdtweaks/bmp/royo4_330.bmp~ ~override/royo4l.bmp~
+       ~cdtweaks/bmp/royo4_266.bmp~ ~override/royo4m.bmp~
+
+END ELSE BEGIN
+
+  COPY ~cdtweaks/bmp/royo4_170.bmp~ ~override/royo4l.bmp~
+       ~cdtweaks/bmp/royo4_60.bmp~  ~override/royo4m.bmp~
+
+END
+
+// add portrait change opcodes to edwin transform spells
+COPY_EXISTING ~spin662.spl~ ~override~ // return to edwin
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 107 target = 2 parameter2 = 1 timing = 1 STR_VAR resource = nedwinm END // large portrait
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 107 target = 2 parameter2 = 0 timing = 1 STR_VAR resource = nedwins END // small portrait
+
+// add portrait change opcodes to edwin transform spells
+COPY_EXISTING ~spin916.spl~ ~override~ // change to edwina
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 107 target = 2 parameter2 = 1 timing = 1 STR_VAR resource = royo4l END // large portrait
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 107 target = 2 parameter2 = 0 timing = 1 STR_VAR resource = royo4m END // small portrait

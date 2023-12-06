@@ -1,0 +1,108 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Alter Mage Spell Progression Table                         \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// un-nerfed                                                  \\\\\
+/////                                                            \\\\\
+
+COPY ~cdtweaks/2da/un_mxsplwiz.2da~ ~override/mxsplwiz.2da~
+
+ACTION_IF (MOD_IS_INSTALLED ~tomeandblood.tp2~ ~95~) BEGIN
+  COPY_EXISTING ~mxsplwiz.2da~ ~override~
+    COUNT_2DA_COLS cols
+    READ_2DA_ENTRIES_NOW rows cols
+    FOR (row = 0; row < rows; ++row) BEGIN
+      READ_2DA_ENTRY_FORMER rows row 1 slots
+      PATCH_IF !(FILE_EXISTS_IN_GAME ~qdtnb_l1cantrips.qd~) BEGIN
+        PATCH_IF (slots > 0) BEGIN
+          SET_2DA_ENTRY row 1 cols (slots + 2)
+        END
+      END
+        PATCH_IF (FILE_EXISTS_IN_GAME ~qdtnb_l1cantrips.qd~) BEGIN
+        PATCH_IF (slots > 0) BEGIN
+          SET_2DA_ENTRY row 1 cols (slots + 1)
+        END
+      END
+      FOR (col = 2; col < 8; ++col) BEGIN
+        READ_2DA_ENTRY_FORMER rows row col slots
+        PATCH_IF (slots > 0) BEGIN
+          SET_2DA_ENTRY row col cols (slots + 2)
+        END
+      END
+    END
+    IF_EXISTS BUT_ONLY
+END
+
+ACTION_IF game_includes_tob THEN BEGIN
+
+  // add mage alchemy, scribe scrolls
+  COPY_EXISTING ~lucm0.2da~ ~override~
+                ~luma0.2da~ ~override~
+    COUNT_2DA_ROWS ~9~ "rows"
+    SET "patch" = 0
+    FOR ( index = 1 ; index < rows ; index = index + 1 ) BEGIN
+      READ_2DA_ENTRY "%index%" 1 9 "abil"
+      PATCH_IF ("%abil%" STRING_COMPARE_CASE "*" = 0) BEGIN
+        PATCH_IF ("%patch%" = 0) BEGIN
+          SET_2DA_ENTRY "%index%" 1 9 ~GA_GBSCRBMG~
+          SET_2DA_ENTRY "%index%" 4 9 ~1~
+          SET_2DA_ENTRY "%index%" 5 9 ~99~
+          SET_2DA_ENTRY "%index%" 6 9 ~99~
+          SET "patch" = 1
+        END ELSE BEGIN
+          SET_2DA_ENTRY "%index%" 1 9 ~GA_GBALCHMG~
+          SET_2DA_ENTRY "%index%" 4 9 ~1~
+          SET_2DA_ENTRY "%index%" 5 9 ~99~
+          SET_2DA_ENTRY "%index%" 6 9 ~99~
+          SET "index" = "%rows%" // kills loop
+        END
+      END
+    END
+    BUT_ONLY
+
+  COPY ~cdtweaks/spl/gbalchmg.spl~ ~override~
+    SAY 0x08 @218001
+    SAY 0x50 @218004
+
+  COPY ~cdtweaks/spl/gbscrbmg.spl~ ~override~
+    SAY 0x08 @218007
+    SAY 0x50 @218010
+
+  ACTION_IF NOT MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~2280~ THEN BEGIN // if un-nerfed cleric progression hasn't already made this change...
+
+    COPY_EXISTING ~spcl918.spl~ ~override~
+      SAY        0x08 @218003
+      SAY        0x50 @218006
+      READ_LONG  0x64 "abil_off"
+      READ_SHORT 0x68 "abil_num"
+      READ_LONG  0x6a "fx_off"
+      FOR (index = 0 ; index < abil_num ; index = index + 1) BEGIN
+        READ_SHORT ("%abil_off%" + 0x1e + (0x28 * "%index%")) "abil_fx_num"
+        READ_SHORT ("%abil_off%" + 0x20 + (0x28 * "%index%")) "abil_fx_idx"
+        FOR (index2 = 0 ; index2 < abil_fx_num ; index2 = index2 + 1) BEGIN
+          READ_SHORT ("%fx_off%" +        (0x30 * ("%abil_fx_idx%" + "%index2%"))) "opcode"
+          PATCH_IF ("%opcode%" = 122) BEGIN // create item
+            READ_ASCII ("%fx_off%" + 0x14 + (0x30 * ("%abil_fx_idx%" + "%index2%"))) "item"
+            PATCH_IF ("%item%" STRING_COMPARE_CASE "potn52" = 0) BEGIN // potion of extra healing
+              WRITE_ASCII ("%fx_off%" + 0x14 + (0x30 * ("%abil_fx_idx%" + "%index2%"))) ~potn10~ #8 // potion of invis
+            END ELSE
+            PATCH_IF ("%item%" STRING_COMPARE_CASE "potn36" = 0) BEGIN // potion of master thieving
+              WRITE_ASCII ("%fx_off%" + 0x14 + (0x30 * ("%abil_fx_idx%" + "%index2%"))) ~potn37~ #8 // potion of mind focusing
+            END
+          END
+        END
+      END
+      BUT_ONLY
+
+    COPY_EXISTING ~spcl919.spl~ ~override~
+      SAY 0x008 @218009
+      SAY 0x050 @218012
+
+  END
+
+END

@@ -1,0 +1,24 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Happy patch                                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// angry but never leave                            \\\\\
+/////                                                  \\\\\
+
+// stop rep complaints
+COPY_EXISTING ~happy.2da~ ~override~
+  REPLACE_EVALUATE ~-\([0-9]+\)~ BEGIN
+    PATCH_IF ("%MATCH1%" > 160) BEGIN SET new = 160 END ELSE BEGIN SET new = "%MATCH1%" END
+  END ~-%new%~
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
+// bg1 npc can let shar-teel leave anyway
+ACTION_IF game_includes_bg1 THEN BEGIN
+  INCLUDE ~cdtweaks/lib/happy_sharteel.tpa~
+END

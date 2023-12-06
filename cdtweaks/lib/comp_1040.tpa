@@ -1,0 +1,91 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Improved Athkatla City Guard                               \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY_EXISTING ~amncen1.cre~  ~override~ // amnish centurion
+              ~amng1.cre~    ~override~ // amnish soldier
+              ~amng2.cre~    ~override~ // amnish soldier
+              ~amnleg01.cre~ ~override~ // amnish legionary
+              ~amnleg1.cre~  ~override~ // amnish legionary
+              ~amnlegs.cre~  ~override~ // amnish legionary
+              ~bamng01.cre~  ~override~ // amnish guard
+              ~bamng02.cre~  ~override~ // amnish guard
+              ~bodyg1.cre~   ~override~ // amnish bodyguard
+              ~bodyg2.cre~   ~override~ // amnish bodyguard
+              ~circg1.cre~   ~override~ // amnish soldier
+              ~civamng1.cre~ ~override~ // amnish soldier
+              ~docsol01.cre~ ~override~ // amnish soldier
+              ~gguard01.cre~ ~override~ // amnish soldier
+              ~guamur.cre~   ~override~ // amnish soldier
+              ~hactong.cre~  ~override~ // amnish bodyguard
+              ~isamng1.cre~  ~override~ // amnish soldier
+              ~isamng2.cre~  ~override~ // amnish soldier
+              ~isamng3.cre~  ~override~ // amnish soldier
+              ~isamng4.cre~  ~override~ // amnish soldier
+              ~slamng01.cre~ ~override~ // amnish soldier
+              ~slcent.cre~   ~override~ // amnish centurion
+              ~stealgrd.cre~ ~override~ // amnish soldier
+              ~stolegrd.cre~ ~override~ // amnish soldier
+              ~temamn01.cre~ ~override~ // amnish guard
+              ~vvamn1.cre~   ~override~ // amnish soldier
+              ~vvamn2.cre~   ~override~ // amnish soldier
+  WRITE_SHORT 0x24  (THIS + 10) // Current HP
+  WRITE_SHORT 0x26  (THIS + 10) // Max HP
+  WRITE_SHORT 0x46  (THIS - 1)  // Natural AC
+  WRITE_SHORT 0x48  (THIS - 1)  // Effective AC
+  WRITE_SHORT 0x52  (THIS - 1)  // thac0
+  WRITE_BYTE  0x54  (THIS - 1)  // save vs death
+  WRITE_BYTE  0x55  (THIS - 1)  // save vs wands
+  WRITE_BYTE  0x56  (THIS - 1)  // save vs polymorph
+  WRITE_BYTE  0x57  (THIS - 1)  // save vs breath
+  WRITE_BYTE  0x58  (THIS - 1)  // save vs spell
+  //search for first empty script slot and overwrite
+  FOR (index = 0 ; index < 5 ; index = index + 1) BEGIN
+    READ_ASCII (0x248 + ("%index%" * 0x08)) "script"
+    PATCH_IF (("None" STRING_COMPARE_CASE "%script%" = 0) OR
+              (""     STRING_COMPARE_CASE "%script%" = 0)) BEGIN
+      WRITE_ASCII (0x248 + ("%index%" * 0x08)) ~a#amng~ #8
+      SET "index" = 5 // kills loop
+    END ELSE
+    PATCH_IF ("%index%" = 4) BEGIN // if we get here, no script slot open so we overwrite general script
+      WRITE_ASCII 0x260 ~a#amng~ #8 // override script
+    END
+  END
+  BUT_ONLY
+
+// Amnish Soldier
+COPY_EXISTING ~amng1.cre~ ~override/a#amng.cre~
+  SAY NAME1 @104001
+  SAY NAME2 @104001
+  WRITE_ASCII 0x280 ~a#amng~ #8
+
+//Amnish Soldier - Hostile
+COPY_EXISTING ~a#amng.cre~ ~override/a#amngh.cre~
+  WRITE_BYTE  0x270 255          // Allegiance enemy
+  WRITE_ASCII 0x280 ~a#amngh~ #8 // Death Variable
+
+//Sanctioned Wizard
+COPY ~cdtweaks/cre/a#amnm.cre~ ~override~
+  SAY NAME1 @104002
+  SAY NAME2 @104002
+
+//Sanctioned Wizard - Hostile
+COPY_EXISTING ~a#amnm.cre~ ~override/a#amnmh.cre~
+  WRITE_BYTE  0x270 255          // Allegiance enemy
+  WRITE_ASCII 0x280 ~a#amnmh~ #8 // Death Variable
+
+//Sanctioned Wizard
+COPY ~cdtweaks/cre/a#amnp.cre~ ~override~
+  SAY NAME1 @104003
+  SAY NAME2 @104003
+
+//Sanctioned Wizard - Hostile
+COPY_EXISTING ~a#amnp.cre~ ~override/a#amnph.cre~
+  WRITE_BYTE  0x270 255          // Allegiance enemy
+  WRITE_ASCII 0x280 ~a#amnph~ // Death Variable
+
+COMPILE ~cdtweaks/baf/a#amng.baf~

@@ -1,0 +1,115 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Portable Containers                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+COPY ~cdtweaks/itm/z!bag01.itm~  ~override~ // Gem Bag
+  SAY NAME1 @108501
+  SAY NAME2 @108502
+  SAY UNIDENTIFIED_DESC @108503
+  SAY DESC @108504
+  SAY 0xDE @108505
+
+COPY ~cdtweaks/itm/z!bag02.itm~  ~override~ // Potion Case
+  SAY NAME1 @108506
+  SAY NAME2 @108507
+  SAY UNIDENTIFIED_DESC @108508
+  SAY DESC @108509
+  SAY 0xDE @108510
+
+COPY ~cdtweaks/itm/z!bag03.itm~  ~override~ // Scroll Case
+  SAY NAME1 @108511
+  SAY NAME2 @108512
+  SAY UNIDENTIFIED_DESC @108513
+  SAY DESC @108514
+  SAY 0xDE @108525
+
+COPY ~cdtweaks/itm/z!bag04.itm~  ~override~  // Ammunition Belt
+  SAY NAME1 @108515
+  SAY NAME2 @108516
+  SAY UNIDENTIFIED_DESC @108517
+  SAY DESC @108518
+  SAY 0xDE @108519
+
+COPY ~cdtweaks/itm/z!bag11.itm~  ~override~ // Bag of Holding
+  SAY NAME1 @108520
+  SAY NAME2 @108521
+  SAY UNIDENTIFIED_DESC @108522
+  SAY DESC @108523
+  SAY 0xDE @108524
+
+// copy the images needed
+COPY ~cdtweaks/bam/cbag02.bam~ ~override~
+     ~cdtweaks/bam/cbag03.bam~ ~override~
+     ~cdtweaks/bam/cbag04.bam~ ~override~
+     ~cdtweaks/bam/pbag05.bam~ ~override~
+     ~cdtweaks/bam/pbag06.bam~ ~override~
+     ~cdtweaks/bam/ibag02.bam~ ~override~
+     ~cdtweaks/bam/ibag03.bam~ ~override~
+     ~cdtweaks/bam/ibag04.bam~ ~override~
+     ~cdtweaks/bam/ibag05.bam~ ~override~
+     ~cdtweaks/bam/ibag06.bam~ ~override~
+
+// modify Dplayer3.bcs to make bags work
+EXTEND_BOTTOM ~dplayer3.bcs~ ~cdtweaks/baf/dplayer3_bagsad.baf~
+
+// Create the CRE files that access the stores
+COPY ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag01.cre~
+     ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag02.cre~
+     ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag03.cre~
+     ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag04.cre~
+     ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag11.cre~
+  WRITE_ASCIIE SCRIPT_OVERRIDE ~%DEST_RES%~
+
+COPY ~cdtweaks/cre/z!bag01.cre~ ~override/z!bag0x.cre~
+  WRITE_ASCII DEATHVAR ~Z!BAG0X~
+
+// Create the scripts used by the CREs
+COMPILE ~cdtweaks/baf/z!bag01.baf~
+
+COPY_EXISTING ~z!bag01.bcs~ ~override/z!bag02.bcs~
+              ~z!bag01.bcs~ ~override/z!bag03.bcs~
+              ~z!bag01.bcs~ ~override/z!bag04.bcs~
+              ~z!bag01.bcs~ ~override/z!bag11.bcs~
+  REPLACE_TEXTUALLY ~Z!BAG01~ ~%DEST_RES%~
+
+// Place the stores in the game
+COPY ~cdtweaks/sto/z!bag01.sto~ ~override~
+  SAY NAME2 @108502
+  ADD_STORE_ITEM ~ring13~ #1 #0 #0 ~NONE~ #1
+  ADD_STORE_ITEM ~ring17~ #1 #0 #0 ~NONE~ #1
+  ADD_STORE_ITEM ~amul10~ #1 #0 #0 ~NONE~ #1
+
+COPY ~cdtweaks/sto/z!bag02.sto~ ~override~
+  SAY NAME2 @108507
+
+COPY ~cdtweaks/sto/z!bag03.sto~ ~override~
+  SAY NAME2 @108512
+
+COPY ~cdtweaks/sto/z!bag04.sto~ ~override~
+  SAY NAME2 @108516
+  ADD_STORE_ITEM ~dart04~ #5 #0 #0 ~NONE~ #1
+
+COPY ~cdtweaks/sto/z!bag11.sto~ ~override~
+  SAY NAME2 @108521
+  ADD_STORE_ITEM ~slng02~ #0 #0 #0 ~NONE~ #1
+  ADD_STORE_ITEM ~bull02~ #10 #0 #0 ~NONE~ #1
+
+// Finally, where the items are found
+COPY_EXISTING ~tarnes.cre~ ~override~
+  ADD_CRE_ITEM ~z!bag01~ #1 #0 #0 ~NONE~ ~INV9~
+
+COPY_EXISTING ~tem3402.sto~ ~override~
+  ADD_STORE_ITEM ~z!bag02~ LAST #0 #0 #0 ~IDENTIFIED~ #1
+
+COPY_EXISTING ~highhedg.sto~ ~override~
+  ADD_STORE_ITEM ~z!bag03~ LAST #0 #0 #0 ~IDENTIFIED~ #1
+
+COPY_EXISTING ~zal.cre~ ~override~
+     ADD_CRE_ITEM ~z!bag04~ #1 #0 #0 ~NONE~ ~BELT~
+
+COPY_EXISTING ~mulahe.cre~ ~override~
+  ADD_CRE_ITEM ~z!bag11~ #1 #0 #0 ~NONE~ ~INV9~

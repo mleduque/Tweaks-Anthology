@@ -1,0 +1,23 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Recoverable throwing weapons                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// 50% chance to recover after a successful hit,    \\\\\
+///// vs. enemies only                                 \\\\\
+/////                                                  \\\\\
+
+INCLUDE ~cdtweaks/lib/recoverable_weapons.tpa~
+
+LAF MAKE_WEAPONS_RECOVERABLE
+  INT_VAR
+    probability       = 50
+    ids_target        = 2
+    ids_value         = 200
+  STR_VAR
+    eff_template_file = ~cdtweaks/eff/a7_hitfx.eff~
+END

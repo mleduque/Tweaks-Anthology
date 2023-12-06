@@ -1,0 +1,29 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// More Interjections                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF FILE_EXISTS_IN_GAME ~mrimrin1.itm~ THEN BEGIN // imoen romance compatibility code
+
+  COPY_EXISTING ~imoen2j.dlg~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~!I[fs]ValidForPartyDialog\(ue\)?(Player\([2-6]\))~ ~!Range(Player\2,30)~
+    END
+    BUT_ONLY
+
+END
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~I[fs]ValidForPartyDialog\(ue\)?(~
+                      ~InParty(~
+  END
+  IF ~16552~
+  BUT_ONLY
+
+COPY_EXISTING ~trigger.ids~ ~override~
+  REPLACE_TEXTUALLY ~0x40A8~ ~0x4043~
+  BUT_ONLY

@@ -1,0 +1,63 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Bardic Reputation Adjustment                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~CD_STATE_NOTVALID~
+CLEAR_IDS_MAP
+
+/* Lake Poets "Quest"; Bard in party encounter */
+/* creatures */
+COPY_EXISTING ~volo.cre~ ~override/x#lp1rep.cre~
+              ~volo.cre~ ~override/x#lp2rep.cre~
+              ~volo.cre~ ~override/x#lp3rep.cre~
+  SAY BATTLE_CRY2 #4521
+  SAY BATTLE_CRY3 #4521
+  SAY BATTLE_CRY4 #4521
+  SAY BATTLE_CRY5 #4521
+  SAY DIALOGUE_DEFAULT #4522
+  WRITE_EVALUATED_ASCII 0x2CC ~%DEST_RES%~ #8 // dialog
+  WRITE_EVALUATED_ASCII 0x280 ~%DEST_RES%~ #32 // death variable
+  PATCH_IF (~%DEST_RES%~ STRING_EQUAL ~x#lp1rep~) THEN BEGIN
+    SAY NAME1 @126001
+    SAY NAME2 @126002
+    WRITE_ASCII 0x248 ~x#lp1r~ #8 // override script
+  END ELSE PATCH_IF (~%DEST_RES%~ STRING_EQUAL ~x#lp2rep~) THEN BEGIN
+    SAY NAME1 @126003
+    SAY NAME2 @126004
+    WRITE_ASCII 0x248 ~x#lp2r~ #8 // override script
+  END ELSE PATCH_IF (~%DEST_RES%~ STRING_EQUAL ~x#lp3rep~) THEN BEGIN
+    SAY NAME1 @126005
+    SAY NAME2 @126006
+    WRITE_ASCII 0x248 ~x#lp3r~ #8 // override script
+  END
+
+/* scripts */
+COMPILE EVALUATE_BUFFER ~cdtweaks/baf/x#lp1r.baf~
+  USING ~%tra_location%/%LANGUAGE%/x#lp1r.tra~
+COMPILE EVALUATE_BUFFER ~cdtweaks/baf/x#lp2r.baf~
+  USING ~%tra_location%/%LANGUAGE%/x#lp2r.tra~
+COMPILE EVALUATE_BUFFER ~cdtweaks/baf/x#lp3r.baf~
+  USING ~%tra_location%/%LANGUAGE%/x#lp3r.tra~
+
+/* dialogue */
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lp1rep.d~
+  USING ~%tra_location%/%LANGUAGE%/x#lp1rep.tra~
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lp2rep.d~
+  USING ~%tra_location%/%LANGUAGE%/x#lp2rep.tra~
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lp3rep.d~
+  USING ~%tra_location%/%LANGUAGE%/x#lp2rep.tra~
+
+/* Area Scripts for spawning */
+EXTEND_TOP ~ar2301.bcs~ ~cdtweaks/baf/x#lp1repas.baf~ // The Friendly Arm Inn
+EXTEND_TOP ~ar4904.bcs~ ~cdtweaks/baf/x#lp2repas.baf~ // The Carnival
+EXTEND_TOP ~ar0705.bcs~ ~cdtweaks/baf/x#lp3repas.baf~ // The Elfsong
+
+/* Ajantis Reputation Seller Reactions */
+COMPILE EVALUATE_BUFFER ~cdtweaks/dlg/x#lprcad.d~
+  USING ~%tra_location%/%LANGUAGE%/x#lprcad.tra~
+
+EXTEND_BOTTOM ~ajantis.bcs~ ~cdtweaks/baf/x#lprcajr.baf~

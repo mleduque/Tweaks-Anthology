@@ -1,0 +1,68 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Create interval saves                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Customize                                        \\\\\
+/////                                                  \\\\\
+
+INCLUDE ~cdtweaks/lib/interval_saves.tpa~
+
+ACTION_IF (FILE_EXISTS ~cdtweaks/cdtweaks.txt~) THEN BEGIN
+  INCLUDE ~cdtweaks/cdtweaks.txt~ // config file
+END
+ACTION_IF (NOT IS_AN_INT ~interval_save_enabled~) BEGIN OUTER_SET interval_save_enabled = 1 END
+ACTION_IF (NOT IS_AN_INT ~interval_save_delay~) BEGIN OUTER_SET interval_save_delay = 1800 END
+ACTION_IF (NOT IS_AN_INT ~interval_save_combat~) BEGIN OUTER_SET interval_save_combat = 0 END
+ACTION_IF (NOT IS_AN_INT ~interval_save_count~) BEGIN OUTER_SET interval_save_count = 1 END
+ACTION_IF (NOT IS_AN_INT ~interval_save_custom_slot~) BEGIN OUTER_SET interval_save_custom_slot = 1 END
+ACTION_IF (NOT IS_AN_INT ~interval_save_feedback~) BEGIN OUTER_SET interval_save_feedback = 1 END
+ACTION_IF (NOT IS_AN_INT ~interval_save_ini~) BEGIN OUTER_SET interval_save_ini = 1 END
+
+// Show configuration info
+OUTER_SPRINT msg @335103
+OUTER_PATCH_SAVE msg ~%msg%~ BEGIN
+  PATCH_IF (interval_save_enabled) BEGIN
+    REPLACE_TEXTUALLY ~a7_interval_enable~ ~yes~
+  END ELSE BEGIN
+    REPLACE_TEXTUALLY ~a7_interval_enable~ ~no~
+  END
+  REPLACE_TEXTUALLY ~a7_interval_delay~ ~%interval_save_delay%~
+  PATCH_IF (interval_save_combat) BEGIN
+    REPLACE_TEXTUALLY ~a7_interval_combat~ ~yes~
+  END ELSE BEGIN
+    REPLACE_TEXTUALLY ~a7_interval_combat~ ~no~
+  END
+  REPLACE_TEXTUALLY ~a7_interval_slots~ ~%interval_save_count%~
+  PATCH_IF (interval_save_custom_slot) BEGIN
+    REPLACE_TEXTUALLY ~a7_interval_custom~ ~yes~
+  END ELSE BEGIN
+    REPLACE_TEXTUALLY ~a7_interval_custom~ ~no~
+  END
+  PATCH_IF (interval_save_feedback) BEGIN
+    REPLACE_TEXTUALLY ~a7_interval_feedback~ ~yes~
+  END ELSE BEGIN
+    REPLACE_TEXTUALLY ~a7_interval_feedback~ ~no~
+  END
+  PATCH_IF (interval_save_ini) BEGIN
+    REPLACE_TEXTUALLY ~a7_interval_ini~ ~yes~
+  END ELSE BEGIN
+    REPLACE_TEXTUALLY ~a7_interval_ini~ ~no~
+  END
+END
+PRINT ~%msg%~
+
+LAF a7_auto_save
+  INT_VAR
+    enabled     = interval_save_enabled
+    combat      = interval_save_combat
+    interval    = interval_save_delay
+    custom_slot = interval_save_custom_slot
+    count       = interval_save_count
+    feedback    = interval_save_feedback
+    use_ini     = interval_save_ini
+END

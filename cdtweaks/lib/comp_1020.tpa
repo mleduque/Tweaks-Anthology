@@ -1,0 +1,53 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Alter HP Triggers for NPC Wounded Dialogues      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// alter triggers in dialogues...
+COMPILE ~cdtweaks/dlg/hptriggers.d~
+
+// and corresponding triggers in scripts
+COPY_EXISTING ~edwin.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~HPPercentLT(Myself,[12]5)~ ~HPPercentLT(Myself,50)~ // in case not fixed
+    REPLACE_TEXTUALLY ~Global("BEdwin10","LOCALS",0)\([ %TAB%%LNL%%MNL%%WNL%]+Global("EdwintalksAerieJames","LOCALS",0)\)~ ~Global("BEdwin1","LOCALS",0)\1~
+  END
+  BUT_ONLY
+
+COPY_EXISTING ~jaheira.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~HPLT("Aerie",10)~ ~HPPercentLT("Aerie",50)~
+    REPLACE_TEXTUALLY ~HPLT("Nalia",10)~ ~HPPercentLT("Nalia",50)~
+    REPLACE_TEXTUALLY ~HPLT(Myself,15)~  ~HPPercentLT(Myself,50)~
+    REPLACE_TEXTUALLY ~HPGT(Myself,14)~  ~!HPPercentLT(Myself,50)~
+  END
+  BUT_ONLY
+
+COPY_EXISTING ~mazzy.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~HPPercentLT("Valygar",20)~ ~HPPercentLT("Valygar",50)~
+  END
+  BUT_ONLY
+
+COPY_EXISTING ~minsc.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~HPLT(Myself,20)~    ~HPPercentLT(Myself,50)~
+    REPLACE_TEXTUALLY ~HPGT(Myself,19)~    ~!HPPercentLT(Myself,50)~
+    REPLACE_TEXTUALLY ~HPLT("Keldorn",20)~ ~HPPercentLT("Keldorn",50)~
+  END
+  BUT_ONLY
+
+COPY_EXISTING ~nalia.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~HPPercentLT("Aerie",25)~ ~HPPercentLT("Aerie",50)~
+  END
+  BUT_ONLY
+
+COPY_EXISTING ~yoshimo.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~HPLT("Mazzy",20)~ ~HPPercentLT("Mazzy",50)~
+  END
+  BUT_ONLY

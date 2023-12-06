@@ -1,0 +1,14 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Make Xzar a Generalist Mage                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_INCLUDE "%MOD_FOLDER%/lib/make_generalist.tpa"
+
+COPY_EXISTING_REGEXP "^%tutu_scriptbg%xzar.cre$" "override"
+                     "^_?xzar[0-9_]*.cre$" "override"
+  LAUNCH_PATCH_MACRO mh_make_generalist
+  BUT_ONLY

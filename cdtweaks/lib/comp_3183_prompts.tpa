@@ -1,0 +1,138 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Romance Cheats                                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// questions for player input                       \\\\\
+/////                                                  \\\\\
+
+ACTION_IF FILE_EXISTS ~weidu_external/cdtweaks/batch_%COMPONENT_NUMBER%.tpa~ BEGIN
+
+  INCLUDE ~weidu_external/cdtweaks/batch_%COMPONENT_NUMBER%.tpa~
+  DELETE + ~weidu_external/cdtweaks/batch_%COMPONENT_NUMBER%.tpa~
+  
+  END ELSE BEGIN
+
+  ACTION_IF ((romance_use_config_values = 1) AND NOT // sanity check; if no changes specified in config, do normal prompting
+            ((remove_romance_racial_requirements != 1) AND 
+             (remove_romance_gender_requirements != 1) AND 
+             (romance_multiple != 1) AND
+             ((romance_nothing_kills != 1) OR (romance_multiple != 1)) AND
+             ((romance_starts_in_ToB != 1) OR (!game_is_soa))))  THEN BEGIN
+
+    // print mini-summary for debug
+    PRINT @26
+    PRINT @318309
+    ACTION_IF remove_romance_racial_requirements = 1 THEN BEGIN
+      PRINT @318302
+    END
+    ACTION_IF remove_romance_gender_requirements = 1 THEN BEGIN
+      PRINT @318304
+    END
+    ACTION_IF romance_multiple = 1 THEN BEGIN
+      PRINT @318306
+      ACTION_IF romance_nothing_kills = 1 THEN BEGIN
+        PRINT @318308
+      END
+    END
+    ACTION_IF NOT game_is_soa THEN BEGIN
+      ACTION_IF romance_starts_in_ToB = 1 THEN BEGIN
+        PRINT @318312
+      END
+    END
+
+  END ELSE BEGIN
+
+    // questions to set options
+    OUTER_SET romance_proceed = 0
+    OUTER_SET remove_romance_racial_requirements = 0
+    OUTER_SET remove_romance_gender_requirements = 0
+    OUTER_SET romance_multiple = 0
+    OUTER_SET romance_nothing_kills = 0
+    OUTER_SET romance_starts_in_ToB = 0
+    
+    OUTER_WHILE (romance_proceed != 1) BEGIN
+      OUTER_WHILE ((!IS_AN_INT remove_romance_racial_requirements) OR ((remove_romance_racial_requirements != 1) AND (remove_romance_racial_requirements != 2))) BEGIN // stay here until we have a 1 or a 2
+        PRINT @318301
+        ACTION_READLN remove_romance_racial_requirements
+      END
+      OUTER_WHILE ((!IS_AN_INT remove_romance_gender_requirements) OR ((remove_romance_gender_requirements != 1) AND (remove_romance_gender_requirements != 2))) BEGIN // stay here until we have a 1 or a 2
+        PRINT @318303
+        ACTION_READLN remove_romance_gender_requirements
+      END
+      OUTER_WHILE ((!IS_AN_INT romance_multiple) OR ((romance_multiple != 1) AND (romance_multiple != 2))) BEGIN // stay here until we have a 1 or a 2
+        PRINT @318305
+        ACTION_READLN romance_multiple
+      END
+      ACTION_IF (romance_multiple = 1) THEN BEGIN // only offer no kill if multi-romance selected
+        OUTER_WHILE ((!IS_AN_INT romance_nothing_kills) OR ((romance_nothing_kills != 1) AND (romance_nothing_kills != 2))) BEGIN
+          PRINT @318307
+          ACTION_READLN romance_nothing_kills
+        END
+      END
+      ACTION_IF NOT game_is_soa THEN BEGIN // tob
+        OUTER_WHILE ((!IS_AN_INT romance_starts_in_ToB) OR ((romance_starts_in_ToB != 1) AND (romance_starts_in_ToB != 2))) BEGIN
+          PRINT @318311
+          ACTION_READLN romance_starts_in_ToB
+        END
+      END
+      // sanity check, make sure some change has been selected
+      ACTION_IF ((remove_romance_racial_requirements != 1) AND (remove_romance_gender_requirements != 1) AND (romance_multiple != 1) AND (romance_nothing_kills != 1) AND (romance_starts_in_ToB != 1)) BEGIN
+        OUTER_SET romance_proceed = 2
+        PRINT @321014
+      END ELSE BEGIN
+        // print summary of options before proceeding
+        PRINT @318309
+        ACTION_IF remove_romance_racial_requirements = 1 THEN BEGIN
+          PRINT @318302
+        END
+        ACTION_IF remove_romance_gender_requirements = 1 THEN BEGIN
+          PRINT @318304
+        END
+        ACTION_IF romance_multiple = 1 THEN BEGIN
+          PRINT @318306
+        END
+        ACTION_IF romance_nothing_kills = 1 THEN BEGIN
+          PRINT @318308
+        END
+        ACTION_IF romance_starts_in_ToB = 1 THEN BEGIN
+          PRINT @318312
+        END
+        OUTER_WHILE ((!IS_AN_INT romance_proceed) OR ((romance_proceed != 1) AND (romance_proceed != 2))) BEGIN
+          PRINT @318310
+          ACTION_READLN romance_proceed
+        END
+      END
+      ACTION_IF (romance_proceed = 2) THEN BEGIN
+        OUTER_SET romance_proceed = 0
+        OUTER_SET remove_romance_racial_requirements = 0
+        OUTER_SET remove_romance_gender_requirements = 0
+        OUTER_SET romance_multiple = 0
+        OUTER_SET romance_nothing_kills = 0
+        OUTER_SET romance_starts_in_ToB = 0
+      END
+    END
+
+  END
+
+END
+
+ACTION_IF cd_tweaks_batch_install BEGIN
+
+<<<<<<<<./inline/cdtweaks_batch.tpa
+OUTER_SET remove__romance_racial_requirements = %remove_romance_racial_requirements%
+OUTER_SET remove__romance_gender_requirements = %remove_romance_gender_requirements%
+OUTER_SET romance__multiple = %romance_multiple%
+OUTER_SET romance__nothing_kills = %romance_nothing_kills%
+OUTER_SET romance__starts_in_ToB = %romance_starts_in_ToB%
+>>>>>>>>
+
+  COPY + ~./inline/cdtweaks_batch.tpa~ ~weidu_external/cdtweaks/batch_%COMPONENT_NUMBER%.tpa~ EVALUATE_BUFFER
+    REPLACE_TEXTUALLY ~__~ ~_~
+    
+END
+

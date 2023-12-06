@@ -1,0 +1,25 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Increase party movement speed and/or casting     \\\\\
+///// speed outside of combat                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Casting speed only                               \\\\\
+/////                                                  \\\\\
+
+INCLUDE ~cdtweaks/lib/increased_party_movement_speed.tpa~
+
+LAF A7_INSTALL_AUTOHASTE
+  INT_VAR
+    casting_speed = 1
+    movement_speed = 0
+  RET success
+END
+
+ACTION_IF (NOT success) BEGIN
+  ABORT @28
+END

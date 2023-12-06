@@ -1,0 +1,128 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Reveal wilderness areas on map before chapter 6            \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF ((FILE_EXISTS_IN_GAME ~cdbehbla.pro~) OR (enhanced_edition)) THEN BEGIN // easy fix if fixed worldmap present
+
+  COPY_EXISTING ~worldmap.wmp~ ~override~
+    READ_LONG 0x30 "area_num"
+    READ_LONG 0x34 "area_off"
+    FOR (index = 0 ; index < area_num ; index = index + 1) BEGIN
+      READ_ASCII ("%area_off%" + ("%index%" * 0xf0)) "areafile"
+      PATCH_IF (("ar1700" STRING_COMPARE_CASE "%areafile%" = 0) OR     // small teeth pass
+                ("ar1800" STRING_COMPARE_CASE "%areafile%" = 0) OR     // north forest
+                ("ar2600" STRING_COMPARE_CASE "%areafile%" = 0)) BEGIN // forest of tethir
+        READ_BYTE  ("%area_off%" + 0x30 + ("%index%" * 0xf0)) "flags"
+        WRITE_BYTE ("%area_off%" + 0x30 + ("%index%" * 0xf0)) ("%flags%" BOR 0b00000010)
+      END
+    END
+    BUT_ONLY
+
+END ELSE BEGIN
+
+  // adds new entrance points to wmp areas that don't have one already
+  COPY_EXISTING ~ar1700.are~ ~override~
+                ~ar1800.are~ ~override~
+                ~ar2600.are~ ~override~
+    READ_LONG 0x68 ent_off
+    PATCH_IF ("ar1700.are" STRING_COMPARE_CASE ~%SOURCE_FILE%~ = 0) BEGIN
+      SET x_coord = 3375
+      SET y_coord = 142
+    END ELSE
+    PATCH_IF ("ar1800.are" STRING_COMPARE_CASE ~%SOURCE_FILE%~ = 0) BEGIN
+      SET x_coord = 1325
+      SET y_coord = 56
+    END ELSE BEGIN
+      SET x_coord = 3856
+      SET y_coord = 115
+    END
+    WRITE_LONG 0x6c (THIS + 1)
+    INSERT_BYTES  (ent_off       ) 0x68
+      WRITE_ASCII (ent_off       ) ~CDExit~ // entrance name
+      WRITE_SHORT (ent_off + 0x20) x_coord
+      WRITE_SHORT (ent_off + 0x22) y_coord
+    // fix offsets
+    PATCH_FOR_EACH test_off IN 0x54 0x5c 0x60 0x68 0x6c 0x70 0x78 0x7c 0x84 0x88 0xa0 0xa8 0xb0 0xb8 0xbc 0xc0 0xc4 BEGIN  
+      READ_LONG test_off val
+      PATCH_IF (val < ent_off) BEGIN
+        WRITE_LONG test_off (test_off + 0x68) 
+      END
+    END
+    BUT_ONLY
+
+  // need to add link if fixed worldmap not installed
+  COPY_EXISTING ~worldmap.wmp~ ~override~
+    READ_LONG  0x30 area_num
+    READ_LONG  0x34 area_off
+    READ_LONG  0x38 link_off
+    READ_LONG  0x3c link_num
+    WRITE_LONG 0x3c (link_num + 1)
+    SET link_idx_nsrt = 999999
+    FOR (index = 0 ; index < area_num ; ++index) BEGIN
+      READ_ASCII (area_off + (index * 0xf0)) areafile
+      PATCH_IF ("ar0020" STRING_COMPARE_CASE "%areafile%" = 0) BEGIN // City Gates
+        SET area_to = index
+      END
+      PATCH_IF ("ar1800" STRING_COMPARE_CASE "%areafile%" = 0) BEGIN    // north forest
+        WRITE_BYTE (area_off + 0x30 + (index * 0xf0)) (THIS | BIT1)
+        SET nf_idx = index
+      END
+      PATCH_IF ("ar2600" STRING_COMPARE_CASE "%areafile%" = 0) BEGIN // forest of tethir
+        WRITE_BYTE (area_off + 0x30 + (index * 0xf0)) (THIS | BIT1)
+        SET fot_idx = index
+      END
+      READ_LONG  (area_off + 0x50 + (index * 0xf0)) link_idx_1
+      PATCH_IF ("ar1700" STRING_COMPARE_CASE "%areafile%" = 0) BEGIN // Small Teeth Pass
+        SET link_idx_nsrt = link_idx_1
+        WRITE_BYTE (area_off + 0x30 + (index * 0xf0)) (THIS | BIT1)
+        WRITE_LONG (area_off + 0x54 + (index * 0xf0)) (THIS + 1)
+        SET stp_idx = index
+      END
+      PATCH_IF (link_idx_nsrt < link_idx_1) BEGIN // adjusts indices for links after the insert
+        WRITE_LONG  (area_off + 0x50 + (index * 0xf0)) (link_idx_1 + 1)
+      END
+      READ_LONG  (area_off + 0x58 + (index * 0xf0)) link_idx_2
+      PATCH_IF (link_idx_nsrt < link_idx_2) BEGIN // adjusts indices for links after the insert
+        WRITE_LONG  (area_off + 0x58 + (index * 0xf0)) (link_idx_2 + 1)
+      END
+      READ_LONG  (area_off + 0x60 + (index * 0xf0)) link_idx_3
+      PATCH_IF (link_idx_nsrt < link_idx_3) BEGIN // adjusts indices for links after the insert
+        WRITE_LONG  (area_off + 0x60 + (index * 0xf0)) (link_idx_3 + 1)
+      END
+      READ_LONG  (area_off + 0x68 + (index * 0xf0)) link_idx_4
+      PATCH_IF (link_idx_nsrt < link_idx_4) BEGIN // adjusts indices for links after the insert
+        WRITE_LONG  (area_off + 0x68 + (index * 0xf0)) (link_idx_4 + 1)
+      END
+    END
+    FOR (index2 = 0 ; index2 < link_num ; ++index2) BEGIN
+      READ_LONG (link_off +        (index2 * 0xd8)) target // target index
+      READ_LONG (link_off + 0x04 + (index2 * 0xd8)) exit   // exit point
+      PATCH_IF ((exit = 0) AND
+                ((target = stp_idx) OR
+                 (target = nf_idx) OR
+                 (target = fot_idx))) BEGIN
+        WRITE_ASCII (link_off + 0x04 + (index2 * 0xd8)) "CDExit"   // exit point
+      END
+    END
+    INSERT_BYTES  (link_off +        (link_idx_nsrt * 0xd8)) 0xd8
+      WRITE_LONG  (link_off +        (link_idx_nsrt * 0xd8)) "%area_to%" // target index
+      WRITE_ASCII (link_off + 0x04 + (link_idx_nsrt * 0xd8)) ~ExitNE~    // exit point
+      WRITE_LONG  (link_off + 0x24 + (link_idx_nsrt * 0xd8)) 5           // travel time
+      WRITE_LONG  (link_off + 0x28 + (link_idx_nsrt * 0xd8)) 2           // unk, changed for consistency
+    FOR (index3 = 0 ; index3 < link_num ; ++index3) BEGIN
+      READ_LONG  (link_off +        (index3 * 0xd8)) target // target index
+      READ_ASCII (link_off + 0x04 + (index3 * 0xd8)) exit   // exit point
+      PATCH_IF (("" STRING_COMPARE_CASE "%exit%" = 0) AND
+                ((target = stp_idx) OR
+                 (target = nf_idx) OR
+                 (target = fot_idx))) BEGIN
+        WRITE_ASCII (link_off + 0x04 + (index3 * 0xd8)) "CDExit"   // exit point
+      END
+    END
+    BUT_ONLY
+
+END

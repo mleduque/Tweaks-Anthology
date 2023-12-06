@@ -1,0 +1,26 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Happy patch                                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// always neutral                                   \\\\\
+/////                                                  \\\\\
+
+// stop rep complaints
+COPY_EXISTING ~happy.2da~ ~override~
+  FOR (col = 1 ; col < 4 ; col = col + 1) BEGIN
+    FOR (row = 0 ; row < 20 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY %row% %col% 4 "0"
+    END
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
+// bg1 npc can let shar-teel leave anyway
+ACTION_IF game_includes_bg1 THEN BEGIN
+  INCLUDE ~cdtweaks/lib/happy_sharteel.tpa~
+END

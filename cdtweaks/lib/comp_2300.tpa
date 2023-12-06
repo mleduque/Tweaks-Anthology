@@ -1,0 +1,162 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// triple-class HLA tables                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// gives f/m/c and f/m/t unique HLAs; tables created below
+COPY_EXISTING ~LUABBR.2DA~ ~override~
+  SET_2DA_ENTRY 14 1 1 ~FMT~
+  SET_2DA_ENTRY 19 1 1 ~FMC~
+  BUT_ONLY
+
+ACTION_IF (NOT FILE_EXISTS_IN_GAME ~lufmc.2da~) BEGIN
+
+  COPY ~cdtweaks/2da/lufmc.2da~ ~override~
+
+END ELSE BEGIN
+
+  COPY_EXISTING ~lufmc.2da~ ~override~
+    READ_2DA_ENTRIES_NOW ~r2en_lufmc~ 10
+    SET planetar = 0
+    SET dark_planetar = 0
+    SET improved_alacrity = 0
+    SET dragons_breath = 0
+    SET comet = 0
+    FOR (i = 0; i < r2en_lufmc; i += 1) BEGIN // for each row
+      READ_2DA_ENTRY_FORMER ~r2en_lufmc~ i 1 old_ability
+      SPRINT new_ability ~~
+      PATCH_IF (~%old_ability%~ STRING_EQUAL_CASE ~GA_SPCL902~) BEGIN // deathblow
+        PATCH_IF (planetar == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI923~ // summon planetar
+          SET planetar = 1
+        END
+      END ELSE
+      PATCH_IF (~%old_ability%~ STRING_EQUAL_CASE ~GA_SPCL903~) BEGIN // greater deathblow
+        PATCH_IF (dark_planetar == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI924~ // summon dark planetar
+          SET dark_planetar = 1
+        END
+      END ELSE
+      PATCH_IF (~%old_ability%~ STRING_EQUAL_CASE ~GA_SPCL908~) BEGIN // war cry
+        PATCH_IF (improved_alacrity == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI921~ // improved alacrity
+          SET improved_alacrity = 1
+        END
+      END ELSE
+      PATCH_IF (~%old_ability%~ STRING_EQUAL_CASE ~*~) BEGIN // unused
+        PATCH_IF (dragons_breath == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI922~ // dragon's breath
+          SET dragons_breath = 1
+        END ELSE
+        PATCH_IF (comet == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI925~ // comet
+          SET comet = 1
+        END
+      END
+      PATCH_IF (STRING_LENGTH ~%new_ability%~ > 0) BEGIN // ability to be replaced here
+        SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 1 ~%new_ability%~ // ability
+        SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 2 ~*~ // icon
+        SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 3 ~*~ // strref
+        SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 4 ~32~ // min_level
+        SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 5 ~99~ // max_level
+        SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 6 ~1~ // num_allowed
+        SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 7 ~*~ // prerequisite
+        PATCH_IF (~%new_ability%~ STRING_EQUAL_CASE ~GA_SPWI923~) BEGIN // summon planetar restrictions
+          SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 8 ~GA_SPWI924~ // excluded_by
+          SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 9 ~ALL_EVIL~ // alignment_restrict
+        END ELSE
+        PATCH_IF (~%new_ability%~ STRING_EQUAL_CASE ~GA_SPWI924~) BEGIN // summon dark planetar restrictions
+          SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 8 ~GA_SPWI923~ // excluded_by
+          SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 9 ~ALL_GOOD~ // alignment_restrict
+        END ELSE BEGIN // restrictions for others
+          SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 8 ~*~ // excluded_by
+          SET_2DA_ENTRY_LATER ~s2el_lufmc~ i 9 ~*~ // alignment_restrict
+        END
+      END
+    END
+    SET_2DA_ENTRIES_NOW ~s2el_lufmc~ 10 // actually write changes!
+    PRETTY_PRINT_2DA
+
+END
+
+ACTION_IF (NOT FILE_EXISTS_IN_GAME ~lufmt.2da~) BEGIN
+
+  COPY ~cdtweaks/2da/lufmt.2da~ ~override~
+
+END ELSE BEGIN
+
+  COPY_EXISTING ~lufmt.2da~ ~override~
+    READ_2DA_ENTRIES_NOW ~r2en_lufmt~ 10
+    SET planetar = 0
+    SET dark_planetar = 0
+    SET improved_alacrity = 0
+    SET dragons_breath = 0
+    SET energy_blades = 0
+    SET comet = 0
+    FOR (i = 0; i < r2en_lufmt; i += 1) BEGIN // for each row
+      READ_2DA_ENTRY_FORMER ~r2en_lufmt~ i 1 old_ability
+      SPRINT new_ability ~~
+      PATCH_IF (~%old_ability%~ STRING_EQUAL_CASE ~GA_SPCL902~) BEGIN // deathblow
+        PATCH_IF (planetar == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI923~ // summon planetar
+          SET planetar = 1
+        END
+      END ELSE
+      PATCH_IF (~%old_ability%~ STRING_EQUAL_CASE ~GA_SPCL903~) BEGIN // greater deathblow
+        PATCH_IF (dark_planetar == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI924~ // summon dark planetar
+          SET dark_planetar = 1
+        END
+      END ELSE
+      PATCH_IF (~%old_ability%~ STRING_EQUAL_CASE ~GA_SPCL908~) BEGIN // war cry
+        PATCH_IF (improved_alacrity == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI921~ // improved alacrity
+          SET improved_alacrity = 1
+        END
+      END ELSE
+      PATCH_IF (~%old_ability%~ STRING_EQUAL_CASE ~GA_SPCL918~) BEGIN // alchemy
+        PATCH_IF (energy_blades == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI920~ // energy blades
+          SET energy_blades = 1
+        END
+      END ELSE
+      PATCH_IF (~%old_ability%~ STRING_EQUAL_CASE ~GA_SPCL919~) BEGIN // scribe scrolls
+        PATCH_IF (comet == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI925~ // comet
+          SET comet = 1
+        END
+      END ELSE
+      PATCH_IF (~%old_ability%~ STRING_EQUAL_CASE ~*~) BEGIN // unused
+        PATCH_IF (dragons_breath == 0) BEGIN
+          SPRINT new_ability ~GA_SPWI922~ // dragon's breath
+          SET dragons_breath = 1
+        END
+      END
+      PATCH_IF (STRING_LENGTH ~%new_ability%~ > 0) BEGIN // ability to be replaced here
+        SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 1 ~%new_ability%~ // ability
+        SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 2 ~*~ // icon
+        SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 3 ~*~ // strref
+        SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 4 ~32~ // min_level
+        SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 5 ~99~ // max_level
+        SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 6 ~1~ // num_allowed
+        SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 7 ~*~ // prerequisite
+        PATCH_IF (~%new_ability%~ STRING_EQUAL_CASE ~GA_SPWI923~) BEGIN // summon planetar restrictions
+          SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 8 ~GA_SPWI924~ // excluded_by
+          SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 9 ~ALL_EVIL~ // alignment_restrict
+        END ELSE
+        PATCH_IF (~%new_ability%~ STRING_EQUAL_CASE ~GA_SPWI924~) BEGIN // summon dark planetar restrictions
+          SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 8 ~GA_SPWI923~ // excluded_by
+          SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 9 ~ALL_GOOD~ // alignment_restrict
+        END ELSE BEGIN // restrictions for others
+          SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 8 ~*~ // excluded_by
+          SET_2DA_ENTRY_LATER ~s2el_lufmt~ i 9 ~*~ // alignment_restrict
+        END
+      END
+    END
+    SET_2DA_ENTRIES_NOW ~s2el_lufmt~ 10 // actually write changes!
+    PRETTY_PRINT_2DA
+
+END

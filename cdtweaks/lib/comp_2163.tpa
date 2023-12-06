@@ -1,0 +1,16 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Altered weapon proficiencies                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// IWD Weapon profs with weapon styles              \\\\\
+/////                                                  \\\\\
+
+OUTER_SET "tb#tutu_realloc_style" = 0
+INCLUDE ~cdtweaks/lib/profs_racethac.tpa~
+INCLUDE ~cdtweaks/lib/profs_common.tpa~
+INCLUDE ~cdtweaks/lib/iwd_style_profs.tpa~

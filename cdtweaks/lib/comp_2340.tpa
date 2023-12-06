@@ -1,0 +1,34 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// celestial cap removal                                      \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF FILE_EXISTS_IN_GAME ~summlimt.2da~ THEN BEGIN
+
+  COPY_EXISTING ~summlimt.2da~ ~override~
+    REPLACE_TEXTUALLY ~CELESTIAL[ %TAB%]+[0-9]+~ ~CELESTIAL 999~
+    BUT_ONLY
+
+END ELSE BEGIN
+
+  COPY_EXISTING ~devagood.cre~ ~override/ag#dgood.cre~
+                ~devaevil.cre~ ~override/ag#devil.cre~
+                ~plangood.cre~ ~override/ag#pgood.cre~
+                ~planevil.cre~ ~override/ag#pevil.cre~
+
+  COPY_EXISTING ~spdeva.eff~ ~override~
+    WRITE_ASCII 0x30 ag#dgood
+
+  COPY_EXISTING ~spdeva2.eff~ ~override~
+    WRITE_ASCII 0x30 ag#devil
+
+  COPY_EXISTING ~spplan.eff~ ~override~
+    WRITE_ASCII 0x30 ag#pgood
+
+  COPY_EXISTING ~spplan2.eff~ ~override~
+    WRITE_ASCII 0x30 ag#pevil
+
+END
