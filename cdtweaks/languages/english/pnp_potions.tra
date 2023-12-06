@@ -1,0 +1,13 @@
+@0 = "Under the effects of a potion"
+
+@1 = "The potion you have just quaffed goes down the wrong way... Strength and Dexterity decreased by 1 point permanently" [choke]
+
+@2 = "The potion you have just quaffed goes down the wrong way... All active potion effects have been removed" [choke]
+
+@3 = "The potion you have just quaffed does not seem to provide any effect..." [eff_m10]
+
+@4 = "%value% : -50% Efficacy" [eff_m29]
+
+@5 = "%value% : +50% Efficacy" [eff_hand]
+
+@6 = "%value% : +100% Efficacy / Permanent duration" [eff_hand]
