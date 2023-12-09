@@ -76,7 +76,15 @@ END ELSE BEGIN
     EXTEND_BOTTOM ~%script%.bcs~ ~cdtweaks/baf/regen.baf~ EVALUATE_BUFFER
     
   END
+  
+  ACTION_IF game_is_iwd2 BEGIN
 
-  COPY ~cdtweaks/spl/cdregen.spl~ ~override~
+    COPY ~cdtweaks/spl/cdregen_iwd2.spl~ ~override/cdregen.spl~
+    
+  END ELSE BEGIN  
+
+    COPY ~cdtweaks/spl/cdregen.spl~ ~override~
+    
+  END  
   
 END
