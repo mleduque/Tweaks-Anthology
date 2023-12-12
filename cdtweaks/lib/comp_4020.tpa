@@ -14,101 +14,42 @@ MKDIR ~weidu_external/cdtweaks~
 // load patch macro
 INCLUDE ~cdtweaks/lib/tob_style_npcs.tpa~
 
-COPY_EXISTING ~pdialog.2da~ ~override~
-  COUNT_2DA_COLS col_min
-  COUNT_2DA_ROWS col_min rows
-  FOR (index = 0 ; index < rows ; ++index) BEGIN
-    READ_2DA_ENTRY index 0 col_min curdv //
-    DEFINE_ASSOCIATIVE_ARRAY cd_dv_array BEGIN "cdtob_%curdv%" => "%curdv%" END
-    INNER_ACTION BEGIN
-    
-      COPY ~./inlined/tob_lookup.txt~ ~weidu_external/cdtweaks/cdtob_%curdv%.txt~
+INCLUDE ~cdtweaks/lib/joinable_npc_array.tpa~
 
-    END
-  END
-  BUT_ONLY
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
-  READ_LONG 0x1cc bio ELSE "-1"
-  PATCH_IF (("%SOURCE_RES%" STRING_COMPARE_CASE "BDIMOEN") AND  // exclude special imoen files
-            ("%SOURCE_RES%" STRING_COMPARE_CASE "BDSHIMOE") AND // exclude special imoen files
-            ("%SOURCE_RES%" STRING_COMPARE_CASE "FINIMOEN") AND // exclude special imoen files
-            (bio >= 0)) BEGIN // don't bother if no bio
-    READ_ASCII 0x280 "dvcre" (32) NULL
-    PHP_EACH cd_dv_array AS file => dv BEGIN
-      PATCH_IF ("%dv%" STRING_COMPARE_CASE "%dvcre%" = 0) BEGIN
+  ACTION_IF !IS_AN_INT dv BEGIN // joinable NPC
+
+    COPY_EXISTING ~%file%~ ~override~
+      PATCH_IF (("%SOURCE_RES%" STRING_COMPARE_CASE "BDIMOEN") AND     // exclude special imoen files
+                ("%SOURCE_RES%" STRING_COMPARE_CASE "BDSHIMOE") AND    // exclude special imoen files
+                ("%SOURCE_RES%" STRING_COMPARE_CASE "FINIMOEN") AND    // exclude special imoen files
+                ("%SOURCE_RES%" STRING_COMPARE_CASE "IMOENDRM")) BEGIN // exclude special imoen files
         READ_LONG 0x018 xp
         READ_BYTE 0x273 class
-        INNER_ACTION BEGIN
-          APPEND_OUTER ~weidu_external/cdtweaks/%file%.txt~ ~%SOURCE_RES% %xp% %class%~
-        END
-      END
-    END
-  END
-  BUT_ONLY
+        READ_LONG 0x20 flags
+        PATCH_IF (xp AND (class < 22) AND ((flags & BIT11) = 0)) BEGIN // sanity check: non-zero XP, player-available class, not flagged as dead
+          SPRINT cre_file ~%SOURCE_RES%~         
+          INNER_ACTION BEGIN
 
-// for creatuers like imoen, split files for cre files with same dv but different classes
-ACTION_PHP_EACH cd_dv_array AS file => dv BEGIN
-
-  COPY ~weidu_external/cdtweaks/%file%.txt~ ~weidu_external/cdtweaks/%file%.txt~
-    SET split = 0
-    COUNT_2DA_ROWS 3 rows
-    PATCH_IF (rows > 1) BEGIN // don't bother if only one creature
-      READ_2DA_ENTRY 0 2 3 test_class
-      FOR (index = 1 ; index < rows ; ++index) BEGIN
-        READ_2DA_ENTRY index 2 3 class
-        PATCH_IF class != test_class BEGIN
-          SET split = 1
-          DEFINE_ASSOCIATIVE_ARRAY cd_dv_array_split BEGIN "%class%"      => "%file%_%class%" END
-          DEFINE_ASSOCIATIVE_ARRAY cd_dv_array_split BEGIN "%test_class%" => "%file%"         END
-        END
-      END
-    END
-    BUT_ONLY
-
-  ACTION_IF split BEGIN
-
-    ACTION_PHP_EACH cd_dv_array_split AS class => dest_file BEGIN
-
-      ACTION_IF NOT FILE_EXISTS_IN_GAME ~%dest_file%.txt~ BEGIN
-    
-        ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_dv_array BEGIN "%dest_file%" => "%dv%" END
-
-        COPY ~weidu_external/cdtweaks/%file%.txt~ ~weidu_external/cdtweaks/%dest_file%.txt~
-          COUNT_2DA_ROWS 3 rows
-          FOR (index = 0 ; index < rows ; ++index) BEGIN
-            READ_2DA_ENTRY index 2 3 class_check
-            PATCH_IF class != class_check BEGIN
-              SET_2DA_ENTRY index 2 3 999
-            END
+            ACTION_IF !FILE_EXISTS ~weidu_external/cdtweaks/cdtob/%dv%_%class%.txt~ BEGIN
+              COPY ~./inlined/tob_lookup.txt~ ~weidu_external/cdtweaks/cdtob/%dv%_%class%.txt~
+            END  
+            APPEND_OUTER ~weidu_external/cdtweaks/cdtob/%dv%_%class%.txt~ ~%cre_file% %xp%~
+            
           END
-          REPLACE_TEXTUALLY ~^.+999[%LNL%%MNL%%WNL%]+~ ~~
-          BUT_ONLY
-
+        END  
       END
-
-    END
-
-    COPY ~weidu_external/cdtweaks/%file%.txt~ ~weidu_external/cdtweaks/%file%.txt~
-      COUNT_2DA_ROWS 3 rows
-      READ_2DA_ENTRY 0 2 3 class_check
-      FOR (index = 1 ; index < rows ; ++index) BEGIN
-        READ_2DA_ENTRY index 2 3 class
-        PATCH_IF class != class_check BEGIN
-          SET_2DA_ENTRY index 2 3 999
-        END
-      END
-      REPLACE_TEXTUALLY ~^.+999[%LNL%%MNL%%WNL%]+~ ~~
       BUT_ONLY
+
+  END
   
-    END
+END 
 
-END
-
-ACTION_PHP_EACH cd_dv_array AS file => dv BEGIN
-
-  COPY ~weidu_external/cdtweaks/%file%.txt~ ~weidu_external/cdtweaks/%file%.txt~
-    COUNT_2DA_ROWS 3 rows
+ACTION_BASH_FOR ~weidu_external/cdtweaks/cdtob~ ~^.+_[0-9]+\.txt$~ BEGIN
+  
+  COPY ~%BASH_FOR_FILESPEC%~ ~%BASH_FOR_FILESPEC%~
+    COUNT_2DA_ROWS 2 rows
     PATCH_IF (rows > 1) BEGIN // don't bother if only one creature
       READ_2DA_ENTRY 0 1 2 xp   // take first row as comparison point
       READ_2DA_ENTRY 0 0 2 orig
@@ -137,5 +78,5 @@ ACTION_PHP_EACH cd_dv_array AS file => dv BEGIN
       END
     END
     BUT_ONLY
-
+    
 END

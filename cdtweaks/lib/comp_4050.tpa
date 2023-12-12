@@ -6,13 +6,23 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-COPY_EXISTING_REGEXP GLOB ~^_?jahei.*\.cre$~ ~override~
-  READ_LONG 0x08  "strref" ELSE 0
-  READ_BYTE 0x27b "align"  ELSE 0
-  PATCH_IF ((("%strref%" = 9456) OR ("%strref%" = 9475)) AND ("%align%" = 34)) THEN BEGIN // exclude harper cre files
-    WRITE_BYTE 0x27b 33 // neutral good
+INCLUDE ~cdtweaks/lib/joinable_npc_array.tpa~
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+  ACTION_IF ("%dv%" STRING_COMPARE_CASE "jaheira" = 0) BEGIN 
+
+    COPY_EXISTING ~%file%~ ~override~
+      READ_LONG 0x08  "strref" ELSE 0
+      READ_BYTE 0x27b "align"  ELSE 0
+      PATCH_IF ((("%strref%" = 9456) OR ("%strref%" = 9475)) AND ("%align%" = 34)) THEN BEGIN // exclude harper cre files
+        WRITE_BYTE 0x27b 33 // neutral good
+      END
+      BUT_ONLY
+      
   END
-  BUT_ONLY
+  
+END
 
 ACTION_IF FILE_EXISTS_IN_GAME misc5x.itm BEGIN
 

@@ -107,30 +107,38 @@ END ELSE BEGIN
                 ~sppr513.spl~ ~override~
     WRITE_BYTE 0x21 (THIS & `BIT7)
     BUT_ONLY
+    
+  INCLUDE ~cdtweaks/lib/joinable_npc_array.tpa~
 
-  // update spellbooks for druids for new druid-allowed spells
-  COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
-    READ_LONG 0x1cc joinable ELSE 0
-    READ_BYTE 0x273 class
-    PATCH_IF ((joinable > 0) AND ((class = 11) OR (class = 16))) BEGIN // check for non-null bio string, druid class
-      PATCH_IF (class = 16) BEGIN // fighter-druids
-        READ_BYTE 0x235 level
-      END ELSE BEGIN              // vanilla druids
-        READ_BYTE 0x234 level
-      END
-      ADD_KNOWN_SPELL ~sppr109~ #0 ~priest~
-      PATCH_IF (level > 2) BEGIN
-        ADD_KNOWN_SPELL ~sppr203~ #1 ~priest~
-      END
-      PATCH_IF (level > 4) BEGIN
-        ADD_KNOWN_SPELL ~sppr304~ #2 ~priest~
-        ADD_KNOWN_SPELL ~sppr318~ #2 ~priest~
-      END
-      PATCH_IF (level > 8) BEGIN
-        ADD_KNOWN_SPELL ~sppr513~ #4 ~priest~
-      END
+  ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+    ACTION_IF !IS_AN_INT dv BEGIN // joinable NPC
+
+      COPY_EXISTING ~%file%~ ~override~
+        READ_BYTE 0x273 class
+        PATCH_IF ((class = 11) OR (class = 16)) BEGIN // check for non-null bio string, druid class
+          PATCH_IF (class = 16) BEGIN // fighter-druids
+            READ_BYTE 0x235 level
+          END ELSE BEGIN              // vanilla druids
+            READ_BYTE 0x234 level
+          END
+          ADD_KNOWN_SPELL ~sppr109~ #0 ~priest~
+          PATCH_IF (level > 2) BEGIN
+            ADD_KNOWN_SPELL ~sppr203~ #1 ~priest~
+          END
+          PATCH_IF (level > 4) BEGIN
+            ADD_KNOWN_SPELL ~sppr304~ #2 ~priest~
+            ADD_KNOWN_SPELL ~sppr318~ #2 ~priest~
+          END
+          PATCH_IF (level > 8) BEGIN
+            ADD_KNOWN_SPELL ~sppr513~ #4 ~priest~
+          END
+        END
+        BUT_ONLY
+        
     END
-    BUT_ONLY
+
+  END    
 
 END
 

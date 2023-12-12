@@ -6,11 +6,20 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // Imoen animation adjustments
-  READ_LONG   0x08 name  ELSE 0
-  READ_SHORT  0x28 anim  ELSE 0
-  READ_BYTE  0x273 class ELSE 0
-  PATCH_IF (((name = 16453) OR (name = 16454)) AND (class = 13) AND (anim = 25360)) BEGIN
-    WRITE_SHORT 0x28 25104
+INCLUDE ~cdtweaks/lib/joinable_npc_array.tpa~
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+  ACTION_IF ("%dv%" STRING_COMPARE_CASE "imoen" = 0) BEGIN 
+
+    COPY_EXISTING ~%file%~ ~override~
+      READ_SHORT  0x28 anim  ELSE 0
+      READ_BYTE  0x273 class ELSE 0
+      PATCH_IF ((class = 13) AND (anim = 25360)) BEGIN
+        WRITE_SHORT 0x28 25104
+      END
+      BUT_ONLY
+      
   END
-  BUT_ONLY
+  
+END
