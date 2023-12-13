@@ -870,6 +870,8 @@ BEGIN @115000 DESIGNATED 1150
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bgee tutu tutu_totsc eet bgt bg2ee soa tob iwd-in-bg2 ca iwdee~ @25
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~artisanskitpack.tp2~ ~5100~ @24
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 2040 @24 // Changes to Shapeshift Spells
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40600 @24 // Revised Druid Shapeshifting 
 LABEL ~cd_tweaks_weimer_shapeshifter_rebalancing~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1438,6 +1440,7 @@ LABEL ~cd_tweaks_weapon_styles_for_all~
 BEGIN @208000 DESIGNATED 2080
 GROUP @9
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee bgt eet~   @25 // ToB required
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 60200 @24 // Revised High-Level Ability system
 LABEL ~cd_tweaks_delay_hlas~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1600,6 +1603,7 @@ LABEL ~cd_tweaks_protection_items_armor_plus_one~
 BEGIN @216000 DESIGNATED 2160
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 81100 @24 // Revised Weapon Proficiency System
 SUBCOMPONENT @216006
 LABEL ~cd_tweaks_alter_prof_rebalanced~
 
@@ -1610,6 +1614,7 @@ LABEL ~cd_tweaks_alter_prof_rebalanced~
 BEGIN @216100 DESIGNATED 2161
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 81100 @24 // Revised Weapon Proficiency System
 SUBCOMPONENT @216006
 LABEL ~cd_tweaks_alter_prof_bg_with_styles~
 
@@ -1620,6 +1625,7 @@ LABEL ~cd_tweaks_alter_prof_bg_with_styles~
 BEGIN @216200 DESIGNATED 2162
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 81100 @24 // Revised Weapon Proficiency System
 SUBCOMPONENT @216006
 LABEL ~cd_tweaks_alter_prof_bg_no_styles~
 
@@ -1630,6 +1636,7 @@ LABEL ~cd_tweaks_alter_prof_bg_no_styles~
 BEGIN @216300 DESIGNATED 2163
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 81100 @24 // Revised Weapon Proficiency System
 SUBCOMPONENT @216006
 LABEL ~cd_tweaks_alter_prof_iwd_with_styles~
 
@@ -1640,6 +1647,7 @@ LABEL ~cd_tweaks_alter_prof_iwd_with_styles~
 BEGIN @216400 DESIGNATED 2164
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 81100 @24 // Revised Weapon Proficiency System
 SUBCOMPONENT @216006
 LABEL ~cd_tweaks_alter_prof_iwd_no_styles~
 
@@ -1704,6 +1712,9 @@ LABEL ~cd_tweaks_shopkeeper_id_hybrid~
 BEGIN @220000 DESIGNATED 2200
 GROUP @9 
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 81010 @24 // Wider Access to Grand Mastery
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 81011 @24 // Wider Access to Grand Mastery
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 81012 @24 // Wider Access to Grand Mastery
 LABEL ~cd_tweaks_multiclass_gm~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1786,6 +1797,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 80150 @24 // 3rd-Edition-Style THAC0s (somewhat faster progression for clerics/thieves/mages)
 LABEL ~cd_tweaks_alter_thac0_table~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1924,6 +1936,7 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~bpduearc.spl~ @16      // non-BP
 REQUIRE_PREDICATE NOT (GAME_IS ~bg2 tob bgt~ AND FILE_EXISTS ~data/rot-rule.bif~) @16 // non-RoT
 REQUIRE_PREDICATE NOT FILE_EXISTS         ~data/tdd-rule.bif~ @16 // non-TDD
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40610 @24 // Druids Use Cleric XP and Spell Tables
 LABEL ~cd_tweaks_druid_spell_progression_unnerfed_druid_level~
 
 /////                                                            \\\\\
@@ -1935,6 +1948,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40610 @24 // Druids Use Cleric XP and Spell Tables
 LABEL ~cd_tweaks_druid_spell_progression_pnp_druid_level~
 
 /////                                                            \\\\\
@@ -1946,6 +1960,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40610 @24 // Druids Use Cleric XP and Spell Tables
 LABEL ~cd_tweaks_druid_spell_progression_unchanged_cleric_level~
 
 /////                                                            \\\\\
@@ -1957,6 +1972,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40610 @24 // Druids Use Cleric XP and Spell Tables
 LABEL ~cd_tweaks_druid_spell_progression_unnerfed_cleric_level~
 
 /////                                                            \\\\\
@@ -1968,6 +1984,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40610 @24 // Druids Use Cleric XP and Spell Tables
 LABEL ~cd_tweaks_druid_spell_progression_pnp_cleric_level~
 
 /////                                                            \\\\\
@@ -1979,6 +1996,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40610 @24 // Druids Use Cleric XP and Spell Tables
 LABEL ~cd_tweaks_druid_spell_progression_cleric_normal_cleric_level~
 
 /////                                                            \\\\\
@@ -1990,6 +2008,7 @@ GROUP @9
 SUBCOMPONENT @229000 // alter druid progression
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~mxspldrd.2da~) OR (FILE_EXISTS_IN_GAME ~mxspldru.2da~)) @25
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40610 @24 // Druids Use Cleric XP and Spell Tables
 LABEL ~cd_tweaks_druid_spell_progression_cleric_unnerfed_cleric_level~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2058,6 +2077,7 @@ REQUIRE_PREDICATE (((!VARIABLE_IS_SET cd_tweaks_batch_install OR !cd_tweaks_batc
                    ((VARIABLE_IS_SET cd_tweaks_batch_install AND cd_tweaks_batch_install) AND // otherwise have to check for install variables
                        (VARIABLE_IS_SET cdtweaks_2090_installed AND cdtweaks_2090_installed))) @21
 REQUIRE_PREDICATE     GAME_IS ~tob bgt bg2ee eet~   @25 // ToB required
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 60200 @24 // Revised High-Level Ability system
 LABEL ~cd_tweaks_triple_class_hla_table~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2158,6 +2178,7 @@ LABEL ~cd_tweaks_celestial_cap_removal~
 BEGIN @236000 DESIGNATED 2360
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 LABEL ~cd_tweaks_remove_class_racial_restrictions~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2171,6 +2192,7 @@ LABEL ~cd_tweaks_remove_class_racial_restrictions~
 BEGIN @238000 DESIGNATED 2380
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 LABEL ~cd_tweaks_remove_kit_racial_restrictions~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2187,6 +2209,7 @@ LABEL ~cd_tweaks_remove_kit_racial_restrictions~
 
 BEGIN @237100 DESIGNATED 2371
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 GROUP @9
 SUBCOMPONENT @237000 // Alter Dual-class Restrictions
 LABEL ~cd_tweaks_alter_dualclass_humans_yes_nonhumans_yes~
@@ -2198,6 +2221,7 @@ LABEL ~cd_tweaks_alter_dualclass_humans_yes_nonhumans_yes~
 BEGIN @237001 DESIGNATED 2370
 GROUP @9
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 SUBCOMPONENT @237000 // Alter Dual-class Restrictions
 LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_no~
 
@@ -2207,6 +2231,7 @@ LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_no~
 
 BEGIN @237200 DESIGNATED 2372
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 GROUP @9
 SUBCOMPONENT @237000 // Alter Dual-class Restrictions
 LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_yes~
@@ -2225,6 +2250,7 @@ LABEL ~cd_tweaks_alter_dualclass_humans_no_nonhumans_yes~
 
 BEGIN @235001 DESIGNATED 2350
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
 LABEL ~cd_tweaks_multiclass_allow_humans~
@@ -2235,6 +2261,7 @@ LABEL ~cd_tweaks_multiclass_allow_humans~
 
 BEGIN @235100 DESIGNATED 2351
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
 LABEL ~cd_tweaks_multiclass_allow_nonhumans_all~
@@ -2253,6 +2280,7 @@ BEGIN @235200 DESIGNATED 2352 DEPRECATED @18
 
 BEGIN @235300 DESIGNATED 2353
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
 LABEL ~cd_tweaks_multiclass_allow_nonhumans_limited~
@@ -2263,6 +2291,7 @@ LABEL ~cd_tweaks_multiclass_allow_nonhumans_limited~
 
 BEGIN @235200 DESIGNATED 2357
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
 LABEL ~cd_tweaks_multiclass_allow_all_all~
@@ -2273,6 +2302,7 @@ LABEL ~cd_tweaks_multiclass_allow_all_all~
 
 BEGIN @235800 DESIGNATED 2358
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 GROUP @9
 SUBCOMPONENT @235000 // Higher HP on Level Up
 LABEL ~cd_tweaks_multiclass_allow_all_limited~
@@ -2292,6 +2322,7 @@ LABEL ~cd_tweaks_multiclass_allow_all_limited~
 BEGIN @255001 DESIGNATED 2550
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 SUBCOMPONENT @255000
 LABEL ~cd_tweaks_gnome_multiclass_illusionist_kits_all~
 
@@ -2302,6 +2333,7 @@ LABEL ~cd_tweaks_gnome_multiclass_illusionist_kits_all~
 BEGIN @255100 DESIGNATED 2551
 GROUP @9
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 SUBCOMPONENT @255000
 LABEL ~cd_tweaks_gnome_multiclass_mage_kits_illusionist~
 
@@ -2312,6 +2344,7 @@ LABEL ~cd_tweaks_gnome_multiclass_mage_kits_illusionist~
 BEGIN @255200 DESIGNATED 2552
 GROUP @9
 REQUIRE_PREDICATE ((FILE_EXISTS_IN_GAME ~clsrcreq.2da~) AND (!MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) @25 // tobex has no option for this unfortunately
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40000 @24 // Eliminate Class/Race Restrictions and Most Class/Ability Score Restrictions
 SUBCOMPONENT @255000
 LABEL ~cd_tweaks_gnome_multiclass_mage_kits_all~
 
@@ -2386,6 +2419,7 @@ LABEL ~cd_tweaks_ranger_spell_progression_alt~
 BEGIN @241000 DESIGNATED 2410
 GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40100 @16 // Revised Class Alignment Rules (no changes)
 LABEL ~cd_tweaks_druids_use_3e_alignment~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2735,6 +2769,7 @@ LABEL ~cd_tweaks_id_all_items~
 
 BEGIN @303001 DESIGNATED 3030 // 100% learn spells
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 80500 @24 // Remove Intelligence-Based Restrictions on Number and Level of Learnable Spells
 SUBCOMPONENT @303000 // easy spell learning
 LABEL ~cd_tweaks_easy_spell_learning_capped~
 
@@ -2744,6 +2779,7 @@ LABEL ~cd_tweaks_easy_spell_learning_capped~
 
 BEGIN @303100 DESIGNATED 3031 // 100% learn spells, remove caps
 GROUP @4
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 80500 @24 // Remove Intelligence-Based Restrictions on Number and Level of Learnable Spells
 SUBCOMPONENT @303000 // easy spell learning
 LABEL ~cd_tweaks_easy_spell_learning_no_cap~
 
@@ -3338,6 +3374,13 @@ LABEL ~cd_tweaks_stores_buy_all_items~
 BEGIN @321000 DESIGNATED 3210
 GROUP @4
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 80000 @24 // Revised Ability Scores
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 80001 @24 // Revised Ability Scores
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 80100 @24 // Point-Buy System for Choosing Ability Scores
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 80101 @24 // Point-Buy System for Choosing Ability Scores
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 80102 @24 // Point-Buy System for Choosing Ability Scores
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 80103 @24 // Point-Buy System for Choosing Ability Scores
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 80104 @24 // Point-Buy System for Choosing Ability Scores
 LABEL ~cd_tweaks_minimum_stats~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -4079,6 +4122,7 @@ LABEL ~cd_tweaks_consistent_stats_jaheira_bg2~
 BEGIN @405000 DESIGNATED 4050
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40100 @16 // Revised Class Alignment Rules (no changes)
 LABEL ~cd_tweaks_ng_jaheira~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
