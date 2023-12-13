@@ -2696,8 +2696,7 @@ LABEL ~cd_tweaks_maximum_hp_npcs_all~
 
 BEGIN @301100 DESIGNATED 3011 // maximum hp for npcs
 GROUP @4
-REQUIRE_PREDICATE NOT GAME_IS ~iwd2 iwd how totlm~ @25 // no joinables in iwd/iwd2; at least possible in iwdee/iwd-in-bg2
-SUBCOMPONENT @301000 // all npcs
+SUBCOMPONENT @301000 // non-party npcs
 LABEL ~cd_tweaks_maximum_hp_npcs_nonjoinable~
 
 /////                                                  \\\\\
@@ -2706,8 +2705,7 @@ LABEL ~cd_tweaks_maximum_hp_npcs_nonjoinable~
 
 BEGIN @301200 DESIGNATED 3012 // maximum hp for npcs
 GROUP @4
-REQUIRE_PREDICATE NOT GAME_IS ~iwd2 iwd how totlm~ @25 // no joinables in iwd/iwd2; at least possible in iwdee/iwd-in-bg2
-SUBCOMPONENT @301000 // all npcs
+SUBCOMPONENT @301000 // party npcs
 LABEL ~cd_tweaks_maximum_hp_npcs_joinable~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

@@ -1,314 +1,388 @@
-// i've learned that GAME_IS checks in a regexp copy are very slooooow, so...
-OUTER_SET class_off = 0x273 // cre v1.0
+// define different macros for max_hp_creatures depending on 2e/3e
+ACTION_IF game_is_iwd2 BEGIN
 
-ACTION_IF game_is_pst BEGIN // pstee uses v1.0
-  OUTER_SET class_off = 0x317
-END
+  DEFINE_PATCH_MACRO ~max_hp_creatures~ BEGIN    
+    
+    // PATCH_PRINT ~checking %SOURCE_FILE%~
+    READ_ASCII 0x00 sig (4) NULL 
+    PATCH_IF ("%sig%" STRING_COMPARE_CASE "CHR" = 0) BEGIN SET fudge = 0x224 END ELSE BEGIN SET fudge = 0 END
+    SET off_curhp = 0x24 + fudge
+    SET off_maxhp = 0x26 + fudge
+    READ_SHORT off_curhp "curhp" ELSE 0
+    READ_SHORT off_maxhp "maxhp" ELSE 0
+    PATCH_IF (("%maxhp%" > 0) AND ("%curhp%" > 0)) BEGIN
+      SET off_barb  = 0x8b + fudge
+      SET off_bard  = 0x8c + fudge
+      SET off_cleric  = 0x8d + fudge
+      SET off_druid  = 0x8e + fudge
+      SET off_fighter  = 0x8f + fudge
+      SET off_monk  = 0x90 + fudge
+      SET off_paladin  = 0x91 + fudge
+      SET off_ranger  = 0x92 + fudge
+      SET off_rogue  = 0x93 + fudge
+      SET off_sorcerer  = 0x94 + fudge
+      SET off_wizard  = 0x95 + fudge
+      SET "maxhp" = 0
+      READ_BYTE  off_barb "barbarian"
+      READ_BYTE  off_bard "bard"
+      READ_BYTE  off_cleric "cleric"
+      READ_BYTE  off_druid "druid"
+      READ_BYTE  off_fighter "fighter"
+      READ_BYTE  off_monk "monk"
+      READ_BYTE  off_paladin "paladin"
+      READ_BYTE  off_ranger "ranger"
+      READ_BYTE  off_rogue "rogue"
+      READ_BYTE  off_sorcerer "sorceror"
+      READ_BYTE  off_wizard "wizard"
+      SET "maxed_hp" = 12 * "%barbarian%" + 10 * ("%fighter%" + "%paladin%" + "%ranger%")
+                     + 8 * ("%cleric%" + "%druid%" + "%monk%") + 6 * ("%bard%" + "%rogue%")
+                     + 4 * ("%wizard%" + "%sorceror%")
+      PATCH_IF ("%curhp%" < "%maxed_hp%") BEGIN
+        // PATCH_PRINT ~updating %SOURCE_FILE%~
+        WRITE_SHORT off_curhp "%maxed_hp%" * "%curhp%" / "%maxhp%"
+        WRITE_SHORT off_maxhp "%maxed_hp%"
+      END
+    END  
+    
+  END  
 
-ACTION_IF original_iwd BEGIN
-  OUTER_SET class_off = 0x2db // cre v9.0
-END
-
-ACTION_IF NOT (original_bg1 OR original_iwd OR game_is_iwd2 OR game_includes_pst) BEGIN
-  OUTER_SET check_kit = 1
 END ELSE BEGIN
-  OUTER_SET check_kit = 0
-  OUTER_SET kit = 0
-END
 
-DEFINE_PATCH_MACRO ~max_hp_creatures~ BEGIN
+  // i've learned that GAME_IS checks in a regexp copy are very slooooow, so...
+  OUTER_SET off_class = 0x273 // cre v1.0
 
-    READ_BYTE 0x10 "dual1"
-    READ_BYTE 0x11 "dual2"
-    READ_BYTE 0x234 "level1" // If dual-classed, this value is put in the next field, and this field is set to 1.
-    READ_BYTE 0x235 "level2" // Highest attained level in secondary class (0-100)
-    READ_BYTE 0x236 "level3" // Highest attained level in tertiary class (0-100)
-    READ_BYTE class_off "class" // V1.0
-    PATCH_IF check_kit = 1 BEGIN
-      READ_LONG 0x244 "kit"    // 0x00004000 = barbarian
-    END
-    SET "firstdice" = 0      // size of die for HP rolls for first class, i.e. 1dX
-    SET "firstlast" = 0      // last level for which they get a full die roll for HP for first class
-    SET "firstpostdice" = 0  // set HP they get for levels beyond dice rolls for first class
-    SET "seconddice" = 0     // size of die for HP rolls for second class, i.e. 1dX
-    SET "secondlast" = 0     // last level for which they get a full die roll for HP for second class
-    SET "secondpostdice" = 0 // set HP they get for levels beyond dice rolls for second class
-    SET "thirddice" = 0      // size of die for HP rolls for third class, i.e. 1dX
-    SET "thirdlast" = 0      // last level for which they get a full die roll for HP for third class
-    SET "thirdpostdice" = 0  // set HP they get for levels beyond dice rolls for third class
-    SET "divide" = 1         // divide is only needed for multis
+  ACTION_IF game_is_pst BEGIN // pstee uses v1.0
+    OUTER_SET off_class = 0x317
+  END
 
-// barbarian
-    PATCH_IF (("%class%" = 2) AND ("%kit%" = 0x00004000)) BEGIN
-      SET "firstdice" = 12
-      SET "firstlast" = 9
-      SET "firstpostdice" = 3
-    END ELSE
+  ACTION_IF original_iwd BEGIN
+    OUTER_SET off_class = 0x2db // cre v9.0
+  END
 
-// single class mage or sorcerer
-    PATCH_IF (("%class%" = 1) OR  // mage
-              ("%class%" = 19)) BEGIN // sorcerer
-      SET "firstdice" = 4
-      SET "firstlast" = 10
-      SET "firstpostdice" = 1
-    END ELSE
-// single class fighter, ranger or paladin
-    PATCH_IF (("%class%" = 2) OR
-              ("%class%" = 6) OR
-              ("%class%" = 12)) BEGIN
-      SET "firstdice" = 10
-      SET "firstlast" = 9
-      SET "firstpostdice" = 3
-    END ELSE
+  ACTION_IF NOT (original_bg1 OR original_iwd OR game_is_iwd2 OR game_includes_pst) BEGIN
+    OUTER_SET check_kit = 1
+  END ELSE BEGIN
+    OUTER_SET check_kit = 0
+    OUTER_SET kit = 0
+  END
 
-// single class cleric, druid or monk
-    PATCH_IF (("%class%" = 3) OR 
-              ("%class%" = 11) OR 
-              ("%class%" = 20)) BEGIN
-      SET "firstdice" = 8
-      SET "firstlast" = 9
-      SET "firstpostdice" = 2
-    END ELSE
+  DEFINE_PATCH_MACRO ~max_hp_creatures~ BEGIN  
+    
+    // PATCH_PRINT ~checking %SOURCE_FILE%~  
+    PATCH_IF (NOT ~%SOURCE_RES%~ STRING_EQUAL_CASE ~riftcr04~) BEGIN // skip creatures meant to have lower hp
+      READ_ASCII 0x00 sig (4) NULL 
+      PATCH_IF ("%sig%" STRING_COMPARE_CASE "CHR" = 0) BEGIN SET fudge = 0x64 END ELSE BEGIN SET fudge = 0 END
+      SET off_curhp = 0x24 + fudge
+      SET off_maxhp = 0x26 + fudge
+      READ_SHORT 0x24 "currenthp" ELSE 0 // fortunately all cre formats keep HP info at these offsets
+      READ_SHORT 0x26 "maxhp"     ELSE 0
+      PATCH_IF (("%maxhp%" > 0) AND ("%currenthp%" > 0)) BEGIN
+      
+        SET off_dual1 = 0x10 + fudge
+        SET off_dual2 = 0x11 + fudge
+        SET off_level1 = 0x234 + fudge
+        SET off_level2 = 0x235 + fudge
+        SET off_level3 = 0x236 + fudge
+        SET off_class = off_class + fudge
+        SET off_kit = 0x244 + fudge    
 
-// single class thief or bard
-    PATCH_IF (("%class%" = 4) OR 
-              ("%class%" = 5)) BEGIN
-      SET "firstdice" = 6
-      SET "firstlast" = 10
-      SET "firstpostdice" = 1
-    END ELSE
+        READ_BYTE off_dual1 "dual1"
+        READ_BYTE off_dual2 "dual2"
+        READ_BYTE off_level1 "level1" // If dual-classed, this value is put in the next field, and this field is set to 1.
+        READ_BYTE off_level2 "level2" // Highest attained level in secondary class (0-100)
+        READ_BYTE off_level3 "level3" // Highest attained level in tertiary class (0-100)
+        READ_BYTE off_class "class" // V1.0
+        PATCH_IF check_kit = 1 BEGIN
+          READ_LONG off_kit "kit"    // 0x00004000 = barbarian
+        END ELSE BEGIN
+          SET kit = 0
+        END  
+        SET "firstdice" = 0      // size of die for HP rolls for first class, i.e. 1dX
+        SET "firstlast" = 0      // last level for which they get a full die roll for HP for first class
+        SET "firstpostdice" = 0  // set HP they get for levels beyond dice rolls for first class
+        SET "seconddice" = 0     // size of die for HP rolls for second class, i.e. 1dX
+        SET "secondlast" = 0     // last level for which they get a full die roll for HP for second class
+        SET "secondpostdice" = 0 // set HP they get for levels beyond dice rolls for second class
+        SET "thirddice" = 0      // size of die for HP rolls for third class, i.e. 1dX
+        SET "thirdlast" = 0      // last level for which they get a full die roll for HP for third class
+        SET "thirdpostdice" = 0  // set HP they get for levels beyond dice rolls for third class
+        SET "divide" = 1         // divide is only needed for multis
 
-    // Multi and dualclasses
-    PATCH_IF ("%class%" = 7) BEGIN //class = FM
-      SET "firstdice" = 10
-      SET "firstlast" = 9
-      SET "firstpostdice" = 3
-      SET "seconddice" = 4
-      SET "secondlast" = 10
-      SET "secondpostdice" = 1
-      PATCH_IF (("%dual1%" BOR 0b11110111) = 0b11111111) BEGIN // f > m dual
-        SET "firstlast" = 9
-        SET "secondlast" = (10 - "%level1%")
-        SET "level2" = ("%level2%" - "%level1%")
-      END ELSE
-      PATCH_IF (("%dual1%" BOR 0b11101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // m > f dual
-        SET "firstlast" = (9 - "%level2%")
-        SET "secondlast" = 10
-        SET "level1" = ("%level1%" - "%level2%")
-      END ELSE
-      PATCH_IF ("%dual1%" BOR 0b11100111 = 0b11100111) BEGIN // true multiclass
-        SET "divide" = 2
-      END
-    END ELSE
-    PATCH_IF ("%class%" = 9) BEGIN //class = FT
-      SET "firstdice" = 10
-      SET "firstlast" = 9
-      SET "firstpostdice" = 3
-      SET "seconddice" = 6
-      SET "secondlast" = 10
-      SET "secondpostdice" = 2
-      PATCH_IF (("%dual1%" BOR 0b11110111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // f > t dual
-        SET "secondlast" = (10 - "%level1%")
-        SET "level2" = ("%level2%" - "%level1%")
-      END ELSE
-      PATCH_IF (("%dual1%" BOR 0b10111111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // t > f dual
-        SET "firstlast" = (9 - "%level2%")
-        SET "level1" = ("%level1%" - "%level2%")
-      END ELSE
-      PATCH_IF ("%dual1%" BOR 0b10110111 = 0b10110111) BEGIN // true multiclass
-        SET "divide" = 2
-      END
-    END ELSE
-    PATCH_IF ("%class%" = 8) BEGIN //class = FC
-      SET "firstdice" = 10
-      SET "firstlast" = 9
-      SET "firstpostdice" = 3
-      SET "seconddice" = 8
-      SET "secondlast" = 9
-      SET "secondpostdice" = 2
-      PATCH_IF (("%dual1%" BOR 0b11110111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // f > c dual
-        SET "secondlast" = (9 - "%level1%")
-        SET "level2" = ("%level2%" - "%level1%")
-      END ELSE
-      PATCH_IF (("%dual1%" BOR 0b01101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // c > f dual
-        SET "firstlast" = (9 - "%level2%")
-        SET "level1" = ("%level1%" - "%level2%")
-      END ELSE
-      PATCH_IF ("%dual1%" BOR 0b11010111 = 0b11010111) BEGIN // true multiclass
-        SET "divide" = 2
-      END
-    END ELSE
-    PATCH_IF ("%class%" = 13) BEGIN //class = MT
-      SET "firstdice" = 4
-      SET "firstlast" = 10
-      SET "firstpostdice" = 1
-      SET "seconddice" = 6
-      SET "secondlast" = 10
-      SET "secondpostdice" = 2
-      PATCH_IF (("%dual1%" BOR 0b11101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // m > t dual
-        SET "secondlast" = (10 - "%level1%")
-        SET "level2" = ("%level2%" - "%level1%")
-      END ELSE
-      PATCH_IF (("%dual1%" BOR 0b10111111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // t > m dual
-        SET "firstlast" = (10 - "%level2%")
-        SET "level1" = ("%level1%" - "%level2%")
-      END ELSE
-      PATCH_IF ("%dual1%" BOR 0b10101111 = 0b10101111) BEGIN // true multiclass
-        SET "divide" = 2
-      END
-    END ELSE
-    PATCH_IF ("%class%" = 15) BEGIN //class = CT
-      SET "firstdice" = 8
-      SET "firstlast" = 9
-      SET "firstpostdice" = 2
-      SET "seconddice" = 6
-      SET "secondlast" = 10
-      SET "secondpostdice" = 2
-      PATCH_IF (("%dual1%" BOR 0b01101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // c > t dual
-        SET "secondlast" = (10 - "%level1%")
-        SET "level2" = ("%level2%" - "%level1%")
-      END ELSE
-      PATCH_IF (("%dual1%" BOR 0b10111111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // t > c dual
-        SET "firstlast" = (9 - "%level2%")
-        SET "level1" = ("%level1%" - "%level2%")
-      END ELSE
-      PATCH_IF ("%dual1%" BOR 0b10011111 = 0b10011111) BEGIN // true multiclass
-        SET "divide" = 2
-      END
-    END ELSE
-    PATCH_IF ("%class%" = 14) BEGIN //class = CM
-      SET "firstdice" = 8
-      SET "firstlast" = 9
-      SET "firstpostdice" = 2
-      SET "seconddice" = 4
-      SET "secondlast" = 10
-      SET "secondpostdice" = 1
-      PATCH_IF (("%dual1%" BOR 0b01101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // c > m dual
-        SET "secondlast" = (10 - "%level1%")
-        SET "level2" = ("%level2%" - "%level1%")
-      END ELSE
-      PATCH_IF (("%dual1%" BOR 0b11101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // m > c dual
-        SET "firstlast" = (9 - "%level2%")
-        SET "level1" = ("%level1%" - "%level2%")
-      END ELSE
-      PATCH_IF ("%dual1%" BOR 0b11001111 = 0b11001111) BEGIN // true multiclass
-        SET "divide" = 2
-      END
-    END ELSE
-    PATCH_IF ("%class%" = 16) BEGIN //class = FD
-      SET "firstdice" = 10
-      SET "firstlast" = 9
-      SET "firstpostdice" = 3
-      SET "seconddice" = 8
-      SET "secondlast" = 9
-      SET "secondpostdice" = 2
-      PATCH_IF (("%dual1%" BOR 0b11110111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // f > d dual
-        SET "secondlast" = (9 - "%level1%")
-        SET "level2" = ("%level2%" - "%level1%")
-      END ELSE
-      PATCH_IF (("%dual1%" BOR 0b01111111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // f > d dual
-        SET "firstlast" = (9 - "%level2%")
-        SET "level1" = ("%level1%" - "%level2%")
-      END ELSE
-      PATCH_IF ("%dual1%" BOR 0b01110111 = 0b01110111) BEGIN // true multiclass
-        SET "divide" = 2
-      END
-    END ELSE
-    PATCH_IF ("%class%" = 18) BEGIN //class = CR
-      SET "firstdice" = 8
-      SET "firstlast" = 9
-      SET "firstpostdice" = 2
-      SET "seconddice" = 10
-      SET "secondlast" = 9
-      SET "secondpostdice" = 3
-      PATCH_IF (("%dual1%" BOR 0b01101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // c > r dual
-        SET "secondlast" = (9 - "%level1%")
-        SET "level2" = ("%level2%" - "%level1%")
-      END ELSE
-      PATCH_IF (("%dual2%" BOR 0b11111110 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // r > c dual
-        SET "firstlast" = (9 - "%level2%")
-        SET "level1" = ("%level1%" - "%level2%")
-      END ELSE
-      PATCH_IF (("%dual1%" BOR 0b11011111 = 0b11011111) AND ("%dual2%" BOR 0b11111110 = 0b11111110)) BEGIN // true multiclass
-        SET "divide" = 2
-      END
-    END ELSE
-    PATCH_IF ("%class%" = 10) BEGIN //class = FMT
-      SET "firstdice" = 10
-      SET "firstlast" = 9
-      SET "firstpostdice" = 3
-      SET "seconddice" = 4
-      SET "secondlast" = 10
-      SET "secondpostdice" = 1
-      SET "thirddice" = 6
-      SET "thirdlast" = 10
-      SET "thirdpostdice" = 2
-      SET "divide" = 3
-    END ELSE
-    PATCH_IF ("%class%" = 17) BEGIN //class = FMC
-      SET "firstdice" = 10
-      SET "firstlast" = 9
-      SET "firstpostdice" = 3
-      SET "seconddice" = 4
-      SET "secondlast" = 10
-      SET "secondpostdice" = 1
-      SET "thirddice" = 8
-      SET "thirdlast" = 9
-      SET "thirdpostdice" = 2
-      SET "divide" = 3
-    END ELSE
+    // single class mage or sorcerer
+        PATCH_IF (("%class%" = 1) OR  // mage
+                  ("%class%" = 19)) BEGIN // sorcerer
+          SET "firstdice" = 4
+          PATCH_IF (enhanced_edition AND kit = 0x4023) BEGIN SET "firstdice" = 6 END // dragon disciple sorcerer
+          SET "firstlast" = 10
+          SET "firstpostdice" = 1
+        END ELSE
+    // single class fighter, ranger or paladin
+        PATCH_IF (("%class%" = 2) OR
+                  ("%class%" = 6) OR
+                  ("%class%" = 12)) BEGIN
+          SET "firstdice" = 10
+          PATCH_IF (("%kit%" = 0x40000000) OR (enhanced_edition AND kit = 0x4022)) BEGIN SET "firstdice" = 12 END // barbarian or dwarven defender
+          SET "firstlast" = 9
+          SET "firstpostdice" = 3
+        END ELSE
 
-// if it makes it to here without setting a firstdice then it's a nonstandard class (i.e. monster)
-    PATCH_IF ("%firstdice%" = 0) BEGIN
-      SET "firstdice" = 8
-      SET "firstlast" = 50
-    END
+    // single class cleric, druid or monk
+        PATCH_IF (("%class%" = 3) OR 
+                  ("%class%" = 11) OR 
+                  ("%class%" = 20)) BEGIN
+          SET "firstdice" = 8
+          SET "firstlast" = 9
+          SET "firstpostdice" = 2
+        END ELSE
 
-    PATCH_IF ("%level1%" < 0) BEGIN // quick fix if this gets adjusted too low by the d/c fixes
-      SET "level1" = 0
-    END
-    PATCH_IF ("%level2%" < 0) BEGIN // quick fix if this gets adjusted too low by the d/c fixes
-      SET "level2" = 0
-    END
-    PATCH_IF ("%firstlast%" < 0) BEGIN // quick fix if this gets adjusted too low by the d/c fixes
-      SET "firstlast" = 0
-    END
-    PATCH_IF ("%secondlast%" < 0) BEGIN // quick fix if this gets adjusted too low by the d/c fixes
-      SET "secondlast" = 0
-    END
+    // single class thief or bard
+        PATCH_IF (("%class%" = 4) OR 
+                  ("%class%" = 5)) BEGIN
+          SET "firstdice" = 6
+          SET "firstlast" = 10
+          SET "firstpostdice" = 1
+        END ELSE
 
-    PATCH_IF ("%level1%" > "%firstlast%") BEGIN
-      SET "firstpostdiceX" = ("%level1%" - "%firstlast%")
-      SET "firstdiceX" = "%firstlast%"
-    END ELSE BEGIN
-      SET "firstpostdiceX" = 0
-      SET "firstdiceX" = "%level1%"
-    END
+        // Multi and dualclasses
+        PATCH_IF ("%class%" = 7) BEGIN //class = FM
+          SET "firstdice" = 10
+          SET "firstlast" = 9
+          SET "firstpostdice" = 3
+          SET "seconddice" = 4
+          SET "secondlast" = 10
+          SET "secondpostdice" = 1
+          PATCH_IF (("%dual1%" BOR 0b11110111) = 0b11111111) BEGIN // f > m dual
+            PATCH_IF (("%kit%" = 0x40000000) OR (enhanced_edition AND kit = 0x4022)) BEGIN SET "firstdice" = 12 END // barbarian or dwarven defender d/c
+            SET "firstlast" = 9
+            SET "secondlast" = (10 - "%level1%")
+            SET "level2" = ("%level2%" - "%level1%")
+          END ELSE
+          PATCH_IF (("%dual1%" BOR 0b11101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // m > f dual
+            SET "firstlast" = (9 - "%level2%")
+            SET "secondlast" = 10
+            SET "level1" = ("%level1%" - "%level2%")
+          END ELSE
+          PATCH_IF ("%dual1%" BOR 0b11100111 = 0b11100111) BEGIN // true multiclass
+            SET "divide" = 2
+          END
+        END ELSE
+        PATCH_IF ("%class%" = 9) BEGIN //class = FT
+          SET "firstdice" = 10
+          SET "firstlast" = 9
+          SET "firstpostdice" = 3
+          SET "seconddice" = 6
+          SET "secondlast" = 10
+          SET "secondpostdice" = 2
+          PATCH_IF (("%dual1%" BOR 0b11110111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // f > t dual
+            PATCH_IF (("%kit%" = 0x40000000) OR (enhanced_edition AND kit = 0x4022)) BEGIN SET "firstdice" = 12 END // barbarian or dwarven defender d/c
+            SET "secondlast" = (10 - "%level1%")
+            SET "level2" = ("%level2%" - "%level1%")
+          END ELSE
+          PATCH_IF (("%dual1%" BOR 0b10111111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // t > f dual
+            SET "firstlast" = (9 - "%level2%")
+            SET "level1" = ("%level1%" - "%level2%")
+          END ELSE
+          PATCH_IF ("%dual1%" BOR 0b10110111 = 0b10110111) BEGIN // true multiclass
+            SET "divide" = 2
+          END
+        END ELSE
+        PATCH_IF ("%class%" = 8) BEGIN //class = FC
+          SET "firstdice" = 10
+          SET "firstlast" = 9
+          SET "firstpostdice" = 3
+          SET "seconddice" = 8
+          SET "secondlast" = 9
+          SET "secondpostdice" = 2
+          PATCH_IF (("%dual1%" BOR 0b11110111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // f > c dual
+            PATCH_IF (("%kit%" = 0x40000000) OR (enhanced_edition AND kit = 0x4022)) BEGIN SET "firstdice" = 12 END // barbarian or dwarven defender d/c
+            SET "secondlast" = (9 - "%level1%")
+            SET "level2" = ("%level2%" - "%level1%")
+          END ELSE
+          PATCH_IF (("%dual1%" BOR 0b01101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // c > f dual
+            SET "firstlast" = (9 - "%level2%")
+            SET "level1" = ("%level1%" - "%level2%")
+          END ELSE
+          PATCH_IF ("%dual1%" BOR 0b11010111 = 0b11010111) BEGIN // true multiclass
+            SET "divide" = 2
+          END
+        END ELSE
+        PATCH_IF ("%class%" = 13) BEGIN //class = MT
+          SET "firstdice" = 4
+          SET "firstlast" = 10
+          SET "firstpostdice" = 1
+          SET "seconddice" = 6
+          SET "secondlast" = 10
+          SET "secondpostdice" = 2
+          PATCH_IF (("%dual1%" BOR 0b11101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // m > t dual
+            SET "secondlast" = (10 - "%level1%")
+            SET "level2" = ("%level2%" - "%level1%")
+          END ELSE
+          PATCH_IF (("%dual1%" BOR 0b10111111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // t > m dual
+            SET "firstlast" = (10 - "%level2%")
+            SET "level1" = ("%level1%" - "%level2%")
+          END ELSE
+          PATCH_IF ("%dual1%" BOR 0b10101111 = 0b10101111) BEGIN // true multiclass
+            SET "divide" = 2
+          END
+        END ELSE
+        PATCH_IF ("%class%" = 15) BEGIN //class = CT
+          SET "firstdice" = 8
+          SET "firstlast" = 9
+          SET "firstpostdice" = 2
+          SET "seconddice" = 6
+          SET "secondlast" = 10
+          SET "secondpostdice" = 2
+          PATCH_IF (("%dual1%" BOR 0b01101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // c > t dual
+            SET "secondlast" = (10 - "%level1%")
+            SET "level2" = ("%level2%" - "%level1%")
+          END ELSE
+          PATCH_IF (("%dual1%" BOR 0b10111111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // t > c dual
+            SET "firstlast" = (9 - "%level2%")
+            SET "level1" = ("%level1%" - "%level2%")
+          END ELSE
+          PATCH_IF ("%dual1%" BOR 0b10011111 = 0b10011111) BEGIN // true multiclass
+            SET "divide" = 2
+          END
+        END ELSE
+        PATCH_IF ("%class%" = 14) BEGIN //class = CM
+          SET "firstdice" = 8
+          SET "firstlast" = 9
+          SET "firstpostdice" = 2
+          SET "seconddice" = 4
+          SET "secondlast" = 10
+          SET "secondpostdice" = 1
+          PATCH_IF (("%dual1%" BOR 0b01101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // c > m dual
+            SET "secondlast" = (10 - "%level1%")
+            SET "level2" = ("%level2%" - "%level1%")
+          END ELSE
+          PATCH_IF (("%dual1%" BOR 0b11101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // m > c dual
+            SET "firstlast" = (9 - "%level2%")
+            SET "level1" = ("%level1%" - "%level2%")
+          END ELSE
+          PATCH_IF ("%dual1%" BOR 0b11001111 = 0b11001111) BEGIN // true multiclass
+            SET "divide" = 2
+          END
+        END ELSE
+        PATCH_IF ("%class%" = 16) BEGIN //class = FD
+          SET "firstdice" = 10
+          SET "firstlast" = 9
+          SET "firstpostdice" = 3
+          SET "seconddice" = 8
+          SET "secondlast" = 9
+          SET "secondpostdice" = 2
+          PATCH_IF (("%dual1%" BOR 0b11110111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // f > d dual
+            PATCH_IF (("%kit%" = 0x40000000) OR (enhanced_edition AND kit = 0x4022)) BEGIN SET "firstdice" = 12 END // barbarian or dwarven defender d/c
+            SET "secondlast" = (9 - "%level1%")
+            SET "level2" = ("%level2%" - "%level1%")
+          END ELSE
+          PATCH_IF (("%dual1%" BOR 0b01111111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // f > d dual
+            SET "firstlast" = (9 - "%level2%")
+            SET "level1" = ("%level1%" - "%level2%")
+          END ELSE
+          PATCH_IF ("%dual1%" BOR 0b01110111 = 0b01110111) BEGIN // true multiclass
+            SET "divide" = 2
+          END
+        END ELSE
+        PATCH_IF ("%class%" = 18) BEGIN //class = CR
+          SET "firstdice" = 8
+          SET "firstlast" = 9
+          SET "firstpostdice" = 2
+          SET "seconddice" = 10
+          SET "secondlast" = 9
+          SET "secondpostdice" = 3
+          PATCH_IF (("%dual1%" BOR 0b01101111 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // c > r dual
+            SET "secondlast" = (9 - "%level1%")
+            SET "level2" = ("%level2%" - "%level1%")
+          END ELSE
+          PATCH_IF (("%dual2%" BOR 0b11111110 = 0b11111111) AND ("%level2%" > "%level1%")) BEGIN // r > c dual
+            SET "firstlast" = (9 - "%level2%")
+            SET "level1" = ("%level1%" - "%level2%")
+          END ELSE
+          PATCH_IF (("%dual1%" BOR 0b11011111 = 0b11011111) AND ("%dual2%" BOR 0b11111110 = 0b11111110)) BEGIN // true multiclass
+            SET "divide" = 2
+          END
+        END ELSE
+        PATCH_IF ("%class%" = 10) BEGIN //class = FMT
+          SET "firstdice" = 10
+          SET "firstlast" = 9
+          SET "firstpostdice" = 3
+          SET "seconddice" = 4
+          SET "secondlast" = 10
+          SET "secondpostdice" = 1
+          SET "thirddice" = 6
+          SET "thirdlast" = 10
+          SET "thirdpostdice" = 2
+          SET "divide" = 3
+        END ELSE
+        PATCH_IF ("%class%" = 17) BEGIN //class = FMC
+          SET "firstdice" = 10
+          SET "firstlast" = 9
+          SET "firstpostdice" = 3
+          SET "seconddice" = 4
+          SET "secondlast" = 10
+          SET "secondpostdice" = 1
+          SET "thirddice" = 8
+          SET "thirdlast" = 9
+          SET "thirdpostdice" = 2
+          SET "divide" = 3
+        END ELSE
 
-    PATCH_IF ("%level2%" > "%secondlast%") BEGIN
-      SET "secondpostdiceX" = ("%level2%" - "%secondlast%")
-      SET "seconddiceX" = "%secondlast%"
-    END ELSE BEGIN
-      SET "secondpostdiceX" = 0
-      SET "seconddiceX" = "%level2%"
-    END
+    // if it makes it to here without setting a firstdice then it's a nonstandard class (i.e. monster)
+        PATCH_IF ("%firstdice%" = 0) BEGIN
+          SET "firstdice" = 8
+          SET "firstlast" = 50
+        END
 
-    PATCH_IF ("%level3%" > "%thirdlast%") BEGIN
-      SET "thirdpostdiceX" = ("%level3%" - "%thirdlast%")
-      SET "thirddiceX" = "%thirdlast%"
-    END ELSE BEGIN
-      SET "thirdpostdiceX" = 0
-      SET "thirddiceX" = "%level3%"
-    END
+        PATCH_IF ("%level1%" < 0) BEGIN // quick fix if this gets adjusted too low by the d/c fixes
+          SET "level1" = 0
+        END
+        PATCH_IF ("%level2%" < 0) BEGIN // quick fix if this gets adjusted too low by the d/c fixes
+          SET "level2" = 0
+        END
+        PATCH_IF ("%firstlast%" < 0) BEGIN // quick fix if this gets adjusted too low by the d/c fixes
+          SET "firstlast" = 0
+        END
+        PATCH_IF ("%secondlast%" < 0) BEGIN // quick fix if this gets adjusted too low by the d/c fixes
+          SET "secondlast" = 0
+        END
 
-    SET "newhp" = (("%firstdiceX%"  *  "%firstdice%") + ("%firstpostdiceX%"  *  "%firstpostdice%") +
-                   ("%seconddiceX%" * "%seconddice%") + ("%secondpostdiceX%" * "%secondpostdice%") +
-                   ("%thirddiceX%"  *  "%thirddice%") + ("%thirdpostdiceX%"  *  "%thirdpostdice%"))
-    SET "newhp" = ("%newhp%" / "%divide%")
+        PATCH_IF ("%level1%" > "%firstlast%") BEGIN
+          SET "firstpostdiceX" = ("%level1%" - "%firstlast%")
+          SET "firstdiceX" = "%firstlast%"
+        END ELSE BEGIN
+          SET "firstpostdiceX" = 0
+          SET "firstdiceX" = "%level1%"
+        END
 
-    PATCH_IF ("%newhp%" > "%maxhp%") BEGIN // if new hp is higher than current max, patch it in
-      WRITE_SHORT 0x24 (("%newhp%" * "%currenthp%") / "%maxhp%") // sets new current hp and preserves the existing damage %
-      WRITE_SHORT 0x26 "%newhp%" // sets new max
-    END
+        PATCH_IF ("%level2%" > "%secondlast%") BEGIN
+          SET "secondpostdiceX" = ("%level2%" - "%secondlast%")
+          SET "seconddiceX" = "%secondlast%"
+        END ELSE BEGIN
+          SET "secondpostdiceX" = 0
+          SET "seconddiceX" = "%level2%"
+        END
+
+        PATCH_IF ("%level3%" > "%thirdlast%") BEGIN
+          SET "thirdpostdiceX" = ("%level3%" - "%thirdlast%")
+          SET "thirddiceX" = "%thirdlast%"
+        END ELSE BEGIN
+          SET "thirdpostdiceX" = 0
+          SET "thirddiceX" = "%level3%"
+        END
+
+        SET "newhp" = (("%firstdiceX%"  *  "%firstdice%") + ("%firstpostdiceX%"  *  "%firstpostdice%") +
+                       ("%seconddiceX%" * "%seconddice%") + ("%secondpostdiceX%" * "%secondpostdice%") +
+                       ("%thirddiceX%"  *  "%thirddice%") + ("%thirdpostdiceX%"  *  "%thirdpostdice%"))
+        SET "newhp" = ("%newhp%" / "%divide%")
+
+        PATCH_IF ("%newhp%" > "%maxhp%") BEGIN // if new hp is higher than current max, patch it in
+          // PATCH_PRINT ~updating %SOURCE_FILE%~
+          WRITE_SHORT off_curhp (("%newhp%" * "%currenthp%") / "%maxhp%") // sets new current hp and preserves the existing damage %
+          WRITE_SHORT off_maxhp "%newhp%" // sets new max
+        END
+      END // cur/max hp > 0 check
+    END // riftcr04 check  
+      
+  END // end define macro
 
 END

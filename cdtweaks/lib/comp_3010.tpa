@@ -10,48 +10,21 @@
 ///// all npcs                                         \\\\\
 /////                                                  \\\\\
 
-ACTION_IF game_is_iwd2 THEN BEGIN
+INCLUDE ~cdtweaks/lib/max_hp_creatures.tpa~ // macro max_hp_creatures will be different for iwd2 vs. other games
 
-  COPY_EXISTING_REGEXP ~^.*\.cre$~ ~override~
-    SET "maxhp" = 0
-    READ_SHORT 0x24 "curhp"
-    READ_SHORT 0x26 "maxhp"
-    READ_BYTE  0x8b "barbarian"
-    READ_BYTE  0x8c "bard"
-    READ_BYTE  0x8d "cleric"
-    READ_BYTE  0x8e "druid"
-    READ_BYTE  0x8f "fighter"
-    READ_BYTE  0x90 "monk"
-    READ_BYTE  0x91 "paladin"
-    READ_BYTE  0x92 "ranger"
-    READ_BYTE  0x93 "rogue"
-    READ_BYTE  0x94 "sorceror"
-    READ_BYTE  0x95 "wizard"
-    SET "maxed_hp" = 12 * "%barbarian%" + 10 * ("%fighter%" + "%paladin%" + "%ranger%")
-                   + 8 * ("%cleric%" + "%druid%" + "%monk%") + 6 * ("%bard%" + "%rogue%")
-                   + 4 * ("%wizard%" + "%sorceror%")
-    PATCH_IF ("%curhp%" < "%maxed_hp%") BEGIN
-      WRITE_SHORT 0x24 "%maxed_hp%" * "%curhp%" / "%maxhp%"
-      WRITE_SHORT 0x26 "%maxed_hp%"
-    END
-    BUT_ONLY
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  LAUNCH_PATCH_MACRO ~max_hp_creatures~ // contains rest of patch, including validity checks
+  BUT_ONLY
 
-END ELSE BEGIN
+ACTION_IF !game_is_pst AND !game_is_pstee BEGIN // no character files on these games
 
-  // load patch macro
-  INCLUDE ~cdtweaks/lib/max_hp_creatures.tpa~
+  ACTION_BASH_FOR ~%USER_DIRECTORY%/characters~ ~^.+\.chr$~ BEGIN
   
-  PRINT @1
-  COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
-    PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
-      PATCH_IF (NOT ~%SOURCE_RES%~ STRING_EQUAL_CASE ~riftcr04~) BEGIN // skip creatures meant to have lower hp
-        READ_SHORT 0x24 "currenthp" ELSE 0
-        READ_SHORT 0x26 "maxhp"     ELSE 0
-        PATCH_IF (("%maxhp%" > 0) AND ("%currenthp%" > 0)) BEGIN
-          LAUNCH_PATCH_MACRO ~max_hp_creatures~ // contains rest of patch
-        END
-      END
-    END
-    BUT_ONLY
-
+    COPY ~%BASH_FOR_FILESPEC%~ ~%BASH_FOR_FILESPEC%~
+      LAUNCH_PATCH_MACRO ~max_hp_creatures~ // contains rest of patch, including validity checks
+      BUT_ONLY
+  
+  END
+  
 END
+    

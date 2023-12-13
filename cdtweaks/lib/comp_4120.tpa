@@ -6,6 +6,16 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-COPY_EXISTING_REGEXP GLOB ~^_?\(bd\)?coran[0-9]*.*\.cre$~ ~override~
-  WRITE_BYTE 0x23c 19 // 19 DEX
-  BUT_ONLY
+INCLUDE ~cdtweaks/lib/joinable_npc_array.tpa~
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+  ACTION_IF (("%dv%" STRING_COMPARE_CASE "coran" = 0) OR ("%dv%" STRING_COMPARE_CASE "bdcoran" = 0)) BEGIN 
+
+    COPY_EXISTING ~%file%~ ~override~
+      WRITE_BYTE 0x23c 19 // 19 DEX
+      BUT_ONLY
+      
+  END
+
+END

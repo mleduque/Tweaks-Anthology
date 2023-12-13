@@ -14,12 +14,22 @@ COPY_EXISTING ~misc89.itm~                         ~override~ // bg2
     SAY 0x50 @418001 // on EEs, amulet descript mentions extra spells granted, so remove
   END  
   BUT_ONLY IF_EXISTS
-  
-COPY_EXISTING_REGEXP ~^_?edwin[0-9_]*\.cre$~ ~override~
-  FOR (index = 0 ; index < 9 ; ++index) BEGIN
-    LPF ADD_CRE_EFFECT INT_VAR opcode = 42 target = 1 parameter1 = 2 parameter2 = (2 ** index) timing = 9 END
-  END  
-  BUT_ONLY
+
+INCLUDE ~cdtweaks/lib/joinable_npc_array.tpa~
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+  ACTION_IF ("%dv%" STRING_COMPARE_CASE "edwin" = 0) BEGIN 
+
+    COPY_EXISTING ~%file%~ ~override~
+      FOR (index = 0 ; index < 9 ; ++index) BEGIN
+        LPF ADD_CRE_EFFECT INT_VAR opcode = 42 target = 1 parameter1 = 2 parameter2 = (2 ** index) timing = 9 END
+      END  
+      BUT_ONLY
+      
+  END
+
+END
   
 COPY_EXISTING ~npring01.itm~ ~override~ // remove 'cannot be removed' description from nalia's ring
   SAY 0x54 @418002
@@ -149,17 +159,25 @@ ACTION_PHP_EACH cd_removable_npc_items AS params => item BEGIN // dv, cre file, 
     END ELSE BEGIN
     
       COPY_EXISTING ~%item%.itm~ ~override/%params_4%.itm~ // clone item
-      
-      COPY_EXISTING_REGEXP ~^_?%params_0%[0-9_]*\.cre$~ ~override~
-        READ_LONG 0x2bc item_off
-        READ_LONG 0x2c0 item_num
-        FOR (index = 0 ; index < item_num ; ++index) BEGIN
-          READ_ASCII (item_off + 0x00 + (index * 0x14)) item_check
-          PATCH_IF ("%item_check%" STRING_COMPARE_CASE "%item%" = 0) BEGIN
-            WRITE_ASCIIE (item_off + 0x00 + (index * 0x14)) ~%params_4%~ #8
-          END
+
+      ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+        ACTION_IF ("%dv%" STRING_COMPARE_CASE "%params_0%" = 0) BEGIN 
+
+          COPY_EXISTING ~%file%~ ~override~
+            READ_LONG 0x2bc item_off
+            READ_LONG 0x2c0 item_num
+            FOR (index = 0 ; index < item_num ; ++index) BEGIN
+              READ_ASCII (item_off + 0x00 + (index * 0x14)) item_check
+              PATCH_IF ("%item_check%" STRING_COMPARE_CASE "%item%" = 0) BEGIN
+                WRITE_ASCIIE (item_off + 0x00 + (index * 0x14)) ~%params_4%~ #8
+              END
+            END
+            BUT_ONLY
+            
         END
-        BUT_ONLY
+        
+      END
         
       OUTER_SPRINT item ~%params_4%~ // so that the script extensions, below, use the replacement item
         

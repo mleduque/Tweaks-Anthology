@@ -10,34 +10,45 @@
 ///// BG2 Values                                       \\\\\
 /////                                                  \\\\\
 
-COPY_EXISTING_REGEXP GLOB ~^\(bg\|_\)?viconi[0-9]*_?\.cre$~ ~override~
-  WRITE_BYTE 0x5d 65
-  READ_BYTE  0x23b wis ELSE 18
-  PATCH_IF (wis != 18) BEGIN
-    READ_LONG 0x2b0 mem_off
-    WRITE_BYTE 0x23b 18 // 15 WIS
-    READ_LONG  0x2a8 mem_info
-    SET spell_delta = 0
-    FOR (index = 1 ; index < 17 ; ++index) BEGIN // adds level 2, 3, 4 bonus spell for 18 >> 15 WIS
-      WRITE_LONG (mem_info + 0x08 + (index * 0x10)) (THIS + spell_delta)
-      PATCH_IF (index < 4) BEGIN // level to add spells
-        READ_LONG  (mem_info + 0x08 + (index * 0x10)) mem_idx
-        READ_LONG  (mem_info + 0x0c + (index * 0x10)) mem_num
-        PATCH_IF (mem_num > 0) BEGIN
-          WRITE_LONG (mem_info + 0x0c + (index * 0x10)) (mem_num + 1)
-          SET spell_delta += 1
-          READ_ASCII (mem_off + ((mem_idx + mem_num - 1) * 0x0c)) spell (12)
-          INSERT_BYTES (mem_off + ((mem_idx + mem_num - 1) * 0x0c)) 12
-          WRITE_ASCIIE (mem_off + ((mem_idx + mem_num - 1) * 0x0c)) ~%spell%~ #12
+INCLUDE ~cdtweaks/lib/joinable_npc_array.tpa~
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+  ACTION_IF ("%dv%" STRING_COMPARE_CASE "viconia" = 0) BEGIN 
+
+    COPY_EXISTING ~%file%~ ~override~
+      WRITE_BYTE 0x5d 65
+      READ_BYTE  0x23b wis ELSE 18
+      PATCH_IF (wis != 18) BEGIN
+        READ_LONG 0x2b0 mem_off
+        WRITE_BYTE 0x23b 18 // 15 WIS
+        READ_LONG  0x2a8 mem_info
+        SET spell_delta = 0
+        FOR (index = 1 ; index < 17 ; ++index) BEGIN // adds level 2, 3, 4 bonus spell for 18 >> 15 WIS
+          WRITE_LONG (mem_info + 0x08 + (index * 0x10)) (THIS + spell_delta)
+          PATCH_IF (index < 4) BEGIN // level to add spells
+            READ_LONG  (mem_info + 0x08 + (index * 0x10)) mem_idx
+            READ_LONG  (mem_info + 0x0c + (index * 0x10)) mem_num
+            PATCH_IF (mem_num > 0) BEGIN
+              WRITE_LONG (mem_info + 0x0c + (index * 0x10)) (mem_num + 1)
+              SET spell_delta += 1
+              READ_ASCII (mem_off + ((mem_idx + mem_num - 1) * 0x0c)) spell (12)
+              INSERT_BYTES (mem_off + ((mem_idx + mem_num - 1) * 0x0c)) 12
+              WRITE_ASCIIE (mem_off + ((mem_idx + mem_num - 1) * 0x0c)) ~%spell%~ #12
+            END
+          END
+        END
+        PATCH_IF spell_delta != 0 BEGIN // don't bother if nothing missing
+          PATCH_FOR_EACH offset IN 0x2a0 0x2b0 0x2b8 0x2bc 0x2c4 BEGIN
+            READ_LONG offset offset_val
+            PATCH_IF (mem_off < offset_val) BEGIN
+              WRITE_LONG offset (offset_val + (spell_delta * 0x0c))
+            END
+          END
         END
       END
-    END
-    PATCH_IF spell_delta != 0 BEGIN // don't bother if nothing missing
-      PATCH_FOR_EACH offset IN 0x2a0 0x2b0 0x2b8 0x2bc 0x2c4 BEGIN
-        READ_LONG offset offset_val
-        PATCH_IF (mem_off < offset_val) BEGIN
-          WRITE_LONG offset (offset_val + (spell_delta * 0x0c))
-        END
-      END
-    END
+      BUT_ONLY
+      
   END
+  
+END

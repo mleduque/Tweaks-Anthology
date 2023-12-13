@@ -106,25 +106,32 @@ END
 
 ACTION_IF !enhanced_edition BEGIN // no fancy filtering for oBG2, so make drow creatures immune to breakage spells
 
-  COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ // make non-PCs immune to the breakage (presumably they're drow, wielding weapons in drow areas)
-    READ_LONG  0x1cc bio
-    PATCH_IF ((bio >= 2147483647) OR (bio <= 0)) BEGIN // don't do this for joinables
-      CLEAR_ARRAY cd_drow_cre_patch
-      READ_LONG 0x2bc item_off
-      READ_LONG 0x2c0 item_num
-      FOR (index = 0 ; index < item_num ; ++index) BEGIN
-        READ_ASCII (item_off + (index * 0x14)) item
-        PATCH_PHP_EACH cd_drow_items AS params => spell BEGIN
-          PATCH_IF ("%item%" STRING_COMPARE_CASE "%params_0%" = 0) BEGIN
-            DEFINE_ASSOCIATIVE_ARRAY cd_drow_cre_patch BEGIN ~%spell%~ => 0 END
-          END
-        END      
-      END
-      PATCH_PHP_EACH cd_drow_cre_patch AS spell => foo BEGIN    
-// PATCH_PRINT ~ == adding protection to %spell% on %SOURCE_RES%~
-        LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = EVAL ~%spell%~ END 
-      END
-    END // bio check  
-    BUT_ONLY
+  INCLUDE ~cdtweaks/lib/joinable_npc_array.tpa~
 
+  ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+    ACTION_IF IS_AN_INT dv BEGIN // non-joinable NPC
+
+      COPY_EXISTING ~%file%~ ~override~ // make non-PCs immune to the breakage (presumably they're drow, wielding weapons in drow areas)
+        CLEAR_ARRAY cd_drow_cre_patch
+        READ_LONG 0x2bc item_off
+        READ_LONG 0x2c0 item_num
+        FOR (index = 0 ; index < item_num ; ++index) BEGIN
+          READ_ASCII (item_off + (index * 0x14)) item
+          PATCH_PHP_EACH cd_drow_items AS params => spell BEGIN
+            PATCH_IF ("%item%" STRING_COMPARE_CASE "%params_0%" = 0) BEGIN
+              DEFINE_ASSOCIATIVE_ARRAY cd_drow_cre_patch BEGIN ~%spell%~ => 0 END
+            END
+          END      
+        END
+        PATCH_PHP_EACH cd_drow_cre_patch AS spell => foo BEGIN    
+// PATCH_PRINT ~ == adding protection to %spell% on %SOURCE_RES%~
+          LPF ADD_CRE_EFFECT INT_VAR opcode = 206 target = 1 timing = 1 STR_VAR resource = EVAL ~%spell%~ END 
+        END
+        BUT_ONLY
+
+    END
+    
+  END
+  
 END
