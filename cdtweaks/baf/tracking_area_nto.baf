@@ -1,0 +1,11 @@
+IF
+  Global("cd_auto_track","%area%",0)
+  NextTriggerObject(Player%index%)
+  HaveSpell(4922)
+  NextTriggerObject(Player%index%)
+  ActionListEmpty()
+THEN
+  RESPONSE #100
+    SetGlobal("cd_auto_track","%area%",1)
+    ActionOverride(Player%index%,Spell(Myself,4922))
+END

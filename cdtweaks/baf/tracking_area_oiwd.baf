@@ -1,0 +1,8 @@
+IF
+  Global("cd_auto_track","%area%",0)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_auto_track","%area%",1)
+END
+
+  

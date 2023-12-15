@@ -1,0 +1,11 @@
+IF
+  Global("cd_auto_track","MYAREA",1)
+  HaveSpell(3139)
+  ActionListEmpty()
+THEN
+  RESPONSE #100
+    SetGlobal("cd_auto_track","MYAREA",2)
+    Spell(Myself,3139)
+END
+
+  

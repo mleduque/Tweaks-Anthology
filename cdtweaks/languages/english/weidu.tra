@@ -657,6 +657,9 @@ Use Baldur.lua options: a7_interval_ini
 @338000 = ~Sensible Regeneration When Traveling~
 @338001 = ~No regeneration items found: component installed but no changes made.~
 
+@339000 = ~Automatic Use of Ranger Tracking Skill~
+@339001 = ~Cannot read tracking table: component installed but no changes made.~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
