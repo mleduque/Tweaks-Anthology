@@ -35,6 +35,8 @@
 @26 = ~Using values from the cdtweaks.txt config file for this component...~
 @27 = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
 @28 = ~There are not enough free spell state or secondary type slots available to install this component.~
+@29 = "Requires EEex (https://github.com/Bubb13/EEex)."
+@30 = "One or more Cure/Cause Wounds spells are missing. Make sure either the Divine Spell Pack from IWDification is installed (https://github.com/Gibberlings3/iwdification) or you are modding IWD:EE."
 
 @100 = ~Batch Installer -- EXPERIMENTAL, use at own risk. Check the readme.~
 @101 = ~
@@ -432,6 +434,8 @@ The uninstall messages above are normal and expected.
 @263000 = "Improved Cure / Cause Wounds [Luke]"
 
 @264000 = "PnP Potions [Luke]"
+
+@265000 = "Spontaneous Casting for Clerics [Luke]"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
