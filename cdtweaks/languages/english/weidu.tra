@@ -256,6 +256,18 @@ The uninstall messages above are normal and expected.
 
 @134700 = ~Make the Imnesvale Cabin Stronghold Available to All Classes~
 
+@135000 = ~Karoug Weapon Vulnerability Adjustments~
+@135001 = ~Remove Silver Weapon Requirement to Hit Karoug~
+
+@135100 = ~Remove Silver Weapon Requirement to Hit Karoug, But Require +2 Weapons~
+
+@135200 = ~NPCs With Wolfsbane Charm Can Harm Karoug~
+
+@135300 = ~Options 1 AND 3~
+
+@135400 = ~Options 2 AND 3~
+
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

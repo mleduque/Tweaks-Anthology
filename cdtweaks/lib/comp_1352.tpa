@@ -1,0 +1,7 @@
+/////                                                            \\\\\
+///// wolfsbane provides silver to weapons                       \\\\\
+/////                                                            \\\\\
+
+OUTER_SET karoug_plus = 0
+OUTER_SET wolfsbane = 1
+INCLUDE ~cdtweaks/lib/karoug.tpa~

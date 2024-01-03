@@ -1355,6 +1355,64 @@ LABEL ~cd_tweaks_I_am_a_servant_of_the_Secret_Fire_wielder_of_the_flame_of_Anor_
   
 // 1340 series is reserved for the individual stronghold components, but moved to be near the other stronghold components  
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Revised Karoug                                             \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// Karoug requires +1 weapons                                 \\\\\
+/////                                                            \\\\\
+
+BEGIN @135001 DESIGNATED 1350
+//GROUP @13
+SUBCOMPONENT @135000
+REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
+LABEL ~cd_tweaks_karoug_plus_one~
+
+/////                                                            \\\\\
+///// Karoug requires +2 weapons                                 \\\\\
+/////                                                            \\\\\
+
+BEGIN @135100 DESIGNATED 1351
+//GROUP @13
+SUBCOMPONENT @135000
+REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
+LABEL ~cd_tweaks_karoug_plus_two~
+
+/////                                                            \\\\\
+///// wolfsbane provides silver to weapons                       \\\\\
+/////                                                            \\\\\
+
+BEGIN @135200 DESIGNATED 1352
+//GROUP @13
+SUBCOMPONENT @135000
+REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
+LABEL ~cd_tweaks_karoug_wolfsbane~
+
+/////                                                            \\\\\
+///// Karoug requires +1 weapons AND wolfsbane change            \\\\\
+/////                                                            \\\\\
+
+BEGIN @135300 DESIGNATED 1353
+//GROUP @13
+SUBCOMPONENT @135000
+REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
+LABEL ~cd_tweaks_karoug_plus_one_and_wolfsbane~
+
+/////                                                            \\\\\
+///// Karoug requires +2 weapons AND wolfsbane change            \\\\\
+/////                                                            \\\\\
+
+BEGIN @135400 DESIGNATED 1354
+//GROUP @13
+SUBCOMPONENT @135000
+REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
+LABEL ~cd_tweaks_karoug_plus_two_and_wolfsbane~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
