@@ -38,6 +38,13 @@ BEGIN
 		WITH_SCOPE BEGIN
 			COPY_EXISTING "%key_0%.spl" "override\%key_1%.spl"
 				// Header
+				PATCH_WITH_SCOPE BEGIN
+					READ_STRREF NAME1 "string"
+					INNER_PATCH_SAVE "string" "%string%" BEGIN
+						REPLACE_TEXTUALLY CASE_INSENSITIVE EVALUATE_REGEXP "$" " (S)"
+					END
+					SAY NAME1 "%string%"
+				END
 				WRITE_SHORT 0x1C 4 // type: innate
 				READ_LONG 0x34 "spellLevel"
 				WRITE_LONG 0x34 1 // level
