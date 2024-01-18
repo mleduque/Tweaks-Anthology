@@ -267,7 +267,6 @@ The uninstall messages above are normal and expected.
 
 @135400 = ~Options 2 AND 3~
 
-
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -719,6 +718,18 @@ Use Baldur.lua options: a7_interval_ini
 @414000 = ~Don't Auto-Assign Advanced AI Scripting to Party~
 
 @418000 = ~Removable NPC Items~
+
+@419000 = ~Color Joinable NPC Names in Dialogues, Journal Entries, Etc.~
+@419001 = ~Don't Color the PC's Name~
+@419002 = ~Processing string %index% of %final_strref%...~
+@419100 = ~Also Color the PC's Name: Gray~
+@419200 = ~Also Color the PC's Name: Brown~
+@419300 = ~Also Color the PC's Name: Red~
+@419400 = ~Also Color the PC's Name: Purple~
+@419500 = ~Also Color the PC's Name: Blue~
+@419600 = ~Also Color the PC's Name: Green~
+@419700 = ~Also Color the PC's Name: Yellow~
+@419800 = ~Also Color the PC's Name: Orange~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

@@ -1,0 +1,132 @@
+/*
+
+any values set here will override values set by scanning the creature files
+you can also override any arbitrary text here with these values.
+
+to activate a line, delete the // at the beginning of it. 
+
+Values are case sensitive, so you'll need to adjust colors bor e.g. both
+AJANTIS and Ajantis. 
+
+SETTING COLORS
+color values must start with 0xff. After that the next two letters are
+for the blue value, then the next two for green, and the last two for red. 
+The two letters represent a value of 0-255 in hex value; you'll need to use
+a color wheel or web color picker to select your own.
+
+*/
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_text_colors BEGIN 
+
+//  ~<CHARNAME>~ => ~0xff000000~ /* special for the PC's name */
+
+// bgee cast
+//  ~AJANTIS~    => ~0xffa79f69~
+//  ~Ajantis~    => ~0xffa79f69~
+//  ~ALORA~      => ~0xffd1877e~
+//  ~Alora~      => ~0xffd1877e~
+//  ~BAELOTH~    => ~0xff8678a3~
+//  ~Baeloth~    => ~0xff8678a3~
+//  ~BRANWEN~    => ~0xff9c888f~
+//  ~Branwen~    => ~0xff9c888f~
+//  ~CORAN~      => ~0xff8aaf7a~
+//  ~Coran~      => ~0xff8aaf7a~
+//  ~DORN~       => ~0xff949494~
+//  ~Dorn~       => ~0xff949494~
+//  ~DYNAHEIR~   => ~0xff9372c6~
+//  ~Dynaheir~   => ~0xff9372c6~
+//  ~EDWIN~      => ~0xffd1877e~
+//  ~Edwin~      => ~0xffd1877e~
+//  ~ELDOTH~     => ~0xffae8f57~
+//  ~Eldoth~     => ~0xffae8f57~
+//  ~FALDORN~    => ~0xff949493~
+//  ~Faldorn~    => ~0xff949493~
+//  ~GARRICK~    => ~0xffae8f57~
+//  ~Garrick~    => ~0xffae8f57~
+//  ~IMOEN~      => ~0xffbe89a9~
+//  ~Imoen~      => ~0xffbe89a9~
+//  ~JAHEIRA~    => ~0xffc19675~
+//  ~Jaheira~    => ~0xffc19675~
+//  ~KAGAIN~     => ~0xffa88272~
+//  ~Kagain~     => ~0xffa88272~
+//  ~KHALID~     => ~0xffaa8267~
+//  ~Khalid~     => ~0xffaa8267~
+//  ~KIVAN~      => ~0xffa79f69~
+//  ~Kivan~      => ~0xffa79f69~
+//  ~MINSC~      => ~0xff8e82a0~
+//  ~Minsc~      => ~0xff8e82a0~
+//  ~MONTARON~   => ~0xff8a8e8c~
+//  ~Montaron~   => ~0xff8a8e8c~
+//  ~NEERA~      => ~0xffc4918b~
+//  ~Neera~      => ~0xffc4918b~
+//  ~QUAYLE~     => ~0xffb75e8a~
+//  ~Quayle~     => ~0xffb75e8a~
+//  ~RASAAD~     => ~0xffbca280~
+//  ~Rasaad~     => ~0xffbca280~
+//  ~SAFANA~     => ~0xffc59b67~
+//  ~Safana~     => ~0xffc59b67~
+//  ~SHAR-TEEL~  => ~0xff87868b~
+//  ~Shar-Teel~  => ~0xff87868b~
+//  ~SKIE~       => ~0xffa8a8a6~
+//  ~Skie~       => ~0xffa8a8a6~
+//  ~STATUE~     => ~0xffa79f69~
+//  ~Statue~     => ~0xffa79f69~
+//  ~TIAX~       => ~0xff9a9078~
+//  ~Tiax~       => ~0xff9a9078~
+//  ~VICONIA~    => ~0xffc19675~
+//  ~Viconia~    => ~0xffc19675~
+//  ~XAN~        => ~0xffb75e8a~
+//  ~Xan~        => ~0xffb75e8a~
+//  ~XZAR~       => ~0xff9bb347~
+//  ~Xzar~       => ~0xff9bb347~
+//  ~YESLICK~    => ~0xffa88272~
+//  ~Yeslick~    => ~0xffa88272~
+
+// sod cast
+//  ~Caelar Argent~ => ~0xffa0a086~
+//  ~CAELAR ARGENT~ => ~0xffa0a086~
+//  ~Clara~ => ~0xff87a669~
+//  ~CLARA~ => ~0xff87a669~
+//  ~Corwin~ => ~0xffa397b4~
+//  ~CORWIN~ => ~0xffa397b4~
+//  ~Glint~ => ~0xff7b9ba1~
+//  ~GLINT~ => ~0xff7b9ba1~
+//  ~M'KHIIN~ => ~0xffc19675~
+//  ~M'Khiin~ => ~0xffc19675~
+//  ~VOGHILN~ => ~0xffdd9336~
+//  ~Voghiln~ => ~0xffdd9336~
+
+// bg2ee cast (some are listed in bgee section)
+//  ~Aerie~ => ~0xff798e9f~
+//  ~AERIE~ => ~0xff798e9f~
+//  ~Anomen~ => ~0xff837a97~
+//  ~ANOMEN~ => ~0xff837a97~
+//  ~Cernd~ => ~0xffa09964~
+//  ~CERND~ => ~0xffa09964~
+//  ~Grizzly Bear~ => ~0xffc19675~
+//  ~GRIZZLY BEAR~ => ~0xffc19675~
+//  ~Haer'Dalis~ => ~0xff90af92~
+//  ~HAER'DALIS~ => ~0xff90af92~
+//  ~HEXXAT~ => ~0xff87a669~
+//  ~Hexxat~ => ~0xff87a669~
+//  ~Jan~ => ~0xffd88250~
+//  ~JAN~ => ~0xffd88250~
+//  ~KELDORN~ => ~0xff8c9ac0~
+//  ~Keldorn~ => ~0xff8c9ac0~
+//  ~KORGAN~ => ~0xffcb9148~
+//  ~Korgan~ => ~0xffcb9148~
+//  ~Mazzy~ => ~0xffdd9336~
+//  ~MAZZY~ => ~0xffdd9336~
+//  ~Nalia~ => ~0xffc3984b~
+//  ~NALIA~ => ~0xffc3984b~
+//  ~Sarevok~ => ~0xff949494~
+//  ~SAREVOK~ => ~0xff949494~
+//  ~Valygar~ => ~0xffc6b738~
+//  ~VALYGAR~ => ~0xffc6b738~
+//  ~Wilson~ => ~0xffc19675~
+//  ~WILSON~ => ~0xffc19675~
+//  ~Yoshimo~ => ~0xffbc817a~
+//  ~YOSHIMO~ => ~0xffbc817a~
+
+END
+

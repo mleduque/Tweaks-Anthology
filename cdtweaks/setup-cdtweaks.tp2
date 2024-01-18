@@ -1368,7 +1368,7 @@ LABEL ~cd_tweaks_I_am_a_servant_of_the_Secret_Fire_wielder_of_the_flame_of_Anor_
 /////                                                            \\\\\
 
 BEGIN @135001 DESIGNATED 1350
-//GROUP @13
+GROUP @13
 SUBCOMPONENT @135000
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
 LABEL ~cd_tweaks_karoug_plus_one~
@@ -1378,7 +1378,7 @@ LABEL ~cd_tweaks_karoug_plus_one~
 /////                                                            \\\\\
 
 BEGIN @135100 DESIGNATED 1351
-//GROUP @13
+GROUP @13
 SUBCOMPONENT @135000
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
 LABEL ~cd_tweaks_karoug_plus_two~
@@ -1388,7 +1388,7 @@ LABEL ~cd_tweaks_karoug_plus_two~
 /////                                                            \\\\\
 
 BEGIN @135200 DESIGNATED 1352
-//GROUP @13
+GROUP @13
 SUBCOMPONENT @135000
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
 LABEL ~cd_tweaks_karoug_wolfsbane~
@@ -1398,7 +1398,7 @@ LABEL ~cd_tweaks_karoug_wolfsbane~
 /////                                                            \\\\\
 
 BEGIN @135300 DESIGNATED 1353
-//GROUP @13
+GROUP @13
 SUBCOMPONENT @135000
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
 LABEL ~cd_tweaks_karoug_plus_one_and_wolfsbane~
@@ -1408,7 +1408,7 @@ LABEL ~cd_tweaks_karoug_plus_one_and_wolfsbane~
 /////                                                            \\\\\
 
 BEGIN @135400 DESIGNATED 1354
-//GROUP @13
+GROUP @13
 SUBCOMPONENT @135000
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
 LABEL ~cd_tweaks_karoug_plus_two_and_wolfsbane~
@@ -4432,3 +4432,101 @@ BEGIN @418000 DESIGNATED 4180
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bg1 totsc tutu tutu_totsc bg2 tob bgt eet bgee bg2ee~ @25 // All BG games
 LABEL ~cd_tweaks_removable_npc_items~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Color NPC Names in Dialogues, Journal Entries, Etc.        \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// Don't Color the PC's Name                                  \\\\\
+/////                                                            \\\\\
+
+BEGIN @419001 DESIGNATED 4190 // Don't Color the PC's Name
+SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
+GROUP @0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
+LABEL ~cd_tweaks_color_npc_names_pc_none~
+
+/////                                                            \\\\\
+///// Also Color the PC's Name: Gray                             \\\\\
+/////                                                            \\\\\
+
+BEGIN @419100 DESIGNATED 4191 // Also Color the PC's Name: Gray
+SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
+GROUP @0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
+LABEL ~cd_tweaks_color_npc_names_pc_gray~
+
+/////                                                            \\\\\
+///// Also Color the PC's Name: Brown                            \\\\\
+/////                                                            \\\\\
+
+BEGIN @419200 DESIGNATED 4192 // Also Color the PC's Name: Brown
+SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
+GROUP @0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
+LABEL ~cd_tweaks_color_npc_names_pc_brown~
+
+/////                                                            \\\\\
+///// Also Color the PC's Name: Red                              \\\\\
+/////                                                            \\\\\
+
+BEGIN @419300 DESIGNATED 4193 // Also Color the PC's Name: Red
+SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
+GROUP @0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
+LABEL ~cd_tweaks_color_npc_names_pc_red~
+
+/////                                                            \\\\\
+///// Also Color the PC's Name: Purple                           \\\\\
+/////                                                            \\\\\
+
+BEGIN @419400 DESIGNATED 4194 // Also Color the PC's Name: Purple
+SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
+GROUP @0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
+LABEL ~cd_tweaks_color_npc_names_pc_purple~
+
+/////                                                            \\\\\
+///// Also Color the PC's Name: Blue                             \\\\\
+/////                                                            \\\\\
+
+BEGIN @419500 DESIGNATED 4195 // Also Color the PC's Name: Blue
+SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
+GROUP @0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
+LABEL ~cd_tweaks_color_npc_names_pc_blue~
+
+/////                                                            \\\\\
+///// Also Color the PC's Name: Green                            \\\\\
+/////                                                            \\\\\
+
+BEGIN @419600 DESIGNATED 4196 // Also Color the PC's Name: Green
+SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
+GROUP @0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
+LABEL ~cd_tweaks_color_npc_names_pc_green~
+
+/////                                                            \\\\\
+///// Also Color the PC's Name: Yellow                           \\\\\
+/////                                                            \\\\\
+
+BEGIN @419700 DESIGNATED 4197 // Also Color the PC's Name: Yellow
+SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
+GROUP @0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
+LABEL ~cd_tweaks_color_npc_names_pc_yellow~
+
+/////                                                            \\\\\
+///// Also Color the PC's Name: Orange                           \\\\\
+/////                                                            \\\\\
+
+BEGIN @419800 DESIGNATED 4198 // Also Color the PC's Name: Orange
+SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
+GROUP @0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
+LABEL ~cd_tweaks_color_npc_names_pc_orange~
