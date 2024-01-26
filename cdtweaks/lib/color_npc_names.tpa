@@ -99,7 +99,7 @@ OUTER_FOR (index = 0 ; index <= final_strref ; ++index) BEGIN
   OUTER_INNER_PATCH_SAVE string2m ~%stringm%~ BEGIN
   
     PATCH_PHP_EACH cd_text_colors AS name => color BEGIN
-      REPLACE_TEXTUALLY CASE_SENSITIVE ~\b\(%name%\)~ ~^%color%\1^-~
+      REPLACE_TEXTUALLY CASE_SENSITIVE ~\b\(%name%\)\b~ ~^%color%\1^-~
     END  
   
   END
