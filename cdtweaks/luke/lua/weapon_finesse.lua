@@ -14,8 +14,8 @@ function GTWPNFIN(CGameEffect, CGameSprite)
 	local spriteSTRExtra = CGameSprite.m_derivedStats.m_nSTRExtra + CGameSprite.m_bonusStats.m_nSTRExtra
 	local spriteDEX = CGameSprite.m_derivedStats.m_nDEX + CGameSprite.m_bonusStats.m_nDEX
 	--
-	local curStrBonus = string.format("%d", EEex_Resource_GetAt2DALabels(strmod, "TO_HIT", string.format("%s", spriteSTR)) + EEex_Resource_GetAt2DALabels(strmodex, "TO_HIT", string.format("%s", spriteSTRExtra)))
-	local curDexBonus = string.format("%d", EEex_Resource_GetAt2DALabels(dexmod, "MISSILE", string.format("%s", spriteDEX)))
+	local curStrBonus = tonumber(EEex_Resource_GetAt2DALabels(strmod, "TO_HIT", string.format("%s", spriteSTR)) + EEex_Resource_GetAt2DALabels(strmodex, "TO_HIT", string.format("%s", spriteSTRExtra)))
+	local curDexBonus = tonumber(EEex_Resource_GetAt2DALabels(dexmod, "MISSILE", string.format("%s", spriteDEX)))
 	-- reset var if bonus changes
 	if CGameEffect.m_effectAmount2 ~= curDexBonus or CGameEffect.m_effectAmount3 ~= curStrBonus then
 		CGameEffect.m_effectAmount2 = curDexBonus -- store current DEX bonus in param#3
