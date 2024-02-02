@@ -565,6 +565,34 @@ GROUP @11
 REQUIRE_PREDICATE GAME_IS ~iwdee~ @25
 LABEL ~cd_tweaks_restore_iwd_tooltips~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Outline White Spell Icons for Accessibility                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// add black outline                                          \\\\\
+/////                                                            \\\\\
+
+BEGIN @24001 DESIGNATED 240
+GROUP @11
+SUBCOMPONENT @24000
+REQUIRE_PREDICATE !GAME_IS ~pst pstee iwd2 iwd how totlm~ @25
+LABEL ~cd_tweaks_outline_white_spell_icons_with_black~
+
+/////                                                            \\\\\
+///// add gray outline                                           \\\\\
+/////                                                            \\\\\
+
+BEGIN @24100 DESIGNATED 241
+GROUP @11
+SUBCOMPONENT @24000
+REQUIRE_PREDICATE !GAME_IS ~pst pstee iwd2 iwd how totlm~ @25
+LABEL ~cd_tweaks_outline_white_spell_icons_with_gray~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -2688,6 +2716,20 @@ GROUP @9
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/pnp_potions.tra~ @7
 LABEL ~cd_tweaks_pnp_potions~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Weapon Finesse                                             \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @266000 DESIGNATED 2660
+GROUP @9
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @26
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/weapon_finesse.tra~ @7
+LABEL ~cd_tweaks_weapon_finesse~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
