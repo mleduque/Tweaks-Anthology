@@ -128,6 +128,10 @@ The uninstall messages above are normal and expected.
 
 @23000 = ~Restore IWD Tooltips~
 
+@24000 = ~Outline White Spell Icons for Accessibility~
+@24001 = ~Add Black Outline~
+@24100 = ~Add Gray Outline~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

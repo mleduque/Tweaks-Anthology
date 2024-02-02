@@ -565,6 +565,34 @@ GROUP @11
 REQUIRE_PREDICATE GAME_IS ~iwdee~ @25
 LABEL ~cd_tweaks_restore_iwd_tooltips~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Outline White Spell Icons for Accessibility                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// add black outline                                          \\\\\
+/////                                                            \\\\\
+
+BEGIN @24001 DESIGNATED 240
+GROUP @11
+SUBCOMPONENT @24000
+REQUIRE_PREDICATE !GAME_IS ~pst pstee iwd2 iwd how totlm~ @25
+LABEL ~cd_tweaks_outline_white_spell_icons_with_black~
+
+/////                                                            \\\\\
+///// add gray outline                                           \\\\\
+/////                                                            \\\\\
+
+BEGIN @24100 DESIGNATED 241
+GROUP @11
+SUBCOMPONENT @24000
+REQUIRE_PREDICATE !GAME_IS ~pst pstee iwd2 iwd how totlm~ @25
+LABEL ~cd_tweaks_outline_white_spell_icons_with_gray~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
