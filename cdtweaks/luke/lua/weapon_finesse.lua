@@ -3,6 +3,7 @@
 function GTWPNFIN(CGameEffect, CGameSprite)
 	local equipment = CGameSprite.m_equipment -- CGameSpriteEquipment
 	local selectedItem = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
+	local itemResRef = string.upper(selectedItem.pRes.resref:get())
 	local itemHeader = selectedItem.pRes.pHeader -- Item_Header_st
 	local itemAbility = EEex_PtrToUD(EEex_UDToPtr(itemHeader) + itemHeader.abilityOffset + Item_ability_st.sizeof * equipment.m_selectedWeaponAbility, "Item_ability_st") -- Item_ability_st
 	--
@@ -16,14 +17,18 @@ function GTWPNFIN(CGameEffect, CGameSprite)
 	--
 	local curStrBonus = tonumber(EEex_Resource_GetAt2DALabels(strmod, "TO_HIT", string.format("%s", spriteSTR)) + EEex_Resource_GetAt2DALabels(strmodex, "TO_HIT", string.format("%s", spriteSTRExtra)))
 	local curDexBonus = tonumber(EEex_Resource_GetAt2DALabels(dexmod, "MISSILE", string.format("%s", spriteDEX)))
+	--
+	local unusuallyLargeWeapon = {
+		["BDBONE02"] = true -- Ettin Club +1
+	}
 	-- reset var if bonus changes
 	if CGameEffect.m_effectAmount2 ~= curDexBonus or CGameEffect.m_effectAmount3 ~= curStrBonus then
 		CGameEffect.m_effectAmount2 = curDexBonus -- store current DEX bonus in param#3
 		CGameEffect.m_effectAmount3 = curStrBonus -- store current DEX bonus in param#4
-		EEex_Sprite_SetLocalInt(CGameSprite, "cdtweaksWeaponFinesse", 0)
+		EEex_Sprite_SetLocalInt(CGameSprite, "cdtweaksWeaponFinesse", -1)
 	end
-	-- if the character is wielding a small blade that scales with STR and "dexmod.2da" is better than "strmod.2da" + "strmodex.2da" ...
-	if (itemHeader.itemType == 0x10 or itemHeader.itemType == 0x13) and (curDexBonus > curStrBonus) and itemAbility.quickSlotType == 1 and itemAbility.type == 1 and (EEex_IsBitSet(itemAbility.abilityFlags, 0x0) or EEex_IsBitSet(itemAbility.abilityFlags, 0x3)) then
+	-- if the character is wielding a small blade / mace / club that scales with STR and "dexmod.2da" is better than "strmod.2da" + "strmodex.2da" ...
+	if (itemHeader.itemType == 0x10 or itemHeader.itemType == 0x11 or itemHeader.itemType == 0x13) and not unusuallyLargeWeapon[itemResRef] and (curDexBonus > curStrBonus) and itemAbility.quickSlotType == 1 and itemAbility.type == 1 and (EEex_IsBitSet(itemAbility.abilityFlags, 0x0) or EEex_IsBitSet(itemAbility.abilityFlags, 0x3)) then
 		if EEex_Sprite_GetLocalInt(CGameSprite, "cdtweaksWeaponFinesse") ~= 1 then
 			EEex_Sprite_SetLocalInt(CGameSprite, "cdtweaksWeaponFinesse" , 1)
 			--
