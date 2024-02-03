@@ -24,7 +24,7 @@ function GTWPNFIN(CGameEffect, CGameSprite)
 	-- reset var if bonus changes
 	if CGameEffect.m_effectAmount2 ~= curDexBonus or CGameEffect.m_effectAmount3 ~= curStrBonus then
 		CGameEffect.m_effectAmount2 = curDexBonus -- store current DEX bonus in param#3
-		CGameEffect.m_effectAmount3 = curStrBonus -- store current DEX bonus in param#4
+		CGameEffect.m_effectAmount3 = curStrBonus -- store current STR bonus in param#4
 		EEex_Sprite_SetLocalInt(CGameSprite, "cdtweaksWeaponFinesse", -1)
 	end
 	-- if the character is wielding a small blade / mace / club that scales with STR and "dexmod.2da" is better than "strmod.2da" + "strmodex.2da" ...
