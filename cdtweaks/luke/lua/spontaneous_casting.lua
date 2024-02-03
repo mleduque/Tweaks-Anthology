@@ -1,4 +1,4 @@
--- Decrement by 1 all memorized divine spells of level spellLevel (level specified by param1 of op402) --
+-- cdtweaks, spontaneous cast for clerics: Decrement by 1 all memorized divine spells of level spellLevel (level specified by param1 of op402) --
 
 function GTSPCST1(CGameEffect, CGameSprite)
 	-- CGameEffect (this effect, i.e. op402)
@@ -36,7 +36,7 @@ function GTSPCST1(CGameEffect, CGameSprite)
 	end)
 end
 
--- Check if the caster has at least one divine spell of level spellLevel memorized (feedback string specified by param1 of op402) --
+-- cdtweaks, spontaneous cast for clerics: Check if the caster has at least one divine spell of level spellLevel memorized (feedback string specified by param1 of op402) --
 
 function GTSPCST2(CGameEffect, CGameSprite)
 	local parentResRef = CGameEffect.m_sourceRes:get() -- We need to use :get() to export a CResRef field as a Lua string!
