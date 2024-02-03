@@ -2727,7 +2727,7 @@ LABEL ~cd_tweaks_pnp_potions~
 
 BEGIN @266000 DESIGNATED 2660
 GROUP @9
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @26
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/weapon_finesse.tra~ @7
 LABEL ~cd_tweaks_weapon_finesse~
 
