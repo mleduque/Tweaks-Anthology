@@ -35,7 +35,7 @@ function GTDLWLD(CGameEffect, CGameSprite)
 	local curThac0LeftPenalty = tonumber(EEex_Resource_GetAt2DALabels(stylbonu, "THAC0_LEFT", string.format("TWOWEAPON-%s", spriteProficiency2Weapon)))
 	-- reset var if either curThac0RightPenalty or curThac0LeftPenalty changes
 	if curThac0RightPenalty ~= CGameEffect.m_effectAmount2 or curThac0LeftPenalty ~= CGameEffect.m_effectAmount3 then
-		EEex_Sprite_SetLocalInt(CGameSprite, "cdtweaksDualWield", 0)
+		EEex_Sprite_SetLocalInt(CGameSprite, "cdtweaksDualWield", -1)
 		CGameEffect.m_effectAmount2 = curThac0RightPenalty -- store curThac0RightPenalty in param#3
 		CGameEffect.m_effectAmount3 = curThac0LeftPenalty -- store curThac0RightPenalty in param#4
 	end
