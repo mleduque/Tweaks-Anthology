@@ -1,7 +1,7 @@
 DEFINE_ACTION_FUNCTION "SPONTANEOUS_CASTING"
 BEGIN
 	LAM "READ_SPELL_IDS"
-	LAF "SPONTANEOUS_CASTING#GET_CLERIC_CLAB_FILES" RET_ARRAY "cleric_clab_files" END
+	LAF "GET_CLAB_FILES" STR_VAR "class" = "cleric" RET_ARRAY "clab_files" END
 	//
 	<<<<<<<< .../cdtweaks-inlined/empty
 	>>>>>>>>
@@ -114,40 +114,19 @@ BEGIN
 			ACTION_TO_UPPER "spell_name"
 			ACTION_TO_UPPER "key_1"
 			//
-			ACTION_PHP_EACH "cleric_clab_files" AS "clab" => "" BEGIN
+			ACTION_PHP_EACH "clab_files" AS "clab" => "" BEGIN
 				COPY_EXISTING "%clab%.2da" "override"
 					COUNT_2DA_COLS "cols"
+					TEXT_SPRINT "string" "CDTWEAKS_SPONTANEOUS_CAST_%spell_name% GA_%key_1%"
+					FOR ("i" = 2 ; "%i%" < "%cols%" ; "i" += 1) BEGIN
+						TEXT_SPRINT "string" "%string% ****"
+					END
 					COUNT_2DA_ROWS "%cols%" "rows"
-					INSERT_2DA_ROW "%rows%" "%cols%" "CDTWEAKS_SPONTANEOUS_CASTING_%spell_name% GA_%key_1%"
+					INSERT_2DA_ROW "%rows%" "%cols%" "%string%"
 					// formatting
 					PRETTY_PRINT_2DA
 				BUT_ONLY
 			END
 		END
 	END
-END
-
-/*
-*****************************************************************************************************************
-** Helper function **
-*****************************************************************************************************************
-*/
-
-DEFINE_ACTION_FUNCTION "SPONTANEOUS_CASTING#GET_CLERIC_CLAB_FILES"
-RET_ARRAY
-	"cleric_clab_files"
-BEGIN
-	OUTER_TEXT_SPRINT $"cleric_clab_files"("clabpr01") "" // unkitted cleric
-	//
-	COPY_EXISTING - "kitlist.2da" "override"
-		COUNT_2DA_COLS "cols"
-		READ_2DA_ENTRIES_NOW "read_kitlist" "%cols%"
-		FOR ("i" = 1 ; "%i%" < "%read_kitlist%" ; "i" += 1) BEGIN // skip RESERVE row...
-			READ_2DA_ENTRY_FORMER "read_kitlist" "%i%" 8 "class"
-			PATCH_IF ("%class%" == IDS_OF_SYMBOL ("class" "cleric")) BEGIN
-				READ_2DA_ENTRY_FORMER "read_kitlist" "%i%" 5 "abilities"
-				TEXT_SPRINT $"cleric_clab_files"("%abilities%") ""
-			END
-		END
-	BUT_ONLY
 END
