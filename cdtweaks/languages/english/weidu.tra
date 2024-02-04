@@ -130,6 +130,10 @@ The uninstall messages above are normal and expected.
 
 @23000 = ~Restore IWD Tooltips~
 
+@24000 = ~Outline White Spell Icons for Accessibility~
+@24001 = ~Add Black Outline~
+@24100 = ~Add Gray Outline~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -257,6 +261,17 @@ The uninstall messages above are normal and expected.
 @134600 = ~Make the Druid Grove Stronghold Available to All Classes~
 
 @134700 = ~Make the Imnesvale Cabin Stronghold Available to All Classes~
+
+@135000 = ~Karoug Weapon Vulnerability Adjustments~
+@135001 = ~Remove Silver Weapon Requirement to Hit Karoug~
+
+@135100 = ~Remove Silver Weapon Requirement to Hit Karoug, But Require +2 Weapons~
+
+@135200 = ~NPCs With Wolfsbane Charm Can Harm Karoug~
+
+@135300 = ~Options 1 AND 3~
+
+@135400 = ~Options 2 AND 3~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -436,6 +451,10 @@ The uninstall messages above are normal and expected.
 @264000 = "PnP Potions [Luke]"
 
 @265000 = "Spontaneous Casting for Clerics [Luke]"
+
+@266000 = "Weapon Finesse feat for Thieves [Luke]"
+
+@267000 = "Dual-Wield feat for Rangers [Luke]"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -711,6 +730,18 @@ Use Baldur.lua options: a7_interval_ini
 @414000 = ~Don't Auto-Assign Advanced AI Scripting to Party~
 
 @418000 = ~Removable NPC Items~
+
+@419000 = ~Color Joinable NPC Names in Dialogues, Journal Entries, Etc.~
+@419001 = ~Don't Color the PC's Name~
+@419002 = ~Processing string %index% of %final_strref%...~
+@419100 = ~Also Color the PC's Name: Gray~
+@419200 = ~Also Color the PC's Name: Brown~
+@419300 = ~Also Color the PC's Name: Red~
+@419400 = ~Also Color the PC's Name: Purple~
+@419500 = ~Also Color the PC's Name: Blue~
+@419600 = ~Also Color the PC's Name: Green~
+@419700 = ~Also Color the PC's Name: Yellow~
+@419800 = ~Also Color the PC's Name: Orange~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

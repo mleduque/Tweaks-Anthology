@@ -6,6 +6,8 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+LAF HANDLE_AUDIO STR_VAR audio_path = ~cdtweaks/wav/deathcam~ oggdec_path = ~cdtweaks/wav~ END
+
 COPY_EXISTING_REGEXP GLOB ~^.+\.are$~ ~override~
   WRITE_LONG 0x14 (THIS | BIT4) // add player1-can-die bit
   BUT_ONLY

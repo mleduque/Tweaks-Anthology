@@ -1,0 +1,7 @@
+/////                                                            \\\\\
+///// Karoug requires +2 weapons                                 \\\\\
+/////                                                            \\\\\
+
+OUTER_SET karoug_plus = 2
+OUTER_SET wolfsbane = 0
+INCLUDE ~cdtweaks/lib/karoug.tpa~

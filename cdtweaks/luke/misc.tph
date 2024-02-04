@@ -184,4 +184,39 @@ BEGIN
 			END
 		END
 	BUT_ONLY_IF_IT_CHANGES
+  
+// Get the clab files of all kits whose base class is "%class%" \\
+////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\
+
+DEFINE_DIMORPHIC_FUNCTION "GET_CLAB_FILES"
+STR_VAR
+	"class" = ""
+RET_ARRAY
+	"clab_files"
+BEGIN
+	ACTION_MATCH "%class%" WITH
+		"thief" BEGIN
+			OUTER_TEXT_SPRINT $"clab_files"("clabth01") "" // unkitted thief
+		END
+		"ranger" BEGIN
+			OUTER_TEXT_SPRINT $"clab_files"("clabrn01") "" // unkitted ranger
+		END
+		"cleric" BEGIN
+			OUTER_TEXT_SPRINT $"clab_files"("clabpr01") "" // unkitted cleric
+		END
+		DEFAULT
+	END
+	//
+	COPY_EXISTING - "kitlist.2da" "override"
+		COUNT_2DA_COLS "cols"
+		READ_2DA_ENTRIES_NOW "read_kitlist" "%cols%"
+		FOR ("i" = 1 ; "%i%" < "%read_kitlist%" ; "i" += 1) BEGIN // skip RESERVE row...
+			READ_2DA_ENTRY_FORMER "read_kitlist" "%i%" 8 "class_here"
+			PATCH_IF ("%class_here%" == IDS_OF_SYMBOL ("class" "%class%")) BEGIN
+				READ_2DA_ENTRY_FORMER "read_kitlist" "%i%" 5 "abilities"
+				TEXT_SPRINT $"clab_files"("%abilities%") ""
+			END
+		END
+	BUT_ONLY
+  
 END
