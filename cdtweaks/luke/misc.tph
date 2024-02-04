@@ -184,7 +184,9 @@ BEGIN
 			END
 		END
 	BUT_ONLY_IF_IT_CHANGES
-  
+
+END
+
 // Get the clab files of all kits whose base class is "%class%" \\
 ////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\
 
