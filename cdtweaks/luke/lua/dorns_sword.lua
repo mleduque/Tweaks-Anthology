@@ -28,7 +28,7 @@ function GTDRNSW2(CGameEffect, CGameSprite)
 	local parentResRef = CGameEffect.m_sourceRes:get() -- We need to use :get() to export a CResRef field as a Lua string!
 	local spriteScriptName = EEex_CastUD(CGameSprite.m_scriptName, "CResRef"):get() -- certain engine types are nonsensical. We usually create fixups for the bindings whenever we run into them. We'll need to cast the value to properly read them
 	--
-	if spriteScriptName ~= "DORN" then
+	if string.upper(spriteScriptName) ~= "DORN" then
 		EEex_GameObject_ApplyEffect(CGameSprite,
 		{
 			["effectID"] = 206, -- Protection from spell
