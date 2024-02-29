@@ -4,11 +4,11 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that applies the actual bonus via "CDFRLNTD.SPL"
 	local apply = function(spriteLevel1, spriteLevel2, spriteLevel3)
 		-- Update vars
-		sprite:setLocalInt("cdtweaksArcherOldLevel1", spriteLevel1)
-		sprite:setLocalInt("cdtweaksArcherOldLevel2", spriteLevel2)
-		sprite:setLocalInt("cdtweaksArcherOldLevel3", spriteLevel3)
+		sprite:setLocalInt("cdtweaksRevisedArcherHelper1", spriteLevel1)
+		sprite:setLocalInt("cdtweaksRevisedArcherHelper2", spriteLevel2)
+		sprite:setLocalInt("cdtweaksRevisedArcherHelper3", spriteLevel3)
 		-- Mark the creature as 'bonus applied'
-		sprite:setLocalInt("cdtweaksArcherBonusApplied", 1)
+		sprite:setLocalInt("cdtweaksRevisedArcher", 1)
 		--
 		sprite:applyEffect({
 			["effectID"] = 146, -- Cast spell
@@ -23,10 +23,15 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local equipment = sprite.m_equipment
 	local selectedItem = equipment.m_items:get(equipment.m_selectedWeapon)
 	local itemHeader = selectedItem.pRes.pHeader
-	-- (Bow with arrows equipped || bow with unlimited ammo equipped) && Archer kit
-	local applyCondition = (itemHeader.itemType == 0x5 or itemHeader.itemType == 0xF) and EEex_Resource_KitIDSToSymbol[EEex_BOr(EEex_LShift(sprite.m_baseStats.m_mageSpecUpperWord, 16), sprite.m_baseStats.m_mageSpecialization)] == "FERALAN"
 	--
-	if sprite:getLocalInt("cdtweaksArcherBonusApplied") == 0 then
+	local kit = GT_Resource_IDSToSymbol["kit"]
+	local spriteKit = EEex_BOr(EEex_LShift(sprite.m_baseStats.m_mageSpecUpperWord, 16), sprite.m_baseStats.m_mageSpecialization)
+	--
+	local itemcat = GT_Resource_IDSToSymbol["itemcat"]
+	-- (Bow with arrows equipped || bow with unlimited ammo equipped) && Archer kit
+	local applyCondition = (itemcat[itemHeader.itemType] == "ARROW" or itemcat[itemHeader.itemType] == "BOW") and kit[spriteKit] == "FERALAN"
+	--
+	if sprite:getLocalInt("cdtweaksRevisedArcher") == 0 then
 		if applyCondition then
 			apply(sprite.m_derivedStats.m_nLevel1, sprite.m_derivedStats.m_nLevel2, sprite.m_derivedStats.m_nLevel3) -- since ``EEex_Opcode_AddListsResolvedListener`` is running after the effect lists have been evaluated, ``m_bonusStats`` has already been added to ``m_derivedStats`` by the engine
 		end
@@ -37,15 +42,15 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			local spriteLevel2 = sprite.m_derivedStats.m_nLevel2
 			local spriteLevel3 = sprite.m_derivedStats.m_nLevel3
 			--
-			if spriteLevel1 ~= sprite:getLocalInt("cdtweaksArcherOldLevel1")
-				or spriteLevel2 ~= sprite:getLocalInt("cdtweaksArcherOldLevel2")
-				or spriteLevel3 ~= sprite:getLocalInt("cdtweaksArcherOldLevel3")
+			if spriteLevel1 ~= sprite:getLocalInt("cdtweaksRevisedArcherHelper1")
+				or spriteLevel2 ~= sprite:getLocalInt("cdtweaksRevisedArcherHelper2")
+				or spriteLevel3 ~= sprite:getLocalInt("cdtweaksRevisedArcherHelper3")
 			then
 				apply(spriteLevel1, spriteLevel2, spriteLevel3)
 			end
 		else
 			-- Mark the creature as 'bonus removed'
-			sprite:setLocalInt("cdtweaksArcherBonusApplied", 0)
+			sprite:setLocalInt("cdtweaksRevisedArcher", 0)
 			--
 			sprite:applyEffect({
 				["effectID"] = 321, -- Remove effects by resource

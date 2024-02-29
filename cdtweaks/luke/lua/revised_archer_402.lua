@@ -5,7 +5,9 @@ function GTCLDSHT(CGameEffect, CGameSprite)
 	local selectedItem = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
 	local itemHeader = selectedItem.pRes.pHeader -- Item_Header_st
 	--
-	if itemHeader.itemType == 0x5 or itemHeader.itemType == 0xF then -- bow with arrows equipped || bow with unlimited ammo equipped
+	local itemcat = GT_Resource_IDSToSymbol["itemcat"]
+	--
+	if itemcat[itemHeader.itemType] == "ARROW" or itemcat[itemHeader.itemType] == "BOW" then -- bow with arrows equipped || bow with unlimited ammo equipped
 		EEex_GameObject_ApplyEffect(CGameSprite,
 		{
 			["effectID"] = 326, -- Apply effects list

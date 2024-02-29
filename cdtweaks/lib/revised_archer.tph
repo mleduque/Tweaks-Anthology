@@ -11,7 +11,7 @@ BEGIN
 			BUT_ONLY_IF_IT_CHANGES
 		END
 		COPY_EXISTING "m_gt#402.lua" "override"
-			APPEND_FILE TEXT "cdtweaks\luke\lua\revised_archer.lua"
+			APPEND_FILE TEXT "cdtweaks\luke\lua\revised_archer_402.lua"
 		BUT_ONLY UNLESS "^function GTCLDSHT"
 		// Listener: run 'func' each time a sprite has finished evaluating its effects
 		ACTION_IF !(FILE_EXISTS_IN_GAME "m_gtlstn.lua") BEGIN
@@ -23,7 +23,11 @@ BEGIN
 		END
 		COPY_EXISTING "m_gtlstn.lua" "override"
 			APPEND_FILE TEXT "cdtweaks\luke\lua\revised_archer_listener.lua"
-		BUT_ONLY UNLESS "cdtweaksArcherBonusApplied"
+		BUT_ONLY UNLESS "cdtweaksRevisedArcher"
+		//
+		ACTION_IF !(FILE_EXISTS_IN_GAME "m_gttbls.lua") BEGIN
+			COPY "cdtweaks\luke\lua\m_gttbls.lua" "override"
+		END
 	END
 	//
 	WITH_SCOPE BEGIN
