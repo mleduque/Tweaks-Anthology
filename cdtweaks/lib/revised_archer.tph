@@ -31,6 +31,7 @@ BEGIN
 	END
 	//
 	WITH_SCOPE BEGIN
+		OUTER_SET "new_desc" = RESOLVE_STR_REF (@0)
 		COPY_EXISTING "kitlist.2da" "override"
 			COUNT_2DA_COLS "cols"
 			READ_2DA_ENTRIES_NOW "read_kitlist" "%cols%"
@@ -39,7 +40,7 @@ BEGIN
 				PATCH_IF ("%kitname%" STR_EQ "FERALAN") BEGIN
 					READ_2DA_ENTRY_FORMER "read_kitlist" "%i%" 5 "clabfile"
 					READ_2DA_ENTRY_FORMER "read_kitlist" "%i%" 6 "weapprof_column_index"
-					SET_2DA_ENTRY "%i%" 4 "%cols%" RESOLVE_STR_REF (@0) // update description
+					SET_2DA_ENTRY "%i%" 4 "%cols%" "%new_desc%" // update description
 					SET "i" = "%read_kitlist%" // kill FOR-loop
 				END
 			END
