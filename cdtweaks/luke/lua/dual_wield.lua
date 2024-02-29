@@ -85,7 +85,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local spriteLevel1 = sprite.m_derivedStats.m_nLevel1
 	local spriteLevel2 = sprite.m_derivedStats.m_nLevel2
 	-- If the Ranger is dual-wielding and is equipped with medium or heavy armor...
-	local applyCondition = EEex_IsBitUnset(mainHandFlags, itemflag["TWOHANDED"])
+	local applyCondition = EEex_BAnd(mainHandFlags, itemflag["TWOHANDED"]) == 0
 		and mainHandAbilityType == 1 -- type: melee
 		and offHand and itemcat[offHandType] ~= "SHIELD"
 		and armor and itemcat[armorType] == "ARMOR" and (armorAnimation == "3A" or armorAnimation == "4A")
