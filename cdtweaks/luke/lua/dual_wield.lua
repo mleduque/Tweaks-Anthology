@@ -79,12 +79,19 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local itemflag = GT_Resource_SymbolToIDS["itemflag"]
 	--
 	local itemcat = GT_Resource_IDSToSymbol["itemcat"]
+	--
+	local spriteFlags = sprite.m_baseStats.m_flags
+	--
+	local spriteLevel1 = sprite.m_derivedStats.m_nLevel1
+	local spriteLevel2 = sprite.m_derivedStats.m_nLevel2
 	-- If the Ranger is dual-wielding and is equipped with medium or heavy armor...
 	local applyCondition = EEex_IsBitUnset(mainHandFlags, itemflag["TWOHANDED"])
 		and mainHandAbilityType == 1 -- type: melee
 		and offHand and itemcat[offHandType] ~= "SHIELD"
 		and armor and itemcat[armorType] == "ARMOR" and (armorAnimation == "3A" or armorAnimation == "4A")
-		and (class[spriteClass] == "RANGER" or class[spriteClass] == "CLERIC_RANGER")
+		and (class[spriteClass] == "RANGER"
+			-- incomplete dual-class characters are not supposed to benefit from Dual-Wield
+			or (class[spriteClass] == "CLERIC_RANGER" and (EEex_IsBitUnset(spriteFlags, 0x8) or spriteLevel1 > spriteLevel2)))
 	--
 	if sprite:getLocalInt("cdtweaksDualWield") == 0 then
 		if applyCondition then
