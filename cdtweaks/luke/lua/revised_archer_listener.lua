@@ -41,7 +41,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local applyCondition = (itemcat[itemHeader.itemType] == "ARROW" or itemcat[itemHeader.itemType] == "BOW")
 		and kit[spriteKit] == "FERALAN"
 		and (class[spriteClass] == "RANGER"
-			-- incomplete dual-class characters are not supposed to benefit from Dual-Wield
+			-- incomplete dual-class characters are not supposed to benefit from this passive feat
 			or (class[spriteClass] == "CLERIC_RANGER" and (EEex_IsBitUnset(spriteFlags, 0x8) or spriteLevel1 > spriteLevel2)))
 	--
 	if sprite:getLocalInt("cdtweaksRevisedArcher") == 0 then
