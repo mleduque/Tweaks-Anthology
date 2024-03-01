@@ -58,27 +58,24 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local items = sprite.m_equipment.m_items -- Array<CItem*,39>
 	--
 	local armor = items:get(1) -- CItem (index from "slots.ids")
-	local armorType = nil
+	local armorTypeStr = nil
 	local armorAnimation = nil
 	if armor then -- if the character is equipped with an armor...
 		local itemHeader = armor.pRes.pHeader -- Item_Header_st
-		armorType = itemHeader.itemType
+		armorTypeStr = GT_Resource_IDSToSymbol["itemcat"][itemHeader.itemType]
 		armorAnimation = EEex_CastUD(itemHeader.animationType, "CResRef"):get() -- certain engine types are nonsensical. We usually create fixups for the bindings whenever we run into them. We'll need to cast the value to properly read them
 	end
 	--
 	local offHand = items:get(9) -- CItem (index from "slots.ids")
-	local offHandType = nil
+	local offHandTypeStr = nil
 	if offHand then
 		local itemHeader = offHand.pRes.pHeader -- Item_Header_st
-		offHandType = itemHeader.itemType
+		offHandTypeStr = GT_Resource_IDSToSymbol["itemcat"][itemHeader.itemType]
 	end
 	--
-	local class = GT_Resource_IDSToSymbol["class"]
-	local spriteClass = sprite.m_typeAI.m_Class
+	local spriteClassStr = GT_Resource_IDSToSymbol["class"][sprite.m_typeAI.m_Class]
 	--
 	local itemflag = GT_Resource_SymbolToIDS["itemflag"]
-	--
-	local itemcat = GT_Resource_IDSToSymbol["itemcat"]
 	--
 	local spriteFlags = sprite.m_baseStats.m_flags
 	--
@@ -87,11 +84,11 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- If the Ranger is dual-wielding and is equipped with medium or heavy armor...
 	local applyCondition = EEex_BAnd(mainHandFlags, itemflag["TWOHANDED"]) == 0
 		and mainHandAbilityType == 1 -- type: melee
-		and offHand and itemcat[offHandType] ~= "SHIELD"
-		and armor and itemcat[armorType] == "ARMOR" and (armorAnimation == "3A" or armorAnimation == "4A")
-		and (class[spriteClass] == "RANGER"
+		and offHand and offHandTypeStr ~= "SHIELD"
+		and armor and armorTypeStr == "ARMOR" and (armorAnimation == "3A" or armorAnimation == "4A")
+		and (spriteClassStr == "RANGER"
 			-- incomplete dual-class characters are not supposed to benefit from Dual-Wield
-			or (class[spriteClass] == "CLERIC_RANGER" and (EEex_IsBitUnset(spriteFlags, 0x8) or spriteLevel1 > spriteLevel2)))
+			or (spriteClassStr == "CLERIC_RANGER" and (EEex_IsBitUnset(spriteFlags, 0x8) or spriteLevel1 > spriteLevel2)))
 	--
 	if sprite:getLocalInt("cdtweaksDualWield") == 0 then
 		if applyCondition then
