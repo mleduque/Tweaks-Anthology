@@ -1,14 +1,16 @@
 DEFINE_ACTION_FUNCTION "DUAL_WIELD"
 BEGIN
 	WITH_SCOPE BEGIN
-		COPY "cdtweaks\bam\gtdlwld.bam" "override"
+		ACTION_IF !(FILE_EXISTS_IN_GAME "gtmharmr.bam") BEGIN
+			COPY "cdtweaks\bam\gtmharmr.bam" "override"
+		END
 	END
 	//
 	<<<<<<<< .../cdtweaks-inlined/empty
 	>>>>>>>>
 	//
 	WITH_SCOPE BEGIN
-		LAF "ADD_STATDESC_ENTRY" INT_VAR "description" = RESOLVE_STR_REF (@0) STR_VAR "bam_file" = "gtdlwld" RET "feedback_icon" = "index" END
+		LAF "ADD_STATDESC_ENTRY" INT_VAR "description" = RESOLVE_STR_REF (@0) STR_VAR "bam_file" = "gtmharmr" RET "feedback_icon" = "index" END
 		// Listener: run 'func' each time a sprite has finished evaluating its effects
 		ACTION_IF !(FILE_EXISTS_IN_GAME "m_gtlstn.lua") BEGIN
 			COPY ".../cdtweaks-inlined/empty" "override\m_gtlstn.lua"

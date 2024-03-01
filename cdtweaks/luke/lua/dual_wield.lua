@@ -38,7 +38,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			["sourceTarget"] = sprite.m_id,
 		})
 		sprite:applyEffect({
-			["effectID"] = 142, -- Main-hand THAC0 bonus
+			["effectID"] = 142, -- Display portrait icon
 			["durationType"] = 9,
 			["dwFlags"] = %feedback_icon%,
 			["m_sourceRes"] = "CDDLWLD",
