@@ -24,13 +24,11 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local selectedItem = equipment.m_items:get(equipment.m_selectedWeapon)
 	local itemHeader = selectedItem.pRes.pHeader
 	--
-	local kit = GT_Resource_IDSToSymbol["kit"]
-	local spriteKit = EEex_BOr(EEex_LShift(sprite.m_baseStats.m_mageSpecUpperWord, 16), sprite.m_baseStats.m_mageSpecialization)
+	local spriteKitStr = GT_Resource_IDSToSymbol["kit"][EEex_BOr(EEex_LShift(sprite.m_baseStats.m_mageSpecUpperWord, 16), sprite.m_baseStats.m_mageSpecialization)]
 	--
-	local class = GT_Resource_IDSToSymbol["class"]
-	local spriteClass = sprite.m_typeAI.m_Class
+	local spriteClassStr = GT_Resource_IDSToSymbol["class"][sprite.m_typeAI.m_Class]
 	--
-	local itemcat = GT_Resource_IDSToSymbol["itemcat"]
+	local selectedWeaponTypeStr = GT_Resource_IDSToSymbol["itemcat"][itemHeader.itemType]
 	--
 	local spriteFlags = sprite.m_baseStats.m_flags
 	-- since ``EEex_Opcode_AddListsResolvedListener`` is running after the effect lists have been evaluated, ``m_bonusStats`` has already been added to ``m_derivedStats`` by the engine
@@ -38,11 +36,11 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local spriteLevel2 = sprite.m_derivedStats.m_nLevel2
 	local spriteLevel3 = sprite.m_derivedStats.m_nLevel3
 	-- (Bow with arrows equipped || bow with unlimited ammo equipped) && Archer kit
-	local applyCondition = (itemcat[itemHeader.itemType] == "ARROW" or itemcat[itemHeader.itemType] == "BOW")
-		and kit[spriteKit] == "FERALAN"
-		and (class[spriteClass] == "RANGER"
+	local applyCondition = (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW")
+		and spriteKitStr == "FERALAN"
+		and (spriteClassStr == "RANGER"
 			-- incomplete dual-class characters are not supposed to benefit from this passive feat
-			or (class[spriteClass] == "CLERIC_RANGER" and (EEex_IsBitUnset(spriteFlags, 0x8) or spriteLevel1 > spriteLevel2)))
+			or (spriteClassStr == "CLERIC_RANGER" and (EEex_IsBitUnset(spriteFlags, 0x8) or spriteLevel1 > spriteLevel2)))
 	--
 	if sprite:getLocalInt("cdtweaksRevisedArcher") == 0 then
 		if applyCondition then
