@@ -36,7 +36,7 @@ BEGIN
 			INSERT_BYTES 0x72 0x28
 			/* Extended Header */
 			WRITE_SHORT 0x74 4 // Ability location: F12 (Special Ability)
-			WRITE_BYTE 0x7e 5 // Ability target: Caster
+			WRITE_BYTE 0x7E 5 // Ability target: Caster
 			WRITE_SHORT 0x80 30 // Ability range
 			WRITE_SHORT 0x82 1 // Minimum level
 			WRITE_SHORT 0x98 IDS_OF_SYMBOL ("MISSILE" "None") // Projectile
