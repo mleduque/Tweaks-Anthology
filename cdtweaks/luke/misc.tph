@@ -256,8 +256,11 @@ BEGIN
 			TEXT_SPRINT "string" "%string% ****"
 		END
 	END
-	// Add row
 	COUNT_2DA_COLS "cols"
+	FOR ("i" = "%level%" ; "%i%" < "%cols%" - 1 ; "i" += 1) BEGIN
+		TEXT_SPRINT "string" "%string% ****"
+	END
+	// Add row
 	COUNT_2DA_ROWS "%cols%" "rows"
 	INSERT_2DA_ROW "%rows%" "%cols%" "%string%"
 	// formatting
