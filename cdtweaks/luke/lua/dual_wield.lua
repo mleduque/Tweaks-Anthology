@@ -89,6 +89,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		and (spriteClassStr == "RANGER"
 			-- incomplete dual-class characters are not supposed to benefit from Dual-Wield
 			or (spriteClassStr == "CLERIC_RANGER" and (EEex_IsBitUnset(spriteFlags, 0x8) or spriteLevel1 > spriteLevel2)))
+		and EEex_IsBitUnset(spriteFlags, 10) -- not Fallen Ranger
 	--
 	if sprite:getLocalInt("cdtweaksDualWield") == 0 then
 		if applyCondition then
