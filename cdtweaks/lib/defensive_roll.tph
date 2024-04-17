@@ -24,7 +24,7 @@ BEGIN
 			BUT_ONLY_IF_IT_CHANGES
 		END
 		COPY_EXISTING "m_gtlstn.lua" "override"
-			APPEND_FILE TEXT "cdtweaks\luke\lua\defensive_roll_listener.lua"
+			APPEND_FILE TEXT "cdtweaks\luke\lua\defensive_roll_apply.lua"
 		BUT_ONLY UNLESS "cdtweaksDefensiveRoll"
 	END
 	//

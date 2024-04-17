@@ -33,45 +33,45 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local spriteLevel2 = sprite.m_derivedStats.m_nLevel2
 	local spriteLevel3 = sprite.m_derivedStats.m_nLevel3
 	-- KIT == SHADOWDANCER => Level 5+ ; KIT != SHADOWDANCER => Level 10+
-	local applyCondition = false
+	local applyAbility = false
 	if spriteKitStr == "SHADOWDANCER" then
 		if spriteClassStr == "THIEF" then
 			if spriteLevel1 >= 5 then
-				applyCondition = true
+				applyAbility = true
 			end
 		elseif spriteClassStr == "FIGHTER_THIEF" or spriteClassStr == "MAGE_THIEF" or spriteClassStr == "CLERIC_THIEF" then
 			-- incomplete dual-class characters are not supposed to benefit from this feat
 			if (EEex_IsBitUnset(spriteFlags, 0x6) or spriteLevel1 > spriteLevel2) and spriteLevel2 >= 5 then
-				applyCondition = true
+				applyAbility = true
 			end
 		elseif spriteClassStr = "FIGHTER_MAGE_THIEF" then
 			if spriteLevel3 >= 5 then
-				applyCondition = true
+				applyAbility = true
 			end
 		end
 	else
 		if spriteClassStr == "THIEF" then
 			if spriteLevel1 >= 10 then
-				applyCondition = true
+				applyAbility = true
 			end
 		elseif spriteClassStr == "FIGHTER_THIEF" or spriteClassStr == "MAGE_THIEF" or spriteClassStr == "CLERIC_THIEF" then
 			-- incomplete dual-class characters are not supposed to benefit from this feat
 			if (EEex_IsBitUnset(spriteFlags, 0x6) or spriteLevel1 > spriteLevel2) and spriteLevel2 >= 10 then
-				applyCondition = true
+				applyAbility = true
 			end
 		elseif spriteClassStr = "FIGHTER_MAGE_THIEF" then
 			if spriteLevel3 >= 10 then
-				applyCondition = true
+				applyAbility = true
 			end
 		end
 	end
 	--
 	if sprite:getLocalInt("cdtweaksDefensiveRoll") == 0 then
-		if applyCondition then
+		if applyAbility then
 			apply()
 		end
 	else
-		if applyCondition then
+		if applyAbility then
 			-- do nothing
 		else
 			-- Mark the creature as 'feat removed'
