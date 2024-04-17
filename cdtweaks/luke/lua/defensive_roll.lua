@@ -6,7 +6,7 @@ function GTDEFRLL(op403CGameEffect, CGameEffect, CGameSprite)
 	--
 	local spriteHP = CGameSprite.m_baseStats.m_hitPoints
 	--
-	local spriteState = CGameSprite.m_baseStats.m_generalState
+	local spriteState = CGameSprite.m_derivedStats.m_generalState + CGameSprite.m_bonusStats.m_generalState
 	local state = GT_Resource_SymbolToIDS["state"]
 	--
 	local stats = GT_Resource_SymbolToIDS["stats"]
