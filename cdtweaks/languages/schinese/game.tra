@@ -539,11 +539,11 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@202001 = ~单手持用~
-@202002 = ~双手持用~
-@202003 = ~^[ %TAB%]*类型[ %TAB%]*:[ %TAB%]*\(1\|单手\)[- %TAB%]*持用.*~
-@202004 = ~类型：双手~
-@204001 = ~^[ %TAB%]*\(无法使用的职业：\|无法使用的角色：\).*~
+@202001 = ~单手~
+@202002 = ~双手~
+@202003 = ~使用类别：单手~
+@202004 = ~使用类别：双手~
+@204001 = ~^[ %TAB%]*\(无法使用的职业：\|无法使用的人物：\).*~
 @204002 = ~无法使用：~
 @204003 = ~[%LNL%%MNL%%WNL%].*[ %TAB%]*法师.*~
  
@@ -555,9 +555,9 @@
 // Title for lock picking added after Weight line, penalty is added after this text
 @210003 = ~开锁：~
 // Typical find trap penalty line in original armors
-@210004 = ~^\([ %TAB%]*Find/Remove Traps:.+\)\|\([ %TAB%]*.?.?.?[ %TAB%]*找寻陷阱：.+\)$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
+@210004 = ~^\([ %TAB%]*Find/Remove Traps:.+\)\|\([ %TAB%]*.?.?.?[ %TAB%]*寻找陷阱：.+\)$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 // Title for find trap added after Weight line, penalty is added after this text
-@210005 = ~找寻陷阱：~
+@210005 = ~寻找陷阱：~
 // Typical pick pocket penalty line in original armors
 @210006 = ~^[ %TAB%]*.?.?.?[ %TAB%]*扒窃：.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 // Title for pick pocket added after Weight line, penalty is added after this text
@@ -586,7 +586,7 @@
 @214003 = ~野蛮人/盗贼~
 @214004 = ~野蛮人/德鲁伊~
 
-@215002 = ~[ %TAB%]*.?.?.?[ %TAB%]*防护等级[^:]*:.*$~ // lone . at front to catch EE emdash
+@215002 = ~[ %TAB%]*.?.?.?[ %TAB%]*防御等级[^:]*:.*$~ // lone . at front to catch EE emdash
 
 @216001 = ~短剑/忍者刀：许多盗贼和半身人的首选武器，短剑和忍者刀虽然轻巧，但却也相当好用。
 
