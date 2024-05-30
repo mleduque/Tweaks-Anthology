@@ -91,3 +91,7 @@ OUTER_FOR (i=1; i<=10; i=i+1) BEGIN
   OUTER_SPRINT name_source ~bg2_chapter_%i%~
   OUTER_SET EVAL ~%name_source%~ = bg2_chapter
 END
+
+ACTION_IF (FILE_EXISTS ~cdtweaks/cdtweaks.txt~) THEN BEGIN
+  INCLUDE ~cdtweaks/cdtweaks.txt~ // config file
+END
