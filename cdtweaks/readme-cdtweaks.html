@@ -1015,6 +1015,37 @@
           <li>If a character is equipped with a Heavy Armor, it will not benefit from the bonus derived from its Dexterity (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/dexmod.htm"><code>dexmod.2da</code></a>)
             <ul>
               <li>So for instance, a character with <code>18</code> DEX equipped with a Plate Mail will suffer a <code>-4</code> AC penalty.</li>
+        </ul>
+      </p>
+      <p> <strong>Defensive Roll feat for Thieves [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p> This component aims at implementing the NWN feat Defensive Roll. As a result, after installing it, if the character is struck by a potentially lethal blow, he makes a Save vs. Breath. If successful, he takes only half damage from the blow.<br>
+        Notes:
+        <ul>
+          <li>This feat is only available to thieves (level 10) and Shadowdancers (level 5).</li>
+          <li>A "potentially lethal blow" refers to a standard attack with a weapon that would, if not for this feat, reduce the target below one hit point with just its physical damage.</li>
+          <li>Use: automatic, but limited to one use per day. Incapacitated characters cannot make a defensive roll.</li>
+        </ul>
+      </p>
+      <p> <strong>Divine Grace / Dark Blessing feat for Paladins / Blackguards [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p> This component adds the passive feats Divine Grace and Dark Blessing to Paladins and Blackguards.
+        <ul>
+          <li>Divine Grace: The paladin adds its charisma bonus (if positive) to all saving throws.</li>
+          <li>Dark Blessing: Blackguards add their charisma bonus to all saving throws.</li>
+        </ul>
+        Here is how the bonus scales with charisma:
+        <ul>
+          <li>
+            starting from 10, every <code>+2</code> points of charisma result in +1 bonus to all saves
+            <ul>
+              <li>So a 18 CHA character will get a +4 bonus</li>
+            </ul>
+          </li>
+          <li>
+            starting from 10, every <code>-2</code> points of charisma result in -1 penalty to all saves
+            <ul>
+              <li>So a 8 CHA character will get a -1 penalty</li>
             </ul>
           </li>
         </ul>
