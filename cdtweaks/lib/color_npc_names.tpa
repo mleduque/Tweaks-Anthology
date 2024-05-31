@@ -45,13 +45,29 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
   ACTION_IF !IS_AN_INT dv BEGIN // joinable NPC
 
     COPY_EXISTING ~%file%~ ~override~
-      READ_STRREF 0x08 name
+      READ_LONG 0x08 name_strref
+      READ_LONG 0x0c tool_strref
+      PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_CASE "wilson9" = 0) BEGIN // wilson soa is "grizzly bear"
+        SET name_strref = 86478
+        SET tool_strref = 86478
+      END ELSE 
+      PATCH_IF ("%SOURCE_RES%" STRING_COMPARE_REGEXP "^[Bb][Rr][Aa][Nn][Ww][Ee][0-9]?$" = 0) BEGIN // branwen is "statue"
+        PATCH_IF game_is_eet BEGIN
+          SET name_strref = 209499
+          SET tool_strref = 209499
+        END ELSE BEGIN
+          SET name_strref = 9499
+          SET tool_strref = 9499
+        END            
+      END
+      SET $cd_exclude("%name_strref%") = 1 // want to exclude name
+      SET $cd_exclude("%tool_strref%") = 1 // want to exclude tooltip
+      GET_STRREF name_strref name
       READ_BYTE   0x2e color
       SPRINT textcolor $cdtextcolors(~%color%~)
       DEFINE_ASSOCIATIVE_ARRAY cd_text_colors BEGIN ~%name%~ => ~%textcolor%~ END
       TO_UPPER name
       DEFINE_ASSOCIATIVE_ARRAY cd_text_colors BEGIN ~%name%~ => ~%textcolor%~ END
-      //PATCH_PRINT ~adding to array %name% => %textcolor%~
       BUT_ONLY
       
   END
@@ -93,63 +109,51 @@ OUTER_FOR (index = 0 ; index <= final_strref ; ++index) BEGIN
   ACTION_IF index AND ((index MODULO 10000) = 0) BEGIN // ping every 10000 strings, except 0
     PRINT @419002
   END  
+  
+  ACTION_IF !VARIABLE_IS_SET $cd_exclude("%index%") BEGIN
 
-  ACTION_GET_STRREF   index stringm
-  
-  OUTER_INNER_PATCH_SAVE string2m ~%stringm%~ BEGIN
-  
-    PATCH_PHP_EACH cd_text_colors AS name => color BEGIN
-      REPLACE_TEXTUALLY CASE_SENSITIVE ~\b\(%name%\)\b~ ~^%color%\1^-~
-    END  
-  
-  END
-  
-  ACTION_IF ftlk BEGIN
+    ACTION_GET_STRREF   index stringm
     
-    ACTION_GET_STRREF_F index stringf
-    
-    OUTER_INNER_PATCH_SAVE string2f ~%stringf%~ BEGIN
+    OUTER_INNER_PATCH_SAVE string2m ~%stringm%~ BEGIN
     
       PATCH_PHP_EACH cd_text_colors AS name => color BEGIN
-        REPLACE_TEXTUALLY ~\b\(%name%\)~ ~^%color%\1^-~
+        REPLACE_TEXTUALLY CASE_SENSITIVE ~\b\(%name%\)\b~ ~^%color%\1^-~
       END  
     
     END
     
-  END ELSE BEGIN
-    
-    OUTER_SPRINT stringf  ~~
-    OUTER_SPRINT string2f ~~
-  
-  END
-  
-  ACTION_IF (("%stringm%" STRING_COMPARE_CASE "%string2m%") OR     // male string changes
-             ("%stringf%" STRING_COMPARE_CASE "%string2f%")) BEGIN // female string changes
-
-    ACTION_GET_STRREF_S index sound
-    
     ACTION_IF ftlk BEGIN
-      STRING_SET_EVALUATE index ~%string2m%~ ~%string2f%~ [%sound%]
+      
+      ACTION_GET_STRREF_F index stringf
+      
+      OUTER_INNER_PATCH_SAVE string2f ~%stringf%~ BEGIN
+      
+        PATCH_PHP_EACH cd_text_colors AS name => color BEGIN
+          REPLACE_TEXTUALLY ~\b\(%name%\)~ ~^%color%\1^-~
+        END  
+      
+      END
+      
     END ELSE BEGIN
-      STRING_SET_EVALUATE index ~%string2m%~ [%sound%]
-    END   
+      
+      OUTER_SPRINT stringf  ~~
+      OUTER_SPRINT string2f ~~
     
-  END
+    END
+    
+    ACTION_IF (("%stringm%" STRING_COMPARE_CASE "%string2m%") OR     // male string changes
+               ("%stringf%" STRING_COMPARE_CASE "%string2f%")) BEGIN // female string changes
+
+      ACTION_GET_STRREF_S index sound
+      
+      ACTION_IF ftlk BEGIN
+        STRING_SET_EVALUATE index ~%string2m%~ ~%string2f%~ [%sound%]
+      END ELSE BEGIN
+        STRING_SET_EVALUATE index ~%string2m%~ [%sound%]
+      END   
+      
+    END
+  
+  END  
 
 END
-
-ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
-
-  ACTION_IF !IS_AN_INT dv BEGIN // joinable NPC
-
-    COPY_EXISTING ~%file%~ ~override~ // remove colors from tooltips
-      READ_STRREF 0x0c tooltip
-      INNER_PATCH_SAVE tooltip ~%tooltip%~ BEGIN
-        REPLACE_TEXTUALLY ~\^0x[0-9ABCDEFabcdef][0-9ABCDEFabcdef][0-9ABCDEFabcdef][0-9ABCDEFabcdef][0-9ABCDEFabcdef][0-9ABCDEFabcdef][0-9ABCDEFabcdef][0-9ABCDEFabcdef]\(.+\)\^-$~ ~\1~
-      END
-      SAY_EVALUATED 0x0c ~%tooltip%~
-      BUT_ONLY
-  
-  END
-
-END  

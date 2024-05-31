@@ -35,6 +35,8 @@
 @26 = ~Using values from the cdtweaks.txt config file for this component...~
 @27 = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
 @28 = ~There are not enough free spell state or secondary type slots available to install this component.~
+@29 = "Requires EEex (https://github.com/Bubb13/EEex)."
+@30 = "One or more Cure/Cause Wounds spells are missing. Make sure either the Divine Spell Pack from IWDification is installed (https://github.com/Gibberlings3/iwdification) or you are modding IWD:EE."
 
 @100 = ~Batch Installer -- EXPERIMENTAL, use at own risk. Check the readme.~
 @101 = ~
@@ -127,6 +129,10 @@ The uninstall messages above are normal and expected.
 @22000 = ~Enhanced Overlays for Colorblind Players [Fouinto]~
 
 @23000 = ~Restore IWD Tooltips~
+
+@24000 = ~Outline White Spell Icons for Accessibility~
+@24001 = ~Add Black Outline~
+@24100 = ~Add Gray Outline~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -444,7 +450,19 @@ The uninstall messages above are normal and expected.
 
 @264000 = "PnP Potions [Luke]"
 
+@265000 = "Spontaneous Casting for Clerics [Luke]"
+
+@266000 = "Weapon Finesse feat for Thieves [Luke]"
+
+@267000 = "Dual-Wield feat for Rangers [Luke]"
+
 @268000 = ~"Force" the Archer kit to use bows [Luke]~
+
+@269000 = "NWN-ish Armor vs. Dexterity [Luke]"
+
+@270000 = "Defensive Roll feat for Thieves [Luke]"
+
+@271000 = "Divine Grace / Dark Blessing feat for Paladins / Blackguards [Luke]"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

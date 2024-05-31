@@ -103,6 +103,8 @@ LANGUAGE
 LANGUAGE
   ~Simplified Chinese (Translation by c4_angel, distance20; oriignal BG2 Tweaks by Miranda; new string trans by Lewis Liu)~
   ~schinese~
+  ~cdtweaks/languages/english/game.tra~
+  ~cdtweaks/languages/english/weidu.tra~
   ~cdtweaks/languages/schinese/game.tra~
   ~cdtweaks/languages/schinese/weidu.tra~
 
@@ -564,6 +566,34 @@ BEGIN @23000 DESIGNATED 230
 GROUP @11
 REQUIRE_PREDICATE GAME_IS ~iwdee~ @25
 LABEL ~cd_tweaks_restore_iwd_tooltips~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Outline White Spell Icons for Accessibility                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// add black outline                                          \\\\\
+/////                                                            \\\\\
+
+BEGIN @24001 DESIGNATED 240
+GROUP @11
+SUBCOMPONENT @24000
+REQUIRE_PREDICATE !GAME_IS ~pst pstee iwd2 iwd how totlm~ @25
+LABEL ~cd_tweaks_outline_white_spell_icons_with_black~
+
+/////                                                            \\\\\
+///// add gray outline                                           \\\\\
+/////                                                            \\\\\
+
+BEGIN @24100 DESIGNATED 241
+GROUP @11
+SUBCOMPONENT @24000
+REQUIRE_PREDICATE !GAME_IS ~pst pstee iwd2 iwd how totlm~ @25
+LABEL ~cd_tweaks_outline_white_spell_icons_with_gray~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2702,6 +2732,92 @@ GROUP @9
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/revised_archer.tra~ @7
 LABEL ~cd_tweaks_revised_archer~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Spontaneous Casting for Clerics                            \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @265000 DESIGNATED 2650
+GROUP @9
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
+REQUIRE_PREDICATE RESOURCE_CONTAINS "spell.ids" "CLERIC_CAUSE_LIGHT_WOUNDS" @30
+REQUIRE_PREDICATE RESOURCE_CONTAINS "spell.ids" "CLERIC_CURE_MODERATE_WOUNDS" @30
+REQUIRE_PREDICATE RESOURCE_CONTAINS "spell.ids" "CLERIC_CAUSE_MODERATE_WOUNDS" @30
+REQUIRE_PREDICATE RESOURCE_CONTAINS "spell.ids" "CLERIC_CAUSE_MEDIUM_WOUNDS" @30
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/spontaneous_casting.tra~ @7
+LABEL ~cd_tweaks_spontaneous_casting~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Weapon Finesse                                             \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @266000 DESIGNATED 2660
+GROUP @9
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/weapon_finesse.tra~ @7
+LABEL ~cd_tweaks_weapon_finesse~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Dual-Wield feat for Rangers                                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @267000 DESIGNATED 2670
+GROUP @9
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/dual_wield.tra~ @7
+LABEL ~cd_tweaks_dual_wield~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// NWN-ish Armor vs. Dexterity                                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @269000 DESIGNATED 2690
+GROUP @9
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/nwn-ish_armor_vs_dex.tra~ @7
+LABEL ~cd_tweaks_nwn-ish_armor_vs_dex~
+
+///// Defensive Roll feat for Thieves                            \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @270000 DESIGNATED 2700
+GROUP @9
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/defensive_roll.tra~ @7
+LABEL ~cd_tweaks_defensive_roll~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Divine Grace / Dark Blessing feat for Paladins / Blackguards    \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @271000 DESIGNATED 2710
+GROUP @9
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/divine_grace_dark_blessing.tra~ @7
+LABEL ~cd_tweaks_divine_grace_dark_blessing~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

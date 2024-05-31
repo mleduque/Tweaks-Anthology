@@ -139,3 +139,174 @@ BEGIN
 		READ_ASCII ("%base_off%" + "%off%") "string" ("%length%")
 	BUT_ONLY_IF_IT_CHANGES
 END
+
+////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\
+// Set a var for each entry in "spell.ids" \\
+////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\
+
+DEFINE_ACTION_MACRO "READ_SPELL_IDS"
+BEGIN
+	LOCAL_SET "cols" = 0
+	LOCAL_SET "read_spell" = 0
+	LOCAL_SET "i" = 0
+	LOCAL_SPRINT "identifier" ""
+	LOCAL_SPRINT "spell_res" ""
+	// The following variables are all set by `COPY_EXISTING`
+	LOCAL_SPRINT "SOURCE_DIRECTORY" ""
+	LOCAL_SPRINT "SOURCE_FILESPEC" ""
+	LOCAL_SPRINT "SOURCE_FILE" ""
+	LOCAL_SPRINT "SOURCE_RES" ""
+	LOCAL_SPRINT "SOURCE_EXT" ""
+	LOCAL_SET "SOURCE_SIZE" = 0
+	LOCAL_SPRINT "DEST_DIRECTORY" ""
+	LOCAL_SPRINT "DEST_FILESPEC" ""
+	LOCAL_SPRINT "DEST_FILE" ""
+	LOCAL_SPRINT "DEST_RES" ""
+	LOCAL_SPRINT "DEST_EXT" ""
+	// Main
+	COPY_EXISTING - "spell.ids" "override"
+		COUNT_2DA_COLS "cols"
+		READ_2DA_ENTRIES_NOW "read_spell" "%cols%"
+		FOR ("i" = 0; "%i%" < "%read_spell%"; "i" += 1) BEGIN
+			READ_2DA_ENTRY_FORMER "read_spell" "%i%" 1 "identifier"
+			PATCH_IF ("%identifier%" STRING_COMPARE_CASE "V1.0") BEGIN // skip 1st row ~IDS V1.0~ if needed (so as to avoid checking "spell_num" = "-1")
+				LPF "RES_NAME_OF_SPELL_NUM"
+				INT_VAR
+					"spell_num" = IDS_OF_SYMBOL (~SPELL~ ~%identifier%~)
+				RET
+					"spell_res"
+				END
+				// BG(2):EE => we'd like to discard false positive such as `2610 WIZARD_MONSTER_SUMMONING_4`, where the corresponding file ~SPWI610.SPL~ does not exist
+				// That is, make sure that ~%spell_res%.spl~ does exist as a game resource
+				PATCH_IF (FILE_EXISTS_IN_GAME ~%spell_res%.spl~) BEGIN
+					TEXT_SPRINT "%identifier%" "%spell_res%"
+				END
+			END
+		END
+	BUT_ONLY_IF_IT_CHANGES
+
+END
+
+////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\
+// Get the clab files of all kits whose base class is "%class%" \\
+////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\
+
+DEFINE_DIMORPHIC_FUNCTION "GET_CLAB_FILES"
+STR_VAR
+	"class" = ""
+RET_ARRAY
+	"clab_files"
+BEGIN
+	ACTION_MATCH "%class%" WITH
+		"thief" BEGIN
+			OUTER_TEXT_SPRINT $"clab_files"("clabth01") "" // unkitted thief
+		END
+		"ranger" BEGIN
+			OUTER_TEXT_SPRINT $"clab_files"("clabrn01") "" // unkitted ranger
+		END
+		"cleric" BEGIN
+			OUTER_TEXT_SPRINT $"clab_files"("clabpr01") "" // unkitted cleric
+		END
+		DEFAULT
+	END
+	//
+	COPY_EXISTING - "kitlist.2da" "override"
+		COUNT_2DA_COLS "cols"
+		READ_2DA_ENTRIES_NOW "read_kitlist" "%cols%"
+		FOR ("i" = 1 ; "%i%" < "%read_kitlist%" ; "i" += 1) BEGIN // skip RESERVE row...
+			READ_2DA_ENTRY_FORMER "read_kitlist" "%i%" 8 "class_here"
+			PATCH_IF ("%class_here%" == IDS_OF_SYMBOL ("class" "%class%")) BEGIN
+				READ_2DA_ENTRY_FORMER "read_kitlist" "%i%" 5 "abilities"
+				TEXT_SPRINT $"clab_files"("%abilities%") ""
+			END
+		END
+	BUT_ONLY
+  
+END
+
+////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\
+// Add the specified ability to the current clab file \\
+////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\////\\\\
+
+DEFINE_PATCH_FUNCTION "ADD_CLAB_ABILITY"
+INT_VAR
+	"level" = 1
+STR_VAR
+	"type" = "ap" // default: passive ability
+	"resref" = ""
+	"identifier" = "GT_EXAMPLE"
+BEGIN
+	// Sanity checks
+	PATCH_IF ("%level%" <= 0) BEGIN
+		PATCH_FAIL "ADD_CLAB_ABILITY: level must be strictly greater than 0"
+	END
+	PATCH_IF ("%resref%" STRING_EQUAL_CASE "") BEGIN
+		PATCH_FAIL "ADD_CLAB_ABILITY: resref cannot be empty"
+	END
+	//
+	TO_UPPER "type"
+	TO_UPPER "resref"
+	TO_UPPER "identifier"
+	// Main
+	TEXT_SPRINT "string" "%identifier%"
+	FOR ("i" = 1 ; "%i%" <= "%level%" ; "i" += 1) BEGIN
+		PATCH_IF ("%i%" == "%level%") BEGIN
+			TEXT_SPRINT "string" "%string% %type%_%resref%"
+		END ELSE BEGIN
+			TEXT_SPRINT "string" "%string% ****"
+		END
+	END
+	COUNT_2DA_COLS "cols"
+	FOR ("i" = "%level%" ; "%i%" < "%cols%" - 1 ; "i" += 1) BEGIN
+		TEXT_SPRINT "string" "%string% ****"
+	END
+	// Add row
+	COUNT_2DA_ROWS "%cols%" "rows"
+	INSERT_2DA_ROW "%rows%" "%cols%" "%string%"
+	// formatting
+	PRETTY_PRINT_2DA
+END
+
+/*
+=====================================================================================================
+**ADD_EXTENDED_STAT**
+- For use with EEex (https://eeex-docs.readthedocs.io/en/latest/EEex%20Opcodes/index.html#opcode-401)
+=====================================================================================================
+*/
+
+DEFINE_DIMORPHIC_FUNCTION "ADD_EXTENDED_STAT"
+INT_VAR
+	"min" = 0 // for use in "x-stats.2da"
+	"max" = 1 // for use in "x-stats.2da"
+	"default" = 0 // for use in "x-stats.2da"
+STR_VAR
+	"identifier" = "" // for use in "stats.ids"
+RET
+	"value"
+BEGIN
+	OUTER_SET "value" = IDS_OF_SYMBOL ("stats" "%identifier%")
+	//
+	ACTION_IF ("%value%" == "-1") BEGIN
+		OUTER_PATCH ~~ BEGIN
+			FOR ("id" = 203 ; "%id%" <= 0xFFFF + 202 ; "id" += 1) BEGIN
+				LOOKUP_IDS_SYMBOL_OF_INT "symbol" ~stats~ "%id%"
+				PATCH_IF (~%symbol%~ STRING_EQUAL ~%id%~) BEGIN
+					SET "value" = "%id%"
+					SET "id" = 0xFFFF + 202 + 1 // Kill FOR-loop
+				END
+			END
+		END
+		//
+		ACTION_IF ("%value%" != "-1") BEGIN
+			APPEND "stats.ids" "%value% %identifier%"
+			//
+			APPEND "x-stats.2da" "%identifier% %min% %max% %default%"
+			// Formatting
+			COPY_EXISTING "x-stats.2da" "override"
+				PRETTY_PRINT_2DA
+			BUT_ONLY
+		END ELSE BEGIN
+			FAIL "ADD_EXTENDED_STAT: there's no room in ~stats.ids~ for appending ~%identifier%~"
+		END
+	END
+END
