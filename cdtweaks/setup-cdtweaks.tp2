@@ -4579,6 +4579,7 @@ LABEL ~cd_tweaks_removable_npc_items~
 /////                                                            \\\\\
 
 BEGIN @419001 DESIGNATED 4190 // Don't Color the PC's Name
+DEPRECATED @18 // not working well
 SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
@@ -4589,6 +4590,7 @@ LABEL ~cd_tweaks_color_npc_names_pc_none~
 /////                                                            \\\\\
 
 BEGIN @419100 DESIGNATED 4191 // Also Color the PC's Name: Gray
+DEPRECATED @18 // not working well
 SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
@@ -4599,6 +4601,7 @@ LABEL ~cd_tweaks_color_npc_names_pc_gray~
 /////                                                            \\\\\
 
 BEGIN @419200 DESIGNATED 4192 // Also Color the PC's Name: Brown
+DEPRECATED @18 // not working well
 SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
@@ -4609,6 +4612,7 @@ LABEL ~cd_tweaks_color_npc_names_pc_brown~
 /////                                                            \\\\\
 
 BEGIN @419300 DESIGNATED 4193 // Also Color the PC's Name: Red
+DEPRECATED @18 // not working well
 SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
@@ -4619,6 +4623,7 @@ LABEL ~cd_tweaks_color_npc_names_pc_red~
 /////                                                            \\\\\
 
 BEGIN @419400 DESIGNATED 4194 // Also Color the PC's Name: Purple
+DEPRECATED @18 // not working well
 SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
@@ -4629,6 +4634,7 @@ LABEL ~cd_tweaks_color_npc_names_pc_purple~
 /////                                                            \\\\\
 
 BEGIN @419500 DESIGNATED 4195 // Also Color the PC's Name: Blue
+DEPRECATED @18 // not working well
 SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
@@ -4639,6 +4645,7 @@ LABEL ~cd_tweaks_color_npc_names_pc_blue~
 /////                                                            \\\\\
 
 BEGIN @419600 DESIGNATED 4196 // Also Color the PC's Name: Green
+DEPRECATED @18 // not working well
 SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
@@ -4649,6 +4656,7 @@ LABEL ~cd_tweaks_color_npc_names_pc_green~
 /////                                                            \\\\\
 
 BEGIN @419700 DESIGNATED 4197 // Also Color the PC's Name: Yellow
+DEPRECATED @18 // not working well
 SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
@@ -4659,6 +4667,7 @@ LABEL ~cd_tweaks_color_npc_names_pc_yellow~
 /////                                                            \\\\\
 
 BEGIN @419800 DESIGNATED 4198 // Also Color the PC's Name: Orange
+DEPRECATED @18 // not working well
 SUBCOMPONENT @419000 // Color NPC Names in Dialogues, Journal Entries, Etc.
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @25
