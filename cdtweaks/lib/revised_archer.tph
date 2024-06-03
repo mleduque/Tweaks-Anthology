@@ -72,36 +72,6 @@ BEGIN
 			BUT_ONLY
 		END
 	END
-	// +1 THAC0/Damage bonus with bows only!
-	WITH_SCOPE BEGIN
-		ACTION_IF (GAME_IS "bgee bg2ee eet") BEGIN
-			COPY_EXISTING "spcl122.spl" "override\cdfrlntd.spl"
-		END ELSE BEGIN
-			COPY_EXISTING "spcl124.spl" "override\cdfrlntd.spl"
-		END
-		//
-		COPY_EXISTING "cdfrlntd.spl" "override"
-			LPF "DELETE_SPELL_HEADER" INT_VAR "header_type" = "-1" END // fresh start
-			// level 1
-			LPF "ADD_SPELL_HEADER" INT_VAR "target" = 5 END
-			// level 3-18
-			FOR ("i" = 3 ; "%i%" <= 18 ; "i" += 3) BEGIN
-				LPF "ADD_SPELL_HEADER" INT_VAR "target" = 5 "required_level" = "%i%" END
-				//
-				LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 321 "target" = 1 "timing" = 1 "header" = SHORT_AT 0x68 STR_VAR "resource" = "%DEST_RES%" END // Remove effects by resource
-				LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 167 "target" = 1 "timing" = 9 "header" = SHORT_AT 0x68 "parameter1" = ("%i%" / 3) END // Missile THAC0 bonus
-				LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 286 "target" = 1 "timing" = 9 "header" = SHORT_AT 0x68 "parameter1" = ("%i%" / 3) END // Missile weapon damage bonus
-			END
-			// level 23-33
-			FOR ("i" = 23 ; "%i%" <= 33 ; "i" += 5) BEGIN
-				LPF "ADD_SPELL_HEADER" INT_VAR "target" = 5 "required_level" = "%i%" END
-				//
-				LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 321 "target" = 1 "timing" = 1 "header" = SHORT_AT 0x68 STR_VAR "resource" = "%DEST_RES%" END // Remove effects by resource
-				LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 167 "target" = 1 "timing" = 9 "header" = SHORT_AT 0x68 "parameter1" = ("%i%" / 5) + 3 END // Missile THAC0 bonus
-				LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 286 "target" = 1 "timing" = 9 "header" = SHORT_AT 0x68 "parameter1" = ("%i%" / 5) + 3 END // Missile weapon damage bonus
-			END
-		BUT_ONLY
-	END
 	// Called Shot (bows only!)
 	WITH_SCOPE BEGIN
 		WITH_SCOPE BEGIN
