@@ -1,6 +1,10 @@
 -- cdtweaks, revised archer kit: +X missile thac0/damage bonus with bows only! --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
+	-- Sanity check
+	if not EEex_GameObject_IsSprite(sprite) then
+		return
+	end
 	-- internal function that applies the actual bonus via "CDFRLNTD.SPL"
 	local apply = function(spriteLevel1, spriteLevel2, spriteLevel3)
 		-- Update vars
