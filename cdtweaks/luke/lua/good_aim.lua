@@ -1,6 +1,10 @@
--- cdtweaks, good aim feat for halflings --
+-- cdtweaks, good aim racial feat for halflings --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
+	-- Sanity check
+	if not EEex_GameObject_IsSprite(sprite) then
+		return
+	end
 	-- internal function that applies the actual bonus
 	local apply = function()
 		-- Mark the creature as 'bonus applied'
