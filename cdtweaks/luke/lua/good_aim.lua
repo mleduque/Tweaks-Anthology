@@ -44,16 +44,16 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	--
 	local itemTypeStr = GT_Resource_IDSToSymbol["itemcat"][itemHeader.itemType]
 	-- This feat grants a +1 thac0 bonus with throwing weapons (slings, throwing daggers, throwing axes, darts, throwing hammers)
-	local applyCondition = (itemTypeStr == "DAGGER" or itemTypeStr == "AXE" or itemTypeStr == "HAMMER" or itemTypeStr == "DART" or itemTypeStr == "SLING")
+	local applyAbility = (itemTypeStr == "DAGGER" or itemTypeStr == "AXE" or itemTypeStr == "HAMMER" or itemTypeStr == "DART" or itemTypeStr == "SLING")
 		and (itemAbility.type == 2 or itemAbility.type == 4) -- Ranged / Launcher
-		and spriteRaceStr and spriteRaceStr == "HALFLING"
+		and spriteRaceStr == "HALFLING"
 	--
 	if sprite:getLocalInt("cdtweaksGoodAim") == 0 then
-		if applyCondition then
+		if applyAbility then
 			apply()
 		end
 	else
-		if applyCondition then
+		if applyAbility then
 			-- do nothing
 		else
 			-- Mark the creature as 'bonus removed'
