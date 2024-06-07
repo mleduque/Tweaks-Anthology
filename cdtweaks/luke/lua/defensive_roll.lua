@@ -22,7 +22,7 @@ function GTDEFRLL(op403CGameEffect, CGameEffect, CGameSprite)
 		and EEex_BAnd(spriteState, state["CD_STATE_NOTVALID"]) == 0
 		and spriteSaveVSBreath <= roll
 		and damageAmount >= spriteHP
-		and getTimer:evalConditionalAsAIBase(CGameSprite) then
+		and getTimer:evalConditionalAsAIBase(CGameSprite)
 	then
 		CGameEffect.m_effectAmount = math.floor(damageAmount / 2)
 		EEex_GameObject_ApplyEffect(CGameSprite,
