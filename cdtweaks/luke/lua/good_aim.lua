@@ -43,9 +43,9 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local spriteRaceStr = GT_Resource_IDSToSymbol["race"][sprite.m_typeAI.m_Race]
 	--
 	local itemTypeStr = GT_Resource_IDSToSymbol["itemcat"][itemHeader.itemType]
-	-- This feat grants a +1 thac0 bonus with throwing weapons (slings, throwing daggers, throwing axes, darts, throwing hammers)
-	local applyAbility = (itemTypeStr == "DAGGER" or itemTypeStr == "AXE" or itemTypeStr == "HAMMER" or itemTypeStr == "DART" or itemTypeStr == "SLING")
-		and (itemAbility.type == 2 or itemAbility.type == 4) -- Ranged / Launcher
+	-- This feat grants a +1 thac0 bonus with throwing weapons (throwing daggers, throwing axes, darts, throwing hammers)
+	local applyAbility = (itemTypeStr == "DAGGER" or itemTypeStr == "AXE" or itemTypeStr == "HAMMER" or itemTypeStr == "DART")
+		and itemAbility.type == 2 -- Ranged
 		and spriteRaceStr == "HALFLING"
 	--
 	if sprite:getLocalInt("cdtweaksGoodAim") == 0 then
