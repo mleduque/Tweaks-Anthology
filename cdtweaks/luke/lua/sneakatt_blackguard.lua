@@ -10,7 +10,7 @@ function GTBLKG01(CGameEffect, CGameSprite)
 	--
 	if getTimer:evalConditionalAsAIBase(sourceSprite) then
 		-- if the target is incapacitated || the target is in combat with someone else || the blackguard is invisible
-		if not EEex_BAnd(targetGeneralState, 0x100029) == 0 or CGameSprite.m_targetId ~= sourceSprite.m_id or sourceSprite:getLocalInt("gtIsInvisible") == 1 then
+		if EEex_BAnd(targetGeneralState, 0x100029) ~= 0 or CGameSprite.m_targetId ~= sourceSprite.m_id or sourceSprite:getLocalInt("gtIsInvisible") == 1 then
 			setTimer:executeResponseAsAIBaseInstantly(sourceSprite)
 			--
 			CGameSprite:applyEffect({
