@@ -3,6 +3,9 @@
 function GTCLV01(CGameEffect, CGameSprite)
 	local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId)
 	--
+	local inWeaponRange = EEex_Trigger_ParseConditionalString("InWeaponRange(EEex_LuaObject)")
+	local reallyForceSpell = EEex_Action_ParseResponseString('ReallyForceSpellRES("CDCLEAVE",EEex_LuaObject)')
+	--
 	local targetGeneralState = CGameSprite.m_derivedStats.m_generalState + CGameSprite.m_bonusStats.m_generalState
 	--
 	if EEex_IsBitSet(targetGeneralState, 11) then -- STATE_DEAD (BIT11)
@@ -16,17 +19,16 @@ function GTCLV01(CGameEffect, CGameSprite)
 		for _, itrSprite in ipairs(spriteArray) do
 			EEex_LuaObject = itrSprite -- must be global
 			local spriteGeneralState = itrSprite.m_derivedStats.m_generalState + itrSprite.m_bonusStats.m_generalState
-			local inWeaponRange = EEex_Trigger_ParseConditionalString("InWeaponRange(EEex_LuaObject)")
-			local reallyForceSpell = EEex_Action_ParseResponseString('ReallyForceSpellRES("CDCLEAVE",EEex_LuaObject)')
 			--
 			if inWeaponRange:evalConditionalAsAIBase(sourceSprite) and EEex_IsBitUnset(spriteGeneralState, 11) then
 				reallyForceSpell:executeResponseAsAIBaseInstantly(sourceSprite)
-				inWeaponRange:free()
-				reallyForceSpell:free()
 				break
 			end
 		end
 	end
+	--
+	inWeaponRange:free()
+	reallyForceSpell:free()
 end
 
 -- cdtweaks, NWN-ish Cleave feat for Fighters --
