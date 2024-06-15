@@ -3,6 +3,8 @@
 function GTCLV01(CGameEffect, CGameSprite)
 	local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId)
 	--
+	local sourceSeeInvisible = sourceSprite.m_derivedStats.m_bSeeInvisible + sourceSprite.m_bonusStats.m_bSeeInvisible
+	--
 	local inWeaponRange = EEex_Trigger_ParseConditionalString("InWeaponRange(EEex_LuaObject)")
 	local reallyForceSpell = EEex_Action_ParseResponseString('ReallyForceSpellRES("CDCLEAVE",EEex_LuaObject)')
 	--
@@ -21,8 +23,10 @@ function GTCLV01(CGameEffect, CGameSprite)
 			local spriteGeneralState = itrSprite.m_derivedStats.m_generalState + itrSprite.m_bonusStats.m_generalState
 			--
 			if inWeaponRange:evalConditionalAsAIBase(sourceSprite) and EEex_IsBitUnset(spriteGeneralState, 11) then
-				reallyForceSpell:executeResponseAsAIBaseInstantly(sourceSprite)
-				break
+				if EEex_IsBitUnset(spriteGeneralState, 0x4) or sourceSeeInvisible > 0 then
+					reallyForceSpell:executeResponseAsAIBaseInstantly(sourceSprite)
+					break
+				end
 			end
 		end
 	end
