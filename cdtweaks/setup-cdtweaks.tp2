@@ -2822,6 +2822,20 @@ REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/divine_grace_dark_blessing.tra~ @7
 LABEL ~cd_tweaks_divine_grace_dark_blessing~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Circle Kick class feat for Monks                                \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @278000 DESIGNATED 2780
+GROUP @9
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/circle_kick.tra~ @7
+LABEL ~cd_tweaks_circle_kick~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
