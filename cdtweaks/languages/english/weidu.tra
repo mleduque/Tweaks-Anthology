@@ -134,6 +134,14 @@ The uninstall messages above are normal and expected.
 @24001 = ~Add Black Outline~
 @24100 = ~Add Gray Outline~
 
+@25000 = ~Colorize NPC Names and Tooltips~
+@25001 = ~Normal brightness~
+@25100 = ~Slightly increased brightness~
+@25200 = ~Moderately increased brightness~
+@25300 = ~Slightly decreased brightness~
+@25400 = ~Moderately decreased brightness~
+@25500 = ~Original color~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
