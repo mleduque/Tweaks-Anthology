@@ -19,6 +19,22 @@ DEFINE_ACTION_FUNCTION 2h_weapons
           2h_paperdoll = S2
 BEGIN
 
+//  ACTION_IF MOD_IS_INSTALLED ~cdtweaks.tp2~ ~2160~ BEGIN // rebalanced weap profs
+//    ACTION_IF prof_check = 89 THEN BEGIN prof_check = 89 END // bastard
+//    ACTION_IF prof_check = 92 THEN BEGIN prof_check = 92 END // axe
+//    ACTION_IF prof_check = 94 THEN BEGIN prof_check = 94 END // katana
+//  END ELSE 
+  ACTION_IF MOD_IS_INSTALLED ~cdtweaks.tp2~ ~2161~ OR MOD_IS_INSTALLED ~cdtweaks.tp2~ ~2162~ BEGIN // bg weap profs
+    ACTION_IF prof_check = 89 THEN BEGIN OUTER_SET prof_check = 103 END // bastard
+    ACTION_IF prof_check = 92 THEN BEGIN OUTER_SET prof_check = 104 END // axe
+    ACTION_IF prof_check = 94 THEN BEGIN OUTER_SET prof_check = 103 END // katana
+  END ELSE 
+  ACTION_IF MOD_IS_INSTALLED ~cdtweaks.tp2~ ~2163~ OR MOD_IS_INSTALLED ~cdtweaks.tp2~ ~2164~ BEGIN // iwd weap profs
+    ACTION_IF prof_check = 89 THEN BEGIN OUTER_SET prof_check =  99 END // bastard
+    ACTION_IF prof_check = 92 THEN BEGIN OUTER_SET prof_check =  94 END // axe
+    ACTION_IF prof_check = 94 THEN BEGIN OUTER_SET prof_check = 102 END // katana
+  END  
+
   ACTION_IF MOD_IS_INSTALLED ~amber.tp2~ ~0~ AND prof_check != 92 BEGIN // amber compat, but only for 2h bastard swords and 2h katanas
     WITH_TRA ~amber/tra/english/dialogs.tra~ ~amber/tra/%LANGUAGE%/dialogs.tra~ BEGIN
       OUTER_SET amber_name    = RESOLVE_STR_REF(@100)
