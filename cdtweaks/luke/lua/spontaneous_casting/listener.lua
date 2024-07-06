@@ -40,7 +40,9 @@ EEex_Key_AddPressedListener(function(key)
 					sprite:applyEffect({
 						["effectID"] = 214, -- Select spell
 						["durationType"] = 1,
-						["res"] = "CDSCGOOD", -- 2da
+						["effectAmount"] = 1,
+						["dwFlags"] = 3,
+						["res"] = "GTSPCAST", -- lua function
 						["sourceID"] = sprite.m_id,
 						["sourceTarget"] = sprite.m_id,
 					})
@@ -49,7 +51,9 @@ EEex_Key_AddPressedListener(function(key)
 					sprite:applyEffect({
 						["effectID"] = 214, -- Select spell
 						["durationType"] = 1,
-						["res"] = "CDSCEVIL", -- 2da
+						["effectAmount"] = 2,
+						["dwFlags"] = 3,
+						["res"] = "GTSPCAST", -- lua function
 						["sourceID"] = sprite.m_id,
 						["sourceTarget"] = sprite.m_id,
 					})

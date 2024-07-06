@@ -1,11 +1,5 @@
 DEFINE_ACTION_FUNCTION "SPONTANEOUS_CASTING"
 BEGIN
-	LAM "READ_SPELL_IDS"
-	//
-	COPY "cdtweaks\luke\lua\spontaneous_casting\cdscevil.2da" "override" "cdtweaks\luke\lua\spontaneous_casting\cdscgood.2da" "override"
-		EVALUATE_BUFFER
-		PRETTY_PRINT_2DA
-	BUT_ONLY_IF_IT_CHANGES
 	// Listener: run 'func' each time a sprite has finished evaluating its effects
 	WITH_SCOPE BEGIN
 		OUTER_FOR ("i" = 1 ; "%i%" <= 5 ; "i" += 1) BEGIN
@@ -13,4 +7,6 @@ BEGIN
 		END
 		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Listeners" "sourceFileSpec" = "cdtweaks\luke\lua\spontaneous_casting\listener.lua" "destRes" = "m_gtlstn" END
 	END
+	//
+	LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Functions to be invoked via op214" "sourceFileSpec" = "cdtweaks\luke\lua\spontaneous_casting\custom_214.lua" "destRes" = "m_gt#214" END
 END
