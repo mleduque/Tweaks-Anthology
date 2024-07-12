@@ -54,7 +54,7 @@
 @53 = ~Spells can be stored in a (Minor) Spell Trigger so that they may be used faster and without interruption during combat.~
 @54 = ~The mage spell (Minor) Spell Turning can be used to reflect spells back on an enemy magic-user or priest.~
 @55 = ~Protection From Evil, 10' Radius should be cast on the party before any demon-summoning spells are cast.~
-@56 = ~[IWDEE only]The store of Orrick the Grey will be upgraded several times in the course of the main story. It may be worthwhile to return to Kuldahar once in a while.~
+@56 = ~[IWDEE only]Orrick the Grey will restock his store with new spell scrolls and items several times in the course of the main story. It may be worthwhile to return to Kuldahar once in a while.~
 @57 = ~The 3rd-level priest spell Zone Of Sweet Air will remove all cloud area effect spells such as Stinking Cloud.~
 @58 = ~When casting the reverse of healing spells (such as Cause Wounds), the priest must roll to hit the target. Otherwise, the spell is wasted.~
 @59 = ~A Mage will lose 1 point of Constitution permanently if <PRO_HISHER> familiar dies.~
@@ -66,6 +66,9 @@
 @65 = ~[BG2:ToB only]Many items can be built or upgraded by Cespenar the imp. He can be found in your pocket plane.~
 @66 = ~[BG2EE only]The massive dungeon of Watcher's Keep can be accessed from both Baldur's Gate 2: Shadows of Amn and from Throne of Bhaal.~
 @67 = ~[IWDEE only]Talk to Hjollder in Kuldahar if you want to start the Heart of Winter campaign in the course of the main story. Your character must have reached 250,000 experience, however.~
+@68 = ~Press the "Magnifying Glass" button on the bottom right of the main screen to highlight all objects on the screen that can be manipulated and to display your party members' Hit Points as well as the general health status of monsters.~
+@69 = ~Your journal allows you to add custom notes. Make use of that feature to record details that are not covered by quest entries.~
+@70 = ~[All except IWDEE]Remember that, unlike using the Knock spell or physical force, having locks picked by a thief grants you experience.~
 
 // Misc. strings
 @500 = ~HINT: ~

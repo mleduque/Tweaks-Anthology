@@ -66,6 +66,9 @@
 @65 = ~Viele Gegenstände können durch das Teufelchen Cespenar verbessert oder hergestellt werden. Ihr könnt Cespenar im Einsprengsel finden.~
 @66 = ~Die Wachende Festung ist ein riesiges Verlies und kann sowohl von „Baldurs Gate 2: Schatten von Amn“ als auch von „Thron des Bhaal“ aus gespielt werden.~
 @67 = ~[IWDEE only]Sprecht mit Hjollder in Kuldahar, wenn Ihr die Erweiterung „Herz des Winters“ im Verlauf der Haupthandlung des Spiels starten möchtet. Euer Charakter muss aber mindestens 250.000 Erfahrungspunkte besitzen.~
+@68 = ~Klickt auf das „Lupen“-Symbol unten rechts auf dem Bildschirm, um alle Objekte hervorzuheben, mit denen man interagieren kann und um die Trefferpunkte der Gruppenmitglieder als auch den allgemeinen Gesundheitszustand von Monstern anzuzeigen.~
+@69 = ~Ihr könnt Eurem Tagebuch auch eigene Notizen hinzufügen. Nutzt diese Option, um Einzelheiten zu vermerken, die nicht durch Aufgabenbeschreibungen erfasst wurden.~
+@70 = ~[All except IWDEE]Denkt daran, dass Ihr durch das Öffnen von Schlössern durch einen Dieb im Gegensatz zum Gebrauch des „Klopfen“-Zaubers oder physischer Gewalt Erfahrungspunkte erhaltet.~
 
 // Misc. strings
 @500 = ~HINWEIS: ~
