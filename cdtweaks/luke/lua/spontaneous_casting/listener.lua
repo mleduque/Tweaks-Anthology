@@ -85,6 +85,9 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 		if action.m_actionID == 191 then -- SpellNoDec()
 			--
 			local spellResRef = action.m_string1.m_pchData:get()
+			if spellResRef == "" then
+				spellResRef = GT_Utility_DecodeSpell(action.m_specificID)
+			end
 			local spellHeader = EEex_Resource_Demand(spellResRef, "SPL")
 			local spellType = spellHeader.itemType
 			local spellLevel = spellHeader.spellLevel
