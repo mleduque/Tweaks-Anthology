@@ -5,10 +5,21 @@ EEex_Key_AddPressedListener(function(key)
 	if not sprite then
 		return
 	end
+	-- cannot be used in conjunction with the Metamagic feat
+	local metamagicRes = {"CDMTMQCK", "CDMTMEMP", "CDMTMEXT", "CDMTMMAX", "CDMTMSIL", "CDMTMSTL"}
+	for _, v in ipairs(metamagicRes) do
+		sprite:applyEffect({
+			["effectID"] = 321, -- Remove effects by resource
+			["durationType"] = 1,
+			["res"] = v,
+			["sourceID"] = sprite.m_id,
+			["sourceTarget"] = sprite.m_id,
+		})
+	end
 	-- check for op145
 	local found = false
-	local disableSpellcasting = function(fx)
-		if (fx.m_effectId == 0x91) and (fx.m_dWFlags == 1 or fx.m_dWFlags == 3) then
+	local disableSpellcasting = function(effect)
+		if (effect.m_effectId == 0x91) and (effect.m_dWFlags == 1 or effect.m_dWFlags == 3) then
 			found = true
 			return true
 		end
