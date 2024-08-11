@@ -1,6 +1,10 @@
 -- cdtweaks: NWN-ish Armor vs. Dexterity --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
+	-- Sanity check
+	if not EEex_GameObject_IsSprite(sprite) then
+		return
+	end
 	-- internal function that applies the actual malus
 	local apply = function(ACMalus)
 		-- Update var
