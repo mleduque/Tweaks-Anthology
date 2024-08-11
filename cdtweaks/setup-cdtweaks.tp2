@@ -4385,6 +4385,41 @@ REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~ &&
                    VALID_SCRIPT_TRIGGERS ~INI("key",0)~) @25 // This component is not available for your game.
 LABEL ~cd_tweaks_restored_loading_hints~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Explicit Cast Warnings                                     \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// mage and priest                                            \\\\\
+/////                                                            \\\\\
+
+BEGIN @341001 DESIGNATED 3410
+GROUP @4
+SUBCOMPONENT @341000
+LABEL ~cd_tweaks_casting_warnings_mp~
+
+/////                                                            \\\\\
+///// mage, priest and innate                                    \\\\\
+/////                                                            \\\\\
+
+BEGIN @341100 DESIGNATED 3411
+GROUP @4
+SUBCOMPONENT @341000
+LABEL ~cd_tweaks_casting_warnings_mpi~
+
+/////                                                            \\\\\
+///// all                                                        \\\\\
+/////                                                            \\\\\
+
+BEGIN @341200 DESIGNATED 3412
+GROUP @4
+SUBCOMPONENT @341000
+LABEL ~cd_tweaks_casting_warnings_all~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

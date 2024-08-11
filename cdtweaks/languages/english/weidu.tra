@@ -714,6 +714,11 @@ Use Baldur.lua options: a7_interval_ini
 
 @340000 = ~Restored Loading Hints~
 
+@341000 = ~Explicit Cast Warnings~
+@341001 = ~Mage and priest spells only~
+@341100 = ~Mage, priest, and innate spells only~
+@341200 = ~All spells (check readme)~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
