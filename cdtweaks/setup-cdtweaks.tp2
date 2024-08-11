@@ -595,6 +595,80 @@ SUBCOMPONENT @24000
 REQUIRE_PREDICATE !GAME_IS ~pst pstee iwd2 iwd how totlm~ @25
 LABEL ~cd_tweaks_outline_white_spell_icons_with_gray~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Colorize NPC names and tooltips                            \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// Normal brightness                                          \\\\\
+/////                                                            \\\\\
+
+BEGIN @25001 DESIGNATED 250
+GROUP @11
+SUBCOMPONENT @25000
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~ui.menu~ @25
+LABEL ~cd_tweaks_colorize_npc_names_brightness_normal~
+
+/////                                                            \\\\\
+///// Slightly increased brightness                              \\\\\
+/////                                                            \\\\\
+
+BEGIN @25100 DESIGNATED 251
+GROUP @11
+SUBCOMPONENT @25000
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~ui.menu~ @25
+LABEL ~cd_tweaks_colorize_npc_names_brightness_increased_slightly~
+
+/////                                                            \\\\\
+///// Moderately increased brightness                            \\\\\
+/////                                                            \\\\\
+
+BEGIN @25200 DESIGNATED 252
+GROUP @11
+SUBCOMPONENT @25000
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~ui.menu~ @25
+LABEL ~cd_tweaks_colorize_npc_names_brightness_increased_moderately~
+
+/////                                                            \\\\\
+///// Slightly decreased brightness                              \\\\\
+/////                                                            \\\\\
+
+BEGIN @25300 DESIGNATED 253
+GROUP @11
+SUBCOMPONENT @25000
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~ui.menu~ @25
+LABEL ~cd_tweaks_colorize_npc_names_brightness_decreased_slightly~
+
+/////                                                            \\\\\
+///// Moderately decreased brightness                            \\\\\
+/////                                                            \\\\\
+
+BEGIN @25400 DESIGNATED 254
+GROUP @11
+SUBCOMPONENT @25000
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~ui.menu~ @25
+LABEL ~cd_tweaks_colorize_npc_names_brightness_decreased_moderately~
+
+/////                                                            \\\\\
+///// Original color                                             \\\\\
+/////                                                            \\\\\
+
+BEGIN @25500 DESIGNATED 255
+GROUP @11
+SUBCOMPONENT @25000
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~ui.menu~ @25
+LABEL ~cd_tweaks_colorize_npc_names_color_original~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
