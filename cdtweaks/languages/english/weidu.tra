@@ -712,6 +712,8 @@ Use Baldur.lua options: a7_interval_ini
 @339000 = ~Automatic Use of Ranger Tracking Skill~
 @339001 = ~Cannot read tracking table: component installed but no changes made.~
 
+@340000 = ~Restored Loading Hints~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\

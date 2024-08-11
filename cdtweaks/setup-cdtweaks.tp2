@@ -4371,6 +4371,20 @@ GROUP @4
 REQUIRE_PREDICATE ((GAME_IS ~tob bg2ee bgt eet iwdee how totlm iwd-in-bg2~) OR (MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~110~)) @25 // games with tracking, or tracking via IWDification
 LABEL ~cd_tweaks_automatic_ranger_tracking~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Restored Loading Hints                                     \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @340000 DESIGNATED 3400
+GROUP @4
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~ &&
+                   VALID_SCRIPT_TRIGGERS ~INI("key",0)~) @25 // This component is not available for your game.
+LABEL ~cd_tweaks_restored_loading_hints~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
