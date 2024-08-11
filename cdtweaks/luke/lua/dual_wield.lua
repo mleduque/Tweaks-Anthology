@@ -1,6 +1,10 @@
 -- cdtweaks, dual-wield feat for rangers: Force the targeted creature to wield light armors (or no armor) in order to benefit from Two-Weapon Style --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
+	-- Sanity check
+	if not EEex_GameObject_IsSprite(sprite) then
+		return
+	end
 	-- internal function that applies the actual penalty
 	local apply = function(spriteProficiency2Weapon)
 		-- Update var
