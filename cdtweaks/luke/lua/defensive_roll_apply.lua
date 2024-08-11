@@ -1,6 +1,10 @@
 -- cdtweaks: NWN Defensive Roll feat for Rogues --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
+	-- Sanity check
+	if not EEex_GameObject_IsSprite(sprite) then
+		return
+	end
 	-- internal function that applies the actual feat
 	local apply = function()
 		-- Mark the creature as 'feat applied'
@@ -44,7 +48,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			if (EEex_IsBitUnset(spriteFlags, 0x6) or spriteLevel1 > spriteLevel2) and spriteLevel2 >= 5 then
 				applyAbility = true
 			end
-		elseif spriteClassStr = "FIGHTER_MAGE_THIEF" then
+		elseif spriteClassStr == "FIGHTER_MAGE_THIEF" then
 			if spriteLevel3 >= 5 then
 				applyAbility = true
 			end
@@ -59,7 +63,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			if (EEex_IsBitUnset(spriteFlags, 0x6) or spriteLevel1 > spriteLevel2) and spriteLevel2 >= 10 then
 				applyAbility = true
 			end
-		elseif spriteClassStr = "FIGHTER_MAGE_THIEF" then
+		elseif spriteClassStr == "FIGHTER_MAGE_THIEF" then
 			if spriteLevel3 >= 10 then
 				applyAbility = true
 			end
