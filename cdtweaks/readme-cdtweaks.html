@@ -985,13 +985,14 @@
       <p> This component aims at giving Clerics some Spontaneous Casting capabilities.</p>
       <p> As a result, after installing this component, Clerics will be able to spontaneously cast the &quot;cure&quot; and &quot;cause&quot; spells (from light to critical wounds), which will consume a readied spell slot of the appropriate level. </p>
       <p> As a completely artificial example, suppose a Cleric has the following level 1 spells memorized: Armor of Faith, Armor of Faith, Bless. Even if Cure Light Wounds is missing, it will still be able to cast it! Upon casting it, all level 1 spells memorized will be decremented by one, meaning that it will end up with only Armor of Faith memorized (in other words, it can &quot;sacrifice&quot; one of the two Armor of Faith and Bless to spontaneously cast Cure Light Wounds).</p>
-      <p> Spells that can be spontaneously cast are denoted with an <code>S</code> (Spontaneous) and can be cast from the Special Ability button (<code>F12</code>). </p>
+      <p> Spells that can be spontaneously cast can be accessed via pressing the <code>Left Alt</code> key while being in "Cast Spell" mode (<code>F7</code> button). </p>
       <p> On top of that, note that: </p>
       <ul>
         <li>only good-aligned Clerics can spontaneously cast the &quot;cure&quot; wounds spells</li>
         <li>only evil-aligned Clerics can spontaneously cast the &quot;cause&quot; wounds spells</li>
       </ul>
       <p>As a result, neutral-aligned Clerics are unaffected by this mechanic. </p>
+
       <p> <strong>Weapon Finesse [Luke]</strong><br />
         <em><abbr title="Enhanced Edition">EEex</abbr></em> </p>
       <p> This component aims at implementing 3E Weapon Finesse feat for Thieves.</p>
@@ -1027,24 +1028,74 @@
       </ul>
       <p> <strong>Divine Grace / Dark Blessing feat for Paladins / Blackguards [Luke]</strong><br />
         <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component adds the passive feats Divine Grace and Dark Blessing to Paladins and Blackguards. </p>
-      <ul>
-        <li>Divine Grace: The paladin adds its charisma bonus (if positive) to all saving throws.</li>
-        <li>Dark Blessing: Blackguards add their charisma bonus to all saving throws.</li>
-      </ul>
-      Here is how the bonus scales with charisma:
-      <ul>
-        <li> starting from 10, every <code>+2</code> points of charisma result in +1 bonus to all saves
-          <ul>
-            <li>So a 18 CHA character will get a +4 bonus</li>
-          </ul>
-        </li>
-        <li> starting from 10, every <code>-2</code> points of charisma result in -1 penalty to all saves
-          <ul>
-            <li>So a 8 CHA character will get a -1 penalty</li>
-          </ul>
-        </li>
-      </ul>
+
+
+      <p> This component adds the passive feats Divine Grace and Dark Blessing to Paladins and Blackguards.
+      </p>
+        <ul>
+          <li>Divine Grace: The paladin adds its charisma bonus (if positive) to all saving throws.</li>
+          <li>Dark Blessing: Blackguards add their charisma bonus to all saving throws.</li>
+        </ul>
+        Here is how the bonus scales with charisma:
+        <ul>
+          <li>
+            starting from 10, every <code>+2</code> points of charisma result in +1 bonus to all saves
+            <ul>
+              <li>So a 18 CHA character will get a +4 bonus</li>
+            </ul>
+          </li>
+          <li>
+            starting from 10, every <code>-2</code> points of charisma result in -1 penalty to all saves
+            <ul>
+              <li>So a 8 CHA character will get a -1 penalty</li>
+            </ul>
+          </li>
+        </ul>
+
+      <p> <strong>Good Aim racial feat for Halflings [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p>This passive feat grants Halflings a <code>+1</code> THAC0 bonus with throwing weapons (i.e. throwing daggers, throwing axes, throwing hammers, darts).</p>
+
+      <p> <strong>Cleave class feat for Fighters [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p> This component aims at implementing the NWN feat Cleave.<br>
+        As a result, after installing it, if the character kills an opponent, he gets a free attack against any opponent who is within melee weapon range.<br>
+        Notes:
+        <ul>
+          <li>Use: automatic, but only available to Fighters.</li>
+        </ul>
+      </p>
+
+      <p> <strong>Sneak Attack class feat for Blackguards [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p> This component adds the passive feat Sneak Attack to Blackguards.<br>
+        Whenever the character makes a successful attack against an opponent who is incapacitated, cannot see them, or who is in combat with someone else, the character's blow delivers extra damage as if it was a <code>STALKER</code> of the same level (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/sneakatt.htm"><code>sneakatt.2da</code></a>).<br>
+        Notes:
+        <ul>
+          <li>Use: automatic, but limited to once per round.</li>
+          <li>Creatures without discernible anatomies (see component <i>Make Certain Creatures Immune to Backstab/Sneak Attack</i> ) or that are otherwise immune to sneak attacks, either via spells/items or naturally (f.i. Barbarians), are unaffected by this feat.</li>
+          <li>Sneak attacks can be made with both melee and ranged weapons.</li>
+        </ul>
+      </p>
+
+      <p> <strong>Fearless racial feat for halflings [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p> This component adds the passive racial feat Fearless to halflings.<br>
+        This feat grants a <code>+2</code> bonus on saving throws against fear spells and effects.
+      </p>
+
+      <p> <strong>Poison Save class feat for Assassins [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p> This component adds the class feat Poison Save to Assassins.<br>
+        This passive feat grants a <code>+2</code> bonus on saving throws against poison spells and effects.
+      </p>
+
+      <p> <strong>Planar Turning class feat for Paladins / Clerics [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p> This component adds the class feat Planar Turning to Paladins and Clerics.<br>
+        This feat allows outsiders (solars, planetars, elementals, imps, mephits, demons, devils, salamanders, genies and the like) to be turned like undead.<br>
+        As a result, when the Turn Undead ability is activated, any extraplanar being in visual range of the priest are turned, fleeing in terror, if the priest's level is high enough. Especially high-level priests destroy these creatures instead. Evil priests gain control of these extraplanar beings instead of destroying them.
+      </p>
 
       <p> <strong>Circle Kick class feat for Monks [Luke]</strong><br />
         <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
@@ -1055,7 +1106,6 @@
           <li>Use: automatic, but only available to Monks.</li>
         </ul>
       </p>
-
     </div>
     <div class="ribbon_rectangle_h3">
       <h3> <a id="contents_convenience" name="contents_convenience"></a>Convenience Tweaks and/or Cheats </h3>
