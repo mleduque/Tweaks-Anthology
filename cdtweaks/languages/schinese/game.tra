@@ -317,6 +317,8 @@
 @111123 = ~船屋~
 @111124 = ~呼啸绞刑架旅店~
 @111125 = ~波维斯的小屋~
+@111126 = ~隐蔽处~
+@111127 = ~拱廊~
 
 @114001 = ~宝石是一种在切割并打磨后用于收藏或镶在首饰上的矿石。~
 
@@ -557,7 +559,7 @@
 // Typical find trap penalty line in original armors
 @210004 = ~^\([ %TAB%]*Find/Remove Traps:.+\)\|\([ %TAB%]*.?.?.?[ %TAB%]*寻找陷阱：.+\)$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 // Title for find trap added after Weight line, penalty is added after this text
-@210005 = ~寻找陷阱：~
+@210005 = ~寻找/拆除陷阱：~
 // Typical pick pocket penalty line in original armors
 @210006 = ~^[ %TAB%]*.?.?.?[ %TAB%]*扒窃：.+$[%MNL%%LNL%%WNL%]+~ // lone . at front to catch EE emdash
 // Title for pick pocket added after Weight line, penalty is added after this text
@@ -888,6 +890,12 @@
 @337001 = ~000000003-Mortuary~
 @337002 = ~000000004-Lower Ward~
 @337003 = ~000000005-To Ravel's Maze~
+
+// these two strings will be combined as a prefix and suffix to write "Casting Grease..." to the combat log
+// adjust as needed for your grammar, e.g. if you don't need a prefix then make @341002 = ~~
+// note that you need to include spaces, if needed
+@341002 = ~施法中~
+@341003 = ~……~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
