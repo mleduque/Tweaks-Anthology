@@ -54,7 +54,6 @@ END ELSE BEGIN
         INT_VAR
           "kit_class" = IDS_OF_SYMBOL ("class" "FIGHTER_CLERIC")
           "mixed" = RESOLVE_STR_REF (@1)
-          "lower" = RESOLVE_STR_REF (@2)
           "visible" = 0 // not available to PCs
         STR_VAR
           "kit_name" = "CDTWEAKS_YESLICK_AXES"
