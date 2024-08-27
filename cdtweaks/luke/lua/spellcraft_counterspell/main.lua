@@ -127,8 +127,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 														["sourceTarget"] = sprite.m_id,
 													})
 													-- op146*p2=0 corresponds to 'ForceSpell()', so we have to manually set the aura
-													itrSprite.m_castCounter = 0
-													itrSprite.m_bInCasting = 1
+													itrSprite.m_castCounter = -1
 													--
 													goto continue
 												end
