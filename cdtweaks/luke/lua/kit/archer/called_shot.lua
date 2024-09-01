@@ -1,3 +1,31 @@
+-- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Creatures with no arms --
+
+local cdtweaks_CalledShot_NoArms = {
+	{"WEAPON"}, -- GENERAL.IDS
+	{"DOG", "WOLF", "ANKHEG", "BASILISK", "CARRIONCRAWLER", "SPIDER", "WYVERN", "SLIME", "BEHOLDER", "DEMILICH", "BEETLE", "BIRD", "WILL-O-WISP"}, -- RACE.IDS
+	{"WOLF_WORG", "ELEMENTAL_AIR", "WIZARD_EYE"}, -- CLASS.IDS
+	-- ANIMATE.IDS
+	{
+		"DOOM_GUARD", "DOOM_GUARD_LARGER",
+		"SNAKE", "DANCING_SWORD", "BLOB_MIST_CREATURE", "HAKEASHAR", "NISHRUU", "SNAKE_WATER",
+		"BOAR_ARCTIC", "BOAR_WILD", "BONEBAT", "WATER_WEIRD"
+	},
+}
+
+-- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Creatures with no legs --
+
+local cdtweaks_CalledShot_NoLegs = {
+	{"WEAPON"}, -- GENERAL.IDS
+	{"ANKHEG", "WYVERN", "SLIME", "BEHOLDER", "MEPHIT", "IMP", "YUANTI", "DEMILICH", "FEYR", "SALAMANDER", "BIRD", "WILL-O-WISP"}, -- RACE.IDS
+	{"MEPHIT", "ELEMENTAL_AIR", "WIZARD_EYE"}, -- CLASS.IDS
+	-- ANIMATE.IDS
+	{
+		"DOOM_GUARD", "DOOM_GUARD_LARGER",
+		"IMP", "SNAKE", "DANCING_SWORD", "MIST_CREATURE", "BLOB_MIST_CREATURE", "HAKEASHAR", "NISHRUU", "SNAKE_WATER",
+		"LEMURE", "BONEBAT", "SHADOW_SMALL", "SHADOW_LARGE", "WATER_WEIRD"
+	},
+}
+
 -- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability --
 
 function GTCLSHOT(CGameEffect, CGameSprite)
@@ -28,19 +56,7 @@ function GTCLSHOT(CGameEffect, CGameSprite)
 	local targetClassStr = GT_Resource_IDSToSymbol["class"][CGameSprite.m_typeAI.m_Class]
 	local targetAnimateStr = GT_Resource_IDSToSymbol["animate"][CGameSprite.m_animation.m_animation.m_animationID]
 	--
-	local cdtweaks_CalledShot_NoArms = {
-		[targetGeneralStr] = {"WEAPON"},
-		[targetRaceStr] = {"DOG", "WOLF", "ANKHEG", "BASILISK", "CARRIONCRAWLER", "SPIDER", "WYVERN", "SLIME", "BEHOLDER", "DEMILICH", "BEETLE", "BIRD", "WILL-O-WISP"},
-		[targetClassStr] = {"WOLF_WORG"},
-		[targetAnimateStr] = {"SNAKE", "SNAKE_WATER", "HAKEASHAR", "NISHRUU", "DANCING_SWORD", "WATER_WEIRD"},
-	}
-	--
-	local cdtweaks_CalledShot_NoLegs = {
-		[targetGeneralStr] = {"WEAPON"},
-		[targetRaceStr] = {"ANKHEG", "WYVERN", "SLIME", "BEHOLDER", "MEPHIT", "IMP", "YUANTI", "DEMILICH", "FEYR", "SALAMANDER", "BIRD", "WILL-O-WISP"},
-		[targetClassStr] = {"MEPHIT"},
-		[targetAnimateStr] = {"SNAKE", "SNAKE_WATER", "MIST_CREATURE", "HAKEASHAR", "NISHRUU", "IMP", "SHADOW_SMALL", "SHADOW_LARGE", "DANCING_SWORD", "WATER_WEIRD"},
-	}
+	local targetIDS = {targetGeneralStr, targetRaceStr, targetClassStr, targetAnimateStr}
 	-- Bow with arrows equipped || bow with unlimited ammo equipped
 	if selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW" then
 		if CGameEffect.m_effectAmount == 0 then
@@ -86,9 +102,9 @@ function GTCLSHOT(CGameEffect, CGameSprite)
 			local found = false
 			--
 			do
-				for targetSymbol, symbolList in pairs(cdtweaks_CalledShot_NoArms) do
+				for index, symbolList in ipairs(cdtweaks_CalledShot_NoArms) do
 					for _, symbol in ipairs(symbolList) do
-						if targetSymbol == symbol then
+						if targetIDS[index] == symbol then
 							found = true
 							break
 						end
@@ -128,9 +144,9 @@ function GTCLSHOT(CGameEffect, CGameSprite)
 			local found = false
 			--
 			do
-				for targetSymbol, symbolList in pairs(cdtweaks_CalledShot_NoLegs) do
+				for index, symbolList in ipairs(cdtweaks_CalledShot_NoLegs) do
 					for _, symbol in ipairs(symbolList) do
-						if targetSymbol == symbol then
+						if targetIDS[index] == symbol then
 							found = true
 							break
 						end
