@@ -52,6 +52,7 @@ BEGIN
 			//
 			LPF "ADD_SPELL_HEADER" INT_VAR "target" = 5 "range" = 30 STR_VAR "icon" = "CDCTRSPL" END
 			//
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 138 "target" = 1 "parameter2" = 7 END // SEQ_READY
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 321 "target" = 1 "timing" = 1 STR_VAR "resource" = "%DEST_RES%" END // remove effects by resource
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 172 "target" = 1 "timing" = 1 STR_VAR "resource" = "%DEST_RES%" END // remove spell
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 139 "target" = 1 "parameter1" = RESOLVE_STR_REF (@102) "timing" = 1 END // string

@@ -127,7 +127,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 														["sourceTarget"] = sprite.m_id,
 													})
 													-- op146*p2=0 corresponds to 'ForceSpell()', so we have to manually set the aura
-													itrSprite.m_castCounter = -1
+													itrSprite.m_castCounter = 0
 													--
 													goto continue
 												end
@@ -184,14 +184,14 @@ function GTCTRSPL(CGameEffect, CGameSprite)
 	end
 end
 
--- cdtweaks, Counterspell class feat for spellcasters --
+-- cdtweaks, Counterspell class feat for spellcasters. Make sure it cannot be disrupted --
 
 EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	local stats = GT_Resource_SymbolToIDS["stats"]
 	--
 	if sprite:getLocalInt("cdtweaksCounterspell") == 0 then
 		if action.m_actionID == 31 and action.m_string1.m_pchData:get() == "CDCTRSP1" then
-			action.m_actionID = 160 -- ApplySpell()
+			action.m_actionID = 113 -- ForceSpell()
 		end
 	elseif sprite:getLocalInt("cdtweaksCounterspell") == 1 then
 		if EEex_Sprite_GetStat(sprite, stats["GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER"]) == 0 then
