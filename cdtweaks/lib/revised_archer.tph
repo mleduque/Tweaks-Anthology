@@ -3,6 +3,7 @@ BEGIN
 	LAF "GT_ADD_SPELL"
 	INT_VAR
 		"level" = 1
+		"type" = 4
 	STR_VAR
 		"idsName" = "ARCHER_CALLED_SHOT"
 	RET
@@ -11,6 +12,7 @@ BEGIN
 	LAF "GT_ADD_SPELL"
 	INT_VAR
 		"level" = 1
+		"type" = 4
 	STR_VAR
 		"idsName" = "ARCHER_KIT_BONUS"
 	RET
