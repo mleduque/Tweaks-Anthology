@@ -8,14 +8,14 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that applies the actual bonus
 	local apply = function(bonus)
 		-- Update tracking var
-		sprite:setLocalInt("cdtweaksRevisedArcherHelper", bonus)
+		sprite:setLocalInt("cdtweaksArcherKitBonus", bonus)
 		-- Mark the creature as 'bonus applied'
 		sprite:setLocalInt("cdtweaksRevisedArcher", 1)
 		--
 		sprite:applyEffect({
 			["effectID"] = 321, -- Remove effects by resource
 			["durationType"] = 1,
-			["res"] = "CDFRLNTD",
+			["res"] = "%ARCHER_KIT_BONUS%",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
 		})
@@ -23,7 +23,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			["effectID"] = 167, -- Missile THAC0 bonus
 			["durationType"] = 9,
 			["effectAmount"] = bonus,
-			["m_sourceRes"] = "CDFRLNTD",
+			["m_sourceRes"] = "%ARCHER_KIT_BONUS%",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
 		})
@@ -31,7 +31,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			["effectID"] = 286, -- Missile weapon damage bonus
 			["durationType"] = 9,
 			["effectAmount"] = bonus,
-			["m_sourceRes"] = "CDFRLNTD",
+			["m_sourceRes"] = "%ARCHER_KIT_BONUS%",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
 		})
@@ -83,7 +83,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	else
 		if applyCondition then
 			-- Check if level has changed since the last application
-			if bonus ~= sprite:getLocalInt("cdtweaksRevisedArcherHelper") then
+			if bonus ~= sprite:getLocalInt("cdtweaksArcherKitBonus") then
 				apply(bonus)
 			end
 		else
@@ -93,7 +93,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			sprite:applyEffect({
 				["effectID"] = 321, -- Remove effects by resource
 				["durationType"] = 1,
-				["res"] = "CDFRLNTD",
+				["res"] = "%ARCHER_KIT_BONUS%",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})

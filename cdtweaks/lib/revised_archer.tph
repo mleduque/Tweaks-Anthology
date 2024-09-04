@@ -1,5 +1,22 @@
 DEFINE_ACTION_FUNCTION "REVISED_ARCHER"
 BEGIN
+	LAF "GT_ADD_SPELL"
+	INT_VAR
+		"level" = 1
+	STR_VAR
+		"idsName" = "ARCHER_CALLED_SHOT"
+	RET
+		"ARCHER_CALLED_SHOT" = "resName"
+	END
+	LAF "GT_ADD_SPELL"
+	INT_VAR
+		"level" = 1
+	STR_VAR
+		"idsName" = "ARCHER_KIT_BONUS"
+	RET
+		"ARCHER_KIT_BONUS" = "resName"
+	END
+	//
 	LAF "ADD_EXTENDED_STAT" STR_VAR "identifier" = "GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER" END
 	// update description
 	WITH_SCOPE BEGIN
@@ -47,13 +64,15 @@ BEGIN
 	END
 	// Called Shot (bows only!): Split it into two (arms/legs)
 	WITH_SCOPE BEGIN
+		ACTION_TO_LOWER "ARCHER_CALLED_SHOT"
 		// Arms
-		CREATE "spl" "cdcl121b"
-		COPY_EXISTING "cdcl121b.spl" "override"
+		CREATE "spl" "%ARCHER_CALLED_SHOT%b"
+		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.spl" "override"
 			WRITE_LONG NAME1 RESOLVE_STR_REF (@1)
 			WRITE_LONG NAME2 "-1"
 			WRITE_LONG UNIDENTIFIED_DESC RESOLVE_STR_REF (@2)
 			WRITE_LONG DESC "-1"
+			WRITE_LONG 0x18 (BIT14 BOR BIT25) // ignore dead/wild magic, castable when silenced
 			WRITE_SHORT 0x1C 4 // innate
 			WRITE_LONG 0x34 1 // level
 			WRITE_ASCII 0x3A "%DEST_RES%" #8 // icon
@@ -61,11 +80,11 @@ BEGIN
 			LPF "ADD_SPELL_HEADER" INT_VAR "range" = 30 STR_VAR "icon" = "%DEST_RES%" END
 			//
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 138 "target" = 1 "parameter2" = 7 END // SEQ_READY
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 321 "target" = 1 STR_VAR "resource" = "CDCL121" END // Remove effects by resource
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 2 STR_VAR "resource" = "GTCLSHOT" END // Invoke lua
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 321 "target" = 1 STR_VAR "resource" = "%ARCHER_CALLED_SHOT%" END // Remove effects by resource
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 2 STR_VAR "resource" = "%ARCHER_CALLED_SHOT%" END // Invoke lua
 		BUT_ONLY
 		// Legs
-		COPY_EXISTING "cdcl121b.spl" "override\cdcl121c.spl"
+		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.spl" "override\%ARCHER_CALLED_SHOT%c.spl"
 			WRITE_LONG NAME1 RESOLVE_STR_REF (@3)
 			WRITE_LONG UNIDENTIFIED_DESC RESOLVE_STR_REF (@4)
 			WRITE_ASCII 0x3A "%DEST_RES%" #8 // icon
@@ -73,20 +92,20 @@ BEGIN
 			LPF "ALTER_SPELL_HEADER" STR_VAR "icon" = "%DEST_RES%" END
 		BUT_ONLY
 		// EFFs
-		CREATE "eff" "cdcl121b"
-		COPY_EXISTING "cdcl121b.eff" "override"
+		CREATE "eff" "%ARCHER_CALLED_SHOT%b"
+		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.eff" "override"
 			WRITE_LONG 0x10 402 // Invoke Lua
 			WRITE_LONG 0x14 2 // Projectile target
 			WRITE_LONG 0x1C 1 // p1
 			WRITE_SHORT 0x2C 100 // prob1
-			WRITE_ASCII 0x30 "GTCLSHOT" #8 // Lua function
+			WRITE_ASCII 0x30 "%ARCHER_CALLED_SHOT%" #8 // Lua function
 		BUT_ONLY
 		//
-		COPY_EXISTING "cdcl121b.eff" "override\cdcl121c.eff"
+		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.eff" "override\%ARCHER_CALLED_SHOT%c.eff"
 			WRITE_LONG 0x1C 2 // p1
 		BUT_ONLY
 		//
-		COPY "cdtweaks\luke\bam\kit\archer\cdcl121b.bam" "override" "cdtweaks\luke\bam\kit\archer\cdcl121c.bam" "override"
+		COPY "cdtweaks\luke\bam\kit\archer\called_shot_arms.bam" "override\%ARCHER_CALLED_SHOT%b.bam" "cdtweaks\luke\bam\kit\archer\called_shot_legs.bam" "override\%ARCHER_CALLED_SHOT%c.bam"
 	END
 	// Point Blank Shot (bows only!)
 	WITH_SCOPE BEGIN

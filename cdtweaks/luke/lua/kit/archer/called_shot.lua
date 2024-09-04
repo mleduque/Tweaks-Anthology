@@ -28,7 +28,7 @@ local cdtweaks_CalledShot_NoLegs = {
 
 -- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability --
 
-function GTCLSHOT(CGameEffect, CGameSprite)
+function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 	local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId) -- CGameSprite
 	-- Check creature's equipment
 	local equipment = sourceSprite.m_equipment
@@ -69,7 +69,7 @@ function GTCLSHOT(CGameEffect, CGameSprite)
 					{["op"] = 167, ["tmg"] = 1, ["p1"] = -4}, -- missile thac0 bonus
 					{["op"] = 249, ["tmg"] = 1, ["res"] = CGameEffect.m_sourceRes:get()}, -- ranged hit effect
 					{["op"] = 142, ["tmg"] = 1, ["p2"] = 82} -- icon: called shot
-					{["op"] = 408, ["tmg"] = 1, ["res"] = "GTCLDSHT"}, -- projectile mutator
+					{["op"] = 408, ["tmg"] = 1, ["res"] = "%ARCHER_CALLED_SHOT%P"}, -- projectile mutator
 				}
 				--
 				for _, attributes in ipairs(effectCodes) do
@@ -81,7 +81,7 @@ function GTCLSHOT(CGameEffect, CGameSprite)
 						["res"] = attributes["res"] or "",
 						["duration"] = attributes["dur"] or 0,
 						["durationType"] = attributes["tmg"] or 0,
-						["m_sourceRes"] = "CDCL121",
+						["m_sourceRes"] = "%ARCHER_CALLED_SHOT%",
 						["m_sourceType"] = CGameEffect.m_sourceType,
 						["sourceID"] = sourceSprite.m_id,
 						["sourceTarget"] = sourceSprite.m_id,
@@ -125,7 +125,7 @@ function GTCLSHOT(CGameEffect, CGameSprite)
 						["duration"] = attributes["dur"] or 0,
 						["savingThrow"] = 0x2, -- save vs. breath
 						["saveMod"] = -1 * savebonus,
-						["m_sourceRes"] = "CDCL121B",
+						["m_sourceRes"] = "%ARCHER_CALLED_SHOT%B",
 						["m_sourceType"] = 1,
 						["sourceID"] = CGameEffect.m_sourceId,
 						["sourceTarget"] = CGameEffect.m_sourceTarget,
@@ -171,7 +171,7 @@ function GTCLSHOT(CGameEffect, CGameSprite)
 						["duration"] = attributes["dur"] or 0,
 						["savingThrow"] = 0x2, -- save vs. breath
 						["saveMod"] = -1 * savebonus,
-						["m_sourceRes"] = "CDCL121C",
+						["m_sourceRes"] = "%ARCHER_CALLED_SHOT%C",
 						["m_sourceType"] = 1,
 						["sourceID"] = CGameEffect.m_sourceId,
 						["sourceTarget"] = CGameEffect.m_sourceTarget,
@@ -216,7 +216,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		local calledShotMode = false
 		--
 		EEex_Utility_IterateCPtrList(sprite.m_timedEffectList, function(effect)
-			if effect.m_effectId == 249 and (effect.m_res:get() == "CDCL121B" or effect.m_res:get() == "CDCL121C") then
+			if effect.m_effectId == 249 and (effect.m_res:get() == "%ARCHER_CALLED_SHOT%B" or effect.m_res:get() == "%ARCHER_CALLED_SHOT%C") then
 				calledShotMode = true
 				return true
 			end
@@ -233,10 +233,15 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 				EEex_GameObject_ApplyEffect(sprite,
 				{
 					["effectID"] = 321, -- remove effects by resource
-					["res"] = "CDCL121",
+					["res"] = "%ARCHER_CALLED_SHOT%",
 					["sourceID"] = sprite.m_id,
 					["sourceTarget"] = sprite.m_id,
 				})
+			end
+		else
+			-- in case the character dies while swinging...
+			if sprite:getLocalInt("gtCGameSpriteStartedSwing") == 1 then
+				sprite:setLocalInt("gtCGameSpriteStartedSwing", 0)
 			end
 		end
 	end
@@ -248,7 +253,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	if sprite:getLocalInt("cdtweaksCalledShot") == 1 then
 		local stats = GT_Resource_SymbolToIDS["stats"]
 		--
-		if action.m_actionID == 31 and (action.m_string1.m_pchData:get() == "CDCL121B" or action.m_string1.m_pchData:get() == "CDCL121C") then
+		if action.m_actionID == 31 and (action.m_string1.m_pchData:get() == "%ARCHER_CALLED_SHOT%B" or action.m_string1.m_pchData:get() == "%ARCHER_CALLED_SHOT%C") then
 			if EEex_Sprite_GetCastTimer(sprite) == -1 then
 				action.m_actionID = 113 -- ForceSpell()
 				--
@@ -256,6 +261,13 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 			else
 				action.m_actionID = 0
 				--
+				EEex_GameObject_ApplyEffect(sprite,
+				{
+					["effectID"] = 321, -- remove effects by resource
+					["res"] = "%ARCHER_CALLED_SHOT%",
+					["sourceID"] = sprite.m_id,
+					["sourceTarget"] = sprite.m_id,
+				})
 				EEex_GameObject_ApplyEffect(sprite,
 				{
 					["effectID"] = 139, -- display string
@@ -269,7 +281,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 				EEex_GameObject_ApplyEffect(sprite,
 				{
 					["effectID"] = 321, -- remove effects by resource
-					["res"] = "CDCL121",
+					["res"] = "%ARCHER_CALLED_SHOT%",
 					["sourceID"] = sprite.m_id,
 					["sourceTarget"] = sprite.m_id,
 				})
@@ -280,7 +292,7 @@ end)
 
 -- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Cannot be used with AoE missiles (see f.i. Arrow of Detonation) --
 
-GTCLDSHT = {
+%ARCHER_CALLED_SHOT%P = {
 
 	["typeMutator"] = function(context)
 		local actionSources = {
@@ -291,7 +303,7 @@ GTCLDSHT = {
 		local originatingSprite = context["originatingSprite"] -- CGameSprite
 		--
 		EEex_Utility_IterateCPtrList(originatingSprite.m_timedEffectList, function(effect)
-			if effect.m_effectId == 249 and (effect.m_res:get() == "CDCL121B" or effect.m_res:get() == "CDCL121C") then
+			if effect.m_effectId == 249 and (effect.m_res:get() == "%ARCHER_CALLED_SHOT%B" or effect.m_res:get() == "%ARCHER_CALLED_SHOT%C") then
 				calledShotMode = true
 				return true
 			end
@@ -311,7 +323,7 @@ GTCLDSHT = {
 		local originatingSprite = context["originatingSprite"] -- CGameSprite
 		--
 		EEex_Utility_IterateCPtrList(originatingSprite.m_timedEffectList, function(effect)
-			if effect.m_effectId == 249 and (effect.m_res:get() == "CDCL121B" or effect.m_res:get() == "CDCL121C") then
+			if effect.m_effectId == 249 and (effect.m_res:get() == "%ARCHER_CALLED_SHOT%B" or effect.m_res:get() == "%ARCHER_CALLED_SHOT%C") then
 				calledShotMode = true
 				return true
 			end
@@ -328,7 +340,7 @@ GTCLDSHT = {
 			--
 			originatingSprite:applyEffect({
 				["effectID"] = 321, -- remove effects by resource
-				["res"] = "CDCL121",
+				["res"] = "%ARCHER_CALLED_SHOT%",
 				["sourceID"] = originatingSprite.m_id,
 				["sourceTarget"] = originatingSprite.m_id,
 			})
@@ -350,7 +362,7 @@ GTCLDSHT = {
 		local originatingSprite = context["originatingSprite"] -- CGameSprite
 		--
 		EEex_Utility_IterateCPtrList(originatingSprite.m_timedEffectList, function(effect)
-			if effect.m_effectId == 249 and (effect.m_res:get() == "CDCL121B" or effect.m_res:get() == "CDCL121C") then
+			if effect.m_effectId == 249 and (effect.m_res:get() == "%ARCHER_CALLED_SHOT%B" or effect.m_res:get() == "%ARCHER_CALLED_SHOT%C") then
 				calledShotMode = true
 				return true
 			end
@@ -375,10 +387,10 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		sprite:setLocalInt("cdtweaksCalledShot", 1)
 		--
 		local effectCodes = {
-			{["op"] = 172, ["res"] = "CDCL121B"}, -- remove spell
-			{["op"] = 171, ["res"] = "CDCL121B"}, -- give spell
-			{["op"] = 172, ["res"] = "CDCL121C"}, -- remove spell
-			{["op"] = 171, ["res"] = "CDCL121C"}, -- give spell
+			{["op"] = 172, ["res"] = "%ARCHER_CALLED_SHOT%B"}, -- remove spell
+			{["op"] = 171, ["res"] = "%ARCHER_CALLED_SHOT%B"}, -- give spell
+			{["op"] = 172, ["res"] = "%ARCHER_CALLED_SHOT%C"}, -- remove spell
+			{["op"] = 171, ["res"] = "%ARCHER_CALLED_SHOT%C"}, -- give spell
 		}
 		--
 		for _, attributes in ipairs(effectCodes) do
@@ -418,19 +430,19 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			--
 			sprite:applyEffect({
 				["effectID"] = 172, -- remove spell
-				["res"] = "CDCL121B",
+				["res"] = "%ARCHER_CALLED_SHOT%B",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})
 			sprite:applyEffect({
 				["effectID"] = 172, -- remove spell
-				["res"] = "CDCL121C",
+				["res"] = "%ARCHER_CALLED_SHOT%C",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})
 			sprite:applyEffect({
 				["effectID"] = 321, -- remove effects by resource
-				["res"] = "CDCL121",
+				["res"] = "%ARCHER_CALLED_SHOT%",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})
