@@ -1,0 +1,77 @@
+DEFINE_ACTION_FUNCTION "KNOCKDOWN"
+BEGIN
+	LAF "GT_ADD_SPELL"
+	INT_VAR
+		"level" = 3
+	STR_VAR
+		"idsName" = "INNATE_KNOCKDOWN"
+	RET
+		"INNATE_KNOCKDOWN" = "resName"
+	END
+	//
+	LAF "ADD_EXTENDED_STAT" STR_VAR "identifier" = "GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER" END
+	//
+	WITH_SCOPE BEGIN
+		ACTION_TO_LOWER "INNATE_KNOCKDOWN"
+		// Knockdown (spl file)
+		CREATE "spl" "%INNATE_KNOCKDOWN%"
+		COPY_EXISTING "%INNATE_KNOCKDOWN%.spl" "override"
+			WRITE_LONG NAME1 RESOLVE_STR_REF (@0)
+			WRITE_LONG NAME2 "-1"
+			WRITE_LONG UNIDENTIFIED_DESC RESOLVE_STR_REF (@1)
+			WRITE_LONG DESC "-1"
+			WRITE_LONG 0x18 (BIT14 BOR BIT25) // ignore dead/wild magic, castable when silenced
+			WRITE_SHORT 0x1C 4 // innate
+			WRITE_LONG 0x34 1 // level
+			WRITE_ASCII 0x3A "%DEST_RES%B" #8 // icon
+			//
+			LPF "ADD_SPELL_HEADER" INT_VAR "range" = 30 STR_VAR "icon" = "%DEST_RES%B" END
+			//
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 138 "target" = 1 "parameter2" = 7 END // SEQ_READY
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 321 "target" = 1 STR_VAR "resource" = "%DEST_RES%" END // Remove effects by resource (cannot be used in conjunction with other feats such as my revised Called Shot. Such feats all share the same parent, i.e. "GTFEAT00")
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 2 STR_VAR "resource" = "%DEST_RES%" END // Invoke lua
+		BUT_ONLY
+		// EFF
+		CREATE "eff" "%INNATE_KNOCKDOWN%b"
+		COPY_EXISTING "%INNATE_KNOCKDOWN%b.eff" "override"
+			WRITE_LONG 0x10 402 // Invoke Lua
+			WRITE_LONG 0x14 2 // Projectile target
+			WRITE_LONG 0x1C 1 // p1
+			WRITE_SHORT 0x2C 100 // prob1
+			WRITE_ASCII 0x30 "%INNATE_KNOCKDOWN%" #8 // Lua function
+		BUT_ONLY
+		// icons
+		LAF "ADD_STATDESC_ENTRY" INT_VAR "description" = RESOLVE_STR_REF (@50) STR_VAR "bam_file" = "GTPRONE" RET "feedback_icon" = "index" END
+		COPY "cdtweaks\luke\bam\innate\knockdown\spl_icon.bam" "override\%INNATE_KNOCKDOWN%b.bam" "cdtweaks\luke\bam\gtprone.bam" "override"
+		//
+		CREATE "eff" "gtprone"
+		COPY_EXISTING "gtprone.eff" "override"
+			WRITE_LONG 0x10 39 // Sleep
+			WRITE_LONG 0x14 2 // Projectile target
+			WRITE_LONG 0x20 1 // p2: wake on damage? no
+			WRITE_SHORT 0x2C 100 // prob1
+			WRITE_LONG 0x48 "%feedback_icon%" // icon
+		BUT_ONLY
+	END
+	// lua
+	WITH_SCOPE BEGIN
+		OUTER_SET "feedback_strref_outOfRange" = RESOLVE_STR_REF (@100)
+		OUTER_SET "feedback_strref_alreadyProne" = RESOLVE_STR_REF (@101)
+		OUTER_SET "feedback_strref_tooLarge" = RESOLVE_STR_REF (@102)
+		OUTER_SET "feedback_strref_meleeOnly" = RESOLVE_STR_REF (@103)
+		OUTER_SET "feedback_strref_auraFree" = RESOLVE_STR_REF (@104)
+		OUTER_SET "feedback_strref_immune" = RESOLVE_STR_REF (@105)
+		//
+		WITH_SCOPE BEGIN
+			ACTION_TO_LOWER "INNATE_KNOCKDOWN"
+			COPY "cdtweaks\luke\bam\innate\knockdown\spl_portrait_icon.bam" "override\%INNATE_KNOCKDOWN%d.bam"
+		END
+		LAF "ADD_STATDESC_ENTRY" INT_VAR "description" = RESOLVE_STR_REF (@0) STR_VAR "bam_file" = "%INNATE_KNOCKDOWN%D" RET "feedback_icon_canKnockdown" = "index" END
+		//
+		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Misc Tweaks (Innate)" "sourceFileSpec" = "cdtweaks\luke\lua\innate\knockdown.lua" "destRes" = "m_gt#int" END
+		//
+		ACTION_IF !(FILE_EXISTS_IN_GAME "m_gttbls.lua") BEGIN
+			COPY "cdtweaks\luke\lua\m_gttbls.lua" "override"
+		END
+	END
+END
