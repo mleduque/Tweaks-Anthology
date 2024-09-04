@@ -228,6 +228,13 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 				--
 				EEex_GameObject_ApplyEffect(sprite,
 				{
+					["effectID"] = 321, -- remove effects by resource
+					["res"] = "%INNATE_KNOCKDOWN%",
+					["sourceID"] = sprite.m_id,
+					["sourceTarget"] = sprite.m_id,
+				})
+				EEex_GameObject_ApplyEffect(sprite,
+				{
 					["effectID"] = 139, -- display string
 					["effectAmount"] = %feedback_strref_auraFree%,
 					["sourceID"] = sprite.m_id,
