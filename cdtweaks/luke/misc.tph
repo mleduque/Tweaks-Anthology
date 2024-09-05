@@ -428,12 +428,21 @@ INT_VAR
 	"type" = 3 // GTINXXX
 	"level" = 0
 	"sort" = 1 // boolean
+	"preferredSlot" = 0
 STR_VAR
 	"idsName" = "INNATE_NO_NAME"
 RET
 	"resName"
 BEGIN
 	OUTER_TEXT_SPRINT "resName" ""
+	// sanity check
+	ACTION_IF ("%preferredSlot%" >= 0 AND "%preferredSlot%" <= 99) BEGIN
+		ACTION_IF ("%preferredSlot%" < 10) BEGIN
+			OUTER_TEXT_SPRINT "preferredSlot" "0%preferredSlot%"
+		END
+	END ELSE BEGIN
+		OUTER_TEXT_SPRINT "preferredSlot" "00"
+	END
 	//
 	ACTION_IF !(FILE_EXISTS_IN_GAME "gtspell.ids") BEGIN
 		COPY_EXISTING "spell.ids" "override\gtspell.ids"
@@ -467,14 +476,19 @@ BEGIN
 				FAIL "GT_ADD_SPELL: invalid spell type (%type%)"
 		END
 		//
-		OUTER_FOR ("i" = "%min%" ; "%i%" <= "%max%" ; "i" += 1) BEGIN
-			ACTION_IF (STRING_LENGTH "%i%" == 1) BEGIN
-				OUTER_TEXT_SPRINT "i" "0%i%"
-			END
-			ACTION_IF !(FILE_EXISTS_IN_GAME "%prefix%%level%%i%.spl") BEGIN
-				APPEND "GTSPELL.IDS" "%type%%level%%i% %idsName%"
-				OUTER_TEXT_SPRINT "resName" "%prefix%%level%%i%"
-				OUTER_SET "i" = "%max%" // kill FOR-loop
+		ACTION_IF !(FILE_EXISTS_IN_GAME "%prefix%%level%%preferredSlot%.spl") BEGIN
+			APPEND "GTSPELL.IDS" "%type%%level%%preferredSlot% %idsName%"
+			OUTER_TEXT_SPRINT "resName" "%prefix%%level%%preferredSlot%"
+		END ELSE BEGIN
+			OUTER_FOR ("i" = "%min%" ; "%i%" <= "%max%" ; "i" += 1) BEGIN
+				ACTION_IF (STRING_LENGTH "%i%" == 1) BEGIN
+					OUTER_TEXT_SPRINT "i" "0%i%"
+				END
+				ACTION_IF !(FILE_EXISTS_IN_GAME "%prefix%%level%%i%.spl") BEGIN
+					APPEND "GTSPELL.IDS" "%type%%level%%i% %idsName%"
+					OUTER_TEXT_SPRINT "resName" "%prefix%%level%%i%"
+					OUTER_SET "i" = "%max%" // kill FOR-loop
+				END
 			END
 		END
 		//

@@ -95,7 +95,7 @@ function %INNATE_KNOCKDOWN%(CGameEffect, CGameSprite)
 					if CGameSprite.m_typeAI.m_Class == class["MONK"] then
 						local monkfist = GT_Resource_2DA["monkfist"]
 						for lvl = 1, 50 do
-							if GT_Utility_KeyExists(GT_Resource_2DA, "monkfist", tostring(lvl), "RESREF") then
+							if GT_LuaTool_KeyExists(GT_Resource_2DA, "monkfist", tostring(lvl), "RESREF") then
 								fistResRef[monkfist[tostring(lvl)]["RESREF"]] = true
 							end
 						end
