@@ -4,6 +4,7 @@ BEGIN
 	INT_VAR
 		"level" = 1
 		"type" = 4
+		"preferredSlot" = 21
 	STR_VAR
 		"idsName" = "ARCHER_CALLED_SHOT"
 	RET
@@ -13,6 +14,7 @@ BEGIN
 	INT_VAR
 		"level" = 1
 		"type" = 4
+		"preferredSlot" = 22
 	STR_VAR
 		"idsName" = "ARCHER_KIT_BONUS"
 	RET
@@ -134,9 +136,9 @@ BEGIN
 		OUTER_SET "feedback_strref_AoE" = RESOLVE_STR_REF (@300)
 		OUTER_SET "feedback_strref_immune" = RESOLVE_STR_REF (@400)
 		//
-		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Misc Tweaks (Kits)" "sourceFileSpec" = "cdtweaks\luke\lua\kit\archer\passive_traits.lua" "destRes" = "m_gt#kit" END
+		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Misc Tweaks (Class / Kit)" "sourceFileSpec" = "cdtweaks\luke\lua\kit\archer\passive_traits.lua" "destRes" = "m_gtspcl" END
 		// Listener: run 'func' each time a sprite has finished evaluating its effects
-		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Misc Tweaks (Kits)" "sourceFileSpec" = "cdtweaks\luke\lua\kit\archer\called_shot.lua" "destRes" = "m_gt#kit" END
+		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Misc Tweaks (Class / Kit)" "sourceFileSpec" = "cdtweaks\luke\lua\kit\archer\called_shot.lua" "destRes" = "m_gtspcl" END
 		//
 		ACTION_IF !(FILE_EXISTS_IN_GAME "m_gttbls.lua") BEGIN
 			COPY "cdtweaks\luke\lua\m_gttbls.lua" "override"
