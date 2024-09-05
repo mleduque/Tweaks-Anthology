@@ -9,14 +9,14 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		sprite:applyEffect({
 			["effectID"] = 172, -- Remove spell
 			["durationType"] = 1,
-			["res"] = "CDCTRSPL",
+			["res"] = "%INNATE_COUNTERSPELL%Y",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
 		})
 		sprite:applyEffect({
 			["effectID"] = 171, -- Give spell
 			["durationType"] = 1,
-			["res"] = "CDCTRSPL",
+			["res"] = "%INNATE_COUNTERSPELL%Y",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
 		})
@@ -52,7 +52,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 				sprite:applyEffect({
 					["effectID"] = 146, -- Cast spell
 					["dwFlags"] = 1, -- instant/ignore level
-					["res"] = "CDCTRSP2",
+					["res"] = "%INNATE_COUNTERSPELL%Z",
 					["sourceID"] = sprite.m_id,
 					["sourceTarget"] = sprite.m_id,
 				})
@@ -61,7 +61,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			sprite:applyEffect({
 				["effectID"] = 172, -- Remove spell
 				["durationType"] = 1,
-				["res"] = "CDCTRSPL",
+				["res"] = "%INNATE_COUNTERSPELL%Y",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})

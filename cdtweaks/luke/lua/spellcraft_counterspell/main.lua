@@ -54,12 +54,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 						if EEex_BAnd(itrSpriteActiveStats.m_generalState, state["CD_STATE_NOTVALID"]) == 0 then
 							if EEex_IsBitUnset(spriteActiveStats.m_generalState, 0x4) or itrSpriteActiveStats.m_bSeeInvisible > 0 then
 								-- deafness => extra check
-								local isDeafened = false
-								EEex_Utility_IterateCPtrList(itrSprite.m_timedEffectList, cdtweaks_Spellcraft_CheckForDeafness)
-								if not isDeafened then
-									EEex_Utility_IterateCPtrList(itrSprite.m_equipedEffectList, cdtweaks_Spellcraft_CheckForDeafness)
-								end
-								if not (isDeafened) or math.random(0, 1) == 1 then 
+								if not GT_Utility_EffectCheck(itrSprite, {["m_effectId"] = 0x50}) or math.random(0, 1) == 1 then 
 									-- provide feedback if PC
 									if itrSprite.m_typeAI.m_EnemyAlly == 2 then
 										Infinity_DisplayString(itrSprite:getName() .. ": " .. Infinity_FetchString(%feedback_strref_spellcraft%) .. sprite:getName() .. Infinity_FetchString(%feedback_strref_isCasting%) .. Infinity_FetchString(spellHeader.genericName))
@@ -148,7 +143,7 @@ end)
 
 -- cdtweaks, Counterspell class feat for spellcasters --
 
-function GTCTRSPL(CGameEffect, CGameSprite)
+function %INNATE_COUNTERSPELL%(CGameEffect, CGameSprite)
 	if CGameEffect.m_effectAmount == 1 then
 		CGameSprite:setLocalInt("cdtweaksCounterspell", 1)
 		--
@@ -156,7 +151,7 @@ function GTCTRSPL(CGameEffect, CGameSprite)
 			["effectID"] = 232, -- Cast spell on condition
 			["durationType"] = 1,
 			["dwFlags"] = 16, -- Die()
-			["res"] = "CDCTRSP2",
+			["res"] = "%INNATE_COUNTERSPELL%Z",
 			["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
 			["m_sourceType"] = CGameEffect.m_sourceType,
 			["sourceID"] = CGameSprite.m_id,
@@ -168,14 +163,14 @@ function GTCTRSPL(CGameEffect, CGameSprite)
 		CGameSprite:applyEffect({
 			["effectID"] = 321, -- Remove effects by resource
 			["durationType"] = 1,
-			["res"] = "CDCTRSP1",
+			["res"] = "%INNATE_COUNTERSPELL%Y",
 			["sourceID"] = CGameSprite.m_id,
 			["sourceTarget"] = CGameSprite.m_id,
 		})
 		CGameSprite:applyEffect({
 			["effectID"] = 171, -- Give spell
 			["durationType"] = 1,
-			["res"] = "CDCTRSP1",
+			["res"] = "%INNATE_COUNTERSPELL%Y",
 			["sourceID"] = CGameSprite.m_id,
 			["sourceTarget"] = CGameSprite.m_id,
 		})
@@ -190,7 +185,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	local stats = GT_Resource_SymbolToIDS["stats"]
 	--
 	if sprite:getLocalInt("cdtweaksCounterspell") == 0 then
-		if action.m_actionID == 31 and action.m_string1.m_pchData:get() == "CDCTRSP1" then
+		if action.m_actionID == 31 and action.m_string1.m_pchData:get() == "%INNATE_COUNTERSPELL%Y" then
 			action.m_actionID = 113 -- ForceSpell()
 		end
 	elseif sprite:getLocalInt("cdtweaksCounterspell") == 1 then
@@ -199,7 +194,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 				["effectID"] = 146, -- Cast spell
 				["durationType"] = 1,
 				["dwFlags"] = 1, -- instant/ignore level
-				["res"] = "CDCTRSP2",
+				["res"] = "%INNATE_COUNTERSPELL%Z",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})
