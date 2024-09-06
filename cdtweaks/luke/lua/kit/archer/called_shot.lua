@@ -213,16 +213,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local selectedWeaponTypeStr = GT_Resource_IDSToSymbol["itemcat"][selectedWeaponHeader.itemType]
 	--
 	if sprite:getLocalInt("cdtweaksCalledShot") == 1 then
-		local calledShotMode = false
-		--
-		EEex_Utility_IterateCPtrList(sprite.m_timedEffectList, function(effect)
-			if effect.m_effectId == 249 and (effect.m_res:get() == "%ARCHER_CALLED_SHOT%B" or effect.m_res:get() == "%ARCHER_CALLED_SHOT%C") then
-				calledShotMode = true
-				return true
-			end
-		end)
-		--
-		if calledShotMode then
+		if GT_Utility_EffectCheck(sprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(sprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%C"}) then
 			if sprite.m_startedSwing == 1 and sprite:getLocalInt("gtCGameSpriteStartedSwing") == 0 and (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW") then
 				sprite:setLocalInt("gtCGameSpriteStartedSwing", 1)
 			elseif (sprite.m_startedSwing == 0 and sprite:getLocalInt("gtCGameSpriteStartedSwing") == 1) or not (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW") then
@@ -299,17 +290,9 @@ end)
 			[EEex_Projectile_DecodeSource.CGameSprite_Swing] = true,
 		}
 		--
-		local calledShotMode = false
 		local originatingSprite = context["originatingSprite"] -- CGameSprite
 		--
-		EEex_Utility_IterateCPtrList(originatingSprite.m_timedEffectList, function(effect)
-			if effect.m_effectId == 249 and (effect.m_res:get() == "%ARCHER_CALLED_SHOT%B" or effect.m_res:get() == "%ARCHER_CALLED_SHOT%C") then
-				calledShotMode = true
-				return true
-			end
-		end)
-		--
-		if not (actionSources[context.decodeSource] and calledShotMode) then
+		if not (actionSources[context.decodeSource] and (GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%C"}))) then
 			return
 		end
 	end,
@@ -319,17 +302,9 @@ end)
 			[EEex_Projectile_DecodeSource.CGameSprite_Swing] = true,
 		}
 		--
-		local calledShotMode = false
 		local originatingSprite = context["originatingSprite"] -- CGameSprite
 		--
-		EEex_Utility_IterateCPtrList(originatingSprite.m_timedEffectList, function(effect)
-			if effect.m_effectId == 249 and (effect.m_res:get() == "%ARCHER_CALLED_SHOT%B" or effect.m_res:get() == "%ARCHER_CALLED_SHOT%C") then
-				calledShotMode = true
-				return true
-			end
-		end)
-		--
-		if not (actionSources[context.decodeSource] and calledShotMode) then
+		if not (actionSources[context.decodeSource] and (GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%C"}))) then
 			return
 		end
 		--
@@ -358,17 +333,9 @@ end)
 			[EEex_Projectile_AddEffectSource.CGameSprite_Swing] = true,
 		}
 		--
-		local calledShotMode = false
 		local originatingSprite = context["originatingSprite"] -- CGameSprite
 		--
-		EEex_Utility_IterateCPtrList(originatingSprite.m_timedEffectList, function(effect)
-			if effect.m_effectId == 249 and (effect.m_res:get() == "%ARCHER_CALLED_SHOT%B" or effect.m_res:get() == "%ARCHER_CALLED_SHOT%C") then
-				calledShotMode = true
-				return true
-			end
-		end)
-		--
-		if not (actionSources[context.addEffectSource] and calledShotMode) then
+		if not (actionSources[context.addEffectSource] and (GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%C"}))) then
 			return
 		end
 	end,
