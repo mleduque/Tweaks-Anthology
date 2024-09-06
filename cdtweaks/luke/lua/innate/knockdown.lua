@@ -22,9 +22,9 @@ function %INNATE_KNOCKDOWN%(CGameEffect, CGameSprite)
 	local sourcePersonalSpace = sourceSprite.m_animation.m_animation.m_personalSpace
 	local targetPersonalSpace = CGameSprite.m_animation.m_animation.m_personalSpace
 	--
-	local inWeaponRange = EEex_Trigger_ParseConditionalString("InWeaponRange(EEex_LuaObject)")
+	local inWeaponRange = EEex_Trigger_ParseConditionalString('InWeaponRange(EEex_Target("GT_InnateKnockdownTarget"))')
 	--
-	local attackOneRound = EEex_Action_ParseResponseString("AttackOneRound(EEex_LuaObject)")
+	local attackOneRound = EEex_Action_ParseResponseString('AttackOneRound(EEex_Target("GT_InnateKnockdownTarget"))')
 	--
 	local stats = GT_Resource_SymbolToIDS["stats"]
 	local class = GT_Resource_SymbolToIDS["class"]
@@ -38,7 +38,7 @@ function %INNATE_KNOCKDOWN%(CGameEffect, CGameSprite)
 	-- Melee weapon equipped!
 	if not isWeaponRanged:evalConditionalAsAIBase(sourceSprite) then
 		if CGameEffect.m_effectAmount == 0 then
-			EEex_LuaObject = CGameSprite -- must be global
+			sourceSprite:setStoredScriptingTarget("GT_InnateKnockdownTarget", CGameSprite)
 			-- check range
 			if inWeaponRange:evalConditionalAsAIBase(sourceSprite) then
 				--
