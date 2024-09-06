@@ -46,8 +46,8 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 		savebonus = 7 -- cap at 7
 	end
 	--
-	local inWeaponRange = EEex_Trigger_ParseConditionalString("InWeaponRange(EEex_LuaObject)")
-	local attackOneRound = EEex_Action_ParseResponseString("AttackOneRound(EEex_LuaObject)")
+	local inWeaponRange = EEex_Trigger_ParseConditionalString('InWeaponRange(EEex_Target("GT_CalledShotTarget"))')
+	local attackOneRound = EEex_Action_ParseResponseString('AttackOneRound(EEex_Target("GT_CalledShotTarget"))')
 	--
 	local stats = GT_Resource_SymbolToIDS["stats"]
 	--
@@ -60,7 +60,7 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 	-- Bow with arrows equipped || bow with unlimited ammo equipped
 	if selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW" then
 		if CGameEffect.m_effectAmount == 0 then
-			EEex_LuaObject = CGameSprite -- must be global
+			sourceSprite:setStoredScriptingTarget("GT_CalledShotTarget", CGameSprite)
 			-- check range
 			if inWeaponRange:evalConditionalAsAIBase(sourceSprite) then
 				--
