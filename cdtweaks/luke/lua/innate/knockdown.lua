@@ -176,16 +176,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local isWeaponRanged = EEex_Trigger_ParseConditionalString("IsWeaponRanged(Myself)")
 	--
 	if sprite:getLocalInt("cdtweaksKnockdown") == 1 then
-		local knockdownMode = false
-		--
-		EEex_Utility_IterateCPtrList(sprite.m_timedEffectList, function(effect)
-			if effect.m_effectId == 248 and effect.m_res:get() == "%INNATE_KNOCKDOWN%B" then
-				knockdownMode = true
-				return true
-			end
-		end)
-		--
-		if knockdownMode then
+		if GT_Utility_EffectCheck(sprite, {["m_effectId"] = 0xF8, ["m_res"] = "%INNATE_KNOCKDOWN%B"}) then
 			if sprite.m_startedSwing == 1 and sprite:getLocalInt("gtCGameSpriteStartedSwing") == 0 and not isWeaponRanged:evalConditionalAsAIBase(sprite) then
 				sprite:setLocalInt("gtCGameSpriteStartedSwing", 1)
 			elseif (sprite.m_startedSwing == 0 and sprite:getLocalInt("gtCGameSpriteStartedSwing") == 1) or isWeaponRanged:evalConditionalAsAIBase(sprite) then
