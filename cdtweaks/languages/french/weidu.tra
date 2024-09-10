@@ -122,6 +122,18 @@ ou rendues obsoletes par un autre mod deja installe.~
 
 @23000 = ~Restaurer les tooltips d'IWD~
 
+@24000 = ~Outline White Spell Icons for Accessibility~
+@24001 = ~Add Black Outline~
+@24100 = ~Add Gray Outline~
+
+@25000 = ~Colorize NPC Names and Tooltips~
+@25001 = ~Normal brightness~
+@25100 = ~Slightly increased brightness~
+@25200 = ~Moderately increased brightness~
+@25300 = ~Slightly decreased brightness~
+@25400 = ~Moderately decreased brightness~
+@25500 = ~Original color~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -249,6 +261,17 @@ ou rendues obsoletes par un autre mod deja installe.~
 @134600 = ~Rendre le bastion du druide (Bosquet des druides) accessible a toutes les classes~
 
 @134700 = ~Rendre le bastion du rodeur (Cabane des collines d'Umar) accessible a toutes les classes~
+
+@135000 = ~Karoug Weapon Vulnerability Adjustments~
+@135001 = ~Remove Silver Weapon Requirement to Hit Karoug~
+
+@135100 = ~Remove Silver Weapon Requirement to Hit Karoug, But Require +2 Weapons~
+
+@135200 = ~NPCs With Wolfsbane Charm Can Harm Karoug~
+
+@135300 = ~Options 1 AND 3~
+
+@135400 = ~Options 2 AND 3~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -421,6 +444,40 @@ ou rendues obsoletes par un autre mod deja installe.~
 
 
 @259000 = ~Les voleurs peuvent executer des attaques sournoises avec plus d'armes grace a "Utilisation d'objet" ou pour les classes jumelees ou les multi-classes~
+
+@262000 = ~Make Certain Creatures Immune to Backstab/Sneak Attack [Luke]~
+
+@263000 = "Improved Cure / Cause Wounds [Luke]"
+
+@264000 = "PnP Potions [Luke]"
+
+@265000 = "Incantation spontanée pour les Clercs [Luke]"
+
+@266000 = "Fine lame : Capacité de classe pour les Voleurs [Luke]"
+
+@267000 = "Deux-armes : Capacité de classe pour les Rôdeurs [Luke]"
+
+@268000 = ~"Force" the Archer kit to use bows [Luke]~
+
+@269000 = "Porter une armure pénalise le bonus de Dextérité [Luke]"
+
+@270000 = "Roulé-boulé : Capacité de classe pour les Voleurs [Luke]"
+
+@271000 = "Grâce divine / Sombre bénédiction : Capacité de classe pour les Paladins / Chevalier noir [Luke]"
+
+@272000 = "Œil de lynx : Capacité de race pour les Petites-personnes [Luke]"
+
+@273000 = "Enchaînement : Capacité de classe pour les Guerriers [Luke]"
+
+@274000 = "Attaque sournoise : Capacité de classe pour les Chevalier noir [Luke]"
+
+@275000 = "Intrépide : Capacité de race pour les Petites-personnes [Luke]"
+
+@276000 = "Tolérance aux poisons : Capacité de classe pour les Assassins [Luke]"
+
+@277000 = "Repousser les créatures planaires : Capacité de classe pour les Clercs / Paladins [Luke]"
+
+@278000 = "Coup de pied circulaire : Capacité de classe pour les moines [Luke]"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -612,6 +669,12 @@ Indiquez un pourcentage entre 20 et 500 : ~
 @333005 = ~Vitesse de deplacement et d'incantation des sorts de 100 pour cent~
 @333006 = ~Vitesse de deplacement et d'incantation des sorts de 150 pour cent~
 @333007 = ~Vitesse d'incantation des sorts seulement~
+@333008 = ~Customize (via cdtweaks.txt)~
+@333009 = ~Applying values:
+Movement speed enabled: a7_movement_speed_enable
+Movement speed percent: a7_movement_speed_value
+Casting speed enabled:  a7_casting_speed_enable
+~
 
 @335000 = ~Creer des sauvegardes periodiques~
 @335001 = ~Toutes les 15 minutes (un emplacement de sauvegarde seulement)~
@@ -634,6 +697,21 @@ Utiliser les parametres de Baldur.lua :      a7_interval_ini
 ~
 
 @336000 = ~Reinitialiser le brouillard de guerre sous Sigil~
+
+@337000 = ~Automatic "Chapter Saves" in PsT:EE~
+
+@338000 = ~Sensible Regeneration When Traveling~
+@338001 = ~No regeneration items found: component installed but no changes made.~
+
+@339000 = ~Automatic Use of Ranger Tracking Skill~
+@339001 = ~Cannot read tracking table: component installed but no changes made.~
+
+@340000 = ~Restored Loading Hints~
+
+@341000 = ~Explicit Cast Warnings~
+@341001 = ~Mage and priest spells only~
+@341100 = ~Mage, priest, and innate spells only~
+@341200 = ~All spells (check readme)~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -682,6 +760,20 @@ Utiliser les parametres de Baldur.lua :      a7_interval_ini
 @414000 = ~Ne pas attribuer automatiquement un script IA avance au groupe~
 
 @418000 = ~Objets detachables des PNJ~
+
+@419000 = ~Color Joinable NPC Names in Dialogues, Journal Entries, Etc.~
+@419001 = ~Don't Color the PC's Name~
+@419002 = ~Processing string %index% of %final_strref%...~
+@419100 = ~Also Color the PC's Name: Gray~
+@419200 = ~Also Color the PC's Name: Brown~
+@419300 = ~Also Color the PC's Name: Red~
+@419400 = ~Also Color the PC's Name: Purple~
+@419500 = ~Also Color the PC's Name: Blue~
+@419600 = ~Also Color the PC's Name: Green~
+@419700 = ~Also Color the PC's Name: Yellow~
+@419800 = ~Also Color the PC's Name: Orange~
+
+@420000 = "Make Rancor +1 a bit more reliable"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
