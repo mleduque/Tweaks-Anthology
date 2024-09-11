@@ -1,21 +1,21 @@
-@0 = "ARCHER: The Archer is the epitome of skill with the bow—the ultimate marks<PRO_MANWOMAN>, able to make almost any shot, no matter how difficult. To become so skilled with the bow, the Archer has had to sacrifice some of <PRO_HISHER> proficiency with melee weapons and armor.
+@0 = "ARCHER : Maître au tir à l'arc, il est capable de réussir les tirs les plus précis et les plus difficiles. Mais pour devenir aussi efficace avec un arc, il doit négliger certaines capacités de port d'armure et de maniement des armes de mêlée.
 
-Advantages:
-– +1 to hit and damage rolls with bows every 3 levels.
-– May achieve Grand Mastery (5 slots) in longbows and shortbows.
-– May use the Called Shot ability (when wielding a bow) once per day. Gains one use at level 4 and an additional use every 4 levels thereafter.
+Avantages :
+– Bonus de 1 aux jets d'attaque et de dégâts avec les arcs tous les 3 niveaux d'expérience.
+– Peut atteindre la grande maîtrise (5 étoiles) dans les arcs courts et les arcs longs.
+– Peut utiliser la capacité « Tir ajusté » (avec les arcs) une fois par jour tous les 4 niveaux d'expérience à partir du niveau 4.
 
-CALLED SHOT: All successful ranged attacks within the next 10 seconds have the following cumulative effects besides normal damage, according to the level of the Archer:
- 4th level: -1 penalty to target's THAC0.
- 8th level: -1 penalty to target's Saving Throws vs. Spell.
- 12th level: -1 penalty to the target's Strength score.
- 16th level: +2 bonus to damage roll.
+TIR AJUSTÉ : Toute attaque à distance effectuée dans les 10 secondes qui suivent a les effets cumulatifs suivants (en plus des dégâts normaux) en fonction du niveau d'expérience de l'archer :
+ Niveau 4 : La cible subit un malus de 1 au TAC0 pendant 20 secondes.
+ Niveau 8 : La cible subit un malus de 1 aux jets de sauvegarde contre les sorts pendant 15 secondes.
+ Niveau 12 : La cible subit un malus de 1 à la Force pendant 10 secondes.
+ Niveau 16 : La cible subit 2 points de dégâts perforants supplémentaires.
 
-– May benefit from the Point Blank Shot passive trait.
+– Gagne la capacité passive « À bout portant ».
 
-POINT BLANK SHOT: When wielding a bow, the Archer negates the -8 thac0 penalty for using ranged weapons in close combat.
+À BOUT PORTANT : Lorsqu'il utilise un arc. L'archer n'écope plus d'une pénalité de 8 à son TAC0 dans les combats en mêlée.
 
-Disadvantages:
-– May only wear leather, studded leather, and hide armor.
-– May only become Proficient (one slot) with melee weapons.
-– May not use the Charm Animal ability."
+Désavantages :
+- Peut porter uniquement une armure de cuir, une besantine ou une armure de peau.
+- Ne peut être que compétent (une étoile) dans le maniement des armes de mêlée.
+- Ne peut utiliser « Charme-animal »."

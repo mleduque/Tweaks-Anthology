@@ -122,17 +122,17 @@ ou rendues obsoletes par un autre mod deja installe.~
 
 @23000 = ~Restaurer les tooltips d'IWD~
 
-@24000 = ~Outline White Spell Icons for Accessibility~
-@24001 = ~Add Black Outline~
-@24100 = ~Add Gray Outline~
+@24000 = ~Ajouter des contours aux icones blanches pour ameliorer leur visibilite~
+@24001 = ~Ajouter des contours noirs~
+@24100 = ~Ajouter des contours gris~
 
-@25000 = ~Colorize NPC Names and Tooltips~
-@25001 = ~Normal brightness~
-@25100 = ~Slightly increased brightness~
-@25200 = ~Moderately increased brightness~
-@25300 = ~Slightly decreased brightness~
-@25400 = ~Moderately decreased brightness~
-@25500 = ~Original color~
+@25000 = ~Mettre en couleur les noms de PNJ et leurs infobulles~
+@25001 = ~Luminosite standard~
+@25100 = ~Luminosite legerement accrue~
+@25200 = ~Luminosite moderement accrue~
+@25300 = ~Luminosite legerement reduite~
+@25400 = ~Luminosite moderement reduite~
+@25500 = ~Couleurs fidele au personnage (Plus naturel, mais peut etre tres fonce ou tres clair dans certains cas.)~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -262,16 +262,16 @@ ou rendues obsoletes par un autre mod deja installe.~
 
 @134700 = ~Rendre le bastion du rodeur (Cabane des collines d'Umar) accessible a toutes les classes~
 
-@135000 = ~Karoug Weapon Vulnerability Adjustments~
-@135001 = ~Remove Silver Weapon Requirement to Hit Karoug~
+@135000 = ~Ajuster la vulnerabilite aux armes pour Karoug~
+@135001 = ~Retirer la necessite d'avoir une arme en argent pour toucher Karoug~
 
-@135100 = ~Remove Silver Weapon Requirement to Hit Karoug, But Require +2 Weapons~
+@135100 = ~Retirer la necessite d'avoir une arme en argent pour toucher Karoug, Mais requiert des armes +2~
 
-@135200 = ~NPCs With Wolfsbane Charm Can Harm Karoug~
+@135200 = ~Les NPC portant l'amulette « Charme anti-loups » peuvent toucher Karoug~
 
-@135300 = ~Options 1 AND 3~
+@135300 = ~Options 1 et 3~
 
-@135400 = ~Options 2 AND 3~
+@135400 = ~Options 2 et 3~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -438,46 +438,46 @@ ou rendues obsoletes par un autre mod deja installe.~
 // @257000 = ~BGT : Limite d'experience supplementaire au cours de BG~
 // @257100 = ~BGT : Limite d'experience supplementaire au cours de SoA~
 
-@258000 = ~Modifier la table des sorts divins en bonus lies à la sagesse~
+@258000 = ~Modifier la table des sorts divins en bonus lies a la sagesse~
 @258001 = ~Utiliser la table PnP/PsT~
 @258100 = ~Utiliser la table BG/BG2/IWD~
 
 
 @259000 = ~Les voleurs peuvent executer des attaques sournoises avec plus d'armes grace a "Utilisation d'objet" ou pour les classes jumelees ou les multi-classes~
 
-@262000 = ~Make Certain Creatures Immune to Backstab/Sneak Attack [Luke]~
+@262000 = ~Immunise certaines creatures contre les attaques sournoises (Backstab / Sneak Attack) [Luke]~
 
-@263000 = "Improved Cure / Cause Wounds [Luke]"
+@263000 = "Ameliore les sorts « Soins des blessures » / « Blessures » [Luke]"
 
 @264000 = "PnP Potions [Luke]"
 
-@265000 = "Incantation spontanée pour les Clercs [Luke]"
+@265000 = "Incantation spontanee pour les Clercs [Luke]"
 
-@266000 = "Fine lame : Capacité de classe pour les Voleurs [Luke]"
+@266000 = "Fine lame : Capacite de classe pour les Voleurs [Luke]"
 
-@267000 = "Deux-armes : Capacité de classe pour les Rôdeurs [Luke]"
+@267000 = "Deux-armes : Capacite de classe pour les Rodeurs [Luke]"
 
-@268000 = ~"Force" the Archer kit to use bows [Luke]~
+@268000 = ~« Impose » l'utilisation des arcs a l'Archer [Luke]~
 
-@269000 = "Porter une armure pénalise le bonus de Dextérité [Luke]"
+@269000 = "Porter une armure penalise le bonus de Dexterite [Luke]"
 
-@270000 = "Roulé-boulé : Capacité de classe pour les Voleurs [Luke]"
+@270000 = "Roule-boule : Capacite de classe pour les Voleurs [Luke]"
 
-@271000 = "Grâce divine / Sombre bénédiction : Capacité de classe pour les Paladins / Chevalier noir [Luke]"
+@271000 = "Grace divine / Sombre benediction : Capacite de classe pour les Paladins / Chevalier noir [Luke]"
 
-@272000 = "Œil de lynx : Capacité de race pour les Petites-personnes [Luke]"
+@272000 = "Œil de lynx : Capacite de race pour les Petites-personnes [Luke]"
 
-@273000 = "Enchaînement : Capacité de classe pour les Guerriers [Luke]"
+@273000 = "Enchaînement : Capacite de classe pour les Guerriers [Luke]"
 
-@274000 = "Attaque sournoise : Capacité de classe pour les Chevalier noir [Luke]"
+@274000 = "Attaque sournoise : Capacite de classe pour les Chevalier noir [Luke]"
 
-@275000 = "Intrépide : Capacité de race pour les Petites-personnes [Luke]"
+@275000 = "Intrepide : Capacite de race pour les Petites-personnes [Luke]"
 
-@276000 = "Tolérance aux poisons : Capacité de classe pour les Assassins [Luke]"
+@276000 = "Tolerance aux poisons : Capacite de classe pour les Assassins [Luke]"
 
-@277000 = "Repousser les créatures planaires : Capacité de classe pour les Clercs / Paladins [Luke]"
+@277000 = "Repousser les creatures planaires : Capacite de classe pour les Clercs / Paladins [Luke]"
 
-@278000 = "Coup de pied circulaire : Capacité de classe pour les moines [Luke]"
+@278000 = "Coup de pied circulaire : Capacite de classe pour les moines [Luke]"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -669,11 +669,11 @@ Indiquez un pourcentage entre 20 et 500 : ~
 @333005 = ~Vitesse de deplacement et d'incantation des sorts de 100 pour cent~
 @333006 = ~Vitesse de deplacement et d'incantation des sorts de 150 pour cent~
 @333007 = ~Vitesse d'incantation des sorts seulement~
-@333008 = ~Customize (via cdtweaks.txt)~
-@333009 = ~Applying values:
-Movement speed enabled: a7_movement_speed_enable
-Movement speed percent: a7_movement_speed_value
-Casting speed enabled:  a7_casting_speed_enable
+@333008 = ~Personnalisee (En utilisant cdtweaks.txt)~
+@333009 = ~Appliquer les valeurs suivantes :
+Vitesse de deplacement activee : a7_movement_speed_enable
+Pourcentage de la vitesse de deplacement : a7_movement_speed_value
+Vitesse d'incantation activee :  a7_casting_speed_enable
 ~
 
 @335000 = ~Creer des sauvegardes periodiques~
@@ -698,20 +698,20 @@ Utiliser les parametres de Baldur.lua :      a7_interval_ini
 
 @336000 = ~Reinitialiser le brouillard de guerre sous Sigil~
 
-@337000 = ~Automatic "Chapter Saves" in PsT:EE~
+@337000 = ~Sauvegardes automatiques pour les moments cles de PsT:EE~
 
-@338000 = ~Sensible Regeneration When Traveling~
-@338001 = ~No regeneration items found: component installed but no changes made.~
+@338000 = ~Regeneration plus intelligente lors des voyages~
+@338001 = ~Aucun objet aux proprietes regeneratrices n'a ete trouve : le composant a ete installe mais aucune modification n'a ete realisee.~
 
-@339000 = ~Automatic Use of Ranger Tracking Skill~
-@339001 = ~Cannot read tracking table: component installed but no changes made.~
+@339000 = ~Compétence de pistage utilisee automatiquement par les Rodeurs~
+@339001 = ~Impossible de lire la table des sorts de pistage : le composant a ete installe mais aucune modification n'a ete realisee..~
 
-@340000 = ~Restored Loading Hints~
+@340000 = ~Restaure les astuces des ecrans de chargements~
 
-@341000 = ~Explicit Cast Warnings~
-@341001 = ~Mage and priest spells only~
-@341100 = ~Mage, priest, and innate spells only~
-@341200 = ~All spells (check readme)~
+@341000 = ~Annonce les sorts en cours d'incantation dans la barre de dialogue~
+@341001 = ~Uniquement pour les sorts des Mage et des pretres~
+@341100 = ~Uniquement pour les sorts des Mage, des pretres et les capacites speciales~
+@341200 = ~Tous les sorts (Verifier les repercussion dans le readme)~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -761,19 +761,19 @@ Utiliser les parametres de Baldur.lua :      a7_interval_ini
 
 @418000 = ~Objets detachables des PNJ~
 
-@419000 = ~Color Joinable NPC Names in Dialogues, Journal Entries, Etc.~
-@419001 = ~Don't Color the PC's Name~
-@419002 = ~Processing string %index% of %final_strref%...~
-@419100 = ~Also Color the PC's Name: Gray~
-@419200 = ~Also Color the PC's Name: Brown~
-@419300 = ~Also Color the PC's Name: Red~
-@419400 = ~Also Color the PC's Name: Purple~
-@419500 = ~Also Color the PC's Name: Blue~
-@419600 = ~Also Color the PC's Name: Green~
-@419700 = ~Also Color the PC's Name: Yellow~
-@419800 = ~Also Color the PC's Name: Orange~
+@419000 = ~Coloriser les noms de PNJ joignables dans les dialogues, les entrees de journal, etc.~
+@419001 = ~Ne pas coloriser le nom du personnage principal~
+@419002 = ~Traitement de la chaîne de caractères %index% de %final_strref%...~
+@419100 = ~Coloriser le nom du personnage principal : Gris~
+@419200 = ~Coloriser le nom du personnage principal : Marron~
+@419300 = ~Coloriser le nom du personnage principal : Rouge~
+@419400 = ~Coloriser le nom du personnage principal : Violet~
+@419500 = ~Coloriser le nom du personnage principal : Bleu~
+@419600 = ~Coloriser le nom du personnage principal : Vert~
+@419700 = ~Coloriser le nom du personnage principal : Jaune~
+@419800 = ~Coloriser le nom du personnage principal : Orange~
 
-@420000 = "Make Rancor +1 a bit more reliable"
+@420000 = "Rendre Rancœur +1 (l'arme de Dorn) un peu plus fiable"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
