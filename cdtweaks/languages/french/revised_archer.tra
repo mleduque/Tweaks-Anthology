@@ -3,13 +3,12 @@
 Avantages :
 – Bonus de 1 aux jets d'attaque et de dégâts avec les arcs tous les 3 niveaux d'expérience.
 – Peut atteindre la grande maîtrise (5 étoiles) dans les arcs courts et les arcs longs.
-– Peut utiliser la capacité « Tir ajusté » (avec les arcs) une fois par jour tous les 4 niveaux d'expérience à partir du niveau 4.
+– Peut utiliser la capacité « Tir ajusté » (avec les arcs).
 
-TIR AJUSTÉ : Toute attaque à distance effectuée dans les 10 secondes qui suivent a les effets cumulatifs suivants (en plus des dégâts normaux) en fonction du niveau d'expérience de l'archer :
- Niveau 4 : La cible subit un malus de 1 au TAC0 pendant 20 secondes.
- Niveau 8 : La cible subit un malus de 1 aux jets de sauvegarde contre les sorts pendant 15 secondes.
- Niveau 12 : La cible subit un malus de 1 à la Force pendant 10 secondes.
- Niveau 16 : La cible subit 2 points de dégâts perforants supplémentaires.
+TIR AJUSTÉ : Cette capacité donne à l'archer la possibilité de blesser ses adversaires aux bras et aux jambes.
+- Les Tirs ajustés sont effectués avec un malus de 4 au TAC0.
+- Un Tir ajusté réussi au niveau des jambes inflige un malus cumulatif de 2 à la dextérité et réduit de 20 % la vitesse de déplacement.
+- Un Tir ajusté réussi au niveau des bras inflige un malus cumulatif de 2 au TAC0.
 
 – Gagne la capacité passive « À bout portant ».
 
@@ -19,3 +18,32 @@ Désavantages :
 - Peut porter uniquement une armure de cuir, une besantine ou une armure de peau.
 - Ne peut être que compétent (une étoile) dans le maniement des armes de mêlée.
 - Ne peut utiliser « Charme-animal »."
+
+/*
+TIR AJUSTÉ : Toute attaque à distance effectuée dans les 10 secondes qui suivent a les effets cumulatifs suivants (en plus des dégâts normaux) en fonction du niveau d'expérience de l'archer :
+ Niveau 4 : La cible subit un malus de 1 au TAC0 pendant 20 secondes.
+ Niveau 8 : La cible subit un malus de 1 aux jets de sauvegarde contre les sorts pendant 15 secondes.
+ Niveau 12 : La cible subit un malus de 1 à la Force pendant 10 secondes.
+ Niveau 16 : La cible subit 2 points de dégâts perforants supplémentaires.
+*/
+
+@1 = "Tir ajusté (Aux bras)"
+@2 = "Tir ajusté (Aux bras)
+
+Un Tir ajusté réussi au niveau des bras inflige un malus cumulatif de 2 au TAC0"
+
+@3 = "Tir ajusté (Aux jambes)"
+@4 = "Tir ajusté (Aux jambes)
+
+Un Tir ajusté réussi au niveau des jambes inflige un malus cumulatif de 2 à la dextérité et réduit de 20 % la vitesse de déplacement."
+
+@100 = "La créature sélectionnée est hors de portée"
+@101 = "Modification du TAC0 "
+@102 = "Modification de la Dextérité"
+@103 = "Cette capacité ne peut être utilisée qu'avec les arcs."
+
+@200 = "Le personnage ne peut pas effectuer plus d'une action par round"
+
+@300 = "Le personnage ne peut pas utiliser cette capacité avec des munitions effectives sur une zone."
+
+@400 = "Insensible aux effets du Tir ajusté"
