@@ -1,7 +1,7 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                            \\\\\
-///// Knockdown class feat for Fighters and Monks                \\\\\
+///// Disarm class feat for Rogues                               \\\\\
 /////                                                            \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -10,8 +10,8 @@ WITH_SCOPE BEGIN
   INCLUDE "cdtweaks\luke\misc.tph"
   INCLUDE "cdtweaks\ardanis\functions.tph"
   //
-  INCLUDE "cdtweaks\lib\knockdown.tph"
-  WITH_TRA "cdtweaks\languages\english\knockdown.tra" "cdtweaks\languages\%LANGUAGE%\knockdown.tra" BEGIN
-    LAF "KNOCKDOWN" END
+  INCLUDE "cdtweaks\lib\disarm.tph"
+  WITH_TRA "cdtweaks\languages\english\disarm.tra" "cdtweaks\languages\%LANGUAGE%\disarm.tra" BEGIN
+    LAF "DISARM" END
   END
 END

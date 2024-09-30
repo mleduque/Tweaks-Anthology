@@ -1099,29 +1099,34 @@
         <li>Use: automatic, but only available to Monks.</li>
       </ul>
 
-      <p> <strong>Knockdown class feat for Fighters and Monks [Luke]</strong><br />
+      <p> <strong>Disarm class feat for Rogues [Luke]</strong><br />
         <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component aims at implementing the NWN feat Knockdown.<br />
-        A character with this feat can attempt to knock his opponents to the ground. The character makes an attack roll at -4, and if successful the defender makes a Save vs. Death. If failed, the defender is knocked to a prone position.<br />
+      <p> This component aims at implementing the NWN feat Disarm.<br />
+        The character can attempt to disarm an opponent in melee combat. Attempting a disarm applies a -6 penalty to the character's attack roll, and the combatant with the larger weapon gains a +2 bonus per size category of difference. A successful hit deals normal damage, and if the opponent fails a Save vs. Breath, then the weapon flies from the opponent's hands.<br />
         Notes: </p>
       <ul>
-        <li>Use: selected, unlimited uses per day. Only available to Fighters and Monks (starting from level 1).</li>
-        <li>The prone state lasts for one round.</li>
+        <li>Use: selected, unlimited uses per day. Only available to Rogues (starting from level 1).</li>
+        <li>When the weapon flies from the opponent's hands, the attacker automatically picks it up (provided its Inventory is not full).</li>
         <li>This feat cannot be used while wielding a ranged weapon.</li>
         <li>
-          A character can only make a knockdown attempt on opponents that are one size category larger than himself, or smaller.
+          As far as weapon sizes are concerned:
           <ul>
-            <li>As a rule of thumb, look at the defender's circle size: if smaller, equal or just a little bit bigger than the one of the attacker, then it is fine; otherwise, the creature is too large to be knocked down.</li>
+            <li>Small: unarmed fists, clubs, maces, slings, darts, daggers, short swords.</li>
+            <li>Medium: battle axes, throwing axes, long swords, shortbows, crossbows, morningstars, scimitars, war hammers.</li>
+            <li>Large: bastard swords, katanas, halberds, staves, two-handed swords, spears, flails.</li>
             <li>
-              On top of it:
+              Some examples:
               <ul>
-                <li>if the attacker is larger than the defender, the saving throw penalty is -4 (i.e., it's easier to succeed).</li>
-                <li>Conversely, the saving throw penalty is +4 (i.e., it's harder to succeed).</li>
+                <li>if the attacker is wielding a dagger and the defender is wielding a katana, the saving throw penalty is -4 (i.e., it's harder to succeed).</li>
+                <li>if the attacker is wielding a katana and the defender is wielding a dagger, the saving throw penalty is +4 (i.e., it's easier to succeed).</li>
+                <li>if the attacker is wielding a dagger and the defender is wielding a shortbow, the saving throw penalty is -2 (i.e., it's harder to succeed).</li>
+                <li>if the attacker is wielding a scimitar and the defender is wielding a dagger, the saving throw penalty is +2 (i.e., it's easier to succeed).</li>
+                <li>if the attacker is wielding a katana and the defender is wielding a katana, the saving throw penalty is 0 (i.e., neutral).</li>
               </ul>
             </li>
           </ul>
         </li>
-        <li>Creatures already on the ground (f.i. snakes, slimes, salamanders ...), magically levitating creatures (beholders, demiliches, ...) and certain special creatures (f.i. spectral undead, elementals, ...) cannot be knocked down.</li>
+        <li>Not all creatures can be disarmed. Natural weapons cannot be disarmed, nor can cursed / magically created weapons.</li>
       </ul>
     </div>
     <div class="ribbon_rectangle_h3">
