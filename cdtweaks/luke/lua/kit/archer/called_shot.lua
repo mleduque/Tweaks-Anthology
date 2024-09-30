@@ -213,7 +213,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local selectedWeaponTypeStr = GT_Resource_IDSToSymbol["itemcat"][selectedWeaponHeader.itemType]
 	--
 	if sprite:getLocalInt("cdtweaksCalledShot") == 1 then
-		if GT_Utility_EffectCheck(sprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(sprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%C"}) then
+		if GT_Utility_EffectCheck(sprite, {["op"] = 0xF9, ["res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(sprite, {["op"] = 0xF9, ["res"] = "%ARCHER_CALLED_SHOT%C"}) then
 			if sprite.m_startedSwing == 1 and sprite:getLocalInt("gtCGameSpriteStartedSwing") == 0 and (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW") then
 				sprite:setLocalInt("gtCGameSpriteStartedSwing", 1)
 			elseif (sprite.m_startedSwing == 0 and sprite:getLocalInt("gtCGameSpriteStartedSwing") == 1) or not (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW") then
@@ -268,7 +268,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 				})
 			end
 		else
-			if EEex_Sprite_GetStat(sprite, stats["GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER"]) == 0 then
+			if EEex_Sprite_GetStat(sprite, stats["GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER"]) ~= 1 then
 				EEex_GameObject_ApplyEffect(sprite,
 				{
 					["effectID"] = 321, -- remove effects by resource
