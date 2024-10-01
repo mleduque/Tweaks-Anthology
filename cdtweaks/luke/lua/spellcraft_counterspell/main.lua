@@ -54,7 +54,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 						if EEex_BAnd(itrSpriteActiveStats.m_generalState, state["CD_STATE_NOTVALID"]) == 0 then
 							if EEex_IsBitUnset(spriteActiveStats.m_generalState, 0x4) or itrSpriteActiveStats.m_bSeeInvisible > 0 then
 								-- deafness => extra check
-								if not GT_Utility_EffectCheck(itrSprite, {["m_effectId"] = 0x50}) or math.random(0, 1) == 1 then 
+								if not GT_Utility_EffectCheck(itrSprite, {["op"] = 0x50}) or math.random(0, 1) == 1 then 
 									-- provide feedback if PC
 									if itrSprite.m_typeAI.m_EnemyAlly == 2 then
 										Infinity_DisplayString(itrSprite:getName() .. ": " .. Infinity_FetchString(%feedback_strref_spellcraft%) .. sprite:getName() .. Infinity_FetchString(%feedback_strref_isCasting%) .. Infinity_FetchString(spellHeader.genericName))
@@ -105,7 +105,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 													-- momentarily flag the creature as 'ignore EEex_Action_AddSpriteStartedActionListener()'
 													itrSprite:applyEffect({
 														["effectID"] = 401, -- extended stat
-														["effectAmount"] = 1,
+														["effectAmount"] = 4,
 														["dwFlags"] = 1, -- set
 														["duration"] = 1,
 														["durationType"] = 10, -- instant/limited (ticks)
@@ -189,7 +189,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 			action.m_actionID = 113 -- ForceSpell()
 		end
 	elseif sprite:getLocalInt("cdtweaksCounterspell") == 1 then
-		if EEex_Sprite_GetStat(sprite, stats["GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER"]) == 0 then
+		if EEex_Sprite_GetStat(sprite, stats["GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER"]) ~= 4 then
 			sprite:applyEffect({
 				["effectID"] = 146, -- Cast spell
 				["durationType"] = 1,
