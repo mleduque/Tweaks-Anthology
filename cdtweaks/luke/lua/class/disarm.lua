@@ -1,4 +1,4 @@
--- cdtweaks, NWN-ish Disarm ability. Light / Medium / Heavy weapons --
+-- cdtweaks, NWN-ish Disarm ability. Small / Medium / Large weapons --
 
 local cdtweaks_Disarm_WeaponSize = {
 	["small"] = {"", "CL", "DD", "F2", "M2", "MC", "SL", "SS"},
