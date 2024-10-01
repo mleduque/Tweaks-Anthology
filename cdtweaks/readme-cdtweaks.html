@@ -1098,64 +1098,6 @@
       <ul>
         <li>Use: automatic, but only available to Monks.</li>
       </ul>
-
-      <p> <strong>Spellcraft / Counterspell class feat for spellcasters [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component aims at implementing the NWN feat Spellcraft / Counterspell.<br />
-        <p>
-          Spellcraft is used to identify spells and to perform counterspells. A successful check means that your character has identified a spell being cast by an opponent
-        </p>
-
-        <p>
-          Entering counterspell mode allows a caster to prevent an enemy caster from casting spells. This is done by first identifying the spell being cast (via Spellcraft), then sacrificing a readied spell slot containing a counter to the spell being cast.
-        </p>
-        Notes:
-          <ul>
-            <li>
-              Spellcraft checks are automatic whenever a spell is cast nearby.
-              <ul>
-                <li>incapacitated characters cannot identify spells.</li>
-                <li>innate spells (f.i. kit abilities) cannot be identified.</li>
-                <li>
-                  <code>lore >= spellLevel * 10 + 1d150</code> : success (i.e. spell identified)
-                  <ul>
-                    <li><code>lore >= 240</code> : automatic success</li>
-                    <li>if the character attempting to identify a spell being cast is deafened, there is an additional 50% chance of failure.</li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>
-              Counterspell mode can be accessed via the Special Ability button.
-              <ul>
-                <li>You cannot cast more than one counterspell per round (regardless of Improved Alacrity).</li>
-                <li>This is a combat mode, so cannot be used at the same time as other actions. Upon entering this mode, the character must remain idle. Any action other than counterspelling (i.e. the character is no longer idle) will end this mode.</li>
-                <li>Counterspells have a casting time of 0 and cannot be disrupted (but can be blocked by the 5<sup>th</sup> level spell Spell Immunity).</li>
-                <li>Silenced characters cannot perform counterspells.</li>
-                <li>Dispel Magic / Remove Magic are universal counters (i.e., they can counter any spell of the same level or lower).</li>
-                <li>Each spell is its own counter (i.e., a Magic Missile spell can counter a Magic Missile spell being cast).</li>
-                <li>
-                  In all other cases:
-                  <ul>
-                    <li>Abjuration spells are countered by Illusion and Alteration spells.</li>
-                    <li>Conjuration spells are countered by Divination and Invocation spells.</li>
-                    <li>Divination spells are countered by Invocation spells.</li>
-                    <li>Enchantment spells are countered by Necromancy spells.</li>
-                    <li>Illusion spells are countered by Abjuration and Necromancy spells.</li>
-                    <li>Invocation spells are countered by Conjuration and Enchantment spells.</li>
-                    <li>Necromancy spells are countered by Illusion and Alteration spells.</li>
-                    <li>Alteration spells are countered by Abjuration spells.</li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>
-              Due to technical reasons, Shamans and Sorcerers are currently unsupported.
-              <ul>
-                <li>This will change in the (near?) future...</li>
-              </ul>
-            </li>
-          </ul>
     </div>
     <div class="ribbon_rectangle_h3">
       <h3> <a id="contents_convenience" name="contents_convenience"></a>Convenience Tweaks and/or Cheats </h3>
@@ -1519,6 +1461,78 @@
       <p> Internally, Dorn's sword (Rancor +1) relies upon scripting. As modders know, items should not rely upon scripting to work correctly, since it is unreliable and may quickly become messy.
         This component simply removes scripting from this weapon (the upshot of which is that the weapon should become a bit more reliable). </p>
     </div>
+
+    <div class="ribbon_rectangle_h3">
+      <h3> <a id="NWN-ish_feats" name="NWN-ish_feats"></a>NWN-ish Feats Collection </h3>
+    </div>
+    <div class="ribbon_triangle_h3-l"></div>
+    <div class="ribbon_triangle_h3-r"></div>
+    <div class="section">
+      <p> Components in this category are inspired from <a href="https://nwn.beamdog.com/">NWN</a> and are aimed at providing new class/kit abilities.</p>
+
+      <p> <strong>Spellcraft / Counterspell class feat for spellcasters [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p> This component aims at implementing the NWN feat Spellcraft / Counterspell.<br />
+        <p>
+          Spellcraft is used to identify spells and to perform counterspells. A successful check means that your character has identified a spell being cast by an opponent
+        </p>
+
+        <p>
+          Entering counterspell mode allows a caster to prevent an enemy caster from casting spells. This is done by first identifying the spell being cast (via Spellcraft), then sacrificing a readied spell slot containing a counter to the spell being cast.
+        </p>
+        Notes:
+          <ul>
+            <li>
+              Spellcraft checks are automatic whenever a spell is cast nearby.
+              <ul>
+                <li>incapacitated characters cannot identify spells.</li>
+                <li>innate spells (f.i. kit abilities) cannot be identified.</li>
+                <li>
+                  <code>lore &geq; spellLevel * 10 + 1d150</code> : success (i.e. spell identified)
+                  <ul>
+                    <li><code>lore &geq; 240</code> : automatic success</li>
+                    <li>if the character attempting to identify a spell being cast is deafened, there is an additional 50% chance of failure.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Counterspell mode can be accessed via the Special Ability button.
+              <ul>
+                <li>You cannot cast more than one counterspell per round (regardless of Improved Alacrity).</li>
+                <li>This is a combat mode, so cannot be used at the same time as other actions. Upon entering this mode, the character must remain idle. Any action other than counterspelling (i.e. the character is no longer idle) will end this mode.</li>
+                <li>Counterspells have a casting time of 0 and cannot be disrupted (but can be blocked by the 5<sup>th</sup> level spell Spell Immunity).</li>
+                <li>Silenced characters cannot perform counterspells.</li>
+                <li>Dispel Magic / Remove Magic are universal counters (i.e., they can counter any spell of the same level or lower).</li>
+                <li>Each spell is its own counter (i.e., a Magic Missile spell can counter a Magic Missile spell being cast).</li>
+                <li>
+                  In all other cases:
+                  <ul>
+                    <li>Abjuration spells are countered by Illusion and Alteration spells.</li>
+                    <li>Conjuration spells are countered by Divination and Invocation spells.</li>
+                    <li>Divination spells are countered by Invocation spells.</li>
+                    <li>Enchantment spells are countered by Necromancy spells.</li>
+                    <li>Illusion spells are countered by Abjuration and Necromancy spells.</li>
+                    <li>Invocation spells are countered by Conjuration and Enchantment spells.</li>
+                    <li>Necromancy spells are countered by Illusion and Alteration spells.</li>
+                    <li>Alteration spells are countered by Abjuration spells.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Due to technical reasons, Shamans and Sorcerers are currently unsupported.
+              <ul>
+                <li>This will change in the (near?) future...</li>
+              </ul>
+            </li>
+          </ul>
+        </p>
+      </p>
+
+    </div>
+
+
     <div class="ribbon_rectangle_h2"> <a id="Contact" name="Contact"></a>
       <h2> Contact Information </h2>
     </div>
