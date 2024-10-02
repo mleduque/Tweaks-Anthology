@@ -14,7 +14,6 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		--
 		sprite:applyEffect({
 			["effectID"] = 321, -- Remove effects by resource
-			["durationType"] = 1,
 			["res"] = "%ARCHER_KIT_BONUS%",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
@@ -92,7 +91,6 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			--
 			sprite:applyEffect({
 				["effectID"] = 321, -- Remove effects by resource
-				["durationType"] = 1,
 				["res"] = "%ARCHER_KIT_BONUS%",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,

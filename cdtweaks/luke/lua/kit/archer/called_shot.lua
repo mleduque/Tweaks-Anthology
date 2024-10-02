@@ -292,7 +292,7 @@ end)
 		--
 		local originatingSprite = context["originatingSprite"] -- CGameSprite
 		--
-		if not (actionSources[context.decodeSource] and (GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%C"}))) then
+		if not (actionSources[context.decodeSource] and (GT_Utility_EffectCheck(originatingSprite, {["op"] = 0xF9, ["res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(originatingSprite, {["op"] = 0xF9, ["res"] = "%ARCHER_CALLED_SHOT%C"}))) then
 			return
 		end
 	end,
@@ -304,7 +304,7 @@ end)
 		--
 		local originatingSprite = context["originatingSprite"] -- CGameSprite
 		--
-		if not (actionSources[context.decodeSource] and (GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%C"}))) then
+		if not (actionSources[context.decodeSource] and (GT_Utility_EffectCheck(originatingSprite, {["op"] = 0xF9, ["res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(originatingSprite, {["op"] = 0xF9, ["res"] = "%ARCHER_CALLED_SHOT%C"}))) then
 			return
 		end
 		--
@@ -335,7 +335,7 @@ end)
 		--
 		local originatingSprite = context["originatingSprite"] -- CGameSprite
 		--
-		if not (actionSources[context.addEffectSource] and (GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(originatingSprite, {["m_effectId"] = 0xF9, ["m_res"] = "%ARCHER_CALLED_SHOT%C"}))) then
+		if not (actionSources[context.addEffectSource] and (GT_Utility_EffectCheck(originatingSprite, {["op"] = 0xF9, ["res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(originatingSprite, {["op"] = 0xF9, ["res"] = "%ARCHER_CALLED_SHOT%C"}))) then
 			return
 		end
 	end,
