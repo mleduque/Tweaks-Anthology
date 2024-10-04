@@ -39,7 +39,7 @@ BEGIN
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 139 "target" = 1 "parameter1" = RESOLVE_STR_REF (@2) END // feedback string
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 142 "target" = 1 "parameter2" = "%feedback_icon%" "timing" = 1 END // feedback icon
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 248 "target" = 1 "timing" = 1 STR_VAR "resource" = "%DEST_RES%B" END // melee hit effect
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 401 "target" = 1 "timing" = 1 "parameter2" = 1 "parameter1" = 2 END // set extended stat
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 401 "target" = 1 "timing" = 1 "parameter2" = 1 "parameter1" = 2 "special" = IDS_OF_SYMBOL ("stats" "GT_COMBAT_MODE") END // set extended stat
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 1 "parameter1" = 1 STR_VAR "resource" = "%DEST_RES%" END // invoke lua
 		BUT_ONLY
 		//
