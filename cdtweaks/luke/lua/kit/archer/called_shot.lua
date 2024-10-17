@@ -1,3 +1,7 @@
+--[[
+	***************************************************************************************************************************
+--]]
+
 -- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Creatures with no arms --
 
 local cdtweaks_CalledShot_NoArms = {
@@ -30,24 +34,22 @@ local cdtweaks_CalledShot_NoLegs = {
 
 function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 	local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId) -- CGameSprite
+	local sourceActiveStats = EEex_Sprite_GetActiveStats(sourceSprite)
 	-- Check creature's equipment
 	local equipment = sourceSprite.m_equipment
 	local selectedWeapon = equipment.m_items:get(equipment.m_selectedWeapon)
 	local selectedWeaponHeader = selectedWeapon.pRes.pHeader
 	local selectedWeaponTypeStr = GT_Resource_IDSToSymbol["itemcat"][selectedWeaponHeader.itemType]
 	-- Get level
-	local sourceLevel = sourceSprite.m_derivedStats.m_nLevel1 + sourceSprite.m_bonusStats.m_nLevel1
+	local sourceLevel = sourceActiveStats.m_nLevel1
 	if sourceSprite.m_typeAI.m_Class == 18 then -- CLERIC_RANGER
-		sourceLevel = sourceSprite.m_derivedStats.m_nLevel2 + sourceSprite.m_bonusStats.m_nLevel2
+		sourceLevel = sourceActiveStats.m_nLevel2
 	end
 	--
 	local savebonus = math.floor((sourceLevel - 1) / 4) -- +1 every 4 levels, starting at 0
 	if savebonus > 7 then
 		savebonus = 7 -- cap at 7
 	end
-	--
-	local inWeaponRange = EEex_Trigger_ParseConditionalString('InWeaponRange(EEex_Target("GT_CalledShotTarget"))')
-	local attackOneRound = EEex_Action_ParseResponseString('AttackOneRound(EEex_Target("GT_CalledShotTarget"))')
 	--
 	local stats = GT_Resource_SymbolToIDS["stats"]
 	--
@@ -59,45 +61,7 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 	local targetIDS = {targetGeneralStr, targetRaceStr, targetClassStr, targetAnimateStr}
 	-- Bow with arrows equipped || bow with unlimited ammo equipped
 	if selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW" then
-		if CGameEffect.m_effectAmount == 0 then
-			sourceSprite:setStoredScriptingTarget("GT_CalledShotTarget", CGameSprite)
-			-- check range
-			if inWeaponRange:evalConditionalAsAIBase(sourceSprite) then
-				--
-				local effectCodes = {
-					{["op"] = 401, ["p2"] = 1, ["p1"] = 1, ["tmg"] = 10, ["dur"] = 1, ["spec"] = stats["GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER"]}, -- set extended stat
-					{["op"] = 167, ["tmg"] = 1, ["p1"] = -4}, -- missile thac0 bonus
-					{["op"] = 249, ["tmg"] = 1, ["res"] = CGameEffect.m_sourceRes:get()}, -- ranged hit effect
-					{["op"] = 142, ["tmg"] = 1, ["p2"] = 82} -- icon: called shot
-					{["op"] = 408, ["tmg"] = 1, ["res"] = "%ARCHER_CALLED_SHOT%P"}, -- projectile mutator
-				}
-				--
-				for _, attributes in ipairs(effectCodes) do
-					sourceSprite:applyEffect({
-						["effectID"] = attributes["op"] or -1,
-						["effectAmount"] = attributes["p1"] or 0,
-						["dwFlags"] = attributes["p2"] or 0,
-						["special"] = attributes["spec"] or 0,
-						["res"] = attributes["res"] or "",
-						["duration"] = attributes["dur"] or 0,
-						["durationType"] = attributes["tmg"] or 0,
-						["m_sourceRes"] = "%ARCHER_CALLED_SHOT%",
-						["m_sourceType"] = CGameEffect.m_sourceType,
-						["sourceID"] = sourceSprite.m_id,
-						["sourceTarget"] = sourceSprite.m_id,
-					})
-				end
-				--
-				attackOneRound:queueResponseOnAIBase(sourceSprite)
-			else
-				CGameSprite:applyEffect({
-					["effectID"] = 139, -- display string
-					["effectAmount"] = %feedback_strref_outOfRange%,
-					["sourceID"] = CGameEffect.m_sourceId,
-					["sourceTarget"] = CGameEffect.m_sourceTarget,
-				})
-			end
-		elseif CGameEffect.m_effectAmount == 1 then
+		if CGameEffect.m_effectAmount == 1 then
 			-- Called Shot (Arms): -2 thac0 penalty
 			local found = false
 			--
@@ -115,12 +79,12 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 			if not found then
 				local effectCodes = {
 					{["op"] = 54, ["p1"] = -2, ["dur"] = 24}, -- base thac0 bonus
-					{["op"] = 139, ["p1"] = %feedback_strref_thac0Mod%} -- feedback string
+					{["op"] = 139, ["p1"] = %feedback_strref_thac0_mod%} -- feedback string
 				}
 				--
 				for _, attributes in ipairs(effectCodes) do
 					CGameSprite:applyEffect({
-						["effectID"] = attributes["op"] or -1,
+						["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
 						["effectAmount"] = attributes["p1"] or 0,
 						["duration"] = attributes["dur"] or 0,
 						["savingThrow"] = 0x2, -- save vs. breath
@@ -160,12 +124,12 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 				local effectCodes = {
 					{["op"] = 15, ["p1"] = (targetDEX <= 1) and 0 or ((targetDEX > 2) and -2 or -1), ["dur"] = 24}, -- dex bonus
 					{["op"] = 176, ["p1"] = 80, ["p2"] = 5, ["dur"] = 24} -- movement rate bonus (mode: multiply %)
-					{["op"] = 139, ["p1"] = %feedback_strref_dexMod%} -- feedback string
+					{["op"] = 139, ["p1"] = %feedback_strref_dex_mod%} -- feedback string
 				}
 				--
 				for _, attributes in ipairs(effectCodes) do
 					CGameSprite:applyEffect({
-						["effectID"] = attributes["op"] or -1,
+						["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
 						["effectAmount"] = attributes["p1"] or 0,
 						["dwFlags"] = attributes["p2"] or 0,
 						["duration"] = attributes["dur"] or 0,
@@ -189,14 +153,11 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 	else
 		sourceSprite:applyEffect({
 			["effectID"] = 139, -- display string
-			["effectAmount"] = %feedback_strref_bowOnly%,
+			["effectAmount"] = %feedback_strref_bow_only%,
 			["sourceID"] = sourceSprite.m_id,
 			["sourceTarget"] = sourceSprite.m_id,
 		})
 	end
-	--
-	inWeaponRange:free()
-	attackOneRound:free()
 end
 
 -- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Make sure one and only one attack roll is performed --
@@ -214,10 +175,10 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	--
 	if sprite:getLocalInt("cdtweaksCalledShot") == 1 then
 		if GT_Utility_EffectCheck(sprite, {["op"] = 0xF9, ["res"] = "%ARCHER_CALLED_SHOT%B"}) or GT_Utility_EffectCheck(sprite, {["op"] = 0xF9, ["res"] = "%ARCHER_CALLED_SHOT%C"}) then
-			if sprite.m_startedSwing == 1 and sprite:getLocalInt("gtCGameSpriteStartedSwing") == 0 and (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW") then
-				sprite:setLocalInt("gtCGameSpriteStartedSwing", 1)
-			elseif (sprite.m_startedSwing == 0 and sprite:getLocalInt("gtCGameSpriteStartedSwing") == 1) or not (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW") then
-				sprite:setLocalInt("gtCGameSpriteStartedSwing", 0)
+			if sprite.m_startedSwing == 1 and sprite:getLocalInt("gtCalledShotSwing") == 0 and (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW") then
+				sprite:setLocalInt("gtCalledShotSwing", 1)
+			elseif (sprite.m_startedSwing == 0 and sprite:getLocalInt("gtCalledShotSwing") == 1) or not (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW") then
+				sprite:setLocalInt("gtCalledShotSwing", 0)
 				--
 				sprite.m_curAction.m_actionID = 0 -- nuke current action
 				--
@@ -231,26 +192,46 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			end
 		else
 			-- in case the character dies while swinging...
-			if sprite:getLocalInt("gtCGameSpriteStartedSwing") == 1 then
-				sprite:setLocalInt("gtCGameSpriteStartedSwing", 0)
+			if sprite:getLocalInt("gtCalledShotSwing") == 1 then
+				sprite:setLocalInt("gtCalledShotSwing", 0)
 			end
 		end
 	end
 end)
 
--- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Make sure it cannot be disrupted --
+-- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Morph the spell action into an attack action --
 
 EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	if sprite:getLocalInt("cdtweaksCalledShot") == 1 then
-		local stats = GT_Resource_SymbolToIDS["stats"]
-		--
 		if action.m_actionID == 31 and (action.m_string1.m_pchData:get() == "%ARCHER_CALLED_SHOT%B" or action.m_string1.m_pchData:get() == "%ARCHER_CALLED_SHOT%C") then
 			if EEex_Sprite_GetCastTimer(sprite) == -1 then
-				action.m_actionID = 113 -- ForceSpell()
+				local effectCodes = {
+					{["op"] = 321, ["res"] = "%ARCHER_CALLED_SHOT%"}, -- remove effects by resource
+					{["op"] = 167, ["p1"] = -4}, -- missile thac0 bonus
+					{["op"] = 249, ["res"] = action.m_string1.m_pchData:get() == "%ARCHER_CALLED_SHOT%B" and "%ARCHER_CALLED_SHOT%B" or "%ARCHER_CALLED_SHOT%C"}, -- ranged hit effect
+					{["op"] = 142, ["p2"] = 82} -- icon: called shot
+					{["op"] = 408, ["res"] = "%ARCHER_CALLED_SHOT%P"}, -- projectile mutator
+				}
+				--
+				for _, attributes in ipairs(effectCodes) do
+					sprite:applyEffect({
+						["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
+						["effectAmount"] = attributes["p1"] or 0,
+						["dwFlags"] = attributes["p2"] or 0,
+						["res"] = attributes["res"] or "",
+						["durationType"] = 1,
+						["m_sourceRes"] = "%ARCHER_CALLED_SHOT%",
+						["m_sourceType"] = 1,
+						["sourceID"] = sprite.m_id,
+						["sourceTarget"] = sprite.m_id,
+					})
+				end
+				--
+				action.m_actionID = 3 -- Attack()
 				--
 				sprite.m_castCounter = 0
 			else
-				action.m_actionID = 0
+				action.m_actionID = 0 -- nuke current action
 				--
 				EEex_GameObject_ApplyEffect(sprite,
 				{
@@ -262,21 +243,19 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 				EEex_GameObject_ApplyEffect(sprite,
 				{
 					["effectID"] = 139, -- display string
-					["effectAmount"] = %feedback_strref_auraFree%,
+					["effectAmount"] = %feedback_strref_aura_free%,
 					["sourceID"] = sprite.m_id,
 					["sourceTarget"] = sprite.m_id,
 				})
 			end
 		else
-			if EEex_Sprite_GetStat(sprite, stats["GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER"]) ~= 1 then
-				EEex_GameObject_ApplyEffect(sprite,
-				{
-					["effectID"] = 321, -- remove effects by resource
-					["res"] = "%ARCHER_CALLED_SHOT%",
-					["sourceID"] = sprite.m_id,
-					["sourceTarget"] = sprite.m_id,
-				})
-			end
+			EEex_GameObject_ApplyEffect(sprite,
+			{
+				["effectID"] = 321, -- remove effects by resource
+				["res"] = "%ARCHER_CALLED_SHOT%",
+				["sourceID"] = sprite.m_id,
+				["sourceTarget"] = sprite.m_id,
+			})
 		end
 	end
 end)
