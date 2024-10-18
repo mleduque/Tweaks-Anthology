@@ -38,7 +38,7 @@ BEGIN
 		COPY_EXISTING "%ROGUE_DISARM%b.eff" "override"
 			WRITE_LONG 0x10 402 // Invoke Lua
 			WRITE_LONG 0x14 2 // Projectile target
-			WRITE_LONG 0x1C 1 // p1
+			//WRITE_LONG 0x1C 1 // p1
 			WRITE_SHORT 0x2C 100 // prob1
 			WRITE_ASCII 0x30 "%ROGUE_DISARM%" #8 // Lua function
 		BUT_ONLY
