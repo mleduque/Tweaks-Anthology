@@ -212,7 +212,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			end
 		else
 			-- in case the character dies while swinging...
-			if sprite:getLocalInt("gtDisarmSwing") == 1) then
+			if sprite:getLocalInt("gtDisarmSwing") == 1 then
 				sprite:setLocalInt("gtDisarmSwing", 0)
 			end
 		end
