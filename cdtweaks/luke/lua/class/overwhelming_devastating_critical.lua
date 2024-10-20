@@ -1,3 +1,7 @@
+--[[
+	***************************************************************************************************************************
+--]]
+
 -- cdtweaks, Overwhelming/Devastating Critical class feat for Trueclass Fighters --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
