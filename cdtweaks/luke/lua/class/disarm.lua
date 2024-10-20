@@ -25,8 +25,6 @@ end
 
 function %ROGUE_DISARM%(CGameEffect, CGameSprite)
 	local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId) -- CGameSprite
-	-- Check source's currently selected weapon
-	local isWeaponRanged = EEex_Trigger_ParseConditionalString("IsWeaponRanged(Myself)")
 	--
 	local inventoryFull = EEex_Trigger_ParseConditionalString("InventoryFull(Myself)")
 	-- Get source's currently selected weapon
@@ -44,96 +42,87 @@ function %ROGUE_DISARM%(CGameEffect, CGameSprite)
 	local targetSelectedWeaponHeader = targetSelectedWeapon.pRes.pHeader -- Item_Header_st
 	--
 	local targetActiveStats = EEex_Sprite_GetActiveStats(CGameSprite)
-	-- Melee weapon equipped!
-	if not isWeaponRanged:evalConditionalAsAIBase(sourceSprite) then
-		-- Check if inventory is full
-		if not inventoryFull:evalConditionalAsAIBase(sourceSprite) then
-			-- check if NONDROPABLE
-			if EEex_IsBitUnset(targetSelectedWeapon.m_flags, 0x3) then
-				-- check if DROPPABLE
-				if EEex_IsBitSet(targetSelectedWeaponHeader.itemFlags, 0x2) then
-					-- check if CURSED
-					if EEex_IsBitUnset(targetSelectedWeaponHeader.itemFlags, 0x4) then
+	-- MAIN --
+	-- Check if inventory is full
+	if not inventoryFull:evalConditionalAsAIBase(sourceSprite) then
+		-- check if NONDROPABLE
+		if EEex_IsBitUnset(targetSelectedWeapon.m_flags, 0x3) then
+			-- check if DROPPABLE
+			if EEex_IsBitSet(targetSelectedWeaponHeader.itemFlags, 0x2) then
+				-- check if CURSED
+				if EEex_IsBitUnset(targetSelectedWeaponHeader.itemFlags, 0x4) then
+					--
+					local sourceAnimationType = EEex_CastUD(sourceSelectedWeaponHeader.animationType, "CResRef"):get()
+					local targetAnimationType = EEex_CastUD(targetSelectedWeaponHeader.animationType, "CResRef"):get()
+					-- sanity check (only darts are supposed to have a null animation)
+					if (targetAnimationType ~= "") or (targetSelectedWeaponHeader.itemType == 24) then
+						-- set ``savebonus``
+						local savebonus = 0
 						--
-						local sourceAnimationType = EEex_CastUD(sourceSelectedWeaponHeader.animationType, "CResRef"):get()
-						local targetAnimationType = EEex_CastUD(targetSelectedWeaponHeader.animationType, "CResRef"):get()
-						-- sanity check (only darts are supposed to have a null animation)
-						if (targetAnimationType ~= "") or (targetSelectedWeaponHeader.itemType == 24) then
-							-- set ``savebonus``
-							local savebonus = 0
+						local sourceWeaponSize = cdtweaks_Disarm_CheckWeaponSize(sourceAnimationType)
+						local targetWeaponSize = cdtweaks_Disarm_CheckWeaponSize(targetAnimationType)
+						--
+						if (sourceWeaponSize == "small" and targetWeaponSize == "medium") or (sourceWeaponSize == "medium" and targetWeaponSize == "large") then
+							savebonus = 2
+						elseif (sourceWeaponSize == "medium" and targetWeaponSize == "small") or (sourceWeaponSize == "large" and targetWeaponSize == "medium") then
+							savebonus = -2
+						elseif sourceWeaponSize == "small" and targetWeaponSize == "large" then
+							savebonus = 4
+						elseif sourceWeaponSize == "large" and targetWeaponSize == "small" then
+							savebonus = -4
+						end
+						--
+						local targetSaveVSBreath = targetActiveStats.m_nSaveVSBreath
+						local adjustedRoll = CGameSprite.m_saveVSBreathRoll + savebonus
+						--
+						if adjustedRoll >= targetSaveVSBreath then
+							CGameSprite:applyEffect({
+								["effectID"] = 139, -- display string
+								["effectAmount"] = %feedback_strref_resisted%,
+								["sourceID"] = CGameEffect.m_sourceId,
+								["sourceTarget"] = CGameEffect.m_sourceTarget,
+							})
+						else
+							CGameSprite:applyEffect({
+								["effectID"] = 139, -- display string
+								["effectAmount"] = %feedback_strref_hit%,
+								["sourceID"] = CGameEffect.m_sourceId,
+								["sourceTarget"] = CGameEffect.m_sourceTarget,
+							})
 							--
-							local sourceWeaponSize = cdtweaks_Disarm_CheckWeaponSize(sourceAnimationType)
-							local targetWeaponSize = cdtweaks_Disarm_CheckWeaponSize(targetAnimationType)
-							--
-							if (sourceWeaponSize == "small" and targetWeaponSize == "medium") or (sourceWeaponSize == "medium" and targetWeaponSize == "large") then
-								savebonus = 2
-							elseif (sourceWeaponSize == "medium" and targetWeaponSize == "small") or (sourceWeaponSize == "large" and targetWeaponSize == "medium") then
-								savebonus = -2
-							elseif sourceWeaponSize == "small" and targetWeaponSize == "large" then
-								savebonus = 4
-							elseif sourceWeaponSize == "large" and targetWeaponSize == "small" then
-								savebonus = -4
-							end
-							--
-							local targetSaveVSBreath = targetActiveStats.m_nSaveVSBreath
-							local adjustedRoll = CGameSprite.m_saveVSBreathRoll + savebonus
-							--
-							if adjustedRoll >= targetSaveVSBreath then
-								CGameSprite:applyEffect({
-									["effectID"] = 139, -- display string
-									["effectAmount"] = %feedback_strref_resisted%,
-									["sourceID"] = CGameEffect.m_sourceId,
-									["sourceTarget"] = CGameEffect.m_sourceTarget,
-								})
-							else
-								CGameSprite:applyEffect({
-									["effectID"] = 139, -- display string
-									["effectAmount"] = %feedback_strref_hit%,
-									["sourceID"] = CGameEffect.m_sourceId,
-									["sourceTarget"] = CGameEffect.m_sourceTarget,
-								})
-								--
-								sourceSprite:applyEffect({
-									["effectID"] = 122, -- create inventory item
-									["effectAmount"] = targetSelectedWeapon.m_useCount1,
-									["m_effectAmount2"] = targetSelectedWeapon.m_useCount2,
-									["m_effectAmount3"] = targetSelectedWeapon.m_useCount3,
-									["res"] = targetSelectedWeaponResRef,
-									["sourceID"] = sourceSprite.m_id,
-									["sourceTarget"] = sourceSprite.m_id,
-								})
-								-- restore ``CItem`` flags
-								local sourceItems = sourceEquipment.m_items -- Array<CItem*,39>
-								for i = 18, 33 do -- inventory slots
-									local item = sourceItems:get(i) -- CItem
-									if item then
-										local resref = item.pRes.resref:get()
-										if resref == targetSelectedWeaponResRef then
-											if item.m_flags == 0 then
-												if item.m_useCount1 == targetSelectedWeapon.m_useCount1 then
-													if item.m_useCount2 == targetSelectedWeapon.m_useCount2 then
-														if item.m_useCount3 == targetSelectedWeapon.m_useCount3 then
-															item.m_flags = targetSelectedWeapon.m_flags
-															break
-														end
+							sourceSprite:applyEffect({
+								["effectID"] = 122, -- create inventory item
+								["effectAmount"] = targetSelectedWeapon.m_useCount1,
+								["m_effectAmount2"] = targetSelectedWeapon.m_useCount2,
+								["m_effectAmount3"] = targetSelectedWeapon.m_useCount3,
+								["res"] = targetSelectedWeaponResRef,
+								["sourceID"] = sourceSprite.m_id,
+								["sourceTarget"] = sourceSprite.m_id,
+							})
+							-- restore ``CItem`` flags
+							local sourceItems = sourceEquipment.m_items -- Array<CItem*,39>
+							for i = 18, 33 do -- inventory slots
+								local item = sourceItems:get(i) -- CItem
+								if item then
+									local resref = item.pRes.resref:get()
+									if resref == targetSelectedWeaponResRef then
+										if item.m_flags == 0 then
+											if item.m_useCount1 == targetSelectedWeapon.m_useCount1 then
+												if item.m_useCount2 == targetSelectedWeapon.m_useCount2 then
+													if item.m_useCount3 == targetSelectedWeapon.m_useCount3 then
+														item.m_flags = targetSelectedWeapon.m_flags
+														break
 													end
 												end
 											end
 										end
 									end
 								end
-								--
-								CGameSprite:applyEffect({
-									["effectID"] = 112, -- remove item
-									["res"] = targetSelectedWeaponResRef,
-									["sourceID"] = CGameEffect.m_sourceId,
-									["sourceTarget"] = CGameEffect.m_sourceTarget,
-								})
 							end
-						else
+							--
 							CGameSprite:applyEffect({
-								["effectID"] = 139, -- display string
-								["effectAmount"] = %feedback_strref_immune%,
+								["effectID"] = 112, -- remove item
+								["res"] = targetSelectedWeaponResRef,
 								["sourceID"] = CGameEffect.m_sourceId,
 								["sourceTarget"] = CGameEffect.m_sourceTarget,
 							})
@@ -165,7 +154,7 @@ function %ROGUE_DISARM%(CGameEffect, CGameSprite)
 		else
 			CGameSprite:applyEffect({
 				["effectID"] = 139, -- display string
-				["effectAmount"] = %feedback_strref_inventory_full%,
+				["effectAmount"] = %feedback_strref_immune%,
 				["sourceID"] = CGameEffect.m_sourceId,
 				["sourceTarget"] = CGameEffect.m_sourceTarget,
 			})
@@ -173,13 +162,12 @@ function %ROGUE_DISARM%(CGameEffect, CGameSprite)
 	else
 		CGameSprite:applyEffect({
 			["effectID"] = 139, -- display string
-			["effectAmount"] = %feedback_strref_melee_only%,
+			["effectAmount"] = %feedback_strref_inventory_full%,
 			["sourceID"] = CGameEffect.m_sourceId,
 			["sourceTarget"] = CGameEffect.m_sourceTarget,
 		})
 	end
 	--
-	isWeaponRanged:free()
 	inventoryFull:free()
 end
 
@@ -209,11 +197,15 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 					["sourceID"] = sprite.m_id,
 					["sourceTarget"] = sprite.m_id,
 				})
-			end
-		else
-			-- in case the character dies while swinging...
-			if sprite:getLocalInt("gtDisarmSwing") == 1 then
-				sprite:setLocalInt("gtDisarmSwing", 0)
+				--
+				if isWeaponRanged:evalConditionalAsAIBase(sprite) then
+					sprite:applyEffect({
+						["effectID"] = 139, -- display string
+						["effectAmount"] = %feedback_strref_melee_only%,
+						["sourceID"] = sprite.m_id,
+						["sourceTarget"] = sprite.m_id,
+					})
+				end
 			end
 		end
 	end
@@ -247,6 +239,8 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 						["sourceTarget"] = sprite.m_id,
 					})
 				end
+				--
+				sprite:setLocalInt("gtDisarmSwing", 0)
 				--
 				action.m_actionID = 3 -- Attack()
 				--
