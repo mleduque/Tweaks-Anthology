@@ -1,10 +1,10 @@
 @0 = "Combattimento Scorretto"
 @1 = "Combattimento Scorretto
 
-Il personaggio conosce tattiche di combattimento brutali ed efficaci. Sacrificando tutti gli altri attacchi durante il round, il personaggio può scegliere di giocare sporco ed infliggere il 20% della salute massima del bersaglio come danno puro."
+Il personaggio conosce tattiche di combattimento brutali ed efficaci. Sacrificando tutti gli altri attacchi durante il round, il personaggio può scegliere di giocare sporco ed infliggere il 15% della salute massima del bersaglio come danno puro."
 
 @2 = "Modalità Combattimento Scorretto Attivata"
 @3 = "Modalità Combattimento Scorretto Annullata"
 
-@100 = "Combattimento Scorretto: il personaggio subisce il 20% della sua salute massima come danno puro"
+@100 = "Combattimento Scorretto: il personaggio subisce il 15% della sua salute massima come danno puro"
 @101 = "Non soggetto agli effetti di Combattimento Scorretto"

@@ -1,43 +1,11 @@
+--[[
+	***************************************************************************************************************************
+--]]
+
 -- cdtweaks, Dirty Fighting class feat for chaotic-aligned rogues --
 
 function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 	if CGameEffect.m_effectAmount == 1 then
-		-- NB.: Only the first op1*p2=3 effect will take hold; any later ones will be skipped...
-		local found = false
-		EEex_Utility_IterateCPtrList(CGameSprite.m_equipedEffectList, function(effect)
-			if effect.m_effectId == 1 and effect.m_dWFlags == 3 then
-				effect.m_scriptName:set("gtRogueDirtyFightingOp1")
-				effect.m_effectAmount2 = effect.m_effectAmount
-				effect.m_effectAmount = 1
-				found = true
-			end
-		end)
-		-- NB.: Op1*p2=3 only functions when using Timing Modes 2/5/8
-		if not found then
-			CGameSprite:applyEffect({
-				["effectID"] = 1, -- Modify attacks per round
-				["effectList"] = 2, -- adds the effect to the sprite's equipped list
-				["durationType"] = 2,
-				["dwFlags"] = 3, -- Modifier type: Set final
-				["effectAmount"] = 1,
-				["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-				["m_sourceType"] = CGameEffect.m_sourceType,
-				["sourceID"] = CGameSprite.m_id,
-				["sourceTarget"] = CGameSprite.m_id,
-			})
-		end
-		-- The following is probably not necessary...
-		CGameSprite:applyEffect({
-			["effectID"] = 232, -- Cast spell on condition
-			["durationType"] = 1,
-			["dwFlags"] = 16, -- Die()
-			["res"] = "%ROGUE_DIRTY_FIGHTING%B",
-			["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-			["m_sourceType"] = CGameEffect.m_sourceType,
-			["sourceID"] = CGameSprite.m_id,
-			["sourceTarget"] = CGameSprite.m_id,
-		})
-	elseif CGameEffect.m_effectAmount == 2 then
 		CGameSprite:applyEffect({
 			["effectID"] = 321, -- Remove effects by resource
 			["res"] = "%ROGUE_DIRTY_FIGHTING%",
@@ -46,13 +14,15 @@ function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 		})
 		-- Restore existing op1*p2=3 effects
 		EEex_Utility_IterateCPtrList(CGameSprite.m_equipedEffectList, function(effect)
-			if effect.m_scriptName:get() == "gtRogueDirtyFightingOp1" then
+			if effect.m_scriptName:get() == "gtDirtyFightingOp1" then
 				effect.m_scriptName:set("")
 				effect.m_effectAmount = effect.m_effectAmount2
 				effect.m_effectAmount2 = 0
 			end
 		end)
-	elseif CGameEffect.m_effectAmount == 3 then
+		--
+		EEex_Sprite_SetLocalInt(CGameSprite, "gtDirtyFightingMode", 0)
+	elseif CGameEffect.m_effectAmount == 2 then
 		local itemflag = GT_Resource_SymbolToIDS["itemflag"]
 		--
 		local immunityToDamage = EEex_Trigger_ParseConditionalString("EEex_IsImmuneToOpcode(Myself,12)")
@@ -67,14 +37,14 @@ function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 		--
 		local selectedWeaponAbility = EEex_Resource_GetItemAbility(selectedWeaponHeader, equipment.m_selectedWeaponAbility) -- Item_ability_st
 		--
-		if selectedWeaponAbility.type == 1 and EEex_BAnd(selectedWeaponHeader.itemFlags, itemflag["TWOHANDED"]) == 0 then -- if melee and single-handed
+		if sourceSprite.m_leftAttack == 1 then -- if off-hand attack
 			local items = sourceSprite.m_equipment.m_items -- Array<CItem*,39>
 			local offHand = items:get(9) -- CItem
 			--
-			if offHand and sourceSprite.m_leftAttack == 1 then
-				local offHandHeader = offHand.pRes.pHeader -- Item_Header_st
-				if not (offHandHeader.itemType == 0xC) then -- if not shield, then overwrite item ability...
-					selectedWeaponAbility = EEex_Resource_GetItemAbility(offHandHeader, 0) -- Item_ability_st
+			if offHand then -- sanity check
+				local pHeader = offHand.pRes.pHeader -- Item_Header_st
+				if not (pHeader.itemType == 0xC) then -- if not shield, then overwrite item ability...
+					selectedWeaponAbility = EEex_Resource_GetItemAbility(pHeader, 0) -- Item_ability_st
 				end
 			end
 		end
@@ -103,7 +73,7 @@ function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 				{
 					["effectID"] = 12, -- Damage
 					["dwFlags"] = itmDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000 + 3, -- Percentage
-					["effectAmount"] = 20,
+					["effectAmount"] = 15,
 					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
 					["m_sourceType"] = CGameEffect.m_sourceType,
 					["sourceID"] = CGameEffect.m_sourceId,
@@ -136,11 +106,34 @@ function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 	end
 end
 
+-- cdtweaks, NWN-ish Dirty Fighting class feat for chaotic-aligned rogues. Cancel mode if ranged weapon --
+
+EEex_Opcode_AddListsResolvedListener(function(sprite)
+	-- Sanity check
+	if not EEex_GameObject_IsSprite(sprite) then
+		return
+	end
+	--
+	local isWeaponRanged = EEex_Trigger_ParseConditionalString("IsWeaponRanged(Myself)")
+	--
+	if sprite:getLocalInt("cdtweaksDirtyFighting") == 1 then
+		if EEex_Sprite_GetLocalInt(sprite, "gtDirtyFightingMode") == 1 and isWeaponRanged:evalConditionalAsAIBase(sprite) then
+			sprite:applyEffect({
+				["effectID"] = 146, -- Cast spell
+				["dwFlags"] = 1, -- instant/ignore level
+				["res"] = "%ROGUE_DIRTY_FIGHTING%B",
+				["sourceID"] = sprite.m_id,
+				["sourceTarget"] = sprite.m_id,
+			})
+		end
+	end
+	--
+	isWeaponRanged:free()
+end)
+
 -- cdtweaks, NWN-ish Dirty Fighting class feat for chaotic-aligned rogues. Make sure it cannot be disrupted --
 
 EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
-	local stats = GT_Resource_SymbolToIDS["stats"]
-	--
 	local actionSources = {
 		[3] = true, -- Attack()
 		[94] = true, -- GroupAttack()
@@ -150,12 +143,44 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	}
 	--
 	if sprite:getLocalInt("cdtweaksDirtyFighting") == 1 then
-		if EEex_Sprite_GetStat(sprite, stats["GT_COMBAT_MODE"]) == 0 then
+		if EEex_Sprite_GetLocalInt(sprite, "gtDirtyFightingMode") == 0 then
 			if action.m_actionID == 31 and action.m_string1.m_pchData:get() == "%ROGUE_DIRTY_FIGHTING%" then
 				action.m_actionID = 113 -- ForceSpell()
 			end
-		elseif EEex_Sprite_GetStat(sprite, stats["GT_COMBAT_MODE"]) == 2 then
-			if not actionSources[action.m_actionID] then
+		else
+			if actionSources[action.m_actionID] then
+				-- NB.: Only the first op1*p2=3 effect will take hold; any later ones will be skipped...
+				EEex_Utility_IterateCPtrList(sprite.m_equipedEffectList, function(effect)
+					if effect.m_effectId == 1 and effect.m_dWFlags == 3 and effect.m_scriptName:get() ~= "gtDirtyFightingOp1" then
+						effect.m_scriptName:set("gtDirtyFightingOp1")
+						effect.m_effectAmount2 = effect.m_effectAmount
+						effect.m_effectAmount = 1
+					end
+				end)
+				--
+				local effectCodes = {
+					{["op"] = 321, ["res"] = "%ROGUE_DIRTY_FIGHTING%"}, -- remove effects by resource
+					{["op"] = 1, ["p2"] = 3, ["p1"] = 1, ["tmg"] = 2}, -- set apr to 1 (mode: final, i.e.: ignore warrior bonus apr, proficiency and haste/slow. Only functions if ``timing=2``. Unfortunately, the op182 trick does not work in this case...)
+					{["op"] = 232, ["p2"] = 16, ["res"] = "%ROGUE_DIRTY_FIGHTING%B", ["tmg"] = 1}, -- cast spl on condition (condition: Die(); target: self)
+					{["op"] = 142, ["p2"] = %feedback_icon%, ["tmg"] = 1}, -- feedback icon
+					{["op"] = 248, ["res"] = "%ROGUE_DIRTY_FIGHTING%B", ["tmg"] = 1}, -- melee hit effect
+				}
+				--
+				for _, attributes in ipairs(effectCodes) do
+					sprite:applyEffect({
+						["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
+						["effectAmount"] = attributes["p1"] or 0,
+						["dwFlags"] = attributes["p2"] or 0,
+						["res"] = attributes["res"] or "",
+						["durationType"] = attributes["tmg"] or 0,
+						["m_sourceRes"] = "%ROGUE_DIRTY_FIGHTING%",
+						["sourceID"] = sprite.m_id,
+						["sourceTarget"] = sprite.m_id,
+					})
+				end
+				--
+				EEex_Sprite_SetLocalInt(sprite, "gtDirtyFightingMode", 1)
+			else
 				sprite:applyEffect({
 					["effectID"] = 146, -- Cast spell
 					["dwFlags"] = 1, -- instant/ignore level

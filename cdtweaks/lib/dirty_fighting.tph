@@ -5,23 +5,21 @@ BEGIN
 		"type" = 4
 		"level" = 4
 	STR_VAR
-		"idsName" = "DIRTY_FIGHTING"
+		"idsName" = "ROGUE_DIRTY_FIGHTING"
 	RET
-		"DIRTY_FIGHTING" = "resName"
+		"ROGUE_DIRTY_FIGHTING" = "resName"
 	END
 	//
-	LAF "ADD_EXTENDED_STAT" INT_VAR "max" = 30 STR_VAR "identifier" = "GT_COMBAT_MODE" END
+	//LAF "ADD_EXTENDED_STAT" INT_VAR "max" = 30 STR_VAR "identifier" = "GT_COMBAT_MODE" END
 	//
 	WITH_SCOPE BEGIN
-		ACTION_TO_LOWER "DIRTY_FIGHTING"
+		ACTION_TO_LOWER "ROGUE_DIRTY_FIGHTING"
 		//
-		LAF "ADD_STATDESC_ENTRY" INT_VAR "description" = RESOLVE_STR_REF (@0) STR_VAR "bam_file" = "%DIRTY_FIGHTING%d" RET "feedback_icon" = "index" END
+		COPY "cdtweaks\luke\bam\dirty_fighting\portrait_icon.bam" "override\%ROGUE_DIRTY_FIGHTING%d.bam"
+		COPY "cdtweaks\luke\bam\dirty_fighting\spl_icon.bam" "override\%ROGUE_DIRTY_FIGHTING%b.bam"
 		//
-		COPY "cdtweaks\luke\bam\dirty_fighting\portrait_icon.bam" "override\%DIRTY_FIGHTING%d.bam"
-		COPY "cdtweaks\luke\bam\dirty_fighting\spl_icon.bam" "override\%DIRTY_FIGHTING%b.bam"
-		//
-		CREATE "spl" "%DIRTY_FIGHTING%"
-		COPY_EXISTING "%DIRTY_FIGHTING%.spl" "override"
+		CREATE "spl" "%ROGUE_DIRTY_FIGHTING%"
+		COPY_EXISTING "%ROGUE_DIRTY_FIGHTING%.spl" "override"
 			WRITE_LONG NAME1 RESOLVE_STR_REF (@0)
 			WRITE_LONG UNIDENTIFIED_DESC RESOLVE_STR_REF (@1)
 			WRITE_LONG DESC "-1"
@@ -34,17 +32,13 @@ BEGIN
 			LPF "ADD_SPELL_HEADER" INT_VAR "target" = 5 "range" = 30 STR_VAR "icon" = "%DEST_RES%B" END
 			//
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 138 "target" = 1 "parameter2" = 7 END // SEQ_READY
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 321 "target" = 1 STR_VAR "resource" = "%DEST_RES%" END // remove effects by resource
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 174 "target" = 1 STR_VAR "resource" = "EFF_P87" END // play sound
 			//LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 172 "target" = 1 STR_VAR "resource" = "%DEST_RES%" END // remove spell
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 139 "target" = 1 "parameter1" = RESOLVE_STR_REF (@2) END // feedback string
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 142 "target" = 1 "parameter2" = "%feedback_icon%" "timing" = 1 END // feedback icon
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 248 "target" = 1 "timing" = 1 STR_VAR "resource" = "%DEST_RES%B" END // melee hit effect
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 401 "target" = 1 "timing" = 1 "parameter2" = 1 "parameter1" = 2 "special" = IDS_OF_SYMBOL ("stats" "GT_COMBAT_MODE") END // set extended stat
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 1 "parameter1" = 1 STR_VAR "resource" = "%DEST_RES%" END // invoke lua
 		BUT_ONLY
 		//
-		CREATE "spl" "%DIRTY_FIGHTING%b"
-		COPY_EXISTING "%DIRTY_FIGHTING%b.spl" "override"
+		CREATE "spl" "%ROGUE_DIRTY_FIGHTING%b"
+		COPY_EXISTING "%ROGUE_DIRTY_FIGHTING%b.spl" "override"
 			WRITE_LONG NAME1 RESOLVE_STR_REF (@3)
 			WRITE_LONG UNIDENTIFIED_DESC "-1"
 			WRITE_LONG DESC "-1"
@@ -56,14 +50,14 @@ BEGIN
 			//
 			LPF "ADD_SPELL_HEADER" INT_VAR "target" = 5 "range" = 30 STR_VAR "icon" = "%DEST_RES%" END
 			//
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 1 "parameter1" = 2 STR_VAR "resource" = "%DIRTY_FIGHTING%" END // invoke lua
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 1 "parameter1" = 1 STR_VAR "resource" = "%ROGUE_DIRTY_FIGHTING%" END // invoke lua
 		BUT_ONLY
 		//
-		CREATE "eff" "%DIRTY_FIGHTING%b"
-		COPY_EXISTING "%DIRTY_FIGHTING%b.eff" "override"
+		CREATE "eff" "%ROGUE_DIRTY_FIGHTING%b"
+		COPY_EXISTING "%ROGUE_DIRTY_FIGHTING%b.eff" "override"
 			WRITE_LONG 0x10 402 // invoke lua
-			WRITE_LONG 0x1C 3 // parameter1
-			WRITE_ASCII 0x30 "%DIRTY_FIGHTING%" #8 // lua func
+			WRITE_LONG 0x1C 2 // parameter1
+			WRITE_ASCII 0x30 "%ROGUE_DIRTY_FIGHTING%" #8 // lua func
 			WRITE_SHORT 0x2C 100 // probability1
 		BUT_ONLY
 	END
@@ -71,6 +65,7 @@ BEGIN
 	WITH_SCOPE BEGIN
 		OUTER_SET "feedback_strref_hit" = RESOLVE_STR_REF (@100)
 		OUTER_SET "feedback_strref_immune" = RESOLVE_STR_REF (@101)
+		LAF "ADD_STATDESC_ENTRY" INT_VAR "description" = RESOLVE_STR_REF (@0) STR_VAR "bam_file" = "%ROGUE_DIRTY_FIGHTING%D" RET "feedback_icon" = "index" END
 		//
 		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Class/Kit Abilities" "sourceFileSpec" = "cdtweaks\luke\lua\class\dirty_fighting.lua" "destRes" = "m_gtspcl" END
 	END
