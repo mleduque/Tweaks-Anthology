@@ -190,11 +190,6 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 					["sourceTarget"] = sprite.m_id,
 				})
 			end
-		else
-			-- in case the character dies while swinging...
-			if sprite:getLocalInt("gtCalledShotSwing") == 1 then
-				sprite:setLocalInt("gtCalledShotSwing", 0)
-			end
 		end
 	end
 end)
@@ -205,6 +200,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	if sprite:getLocalInt("cdtweaksCalledShot") == 1 then
 		if action.m_actionID == 31 and (action.m_string1.m_pchData:get() == "%ARCHER_CALLED_SHOT%B" or action.m_string1.m_pchData:get() == "%ARCHER_CALLED_SHOT%C") then
 			if EEex_Sprite_GetCastTimer(sprite) == -1 then
+				--
 				local effectCodes = {
 					{["op"] = 321, ["res"] = "%ARCHER_CALLED_SHOT%"}, -- remove effects by resource
 					{["op"] = 167, ["p1"] = -4}, -- missile thac0 bonus
@@ -226,6 +222,8 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 						["sourceTarget"] = sprite.m_id,
 					})
 				end
+				--
+				sprite:setLocalInt("gtCalledShotSwing", 0)
 				--
 				action.m_actionID = 3 -- Attack()
 				--
