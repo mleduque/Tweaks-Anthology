@@ -1,8 +1,10 @@
 --[[
-	***************************************************************************************************************************
++---------------------------------------------+
+| cdtweaks, NWN-ish Disarm ability for Rogues |
++---------------------------------------------+
 --]]
 
--- cdtweaks, NWN-ish Disarm ability. Small / Medium / Large weapons --
+-- NWN-ish Disarm ability. Small / Medium / Large weapons --
 
 local cdtweaks_Disarm_WeaponSize = {
 	["small"] = {"", "CL", "DD", "F2", "M2", "MC", "SL", "SS"},
@@ -21,7 +23,7 @@ local function cdtweaks_Disarm_CheckWeaponSize(animationType)
 	return "none" -- should not happen
 end
 
--- cdtweaks, NWN-ish Disarm ability --
+-- NWN-ish Disarm ability (main) --
 
 function %ROGUE_DISARM%(CGameEffect, CGameSprite)
 	local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId) -- CGameSprite
@@ -171,7 +173,7 @@ function %ROGUE_DISARM%(CGameEffect, CGameSprite)
 	inventoryFull:free()
 end
 
--- cdtweaks, NWN-ish Disarm ability. Make sure one and only one attack roll is performed --
+-- NWN-ish Disarm ability. Make sure one and only one attack roll is performed --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check
@@ -213,7 +215,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	isWeaponRanged:free()
 end)
 
--- cdtweaks, NWN-ish Disarm ability. Morph the spell action into an attack action --
+-- NWN-ish Disarm ability. Morph the spell action into an attack action --
 
 EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	local ea = GT_Resource_SymbolToIDS["ea"]
@@ -225,7 +227,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 					{["op"] = 321, ["res"] = "%ROGUE_DISARM%"}, -- remove effects by resource
 					{["op"] = 284, ["p1"] = -6}, -- melee thac0 bonus
 					{["op"] = 142, ["p2"] = %feedback_icon_can_disarm%}, -- feedback icon
-					{["op"] = 248, ["res"] = "%ROGUE_DISARM%B"}, -- melee hit effect
+					{["op"] = 248, ["res"] = "%ROGUE_DISARM%"}, -- melee hit effect
 				}
 				--
 				for _, attributes in ipairs(effectCodes) do
