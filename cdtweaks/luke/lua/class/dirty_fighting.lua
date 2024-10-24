@@ -1,8 +1,10 @@
 --[[
-	***************************************************************************************************************************
++------------------------------------------------------------------------+
+| cdtweaks, NWN-ish Dirty Fighting class feat for chaotic-aligned rogues |
++------------------------------------------------------------------------+
 --]]
 
--- cdtweaks, Dirty Fighting class feat for chaotic-aligned rogues --
+-- Core function --
 
 function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 	if CGameEffect.m_effectAmount == 1 then
@@ -72,7 +74,7 @@ function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 				EEex_GameObject_ApplyEffect(CGameSprite,
 				{
 					["effectID"] = 12, -- Damage
-					["dwFlags"] = itmDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000 + 3, -- Percentage
+					["dwFlags"] = itmDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000 + 3, -- mode: Percentage
 					["effectAmount"] = 15,
 					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
 					["m_sourceType"] = CGameEffect.m_sourceType,
@@ -106,7 +108,7 @@ function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 	end
 end
 
--- cdtweaks, NWN-ish Dirty Fighting class feat for chaotic-aligned rogues. Cancel mode if ranged weapon --
+-- Cancel mode if ranged weapon --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check
@@ -131,7 +133,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	isWeaponRanged:free()
 end)
 
--- cdtweaks, NWN-ish Dirty Fighting class feat for chaotic-aligned rogues. Make sure it cannot be disrupted --
+-- Make sure it cannot be disrupted. Cancel mode if not attacking --
 
 EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	local actionSources = {
@@ -193,7 +195,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	end
 end)
 
--- cdtweaks: NWN-ish Dirty Fighting class feat for chaotic-aligned rogues --
+-- Give ability --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check
@@ -248,7 +250,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			-- Mark the creature as 'feat removed'
 			sprite:setLocalInt("cdtweaksDirtyFighting", 0)
 			--
-			if EEex_Sprite_GetStat(sprite, stats["GT_COMBAT_MODE"]) == 2 then
+			if EEex_Sprite_GetLocalInt(sprite, "gtDirtyFightingMode") == 1 then
 				sprite:applyEffect({
 					["effectID"] = 146, -- Cast spell
 					["dwFlags"] = 1, -- instant/ignore level
