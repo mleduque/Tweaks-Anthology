@@ -184,7 +184,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local isWeaponRanged = EEex_Trigger_ParseConditionalString("IsWeaponRanged(Myself)")
 	--
 	if sprite:getLocalInt("cdtweaksDisarm") == 1 then
-		if GT_Utility_EffectCheck(sprite, {["op"] = 0xF8, ["res"] = "%ROGUE_DISARM%B"}) then
+		if GT_Utility_EffectCheck(sprite, {["op"] = 0xF8, ["res"] = "%ROGUE_DISARM%"}) then
 			if sprite.m_startedSwing == 1 and sprite:getLocalInt("gtDisarmSwing") == 0 and not isWeaponRanged:evalConditionalAsAIBase(sprite) then
 				sprite:setLocalInt("gtDisarmSwing", 1)
 			elseif (sprite.m_startedSwing == 0 and sprite:getLocalInt("gtDisarmSwing") == 1) or isWeaponRanged:evalConditionalAsAIBase(sprite) then
