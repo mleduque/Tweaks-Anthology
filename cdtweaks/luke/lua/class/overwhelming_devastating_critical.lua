@@ -1,8 +1,10 @@
 --[[
-	***************************************************************************************************************************
++---------------------------------------------------------------------------------------+
+| cdtweaks, NWN-ish Overwhelming/Devastating Critical class feat for Trueclass Fighters |
++---------------------------------------------------------------------------------------+
 --]]
 
--- cdtweaks, Overwhelming/Devastating Critical class feat for Trueclass Fighters --
+-- Apply ability --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check
@@ -80,7 +82,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	grandmastery:free()
 end)
 
--- cdtweaks, Overwhelming/Devastating Critical class feat for Trueclass Fighters --
+-- Core function --
 
 function %TRUECLASS_FIGHTER_CRITICAL%(CGameEffect, CGameSprite)
 	local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId)
@@ -122,7 +124,7 @@ function %TRUECLASS_FIGHTER_CRITICAL%(CGameEffect, CGameSprite)
 				EEex_GameObject_ApplyEffect(CGameSprite,
 				{
 					["effectID"] = 12, -- Damage
-					["dwFlags"] = itmDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000,
+					["dwFlags"] = itmDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000, -- mode: normal
 					["numDice"] = 2,
 					["diceSize"] = 6,
 					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
