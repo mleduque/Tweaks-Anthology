@@ -1,8 +1,10 @@
 --[[
-	***************************************************************************************************************************
++--------------------------------------------+
+| cdtweaks, Revised Archer Kit (Called Shot) |
++--------------------------------------------+
 --]]
 
--- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Creatures with no arms --
+-- NWN-ish Called Shot ability. Creatures with no arms --
 
 local cdtweaks_CalledShot_NoArms = {
 	{"WEAPON"}, -- GENERAL.IDS
@@ -16,7 +18,7 @@ local cdtweaks_CalledShot_NoArms = {
 	},
 }
 
--- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Creatures with no legs --
+-- NWN-ish Called Shot ability. Creatures with no legs --
 
 local cdtweaks_CalledShot_NoLegs = {
 	{"WEAPON"}, -- GENERAL.IDS
@@ -30,7 +32,7 @@ local cdtweaks_CalledShot_NoLegs = {
 	},
 }
 
--- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability --
+-- NWN-ish Called Shot ability (main) --
 
 function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 	local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId) -- CGameSprite
@@ -97,8 +99,8 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 				end
 			else
 				CGameSprite:applyEffect({
-					["effectID"] = 139, -- display string
-					["effectAmount"] = %feedback_strref_immune%,
+					["effectID"] = 324, -- immunity to resource and message
+					["res"] = CGameEffect.m_sourceRes:get(),
 					["sourceID"] = CGameEffect.m_sourceId,
 					["sourceTarget"] = CGameEffect.m_sourceTarget,
 				})
@@ -143,8 +145,8 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 				end
 			else
 				CGameSprite:applyEffect({
-					["effectID"] = 139, -- display string
-					["effectAmount"] = %feedback_strref_immune%,
+					["effectID"] = 324, -- immunity to resource and message
+					["res"] = CGameEffect.m_sourceRes:get(),
 					["sourceID"] = CGameEffect.m_sourceId,
 					["sourceTarget"] = CGameEffect.m_sourceTarget,
 				})
@@ -160,7 +162,7 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 	end
 end
 
--- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Make sure one and only one attack roll is performed --
+-- NWN-ish Called Shot ability. Make sure one and only one attack roll is performed --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check
@@ -194,9 +196,11 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	end
 end)
 
--- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Morph the spell action into an attack action --
+-- NWN-ish Called Shot ability. Morph the spell action into an attack action --
 
 EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
+	local ea = GT_Resource_SymbolToIDS["ea"]
+	--
 	if sprite:getLocalInt("cdtweaksCalledShot") == 1 then
 		if action.m_actionID == 31 and (action.m_string1.m_pchData:get() == "%ARCHER_CALLED_SHOT%B" or action.m_string1.m_pchData:get() == "%ARCHER_CALLED_SHOT%C") then
 			if EEex_Sprite_GetCastTimer(sprite) == -1 then
@@ -225,7 +229,12 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 				--
 				sprite:setLocalInt("gtCalledShotSwing", 0)
 				--
-				action.m_actionID = 3 -- Attack()
+				if sprite.m_typeAI.m_EnemyAlly < ea["GOODCUTOFF"] then
+					action.m_actionID = 3 -- Attack()
+				else
+					action.m_actionID = 134 -- AttackReevaluate()
+					action.m_specificID = 100 -- ReevaluationPeriod
+				end
 				--
 				sprite.m_castCounter = 0
 			else
@@ -258,7 +267,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	end
 end)
 
--- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Cannot be used with AoE missiles (see f.i. Arrow of Detonation) --
+-- NWN-ish Called Shot ability. Cannot be used with AoE missiles (see f.i. Arrow of Detonation) --
 
 %ARCHER_CALLED_SHOT%P = {
 
@@ -318,7 +327,7 @@ end)
 	end,
 }
 
--- cdtweaks, revised archer (Called Shot): NWN-ish Called Shot ability. Gain ability --
+-- NWN-ish Called Shot ability. Gain ability --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check

@@ -1,4 +1,10 @@
--- cdtweaks, revised archer kit: +X missile thac0/damage bonus with bows only! --
+--[[
++-----------------------------------------------------------------------------+
+| cdtweaks, Revised Archer Kit (+X missile thac0/damage bonus with bows only) |
++-----------------------------------------------------------------------------+
+--]]
+
+-- Apply bonus --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check

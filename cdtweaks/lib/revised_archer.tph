@@ -83,9 +83,7 @@ BEGIN
 			//
 			LPF "ADD_SPELL_HEADER" INT_VAR "range" = 30 STR_VAR "icon" = "%DEST_RES%" END
 			//
-			/*LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 138 "target" = 1 "parameter2" = 7 END // SEQ_READY
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 321 "target" = 1 STR_VAR "resource" = "%ARCHER_CALLED_SHOT%" END // Remove effects by resource
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 2 STR_VAR "resource" = "%ARCHER_CALLED_SHOT%" END // Invoke lua*/
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 2 "parameter1" = 1 STR_VAR "resource" = "%ARCHER_CALLED_SHOT%" END // Invoke lua
 		BUT_ONLY
 		// Legs
 		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.spl" "override\%ARCHER_CALLED_SHOT%c.spl"
@@ -94,19 +92,21 @@ BEGIN
 			WRITE_ASCII 0x3A "%DEST_RES%" #8 // icon
 			//
 			LPF "ALTER_SPELL_HEADER" STR_VAR "icon" = "%DEST_RES%" END
+			//
+			LPF "ALTER_SPELL_EFFECT" INT_VAR "match_opcode" = 402 "parameter1" = 2 END
 		BUT_ONLY
 		// EFFs
 		CREATE "eff" "%ARCHER_CALLED_SHOT%b"
 		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.eff" "override"
-			WRITE_LONG 0x10 402 // Invoke Lua
+			WRITE_LONG 0x10 146 // Cast spell
 			WRITE_LONG 0x14 2 // Projectile target
-			WRITE_LONG 0x1C 1 // p1
+			WRITE_LONG 0x20 1 // Mode: instant/ignore level
 			WRITE_SHORT 0x2C 100 // prob1
-			WRITE_ASCII 0x30 "%ARCHER_CALLED_SHOT%" #8 // Lua function
+			WRITE_ASCII 0x30 "%DEST_RES%" #8 // spl file
 		BUT_ONLY
 		//
 		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.eff" "override\%ARCHER_CALLED_SHOT%c.eff"
-			WRITE_LONG 0x1C 2 // p1
+			WRITE_ASCII 0x30 "%DEST_RES%" #8 // spl file
 		BUT_ONLY
 		//
 		COPY "cdtweaks\luke\bam\kit\archer\called_shot_arms.bam" "override\%ARCHER_CALLED_SHOT%b.bam" "cdtweaks\luke\bam\kit\archer\called_shot_legs.bam" "override\%ARCHER_CALLED_SHOT%c.bam"
@@ -133,7 +133,6 @@ BEGIN
 		OUTER_SET "feedback_strref_bow_only" = RESOLVE_STR_REF (@103)
 		OUTER_SET "feedback_strref_aura_free" = RESOLVE_STR_REF (@200)
 		OUTER_SET "feedback_strref_AoE" = RESOLVE_STR_REF (@300)
-		OUTER_SET "feedback_strref_immune" = RESOLVE_STR_REF (@400)
 		//
 		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Class/Kit Abilities" "sourceFileSpec" = "cdtweaks\luke\lua\kit\archer\passive_traits.lua" "destRes" = "m_gtspcl" END
 		// Listener: run 'func' each time a sprite has finished evaluating its effects
