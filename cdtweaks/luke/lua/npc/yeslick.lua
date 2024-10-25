@@ -1,4 +1,10 @@
--- cdtweaks, Yeslick (axes): remove f/c unusability flag from all axes --
+--[[
++--------------------------+
+| cdtweaks, Yeslick (axes) |
++--------------------------+
+--]]
+
+-- remove f/c unusability flag from all axes --
 
 EEex_GameState_AddInitializedListener(function()
 	local itmFileList = Infinity_GetFilesOfType("itm")
@@ -14,7 +20,7 @@ EEex_GameState_AddInitializedListener(function()
 	end
 end)
 
--- cdtweaks, Yeslick (axes): make sure only Yeslick can equip axes --
+-- make sure only Yeslick can equip axes --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that applies the actual restriction
@@ -24,7 +30,6 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		--
 		sprite:applyEffect({
 			["effectID"] = 321, -- Remove spell
-			["durationType"] = 1,
 			["res"] = "CDYSLAXE",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
@@ -62,7 +67,6 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			--
 			sprite:applyEffect({
 				["effectID"] = 321, -- Remove effects by resource
-				["durationType"] = 1,
 				["res"] = "CDYSLAXE",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
