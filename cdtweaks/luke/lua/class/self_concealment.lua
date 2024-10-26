@@ -85,13 +85,14 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 	--
 	if targetSprite:getLocalInt("cdtweaksSelfConcealment") == 1 then
 		if math.random(100) <= targetSprite:getLocalInt("gtSelfConcealmentAmount") then -- 1d100 roll
+			-- display some feedback
 			targetSprite:applyEffect({
 				["effectID"] = 139, -- Display string
 				["effectAmount"] = cdtweaks_MonkSelfConcealment_FeedbackStrref[targetSprite:getLocalInt("gtSelfConcealmentAmount")],
 				["sourceID"] = targetSprite.m_id,
 				["sourceTarget"] = targetSprite.m_id,
 			})
-			--
+			-- block base weapon damage + on-hit effects
 			return true
 		end
 	end
