@@ -35,6 +35,8 @@ BEGIN
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 174 "target" = 1 STR_VAR "resource" = "EFF_P87" END // play sound
 			//LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 172 "target" = 1 STR_VAR "resource" = "%DEST_RES%" END // remove spell
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 139 "target" = 1 "parameter1" = RESOLVE_STR_REF (@2) END // feedback string
+			//
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 1 STR_VAR "resource" = "%DEST_RES%" END // invoke lua
 		BUT_ONLY
 		//
 		CREATE "spl" "%ROGUE_DIRTY_FIGHTING%b"
@@ -68,6 +70,9 @@ BEGIN
 		LAF "ADD_STATDESC_ENTRY" INT_VAR "description" = RESOLVE_STR_REF (@0) STR_VAR "bam_file" = "%ROGUE_DIRTY_FIGHTING%D" RET "feedback_icon" = "index" END
 		//
 		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Class/Kit Abilities" "sourceFileSpec" = "cdtweaks\luke\lua\class\dirty_fighting.lua" "destRes" = "m_gtspcl" END
+		//
+		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Lua Tools" "sourceFileSpec" = "cdtweaks\luke\lua\tool\wrap_userdata.lua" "destRes" = "m_gttool" END
+		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Utility" "sourceFileSpec" = "cdtweaks\luke\lua\utility\check_for_effect.lua" "destRes" = "m_gtutil" END
 	END
 	//
 	ACTION_IF !(FILE_EXISTS_IN_GAME "m_gttbls.lua") BEGIN

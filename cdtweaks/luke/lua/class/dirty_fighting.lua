@@ -7,7 +7,31 @@
 -- Core function --
 
 function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
-	if CGameEffect.m_effectAmount == 1 then
+	if CGameEffect.m_effectAmount == 0 then
+		-- we apply effects here due to op232's presence (which for best results requires EFF V2.0)
+		local effectCodes = {
+			{["op"] = 321, ["res"] = "%ROGUE_DIRTY_FIGHTING%"}, -- remove effects by resource
+			{["op"] = 1, ["p2"] = 3, ["p1"] = 1, ["tmg"] = 2}, -- set apr to 1 (mode: final, i.e.: ignore warrior bonus apr, proficiency and haste/slow. Only functions if ``timing=2``. Unfortunately, the op182 trick does not work in this case...)
+			{["op"] = 232, ["p2"] = 16, ["res"] = "%ROGUE_DIRTY_FIGHTING%B", ["tmg"] = 1}, -- cast spl on condition (condition: Die(); target: self)
+			{["op"] = 142, ["p2"] = %feedback_icon%, ["tmg"] = 1}, -- feedback icon
+			{["op"] = 248, ["res"] = "%ROGUE_DIRTY_FIGHTING%B", ["tmg"] = 1}, -- melee hit effect
+		}
+		--
+		for _, attributes in ipairs(effectCodes) do
+			CGameSprite:applyEffect({
+				["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
+				["effectAmount"] = attributes["p1"] or 0,
+				["dwFlags"] = attributes["p2"] or 0,
+				["res"] = attributes["res"] or "",
+				["durationType"] = attributes["tmg"] or 0,
+				["m_sourceRes"] = "%ROGUE_DIRTY_FIGHTING%",
+				["sourceID"] = CGameSprite.m_id,
+				["sourceTarget"] = CGameSprite.m_id,
+			})
+		end
+		--
+		EEex_Sprite_SetLocalInt(CGameSprite, "gtDirtyFightingMode", 1)
+	elseif CGameEffect.m_effectAmount == 1 then
 		CGameSprite:applyEffect({
 			["effectID"] = 321, -- Remove effects by resource
 			["res"] = "%ROGUE_DIRTY_FIGHTING%",
@@ -58,7 +82,7 @@ function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 			[0x80] = targetActiveStats.m_nResistMissile, -- missile
 			[0x800] = targetActiveStats.m_nResistCrushing, -- non-lethal
 		}
-		local itmDamageTypeToIDS = {
+		local itmAbilityDamageTypeToIDS = {
 			0x10, -- piercing
 			0x0, -- crushing
 			0x100, -- slashing
@@ -69,12 +93,12 @@ function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 			targetActiveStats.m_nResistCrushing > targetActiveStats.m_nResistSlashing and 0x0 or 0x100, -- slashing/crushing (worse)
 		}
 		--
-		if itmDamageTypeToIDS[selectedWeaponAbility.damageType] then -- sanity check
-			if resistDamageTypeTable[itmDamageTypeToIDS[selectedWeaponAbility.damageType]] < 100 and not immunityToDamage:evalConditionalAsAIBase(CGameSprite) then
+		if itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType] then -- sanity check
+			if resistDamageTypeTable[itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType]] < 100 and not immunityToDamage:evalConditionalAsAIBase(CGameSprite) then
 				EEex_GameObject_ApplyEffect(CGameSprite,
 				{
 					["effectID"] = 12, -- Damage
-					["dwFlags"] = itmDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000 + 3, -- mode: Percentage
+					["dwFlags"] = itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000 + 3, -- mode: Percentage
 					["effectAmount"] = 15,
 					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
 					["m_sourceType"] = CGameEffect.m_sourceType,
@@ -108,7 +132,7 @@ function %ROGUE_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 	end
 end
 
--- Cancel mode if ranged weapon --
+-- Automatically cancel mode if ranged weapon --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check
@@ -159,29 +183,19 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 						effect.m_effectAmount = 1
 					end
 				end)
-				--
-				local effectCodes = {
-					{["op"] = 321, ["res"] = "%ROGUE_DIRTY_FIGHTING%"}, -- remove effects by resource
-					{["op"] = 1, ["p2"] = 3, ["p1"] = 1, ["tmg"] = 2}, -- set apr to 1 (mode: final, i.e.: ignore warrior bonus apr, proficiency and haste/slow. Only functions if ``timing=2``. Unfortunately, the op182 trick does not work in this case...)
-					{["op"] = 232, ["p2"] = 16, ["res"] = "%ROGUE_DIRTY_FIGHTING%B", ["tmg"] = 1}, -- cast spl on condition (condition: Die(); target: self)
-					{["op"] = 142, ["p2"] = %feedback_icon%, ["tmg"] = 1}, -- feedback icon
-					{["op"] = 248, ["res"] = "%ROGUE_DIRTY_FIGHTING%B", ["tmg"] = 1}, -- melee hit effect
-				}
-				--
-				for _, attributes in ipairs(effectCodes) do
+				-- NB.: ``timing=2`` effects not attached directly as equipped effects get removed upon saving & reloading!!!
+				-- think about saving & reloading while being in Dirty Fighting mode...
+				if not GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0x1, ["m_sourceRes"] = "%ROGUE_DIRTY_FIGHTING%"}) then
 					sprite:applyEffect({
-						["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
-						["effectAmount"] = attributes["p1"] or 0,
-						["dwFlags"] = attributes["p2"] or 0,
-						["res"] = attributes["res"] or "",
-						["durationType"] = attributes["tmg"] or 0,
+						["effectID"] = 0x1,
+						["effectAmount"] = 1,
+						["dwFlags"] = 3,
+						["durationType"] = 2,
 						["m_sourceRes"] = "%ROGUE_DIRTY_FIGHTING%",
 						["sourceID"] = sprite.m_id,
 						["sourceTarget"] = sprite.m_id,
 					})
 				end
-				--
-				EEex_Sprite_SetLocalInt(sprite, "gtDirtyFightingMode", 1)
 			else
 				sprite:applyEffect({
 					["effectID"] = 146, -- Cast spell
