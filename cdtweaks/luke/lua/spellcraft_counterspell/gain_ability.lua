@@ -1,6 +1,10 @@
--- cdtweaks: NWN-ish Spellcraft / Counterspell class feat for spellcasters --
+-- Give feat --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
+	-- Sanity check
+	if not EEex_GameObject_IsSprite(sprite) then
+		return
+	end
 	-- internal function that grants the actual feat
 	local gain = function()
 		-- Mark the creature as 'feat granted'
@@ -8,15 +12,13 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		--
 		sprite:applyEffect({
 			["effectID"] = 172, -- Remove spell
-			["durationType"] = 1,
-			["res"] = "%INNATE_COUNTERSPELL%Y",
+			["res"] = "%INNATE_COUNTERSPELL%",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
 		})
 		sprite:applyEffect({
 			["effectID"] = 171, -- Give spell
-			["durationType"] = 1,
-			["res"] = "%INNATE_COUNTERSPELL%Y",
+			["res"] = "%INNATE_COUNTERSPELL%",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
 		})
@@ -48,7 +50,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			-- Mark the creature as 'feat removed'
 			sprite:setLocalInt("cdtweaksSpellcraft", 0)
 			--
-			if sprite:getLocalInt("cdtweaksCounterspell") == 1 then
+			if sprite:getLocalInt("gtCounterspellMode") == 1 then
 				sprite:applyEffect({
 					["effectID"] = 146, -- Cast spell
 					["dwFlags"] = 1, -- instant/ignore level
@@ -60,8 +62,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			--
 			sprite:applyEffect({
 				["effectID"] = 172, -- Remove spell
-				["durationType"] = 1,
-				["res"] = "%INNATE_COUNTERSPELL%Y",
+				["res"] = "%INNATE_COUNTERSPELL%",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})

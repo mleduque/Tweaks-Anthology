@@ -1,4 +1,41 @@
--- cdtweaks, Spellcraft / Counterspell class feat for spellcasters --
+--[[
++-------------------------------------------------------------------------+
+| cdtweaks: NWN-ish Spellcraft / Counterspell class feat for spellcasters |
++-------------------------------------------------------------------------+
+--]]
+
+local cdtweaks_Counterspell_ResRef = {
+	["%INNATE_COUNTERSPELL%A"] = true,
+	["%INNATE_COUNTERSPELL%B"] = true,
+	["%INNATE_COUNTERSPELL%C"] = true,
+	["%INNATE_COUNTERSPELL%D"] = true,
+	["%INNATE_COUNTERSPELL%E"] = true,
+	["%INNATE_COUNTERSPELL%F"] = true,
+	["%INNATE_COUNTERSPELL%G"] = true,
+	["%INNATE_COUNTERSPELL%H"] = true,
+}
+
+--
+
+local cdtweaks_Counterspell_OppositionSchool = { -- based on iwdee
+	[1] = {{5, 8}, "%INNATE_COUNTERSPELL%A"}, -- ABJURER countered by ILLUSIONIST and TRANSMUTER
+	[2] = {{3, 6}, "%INNATE_COUNTERSPELL%B"}, -- CONJURER countered by DIVINER and INVOKER
+	[3] = {{6}, "%INNATE_COUNTERSPELL%C"}, -- DIVINER countered by INVOKER
+	[4] = {{7}, "%INNATE_COUNTERSPELL%D"}, -- ENCHANTER countered by NECROMANCER
+	[5] = {{1, 7}, "%INNATE_COUNTERSPELL%E"}, -- ILLUSIONIST countered by ABJURER and NECROMANCER
+	[6] = {{2, 4}, "%INNATE_COUNTERSPELL%F"}, -- INVOKER countered by CONJURER and ENCHANTER
+	[7] = {{5, 8}, "%INNATE_COUNTERSPELL%G"}, -- NECROMANCER countered by ILLUSIONIST and TRANSMUTER
+	[8] = {{1}, "%INNATE_COUNTERSPELL%H"}, -- TRANSMUTER countered by ABJURER
+}
+
+--
+
+local cdtweaks_Counterspell_UniversalCounter = {
+	["CLERIC_DISPEL_MAGIC"] = true,
+	["WIZARD_REMOVE_MAGIC"] = true,
+	["WIZARD_DISPEL_MAGIC"] = true,
+	["WIZARD_TRUE_DISPEL_MAGIC"] = true,
+}
 
 -- check if there is someone casting a wizard/priest spell --
 -- perform a counterspell if appropriate --
@@ -39,9 +76,9 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 		if (spellType == 1 or spellType == 2) and (spellSchool > 0 and spellSchool <= 8) then
 			--
 			if sprite.m_typeAI.m_EnemyAlly > 200 then -- EVILCUTOFF
-				spriteArray = EEex_Sprite_GetAllOfTypeStringInRange(sprite, "[GOODCUTOFF]", 448, nil, nil, nil)
+				spriteArray = EEex_Sprite_GetAllOfTypeInRange(sprite, GT_AI_ObjectType["GOODCUTOFF"], 448, nil, nil, nil) -- we ignore STATE_BLIND
 			elseif sprite.m_typeAI.m_EnemyAlly < 30 then -- GOODCUTOFF
-				spriteArray = EEex_Sprite_GetAllOfTypeStringInRange(sprite, "[EVILCUTOFF]", 448, nil, nil, nil)
+				spriteArray = EEex_Sprite_GetAllOfTypeInRange(sprite, GT_AI_ObjectType["EVILCUTOFF"], 448, nil, nil, nil) -- we ignore STATE_BLIND
 			end
 			--
 			local found = -1
@@ -54,13 +91,13 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 						if EEex_BAnd(itrSpriteActiveStats.m_generalState, state["CD_STATE_NOTVALID"]) == 0 then
 							if EEex_IsBitUnset(spriteActiveStats.m_generalState, 0x4) or itrSpriteActiveStats.m_bSeeInvisible > 0 then
 								-- deafness => extra check
-								if not GT_Utility_EffectCheck(itrSprite, {["op"] = 0x50}) or math.random(0, 1) == 1 then 
+								if not GT_Utility_Sprite_CheckForEffect(itrSprite, {["m_effectId"] = 0x50}) or math.random(0, 1) == 1 then 
 									-- provide feedback if PC
 									if itrSprite.m_typeAI.m_EnemyAlly == 2 then
-										Infinity_DisplayString(itrSprite:getName() .. ": " .. Infinity_FetchString(%feedback_strref_spellcraft%) .. sprite:getName() .. Infinity_FetchString(%feedback_strref_isCasting%) .. Infinity_FetchString(spellHeader.genericName))
+										Infinity_DisplayString(itrSprite:getName() .. ": " .. Infinity_FetchString(%feedback_strref_spellcraft%) .. sprite:getName() .. Infinity_FetchString(%feedback_strref_is_casting%) .. Infinity_FetchString(spellHeader.genericName))
 									end
 									-- check if ``itrSprite`` is counterspelling...
-									if spriteActiveStats.m_bSanctuary == 0 and EEex_Sprite_GetCastTimer(itrSprite) == -1 and itrSprite:getLocalInt("cdtweaksCounterspell") == 1 and EEex_IsBitUnset(itrSpriteActiveStats.m_generalState, 12) then
+									if spriteActiveStats.m_bSanctuary == 0 and EEex_Sprite_GetCastTimer(itrSprite) == -1 and itrSprite:getLocalInt("gtCounterspellMode") == 1 and EEex_IsBitUnset(itrSpriteActiveStats.m_generalState, 12) then
 										local spellLevelMemListTable = {[7] = itrSprite.m_memorizedSpellsPriest, [9] = itrSprite.m_memorizedSpellsMage}
 										--
 										for maxLevel, spellLevelMemListArray in pairs(spellLevelMemListTable) do
@@ -102,21 +139,20 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 												end)
 												--
 												if found > 0 then
-													-- momentarily flag the creature as 'ignore EEex_Action_AddSpriteStartedActionListener()'
-													itrSprite:applyEffect({
-														["effectID"] = 401, -- extended stat
-														["effectAmount"] = 4,
-														["dwFlags"] = 1, -- set
-														["duration"] = 1,
-														["durationType"] = 10, -- instant/limited (ticks)
-														["special"] = stats["GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER"],
-														["sourceID"] = itrSprite.m_id,
-														["sourceTarget"] = itrSprite.m_id,
-													})
-													-- actual counterspell
+													-- check for Spell Immunity and friends
+													if not GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0xCA, ["m_dWFlags"] = found}) then -- Reflect spell school (202)
+														if not GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0xCC, ["m_dWFlags"] = found}) then -- Protection from spell school (204)
+															if not GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0xDF, ["m_dWFlags"] = found}) then -- Spell school deflection (223)
+																if not GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0xE3, ["m_dWFlags"] = found}) then -- Spell school turning (227)
+																	-- remove spell (so as to cancel the spell being cast)
+																	action.m_actionID = 147
+																end
+															end
+														end
+													end
+													-- perform counterspell
 													sprite:applyEffect({
 														["effectID"] = 146, -- Cast spell
-														["durationType"] = 1,
 														["res"] = cdtweaks_Counterspell_OppositionSchool[found][2],
 														["sourceID"] = itrSprite.m_id,
 														["sourceTarget"] = sprite.m_id,
@@ -141,63 +177,60 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	end
 end)
 
--- cdtweaks, Counterspell class feat for spellcasters --
+-- Mark the sprite as being in counterspell mode. Automatically cancel mode upon death --
 
 function %INNATE_COUNTERSPELL%(CGameEffect, CGameSprite)
 	if CGameEffect.m_effectAmount == 1 then
-		CGameSprite:setLocalInt("cdtweaksCounterspell", 1)
+		-- we apply effects here due to op232's presence (which for best results requires EFF V2.0)
+		local effectCodes = {
+			{["op"] = 321, ["res"] = "%INNATE_COUNTERSPELL%"}, -- remove effects by resource
+			{["op"] = 232, ["p2"] = 16, ["res"] = "%INNATE_COUNTERSPELL%Z"}, -- cast spl on condition (condition: Die(); target: self)
+			{["op"] = 142, ["p2"] = %feedback_icon%}, -- feedback icon
+		}
 		--
-		CGameSprite:applyEffect({
-			["effectID"] = 232, -- Cast spell on condition
-			["durationType"] = 1,
-			["dwFlags"] = 16, -- Die()
-			["res"] = "%INNATE_COUNTERSPELL%Z",
-			["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-			["m_sourceType"] = CGameEffect.m_sourceType,
-			["sourceID"] = CGameSprite.m_id,
-			["sourceTarget"] = CGameSprite.m_id,
-		})
+		for _, attributes in ipairs(effectCodes) do
+			CGameSprite:applyEffect({
+				["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
+				["dwFlags"] = attributes["p2"] or 0,
+				["res"] = attributes["res"] or "",
+				["durationType"] = 1,
+				["m_sourceRes"] = "%INNATE_COUNTERSPELL%",
+				["sourceID"] = CGameSprite.m_id,
+				["sourceTarget"] = CGameSprite.m_id,
+			})
+		end
+		--
+		CGameSprite:setLocalInt("gtCounterspellMode", 1)
 	elseif CGameEffect.m_effectAmount == 2 then
-		CGameSprite:setLocalInt("cdtweaksCounterspell", 0)
-		--
 		CGameSprite:applyEffect({
 			["effectID"] = 321, -- Remove effects by resource
-			["durationType"] = 1,
-			["res"] = "%INNATE_COUNTERSPELL%Y",
+			["res"] = "%INNATE_COUNTERSPELL%",
 			["sourceID"] = CGameSprite.m_id,
 			["sourceTarget"] = CGameSprite.m_id,
 		})
-		CGameSprite:applyEffect({
-			["effectID"] = 171, -- Give spell
-			["durationType"] = 1,
-			["res"] = "%INNATE_COUNTERSPELL%Y",
-			["sourceID"] = CGameSprite.m_id,
-			["sourceTarget"] = CGameSprite.m_id,
-		})
-	elseif CGameEffect.m_effectAmount == 3 then
-		CGameSprite.m_curAction.m_actionID = 0 -- nuke current action
+		--
+		CGameSprite:setLocalInt("gtCounterspellMode", 0)
 	end
 end
 
--- cdtweaks, Counterspell class feat for spellcasters. Make sure it cannot be disrupted --
+-- Make sure it cannot be disrupted. Cancel mode if no longer idle --
 
 EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
-	local stats = GT_Resource_SymbolToIDS["stats"]
-	--
-	if sprite:getLocalInt("cdtweaksCounterspell") == 0 then
-		if action.m_actionID == 31 and action.m_string1.m_pchData:get() == "%INNATE_COUNTERSPELL%Y" then
-			action.m_actionID = 113 -- ForceSpell()
-		end
-	elseif sprite:getLocalInt("cdtweaksCounterspell") == 1 then
-		if EEex_Sprite_GetStat(sprite, stats["GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER"]) ~= 4 then
-			sprite:applyEffect({
-				["effectID"] = 146, -- Cast spell
-				["durationType"] = 1,
-				["dwFlags"] = 1, -- instant/ignore level
-				["res"] = "%INNATE_COUNTERSPELL%Z",
-				["sourceID"] = sprite.m_id,
-				["sourceTarget"] = sprite.m_id,
-			})
+	if sprite:getLocalInt("cdtweaksSpellcraft") == 1 then
+		if sprite:getLocalInt("gtCounterspellMode") == 0 then
+			if action.m_actionID == 31 and action.m_string1.m_pchData:get() == "%INNATE_COUNTERSPELL%" then
+				action.m_actionID = 113 -- ForceSpell()
+			end
+		else
+			if not (action.m_actionID == 113 and (cdtweaks_Counterspell_ResRef[action.m_string1.m_pchData:get()] or action.m_string1.m_pchData:get() == "%INNATE_COUNTERSPELL%Y")) then
+				sprite:applyEffect({
+					["effectID"] = 146, -- Cast spell
+					["dwFlags"] = 1, -- instant/ignore level
+					["res"] = "%INNATE_COUNTERSPELL%Z",
+					["sourceID"] = sprite.m_id,
+					["sourceTarget"] = sprite.m_id,
+				})
+			end
 		end
 	end
 end)

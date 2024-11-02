@@ -1,4 +1,8 @@
--- Utility: get ``spellResRef`` from spellID (borrowed from Bubb) --
+--[[
++-------------------------------------------------------+
+| Get ``spellResRef`` from spellID (borrowed from Bubb) |
++-------------------------------------------------------+
+--]]
 
 function GT_Utility_DecodeSpell(spellIDS)
 	local prefix
