@@ -6,8 +6,8 @@ Se un attacco viene parato con successo (tiro-salvezza contro Soffio), esso non 
 
 @2 = "Modalità Parata Attivata"
 
-@3 = "Modalità Parata (Successo)"
+@3 = "Modalità Parata Disattivata"
 
-@4 = "Controattacco"
+@4 = "Modalità Parata (Successo)"
 
-@5 = "Modalità Parata Disattivata"
+@5 = "Controattacco"

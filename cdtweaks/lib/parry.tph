@@ -10,12 +10,14 @@ BEGIN
 		"BLADE_SWASHBUCKLER_PARRY" = "resName"
 	END
 	//
+	LAF "ADD_EXTENDED_STAT" INT_VAR "max" = 30 STR_VAR "identifier" = "GT_NUMBER_OF_ATTACKS_PARRIED" END
+	//
 	WITH_SCOPE BEGIN
 		ACTION_TO_LOWER "BLADE_SWASHBUCKLER_PARRY"
 		//
 		COPY "cdtweaks\luke\bam\kit\parry\portrait_icon.bam" "override\%BLADE_SWASHBUCKLER_PARRY%d.bam"
 		COPY "cdtweaks\luke\bam\kit\parry\spl_icon.bam" "override\%BLADE_SWASHBUCKLER_PARRY%b.bam"
-		//
+		// main
 		CREATE "spl" "%BLADE_SWASHBUCKLER_PARRY%"
 		COPY_EXISTING "%BLADE_SWASHBUCKLER_PARRY%.spl" "override"
 			WRITE_LONG NAME1 RESOLVE_STR_REF (@0)
@@ -35,9 +37,25 @@ BEGIN
 			//
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 1 STR_VAR "resource" = "%DEST_RES%" END // invoke lua
 		BUT_ONLY
-		//
+		// cancel
 		CREATE "spl" "%BLADE_SWASHBUCKLER_PARRY%b"
 		COPY_EXISTING "%BLADE_SWASHBUCKLER_PARRY%b.spl" "override"
+			WRITE_LONG NAME1 RESOLVE_STR_REF (@3)
+			WRITE_LONG UNIDENTIFIED_DESC "-1"
+			WRITE_LONG DESC "-1"
+			WRITE_LONG NAME2 "-1"
+			WRITE_LONG 0x18 (BIT14 BOR BIT25) // ignore dead/wild magic, castable when silenced
+			WRITE_SHORT 0x1C 4 // type: innate
+			WRITE_LONG 0x34 1 // level
+			WRITE_ASCII 0x3A "%DEST_RES%" #8
+			//
+			LPF "ADD_SPELL_HEADER" INT_VAR "target" = 5 "range" = 30 STR_VAR "icon" = "%DEST_RES%" END
+			//
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 1 "parameter1" = 1 STR_VAR "resource" = "%BLADE_SWASHBUCKLER_PARRY%" END // invoke lua
+		BUT_ONLY
+		// SEQ_ATTACK + feedback string
+		CREATE "spl" "%BLADE_SWASHBUCKLER_PARRY%e"
+		COPY_EXISTING "%BLADE_SWASHBUCKLER_PARRY%e.spl" "override"
 			WRITE_LONG NAME1 "-1"
 			WRITE_LONG UNIDENTIFIED_DESC "-1"
 			WRITE_LONG DESC "-1"
@@ -50,12 +68,12 @@ BEGIN
 			LPF "ADD_SPELL_HEADER" INT_VAR "range" = 30 STR_VAR "icon" = "%DEST_RES%" END
 			//
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 138 "target" = 1 "parameter2" = 0 END // set animation (ATTACK)
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 139 "target" = 1 "parameter1" = RESOLVE_STR_REF (@3) END // "Parry (Success)"
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 139 "target" = 1 "parameter1" = RESOLVE_STR_REF (@4) END // "Parry (Success)"
 		BUT_ONLY
-		//
-		CREATE "spl" "%BLADE_SWASHBUCKLER_PARRY%c"
-		COPY_EXISTING "%BLADE_SWASHBUCKLER_PARRY%c.spl" "override"
-			WRITE_LONG NAME1 RESOLVE_STR_REF (@4)
+		// riposte attack
+		CREATE "spl" "%BLADE_SWASHBUCKLER_PARRY%f"
+		COPY_EXISTING "%BLADE_SWASHBUCKLER_PARRY%f.spl" "override"
+			WRITE_LONG NAME1 RESOLVE_STR_REF (@5)
 			WRITE_LONG UNIDENTIFIED_DESC "-1"
 			WRITE_LONG DESC "-1"
 			WRITE_LONG NAME2 "-1"
@@ -68,10 +86,10 @@ BEGIN
 			//
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 2 "parameter1" = 2 STR_VAR "resource" = "%BLADE_SWASHBUCKLER_PARRY%" END // invoke lua
 		BUT_ONLY
-		//
-		CREATE "spl" "%BLADE_SWASHBUCKLER_PARRY%d"
-		COPY_EXISTING "%BLADE_SWASHBUCKLER_PARRY%d.spl" "override"
-			WRITE_LONG NAME1 RESOLVE_STR_REF (@5)
+		// SEQ_READY
+		CREATE "spl" "%BLADE_SWASHBUCKLER_PARRY%g"
+		COPY_EXISTING "%BLADE_SWASHBUCKLER_PARRY%g.spl" "override"
+			WRITE_LONG NAME1 "-1"
 			WRITE_LONG UNIDENTIFIED_DESC "-1"
 			WRITE_LONG DESC "-1"
 			WRITE_LONG NAME2 "-1"
@@ -82,7 +100,7 @@ BEGIN
 			//
 			LPF "ADD_SPELL_HEADER" INT_VAR "target" = 5 "range" = 30 STR_VAR "icon" = "%BLADE_SWASHBUCKLER_PARRY%B" END
 			//
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 1 "parameter1" = 1 STR_VAR "resource" = "%BLADE_SWASHBUCKLER_PARRY%" END // invoke lua
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 138 "target" = 1 "parameter2" = 7 END // set animation (READY)
 		BUT_ONLY
 	END
 	// lua

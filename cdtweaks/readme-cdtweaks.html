@@ -1484,10 +1484,9 @@
           <li>Parry is a combat mode, so the character must remain idle while parrying attacks. Any other action will cancel the mode.</li>
           <li>Parry applies only in melee combat; it does not function if either the attacker or defender is using a ranged weapon.</li>
           <li>
-            By default, the defender can parry a maximum of 2 attacks per round.
+            A character may only parry a number of attacks per round equal to the number of attacks per round available to the character.
             <ul>
-              <li>If slowed or fatigued, it can only parry a maximum of 1 attack per round.</li>
-              <li>If hasted, it can parry a maximum of 1 attack per second.</li>
+              <li>1/2, 3/2, etc. are rounded down / up (50% chance each). So if the parrying character has, say, 3/2 attacks per round, then it can parry a maximum of 1 / 2 attack(s) per round (50% chance each).</li>
             </ul>
           </li>
           <li>
@@ -1503,7 +1502,8 @@
               <li>See the <code>MISSILE</code> column of <code><a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/dexmod.htm">dexmod.2da</a></code> to get an idea about how the saving throw bonus scales with Dexterity.</li>
             </ul>
           </li>
-          <li>This combat mode cannot be used while polymorphed.</li>
+          <li>This combat mode cannot be used while polymorphed / while wielding a magically created weapon.</li>
+          <li>Incapacitated characters cannot parry / perform riposte attacks.</li>
           <li>If the defender is equipped with fists, it can only parry other fists.</li>
           <li>If the parrying character is dual-wielding, the riposte attack will be made with the mainhand / offhand (50% chance each).</li>
         </ul>

@@ -61,7 +61,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 				sprite:applyEffect({
 					["effectID"] = 146, -- Cast spell
 					["dwFlags"] = 1, -- instant/ignore level
-					["res"] = "%BLADE_SWASHBUCKLER_PARRY%D",
+					["res"] = "%BLADE_SWASHBUCKLER_PARRY%B",
 					["sourceID"] = sprite.m_id,
 					["sourceTarget"] = sprite.m_id,
 				})
@@ -79,10 +79,15 @@ end)
 
 -- save vs. breath to parry an incoming attack; the higher DEX, the easier is to succeed --
 
+local cdtweaks_ParryMode_AttacksPerRound = {0, 1, 2, 3, 4, 5, .5, 1.5, 2.5, 3.5, 4.5}
+local cdtweaks_ParryMode_AttacksPerRound_Haste = {0, 2, 4, 6, 8, 10, 1, 3, 5, 7, 9}
+
 EEex_Sprite_AddBlockWeaponHitListener(function(args)
 	local toReturn = false
 	--
-	local fatigmod = GT_Resource_2DA["fatigmod"]
+	local stats = GT_Resource_SymbolToIDS["stats"]
+	local state = GT_Resource_SymbolToIDS["state"]
+	--
 	local dexmod = GT_Resource_2DA["dexmod"]
 	--
 	local attackingWeapon = args.weapon -- CItem
@@ -95,37 +100,63 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 	local targetWeaponHeader = targetWeapon.pRes.pHeader -- Item_Header_st
 	--
 	local attackingWeaponHeader = attackingWeapon.pRes.pHeader -- Item_Header_st
-	-- by default, the character can parry max 2 attacks per round (1 if slowed OR fatigued, 1 per second if hasted)
-	local time = 3
-	if EEex_IsBitSet(targetSprite.m_derivedStats.m_generalState, 16) or tonumber(fatigmod[string.format("%s", targetSprite.m_derivedStats.m_nFatigue)]["LUCK"]) < 0 then
-		time = 6
-	elseif EEex_IsBitSet(targetSprite.m_derivedStats.m_generalState, 15) then
-		time = 1
+	-- get # attacks
+	local targetNumberOfAttacks
+	if EEex_IsBitSet(targetActiveStats.m_generalState, 15) then -- if STATE_HASTED
+		targetNumberOfAttacks = cdtweaks_ParryMode_AttacksPerRound_Haste[EEex_Sprite_GetStat(targetSprite, stats["NUMBEROFATTACKS"]) + 1]
+	else
+		targetNumberOfAttacks = Infinity_RandomNumber(1, 2) == 1 and math.ceil(cdtweaks_ParryMode_AttacksPerRound[EEex_Sprite_GetStat(targetSprite, stats["NUMBEROFATTACKS"]) + 1]) or math.floor(cdtweaks_ParryMode_AttacksPerRound[EEex_Sprite_GetStat(targetSprite, stats["NUMBEROFATTACKS"]) + 1])
 	end
-	local responseString = EEex_Action_ParseResponseString(string.format('SetGlobalTimer("gtParryModeTimer","LOCALS",%d)', time))
-	local conditionalString = EEex_Trigger_ParseConditionalString('!GlobalTimerNotExpired("gtParryModeTimer","LOCALS") \n InWeaponRange(EEex_Target("GT_ParryModeTarget"))')
+	--
+	local targetActiveStats = EEex_Sprite_GetActiveStats(targetSprite)
+	--
+	local conditionalString = EEex_Trigger_ParseConditionalString('OR(2) \n !Allegiance(Myself,GOODCUTOFF) InWeaponRange(EEex_Target("GT_ParryModeTarget") \n OR(2) \n !Allegiance(Myself,EVILCUTOFF) Range(EEex_Target("GT_ParryModeTarget"),4)') -- we intentionally let the AI cheat. In so doing, it can enter the mode without worrying about being in weapon range...
 	targetSprite:setStoredScriptingTarget("GT_ParryModeTarget", attackingSprite)
 	--
 	if targetSprite:getLocalInt("gtParryMode") == 1 then -- parry mode ON
-		if attackingWeaponAbility.type == 1 and attackingWeaponAbility.range <= 2 then -- only melee attacks can be parried
-			if (attackingWeaponHeader.itemType == 28 or targetWeaponHeader.itemType ~= 28) then -- bare hands can only parry bare hands
-				if conditionalString:evalConditionalAsAIBase(targetSprite) then
-					if targetSprite.m_derivedStats.m_nSaveVSBreath - tonumber(dexmod[string.format("%s", targetSprite.m_derivedStats.m_nDEX)]["MISSILE"]) <= targetSprite.m_saveVSBreathRoll then
-						-- set timer
-						responseString:executeResponseAsAIBaseInstantly(targetSprite)
-						-- initialize the attack frame counter
-						targetSprite.m_attackFrame = 0
-						-- store attacking ID
-						targetSprite:setLocalInt("gtParryModeAtkID", attackingSprite.m_id)
-						-- cast a dummy spl that performs the attack animation via op138 (p2=0)
-						attackingSprite:applyEffect({
-							["effectID"] = 146, -- Cast spl
-							["res"] = "%BLADE_SWASHBUCKLER_PARRY%B",
-							["sourceID"] = targetSprite.m_id,
-							["sourceTarget"] = attackingSprite.m_id,
-						})
-						-- block base weapon damage + on-hit effects
-						toReturn = true
+		if targetSprite.m_curAction.m_actionID == 0 and targetSprite.m_nSequence == 7 then -- idle/ready (in particular, you cannot parry while performing a riposte attack)
+			if EEex_BAnd(targetActiveStats.m_generalState, state["CD_STATE_NOTVALID"]) == 0 then -- incapacitated creatures cannot parry
+				if EEex_Sprite_GetStat(targetSprite, stats["GT_NUMBER_OF_ATTACKS_PARRIED"]) < targetNumberOfAttacks then -- you can parry at most X number of attacks per round, where X is the number of attacks of the parrying creature
+					if attackingWeaponAbility.type == 1 and attackingWeaponAbility.range <= 2 then -- only melee attacks can be parried
+						if attackingWeaponHeader.itemType == 28 or targetWeaponHeader.itemType ~= 28 then -- bare hands can only parry bare hands
+							if conditionalString:evalConditionalAsAIBase(targetSprite) then
+								if targetActiveStats.m_nSaveVSBreath - tonumber(dexmod[string.format("%s", targetActiveStats.m_nDEX)]["MISSILE"]) <= targetSprite.m_saveVSBreathRoll then
+									-- increment stats["GT_NUMBER_OF_ATTACKS_PARRIED"] by 1; reset to 0 after one round
+									local effectCodes = {
+										{["op"] = 401, ["p1"] = 1, ["spec"] = stats["GT_NUMBER_OF_ATTACKS_PARRIED"], ["tmg"] = 1, ["effsource"] = "%BLADE_SWASHBUCKLER_PARRY%C"}, -- EEex: Set Extended Stat
+										{["op"] = 321, ["res"] = "%BLADE_SWASHBUCKLER_PARRY%C", ["tmg"] = 4, ["dur"] = 6, ["effsource"] = "%BLADE_SWASHBUCKLER_PARRY%D"}, -- Remove effects by resource
+										{["op"] = 318, ["res"] = "%BLADE_SWASHBUCKLER_PARRY%D", ["dur"] = 6, ["effsource"] = "%BLADE_SWASHBUCKLER_PARRY%D"}, -- Protection from resource
+									}
+									--
+									for _, attributes in ipairs(effectCodes) do
+										targetSprite:applyEffect({
+											["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
+											["effectAmount"] = attributes["p1"] or 0,
+											["special"] = attributes["spec"] or 0,
+											["res"] = attributes["res"] or "",
+											["durationType"] = attributes["tmg"] or 0,
+											["duration"] = attributes["dur"] or 0,
+											["m_sourceRes"] = attributes["effsource"] or "",
+											["sourceID"] = targetSprite.m_id,
+											["sourceTarget"] = targetSprite.m_id,
+										})
+									end
+									-- initialize the attack frame counter
+									targetSprite.m_attackFrame = 0
+									-- store attacking ID
+									targetSprite:setLocalInt("gtParryModeAtkID", attackingSprite.m_id)
+									-- cast a dummy spl that performs the attack animation via op138 (p2=0)
+									attackingSprite:applyEffect({
+										["effectID"] = 146, -- Cast spl
+										["res"] = "%BLADE_SWASHBUCKLER_PARRY%E",
+										["sourceID"] = targetSprite.m_id,
+										["sourceTarget"] = attackingSprite.m_id,
+									})
+									-- block base weapon damage + on-hit effects
+									toReturn = true
+								end
+							end
+						end
 					end
 				end
 			end
@@ -133,12 +164,11 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 	end
 	--
 	conditionalString:free()
-	responseString:free()
 	--
 	return toReturn
 end)
 
--- cast a spl when ``m_attackFrame`` is equal to 6 (that should be approx. the value corresponding to the weapon hit...?) --
+-- cast a spl (riposte attack) when ``m_attackFrame`` is equal to 6 (that should be approx. the value corresponding to the weapon hit...?) --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check
@@ -152,14 +182,14 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		attackingSprite:applyEffect({
 			["effectID"] = 146, -- Cast spl
 			["dwFlags"] = 1, -- mode: instant / permanent
-			["res"] = "%BLADE_SWASHBUCKLER_PARRY%C",
+			["res"] = "%BLADE_SWASHBUCKLER_PARRY%F",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = attackingSprite.m_id,
 		})
 	end
 end)
 
--- automatically cancel mode if ranged weapon / polymorphed --
+-- automatically cancel mode if ranged weapon / polymorphed / magically created weapon --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check
@@ -167,37 +197,63 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		return
 	end
 	--
-	local isWeaponRanged = EEex_Trigger_ParseConditionalString("IsWeaponRanged(Myself)")
+	local conditionalString = EEex_Trigger_ParseConditionalString("OR(2) \n IsWeaponRanged(Myself) HasItemSlot(Myself,SLOT_MISC19)")
 	--
 	if sprite:getLocalInt("cdtweaksParryMode") == 1 then
-		if EEex_Sprite_GetLocalInt(sprite, "gtParryMode") == 1 and (isWeaponRanged:evalConditionalAsAIBase(sprite) or sprite.m_derivedStats.m_bPolymorphed == 1) then
+		if EEex_Sprite_GetLocalInt(sprite, "gtParryMode") == 1 and (conditionalString:evalConditionalAsAIBase(sprite) or sprite.m_derivedStats.m_bPolymorphed == 1) then
 			sprite:applyEffect({
 				["effectID"] = 146, -- Cast spell
 				["dwFlags"] = 1, -- instant/ignore level
-				["res"] = "%BLADE_SWASHBUCKLER_PARRY%D",
+				["res"] = "%BLADE_SWASHBUCKLER_PARRY%B",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})
 		end
 	end
 	--
-	isWeaponRanged:free()
+	conditionalString:free()
+end)
+
+-- maintain SEQ_READY while in parry mode --
+
+EEex_Opcode_AddListsResolvedListener(function(sprite)
+	-- Sanity check
+	if not EEex_GameObject_IsSprite(sprite) then
+		return
+	end
+	--
+	if sprite:getLocalInt("cdtweaksParryMode") == 1 then
+		if EEex_Sprite_GetLocalInt(sprite, "gtParryMode") == 1 and sprite.m_nSequence == 6 and sprite.m_curAction.m_actionID == 0 then
+			sprite:applyEffect({
+				["effectID"] = 146, -- Cast spell
+				["res"] = "%BLADE_SWASHBUCKLER_PARRY%G",
+				["sourceID"] = sprite.m_id,
+				["sourceTarget"] = sprite.m_id,
+			})
+		end
+	end
 end)
 
 -- make sure it cannot be disrupted. Cancel mode if no longer idle --
 
 EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	if sprite:getLocalInt("cdtweaksParryMode") == 1 then
+		--
+		local toskip = {
+			["%BLADE_SWASHBUCKLER_PARRY%E"] = true,
+			["%BLADE_SWASHBUCKLER_PARRY%G"] = true,
+		}
+		--
 		if EEex_Sprite_GetLocalInt(sprite, "gtParryMode") == 0 then
 			if action.m_actionID == 31 and action.m_string1.m_pchData:get() == "%BLADE_SWASHBUCKLER_PARRY%" then
 				action.m_actionID = 113 -- ForceSpell()
 			end
 		else
-			if not (action.m_actionID == 113 and action.m_string1.m_pchData:get() == "%BLADE_SWASHBUCKLER_PARRY%B") then
+			if not (action.m_actionID == 113 and toskip[action.m_string1.m_pchData:get()]) then
 				sprite:applyEffect({
 					["effectID"] = 146, -- Cast spell
 					["dwFlags"] = 1, -- instant/ignore level
-					["res"] = "%BLADE_SWASHBUCKLER_PARRY%D",
+					["res"] = "%BLADE_SWASHBUCKLER_PARRY%B",
 					["sourceID"] = sprite.m_id,
 					["sourceTarget"] = sprite.m_id,
 				})
@@ -213,7 +269,7 @@ function %BLADE_SWASHBUCKLER_PARRY%(CGameEffect, CGameSprite)
 		-- we apply effects here due to op232's presence (which for best results requires EFF V2.0)
 		local effectCodes = {
 			{["op"] = 321, ["res"] = "%BLADE_SWASHBUCKLER_PARRY%"}, -- remove effects by resource
-			{["op"] = 232, ["p2"] = 16, ["res"] = "%BLADE_SWASHBUCKLER_PARRY%D", ["tmg"] = 1}, -- cast spl on condition (condition: Die(); target: self)
+			{["op"] = 232, ["p2"] = 16, ["res"] = "%BLADE_SWASHBUCKLER_PARRY%B", ["tmg"] = 1}, -- cast spl on condition (condition: Die(); target: self)
 			{["op"] = 142, ["p2"] = %feedback_icon%, ["tmg"] = 1}, -- feedback icon
 		}
 		--
@@ -366,7 +422,7 @@ function %BLADE_SWASHBUCKLER_PARRY%(CGameEffect, CGameSprite)
 							end
 						end
 					end
-				elseif v["targetType"] == 6 and sourceSprite.m_typeAI.m_EnemyAlly ~= 2 then -- caster group
+				elseif v["targetType"] == 6 then -- caster group
 					local casterGroup = EEex_Area_GetAllOfTypeStringInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, string.format("[0.0.0.0.%d]", sourceSprite.m_typeAI.m_Specifics), 0x7FFF, false, nil, nil)
 					--
 					for _, sprite in ipairs(casterGroup) do
