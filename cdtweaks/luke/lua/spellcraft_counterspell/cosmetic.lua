@@ -6,23 +6,14 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		return
 	end
 	--
-	local conditionalString = EEex_Trigger_ParseConditionalString('!GlobalTimerNotExpired("gtCounterspellSeqReady","LOCALS") \n !StateCheck(Myself,CD_STATE_NOTVALID)')
-	local responseString = EEex_Action_ParseResponseString('SetGlobalTimer("gtCounterspellSeqReady","LOCALS",3)')
-	--
-	if sprite:getLocalInt("gtCounterspellMode") == 1 then
-		if sprite.m_curAction.m_actionID == 0 and conditionalString:evalConditionalAsAIBase(sprite) then
-			responseString:executeResponseAsAIBaseInstantly(sprite)
-			--
-			EEex_GameObject_ApplyEffect(sprite,
-			{
-				["effectID"] = 146, -- cast spl
-				["res"] = "%INNATE_COUNTERSPELL%Y", -- set SEQ_READY
+	if sprite:getLocalInt("cdtweaksSpellcraft") == 1 then
+		if EEex_Sprite_GetLocalInt(sprite, "gtCounterspellMode") == 1 and sprite.m_nSequence == 6 and sprite.m_curAction.m_actionID == 0 then
+			sprite:applyEffect({
+				["effectID"] = 146, -- Cast spell
+				["res"] = "%INNATE_COUNTERSPELL%Y",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})
 		end
 	end
-	--
-	conditionalString:free()
-	responseString:free()
 end)
