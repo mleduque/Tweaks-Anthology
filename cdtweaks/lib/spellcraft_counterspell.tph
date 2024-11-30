@@ -75,7 +75,7 @@ BEGIN
 		COPY_EXISTING "%INNATE_COUNTERSPELL%y.spl" "override"
 			WRITE_LONG NAME1 "-1"
 			WRITE_LONG UNIDENTIFIED_DESC "-1"
-			WRITE_LONG 0x18 (BIT9 BOR BIT10 BOR BIT14) // break sanctuary/invisibility, ignore dead/wild magic
+			WRITE_LONG 0x18 (BIT14 BOR BIT25) // ignore dead/wild magic, castable when silenced
 			WRITE_SHORT 0x1C 4 // type: innate
 			WRITE_LONG 0x34 1 // level
 			WRITE_ASCII 0x3A "%INNATE_COUNTERSPELL%b" #8 // icon
