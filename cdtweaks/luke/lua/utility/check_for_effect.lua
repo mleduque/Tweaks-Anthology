@@ -3,7 +3,7 @@
 | Check if the specified effect is present on the given sprite                                              |
 +-----------------------------------------------------------------------------------------------------------+
 | Example usage:                                                                                            |
-|      GT_Utility_Sprite_CheckForEffect(CGameSprite, {["m_effectId"] = 0x1, ["m_scriptName"] = "whatever"}) |
+|      GT_Utility_Sprite_CheckForEffect(CGameSprite, {["op"] = 0x1, ["effsource"] = "GTDUMMY"}) |
 +-----------------------------------------------------------------------------------------------------------+
 --]]
 
@@ -23,26 +23,19 @@ function GT_Utility_Sprite_CheckForEffect(CGameSprite, table, checkTimed, checkE
 	end
 
 	local check = function(effect)
-		local wrappedEffect = GT_LuaTool_WrapUserdata(effect)
-		-- Now we can interact with ``effect`` like a table
-		local match = true
-		for k, v in pairs(table) do
-			if type(v) == "string" then
-				if wrappedEffect[k]:get() ~= v then
-					match = false
-					break
-				end
-			else
-				if wrappedEffect[k] ~= v then
-					match = false
-					break
+		if not table["op"] or table["op"] == effect.m_effectId then
+			if not table["p1"] or table["p1"] == effect.m_effectAmount then
+				if not table["p2"] or table["p2"] == effect.m_dWFlags then
+					if not table["res"] or table["res"] == effect.m_res:get() then
+						if not table["spec"] or table["spec"] == effect.m_special then
+							if not table["effsource"] or table["effsource"] == effect.m_sourceRes:get() then
+								found = true
+								return true
+							end
+						end
+					end
 				end
 			end
-		end
-		--
-		if match then
-			found = true
-			return true
 		end
 	end
 

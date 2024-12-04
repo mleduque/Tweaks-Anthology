@@ -91,7 +91,7 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 						if EEex_BAnd(itrSpriteActiveStats.m_generalState, state["CD_STATE_NOTVALID"]) == 0 then
 							if EEex_IsBitUnset(spriteActiveStats.m_generalState, 0x4) or itrSpriteActiveStats.m_bSeeInvisible > 0 then
 								-- deafness => extra check
-								if not GT_Utility_Sprite_CheckForEffect(itrSprite, {["m_effectId"] = 0x50}) or math.random(0, 1) == 1 then 
+								if not GT_Utility_Sprite_CheckForEffect(itrSprite, {["op"] = 0x50}) or math.random(0, 1) == 1 then 
 									-- provide feedback if PC
 									if itrSprite.m_typeAI.m_EnemyAlly == 2 then
 										Infinity_DisplayString(itrSprite:getName() .. ": " .. Infinity_FetchString(%feedback_strref_spellcraft%) .. sprite:getName() .. Infinity_FetchString(%feedback_strref_is_casting%) .. Infinity_FetchString(spellHeader.genericName))
@@ -140,12 +140,12 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 												--
 												if found > 0 then
 													-- check for Spell Immunity and friends
-													if not GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0xCA, ["m_dWFlags"] = found}) then -- Reflect spell school (202)
-														if not GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0xCC, ["m_dWFlags"] = found}) then -- Protection from spell school (204)
-															if not GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0xDF, ["m_dWFlags"] = found}) then -- Spell school deflection (223)
-																if not GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0xE3, ["m_dWFlags"] = found}) then -- Spell school turning (227)
+													if not GT_Utility_Sprite_CheckForEffect(sprite, {["op"] = 0xCA, ["p2"] = found}) then -- Reflect spell school (202)
+														if not GT_Utility_Sprite_CheckForEffect(sprite, {["op"] = 0xCC, ["p2"] = found}) then -- Protection from spell school (204)
+															if not GT_Utility_Sprite_CheckForEffect(sprite, {["op"] = 0xDF, ["p2"] = found}) then -- Spell school deflection (223)
+																if not GT_Utility_Sprite_CheckForEffect(sprite, {["op"] = 0xE3, ["p2"] = found}) then -- Spell school turning (227)
 																	-- remove spell (so as to cancel the spell being cast)
-																	action.m_actionID = 147
+																	action.m_actionID = 147 -- RemoveSpell()
 																end
 															end
 														end

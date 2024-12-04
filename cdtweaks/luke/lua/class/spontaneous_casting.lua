@@ -38,7 +38,7 @@ EEex_Key_AddPressedListener(function(key)
 		return
 	end
 	-- check for op145
-	local found = GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0x91, ["m_dWFlags"] = 1}) or GT_Utility_Sprite_CheckForEffect(sprite, {["m_effectId"] = 0x91, ["m_dWFlags"] = 3})
+	local found = GT_Utility_Sprite_CheckForEffect(sprite, {["op"] = 0x91, ["p2"] = 1}) or GT_Utility_Sprite_CheckForEffect(sprite, {["op"] = 0x91, ["p2"] = 3})
 	--
 	local lastState = EEex_Actionbar_GetLastState()
 	-- Check creature's class / flags / alignment
