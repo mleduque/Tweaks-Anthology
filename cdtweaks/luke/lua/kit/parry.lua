@@ -469,6 +469,9 @@ function %BLADE_SWASHBUCKLER_PARRY%(CGameEffect, CGameSprite)
 						["saveMod"] = v["saveMod"],
 						["special"] = v["special"],
 						--
+						["m_school"] = selectedWeaponAbility.school,
+						["m_secondaryType"] = selectedWeaponAbility.secondaryType,
+						--
 						["m_sourceRes"] = selectedWeaponResRef,
 						["m_sourceType"] = 2,
 						["sourceID"] = CGameEffect.m_sourceId,
