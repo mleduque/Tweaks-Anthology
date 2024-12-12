@@ -94,6 +94,8 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 	local targetSprite = args.targetSprite -- CGameSprite
 	local attackingSprite = args.attackingSprite -- CGameSprite
 	local attackingWeaponAbility = args.weaponAbility -- Item_ability_st
+	--
+	local targetActiveStats = EEex_Sprite_GetActiveStats(targetSprite)
 	-- you cannot parry weapons with bare hands (only other bare hands)
 	local equipment = targetSprite.m_equipment
 	local targetWeapon = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
@@ -108,10 +110,8 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 		targetNumberOfAttacks = Infinity_RandomNumber(1, 2) == 1 and math.ceil(cdtweaks_ParryMode_AttacksPerRound[EEex_Sprite_GetStat(targetSprite, stats["NUMBEROFATTACKS"]) + 1]) or math.floor(cdtweaks_ParryMode_AttacksPerRound[EEex_Sprite_GetStat(targetSprite, stats["NUMBEROFATTACKS"]) + 1])
 	end
 	--
-	local targetActiveStats = EEex_Sprite_GetActiveStats(targetSprite)
-	--
-	local conditionalString = EEex_Trigger_ParseConditionalString('OR(2) \n !Allegiance(Myself,GOODCUTOFF) InWeaponRange(EEex_Target("GT_ParryModeTarget") \n OR(2) \n !Allegiance(Myself,EVILCUTOFF) Range(EEex_Target("GT_ParryModeTarget"),4)') -- we intentionally let the AI cheat. In so doing, it can enter the mode without worrying about being in weapon range...
 	targetSprite:setStoredScriptingTarget("GT_ParryModeTarget", attackingSprite)
+	local conditionalString = EEex_Trigger_ParseConditionalString('OR(2) \n !Allegiance(Myself,GOODCUTOFF) InWeaponRange(EEex_Target("GT_ParryModeTarget") \n OR(2) \n !Allegiance(Myself,EVILCUTOFF) Range(EEex_Target("GT_ParryModeTarget"),4)') -- we intentionally let the AI cheat. In so doing, it can enter the mode without worrying about being in weapon range...
 	--
 	if targetSprite:getLocalInt("gtParryMode") == 1 then -- parry mode ON
 		if targetSprite.m_curAction.m_actionID == 0 and targetSprite.m_nSequence == 7 then -- idle/ready (in particular, you cannot parry while performing a riposte attack)
@@ -400,51 +400,51 @@ function %BLADE_SWASHBUCKLER_PARRY%(CGameEffect, CGameSprite)
 				elseif v["targetType"] == 3 or (v["targetType"] == 6 and sourceSprite.m_typeAI.m_EnemyAlly == 2) then -- party
 					for i = 0, 5 do
 						local partyMember = EEex_Sprite_GetInPortrait(i) -- CGameSprite
-						if partyMember and EEex_BAnd(partyMember.m_derivedStats.m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+						if partyMember and EEex_BAnd(partyMember:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
 							table.insert(array, partyMember)
 						end
 					end
 				elseif v["targetType"] == 4 then -- everyone
 					local everyone = EEex_Area_GetAllOfTypeInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, GT_AI_ObjectType["ANYONE"], 0x7FFF, false, nil, nil)
 					--
-					for _, sprite in ipairs(everyone) do
-						if EEex_BAnd(sprite.m_derivedStats.m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-							table.insert(array, sprite)
+					for _, itrSprite in ipairs(everyone) do
+						if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+							table.insert(array, itrSprite)
 						end
 					end
 				elseif v["targetType"] == 5 then -- everyone but party
 					local everyone = EEex_Area_GetAllOfTypeInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, GT_AI_ObjectType["ANYONE"], 0x7FFF, false, nil, nil)
 					--
-					for _, sprite in ipairs(everyone) do
-						if sprite.m_typeAI.m_EnemyAlly ~= 2 then
-							if EEex_BAnd(sprite.m_derivedStats.m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-								table.insert(array, sprite)
+					for _, itrSprite in ipairs(everyone) do
+						if itrSprite.m_typeAI.m_EnemyAlly ~= 2 then
+							if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+								table.insert(array, itrSprite)
 							end
 						end
 					end
 				elseif v["targetType"] == 6 then -- caster group
 					local casterGroup = EEex_Area_GetAllOfTypeStringInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, string.format("[0.0.0.0.%d]", sourceSprite.m_typeAI.m_Specifics), 0x7FFF, false, nil, nil)
 					--
-					for _, sprite in ipairs(casterGroup) do
-						if EEex_BAnd(sprite.m_derivedStats.m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-							table.insert(array, sprite)
+					for _, itrSprite in ipairs(casterGroup) do
+						if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+							table.insert(array, itrSprite)
 						end
 					end
 				elseif v["targetType"] == 7 then -- target group
 					local targetGroup = EEex_Area_GetAllOfTypeStringInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, string.format("[0.0.0.0.%d]", CGameSprite.m_typeAI.m_Specifics), 0x7FFF, false, nil, nil)
 					--
-					for _, sprite in ipairs(targetGroup) do
-						if EEex_BAnd(sprite.m_derivedStats.m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-							table.insert(array, sprite)
+					for _, itrSprite in ipairs(targetGroup) do
+						if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+							table.insert(array, itrSprite)
 						end
 					end
 				elseif v["targetType"] == 8 then -- everyone but self
 					local everyone = EEex_Area_GetAllOfTypeInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, GT_AI_ObjectType["ANYONE"], 0x7FFF, false, nil, nil)
 					--
-					for _, sprite in ipairs(everyone) do
-						if sprite.m_id ~= sourceSprite.m_id then
-							if EEex_BAnd(sprite.m_derivedStats.m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-								table.insert(array, sprite)
+					for _, itrSprite in ipairs(everyone) do
+						if itrSprite.m_id ~= sourceSprite.m_id then
+							if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+								table.insert(array, itrSprite)
 							end
 						end
 					end
