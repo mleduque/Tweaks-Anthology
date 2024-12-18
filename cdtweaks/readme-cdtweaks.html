@@ -972,44 +972,6 @@
       </ul>
       <p> Permanent potions, such as potions of healing, and potions that can end prematurely, such as Potion of Invisibility, would be considered still in effect for <code>1</code> turn (<code>60</code> seconds) after drinking them.</p>
       <p> The aforementioned special events can occur only upon quaffing potions. As a result, there is no risk in using 1 Oil (f.i. Oil of Speed) and 1 Potion, as oils are applied to the skin, not consumed, so they wouldn't mix. </p>
-      <p> <strong>&quot;Force&quot; the Archer kit to use bows [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component aims at making sure the Archer is really the epitome of skill with the <em>bow</em>.
-        As a result, after installing it, its abilities modify as follows:</p>
-      <ul>
-        <li> <code>+1</code> to hit and damage rolls with <em>bows</em> every 3 levels </li>
-        <li> May achieve Grand Mastery (5 slots) in <em>longbows</em> and <em>shortbows</em>
-          <ul>
-            <li>May only Specialize (2 slots) in crossbows</li>
-          </ul>
-        </li>
-        <li> When equipped with a <em>bow</em>, it may use the Called Shot ability</li>
-        <li> New passive trait: Point Blank Shot
-          <ul>
-            <li>When wielding a <em>bow</em>, the Archer negates the <code>-8</code> thac0 penalty for using ranged weapons in close combat</li>
-          </ul>
-        </li>
-      </ul>
-      <p>
-        This component also reworks the Called Shot ability. Here is the revised description:<br />
-        <p>CALLED SHOT: Grants the ability to make a potentially disabling attack against an opponent's arms or legs. Called shots are made at a -4 thac0 penalty. A successful called shot against the legs reduces the opponent's movement rate by 20% and gives them a -2 cumulative penalty to their dexterity. A successful called shot against the arms applies a cumulative -2 penalty to the creature's attack rolls.</p>
-      </p>
-      <p> So to sum up, its core features are now all built around the <em>bow</em> (instead of any missile weapon). </p>
-      <p>
-        Notes about Called Shot:
-        <ul>
-          <li>Use: selected (unlimited uses per day).</li>
-          <li>
-            Successful called shots last four rounds.
-            <ul>
-              <li>The target must fail a Save vs. Breath in order to be affected.</li>
-              <li>The save penalty decreases by 1 for every 4 levels of the Archer (capped at -7 at level 29).</li>
-            </ul>
-          </li>
-          <li>Called Shot (Legs) cannot drop Dexterity below 1.</li>
-          <li>Creatures without arms (f.i. slimes, beholders, wolves, spiders, ...) or legs (f.i. wyverns, imps, snakes, salamanders, ...) are unaffected by effects from Called Shot.</li>
-        </ul>
-      </p>
       <p> <strong>Spontaneous Casting for Clerics [Luke]</strong><br />
         <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
       <p> This component aims at giving Clerics some Spontaneous Casting capabilities.</p>
@@ -1480,6 +1442,58 @@
       <p> Internally, Dorn's sword (Rancor +1) relies upon scripting. As modders know, items should not rely upon scripting to work correctly, since it is unreliable and may quickly become messy.
         This component simply removes scripting from this weapon (the upshot of which is that the weapon should become a bit more reliable). </p>
     </div>
+
+    <div class="ribbon_rectangle_h3">
+      <h3> <a id="NWN-ish_feats" name="NWN-ish_feats"></a>NWN-ish Feats Collection </h3>
+    </div>
+    <div class="ribbon_triangle_h3-l"></div>
+    <div class="ribbon_triangle_h3-r"></div>
+    <div class="section">
+      <p> Components in this category are inspired from <a href="https://nwn.beamdog.com/">NWN</a> and are aimed at providing new class/kit abilities.</p>
+
+      <p> <strong>"Force" the Archer kit to use bows [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p>
+        This component aims at making sure the Archer is really the epitome of skill with the <em>bow</em>.
+        As a result, after installing it, its abilities modify as follows:
+        <ul>
+          <li> <code>+1</code> to hit and damage rolls with <em>bows</em> every 3 levels </li>
+          <li> May achieve Grand Mastery (5 slots) in <em>longbows</em> and <em>shortbows</em>
+            <ul>
+              <li>May only Specialize (2 slots) in crossbows</li>
+            </ul>
+          </li>
+          <li> When equipped with a <em>bow</em>, it may use the (new) Called Shot ability</li>
+          <li> New passive trait: Point Blank Shot
+            <ul>
+              <li>When wielding a <em>bow</em>, the Archer negates the <code>-8</code> thac0 penalty for using ranged weapons in close combat</li>
+            </ul>
+          </li>
+        </ul>
+      </p>
+      <p>
+        This component also reworks the Called Shot ability. Here is the revised description:<br />
+        <p>CALLED SHOT: Grants the ability to make a potentially disabling attack against an opponent's arms or legs. A successful called shot against the legs reduces the opponent's movement rate by 20% and gives them a -2 cumulative penalty to their dexterity. A successful called shot against the arms applies a cumulative -2 penalty to the creature's attack rolls.</p>
+      </p>
+      <p> So to sum up, its core features are now all built around the <em>bow</em> (instead of any missile weapon). </p>
+      <p>
+        Notes about Called Shot:
+        <ul>
+          <li>Use: selected (unlimited uses per day).</li>
+          <li>
+            Successful called shots last four rounds.
+            <ul>
+              <li>The target must fail a Save vs. Breath in order to be affected.</li>
+              <li>The save penalty decreases by 1 for every 4 levels of the Archer (capped at -7 at level 29).</li>
+            </ul>
+          </li>
+          <li>Called Shot (Legs) cannot drop Dexterity below 1.</li>
+          <li>Called shots deal no damage and apply no on-hit effects (if any).</li>
+          <li>Creatures without arms (f.i. slimes, beholders, wolves, spiders, ...) or legs (f.i. wyverns, imps, snakes, salamanders, ...) are unaffected by effects from Called Shot.</li>
+        </ul>
+      </p>
+    </div>
+
     <div class="ribbon_rectangle_h2"> <a id="Contact" name="Contact"></a>
       <h2> Contact Information </h2>
     </div>

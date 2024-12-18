@@ -20,8 +20,6 @@ BEGIN
 	RET
 		"ARCHER_KIT_BONUS" = "resName"
 	END
-	//
-	//LAF "ADD_EXTENDED_STAT" INT_VAR "max" = 25 STR_VAR "identifier" = "GT_IGNORE_ACTION_ADD_SPRITE_STARTED_ACTION_LISTENER" END
 	// update description
 	WITH_SCOPE BEGIN
 		OUTER_SET "new_desc" = RESOLVE_STR_REF (@0)
@@ -83,7 +81,14 @@ BEGIN
 			//
 			LPF "ADD_SPELL_HEADER" INT_VAR "range" = 30 STR_VAR "icon" = "%DEST_RES%" END
 			//
-			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 2 "parameter1" = 1 STR_VAR "resource" = "%ARCHER_CALLED_SHOT%" END // Invoke lua
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 138 "target" = 1 "parameter2" = 8 END // SEQ_SHOOT
+		BUT_ONLY
+		//
+		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.spl" "override\%ARCHER_CALLED_SHOT%d.spl"
+			WRITE_LONG NAME1 "-1"
+			//
+			LPF "ALTER_SPELL_EFFECT" INT_VAR "match_opcode" = 138 "target" = 2 "parameter2" = 4 END // SEQ_DAMAGE
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 2 "parameter1" = 1 STR_VAR "resource" = "%ARCHER_CALLED_SHOT%" END // invoke lua
 		BUT_ONLY
 		// Legs
 		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.spl" "override\%ARCHER_CALLED_SHOT%c.spl"
@@ -92,21 +97,13 @@ BEGIN
 			WRITE_ASCII 0x3A "%DEST_RES%" #8 // icon
 			//
 			LPF "ALTER_SPELL_HEADER" STR_VAR "icon" = "%DEST_RES%" END
-			//
-			LPF "ALTER_SPELL_EFFECT" INT_VAR "match_opcode" = 402 "parameter1" = 2 END
-		BUT_ONLY
-		// EFFs
-		CREATE "eff" "%ARCHER_CALLED_SHOT%b"
-		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.eff" "override"
-			WRITE_LONG 0x10 146 // Cast spell
-			WRITE_LONG 0x14 2 // Projectile target
-			WRITE_LONG 0x20 1 // Mode: instant/ignore level
-			WRITE_SHORT 0x2C 100 // prob1
-			WRITE_ASCII 0x30 "%DEST_RES%" #8 // spl file
 		BUT_ONLY
 		//
-		COPY_EXISTING "%ARCHER_CALLED_SHOT%b.eff" "override\%ARCHER_CALLED_SHOT%c.eff"
-			WRITE_ASCII 0x30 "%DEST_RES%" #8 // spl file
+		COPY_EXISTING "%ARCHER_CALLED_SHOT%c.spl" "override\%ARCHER_CALLED_SHOT%e.spl"
+			WRITE_LONG NAME1 "-1"
+			//
+			LPF "ALTER_SPELL_EFFECT" INT_VAR "match_opcode" = 138 "target" = 2 "parameter2" = 4 END // SEQ_DAMAGE
+			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 402 "target" = 2 "parameter1" = 2 STR_VAR "resource" = "%ARCHER_CALLED_SHOT%" END // invoke lua
 		BUT_ONLY
 		//
 		COPY "cdtweaks\luke\bam\kit\archer\called_shot_arms.bam" "override\%ARCHER_CALLED_SHOT%b.bam" "cdtweaks\luke\bam\kit\archer\called_shot_legs.bam" "override\%ARCHER_CALLED_SHOT%c.bam"
@@ -131,15 +128,13 @@ BEGIN
 		OUTER_SET "feedback_strref_thac0_mod" = RESOLVE_STR_REF (@101)
 		OUTER_SET "feedback_strref_dex_mod" = RESOLVE_STR_REF (@102)
 		OUTER_SET "feedback_strref_bow_only" = RESOLVE_STR_REF (@103)
-		OUTER_SET "feedback_strref_aura_free" = RESOLVE_STR_REF (@200)
+		OUTER_SET "feedback_strref_immune" = RESOLVE_STR_REF (@200)
 		OUTER_SET "feedback_strref_AoE" = RESOLVE_STR_REF (@300)
 		//
 		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Class/Kit Abilities" "sourceFileSpec" = "cdtweaks\luke\lua\kit\archer\passive_traits.lua" "destRes" = "m_gtspcl" END
 		// Listener: run 'func' each time a sprite has finished evaluating its effects
 		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Class/Kit Abilities" "sourceFileSpec" = "cdtweaks\luke\lua\kit\archer\called_shot.lua" "destRes" = "m_gtspcl" END
 	END
-	//
-	LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Utility Functions / Listeners" "sourceFileSpec" = "cdtweaks\luke\lua\utility\effect_check.lua" "destRes" = "m_gtutil" END
 	//
 	ACTION_IF !(FILE_EXISTS_IN_GAME "m_gttbls.lua") BEGIN
 		COPY "cdtweaks\luke\lua\m_gttbls.lua" "override"

@@ -46,8 +46,6 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local selectedWeapon = equipment.m_items:get(equipment.m_selectedWeapon)
 	local selectedWeaponHeader = selectedWeapon.pRes.pHeader
 	--
-	local spriteKitStr = GT_Resource_IDSToSymbol["kit"][sprite.m_derivedStats.m_nKit]
-	--
 	local spriteClassStr = GT_Resource_IDSToSymbol["class"][sprite.m_typeAI.m_Class]
 	--
 	local selectedWeaponTypeStr = GT_Resource_IDSToSymbol["itemcat"][selectedWeaponHeader.itemType]
@@ -56,6 +54,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- since ``EEex_Opcode_AddListsResolvedListener`` is running after the effect lists have been evaluated, ``m_bonusStats`` has already been added to ``m_derivedStats`` by the engine
 	local spriteLevel1 = sprite.m_derivedStats.m_nLevel1
 	local spriteLevel2 = sprite.m_derivedStats.m_nLevel2
+	local spriteKitStr = GT_Resource_IDSToSymbol["kit"][sprite.m_derivedStats.m_nKit]
 	--
 	local bonus = 0
 	--

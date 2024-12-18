@@ -6,7 +6,6 @@ Advantages:
 – May use the Called Shot ability (when wielding a bow).
 
 CALLED SHOT: Grants the ability to make a potentially disabling attack against an opponent's arms or legs.
- Called shots are made at a -4 thac0 penalty.
  A successful called shot against the legs reduces the opponent's movement rate by 20% and gives them a -2 cumulative penalty to their dexterity.
  A successful called shot against the arms applies a cumulative -2 penalty to the creature's attack rolls.
 
@@ -29,13 +28,13 @@ A successful called shot against the arms applies a cumulative -2 thac0 penalty.
 
 A successful called shot against the legs reduces the opponent's movement rate by 20% and gives them a -2 cumulative penalty to their dexterity."
 
-@100 = "The selected target is out of range"
+//@100 = "The selected target is out of range"
 @101 = "THAC0 Modification"
 @102 = "Dexterity Modification"
 @103 = "The character must wield a bow in order to use this ability"
 
-@200 = "The character cannot perform more than one action per round"
+@200 = "Unaffected by effects from Called Shot"
 
 @300 = "The character cannot use this ability while shooting AoE missiles"
 
-@400 = "Unaffected by effects from Called Shot"
+//@400 = "Unaffected by effects from Called Shot"

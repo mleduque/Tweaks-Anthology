@@ -6,7 +6,6 @@ Vantaggi:
 - Può utilizzare l'abilità Colpo Mirato (quando impugna un arco).
 
 COLPO MIRATO: Conferisce la capacità di effettuare un attacco potenzialmente incapacitante contro le braccia o le gambe di un avversario.
- I Colpi Mirati vengono effettuati con una penalità di -4 ai tiri per colpire.
  Un Colpo Mirato contro le gambe riduce la velocità di movimento dell'avversario del 20% e gli applica una penalità cumulativa di -2 alla destrezza.
  Un Colpo Mirato contro le braccia applica una penalità cumulativa di -2 ai tiri per colpire dell'avversario.
 
@@ -29,13 +28,13 @@ Un Colpo Mirato contro le braccia applica una penalità cumulativa di -2 ai tiri
 
 Un Colpo Mirato contro le gambe riduce la velocità di movimento dell'avversario del 20% e gli applica una penalità cumulativa di -2 alla destrezza."
 
-@100 = "Il bersaglio selezionato è fuori portata"
+//@100 = "Il bersaglio selezionato è fuori portata"
 @101 = "Modificatore al THAC0"
 @102 = "Modificatore alla Destrezza"
 @103 = "Il personaggio deve impugnare un arco per poter utilizzare questa abilità"
 
-@200 = "Il personaggio non può compiere più di un'azione per round"
+@200 = "Non soggetto agli effetti di Colpo Mirato"
 
 @300 = "Il personaggio non può utilizzare questa abilità mentre sta scoccando frecce con effetto ad area"
 
-@400 = "Non soggetto agli effetti di Colpo Mirato"
+//@400 = "Non soggetto agli effetti di Colpo Mirato"
