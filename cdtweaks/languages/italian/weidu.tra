@@ -649,6 +649,8 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 
 @336000 = ~Ripristina la nebbia di guerra nei sotterranei di Sigil~ 
 
+@344000 = ~Regola in modo automatico gli FPS [Luke (EEex)]~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
