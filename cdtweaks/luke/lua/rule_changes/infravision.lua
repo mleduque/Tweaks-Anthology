@@ -40,10 +40,12 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- since ``EEex_Opcode_AddListsResolvedListener`` is running after the effect lists have been evaluated, ``m_bonusStats`` has already been added to ``m_derivedStats`` by the engine
 	local spriteGeneralState = sprite.m_derivedStats.m_generalState
 	--
-	local isDungeon = EEex_Trigger_ParseConditionalString('AreaType(DUNGEON)')
-	local isNight = EEex_Trigger_ParseConditionalString('AreaType(OUTDOOR) \n AreaType(DAYNIGHT) \n TimeOfDay(NIGHT)')
+	local isDungeon = sprite.m_pArea and EEex_IsBitSet(sprite.m_pArea.m_header.m_areaType, 0x5) or false
+	local isOutdoor = sprite.m_pArea and EEex_IsBitSet(sprite.m_pArea.m_header.m_areaType, 0x0) or false
+	local isDayNight = sprite.m_pArea and EEex_IsBitSet(sprite.m_pArea.m_header.m_areaType, 0x1) or false
+	local isNight = EEex_Trigger_ParseConditionalString('TimeOfDay(NIGHT)')
 	--
-	local applyCondition = not (hasInnateInfravision or EEex_IsBitSet(spriteGeneralState, 17)) and (isDungeon:evalConditionalAsAIBase(sprite) or isNight:evalConditionalAsAIBase(sprite))
+	local applyCondition = not (hasInnateInfravision or EEex_IsBitSet(spriteGeneralState, 17)) and (isDungeon or (isOutdoor and isDayNight and isNight:evalConditionalAsAIBase(sprite)))
 	--
 	if sprite:getLocalInt("cdtweaksNoInfravision") == 0 then
 		if applyCondition then
@@ -64,4 +66,6 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			})
 		end
 	end
+	--
+	isNight:free()
 end)
