@@ -37,8 +37,6 @@ GTCOWENF = {
 		--
 		local areaCheck = EEex_Trigger_ParseConditionalString('OR(7) \n AreaCheck("AR0020") AreaCheck("AR0300") AreaCheck("AR0400") AreaCheck("AR0500") AreaCheck("AR0700") AreaCheck("AR0900") AreaCheck("AR1000")')
 		--
-		local setGlobal = EEex_Action_ParseResponseString('SetGlobal("gt_CowledWizardsTriggered","GLOBAL",1)')
-		--
 		local spellResRef = originatingSprite.m_curAction.m_string1.m_pchData:get()
 		if spellResRef == "" then
 			spellResRef = GT_Utility_DecodeSpell(originatingSprite.m_curAction.m_specificID)
@@ -47,10 +45,9 @@ GTCOWENF = {
 		local spellHeader = EEex_Resource_Demand(spellResRef, "SPL")
 		--
 		if spellHeader.itemType == 1 and areaCheck:evalConditionalAsAIBase(originatingSprite) then -- if wizard spell and in Athkatla ...
-			setGlobal:executeResponseAsAIBaseInstantly(originatingSprite)
+			EEex_GameState_SetGlobalInt("gt_CowledWizardsTriggered", 1)
 		end
 		--
-		setGlobal:free()
 		areaCheck:free()
 	end,
 
