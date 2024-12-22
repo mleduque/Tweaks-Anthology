@@ -8,11 +8,11 @@
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check
-	if not EEex_GameObject_IsSprite(sprite) then
+	if not EEex_GameObject_IsSprite(sprite) or not sprite.m_pArea then
 		return
 	end
 	--
-	local actuallyInCombat = sprite.m_pArea and (sprite.m_pArea.m_nBattleSongCounter > 0) or false
+	local actuallyInCombat = sprite.m_pArea.m_nBattleSongCounter > 0
 	--
 	if sprite.m_inCutScene == 1 then
 		EEex_GameState_SetGlobalInt("gtCutSceneMode", 1)
