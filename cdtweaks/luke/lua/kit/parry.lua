@@ -14,7 +14,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that grants the ability
 	local gain = function()
 		-- Mark the creature as 'feat granted'
-		sprite:setLocalInt("cdtweaksParryMode", 1)
+		sprite:setLocalInt("gtRogueParry", 1)
 		--
 		local effectCodes = {
 			{["op"] = 172}, -- remove spell
@@ -46,7 +46,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			or (spriteClassStr == "FIGHTER_THIEF" and (EEex_IsBitUnset(spriteFlags, 0x6) or spriteLevel1 > spriteLevel2))
 			or (spriteClassStr == "THIEF")))
 	--
-	if sprite:getLocalInt("cdtweaksParryMode") == 0 then
+	if sprite:getLocalInt("gtRogueParry") == 0 then
 		if gainAbility then
 			gain()
 		end
@@ -55,7 +55,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			-- do nothing
 		else
 			-- Mark the creature as 'feat removed'
-			sprite:setLocalInt("cdtweaksParryMode", 0)
+			sprite:setLocalInt("gtRogueParry", 0)
 			--
 			if EEex_Sprite_GetLocalInt(sprite, "gtParryMode") == 1 then
 				sprite:applyEffect({
@@ -152,7 +152,7 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 										["sourceID"] = targetSprite.m_id,
 										["sourceTarget"] = attackingSprite.m_id,
 									})
-									-- block base weapon damage + on-hit effects
+									-- block base weapon damage + on-hit effects (if any)
 									toReturn = true
 								end
 							end
@@ -199,7 +199,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	--
 	local conditionalString = EEex_Trigger_ParseConditionalString("OR(2) \n IsWeaponRanged(Myself) HasItemSlot(Myself,SLOT_MISC19)")
 	--
-	if sprite:getLocalInt("cdtweaksParryMode") == 1 then
+	if sprite:getLocalInt("gtRogueParry") == 1 then
 		if EEex_Sprite_GetLocalInt(sprite, "gtParryMode") == 1 and (conditionalString:evalConditionalAsAIBase(sprite) or sprite.m_derivedStats.m_bPolymorphed == 1) then
 			sprite:applyEffect({
 				["effectID"] = 146, -- Cast spell
@@ -222,7 +222,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		return
 	end
 	--
-	if sprite:getLocalInt("cdtweaksParryMode") == 1 then
+	if sprite:getLocalInt("gtRogueParry") == 1 then
 		if EEex_Sprite_GetLocalInt(sprite, "gtParryMode") == 1 and sprite.m_nSequence == 6 and sprite.m_curAction.m_actionID == 0 then
 			sprite:applyEffect({
 				["effectID"] = 146, -- Cast spell
@@ -237,7 +237,7 @@ end)
 -- make sure it cannot be disrupted. Cancel mode if no longer idle --
 
 EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
-	if sprite:getLocalInt("cdtweaksParryMode") == 1 then
+	if sprite:getLocalInt("gtRogueParry") == 1 then
 		--
 		local toskip = {
 			["%BLADE_SWASHBUCKLER_PARRY%E"] = true,
@@ -359,7 +359,7 @@ function %BLADE_SWASHBUCKLER_PARRY%(CGameEffect, CGameSprite)
 		end
 		--
 		local itmAbilityDamageTypeToIDS = {
-			[0] = 0x0 -- none (crushing)
+			[0] = 0x0, -- none (crushing)
 			[1] = 0x10, -- piercing
 			[2] = 0x0, -- crushing
 			[3] = 0x100, -- slashing
@@ -377,11 +377,14 @@ function %BLADE_SWASHBUCKLER_PARRY%(CGameEffect, CGameSprite)
 				mode = 1 -- set HP to value
 			end
 			--
+			local wspecial = GT_Resource_2DA["wspecial"]
+			local weaponProficiencyDamageBonus = tonumber(wspecial[string.format("%s", EEex_BAnd(EEex_Sprite_GetStat(sourceSprite, selectedWeaponHeader.proficiencyType), 0x7))]["DAMAGE"]) -- consider only the first 3 bits
+			--
 			EEex_GameObject_ApplyEffect(CGameSprite,
 			{
 				["effectID"] = 0xC, -- Damage (12)
 				["dwFlags"] = itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000 + mode,
-				["effectAmount"] = selectedWeaponAbility.damageDiceBonus + strBonus,
+				["effectAmount"] = (selectedWeaponAbility.damageDiceCount == 0 and selectedWeaponAbility.damageDice == 0 and selectedWeaponAbility.damageDiceBonus == 0) and 0 or (weaponProficiencyDamageBonus + selectedWeaponAbility.damageDiceBonus + strBonus),
 				["numDice"] = selectedWeaponAbility.damageDiceCount,
 				["diceSize"] = selectedWeaponAbility.damageDice,
 				--["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
