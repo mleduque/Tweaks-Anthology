@@ -14,9 +14,9 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that applies the actual bonus
 	local apply = function(bonus)
 		-- Update tracking var
-		sprite:setLocalInt("cdtweaksArcherKitBonus", bonus)
+		sprite:setLocalInt("gtArcherKitBonus", bonus)
 		-- Mark the creature as 'bonus applied'
-		sprite:setLocalInt("cdtweaksRevisedArcher", 1)
+		sprite:setLocalInt("gtRevisedArcher", 1)
 		--
 		sprite:applyEffect({
 			["effectID"] = 321, -- Remove effects by resource
@@ -80,19 +80,19 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		and EEex_IsBitUnset(spriteFlags, 10) -- not Fallen Ranger
 		and bonus > 0
 	--
-	if sprite:getLocalInt("cdtweaksRevisedArcher") == 0 then
+	if sprite:getLocalInt("gtRevisedArcher") == 0 then
 		if applyCondition then
 			apply(bonus)
 		end
 	else
 		if applyCondition then
 			-- Check if level has changed since the last application
-			if bonus ~= sprite:getLocalInt("cdtweaksArcherKitBonus") then
+			if bonus ~= sprite:getLocalInt("gtArcherKitBonus") then
 				apply(bonus)
 			end
 		else
 			-- Mark the creature as 'bonus removed'
-			sprite:setLocalInt("cdtweaksRevisedArcher", 0)
+			sprite:setLocalInt("gtRevisedArcher", 0)
 			--
 			sprite:applyEffect({
 				["effectID"] = 321, -- Remove effects by resource
