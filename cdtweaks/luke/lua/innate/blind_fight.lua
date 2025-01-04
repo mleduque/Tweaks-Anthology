@@ -8,7 +8,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that applies the actual bonus
 	local apply = function()
 		-- Mark the creature as 'bonus applied'
-		sprite:setLocalInt("cdtweaksBlindFight", 1)
+		sprite:setLocalInt("gtInnateBlindFight", 1)
 		--
 		local effectCodes = {
 			{["op"] = 321, ["res"] = "%INNATE_BLIND_FIGHT%"}, -- Remove effects by resource
@@ -39,7 +39,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local spriteLevel2 = sprite.m_derivedStats.m_nLevel2
 	local spriteGeneralState = sprite.m_derivedStats.m_generalState
 	-- single/multi/(complete)dual berserkers
-	local applyCondition = EEex_IsBitSet(spriteGeneralState, 0x12) -- STATE_BLIND
+	local applyAbility = EEex_IsBitSet(spriteGeneralState, 0x12) -- STATE_BLIND
 		and spriteKitStr == "BERSERKER"
 		and (spriteClassStr == "FIGHTER"
 			or (spriteClassStr == "FIGHTER_MAGE" and (EEex_IsBitUnset(spriteFlags, 0x3) or spriteLevel2 > spriteLevel1))
@@ -47,16 +47,16 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			or (spriteClassStr == "FIGHTER_THIEF" and (EEex_IsBitUnset(spriteFlags, 0x3) or spriteLevel2 > spriteLevel1))
 			or (spriteClassStr == "FIGHTER_DRUID" and (EEex_IsBitUnset(spriteFlags, 0x3) or spriteLevel2 > spriteLevel1)))
 	--
-	if sprite:getLocalInt("cdtweaksBlindFight") == 0 then
-		if applyCondition then
+	if sprite:getLocalInt("gtInnateBlindFight") == 0 then
+		if applyAbility then
 			apply()
 		end
 	else
-		if applyCondition then
+		if applyAbility then
 			-- do nothing
 		else
 			-- Mark the creature as 'bonus removed'
-			sprite:setLocalInt("cdtweaksBlindFight", 0)
+			sprite:setLocalInt("gtInnateBlindFight", 0)
 			--
 			sprite:applyEffect({
 				["effectID"] = 321, -- Remove effects by resource
