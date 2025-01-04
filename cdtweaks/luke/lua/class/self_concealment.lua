@@ -22,7 +22,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that applies the actual feat (translucency + icon)
 	local apply = function(percentage)
 		-- Mark the creature as 'feat applied'
-		sprite:setLocalInt("cdtweaksSelfConcealment", 1)
+		sprite:setLocalInt("gtMonkSelfConcealment", 1)
 		-- Update tracking var
 		sprite:setLocalInt("gtSelfConcealmentAmount", percentage)
 		--
@@ -55,7 +55,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- lvl 10+ monks; 16+ DEX
 	local applyAbility = spriteClassStr == "MONK" and spriteLevel1 >= 10 and spriteDEX >= 16
 	--
-	if sprite:getLocalInt("cdtweaksSelfConcealment") == 0 then
+	if sprite:getLocalInt("gtMonkSelfConcealment") == 0 then
 		if applyAbility then
 			apply(percentage)
 		end
@@ -66,7 +66,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			end
 		else
 			-- Mark the creature as 'feat removed'
-			sprite:setLocalInt("cdtweaksSelfConcealment", 0)
+			sprite:setLocalInt("gtMonkSelfConcealment", 0)
 			--
 			sprite:applyEffect({
 				["effectID"] = 321, -- Remove effects by resource
@@ -83,7 +83,7 @@ end)
 EEex_Sprite_AddBlockWeaponHitListener(function(args)
 	local targetSprite = args.targetSprite -- CGameSprite
 	--
-	if targetSprite:getLocalInt("cdtweaksSelfConcealment") == 1 then
+	if targetSprite:getLocalInt("gtMonkSelfConcealment") == 1 then
 		if math.random(100) <= targetSprite:getLocalInt("gtSelfConcealmentAmount") then -- 1d100 roll
 			-- display some feedback
 			targetSprite:applyEffect({
@@ -92,7 +92,7 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 				["sourceID"] = targetSprite.m_id,
 				["sourceTarget"] = targetSprite.m_id,
 			})
-			-- block base weapon damage + on-hit effects
+			-- block base weapon damage + on-hit effects (if any)
 			return true
 		end
 	end
