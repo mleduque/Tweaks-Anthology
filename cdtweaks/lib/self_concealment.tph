@@ -16,6 +16,8 @@ BEGIN
 		COPY "cdtweaks\luke\bam\class\self_concealment.bam" "override\%MONK_SELF_CONCEALMENT%d.bam"
 		LAF "ADD_STATDESC_ENTRY" INT_VAR "description" = RESOLVE_STR_REF (@0) STR_VAR "bam_file" = "%MONK_SELF_CONCEALMENT%d" RET "feedback_icon" = "index" END
 		//
+		ACTION_TO_UPPER "MONK_SELF_CONCEALMENT"
+		//
 		OUTER_SET "strref_10" = RESOLVE_STR_REF (@10)
 		OUTER_SET "strref_20" = RESOLVE_STR_REF (@11)
 		OUTER_SET "strref_30" = RESOLVE_STR_REF (@12)
