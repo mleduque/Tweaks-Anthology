@@ -1,10 +1,2 @@
-@0 = "Dirty Fighting"
-@1 = "Dirty Fighting
-
-The character knows brutal and effective fighting tactics. By sacrificing all other attacks during the round, the character can elect to perform a dirty fighting move that will deal 15% of the target's maximum health as unmitigated damage."
-
-@2 = "Dirty Fighting Mode On"
-@3 = "Dirty Fighting Mode Off"
-
-@100 = "Dirty Fighting: the character suffers 15% of its maximum health as unmitigated damage"
+@100 = "Dirty Fighting: the character suffers 5% of its maximum health as unmitigated damage"
 @101 = "Unaffected by effects from Dirty Fighting"

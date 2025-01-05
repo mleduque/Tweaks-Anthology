@@ -8,7 +8,6 @@
 
 WITH_SCOPE BEGIN
   INCLUDE "cdtweaks\luke\misc.tph"
-  INCLUDE "cdtweaks\ardanis\functions.tph"
   //
   INCLUDE "cdtweaks\lib\dirty_fighting.tph"
   //
