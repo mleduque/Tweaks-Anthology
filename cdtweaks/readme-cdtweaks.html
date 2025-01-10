@@ -983,6 +983,10 @@
       </ul>
       <p> Permanent potions, such as potions of healing, and potions that can end prematurely, such as Potion of Invisibility, would be considered still in effect for <code>1</code> turn (<code>60</code> seconds) after drinking them.</p>
       <p> The aforementioned special events can occur only upon quaffing potions. As a result, there is no risk in using 1 Oil (f.i. Oil of Speed) and 1 Potion, as oils are applied to the skin, not consumed, so they wouldn't mix. </p>
+            <p> <strong>Limit Resting Mechanic [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p> This component simply forces Rangers to wield light armors (or no armor) in order to benefit from Two-Weapon Fighting.</p>
+      <p> This component simply forces the Party to rest at most once per 24 in-game hours (does not prevent scripted resting).</p>
       <p> <strong>&quot;Force&quot; the Archer kit to use bows [Luke]</strong><br />
         <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
       <p> This component aims at making sure the Archer is really the epitome of skill with the <em>bow</em>.
@@ -1002,101 +1006,6 @@
         </li>
       </ul>
       <p> So to sum up, its core features are now all built around the <em>bow</em> (instead of any missile weapon). </p>
-      <p> <strong>Weapon Finesse [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em> </p>
-      <p> This component aims at implementing 3E Weapon Finesse feat for Thieves.</p>
-      <p> As a result, after installing it, every time a Thief is wielding a small blade (f.i. daggers, short swords, wakizashis, etc...) or a club/mace, his/her THAC0 will scale with Dexterity (as per the <code>MISSILE</code> column of <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/dexmod.htm"><code>dexmod.2da</code></a>) instead of Strength.</p>
-      <p> As a completely artificial example, suppose a Thief has 9 Strength and 18 Dexterity. Upon equipping a dagger, he/she will gain a THAC0 bonus of <code>2</code> (instead of <code>0</code>). Note that nothing happens if the bonus from Strength is better (or equal) than the bonus from Dexterity. </p>
-      <p> <strong>Dual-Wield feat for Rangers [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component simply forces Rangers to wield light armors (or no armor) in order to benefit from Two-Weapon Fighting.</p>
-      <p> <strong>NWN-ish Armor vs. Dexterity [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component simply &quot;forces&quot; characters to wield light armors (or no armor) if they have high Dexterity.
-        In particular: </p>
-      <ul>
-        <li>If a character is equipped with a Medium Armor, it will only benefit from half the bonus derived from its Dexterity (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/dexmod.htm"><code>dexmod.2da</code></a>)
-          <ul>
-            <li>So for instance, a character with <code>18</code> DEX equipped with a Chain Mail Armor will suffer a <code>-4 / 2 = -2</code> AC penalty.</li>
-          </ul>
-        </li>
-        <li>If a character is equipped with a Heavy Armor, it will not benefit from the bonus derived from its Dexterity (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/dexmod.htm"><code>dexmod.2da</code></a>)
-          <ul>
-            <li>So for instance, a character with <code>18</code> DEX equipped with a Plate Mail will suffer a <code>-4</code> AC penalty.</li>
-          </ul>
-        </li>
-      </ul>
-      <p> <strong>Defensive Roll feat for Thieves [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component aims at implementing the NWN feat Defensive Roll. As a result, after installing it, if the character is struck by a potentially lethal blow, he makes a Save vs. Breath. If successful, he takes only half damage from the blow.</p>
-      <p> Notes: </p>
-      <ul>
-        <li>This feat is only available to thieves (level 10) and Shadowdancers (level 5).</li>
-        <li>A &quot;potentially lethal blow&quot; refers to a standard attack with a weapon that would, if not for this feat, reduce the target below one hit point with just its physical damage.</li>
-        <li>Use: automatic, but limited to one use per day. Incapacitated characters cannot make a defensive roll.</li>
-      </ul>
-      <p> <strong>Divine Grace / Dark Blessing feat for Paladins / Blackguards [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component adds the passive feats Divine Grace and Dark Blessing to Paladins and Blackguards. </p>
-      <ul>
-        <li>Divine Grace: The paladin adds its charisma bonus (if positive) to all saving throws.</li>
-        <li>Dark Blessing: Blackguards add their charisma bonus to all saving throws.</li>
-      </ul>
-      Here is how the bonus scales with charisma:
-      <ul>
-        <li> starting from 10, every <code>+2</code> points of charisma result in +1 bonus to all saves
-          <ul>
-            <li>So a 18 CHA character will get a +4 bonus</li>
-          </ul>
-        </li>
-        <li> starting from 10, every <code>-2</code> points of charisma result in -1 penalty to all saves
-          <ul>
-            <li>So a 8 CHA character will get a -1 penalty</li>
-          </ul>
-        </li>
-      </ul>
-      <p> <strong>Good Aim racial feat for Halflings [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p>This passive feat grants Halflings a <code>+1</code> THAC0 bonus with throwing weapons (i.e. throwing daggers, throwing axes, throwing hammers, darts).</p>
-      <p> <strong>Cleave class feat for Fighters [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component aims at implementing the NWN feat Cleave.<br />
-        As a result, after installing it, if the character kills an opponent, he gets a free attack against any opponent who is within melee weapon range.<br />
-        Notes: </p>
-      <ul>
-        <li>Use: automatic, but only available to Fighters.</li>
-      </ul>
-      <p> <strong>Sneak Attack class feat for Blackguards [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component adds the passive feat Sneak Attack to Blackguards.<br />
-        Whenever the character makes a successful attack against an opponent who is incapacitated, cannot see them, or who is in combat with someone else, the character's blow delivers extra damage as if it was a <code>STALKER</code> of the same level (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/sneakatt.htm"><code>sneakatt.2da</code></a>).<br />
-        Notes: </p>
-      <ul>
-        <li>Use: automatic, but limited to once per round.</li>
-        <li>Creatures without discernible anatomies (see component <i>Make Certain Creatures Immune to Backstab/Sneak Attack</i> ) or that are otherwise immune to sneak attacks, either via spells/items or naturally (f.i. Barbarians), are unaffected by this feat.</li>
-        <li>Sneak attacks can be made with both melee and ranged weapons.</li>
-      </ul>
-      <p> <strong>Fearless racial feat for halflings [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component adds the passive racial feat Fearless to halflings.<br />
-        This feat grants a <code>+2</code> bonus on saving throws against fear spells and effects. </p>
-      <p> <strong>Poison Save class feat for Assassins [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component adds the class feat Poison Save to Assassins.<br />
-        This passive feat grants a <code>+2</code> bonus on saving throws against poison spells and effects. </p>
-      <p> <strong>Planar Turning class feat for Paladins / Clerics [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component adds the class feat Planar Turning to Paladins and Clerics.<br />
-        This feat allows outsiders (solars, planetars, elementals, imps, mephits, demons, devils, salamanders, genies and the like) to be turned like undead.<br />
-        As a result, when the Turn Undead ability is activated, any extraplanar being in visual range of the priest are turned, fleeing in terror, if the priest's level is high enough. Especially high-level priests destroy these creatures instead. Evil priests gain control of these extraplanar beings instead of destroying them. </p>
-      <p> <strong>Circle Kick class feat for Monks [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> This component aims at implementing the NWN feat Circle Kick.<br />
-        As a result, after installing it, if the character succeeds in hitting an opponent with an unarmed attack, that character gets an additional free attack against another, nearby enemy. There is a maximum of one free attack per round.<br />
-        Notes: </p>
-      <ul>
-        <li>Use: automatic, but only available to Monks.</li>
-      </ul>
       
 
       <p> <strong>Make Bears and Boars continue fighting after reaching 0 hit points [Luke]</strong><br />
@@ -1572,7 +1481,7 @@
       <p>
         This feat grants the character the ability to fight well, even if blinded. As a result, whenever the character gets blinded, it does not suffer from the 4 THAC0 / AC penalty.
 
-          <li>Use: automatic.</li>
+          </p><li>Use: automatic.</li>
           <li>
             Unmitigated damage means that damage resistance is ignored.
             <ul>
@@ -1583,8 +1492,8 @@
 
           <li>This feat can only negate the melee THAC0 penalty. If the character is wielding a ranged weapon, only the AC penalty will be negated.</li>
 
-        </ul>
-      </p>
+        
+      <p></p>
   
       <p> <strong>Dirty Fighting class feat for Chaotic-aligned Rogues [Luke]</strong><br />
         <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
@@ -1615,10 +1524,105 @@
             Concealment does not stack. Only the highest concealment is used. The maximum concealment that a monk can have is 50% (level 30+).
             <ul>
               <li>Starts with 10% at level 10, and gains +10% every 5 levels thereafter.</li>
-              <li>On top of that, the monk must also have at least 16 Dexterity.</li>
+              <li>On top of that, the monk must also have at least 16 Dexterity.          </li>
             </ul>
           </li>
         </ul>
+        <p> <strong>Weapon Finesse [Luke]</strong><br />
+      <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+        <p> This component aims at implementing 3E Weapon Finesse feat for Thieves.</p>
+        <p> As a result, after installing it, every time a Thief is wielding a small blade (f.i. daggers, short swords, wakizashis, etc...) or a club/mace, his/her THAC0 will scale with Dexterity (as per the <code>MISSILE</code> column of <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/dexmod.htm"><code>dexmod.2da</code></a>) instead of Strength.</p>
+        <p> As a completely artificial example, suppose a Thief has 9 Strength and 18 Dexterity. Upon equipping a dagger, he/she will gain a THAC0 bonus of <code>2</code> (instead of <code>0</code>). Note that nothing happens if the bonus from Strength is better (or equal) than the bonus from Dexterity. </p>
+        <p> <strong>Dual-Wield feat for Rangers [Luke]</strong><br />
+          <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+        <p> This component simply forces Rangers to wield light armors (or no armor) in order to benefit from Two-Weapon Fighting.</p>
+        <p> <strong>NWN-ish Armor vs. Dexterity [Luke]</strong><br />
+          <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+        <p> This component simply &quot;forces&quot; characters to wield light armors (or no armor) if they have high Dexterity.
+          In particular: </p>
+        <ul>
+          <li>If a character is equipped with a Medium Armor, it will only benefit from half the bonus derived from its Dexterity (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/dexmod.htm"><code>dexmod.2da</code></a>)
+            <ul>
+              <li>So for instance, a character with <code>18</code> DEX equipped with a Chain Mail Armor will suffer a <code>-4 / 2 = -2</code> AC penalty.</li>
+            </ul>
+          </li>
+          <li>If a character is equipped with a Heavy Armor, it will not benefit from the bonus derived from its Dexterity (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/dexmod.htm"><code>dexmod.2da</code></a>)
+            <ul>
+              <li>So for instance, a character with <code>18</code> DEX equipped with a Plate Mail will suffer a <code>-4</code> AC penalty.</li>
+            </ul>
+          </li>
+        </ul>
+        <p> <strong>Defensive Roll feat for Thieves [Luke]</strong><br />
+          <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+        <p> This component aims at implementing the NWN feat Defensive Roll. As a result, after installing it, if the character is struck by a potentially lethal blow, he makes a Save vs. Breath. If successful, he takes only half damage from the blow.</p>
+        <p> Notes: </p>
+        <ul>
+          <li>This feat is only available to thieves (level 10) and Shadowdancers (level 5).</li>
+          <li>A &quot;potentially lethal blow&quot; refers to a standard attack with a weapon that would, if not for this feat, reduce the target below one hit point with just its physical damage.</li>
+          <li>Use: automatic, but limited to one use per day. Incapacitated characters cannot make a defensive roll.</li>
+        </ul>
+        <p> <strong>Divine Grace / Dark Blessing feat for Paladins / Blackguards [Luke]</strong><br />
+          <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+        <p> This component adds the passive feats Divine Grace and Dark Blessing to Paladins and Blackguards. </p>
+        <ul>
+          <li>Divine Grace: The paladin adds its charisma bonus (if positive) to all saving throws.</li>
+          <li>Dark Blessing: Blackguards add their charisma bonus to all saving throws.</li>
+        </ul>
+Here is how the bonus scales with charisma:
+<ul>
+  <li> starting from 10, every <code>+2</code> points of charisma result in +1 bonus to all saves
+    <ul>
+      <li>So a 18 CHA character will get a +4 bonus</li>
+    </ul>
+  </li>
+  <li> starting from 10, every <code>-2</code> points of charisma result in -1 penalty to all saves
+    <ul>
+      <li>So a 8 CHA character will get a -1 penalty</li>
+    </ul>
+  </li>
+</ul>
+<p> <strong>Good Aim racial feat for Halflings [Luke]</strong><br />
+  <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+<p>This passive feat grants Halflings a <code>+1</code> THAC0 bonus with throwing weapons (i.e. throwing daggers, throwing axes, throwing hammers, darts).</p>
+<p> <strong>Cleave class feat for Fighters [Luke]</strong><br />
+  <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+<p> This component aims at implementing the NWN feat Cleave.<br />
+  As a result, after installing it, if the character kills an opponent, he gets a free attack against any opponent who is within melee weapon range.<br />
+  Notes: </p>
+<ul>
+  <li>Use: automatic, but only available to Fighters.</li>
+</ul>
+<p> <strong>Sneak Attack class feat for Blackguards [Luke]</strong><br />
+  <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+<p> This component adds the passive feat Sneak Attack to Blackguards.<br />
+  Whenever the character makes a successful attack against an opponent who is incapacitated, cannot see them, or who is in combat with someone else, the character's blow delivers extra damage as if it was a <code>STALKER</code> of the same level (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/sneakatt.htm"><code>sneakatt.2da</code></a>).<br />
+  Notes: </p>
+<ul>
+  <li>Use: automatic, but limited to once per round.</li>
+  <li>Creatures without discernible anatomies (see component <i>Make Certain Creatures Immune to Backstab/Sneak Attack</i> ) or that are otherwise immune to sneak attacks, either via spells/items or naturally (f.i. Barbarians), are unaffected by this feat.</li>
+  <li>Sneak attacks can be made with both melee and ranged weapons.</li>
+</ul>
+<p> <strong>Fearless racial feat for halflings [Luke]</strong><br />
+  <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+<p> This component adds the passive racial feat Fearless to halflings.<br />
+  This feat grants a <code>+2</code> bonus on saving throws against fear spells and effects. </p>
+<p> <strong>Poison Save class feat for Assassins [Luke]</strong><br />
+  <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+<p> This component adds the class feat Poison Save to Assassins.<br />
+  This passive feat grants a <code>+2</code> bonus on saving throws against poison spells and effects. </p>
+<p> <strong>Planar Turning class feat for Paladins / Clerics [Luke]</strong><br />
+  <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+<p> This component adds the class feat Planar Turning to Paladins and Clerics.<br />
+  This feat allows outsiders (solars, planetars, elementals, imps, mephits, demons, devils, salamanders, genies and the like) to be turned like undead.<br />
+  As a result, when the Turn Undead ability is activated, any extraplanar being in visual range of the priest are turned, fleeing in terror, if the priest's level is high enough. Especially high-level priests destroy these creatures instead. Evil priests gain control of these extraplanar beings instead of destroying them. </p>
+<p> <strong>Circle Kick class feat for Monks [Luke]</strong><br />
+  <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+<p> This component aims at implementing the NWN feat Circle Kick.<br />
+  As a result, after installing it, if the character succeeds in hitting an opponent with an unarmed attack, that character gets an additional free attack against another, nearby enemy. There is a maximum of one free attack per round.<br />
+  Notes: </p>
+<ul>
+  <li>Use: automatic, but only available to Monks    </li>
+</ul>
     </div>
     <div class="ribbon_rectangle_h2"> <a id="Contact" name="Contact"></a>
       <h2> Contact Information </h2>
