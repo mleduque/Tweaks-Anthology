@@ -758,3 +758,5 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 @622000 = "Aggiungi talento di classe Modalità Parata per Bardi Lama e Rodomonti [Luke (EEex)]"
 
 @623000 = "Consenti ai Bardi di lanciare incantesimi arcani mentre indossano armature leggere [Luke (EEex)]"
+
+@624000 = "Aggiungi talento di classe Passo Senza Tracce per i Ranger [Luke (EEex)]"
