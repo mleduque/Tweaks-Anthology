@@ -1517,6 +1517,34 @@ SUBCOMPONENT @135000
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
 LABEL ~cd_tweaks_karoug_plus_two_and_wolfsbane~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Automatic transition to HoW expansion                      \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// Don't change the main game                                 \\\\\
+/////                                                            \\\\\
+
+BEGIN @136001 DESIGNATED 1360
+GROUP @13
+SUBCOMPONENT @136000
+REQUIRE_PREDICATE GAME_IS ~iwdee how totlm~ @25
+LABEL ~cd_tweaks_iwd_to_how_transition_no_change~
+
+/////                                                            \\\\\
+///// Remove Hjollder from Kuldahar                              \\\\\
+/////                                                            \\\\\
+
+BEGIN @136100 DESIGNATED 1361
+GROUP @13
+SUBCOMPONENT @136000
+REQUIRE_PREDICATE GAME_IS ~iwdee how totlm~ @25
+LABEL ~cd_tweaks_iwd_to_how_transition_no_hjollder~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
