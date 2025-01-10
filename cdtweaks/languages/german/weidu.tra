@@ -76,6 +76,9 @@ veraendern~
 @120000 = ~Imoen TdB Dialogbehebung~
 @121000 = ~BG Schrittgeschwindigkeiten verwenden (BETA)~
 @122000 = ~Cromwell wertet Gegenstaende der Wachenden Festung auf~
+@136000 = ~Automatischer Uebergang zur "Herz des Winters"-Erweiterung~
+@136001 = ~Keine Aenderung im Hauptspiel~
+@136100 = ~Entferne Hjollder aus Kuldahar~
 @201000 = ~PnP Zauberfortschrittsfabellen~
 @202000 = ~Zweihaendige Bastardschwerter~
 @203000 = ~Zweihaendige Katanas~
@@ -256,6 +259,7 @@ Laufgeschwindigkeit (Prozent): a7_movement_speed_value
 Aktiviere Zauberrate:          a7_casting_speed_enable
 ~
 @337000 = ~Automatische "Kapitelspeicherstaende" in PsT:EE~
+@340000 = ~Wiederhergestellte Ladehinweise~
 @400000 = ~Reaktionswuerfe von anschlussfaehigen boesen NSCs anpassen~
 @401000 = ~Verbessertes Herbeirufen beim Geist des Schicksals~
 @402000 = ~TdB-Stil NSCs~
