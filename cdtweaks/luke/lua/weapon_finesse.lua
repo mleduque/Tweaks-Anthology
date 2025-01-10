@@ -1,6 +1,10 @@
 -- cdtweaks: Weapon Finesse feat for Thieves --
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
+	-- Sanity check
+	if not EEex_GameObject_IsSprite(sprite) then
+		return
+	end
 	-- internal function that applies the actual bonus
 	local apply = function(value)
 		-- Update var
