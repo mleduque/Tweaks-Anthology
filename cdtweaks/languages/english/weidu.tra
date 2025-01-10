@@ -847,3 +847,5 @@ Use Baldur.lua options: a7_interval_ini
 @623000 = "Armored Caster class feat for Bards [Luke (EEex)]"
 
 @624000 = "Trackless Step class feat for Rangers [Luke (EEex)]"
+
+@625000 = "Nature Sense class feat for Druids [Luke (EEex)]"

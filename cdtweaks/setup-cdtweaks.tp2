@@ -5174,3 +5174,18 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/trackless_step.tra~ @7
 LABEL ~cd_tweaks_nwn_trackless_step~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////                                                            \\\\\////\\\\////
+///// Nature Sense class feat for Druids                                     \\\\\
+/////                                                            \\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+
+BEGIN @625000 DESIGNATED 6250
+GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/nature_sense.tra~ @7
+LABEL ~cd_tweaks_nwn_nature_sense~
