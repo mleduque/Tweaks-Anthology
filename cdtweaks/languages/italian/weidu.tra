@@ -410,6 +410,8 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 // @257000 = ~BGT: Limite di esperienza aggiuntivo mentre sei in BG~
 // @257100 = ~BGT: Limite di esperienza aggiuntivo in SoA~ 
 
+@265000 = "Rendi Unto infiammabile [Luke]"
+
 @266000 = "Gli Orsi e i Cinghiali continueranno a combattere dopo aver raggiunto 0 punti ferita [Luke (EEex)]"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
