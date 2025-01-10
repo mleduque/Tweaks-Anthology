@@ -35,7 +35,8 @@
 @26 = ~Using values from the cdtweaks.txt config file for this component...~
 @27 = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
 @28 = ~There are not enough free spell state or secondary type slots available to install this component.~
-@29 = "Requires EEex (https://github.com/Bubb13/EEex)."
+@29 = ~Requires EEex: https://github.com/Bubb13/EEex ~
+@30 = ~NWN-Style Feats~
 
 @100 = ~Batch Installer -- EXPERIMENTAL, use at own risk. Check the readme.~
 @101 = ~
@@ -280,6 +281,10 @@ The uninstall messages above are normal and expected.
 
 @135400 = ~Options 2 AND 3~
 
+@136000 = ~Automatic transition to "Heart of Winter" expansion~
+@136001 = ~Don't change the main game~
+@136100 = ~Remove Hjollder from Kuldahar~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -457,33 +462,11 @@ The uninstall messages above are normal and expected.
 
 @264000 = "PnP Potions [Luke]"
 
-@265000 = "Spontaneous Casting for Clerics [Luke]"
+@265000 = "Make Grease ignitable [Luke (EEex)]"
 
-@266000 = "Weapon Finesse feat for Thieves [Luke]"
-
-@267000 = "Dual-Wield feat for Rangers [Luke]"
+@266000 = "Make Bears and Boars continue fighting after reaching 0 hit points [Luke (EEex)]"
 
 @268000 = ~"Force" the Archer kit to use bows [Luke]~
-
-@269000 = "NWN-ish Armor vs. Dexterity [Luke]"
-
-@270000 = "Defensive Roll feat for Thieves [Luke]"
-
-@271000 = "Divine Grace / Dark Blessing feat for Paladins / Blackguards [Luke]"
-
-@272000 = "Good Aim racial feat for Halflings [Luke]"
-
-@273000 = "Cleave Feat for Fighters [Luke]"
-
-@274000 = "Sneak Attack class feat for Blackguards [Luke]"
-
-@275000 = "Fearless racial feat for Halflings [Luke]"
-
-@276000 = "Poison Save class feat for Assassins [Luke]"
-
-@277000 = "Planar Turning class feat for Clerics / Paladins [Luke]"
-
-@278000 = "Circle Kick class feat for Monks [Luke]"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -810,5 +793,36 @@ Use Baldur.lua options: a7_interval_ini
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+@603000 = "Spontaneous Casting for Clerics [Luke]"
 
-@600210 = "Self Concealment class feat for Monks [Luke (EEex)]"
+@604000 = "Weapon Finesse class feat for Thieves [Luke]"
+
+@605000 = "Dual-Wield class feat for Rangers [Luke]"
+
+@606000 = "NWN-ish Armor vs. Dexterity [Luke]"
+
+@607000 = "Defensive Roll class feat for Thieves [Luke]"
+
+@608000 = "Divine Grace / Dark Blessing feat for Paladins / Blackguards [Luke]"
+
+@609000 = "Good Aim racial feat for Halflings [Luke]"
+
+@610000 = "Cleave class feat for Fighters [Luke]"
+
+@611000 = "Sneak Attack class feat for Blackguards [Luke]"
+
+@612000 = "Fearless racial feat for Halflings [Luke]"
+
+@613000 = "Poison Save class feat for Assassins [Luke]"
+
+@614000 = "Planar Turning class feat for Clerics / Paladins [Luke]"
+
+@615000 = "Circle Kick class feat for Monks [Luke]"
+
+@616000 = "NWN-ish Barbarian Rage [Luke]"
+
+@618000 = "Blind Fight innate feat for Berserkers [Luke (EEex)]"
+
+@619000 = "Dirty Fighting class feat for Chaotic-aligned Rogues [Luke (EEex)]"
+
+@621000 = "Self Concealment class feat for Monks [Luke (EEex)]"
