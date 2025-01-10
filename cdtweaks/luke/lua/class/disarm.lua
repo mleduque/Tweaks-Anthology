@@ -25,7 +25,7 @@ end
 
 -- NWN-ish Disarm ability (main) --
 
-function %ROGUE_DISARM%(CGameEffect, CGameSprite)
+function %THIEF_DISARM%(CGameEffect, CGameSprite)
 	local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId) -- CGameSprite
 	--
 	local inventoryFull = EEex_Trigger_ParseConditionalString("InventoryFull(Myself)")
@@ -38,7 +38,7 @@ function %ROGUE_DISARM%(CGameEffect, CGameSprite)
 	local targetEquipment = CGameSprite.m_equipment
 	local targetSelectedWeapon = targetEquipment.m_items:get(targetEquipment.m_selectedWeapon) -- CItem
 	-- Get launcher if needed
-	local targetSelectedWeapon = CGameSprite:getLauncher(targetSelectedWeapon:getAbility(targetEquipment.m_selectedWeaponAbility)) or targetSelectedWeapon
+	local targetSelectedWeapon = CGameSprite:getLauncher(targetSelectedWeapon:getAbility(targetEquipment.m_selectedWeaponAbility)) or targetSelectedWeapon -- CItem
 	--
 	local targetSelectedWeaponResRef = targetSelectedWeapon.pRes.resref:get()
 	local targetSelectedWeaponHeader = targetSelectedWeapon.pRes.pHeader -- Item_Header_st
@@ -139,10 +139,10 @@ function %ROGUE_DISARM%(CGameEffect, CGameSprite)
 									if item then
 										local resref = item.pRes.resref:get()
 										--
-										local unequip = EEex_Action_ParseResponseString(string.format('XEquipItem("%s",Myself,%d,UNEQUIP)', resref, i))
-										unequip:executeResponseAsAIBaseInstantly(CGameSprite)
+										local responseString = EEex_Action_ParseResponseString(string.format('XEquipItem("%s",Myself,%d,UNEQUIP)', resref, i))
+										responseString:executeResponseAsAIBaseInstantly(CGameSprite)
 										--
-										unequip:free()
+										responseString:free()
 									end
 								end
 							end
@@ -197,7 +197,7 @@ EEex_Sprite_AddQuickListsCheckedListener(function(sprite, resref, changeAmount)
 	local curAction = sprite.m_curAction
 	local spriteAux = EEex_GetUDAux(sprite)
 
-	if not (curAction.m_actionID == 31 and resref == "%ROGUE_DISARM%" and changeAmount < 0) then
+	if not (curAction.m_actionID == 31 and resref == "%THIEF_DISARM%" and changeAmount < 0) then
 		return
 	end
 
@@ -258,7 +258,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	--
 	local isWeaponRanged = EEex_Trigger_ParseConditionalString("IsWeaponRanged(Myself)")
 	--
-	if sprite:getLocalInt("cdtweaksDisarm") == 1 then
+	if sprite:getLocalInt("gtThiefDisarm") == 1 then
 		if not isWeaponRanged:evalConditionalAsAIBase(sprite) then
 			if sprite.m_nSequence == 0 and sprite.m_attackFrame == 6 then -- SetSequence(SEQ_ATTACK)
 				if spriteAux["gtDisarmTargetID"] then
@@ -274,7 +274,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 					})
 					targetSprite:applyEffect({
 						["effectID"] = 402, -- invoke lua
-						["res"] = "%ROGUE_DISARM%",
+						["res"] = "%THIEF_DISARM%",
 						["sourceID"] = sprite.m_id,
 						["sourceTarget"] = targetSprite.m_id,
 					})
@@ -291,8 +291,8 @@ end)
 EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	local spriteAux = EEex_GetUDAux(sprite)
 	--
-	if sprite:getLocalInt("cdtweaksDisarm") == 1 then
-		if not (action.m_actionID == 113 and action.m_string1.m_pchData:get() == "%ROGUE_DISARM%") then
+	if sprite:getLocalInt("gtThiefDisarm") == 1 then
+		if not (action.m_actionID == 113 and action.m_string1.m_pchData:get() == "%THIEF_DISARM%") then
 			if spriteAux["gtDisarmTargetID"] ~= nil then
 				spriteAux["gtDisarmTargetID"] = nil
 			end
@@ -310,7 +310,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that grants the ability
 	local gain = function()
 		-- Mark the creature as 'feat granted'
-		sprite:setLocalInt("cdtweaksDisarm", 1)
+		sprite:setLocalInt("gtThiefDisarm", 1)
 		--
 		local effectCodes = {
 			{["op"] = 172}, -- remove spell
@@ -320,7 +320,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		for _, attributes in ipairs(effectCodes) do
 			sprite:applyEffect({
 				["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
-				["res"] = "%ROGUE_DISARM%",
+				["res"] = "%THIEF_DISARM%",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})
@@ -339,7 +339,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		or (spriteClassStr == "CLERIC_THIEF" and (EEex_IsBitUnset(spriteFlags, 0x6) or spriteLevel1 > spriteLevel2))
 		or (spriteClassStr == "FIGHTER_THIEF" and (EEex_IsBitUnset(spriteFlags, 0x6) or spriteLevel1 > spriteLevel2))
 	--
-	if sprite:getLocalInt("cdtweaksDisarm") == 0 then
+	if sprite:getLocalInt("gtThiefDisarm") == 0 then
 		if gainAbility then
 			gain()
 		end
@@ -348,17 +348,11 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			-- do nothing
 		else
 			-- Mark the creature as 'feat removed'
-			sprite:setLocalInt("cdtweaksDisarm", 0)
+			sprite:setLocalInt("gtThiefDisarm", 0)
 			--
 			sprite:applyEffect({
 				["effectID"] = 172, -- remove spell
-				["res"] = "%ROGUE_DISARM%",
-				["sourceID"] = sprite.m_id,
-				["sourceTarget"] = sprite.m_id,
-			})
-			sprite:applyEffect({
-				["effectID"] = 321, -- remove effects by resource
-				["res"] = "%ROGUE_DISARM%",
+				["res"] = "%THIEF_DISARM%",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})

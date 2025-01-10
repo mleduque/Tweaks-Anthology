@@ -6,16 +6,16 @@ BEGIN
 		"preferredSlot" = 44
 		"type" = 4
 	STR_VAR
-		"idsName" = "ROGUE_DISARM"
+		"idsName" = "THIEF_DISARM"
 	RET
-		"ROGUE_DISARM" = "resName"
+		"THIEF_DISARM" = "resName"
 	END
 	//
 	WITH_SCOPE BEGIN
-		ACTION_TO_LOWER "ROGUE_DISARM"
+		ACTION_TO_LOWER "THIEF_DISARM"
 		// Disarm (main spl file)
-		CREATE "spl" "%ROGUE_DISARM%"
-		COPY_EXISTING "%ROGUE_DISARM%.spl" "override"
+		CREATE "spl" "%THIEF_DISARM%"
+		COPY_EXISTING "%THIEF_DISARM%.spl" "override"
 			WRITE_LONG NAME1 RESOLVE_STR_REF (@0)
 			WRITE_LONG NAME2 "-1"
 			WRITE_LONG UNIDENTIFIED_DESC RESOLVE_STR_REF (@1)
@@ -30,7 +30,7 @@ BEGIN
 			LPF "ADD_SPELL_EFFECT" INT_VAR "opcode" = 138 "target" = 1 "parameter2" = 0 END // SEQ_ATTACK
 		BUT_ONLY
 		// icon
-		COPY "cdtweaks\luke\bam\class\disarm\spl_icon.bam" "override\%ROGUE_DISARM%b.bam"
+		COPY "cdtweaks\luke\bam\class\disarm.bam" "override\%THIEF_DISARM%b.bam"
 	END
 	// lua
 	WITH_SCOPE BEGIN
