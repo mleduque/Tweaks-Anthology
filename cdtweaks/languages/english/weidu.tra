@@ -821,3 +821,5 @@ Use Baldur.lua options: a7_interval_ini
 @615000 = "Circle Kick class feat for Monks [Luke]"
 
 @616000 = "NWN-ish Barbarian Rage [Luke]"
+
+@618000 = "Blind Fight innate feat for Berserkers [Luke (EEex)]"
