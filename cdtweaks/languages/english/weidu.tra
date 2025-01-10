@@ -849,3 +849,5 @@ Use Baldur.lua options: a7_interval_ini
 @624000 = "Trackless Step class feat for Rangers [Luke (EEex)]"
 
 @625000 = "Nature Sense class feat for Druids [Luke (EEex)]"
+
+@626000 = "Uncanny Dodge class feat for Barbarians and Rogues [Luke (EEex)]"
