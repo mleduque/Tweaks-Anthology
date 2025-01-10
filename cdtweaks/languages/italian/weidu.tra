@@ -756,3 +756,5 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 @621000 = "Aggiungi talento di classe Auto-Occultamento per i Monaci [Luke (EEex)]"
 
 @622000 = "Aggiungi talento di classe Modalità Parata per Bardi Lama e Rodomonti [Luke (EEex)]"
+
+@623000 = "Consenti ai Bardi di lanciare incantesimi arcani mentre indossano armature leggere [Luke (EEex)]"
