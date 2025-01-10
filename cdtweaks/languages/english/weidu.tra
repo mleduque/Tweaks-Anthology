@@ -801,6 +801,7 @@ Use Baldur.lua options: a7_interval_ini
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
 @603000 = "Spontaneous Casting for Clerics [Luke]"
 
 @604000 = "Weapon Finesse class feat for Thieves [Luke]"
@@ -834,3 +835,5 @@ Use Baldur.lua options: a7_interval_ini
 @619000 = "Dirty Fighting class feat for Chaotic-aligned Rogues [Luke (EEex)]"
 
 @621000 = "Self Concealment class feat for Monks [Luke (EEex)]"
+
+@622000 = "Parry Mode kit feat for Blades e Swashbucklers [Luke (EEex)]"
