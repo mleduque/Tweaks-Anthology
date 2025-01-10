@@ -94,7 +94,7 @@ LANGUAGE
   ~cdtweaks/languages/russian/game.tra~
   ~cdtweaks/languages/russian/weidu.tra~
 LANGUAGE
-  ~Espanol (traducido por Clan DLAN, Bhasbuto, Ghildrean, Immortality, Januskza)~
+  ~Espanol (traducido por Clan DLAN, Bhasbuto, Ghildrean, Immortality, Januskza, ElGamerViejuno)~
   ~spanish~
   ~cdtweaks/languages/english/game.tra~
   ~cdtweaks/languages/english/weidu.tra~
@@ -668,6 +668,20 @@ SUBCOMPONENT @25000
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~ui.menu~ @25
 LABEL ~cd_tweaks_colorize_npc_names_color_original~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Hide VFX from invisible enemies                            \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @26000 DESIGNATED 260
+GROUP @11
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+LABEL ~cd_tweaks_hide_vfx_from_invisible_enemies~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1516,6 +1530,34 @@ GROUP @13
 SUBCOMPONENT @135000
 REQUIRE_PREDICATE GAME_IS ~tutu tutu_totsc bgt bgee eet~ @25
 LABEL ~cd_tweaks_karoug_plus_two_and_wolfsbane~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Automatic transition to HoW expansion                      \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                            \\\\\
+///// Don't change the main game                                 \\\\\
+/////                                                            \\\\\
+
+BEGIN @136001 DESIGNATED 1360
+GROUP @13
+SUBCOMPONENT @136000
+REQUIRE_PREDICATE GAME_IS ~iwdee how totlm~ @25
+LABEL ~cd_tweaks_iwd_to_how_transition_no_change~
+
+/////                                                            \\\\\
+///// Remove Hjollder from Kuldahar                              \\\\\
+/////                                                            \\\\\
+
+BEGIN @136100 DESIGNATED 1361
+GROUP @13
+SUBCOMPONENT @136000
+REQUIRE_PREDICATE GAME_IS ~iwdee how totlm~ @25
+LABEL ~cd_tweaks_iwd_to_how_transition_no_hjollder~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2793,48 +2835,47 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/pnp_potions.tra~ @7
 LABEL ~cd_tweaks_pnp_potions~
 
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                            \\\\\
-///// Spontaneous Casting for Clerics                            \\\\\
-/////                                                            \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Make Grease ignitable                                           \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
 
 BEGIN @265000 DESIGNATED 2650
 GROUP @9
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
-REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/spontaneous_casting.tra~ @7
-LABEL ~cd_tweaks_spontaneous_casting~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+LABEL ~cd_tweaks_make_grease_ignitable~
 
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                            \\\\\
-///// Weapon Finesse                                             \\\\\
-/////                                                            \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                                      \\\\\/////
+///// Make Bears and Boars continue fighting after reaching 0 hit points        \\\\\
+/////                                                                      \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
 
 BEGIN @266000 DESIGNATED 2660
 GROUP @9
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/weapon_finesse.tra~ @7
-LABEL ~cd_tweaks_weapon_finesse~
+LABEL ~cd_tweaks_bears_and_boars~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                            \\\\\
-///// Dual-Wield feat for Rangers                                \\\\\
+///// Limit resting mechanic                                     \\\\\
 /////                                                            \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @267000 DESIGNATED 2670
 GROUP @9
+REQUIRE_PREDICATE GAME_IS "bgee bg2ee eet iwdee" @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/dual_wield.tra~ @7
-LABEL ~cd_tweaks_dual_wield~
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/limit_resting_mechanic.tra~ @7
+LABEL ~cd_tweaks_limit_resting_mechanic~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2853,142 +2894,58 @@ LABEL ~cd_tweaks_revised_archer~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                            \\\\\
-///// NWN-ish Armor vs. Dexterity                                \\\\\
+///// Alternate concentration checks                             \\\\\
 /////                                                            \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @269000 DESIGNATED 2690
-GROUP @9
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/nwn-ish_armor_vs_dex.tra~ @7
-LABEL ~cd_tweaks_nwn-ish_armor_vs_dex~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                            \\\\\
-///// Defensive Roll feat for Thieves                            \\\\\
+///// (1d20 - 1) + Luck <= Spell Level + Damage Taken            \\\\\
 /////                                                            \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @270000 DESIGNATED 2700
+BEGIN @269001 DESIGNATED 2690
 GROUP @9
+SUBCOMPONENT @269000
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/defensive_roll.tra~ @7
-LABEL ~cd_tweaks_defensive_roll~
+REQUIRE_PREDICATE GAME_IS "bgee bg2ee eet iwdee" @25
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/concentration.tra~ @7
+LABEL ~cd_tweaks_alternate_concentration_check_v1~
 
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////                                                            \\\\\/////
-///// Divine Grace / Dark Blessing feat for Paladins / Blackguards    \\\\\
-/////                                                            \\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-
-BEGIN @271000 DESIGNATED 2710
-GROUP @9
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/divine_grace_dark_blessing.tra~ @7
-LABEL ~cd_tweaks_divine_grace_dark_blessing~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                            \\\\\
-///// Good Aim feat for Halflings                                \\\\\
+///// (1d20 - 1) + (Constitution / 2) - 5 <= Spell Level + 15    \\\\\
 /////                                                            \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @272000 DESIGNATED 2720
+BEGIN @269002 DESIGNATED 2691
 GROUP @9
+SUBCOMPONENT @269000
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/good_aim.tra~ @7
-LABEL ~cd_tweaks_good_aim~
+REQUIRE_PREDICATE GAME_IS "bgee bg2ee eet iwdee" @25
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/concentration.tra~ @7
+LABEL ~cd_tweaks_alternate_concentration_check_v2~
 
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////                                                            \\\\\/////
-///// Cleave feat for Fighters                                        \\\\\
-/////                                                            \\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\
+///// (1d20 - 1) + Luck <= Spell Level + 15                      \\\\\
+/////                                                            \\\\\
 
-BEGIN @273000 DESIGNATED 2730
+BEGIN @269003 DESIGNATED 2692
 GROUP @9
+SUBCOMPONENT @269000
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/cleave.tra~ @7
-LABEL ~cd_tweaks_cleave~
+REQUIRE_PREDICATE GAME_IS "bgee bg2ee eet iwdee" @25
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/concentration.tra~ @7
+LABEL ~cd_tweaks_alternate_concentration_check_v3~
 
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////                                                            \\\\\/////
-///// Sneak Attack class feat Blackguards                             \\\\\
-/////                                                            \\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                                        \\\\\
+///// (1d20 - 1) + (Constitution / 2) - 5 <= Spell Level + Damage Taken      \\\\\
+/////                                                                        \\\\\
 
-BEGIN @274000 DESIGNATED 2740
+BEGIN @269004 DESIGNATED 2693
 GROUP @9
+SUBCOMPONENT @269000
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/sneakatt_blackguard.tra~ @7
-LABEL ~cd_tweaks_sneakatt_blackguard~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////                                                            \\\\\/////
-///// Fearless racial feat for Halflings                              \\\\\
-/////                                                            \\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-
-BEGIN @275000 DESIGNATED 2750
-GROUP @9
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/fearless.tra~ @7
-LABEL ~cd_tweaks_fearless~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////                                                            \\\\\/////
-///// Poison Save class feat for Assassins                            \\\\\
-/////                                                            \\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-
-BEGIN @276000 DESIGNATED 2760
-GROUP @9
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/poison_save.tra~ @7
-LABEL ~cd_tweaks_poison_save~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////                                                            \\\\\/////
-///// Planar Turning class feat for Paladins / Clerics                \\\\\
-/////                                                            \\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-
-BEGIN @277000 DESIGNATED 2770
-GROUP @9
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/planar_turning.tra~ @7
-LABEL ~cd_tweaks_planar_turning~
-
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////                                                            \\\\\/////
-///// Circle Kick class feat for Monks                                \\\\\
-/////                                                            \\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
-
-BEGIN @278000 DESIGNATED 2780
-GROUP @9
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/circle_kick.tra~ @7
-LABEL ~cd_tweaks_circle_kick~
+REQUIRE_PREDICATE GAME_IS "bgee bg2ee eet iwdee" @25
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/concentration.tra~ @7
+LABEL ~cd_tweaks_alternate_concentration_check_v4~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -4420,6 +4377,33 @@ GROUP @4
 SUBCOMPONENT @341000
 LABEL ~cd_tweaks_casting_warnings_all~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+///// More Sensible Cowled Wizards                               \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @342000 DESIGNATED 3420
+GROUP @4
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
+LABEL ~cd_tweaks_more_sensible_cowled_wizards~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// More Stoneskin feedback                                    \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @343000 DESIGNATED 3430
+GROUP @4
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
+LABEL ~cd_tweaks_more_stoneskin_feedback~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -4904,13 +4888,263 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
 LABEL ~cd_tweaks_dorns_sword~
 
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// NWN-ish feats collection                         \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Spellcraft / Counterspell class feat for spellcasters           \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @602000 DESIGNATED 6020
+GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/spellcraft_counterspell.tra~ @7
+LABEL ~cd_tweaks_nwn_spellcraft_counterspell~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Spontaneous Cast class feat for clerics                         \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @603000 DESIGNATED 6030
+GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/spontaneous_casting.tra~ @7
+LABEL ~cd_tweaks_nwn_spontaneous_cast~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Weapon Finesse                                             \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @604000 DESIGNATED 6040
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/weapon_finesse.tra~ @7
+LABEL ~cd_tweaks_weapon_finesse~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Dual-Wield feat for Rangers                                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @605000 DESIGNATED 6050
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/dual_wield.tra~ @7
+LABEL ~cd_tweaks_dual_wield~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// NWN-ish Armor vs. Dexterity                                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @606000 DESIGNATED 6060
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/nwn-ish_armor_vs_dex.tra~ @7
+LABEL ~cd_tweaks_nwn-ish_armor_vs_dex~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Defensive Roll feat for Thieves                            \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @607000 DESIGNATED 6070
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/defensive_roll.tra~ @7
+LABEL ~cd_tweaks_defensive_roll~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Divine Grace / Dark Blessing feat for Paladins / Blackguards    \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @608000 DESIGNATED 6080
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/divine_grace_dark_blessing.tra~ @7
+LABEL ~cd_tweaks_divine_grace_dark_blessing~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Good Aim feat for Halflings                                \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @609000 DESIGNATED 6090
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/good_aim.tra~ @7
+LABEL ~cd_tweaks_good_aim~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Cleave feat for Fighters                                        \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @610000 DESIGNATED 6100
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/cleave.tra~ @7
+LABEL ~cd_tweaks_cleave~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Sneak Attack class feat Blackguards                             \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @611000 DESIGNATED 6110
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/sneakatt_blackguard.tra~ @7
+LABEL ~cd_tweaks_sneakatt_blackguard~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Fearless racial feat for Halflings                              \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @612000 DESIGNATED 6120
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/fearless.tra~ @7
+LABEL ~cd_tweaks_fearless~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Poison Save class feat for Assassins                            \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @613000 DESIGNATED 6130
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/poison_save.tra~ @7
+LABEL ~cd_tweaks_poison_save~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Planar Turning class feat for Paladins / Clerics                \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @614000 DESIGNATED 6140
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/planar_turning.tra~ @7
+LABEL ~cd_tweaks_planar_turning~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////                                                            \\\\\/////
+///// Circle Kick class feat for Monks                                \\\\\
+/////                                                            \\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////
+
+BEGIN @615000 DESIGNATED 6150
+GROUP @30
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/circle_kick.tra~ @7
+LABEL ~cd_tweaks_circle_kick~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Blind Fight innate feat for Berserkers                     \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @618000 DESIGNATED 6180
+GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/blind_fight.tra~ @7
+LABEL ~cd_tweaks_nwn_blind_fight~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Dirty Fighting class feat for Rogues                       \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @619000 DESIGNATED 6190
+GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/dirty_fighting.tra~ @7
+LABEL ~cd_tweaks_nwn_dirty_fighting~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////                                                            \\\\\////\\\\////
+///// Self Concealment class feat for Monks                                  \\\\\
+/////                                                            \\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+
+BEGIN @621000 DESIGNATED 6210
+GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/self_concealment.tra~ @7
+LABEL ~cd_tweaks_nwn_self_concealment~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////                                                            \\\\\////\\\\////
+///// Parry Mode kit feat for Blades and Swashbucklers                       \\\\\
+/////                                                            \\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+
+BEGIN @600220 DESIGNATED 6220
+GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/parry.tra~ @7
+LABEL ~cd_tweaks_nwn_parry~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
@@ -4920,8 +5154,9 @@ LABEL ~cd_tweaks_dorns_sword~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
 
-BEGIN @600230 DESIGNATED 6230
+BEGIN @623000 DESIGNATED 6230
 GROUP @30
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
 LABEL ~cd_tweaks_nwn_armored_caster~
+
