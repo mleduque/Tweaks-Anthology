@@ -823,3 +823,5 @@ Use Baldur.lua options: a7_interval_ini
 @616000 = "NWN-ish Barbarian Rage [Luke]"
 
 @618000 = "Blind Fight innate feat for Berserkers [Luke (EEex)]"
+
+@619000 = "Dirty Fighting class feat for Chaotic-aligned Rogues [Luke (EEex)]"

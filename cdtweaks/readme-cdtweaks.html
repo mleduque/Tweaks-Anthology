@@ -1481,6 +1481,7 @@
     <div class="section">
       <p> Components in this category are inspired from <a href="https://nwn.beamdog.com/">NWN</a> and are aimed at providing new class/kit abilities.</p>
 
+
       <p> <strong>Spellcraft / Counterspell class feat for spellcasters [Luke]</strong><br />
         <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
       <p> This component aims at implementing the NWN feat Spellcraft / Counterspell.<br />
@@ -1561,16 +1562,29 @@
       </p>
       <p>
         This feat grants the character the ability to fight well, even if blinded. As a result, whenever the character gets blinded, it does not suffer from the 4 THAC0 / AC penalty.
-      </p>
-      <p>
-        Notes:
-        <ul>
+
+          <li>Use: automatic.</li>
+          <li>
+            Unmitigated damage means that damage resistance is ignored.
+            <ul>
+              <li>However, if the target's damage resistance is 100+, then it will be completely immune to the dirty fighting move.</li>
+            </ul>
+          </li>
+          <li>The rogue must wield a melee weapon usable by single-class thieves in order to perform a dirty fighting move.</li>
+
           <li>This feat can only negate the melee THAC0 penalty. If the character is wielding a ranged weapon, only the AC penalty will be negated.</li>
+
         </ul>
       </p>
+  
+      <p> <strong>Dirty Fighting class feat for Chaotic-aligned Rogues [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p>
+        This component aims at implementing the NWN feat Dirty Fighting.
+      </p>
+      <p>
+        The character knows brutal and effective fighting tactics. During the first attack of each round, the character can elect to perform a dirty fighting move that will deal 5% of the target's maximum health as unmitigated damage.</p>
     </div>
-
-
     <div class="ribbon_rectangle_h2"> <a id="Contact" name="Contact"></a>
       <h2> Contact Information </h2>
     </div>
