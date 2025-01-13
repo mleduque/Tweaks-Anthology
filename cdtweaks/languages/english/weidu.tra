@@ -808,6 +808,8 @@ Use Baldur.lua options: a7_interval_ini
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+@602000 = "Add Spellcaster Skill / Counterspell Class Talent [Luke (EEex)]"
+
 @603000 = "Spontaneous Casting for Clerics [Luke]"
 
 @604000 = "Weapon Finesse class feat for Thieves [Luke]"
