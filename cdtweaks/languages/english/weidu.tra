@@ -842,6 +842,8 @@ Use Baldur.lua options: a7_interval_ini
 
 @619000 = "Dirty Fighting class feat for Chaotic-aligned Rogues [Luke (EEex)]"
 
+@620000 = "Overwhelming/Devastating Critical class feat for Trueclass Fighters [Luke]"
+
 @621000 = "Self Concealment class feat for Monks [Luke (EEex)]"
 
 @622000 = "Parry Mode kit feat for Blades e Swashbucklers [Luke (EEex)]"
@@ -853,3 +855,4 @@ Use Baldur.lua options: a7_interval_ini
 @625000 = "Nature Sense class feat for Druids [Luke (EEex)]"
 
 @626000 = "Uncanny Dodge class feat for Barbarians and Rogues [Luke (EEex)]"
+

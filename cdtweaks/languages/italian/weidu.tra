@@ -753,6 +753,8 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 
 @619000 = "Aggiungi talento di classe Combattimento Scorretto per i Ladri di allineamento Caotico [Luke (EEex)]"
 
+@620000 = "Aggiungi talento di classe Colpo Critico Possente/Devastante per i Guerrieri [Luke]"
+
 @621000 = "Aggiungi talento di classe Auto-Occultamento per i Monaci [Luke (EEex)]"
 
 @622000 = "Aggiungi talento di classe Modalità Parata per Bardi Lama e Rodomonti [Luke (EEex)]"
@@ -764,3 +766,4 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 @625000 = "Aggiungi talento di classe Senso della Natura per i Druidi [Luke (EEex)]"
 
 @626000 = "Aggiungi talento di classe Schivata Prodigiosa per i Barbari e i Ladri [Luke (EEex)]"
+
