@@ -14,13 +14,13 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that applies the actual feat
 	local apply = function(mainHandResRef)
 		-- Update tracking var
-		sprite:setLocalString("cdtweaksTrueFigCritMainHand", mainHandResRef)
+		sprite:setLocalString("gtTrueFighterCriticalMainHand", mainHandResRef)
 		-- Mark the creature as 'feat applied'
-		sprite:setLocalInt("cdtweaksTrueFigCrit", 1)
+		sprite:setLocalInt("gtTrueFighterCritical", 1)
 		--
 		sprite:applyEffect({
 			["effectID"] = 321, -- Remove effects by resource
-			["res"] = "CDTFCRIT",
+			["res"] = "%TRUECLASS_FIGHTER_CRITICAL%",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
 		})
@@ -29,7 +29,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			["durationType"] = 9,
 			["res"] = string.upper(mainHandResRef), -- ITM
 			["m_res2"] = "%TRUECLASS_FIGHTER_CRITICAL%B", -- EFF
-			["m_sourceRes"] = "CDTFCRIT",
+			["m_sourceRes"] = "%TRUECLASS_FIGHTER_CRITICAL%",
 			["sourceID"] = sprite.m_id,
 			["sourceTarget"] = sprite.m_id,
 		})
@@ -56,23 +56,23 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	--
 	local applyAbility = spriteClassStr == "FIGHTER" and (spriteKitStr == "TRUECLASS" or spriteKitStr == "MAGESCHOOL_GENERALIST") and grandmastery:evalConditionalAsAIBase(sprite)
 	--
-	if sprite:getLocalInt("cdtweaksTrueFigCrit") == 0 then
+	if sprite:getLocalInt("gtTrueFighterCritical") == 0 then
 		if applyAbility then
 			apply(selectedWeaponResRef)
 		end
 	else
-		if applyCondition then
+		if applyAbility then
 			-- Check if weapon resref has changed since the last application
-			if selectedWeaponResRef ~= sprite:getLocalString("cdtweaksTrueFigCritMainHand") then
+			if selectedWeaponResRef ~= sprite:getLocalString("gtTrueFighterCriticalMainHand") then
 				apply(selectedWeaponResRef)
 			end
 		else
 			-- Mark the creature as 'feat removed'
-			sprite:setLocalInt("cdtweaksTrueFigCrit", 0)
+			sprite:setLocalInt("gtTrueFighterCritical", 0)
 			--
 			sprite:applyEffect({
 				["effectID"] = 321, -- Remove effects by resource
-				["res"] = "CDTFCRIT",
+				["res"] = "%TRUECLASS_FIGHTER_CRITICAL%",
 				["sourceID"] = sprite.m_id,
 				["sourceTarget"] = sprite.m_id,
 			})
@@ -98,18 +98,19 @@ function %TRUECLASS_FIGHTER_CRITICAL%(CGameEffect, CGameSprite)
 		--
 		local targetActiveStats = EEex_Sprite_GetActiveStats(CGameSprite)
 		--
-		local itmDamageTypeToIDS = {
-			0x10, -- piercing
-			0x0, -- crushing
-			0x100, -- slashing
-			0x80, -- missile
-			0x800, -- non-lethal
-			targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistCrushing and 0x0 or 0x10, -- piercing/crushing (better)
-			targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistSlashing and 0x100 or 0x10, -- piercing/slashing (better)
-			targetActiveStats.m_nResistCrushing > targetActiveStats.m_nResistSlashing and 0x0 or 0x100, -- slashing/crushing (worse)
+		local itmAbilityDamageTypeToIDS = {
+			[0] = 0x0, -- none (crushing)
+			[1] = 0x10, -- piercing
+			[2] = 0x0, -- crushing
+			[3] = 0x100, -- slashing
+			[4] = 0x80, -- missile
+			[5] = 0x800, -- non-lethal
+			[6] = targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistCrushing and 0x0 or 0x10, -- piercing/crushing (better)
+			[7] = targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistSlashing and 0x100 or 0x10, -- piercing/slashing (better)
+			[8] = targetActiveStats.m_nResistCrushing > targetActiveStats.m_nResistSlashing and 0x0 or 0x100, -- slashing/crushing (worse)
 		}
 		--
-		if itmDamageTypeToIDS[selectedWeaponAbility.damageType] then -- sanity check
+		if itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType] then -- sanity check
 			if not immunityToDamage:evalConditionalAsAIBase(CGameSprite) then
 				EEex_GameObject_ApplyEffect(sourceSprite,
 				{
@@ -124,7 +125,7 @@ function %TRUECLASS_FIGHTER_CRITICAL%(CGameEffect, CGameSprite)
 				EEex_GameObject_ApplyEffect(CGameSprite,
 				{
 					["effectID"] = 12, -- Damage
-					["dwFlags"] = itmDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000, -- mode: normal
+					["dwFlags"] = itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000, -- mode: normal
 					["numDice"] = 2,
 					["diceSize"] = 6,
 					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
@@ -150,9 +151,11 @@ function %TRUECLASS_FIGHTER_CRITICAL%(CGameEffect, CGameSprite)
 		-- Devastating Critical
 		local sourceActiveStats = EEex_Sprite_GetActiveStats(sourceSprite)
 		--
-		local savebonus = math.floor((sourceActiveStats.m_nSTR - 10) / 2)
+		local gtabmod = GT_Resource_2DA["gtabmod"]
+		--
+		local savebonus = tonumber(gtabmod[string.format("%s", sourceActiveStats.m_nSTR)]["BONUS"])
 		if selectedWeaponAbility.type == 2 then -- if ranged, make it scale with Dexterity
-			savebonus = math.floor((sourceActiveStats.m_nDEX - 10) / 2)
+			savebonus = tonumber(gtabmod[string.format("%s", sourceActiveStats.m_nDEX)]["BONUS"])
 		end
 		--
 		local immunityToKillTarget = EEex_Trigger_ParseConditionalString("EEex_IsImmuneToOpcode(Myself,13)")
