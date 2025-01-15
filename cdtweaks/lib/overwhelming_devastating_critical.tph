@@ -18,11 +18,11 @@ BEGIN
 			WRITE_LONG 0x10 341 // opcode: critical hit effect
 			WRITE_LONG 0x20 1 // mode: by this weapon only
 			WRITE_SHORT 0x2C 100 // prob1
-			WRITE_ASCII 0x30 "%TRUECLASS_FIGHTER_CRITICAL%" #8 // SPL resref
+			WRITE_ASCII 0x30 "%TRUECLASS_FIGHTER_CRITICAL%b" #8 // SPL resref
 		BUT_ONLY
 		//
-		CREATE "spl" "%TRUECLASS_FIGHTER_CRITICAL%"
-		COPY_EXISTING "%TRUECLASS_FIGHTER_CRITICAL%.spl" "override"
+		CREATE "spl" "%TRUECLASS_FIGHTER_CRITICAL%b"
+		COPY_EXISTING "%TRUECLASS_FIGHTER_CRITICAL%b.spl" "override"
 			WRITE_LONG NAME1 "-1"
 			WRITE_LONG UNIDENTIFIED_DESC "-1"
 			WRITE_LONG 0x18 (BIT9 BOR BIT10 BOR BIT14 BOR BIT25) // break sanctuary/invisibility, ignore dead/wild magic, castable when silenced
@@ -49,5 +49,9 @@ BEGIN
 	//
 	ACTION_IF !(FILE_EXISTS_IN_GAME "m_gttbls.lua") BEGIN
 		COPY "cdtweaks\luke\lua\m_gttbls.lua" "override"
+	END
+	//
+	ACTION_IF !(FILE_EXISTS_IN_GAME "gtabmod.2da") BEGIN
+		COPY "cdtweaks\luke\2da\gtabmod.2da" "override"
 	END
 END
