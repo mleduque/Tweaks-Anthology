@@ -776,7 +776,7 @@ Use Baldur.lua options: a7_interval_ini
 @419700 = ~Also Color the PC's Name: Yellow~
 @419800 = ~Also Color the PC's Name: Orange~
 
-@420000 = "Make Rancor +1 a bit more reliable"
+@420000 = "Make Rancor +1 a Bit More Reliable"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -808,51 +808,51 @@ Use Baldur.lua options: a7_interval_ini
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@602000 = "Add Spellcaster Skill / Counterspell Class Talent [Luke (EEex)]"
+@602000 = "Spellcaster Skill/Counterspell Class Talent [Luke (EEex)]"
 
 @603000 = "Spontaneous Casting for Clerics [Luke]"
 
-@604000 = "Weapon Finesse class feat for Thieves [Luke]"
+@604000 = "Weapon Finesse Class Feat for Thieves [Luke]"
 
-@605000 = "Dual-Wield class feat for Rangers [Luke]"
+@605000 = "Dual-Wield Class Feat for Rangers [Luke]"
 
 @606000 = "NWN-ish Armor vs. Dexterity [Luke]"
 
-@607000 = "Defensive Roll class feat for Thieves [Luke]"
+@607000 = "Defensive Roll Class Feat for Thieves [Luke]"
 
-@608000 = "Divine Grace / Dark Blessing feat for Paladins / Blackguards [Luke]"
+@608000 = "Divine Grace/Dark Blessing Feat for Paladins/Blackguards [Luke]"
 
-@609000 = "Good Aim racial feat for Halflings [Luke]"
+@609000 = "Good Aim Racial Feat for Halflings [Luke]"
 
-@610000 = "Cleave class feat for Fighters [Luke]"
+@610000 = "Cleave Class Feat for Fighters [Luke]"
 
-@611000 = "Sneak Attack class feat for Blackguards [Luke]"
+@611000 = "Sneak Attack Class Feat for Blackguards [Luke]"
 
-@612000 = "Fearless racial feat for Halflings [Luke]"
+@612000 = "Fearless Racial Feat for Halflings [Luke]"
 
-@613000 = "Poison Save class feat for Assassins [Luke]"
+@613000 = "Poison Save Class Feat for Assassins [Luke]"
 
-@614000 = "Planar Turning class feat for Clerics / Paladins [Luke]"
+@614000 = "Planar Turning Class Feat for Clerics/Paladins [Luke]"
 
-@615000 = "Circle Kick class feat for Monks [Luke]"
+@615000 = "Circle Kick Class Feat for Monks [Luke]"
 
 @616000 = "NWN-ish Barbarian Rage [Luke]"
 
-@618000 = "Blind Fight innate feat for Berserkers [Luke (EEex)]"
+@618000 = "Blind Fight Innate Feat for Berserkers [Luke (EEex)]"
 
-@619000 = "Dirty Fighting class feat for Chaotic-aligned Rogues [Luke (EEex)]"
+@619000 = "Dirty Fighting Class Feat for Chaotic-Aligned Rogues [Luke (EEex)]"
 
-@620000 = "Overwhelming/Devastating Critical class feat for Trueclass Fighters [Luke]"
+@620000 = "Overwhelming/Devastating Critical Class Feat for Trueclass Fighters [Luke]"
 
-@621000 = "Self Concealment class feat for Monks [Luke (EEex)]"
+@621000 = "Self Concealment Class Feat for Monks [Luke (EEex)]"
 
-@622000 = "Parry Mode kit feat for Blades e Swashbucklers [Luke (EEex)]"
+@622000 = "Parry Mode Kit Feat for Blades and Swashbucklers [Luke (EEex)]"
 
-@623000 = "Armored Caster class feat for Bards [Luke (EEex)]"
+@623000 = "Armored Caster Class Feat for Bards [Luke (EEex)]"
 
-@624000 = "Trackless Step class feat for Rangers [Luke (EEex)]"
+@624000 = "Trackless Step Class Feat for Rangers [Luke (EEex)]"
 
-@625000 = "Nature Sense class feat for Druids [Luke (EEex)]"
+@625000 = "Nature Sense Class Feat for Druids [Luke (EEex)]"
 
-@626000 = "Uncanny Dodge class feat for Barbarians and Rogues [Luke (EEex)]"
+@626000 = "Uncanny Dodge Class Feat for Barbarians and Rogues [Luke (EEex)]"
 

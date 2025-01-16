@@ -4928,6 +4928,7 @@ LABEL ~cd_tweaks_nwn_spontaneous_cast~
 
 BEGIN @604000 DESIGNATED 6040
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/weapon_finesse.tra~ @7
 LABEL ~cd_tweaks_weapon_finesse~
@@ -4942,6 +4943,7 @@ LABEL ~cd_tweaks_weapon_finesse~
 
 BEGIN @605000 DESIGNATED 6050
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/dual_wield.tra~ @7
 LABEL ~cd_tweaks_dual_wield~
@@ -4956,6 +4958,7 @@ LABEL ~cd_tweaks_dual_wield~
 
 BEGIN @606000 DESIGNATED 6060
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/nwn-ish_armor_vs_dex.tra~ @7
 LABEL ~cd_tweaks_nwn-ish_armor_vs_dex~
@@ -4970,6 +4973,7 @@ LABEL ~cd_tweaks_nwn-ish_armor_vs_dex~
 
 BEGIN @607000 DESIGNATED 6070
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/defensive_roll.tra~ @7
 LABEL ~cd_tweaks_defensive_roll~
@@ -4984,6 +4988,7 @@ LABEL ~cd_tweaks_defensive_roll~
 
 BEGIN @608000 DESIGNATED 6080
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/divine_grace_dark_blessing.tra~ @7
 LABEL ~cd_tweaks_divine_grace_dark_blessing~
@@ -4998,6 +5003,7 @@ LABEL ~cd_tweaks_divine_grace_dark_blessing~
 
 BEGIN @609000 DESIGNATED 6090
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/good_aim.tra~ @7
 LABEL ~cd_tweaks_good_aim~
@@ -5012,6 +5018,7 @@ LABEL ~cd_tweaks_good_aim~
 
 BEGIN @610000 DESIGNATED 6100
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/cleave.tra~ @7
 LABEL ~cd_tweaks_cleave~
@@ -5026,6 +5033,7 @@ LABEL ~cd_tweaks_cleave~
 
 BEGIN @611000 DESIGNATED 6110
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/sneakatt_blackguard.tra~ @7
 LABEL ~cd_tweaks_sneakatt_blackguard~
@@ -5040,6 +5048,7 @@ LABEL ~cd_tweaks_sneakatt_blackguard~
 
 BEGIN @612000 DESIGNATED 6120
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/fearless.tra~ @7
 LABEL ~cd_tweaks_fearless~
@@ -5054,6 +5063,7 @@ LABEL ~cd_tweaks_fearless~
 
 BEGIN @613000 DESIGNATED 6130
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/poison_save.tra~ @7
 LABEL ~cd_tweaks_poison_save~
@@ -5068,6 +5078,7 @@ LABEL ~cd_tweaks_poison_save~
 
 BEGIN @614000 DESIGNATED 6140
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/planar_turning.tra~ @7
 LABEL ~cd_tweaks_planar_turning~
@@ -5082,6 +5093,7 @@ LABEL ~cd_tweaks_planar_turning~
 
 BEGIN @615000 DESIGNATED 6150
 GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/circle_kick.tra~ @7
 LABEL ~cd_tweaks_circle_kick~
