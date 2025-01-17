@@ -72,7 +72,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		end
 	end
 	-- (Bow with arrows equipped || bow with unlimited ammo equipped) && Archer kit
-	local applyCondition = (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW")
+	local applyAbility = (selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW")
 		and spriteKitStr == "FERALAN"
 		and (spriteClassStr == "RANGER"
 			-- incomplete dual-class characters are not supposed to benefit from this passive feat
@@ -81,11 +81,11 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		and bonus > 0
 	--
 	if sprite:getLocalInt("gtRevisedArcher") == 0 then
-		if applyCondition then
+		if applyAbility then
 			apply(bonus)
 		end
 	else
-		if applyCondition then
+		if applyAbility then
 			-- Check if level has changed since the last application
 			if bonus ~= sprite:getLocalInt("gtArcherKitBonus") then
 				apply(bonus)
