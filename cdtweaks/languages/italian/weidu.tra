@@ -88,9 +88,14 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 //@15100 = ~Usa nomi unici +x (i.e. Kondar +1)~
 //@15200 = ~Usa nomi generici (i.e. Spada Bastarda +1, +3 vs. Shapeshifters)~
 
+@15002 = ~Rimuovi "+x" dai nomi degli oggetti unici~
+
 @16000 = ~Rendi brillanti gli scudi magici (plainab/grogerson)~
 
 @17000 = ~Icone uniche~
+@17001 = ~Sostituisci solo le icone che non sono gia' uniche~
+@17010 = ~Sostituisci tutte le icone~
+
 
 @18000 = ~Contenitori unici~
 @18018 = ~Solo Correzioni~
@@ -115,7 +120,9 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @21000 = ~Varia le icone di Resistenza al Fuoco e al Freddo (Angel)~
 
-@22000 = ~Sovrapposizioni migliorate per i giocatori daltonici [Fouinto]~ 
+@22000 = ~Sovrapposizioni migliorate per i giocatori daltonici [Fouinto]~
+
+@23000 = ~Ripristina descrizioni comandi IWD~
 
 @26000 = "Nascondi gli effetti visivi dai nemici invisibili [Luke, EEex]"
 
@@ -410,7 +417,7 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 // questi componenti sono stati abbandonati a causa di bug con le classi doppie
 // @257000 = ~BGT: Limite di esperienza aggiuntivo mentre sei in BG~
-// @257100 = ~BGT: Limite di esperienza aggiuntivo in SoA~ 
+// @257100 = ~BGT: Limite di esperienza aggiuntivo in SoA~
 
 @265000 = "Rendi Unto infiammabile [Luke]"
 
@@ -423,6 +430,15 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @269002 = "v2 (fare riferimento al readme)"
 @269003 = "v3 (fare riferimento al readme)"
 @269004 = "v4 (fare riferimento al readme)"
+/*
+@258000 = ~Modifica tabella degli incantesimi divini divini basati sulla saggezza~
+@258001 = ~Usa tabella PnP/PsT~
+@258100 = ~Usa tabella BG/BG2/IWD~
+
+@259000 = ~I ladri possono pugnalare alle spalle con più armi con "Usa qualsiasi oggetto" o come classi doppie e multiple~
+
+@262000 = ~Rendi alcune creature immuni alle pugnalate alle spalle/attacchi furtivi [Luke]~
+*/
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
