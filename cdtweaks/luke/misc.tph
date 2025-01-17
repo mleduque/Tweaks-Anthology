@@ -480,7 +480,7 @@ BEGIN
 				FAIL "GT_ADD_SPELL: invalid spell type (%type%)"
 		END
 		//
-		ACTION_IF !(FILE_EXISTS_IN_GAME "%prefix%%level%%preferredSlot%.spl") BEGIN
+		ACTION_IF !(RESOURCE_CONTAINS "gtspell.ids" "^%type%%level%%preferredSlot% ") BEGIN
 			APPEND "GTSPELL.IDS" "%type%%level%%preferredSlot% %idsName%"
 			OUTER_TEXT_SPRINT "resName" "%prefix%%level%%preferredSlot%"
 		END ELSE BEGIN
@@ -488,7 +488,7 @@ BEGIN
 				ACTION_IF (STRING_LENGTH "%i%" == 1) BEGIN
 					OUTER_TEXT_SPRINT "i" "0%i%"
 				END
-				ACTION_IF !(FILE_EXISTS_IN_GAME "%prefix%%level%%i%.spl") BEGIN
+				ACTION_IF !(RESOURCE_CONTAINS "gtspell.ids" "^%type%%level%%i% ") BEGIN
 					APPEND "GTSPELL.IDS" "%type%%level%%i% %idsName%"
 					OUTER_TEXT_SPRINT "resName" "%prefix%%level%%i%"
 					OUTER_SET "i" = "%max%" // kill FOR-loop
