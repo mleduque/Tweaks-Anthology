@@ -325,9 +325,13 @@ end)
 		--
 		local effect = context["effect"] -- CGameEffect
 		--
-		if effect.m_effectId == 402 then -- invoke lua
-			if effect.m_res:get() == "%ARCHER_CALLED_SHOT%" then
-				effect.m_effectAmount = 0
+		local projectile = context["projectile"] -- CProjectile
+		--
+		if EEex_Projectile_IsOfType(projectile, EEex_Projectile_Type["CProjectileArea"]) then
+			if effect.m_effectId == 402 then -- invoke lua
+				if effect.m_res:get() == "%ARCHER_CALLED_SHOT%" then
+					effect.m_effectAmount = 0
+				end
 			end
 		end
 	end,
