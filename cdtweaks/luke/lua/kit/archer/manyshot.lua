@@ -88,6 +88,8 @@
 						["targetX"] = targetSprite.m_pos.x,
 						["targetY"] = targetSprite.m_pos.y,
 						--
+						["m_projectileType"] = selectedWeaponAbility.missileType - 1,
+						--
 						["sourceID"] = originatingSprite.m_id,
 						["sourceTarget"] = targetSprite.m_id,
 					}
@@ -121,7 +123,7 @@
 							["m_school"] = selectedWeaponAbility.school,
 							["m_secondaryType"] = selectedWeaponAbility.secondaryType,
 							["m_flags"] = EEex_RShift(pEffect.durationType, 8),
-							["m_projectileType"] = selectedWeaponAbility.missileType,
+							["m_projectileType"] = selectedWeaponAbility.missileType - 1,
 							--
 							["m_sourceRes"] = selectedWeapon.pRes.resref:get(),
 							["m_sourceType"] = 2,
@@ -177,7 +179,7 @@
 							["m_school"] = pAbility.school,
 							["m_secondaryType"] = pAbility.secondaryType,
 							["m_flags"] = EEex_RShift(pEffect.durationType, 8),
-							["m_projectileType"] = pAbility.missileType,
+							["m_projectileType"] = pAbility.missileType - 1,
 							--
 							["m_sourceRes"] = selectedLauncher.pRes.resref:get(),
 							["m_sourceType"] = 2,
