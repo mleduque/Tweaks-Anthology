@@ -768,6 +768,8 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 
 @616000 = "Ira Barbarica in stile NWN [Luke]"
 
+@617000 = ~"Costringi" l'Arciere ad utilizzare gli archi [Luke (EEex)]~
+
 @618000 = "Aggiungi talento innato Combattere alla Cieca per i Berserker [Luke (EEex)]"
 
 @619000 = "Aggiungi talento di classe Combattimento Scorretto per i Ladri di allineamento Caotico [Luke (EEex)]"

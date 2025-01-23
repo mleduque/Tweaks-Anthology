@@ -840,6 +840,8 @@ Use Baldur.lua options: a7_interval_ini
 
 @616000 = "NWN-ish Barbarian Rage [Luke]"
 
+@617000 = ~"Force" the Archer kit to use bows [Luke (EEex)]~
+
 @618000 = "Blind Fight Innate Feat for Berserkers [Luke (EEex)]"
 
 @619000 = "Dirty Fighting Class Feat for Chaotic-Aligned Rogues [Luke (EEex)]"

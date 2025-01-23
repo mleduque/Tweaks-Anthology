@@ -1585,6 +1585,63 @@ Here is how the bonus scales with charisma:
 <p><strong>NWN-ish Barbarian Rage [Luke]</strong><br />
   <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em><em></em></p>
 <p>TBD</p>
+      
+      <p> <strong>"Force" the Archer kit to use bows [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p>
+        This component aims at making sure the Archer is really the epitome of skill with the <em>bow</em>.
+        As a result, after installing it, its abilities modify as follows:
+        <ul>
+          <li> <code>+1</code> to hit and damage rolls with <em>bows</em> every 3 levels </li>
+          <li> May achieve Grand Mastery (5 slots) in <em>longbows</em> and <em>shortbows</em>
+            <ul>
+              <li>May only Specialize (2 slots) in crossbows</li>
+            </ul>
+          </li>
+          <li> When equipped with a <em>bow</em>, it may use the (new) Called Shot ability</li>
+          <li> New passive trait: Point Blank Shot
+            <ul>
+              <li>When wielding a <em>bow</em>, the Archer negates the <code>-8</code> thac0 penalty for using ranged weapons in close combat</li>
+            </ul>
+          </li>
+          <li>
+            New passive HLA: Manyshot
+            <ul>
+              <li>Starting from level 25, the Archer may shoot two arrows at a time</li>
+            </ul>
+          </li>
+        </ul>
+      </p>
+      <p>
+        This component also reworks the Called Shot ability. Here is the revised description:<br />
+        <p>CALLED SHOT: Grants the ability to make a potentially disabling attack against an opponent's arms or legs. A successful called shot against the legs reduces the opponent's movement rate by 20% and gives them a -2 cumulative penalty to their dexterity. A successful called shot against the arms applies a cumulative -2 penalty to the creature's attack rolls.</p>
+      </p>
+      <p> So to sum up, its core features are now all built around the <em>bow</em> (instead of any missile weapon). </p>
+      <p>
+        Notes about Called Shot:
+        <ul>
+          <li>Use: selected (unlimited uses per day).</li>
+          <li>
+            Successful called shots last four rounds.
+            <ul>
+              <li>The target must fail a Save vs. Breath in order to be affected.</li>
+              <li>The save penalty decreases by 1 for every 4 levels of the Archer (capped at -7 at level 29).</li>
+            </ul>
+          </li>
+          <li>Called Shot (Legs) cannot drop Dexterity below 1.</li>
+          <li>Called shots deal no damage and apply no on-hit effects (if any).</li>
+          <li>Creatures without arms (f.i. slimes, beholders, wolves, spiders, ...) or legs (f.i. wyverns, imps, snakes, salamanders, ...) are unaffected by effects from Called Shot.</li>
+        </ul>
+      </p>
+      <p>
+        Notes about Manyshot:
+        <ul>
+          <li>Use: automatic.</li>
+          <li>The two arrows are treated as one projectile (only one arrow is consumed).</li>
+          <li>Both arrows use the same attack roll, but the second one cannot critical hit.</li>
+          <li>If the attack roll hits, the target takes damage from both arrows. On-hit effects (if any) apply twice.</li>
+        </ul>
+      </p>
 <p><strong>Blind Fight Innate Feat for Berserkers [Luke]</strong><br />
   <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
 <p> This component aims at giving Berserkers the Blind Fight feat.  This feat grants the character the ability to fight well, even if blinded. As a result, whenever the character gets blinded, it does not suffer from the 4 THAC0/AC penalty. </p>
