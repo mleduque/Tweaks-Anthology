@@ -738,6 +738,8 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 
 @600000 = "Aggiungi talento di classe Disarmare per i Ladri [Luke (EEex)]"
 
+@601000 = "Aggiungi talento di classe Buttare a Terra per i Guerrieri e i Monaci [Luke (EEex)]"
+
 @602000 = "Aggiungi talento di classe Sapienza Magica / Controincantesimo per gli incantatori [Luke (EEex)]"
 
 @603000 = "Aggiungi talento di classe Lancio Spontaneo per i Chierici [Luke]"

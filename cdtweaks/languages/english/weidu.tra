@@ -810,6 +810,8 @@ Use Baldur.lua options: a7_interval_ini
 
 @600000 = "Disarm class feat for Rogues [Luke (EEex)]"
 
+@601000 = "Knockdown class feat for Fighters and Monks [Luke (EEex)]"
+
 @602000 = "Spellcaster Skill/Counterspell Class Talent [Luke (EEex)]"
 
 @603000 = "Spontaneous Casting for Clerics [Luke]"
