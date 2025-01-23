@@ -89,9 +89,14 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 //@15100 = ~Usa nomi unici +x (i.e. Kondar +1)~
 //@15200 = ~Usa nomi generici (i.e. Spada Bastarda +1, +3 vs. Shapeshifters)~
 
+@15002 = ~Rimuovi "+x" dai nomi degli oggetti unici~
+
 @16000 = ~Rendi brillanti gli scudi magici (plainab/grogerson)~
 
 @17000 = ~Icone uniche~
+@17001 = ~Sostituisci solo le icone che non sono gia' uniche~
+@17010 = ~Sostituisci tutte le icone~
+
 
 @18000 = ~Contenitori unici~
 @18018 = ~Solo Correzioni~
@@ -116,7 +121,11 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @21000 = ~Varia le icone di Resistenza al Fuoco e al Freddo (Angel)~
 
-@22000 = ~Sovrapposizioni migliorate per i giocatori daltonici [Fouinto]~ 
+@22000 = ~Sovrapposizioni migliorate per i giocatori daltonici [Fouinto]~
+
+@23000 = ~Ripristina descrizioni comandi IWD~
+
+@26000 = "Nascondi gli effetti visivi dai nemici invisibili [Luke, EEex]"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -409,33 +418,28 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 // questi componenti sono stati abbandonati a causa di bug con le classi doppie
 // @257000 = ~BGT: Limite di esperienza aggiuntivo mentre sei in BG~
-// @257100 = ~BGT: Limite di esperienza aggiuntivo in SoA~ 
+// @257100 = ~BGT: Limite di esperienza aggiuntivo in SoA~
 
-@265000 = "Aggiungi talento di classe Lancio Spontaneo per i Chierici [Luke]"
+@265000 = "Rendi Unto infiammabile [Luke]"
 
-@266000 = "Aggiungi talento Arma Preferita per i Ladri [Luke]"
+@266000 = "Gli Orsi e i Cinghiali continueranno a combattere dopo aver raggiunto 0 punti ferita [Luke (EEex)]"
 
-@267000 = "Aggiungi talento Doppia-Presa per i Ranger [Luke]"
+@267000 = "Limita la meccanica del Riposo [Luke (EEex)]"
 
-@269000 = "Armatura vs. Destrezza in stile NWN [Luke]"
+@269000 = "Modifica la meccanica della Concentrazione [Luke (EEex)]"
+@269001 = "v1 (fare riferimento al readme)"
+@269002 = "v2 (fare riferimento al readme)"
+@269003 = "v3 (fare riferimento al readme)"
+@269004 = "v4 (fare riferimento al readme)"
+/*
+@258000 = ~Modifica tabella degli incantesimi divini divini basati sulla saggezza~
+@258001 = ~Usa tabella PnP/PsT~
+@258100 = ~Usa tabella BG/BG2/IWD~
 
-@270000 = "Aggiungi talento Tiro Difensivo per i ladri [Luke]"
+@259000 = ~I ladri possono pugnalare alle spalle con più armi con "Usa qualsiasi oggetto" o come classi doppie e multiple~
 
-@271000 = "Grazia Divina / Benedizione Oscura per Paladini / Guardie Nere [Luke]"
-
-@272000 = "Aggiungi talento razziale Buona Mira per gli Halfling [Luke]"
-
-@273000 = "Aggiungi talento di classe Incalzare per i Guerrieri [Luke]"
-
-@274000 = "Aggiungi talento di classe Attacco Furtivo per Guardie Nere [Luke]"
-
-@275000 = "Aggiungi talento razziale Temerario per gli Halfling [Luke]"
-
-@276000 = "Aggiungi talento di classe Resistenza ai Veleni per Assassini [Luke]"
-
-@277000 = "Aggiungi talento di classe Scacciare Creature Extraplanari per Paladini e Chierici [Luke]"
-
-@278000 = "Aggiungi talento di classe Calcio Rotante per i Monaci [Luke]"
+@262000 = ~Rendi alcune creature immuni alle pugnalate alle spalle/attacchi furtivi [Luke]~
+*/
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -650,6 +654,10 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 
 @336000 = ~Ripristina la nebbia di guerra nei sotterranei di Sigil~ 
 
+@342000 = "Gli Stregoni Incappucciati reagiranno in maniera più sensata all'uso della magia senza licenza [Luke (EEex)]"
+
+@343000 = "Pelle di Pietra: rendi visibile il numero di pelli rimaste [Luke (EEex)]"
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -729,3 +737,52 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 @600000 = "Aggiungi talento di classe Disarmare per i Ladri [Luke (EEex)]"
+
+@602000 = "Aggiungi talento di classe Sapienza Magica / Controincantesimo per gli incantatori [Luke (EEex)]"
+
+@603000 = "Aggiungi talento di classe Lancio Spontaneo per i Chierici [Luke]"
+
+@604000 = "Aggiungi talento di classe Arma Preferita per i Ladri [Luke]"
+
+@605000 = "Aggiungi talento di classe Doppia-Presa per i Ranger [Luke]"
+
+@606000 = "Armatura vs. Destrezza in stile NWN [Luke]"
+
+@607000 = "Aggiungi talento di classe Tiro Difensivo per i ladri [Luke]"
+
+@608000 = "Grazia Divina / Benedizione Oscura per Paladini / Guardie Nere [Luke]"
+
+@609000 = "Aggiungi talento razziale Buona Mira per gli Halfling [Luke]"
+
+@610000 = "Aggiungi talento di classe Incalzare per i Guerrieri [Luke]"
+
+@611000 = "Aggiungi talento di classe Attacco Furtivo per Guardie Nere [Luke]"
+
+@612000 = "Aggiungi talento razziale Temerario per gli Halfling [Luke]"
+
+@613000 = "Aggiungi talento di classe Resistenza ai Veleni per Assassini [Luke]"
+
+@614000 = "Aggiungi talento di classe Scacciare Creature Extraplanari per Paladini e Chierici [Luke]"
+
+@615000 = "Aggiungi talento di classe Calcio Rotante per i Monaci [Luke]"
+
+@616000 = "Ira Barbarica in stile NWN [Luke]"
+
+@618000 = "Aggiungi talento innato Combattere alla Cieca per i Berserker [Luke (EEex)]"
+
+@619000 = "Aggiungi talento di classe Combattimento Scorretto per i Ladri di allineamento Caotico [Luke (EEex)]"
+
+@620000 = "Aggiungi talento di classe Colpo Critico Possente/Devastante per i Guerrieri [Luke]"
+
+@621000 = "Aggiungi talento di classe Auto-Occultamento per i Monaci [Luke (EEex)]"
+
+@622000 = "Aggiungi talento di classe Modalità Parata per Bardi Lama e Rodomonti [Luke (EEex)]"
+
+@623000 = "Consenti ai Bardi di lanciare incantesimi arcani mentre indossano armature leggere [Luke (EEex)]"
+
+@624000 = "Aggiungi talento di classe Passo Senza Tracce per i Ranger [Luke (EEex)]"
+
+@625000 = "Aggiungi talento di classe Senso della Natura per i Druidi [Luke (EEex)]"
+
+@626000 = "Aggiungi talento di classe Schivata Prodigiosa per i Barbari e i Ladri [Luke (EEex)]"
+

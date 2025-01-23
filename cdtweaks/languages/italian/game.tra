@@ -9,6 +9,9 @@
 @5001 = ~SCRIPT PER LA TRASFORMAZIONE DEGLI AVATAR:~
 @5002 = ~Questo script conferisce all'utente totale controllo sull'avatar del personaggio. Premi S per aprire la schermata di selezione dell'avatar. (<script>)~
 
+@15003 = ~Scudo Rosso~
+@15004 = ~Clava d'Ossa~
+
 @18001 = ~Archivi Arcani~
 @18002 = ~Sio'chaire~
 @18003 = ~Negozio di Sio'chaire~
@@ -139,7 +142,6 @@ Speciale:
 Peso: 1
 Posizionala in uno slot degli Oggetti Rapidi per aprirla.~
 @108505 = ~Si sta aprendo la Borsa delle Gemme. Attendi prego.~
-
 @108506 = ~Contenitore~
 @108507 = ~Contenitore per Pozioni~
 @108508 = ~Un contenitore rettangolare.~
@@ -152,7 +154,6 @@ Speciale:
 
 Peso: 3~
 @108510 = ~Si sta aprendo il Contenitore per Pozioni. Attendere prego.~
-
 @108511 = ~Astuccio~
 @108512 = ~Astuccio delle Pergamene~
 @108513 = ~Un astuccio.~
@@ -177,7 +178,6 @@ Speciale:
 
 Peso: 2~
 @108519 = ~Si sta aprendo la Cintura per Munizioni. Attendi un momento.~
-
 @108520 = ~Borsa~
 @108521 = ~Borsa Conservante~
 @108522 = ~Una borsa.~
@@ -193,8 +193,6 @@ Peso: 10~
 @108525 = ~Si sta aprendo l'Astuccio delle Pergamene. Attendi un momento.~
 
 
-
-                   
 
 @111001 = ~Locanda di Candlekeep~      
 @111002 = ~Alloggi dei Sacerdoti~      
@@ -320,9 +318,10 @@ Peso: 10~
 @111122 = ~Bottaio~
 @111123 = ~Barche~
 @111124 = ~Il Patibolo Fischiettante~
-@111125 = ~Baracca del Becchino~            
+@111125 = ~Baracca del Becchino~
 
 @114001 = ~Una gemma è un minerale che, se intagliato e levigato, può essere collezionato o usato come gioiello.~
+
 @115001 = ~Evocare Animali             
 (Evocazione/Attrazione)
 Livello: 6
@@ -831,6 +830,8 @@ Questa abilità controlla se la velocità di movimento e la velocità di lancio 
 @333053 = ~Disattiva rapidità automatica
 
 Questa abilità controlla se la velocità di lancio viene aumentata per i membri del gruppo al di fuori del combattimento. Fare clic sull'abilità per disattivarla.~
+@333054 = ~Fretta automatica~
+@333055 = ~Alacrità Potenziata~
 @333060 = ~Abilita rapidità automatica~
 @333061 = ~Abilita rapidità automatica
 
