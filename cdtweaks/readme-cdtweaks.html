@@ -113,7 +113,9 @@
     <div class="ribbon_triangle_h2-l"></div>
     <div class="ribbon_triangle_h2-r"></div>
     <div class="section">
+
       <p> The Tweaks Anthology has many components, which can be installed completely independently of one another. For convenience, they are grouped into six broad categories: <a href="#contents_cosmetic">Cosmetic Changes</a>, <a href="#contents_content">Content Changes</a>, <a href="#contents_rules">Rule Changes</a>, <a href="#contents_convenience">Convenience Tweaks and/or Cheats</a>, <a href="#contents_npc">Joinable <abbr title="Non-Player Character">NPC</abbr> Tweaks</a>, and <a href="#contents_feats"><abbr title="Never Winter Nighta">NWN</abbr>-Style Feats</a>. At installation time, players can select or ignore entire categories to streamline the installation process. </p>
+
       <p> Italics running underneath each component indicate availability for various games. Unless specified, a component will work on a game with or without its expansions unless noted, e.g. a component labeled <em><abbr title="Baldur's Gate II">BG2</abbr></em> would work on Baldur&#39;s Gate II with or without the Throne of Bhaal expansion. If the expansion is required or forbidden, the note will either be <em><abbr title="Baldur's Gate II">BG2</abbr> (requires <abbr title="Throne of Bhaal">ToB</abbr>)</em> or <em><abbr title="Baldur's Gate II">BG2</abbr> (without <abbr title="Throne of Bhaal">ToB</abbr>)</em> respectively. Components that are not available for your game will be skipped automatically by the installer. </p>
     </div>
     <div class="ribbon_rectangle_h3">
@@ -1397,13 +1399,45 @@
       <p> Internally, Dorn's sword (Rancor +1) relies upon scripting. As modders know, items should not rely upon scripting to work correctly, since it is unreliable and may quickly become messy.
         This component simply removes scripting from this weapon (the upshot of which is that the weapon should become a bit more reliable). </p>
     </div>
+
     <div class="ribbon_rectangle_h3">
       <h3> <a id="contents_feats" name="contents_feats"></a>NWN-Style Feats</h3>
     </div>
     <div class="ribbon_triangle_h3-l"></div>
     <div class="ribbon_triangle_h3-r"></div>
     <div class="section">
-      <p> Components in this category are inspired from <a href="https://nwn.beamdog.com/">NWN</a> and are aimed at providing new class/kit abilities. All components in this section require EEex and work on BGEE, BG2EE, IWDEE, and EET. </p>
+        <p> Components in this category are inspired from <a href="https://nwn.beamdog.com/">NWN</a> and are aimed at providing new class/kit abilities. All components in this section require EEex and work on BGEE, BG2EE, IWDEE, and EET. </p>
+    
+      <p> <strong>Disarm class feat for Rogues [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p> This component aims at implementing the NWN feat Disarm.<br />
+        The character can attempt to disarm an opponent in melee combat. Attempting a disarm applies a -6 penalty to the character's attack roll, and the combatant with the larger weapon gains a +2 bonus per size category of difference. A successful hit deals normal damage, and if the opponent fails a Save vs. Breath, then the weapon flies from the opponent's hands.<br />
+        Notes: </p>
+      <ul>
+        <li>Use: selected, unlimited uses per day. Only available to Rogues (starting from level 1).</li>
+        <li>When the weapon flies from the opponent's hands, the attacker automatically picks it up (provided its Inventory is not full).</li>
+        <li>This feat cannot be used while wielding a ranged weapon.</li>
+        <li>
+          As far as weapon sizes are concerned:
+          <ul>
+            <li>Small: unarmed fists, clubs, maces, slings, darts, daggers, short swords.</li>
+            <li>Medium: battle axes, throwing axes, long swords, shortbows, crossbows, morningstars, scimitars, war hammers.</li>
+            <li>Large: bastard swords, katanas, halberds, staves, two-handed swords, spears, flails.</li>
+            <li>
+              Some examples:
+              <ul>
+                <li>if the attacker is wielding a dagger and the defender is wielding a katana, the saving throw penalty is -4 (i.e., it's harder to succeed).</li>
+                <li>if the attacker is wielding a katana and the defender is wielding a dagger, the saving throw penalty is +4 (i.e., it's easier to succeed).</li>
+                <li>if the attacker is wielding a dagger and the defender is wielding a shortbow, the saving throw penalty is -2 (i.e., it's harder to succeed).</li>
+                <li>if the attacker is wielding a scimitar and the defender is wielding a dagger, the saving throw penalty is +2 (i.e., it's easier to succeed).</li>
+                <li>if the attacker is wielding a katana and the defender is wielding a katana, the saving throw penalty is 0 (i.e., neutral).</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>If the opponent is dual-wielding, only the main-hand weapon can be disarmed.</li>
+        <li>Not all creatures can be disarmed. Natural weapons cannot be disarmed, nor can cursed / magically created weapons.</li>
+      </ul>
       <p> <strong>Spellcaster Skill/Counterspell Class Talent [Luke]</strong><br />
       <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em><em></em></p>
       <p> This component aims at implementing the NWN feat Spellcraft/Counterspell. 
