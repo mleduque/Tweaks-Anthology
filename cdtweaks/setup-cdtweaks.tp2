@@ -787,10 +787,35 @@ LABEL ~cd_tweaks_gradual_drow_item_disintegration~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+/////                                                  \\\\\
+///// everything just breaks                           \\\\\
+/////                                                  \\\\\
+
 BEGIN @106000 DESIGNATED 1060
+SUBCOMPONENT @106000
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgee eet~ @25 // tutu, BGEE only
 LABEL ~cd_tweaks_breakable_armor_bg~
+
+/////                                                  \\\\\
+///// armor degrades once                              \\\\\
+/////                                                  \\\\\
+
+BEGIN @106100 DESIGNATED 1061
+SUBCOMPONENT @106000
+GROUP @13
+REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgee eet~ @25 // tutu, BGEE only
+LABEL ~cd_tweaks_breakable_armor_bg_degrade_once~
+
+/////                                                  \\\\\
+///// armor degrades once                              \\\\\
+/////                                                  \\\\\
+
+BEGIN @106200 DESIGNATED 1062
+SUBCOMPONENT @106000
+GROUP @13
+REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgee eet~ @25 // tutu, BGEE only
+LABEL ~cd_tweaks_breakable_armor_bg_degrade_progressively~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

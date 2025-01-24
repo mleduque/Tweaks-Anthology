@@ -167,6 +167,10 @@ The uninstall messages above are normal and expected.
 @105000 = ~Gradual Drow Item Disintegration~
 
 @106000 = ~Breakable Iron Non-Magical Shields, Helms, and Armor~
+@106004 = ~Everything just breaks~
+
+@106100 = ~Shields and helms break, armor degrades once~
+@106200 = ~Shields and helms break, armor progressively degrades and breaks~
 
 @107000 = ~Improved Multi-Player Kick-Out Dialogues~
 

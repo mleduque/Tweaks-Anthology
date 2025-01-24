@@ -138,6 +138,16 @@ OUTER_SET cd_max_hp_bonus = 0
 
 
 
+// The following variable will be used for the "Breakable Iron Non-Magical Shields, Helms, and Armor"
+// component, specifically the two options that degrade armor. In addition to the armor class getting
+// worse, setting this value to 1 will *also* impose a -1 movement penalty to movement speed wile 
+// equipped. For comparison walking speed is generally 10 for most creatures. 
+OUTER_SET degrade_movement_speed = 0
+
+
+
+
+
 
 
 
