@@ -35,6 +35,8 @@ ou rendues obsoletes par un autre mod deja installe.~
 @26 = ~Utilisation des valeurs du fichier de config cdtweaks.txt pour ce composant...~
 @27 = ~Il est necessaire d'utiliser Modmerge avant d'installer des mods pour ce jeu. Consultez le readme pour plus d'informations et pour trouver un lien pour telecharger Modmerge.~
 @28 = ~Nombre d'emplacements disponibles de "spellstates" ou d'ecoles de magie secondaire insuffisant pour installer ce composant (trop de mods installes).~
+@29 = ~Requires EEex: https://github.com/Bubb13/EEex ~
+@30 = ~NWN-Style Feats~
 
 // this component is not ready, you can skip translating this block
 //@100 = ~Automated Installer~
@@ -133,6 +135,8 @@ ou rendues obsoletes par un autre mod deja installe.~
 @25300 = ~Luminosite legerement reduite~
 @25400 = ~Luminosite moderement reduite~
 @25500 = ~Couleurs fidele au personnage (Plus naturel, mais peut etre tres fonce ou tres clair dans certains cas.)~
+
+@26000 = "Hide VFX from invisible enemies [Luke, EEex]"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -272,6 +276,10 @@ ou rendues obsoletes par un autre mod deja installe.~
 @135300 = ~Options 1 et 3~
 
 @135400 = ~Options 2 et 3~
+
+@136000 = ~Automatic transition to "Heart of Winter" expansion~
+@136001 = ~Don't change the main game~
+@136100 = ~Remove Hjollder from Kuldahar~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -451,39 +459,20 @@ ou rendues obsoletes par un autre mod deja installe.~
 
 @264000 = "PnP Potions [Luke]"
 
-@265000 = "Incantation spontanee pour les Clercs [Luke]"
+@265000 = "Make Grease ignitable [Luke (EEex)]"
 
-@266000 = "Fine lame : Capacite de classe pour les Voleurs [Luke]"
+@266000 = "Donner aux ours et aux sangliers un baroud d'honneur lorsqu'ils atteignent 0 point de vie [Luke]"
 
-@267000 = "Deux-armes : Capacite de classe pour les Rodeurs [Luke]"
+@267000 = "Limit Resting Mechanic [Luke (EEex)]"
 
 @268000 = ~« Impose » l'utilisation des arcs a l'Archer [Luke]~
 
-@269000 = "Porter une armure penalise le bonus de Dexterite [Luke]"
+@269000 = "Alternate Concentration Check [Luke (EEex)]"
+@269001 = "v1 (check readme)"
+@269002 = "v2 (check readme)"
+@269003 = "v3 (check readme)"
+@269004 = "v4 (check readme)"
 
-@270000 = "Roule-boule : Capacite de classe pour les Voleurs [Luke]"
-
-@271000 = "Grace divine / Sombre benediction : Capacite de classe pour les Paladins / Chevalier noir [Luke]"
-
-@272000 = "Œil de lynx : Capacite de race pour les Petites-personnes [Luke]"
-
-@273000 = "Enchaînement : Capacite de classe pour les Guerriers [Luke]"
-
-@274000 = "Attaque sournoise : Capacite de classe pour les Chevalier noir [Luke]"
-
-@275000 = "Intrepide : Capacite de race pour les Petites-personnes [Luke]"
-
-@276000 = "Tolerance aux poisons : Capacite de classe pour les Assassins [Luke]"
-
-@277000 = "Repousser les creatures planaires : Capacite de classe pour les Clercs / Paladins [Luke]"
-
-@278000 = "Coup de pied circulaire : Capacite de classe pour les moines [Luke]"
-
-@280000 = "Spellcraft / Counterspell class feat for spellcasters [Luke]"
-
-@281000 = "Knockdown class feat for Fighters and Monks [Luke]"
-
-@282000 = "Donner aux ours et aux sangliers un baroud d'honneur lorsqu'ils atteignent 0 point de vie [Luke]"
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -719,6 +708,10 @@ Utiliser les parametres de Baldur.lua :      a7_interval_ini
 @341100 = ~Uniquement pour les sorts des Mage, des pretres et les capacites speciales~
 @341200 = ~Tous les sorts (Verifier les repercussion dans le readme)~
 
+@342000 = "More Sensible Cowled Wizards [Luke (EEex)]"
+
+@343000 = "More Stoneskin Feedback [Luke (EEex)]"
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -802,6 +795,68 @@ Utiliser les parametres de Baldur.lua :      a7_interval_ini
 @504000 = ~Permettre a Yeslick d'utiliser les haches~
 
 @505000 = ~S'assurer que Shar-Teel ne meurt pas lors du defi originel~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// NWN-ish feats collection                         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@600000 = "Disarm class feat for Rogues [Luke (EEex)]"
+
+@601000 = "Knockdown class feat for Fighters and Monks [Luke (EEex)]"
+
+@602000 = "Spellcaster Skill / Counterspell Class Talent [Luke (EEex)]"
+
+@603000 = "Incantation spontanee pour les Clercs [Luke]"
+
+@604000 = "Fine lame : Capacite de classe pour les Voleurs [Luke]"
+
+@605000 = "Deux-armes : Capacite de classe pour les Rodeurs [Luke]"
+
+@606000 = "Porter une armure penalise le bonus de Dexterite [Luke]"
+
+@607000 = "Roule-boule : Capacite de classe pour les Voleurs [Luke]"
+
+@608000 = "Grace divine / Sombre benediction : Capacite de classe pour les Paladins / Chevalier noir [Luke]"
+
+@609000 = "Œil de lynx : Capacite de race pour les Petites-personnes [Luke]"
+
+@610000 = "Enchainement : Capacite de classe pour les Guerriers [Luke]"
+
+@611000 = "Attaque sournoise : Capacite de classe pour les Chevalier noir [Luke]"
+
+@612000 = "Intrepide : Capacite de race pour les Petites-personnes [Luke]"
+
+@613000 = "Tolerance aux poisons : Capacite de classe pour les Assassins [Luke]"
+
+@614000 = "Repousser les creatures planaires : Capacite de classe pour les Clercs / Paladins [Luke]"
+
+@615000 = "Coup de pied circulaire : Capacite de classe pour les moines [Luke]"
+
+@616000 = "NWN-ish Barbarian Rage [Luke]"
+
+@617000 = ~"Force" the Archer kit to use bows [Luke (EEex)]~
+
+@618000 = "Blind Fight innate feat for Berserkers [Luke (EEex)]"
+
+@619000 = "Dirty Fighting class feat for Chaotic-aligned Rogues [Luke (EEex)]"
+
+@620000 = "Overwhelming/Devastating Critical Class Feat for Trueclass Fighters [Luke]"
+
+@621000 = "Self Concealment class feat for Monks [Luke (EEex)]"
+
+@622000 = "Parry Mode kit feat for Blades e Swashbucklers [Luke (EEex)]"
+
+@623000 = "Armored Caster class feat for Bards [Luke (EEex)]"
+
+@624000 = "Trackless Step class feat for Rangers [Luke (EEex)]"
+
+@625000 = "Nature Sense class feat for Druids [Luke (EEex)]"
+
+@626000 = "Uncanny Dodge class feat for Barbarians and Rogues [Luke (EEex)]"
 
 //WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"
