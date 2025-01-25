@@ -1,5 +1,9 @@
+COPY ~cdtweaks/bam/c!acci.bam~ ~override~ // damaged chain icon, from zenblack
+     ~cdtweaks/bam/c!acsi.bam~ ~override~ // damaged splint icon, from zenblack
+     ~cdtweaks/bam/c!acpi.bam~ ~override~ // damaged plate icon, from zenblack
+     ~cdtweaks/bam/c!acfi.bam~ ~override~ // damaged full plate icon, from zenblack
+
 OUTER_SET msg_degrade_spl = RESOLVE_STR_REF(@106201)
-OUTER_SET msg_degrade_itm = RESOLVE_STR_REF(@106201)
 OUTER_SPRINT ac_old   @106202 // ~^\([ %TAB%]*Armor Class[ %TAB%]*:?[ %TAB%]*\)[0-9]+~
 OUTER_SPRINT ac_ee    @106205 // ~\([0-9]+\)\([ %TAB%]*vs\.[ %TAB%]*\(slashing\|crushing\|piercing and missile\)\)~
 OUTER_SPRINT desc_old @106203 // ~^\([ %TAB%]*STATISTICS[ %TAB%]*:?[ %TAB%]*\)~ 
@@ -96,8 +100,8 @@ ACTION_PHP_EACH cd_degrade_armor AS params => target BEGIN
           LPF ALTER_EFFECT INT_VAR match_opcode = 0 match_parameter2 = BIT4 parameter1 = ac END
           WRITE_LONG 0x34 ((THIS * (75 - ((25 * first_time) + (degrade_once * 25)))) / 100) // degrade price to 50% in first break, 75% on subsequent; degrade once loses 75%
           PATCH_IF first_time BEGIN 
-//            WRITE_ASCIIE 0x3a ~%params_0%i~ #8
-//            WRITE_ASCIIE 0x58 ~%params_0%c~ #8
+            WRITE_ASCIIE 0x3a ~%params_1%i~ #8
+//            WRITE_ASCIIE 0x58 ~%params_1%c~ #8
             PATCH_IF ((VARIABLE_IS_SET degrade_movement_speed) AND (degrade_movement_speed = 1)) BEGIN
               LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 176 target = 1 parameter1 = "-1" timing = 2 END
             END  
