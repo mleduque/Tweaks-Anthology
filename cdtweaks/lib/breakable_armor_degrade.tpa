@@ -64,6 +64,7 @@ ACTION_PHP_EACH cd_breakable_armor AS params => quantity BEGIN
         COPY_EXISTING ~cdbrak2.spl~ ~override/%params_2%%ac%.spl~          
           LPF ALTER_EFFECT INT_VAR match_opcode = 143 STR_VAR resource = EVAL ~%params_2%%ac%~ END
           LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = msg_degrade_spl END
+          DEFINE_ASSOCIATIVE_ARRAY cd_break_spells BEGIN ~%params_2%%ac%~ => 0 END
           
         COPY_EXISTING ~%params_0%.itm~ ~override/%params_2%%ac%.itm~  
           PATCH_IF degrade_once BEGIN 
@@ -114,3 +115,13 @@ ACTION_PHP_EACH cd_breakable_armor AS params => quantity BEGIN
   END // while
   
 END // php_each  
+
+ACTION_IF FILE_EXISTS_IN_GAME ~bprng1.itm~ BEGIN 
+
+  COPY_EXISTING ~bprng1.itm~ ~override~ // slave ring from black pits - prevents weapon breakage; add armor/helm/shield
+    PATCH_PHP_EACH cd_break_spells AS spell => foo BEGIN 
+      LPF CLONE_EFFECT INT_VAR match_opcode = 206 multi_match = 1 STR_VAR resource = EVAL ~%spell%~ END
+    END  
+    BUT_ONLY
+    
+END    
