@@ -12,6 +12,6 @@ WITH_SCOPE BEGIN
   INCLUDE "cdtweaks\lib\infravision.tph"
   //
   WITH_TRA "cdtweaks\languages\english\infravision.tra" "cdtweaks\languages\%LANGUAGE%\infravision.tra" BEGIN
-    LAF "LACK_OF_INFRAVISION" END
+    LAF "MAKE_INFRAVISION_USEFUL" END
   END
 END
