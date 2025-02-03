@@ -1,7 +1,7 @@
 --[[
-+--------------------------------------------------------------------------------+
-| cdtweaks, lack of infravision (-4 to hit in darkness (Dungeon or night areas)) |
-+--------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------+
+| cdtweaks, make infravision useful (-4 to hit in darkness (Dungeon or night areas)) |
++------------------------------------------------------------------------------------+
 --]]
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
@@ -12,7 +12,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that applies the actual penalty
 	local apply = function()
 		-- Mark the creature as 'condition applied'
-		sprite:setLocalInt("cdtweaksNoInfravision", 1)
+		sprite:setLocalInt("gtMakeInfravisionUseful", 1)
 		--
 		local effectCodes = {
 			{["op"] = 321, ["res"] = "GTRULE02"}, -- Remove effects by resource
@@ -55,27 +55,25 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local isDayNight = EEex_IsBitSet(sprite.m_pArea.m_header.m_areaType, 0x1)
 	local isNight = EEex_Trigger_ParseConditionalString('TimeOfDay(NIGHT)')
 	--
-	local applyCondition = not (hasInnateInfravision or EEex_IsBitSet(spriteGeneralState, 17)) and (isDungeon or (isOutdoor and isDayNight and isNight:evalConditionalAsAIBase(sprite)))
+	local applyCondition = not (hasInnateInfravision or EEex_IsBitSet(spriteGeneralState, 17)) and (isDungeon or (isOutdoor and isDayNight and isNight:evalConditionalAsAIBase(sprite))) and playableRaces[spriteRaceStr]
 	--
-	if playableRaces[spriteRaceStr] then
-		if sprite:getLocalInt("cdtweaksNoInfravision") == 0 then
-			if applyCondition then
-				apply()
-			end
+	if sprite:getLocalInt("gtMakeInfravisionUseful") == 0 then
+		if applyCondition then
+			apply()
+		end
+	else
+		if applyCondition then
+			-- do nothing
 		else
-			if applyCondition then
-				-- do nothing
-			else
-				-- Mark the creature as 'condition removed'
-				sprite:setLocalInt("cdtweaksNoInfravision", 0)
-				--
-				sprite:applyEffect({
-					["effectID"] = 321, -- Remove effects by resource
-					["res"] = "GTRULE02",
-					["sourceID"] = sprite.m_id,
-					["sourceTarget"] = sprite.m_id,
-				})
-			end
+			-- Mark the creature as 'condition removed'
+			sprite:setLocalInt("gtMakeInfravisionUseful", 0)
+			--
+			sprite:applyEffect({
+				["effectID"] = 321, -- Remove effects by resource
+				["res"] = "GTRULE02",
+				["sourceID"] = sprite.m_id,
+				["sourceTarget"] = sprite.m_id,
+			})
 		end
 	end
 	--
