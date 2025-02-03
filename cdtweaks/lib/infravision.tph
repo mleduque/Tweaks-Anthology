@@ -1,4 +1,4 @@
-DEFINE_ACTION_FUNCTION "LACK_OF_INFRAVISION"
+DEFINE_ACTION_FUNCTION "MAKE_INFRAVISION_USEFUL"
 BEGIN
 	WITH_SCOPE BEGIN
 		COPY "cdtweaks\luke\bam\rule_changes\no_infravision.bam" "override\gtrule02.bam"
