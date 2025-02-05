@@ -32,6 +32,7 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 							["dwFlags"] = 1,
 							["sourceID"] = targetSprite.m_id,
 							["sourceTarget"] = targetSprite.m_id,
+							["noSave"] = true, -- just in case...?
 						})
 
 					else
@@ -46,6 +47,7 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 									["dwFlags"] = 1,
 									["sourceID"] = targetSprite.m_id,
 									["sourceTarget"] = targetSprite.m_id,
+									["noSave"] = true, -- just in case...?
 								})
 
 							end
@@ -73,7 +75,7 @@ function %ROGUE_SNEAK_ATTACK%(CGameEffect, CGameSprite)
 
 	local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId)
 
-	local isImmuneToSilence = EEex_Trigger_ParseConditionalString("EEex_IsImmuneToOpcode(Myself,34)")
+	local isImmuneToSilence = EEex_Trigger_ParseConditionalString("EEex_IsImmuneToOpcode(Myself,38)")
 	local isImmuneToParalysis = EEex_Trigger_ParseConditionalString("EEex_IsImmuneToOpcode(Myself,109)")
 
 	-- max 1 sneak attack per round if not ASSASSINATE=1
@@ -150,5 +152,7 @@ function %ROGUE_SNEAK_ATTACK%(CGameEffect, CGameSprite)
 	end
 
 	responseString:free()
+	isImmuneToParalysis:free()
+	isImmuneToSilence:free()
 
 end
