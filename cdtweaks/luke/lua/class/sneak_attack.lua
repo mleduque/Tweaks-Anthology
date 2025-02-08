@@ -125,10 +125,16 @@ function %ROGUE_SNEAK_ATTACK%(CGameEffect, CGameSprite)
 
 			local targetSTR = CGameSprite:getActiveStats().m_nSTR
 
-			effectCodes = {
-				{["op"] = 0x2C, ["p1"] = (targetSTR <= 1) and 0 or ((targetSTR > 2) and -2 or -1), ["dur"] = 6 * roll, ["effsource"] = "%ROGUE_SNEAK_ATTACK%D"}, -- Strength bonus (44)
-				{["op"] = 0x8B, ["p1"] = %feedback_strref_str_mod%, ["effsource"] = "%ROGUE_SNEAK_ATTACK%D"} -- Display string (139): str modification
-			}
+			if targetSTR > 1 then
+				effectCodes = {
+					{["op"] = 0x2C, ["p1"] = targetSTR > 2 and -2 or -1, ["dur"] = 6 * roll, ["effsource"] = "%ROGUE_SNEAK_ATTACK%D"}, -- Strength bonus (44)
+					{["op"] = 0x8B, ["p1"] = %feedback_strref_str_mod%, ["effsource"] = "%ROGUE_SNEAK_ATTACK%D"} -- Display string (139): str modification
+				}
+			else
+				effectCodes = {
+					{["op"] = 0x8B, ["p1"] = %feedback_strref_immune%, ["effsource"] = "%ROGUE_SNEAK_ATTACK%D"} -- Display string (139): unaffected by effects from crippling strike
+				}
+			end
 
 		end
 
