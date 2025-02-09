@@ -5301,3 +5301,16 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
 LABEL ~cd_tweaks_nwn_uncanny_dodge~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////                                                            \\\\\////\\\\////
+///// Evasion class feat for Monks and Rogues                                \\\\\
+/////                                                            \\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+
+BEGIN @628000 DESIGNATED 6280
+GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
+LABEL ~cd_tweaks_nwn_evasion~
