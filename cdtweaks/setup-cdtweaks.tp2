@@ -2902,19 +2902,20 @@ REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/limit_resting_mechanic.tra~ @7
 LABEL ~cd_tweaks_limit_resting_mechanic~
 
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                            \\\\\
-///// NWN-ish Armor vs. Dexterity                                \\\\\
-/////                                                            \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                                                          \\\\\
+///// Make Infravision Useful                                                                  \\\\\
+/////                                                                                          \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @268000 DESIGNATED 2680
 GROUP @9
+REQUIRE_PREDICATE GAME_IS "bgee bg2ee eet iwdee" @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~EEex.tp2~ 0 @29
-REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/revised_archer.tra~ @7
-LABEL ~cd_tweaks_revised_archer~
+REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/infravision.tra~ @7
+LABEL ~cd_tweaks_infravision~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
