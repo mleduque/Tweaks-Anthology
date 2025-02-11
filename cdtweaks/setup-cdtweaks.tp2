@@ -4549,6 +4549,7 @@ BEGIN @405000 DESIGNATED 4050
 GROUP @0
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob~ @25
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40100 @16 // Revised Class Alignment Rules (no changes)
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~divine_remix.tp2~ 605 @16 // exact same thing from DR
 LABEL ~cd_tweaks_ng_jaheira~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
