@@ -796,3 +796,5 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 @627000 = "Attacco Furtivo / Colpo Incapacitante per Ladri ed Infiltrati in stile NWN [Luke (EEex)]"
 
 @628000 = "Aggiungi talento di classe Eludere per Monaci e Ladri [Luke (EEex)]"
+
+@629000 = "Aggiungi talento di classe Incantesimo Inarrestabile per gli Incantatori [Luke (EEex)]"
