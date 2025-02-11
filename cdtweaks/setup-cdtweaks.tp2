@@ -3485,17 +3485,40 @@ GROUP @4
 REQUIRE_PREDICATE GAME_IS ~bgee bg1 totsc tutu tutu_totsc eet bgt bg2ee soa tob iwdee iwd-in-bg2 ca~ @25
 LABEL ~cd_tweaks_happy_neutrals~
 
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////                                                  \\\\\
-///// No traps or locks                                \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                                      \\\\\
+///// No traps or locks                                                    \\\\\
+/////                                                                      \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @313000 DESIGNATED 3130
+/////                                                                      \\\\\
+///// Remove traps completely                                              \\\\\
+/////                                                                      \\\\\
+
+BEGIN @313001 DESIGNATED 3130
 GROUP @4
+SUBCOMPONENT @313000
 LABEL ~cd_tweaks_no_traps_or_locks~
+
+/////                                                                      \\\\\
+///// Remove only harmful trap effects                                     \\\\\
+/////                                                                      \\\\\
+
+BEGIN @313010 DESIGNATED 3131
+GROUP @4
+SUBCOMPONENT @313000
+LABEL ~cd_tweaks_no_trap_effects_or_locks~
+
+/////                                                                      \\\\\
+///// Remove harmful trap effects and creatures summoned by alarms         \\\\\
+/////                                                                      \\\\\
+
+BEGIN @313020 DESIGNATED 3132
+GROUP @4
+SUBCOMPONENT @313000
+LABEL ~cd_tweaks_no_trap_effects_alarms_or_locks~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

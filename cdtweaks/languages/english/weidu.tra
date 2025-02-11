@@ -550,7 +550,10 @@ The uninstall messages above are normal and expected.
 
 @312500 = ~Neutral Characters Make Happy Comments at Mid-Range Reputation [Luiz]~
 
-@313000 = ~No Traps or Locks [Weimer]~
+@313000 = ~No Traps or Locks [Weimer, argent77]~
+@313001 = ~Remove traps completely~
+@313010 = ~Remove only harmful trap effects~
+@313020 = ~Remove harmful trap effects and creatures summoned by alarms~
 
 @314000 = ~Faster Chapter One and Two Cutscenes and Dreams~
 @314001 = ~Originals from Ease-of-Use mod [Karzak, Blucher, aVENGER, Weimer]~
