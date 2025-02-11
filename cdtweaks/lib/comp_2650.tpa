@@ -8,6 +8,7 @@
 
 WITH_SCOPE BEGIN
   INCLUDE "cdtweaks\luke\misc.tph"
+  INCLUDE "cdtweaks\ardanis\functions.tph"
   //
   INCLUDE "cdtweaks\lib\make_grease_ignitable.tph"
   //
