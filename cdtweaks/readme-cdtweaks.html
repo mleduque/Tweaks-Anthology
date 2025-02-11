@@ -1017,6 +1017,17 @@
       <p> <strong>Make Grease Ignitable [Luke]</strong><br />
         <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
       <p> &quot;Greased&quot; characters suffer 3d6 (save vs. breath for half) addition fire damage for 1d3 rounds when hit by fire. </p>
+      <p> <strong>Make Infravision Useful [Luke]</strong><br />
+        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+      <p>
+        All creatures without the Infravision ability will incur a -4 penalty to THAC0 in darkness (Dungeon or night areas), as per AD&D rules.
+      </p>
+      <p>
+        Notes:
+      </p>
+        <ul>
+          <li>This rule change only applies to playable races.</li>
+        </ul>
       <p> <strong>NWN-ish Armor vs. Dexterity [Luke]</strong><br />
         <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
       <p> By default, any damage a spellcaster takes will cause them to fail their spellcasting.
@@ -1113,9 +1124,15 @@
         <em><abbr title="Baldur's Gate: Enhanced Edition">BGEE</abbr>, <abbr title="Baldur's Gate II: Enhanced Edition">BG2EE</abbr>, <abbr title="Icewind Dale: Enhanced Edition">IWDEE</abbr>, <abbr title="Enhanced Edition Trilogy">EET</abbr>, <abbr title="Baldur's Gate">BG</abbr>, <abbr title="Baldur's Gate II">BG2</abbr>, <abbr title="Baldur's Gate Trilogy">BGT</abbr>, Tutu, <abbr title="Icewind Dale">IWD</abbr>-in-<abbr title="Baldur's Gate II">BG2</abbr></em> </p>
       <p> Every joinable <abbr title="Non-Player Character">NPC</abbr> has lines they say when they&#39;re happy, ambivalent, or upset about the party&#39;s reputation. In the original tables, neutral characters could never be happy--even at mid-range reputation values, they would remain ambivalent. This component alters the reputation table so that they are now happy at middle of the road values, so you can now hear lines from neutral <abbr title="Non-Player Characters">NPCs</abbr> which were previously not available. This component is completely compatible with any variant of the Happy Patch. </p>
       <p> Please note that installing Virtue with this component will essentially nullify it. </p>
-      <p> <strong>No Traps or Locks [Weimer]</strong><br />
+      <p> <strong>No Traps or Locks [Weimer, argent77]</strong><br />
         <em>All games</em> </p>
-      <p> All floor traps that can be disarmed are removed from the game. All door and container traps are removed from the game. All locked doors and containers have their lockpick difficulty set to zero (they can be bashed open by anyone in one blow) unless they require a key. All hidden doors have their detect difficulty set to zero (anyone will detect them by standing around long enough). &quot;Special&quot; traps remain. Note that since the traps are gone entirely you cannot get <abbr title="Experience Points">XP</abbr> by disarming them. </p>
+      <p> This component provides several options how to deal with traps in the game: </p>
+      <ul>
+        <li> <em>Remove traps completely:</em> With this option all floor traps that can be disarmed are removed from the game. All door and container traps are removed from the game. Note that since the traps are gone entirely you cannot get <abbr title="Experience Points">XP</abbr> by disarming them. </li>
+        <li> <em>Remove only harmful trap effects:</em> With this option floor, door and container traps can still be triggered, but without causing any harmful effects on the target. You can still get <abbr title="Experience Points">XP</abbr> by disarming them. </li>
+        <li> <em>Remove harmful trap effects and creatures summoned by alarms:</em> In addition to the removal of harmful trap effects this option also prevents creatures from being summoned at failed thieving attempts or at low reputation. <strong>Note:</strong> This option may have unintentional side effects on mod-specific alarm scripts that spawn quest-related creatures. </li>
+      </ul>
+      <p> All locked doors and containers have their lockpick difficulty set to zero (they can be bashed open by anyone in one blow) unless they require a key. All hidden doors have their detect difficulty set to zero (anyone will detect them by standing around long enough). &quot;Special&quot; traps remain untouched in either case. </p>
       <p> <strong>Faster Chapter One and Two Cutscenes and Dreams </strong><br />
         <em><abbr title="Baldur's Gate II: Enhanced Edition">BG2EE</abbr>, <abbr title="Enhanced Edition Trilogy">EET</abbr>, <abbr title="Baldur's Gate II">BG2</abbr>, <abbr title="Baldur's Gate Trilogy">BGT</abbr></em> </p>
       <p> If you&#39;re replaying the game for the Nth time, this component saves precious minutes. In general this skips or shortens cutscenes and dream sequences. You can also speed up your first encounter with Gaelan Bayle by saying (3) &quot;Yes, show me to your home.&quot; and then (5) &quot;Very well, I&#39;ll be back with the money.&quot; </p>
@@ -1812,15 +1829,31 @@
       <p>Druids gain a +2 bonus on all attack rolls made while fighting in wilderness areas. Use is automatic, but only available to druids.</p>
       <p> <strong>Uncanny Dodge Class Feat for Barbarians and Rogues [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p>Barbarians and Rogues gain a +2 bonus on saving throws made to avoid traps. Use isautomatic, available from level 1. </p>
+      <p>Barbarians and Rogues gain a +2 bonus on saving throws made to avoid traps. Use is automatic, available from level 1. </p>
 
+      <p> <strong>NWN-ish Sneak Attack / Crippling Strike class feat for Thieves and Stalkers [Luke]</strong><br />
+        <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
+      <p>
+        This component reworks the Sneak Attack mechanic so as to make it more similar to the one in NWN (sort of). To sum up:
+        <ul>
+          <li>Use: automatic, but limited to once per round.</li>
+          <li>Crippling Strike:
+            <ul>
+              <li>Assassins: the targeted creature must Save vs. Death at <code>-1 * (X - 1)</code> or be paralyzed for <code>Xd6</code> rounds (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/crippstr.htm"><code>crippstr.2da</code></a> for the value of <code>X</code>). Not cumulative.</li>
+              <li>Stalkers: the targeted creature must Save vs. Death at <code>-1 * (X - 1)</code> or be silenced for <code>Xd6</code> rounds (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/crippstr.htm"><code>crippstr.2da</code></a> for the value of <code>X</code>). Not cumulative.</li>
+              <li>Otherwise: the targeted creature must Save vs. Death at <code>-1 * (X - 1)</code> or lose <code>2</code> points of STR for <code>Xd6</code> rounds (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/crippstr.htm"><code>crippstr.2da</code></a> for the value of <code>X</code>). This is cumulative, but cannot drop STR below 1.</li>
+            </ul>
+          </li>
+          <li>Additionally, even if enemies are not required to flank their target in order to perform a sneak attack, their target must still be flat-footed (i.e., the attacker must be invisible or the target must be in combat with someone else/idle/helpless).</li>
+        </ul>
+      </p>
       <p> <strong>Evasion class feat for Thieves and Monks [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
       <p>
         Whenever a Save vs. Breath is allowed for half damage, the character instead takes no damage if he succeeds at the save.<br />
         Use is automatic, but limited to Monks and Rogues (available from level 1).
       </p>
-
+    
     </div>
     <div class="ribbon_rectangle_h2"> <a id="Contact" name="Contact"></a>
       <h2> Contact Information </h2>
