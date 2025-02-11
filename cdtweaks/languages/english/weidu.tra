@@ -37,6 +37,7 @@
 @28 = ~There are not enough free spell state or secondary type slots available to install this component.~
 @29 = ~Requires EEex: https://github.com/Bubb13/EEex ~
 @30 = ~NWN-Style Feats~
+@31 = ~Requires in-game option "3E Sneak Attack" (https://github.com/Argent77/A7-HiddenGameplayOptions).~
 
 @100 = ~Batch Installer -- EXPERIMENTAL, use at own risk. Check the readme.~
 @101 = ~
@@ -869,3 +870,4 @@ Use Baldur.lua options: a7_interval_ini
 
 @626000 = "Uncanny Dodge Class Feat for Barbarians and Rogues [Luke (EEex)]"
 
+@627000 = "NWN-ish Sneak Attack / Crippling Strike class feat for Thieves and Stalkers [Luke (EEex)]"

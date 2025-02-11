@@ -44,9 +44,10 @@ function cdtweaks_AlterConcentrationCheck(sprite, damageData)
 
 	-- Feedback
 	if not disrupted then
-		cdtweaks_AlterConcentrationCheck_DisplaySpriteMessage(sprite,
+		GT_Utility_DisplaySpriteMessage(sprite,
 			string.format("%s : %d > %d : [%d (1d20 - 1) + %d (%s)] > [%d (%s) + %d (%s)]",
-			Infinity_FetchString(%feedback_strref_concentr_check%), casterRoll, attackerRoll, roll, %value1%, Infinity_FetchString(%feedback_strref_value1%), spellLevel, Infinity_FetchString(%feedback_strref_spell_level%), %value2%, Infinity_FetchString(%feedback_strref_value2%))
+			Infinity_FetchString(%feedback_strref_concentr_check%), casterRoll, attackerRoll, roll, %value1%, Infinity_FetchString(%feedback_strref_value1%), spellLevel, Infinity_FetchString(%feedback_strref_spell_level%), %value2%, Infinity_FetchString(%feedback_strref_value2%)),
+			0x8D6140, 0x8D6140 -- Dark Muddish Brown
 		)
 	end
 

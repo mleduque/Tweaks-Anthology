@@ -1829,7 +1829,25 @@
       <p>Druids gain a +2 bonus on all attack rolls made while fighting in wilderness areas. Use is automatic, but only available to druids.</p>
       <p> <strong>Uncanny Dodge Class Feat for Barbarians and Rogues [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p>Barbarians and Rogues gain a +2 bonus on saving throws made to avoid traps. Use isautomatic, available from level 1. </p>
+      <p>Barbarians and Rogues gain a +2 bonus on saving throws made to avoid traps. Use is automatic, available from level 1. </p>
+
+      <p> <strong>NWN-ish Sneak Attack / Crippling Strike class feat for Thieves and Stalkers [Luke]</strong><br />
+        <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
+      <p>
+        This component reworks the Sneak Attack mechanic so as to make it more similar to the one in NWN (sort of). To sum up:
+        <ul>
+          <li>Use: automatic, but limited to once per round.</li>
+          <li>Crippling Strike:
+            <ul>
+              <li>Assassins: the targeted creature must Save vs. Death at <code>-1 * (X - 1)</code> or be paralyzed for <code>Xd6</code> rounds (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/crippstr.htm"><code>crippstr.2da</code></a> for the value of <code>X</code>). Not cumulative.</li>
+              <li>Stalkers: the targeted creature must Save vs. Death at <code>-1 * (X - 1)</code> or be silenced for <code>Xd6</code> rounds (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/crippstr.htm"><code>crippstr.2da</code></a> for the value of <code>X</code>). Not cumulative.</li>
+              <li>Otherwise: the targeted creature must Save vs. Death at <code>-1 * (X - 1)</code> or lose <code>2</code> points of STR for <code>Xd6</code> rounds (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/crippstr.htm"><code>crippstr.2da</code></a> for the value of <code>X</code>). This is cumulative, but cannot drop STR below 1.</li>
+            </ul>
+          </li>
+          <li>Additionally, even if enemies are not required to flank their target in order to perform a sneak attack, their target must still be flat-footed (i.e., the attacker must be invisible or the target must be in combat with someone else/idle/helpless).</li>
+        </ul>
+      </p>
+    
     </div>
     <div class="ribbon_rectangle_h2"> <a id="Contact" name="Contact"></a>
       <h2> Contact Information </h2>
