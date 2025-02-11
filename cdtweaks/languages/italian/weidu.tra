@@ -36,6 +36,8 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 @27 = ~E' necessario utilizzare Modmerge prima che i mod possano essere installati su questo gioco. Controllare il readme per ulteriori informazioni e per un link per scaricare Modmerge.~
 @28 = ~Non sono disponibili abbastanza slot per lo stato dell'incantesimo o di tipo secondario per installare questo componente.~ 
 @29 = "Questo componente richiede EEex (https://github.com/Bubb13/EEex)."
+@30 = "Talenti in stile NWN"
+@31 = ~Questo componente richiede l'opzione di gioco "Attacco Furtivo 3E" (https://github.com/Argent77/A7-HiddenGameplayOptions).~
 
 // questo componente non è pronto, puoi saltare la traduzione di questo blocco
 //@100 = ~Programma di installazione automatizzato~
@@ -425,6 +427,8 @@ o rimpiazzata da - un'altra facente parte di uno dei mods installati.~
 
 @267000 = "Limita la meccanica del Riposo [Luke (EEex)]"
 
+@268000 = "Rendi Infravisione Utile [Luke (EEex)]"
+
 @269000 = "Modifica la meccanica della Concentrazione [Luke (EEex)]"
 @269001 = "v1 (fare riferimento al readme)"
 @269002 = "v2 (fare riferimento al readme)"
@@ -735,6 +739,10 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+@600000 = "Aggiungi talento di classe Disarmare per i Ladri [Luke (EEex)]"
+
+@601000 = "Aggiungi talento di classe Buttare a Terra per i Guerrieri e i Monaci [Luke (EEex)]"
+
 @602000 = "Aggiungi talento di classe Sapienza Magica / Controincantesimo per gli incantatori [Luke (EEex)]"
 
 @603000 = "Aggiungi talento di classe Lancio Spontaneo per i Chierici [Luke]"
@@ -765,6 +773,8 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 
 @616000 = "Ira Barbarica in stile NWN [Luke]"
 
+@617000 = ~"Costringi" l'Arciere ad utilizzare gli archi [Luke (EEex)]~
+
 @618000 = "Aggiungi talento innato Combattere alla Cieca per i Berserker [Luke (EEex)]"
 
 @619000 = "Aggiungi talento di classe Combattimento Scorretto per i Ladri di allineamento Caotico [Luke (EEex)]"
@@ -782,5 +792,9 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 @625000 = "Aggiungi talento di classe Senso della Natura per i Druidi [Luke (EEex)]"
 
 @626000 = "Aggiungi talento di classe Schivata Prodigiosa per i Barbari e i Ladri [Luke (EEex)]"
+
+@627000 = "Attacco Furtivo / Colpo Incapacitante per Ladri ed Infiltrati in stile NWN [Luke (EEex)]"
+
+@628000 = "Aggiungi talento di classe Eludere per Monaci e Ladri [Luke (EEex)]"
 
 @629000 = "Aggiungi talento di classe Incantesimo Inarrestabile per gli Incantatori [Luke (EEex)]"

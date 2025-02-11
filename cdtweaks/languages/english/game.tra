@@ -59,6 +59,14 @@
 @106001 = ~Your armor has broken~
 @106002 = ~Your shield has broken~
 @106003 = ~Your helm has broken~
+@106005 = ~Quality~
+
+@106201 = ~Your armor has been damaged~
+@106202 = ~^\([ %TAB%]*Armor Class[ %TAB%]*:?[ %TAB%]*\)[0-9]+~
+@106203 = ~^\([ %TAB%]*STATISTICS[ %TAB%]*:?[ %TAB%]*\)~ 
+@106204 = ~The poor iron in this armor has resulted in damage.~
+@106205 = ~\(-?[0-9]+\)\([ %TAB%]*vs\.[ %TAB%]*\(slashing\|crushing\|piercing and missile\)\)~
+@106206 = ~Damaged~
 
 @107001 = ~Go wait for us at the Friendly Arm Inn. If things change, we'll meet you there.~
 @107002 = ~Please rejoin the party.~
