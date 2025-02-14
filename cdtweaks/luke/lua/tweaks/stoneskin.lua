@@ -69,7 +69,10 @@ function GTSTNSKN(CGameEffect, CGameSprite)
 				end
 			end)
 			--
-			Infinity_DisplayString(CGameSprite:getName() .. Infinity_FetchString(%feedback_strref_stoneskin%) .. GT_LuaTool_FindGreatestInt(skins) .. Infinity_FetchString(%feedback_strref_skins_left%))
+			GT_Utility_DisplaySpriteMessage(CGameSprite,
+				string.format("%s : %d %s", Infinity_FetchString(%feedback_strref_stoneskin_hit%), GT_LuaTool_FindGreatestInt(skins), Infinity_FetchString(%feedback_strref_skins_left%)),
+				0x808080, 0x808080 -- Grey
+			)
 		end
 	end
 end

@@ -204,19 +204,14 @@ COPY_EXISTING ~cdbrak2.spl~ ~override/cdbrak12.spl~  // shield
   SET msg = RESOLVE_STR_REF(@106002)
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = msg END
   LPF ALTER_EFFECT INT_VAR match_opcode = 143 parameter1 = 9 STR_VAR resource = ~misc57~ END
-
-ACTION_IF NOT ((enhanced_edition) OR (MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) BEGIN // if no critical hit aversion from tobex, script to remove broken helm item
-
-  COPY_EXISTING ~cdbrak7.spl~ ~override~  // create broken misc in inventory
-    LPF ADD_SPELL_EFFECT INT_VAR opcode = 122 target = 1 parameter1 = 1 timing = 1 insert_point = 999 STR_VAR resource = misc59 END
-    LPF CLONE_EFFECT INT_VAR match_opcode = 143 opcode = 112 STR_VAR insert = last END
-
-END ELSE BEGIN // otherwise add flag to disable critical hit protection for broken helmet
-
-  COPY_EXISTING ~cddelhlm.itm~ ~override~ // broken helmet
-    WRITE_BYTE 0x1b THIS | BIT1
-
-END
+  
+COPY_EXISTING ~cddelhlm.itm~ ~override~ // broken helmet
+  PATCH_IF ((enhanced_edition) OR (MOD_IS_INSTALLED ~tobex/tobex.tp2~ ~100~)) BEGIN // critical hit aversion from tobex or ee
+    WRITE_BYTE 0x1b THIS | BIT1 // add flag so that it doens't prevent criticals
+  END ELSE BEGIN // otherwise have helmet immediately destroy itself 
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 123 target = 1                timing = 1 insert_point = 0 STR_VAR resource = cddelhlm END
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 122 target = 1 parameter1 = 1 timing = 1 insert_point = 0 STR_VAR resource = misc59 END
+  END 
 
 // give nonmagical iron armor/shield/helmets a chance to break when attacked
 OUTER_SPRINT taerum ~~
