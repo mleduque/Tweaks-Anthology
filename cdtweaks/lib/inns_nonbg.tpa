@@ -1,3 +1,7 @@
+ACTION_IF tutu_gen BEGIN
+  INCLUDE ~cdtweaks/lib/inns_jk_fix.tpa~
+END 
+
 <<<<<<<< ./inline/inn_data.2da
 npc      state_tutu  state_tutu2   state_bgt state_bgt2           state_ee      state_ee2       dmwwresponse         beregost_xloc   beregost_yloc    friendly_xloc  friendly_yloc   nashkel_xloc   nashkel_yloc   elfsong_xloc   elfsong_yloc postdialogue
 AJANTIS  0           -1            0         -1                   0             -1              20810                824             961              766            966             602            463            537            704          lookitup
