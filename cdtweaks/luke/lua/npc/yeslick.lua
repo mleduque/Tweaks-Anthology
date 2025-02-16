@@ -11,10 +11,12 @@ EEex_GameState_AddInitializedListener(function()
 	-- for some unknown reason, we need two nested loops in order to get the resref...
 	for _, temp in ipairs(itmFileList) do
 		for _, res in pairs(temp) do
-			local header = EEex_Resource_Demand(res, "ITM")
-			if header.itemType == 0x19 then -- axe
-				local headerUnusabilityFlags = header.notUsableBy
-				header.notUsableBy = EEex_UnsetBit(headerUnusabilityFlags, 14) -- remove f/c bit
+			local pHeader = EEex_Resource_Demand(res, "itm")
+			-- only care for droppable and displayable items
+			if EEex_IsBitSet(pHeader.itemFlags, 0x2) and EEex_IsBitSet(pHeader.itemFlags, 0x3) then
+				if pHeader.itemType == 0x19 then -- axe
+					pHeader.notUsableBy = EEex_UnsetBit(pHeader.notUsableBy, 14) -- remove f/c bit
+				end
 			end
 		end
 	end
