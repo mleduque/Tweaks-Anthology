@@ -46,16 +46,18 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Check creature's race / state
 	local spriteRaceStr = GT_Resource_IDSToSymbol["race"][sprite.m_typeAI.m_Race]
 	local racefeat = GT_Resource_2DA["racefeat"]
-	local hasInnateInfravision = (GT_LuaTool_KeyExists(GT_Resource_2DA, "racefeat", spriteRaceStr, "VALUE") and tonumber(racefeat[spriteRaceStr]["VALUE"]) == 1) and true or false
+	local hasInnateInfravision = racefeat[spriteRaceStr] and tonumber(racefeat[spriteRaceStr]["VALUE"]) == 1 or false
 	-- since ``EEex_Opcode_AddListsResolvedListener`` is running after the effect lists have been evaluated, ``m_bonusStats`` has already been added to ``m_derivedStats`` by the engine
 	local spriteGeneralState = sprite.m_derivedStats.m_generalState
 	--
 	local isDungeon = EEex_IsBitSet(sprite.m_pArea.m_header.m_areaType, 0x5)
 	local isOutdoor = EEex_IsBitSet(sprite.m_pArea.m_header.m_areaType, 0x0)
 	local isDayNight = EEex_IsBitSet(sprite.m_pArea.m_header.m_areaType, 0x1)
-	local isNight = EEex_Trigger_ParseConditionalString('TimeOfDay(NIGHT)')
+	--local isNight = EEex_Trigger_ParseConditionalString('TimeOfDay(NIGHT)')
+	local m_gameTime = EngineGlobals.g_pBaldurChitin.m_pObjectGame.m_worldTime.m_gameTime % 0x1A5E0 -- 0d108000 (FIFTEEN_DAYS)
+	local isNight = m_gameTime >= 99000 or m_gameTime <= 26999
 	--
-	local applyCondition = not (hasInnateInfravision or EEex_IsBitSet(spriteGeneralState, 17)) and (isDungeon or (isOutdoor and isDayNight and isNight:evalConditionalAsAIBase(sprite))) and playableRaces[spriteRaceStr]
+	local applyCondition = playableRaces[spriteRaceStr] and not (hasInnateInfravision or EEex_IsBitSet(spriteGeneralState, 17)) and (isDungeon or (isOutdoor and isDayNight and isNight))
 	--
 	if sprite:getLocalInt("gtMakeInfravisionUseful") == 0 then
 		if applyCondition then
@@ -77,5 +79,5 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		end
 	end
 	--
-	isNight:free()
+	--isNight:free()
 end)
