@@ -1319,6 +1319,17 @@
         <em><abbr title="Baldur's Gate II">BGEE, BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
       <p>This component will clearly display in the combat log what gets dispelled (something like "Magical effect(s) removed: Bless").</p>
 
+      <p> <strong>More Sensible Fireshield</strong><br />
+        <em><abbr title="Baldur's Gate II">BG2</abbr>EE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
+      <p>
+        Due to the way the game engine works, there are a couple of issues with Fireshield-like spells (f.i. Fireshield Blue/Red, Keldorn's sword, &c.).
+        <ol>
+          <li>If one creature with a fireshield up hits another, damage bounces back and forth every tick until either one of the creatures is dead or they're out of range of each other.</li>
+          <li>Both ranged attacks (should you ever use a ranged weapon in close combat) and poison may trigger the retaliation damage.</li>
+        </ol>
+        This component adds a workaround to prevent these issues. In particular, it makes sure only true melee attacks can trigger the retaliation damage and that the damage is only applied once per hit.
+      </p>
+
     </div>
     <div class="ribbon_rectangle_h3">
       <h3> <a id="contents_npc" name="contents_npc"></a>Joinable <abbr title="Non-Player Character">NPC</abbr> Tweaks </h3>
