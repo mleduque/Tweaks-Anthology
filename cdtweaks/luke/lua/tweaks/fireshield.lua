@@ -21,7 +21,7 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 	--
 	for _, list in ipairs(effectList) do
 		EEex_Utility_IterateCPtrList(list, function(effect)
-			if effect.m_effectId == 401 and effect.m_dWFlags == 1 and effect.m_effectAmount == 1 and effect.m_special == stats["GT_FIRESHIELD_RETALIATION_DAMAGE"] then
+			if effect.m_effectId == 401 and effect.m_dWFlags == 1 and effect.m_effectAmount == 1 and effect.m_special == stats["GT_FAKE_CONTINGENCY"] then
 				table.insert(retaliation, effect.m_res:get())
 			end
 		end)
