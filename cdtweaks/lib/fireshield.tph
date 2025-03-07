@@ -1,6 +1,6 @@
 DEFINE_ACTION_FUNCTION "MORE_SENSIBLE_FIRESHIELD"
 BEGIN
-	LAF "ADD_EXTENDED_STAT" STR_VAR "identifier" = "GT_FIRESHIELD_RETALIATION_DAMAGE" END
+	LAF "ADD_EXTENDED_STAT" INT_VAR "max" = 5 STR_VAR "identifier" = "GT_FAKE_CONTINGENCY" END
 	//
 	WITH_SCOPE BEGIN
 		COPY_EXISTING_REGEXP "^.+\.\(itm\|spl\)$" "override"
@@ -60,7 +60,7 @@ BEGIN
 							WRITE_SHORT "%fx_off%" 401 // set extended stat
 							WRITE_LONG ("%fx_off%" + 0x4) 1 // p1
 							WRITE_LONG ("%fx_off%" + 0x8) 1 // mode (p2): set
-							WRITE_LONG ("%fx_off%" + 0x2C) IDS_OF_SYMBOL ("stats" "GT_FIRESHIELD_RETALIATION_DAMAGE")
+							WRITE_LONG ("%fx_off%" + 0x2C) IDS_OF_SYMBOL ("stats" "GT_FAKE_CONTINGENCY")
 							WRITE_ASCII ("%fx_off%" + 0x14) "%subspell%" #8
 							// blank the ``projectile`` field of the subspell (all those ``OneTarget_Range_07`` are no longer needed)
 							PATCH_WITH_SCOPE BEGIN
@@ -120,7 +120,7 @@ BEGIN
 							WRITE_SHORT "%fx_off%" 401 // set extended stat
 							WRITE_LONG ("%fx_off%" + 0x4) 1 // p1
 							WRITE_LONG ("%fx_off%" + 0x8) 1 // mode (p2): set
-							WRITE_LONG ("%fx_off%" + 0x2C) IDS_OF_SYMBOL ("stats" "GT_FIRESHIELD_RETALIATION_DAMAGE")
+							WRITE_LONG ("%fx_off%" + 0x2C) IDS_OF_SYMBOL ("stats" "GT_FAKE_CONTINGENCY")
 							WRITE_ASCII ("%fx_off%" + 0x14) "%subspell%" #8
 							// blank the ``projectile`` field of the subspell (all those ``OneTarget_Range_07`` are no longer needed)
 							PATCH_WITH_SCOPE BEGIN
