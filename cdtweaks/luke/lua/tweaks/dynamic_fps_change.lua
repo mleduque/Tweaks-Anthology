@@ -22,7 +22,14 @@ end)
 -- When in combat, lock FPS to 30. Otherwise, set to 60 --
 
 function cdtweaks_DynamicFPSChange()
-	if EEex_LuaAction_Object.m_pArea.m_nBattleSongCounter > 0 then
+	-- [Bubb] Each area has its own combat counter. You can check the global script runner's area in this way...
+	local globalScriptRunnerId = EngineGlobals.g_pBaldurChitin.m_pObjectGame.m_nAIIndex
+	local globalScriptRunner = EEex_GameObject_Get(globalScriptRunnerId)
+	local globalScriptRunnerArea = globalScriptRunner.m_pArea
+	--local globalScriptRunnerAreaResref = globalScriptRunnerArea and globalScriptRunnerArea.m_resref:get() or "nil"
+	--Infinity_DisplayString(string.format("Global script runner area resref: \"%s\"", globalScriptRunnerAreaResref))
+	--
+	if globalScriptRunnerArea.m_nBattleSongCounter > 0 then
 		if EEex_CChitin.TIMER_UPDATES_PER_SECOND ~= 30 then
 			EEex_CChitin.TIMER_UPDATES_PER_SECOND = 30
 		end
