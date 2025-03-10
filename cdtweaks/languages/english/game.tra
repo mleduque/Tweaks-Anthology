@@ -832,29 +832,31 @@ This ability allows a rogue to create low and mid level spell scrolls. The scrol
 @325001 = ~Actually, can we see the items you had to offer when we first arrived in Kuldahar?~
 @325002 = ~Can we have another look at the items you had to offer partway through our stay here?~
 
-@333050 = ~Disable Auto-haste~
-@333051 = ~Disable Auto-haste
+@333050 = ~Disable Out-of-combat Haste~
+@333051 = ~Disable Out-of-combat Haste
 
 This ability controls whether movement speed is increased for party members outside of combat. Click on the ability to turn it OFF.~
-@333052 = ~Disable Auto-haste
+@333052 = ~Disable Out-of-combat Haste
 
 This ability controls whether movement speed and casting speed are increased for party members outside of combat. Click on the ability to turn it OFF.~
-@333053 = ~Disable Auto-haste
+@333053 = ~Disable Out-of-combat Haste
 
 This ability controls whether casting speed is increased for party members outside of combat. Click on the ability to turn it OFF.~
-@333054 = ~Auto-haste~
-@333055 = ~Improved Alacrity~ // bg2 strref #63217
-@333060 = ~Enable Auto-haste~
-@333061 = ~Enable Auto-haste
+@333054 = ~Out-of-combat Haste~
+// @333055 = ~Improved Alacrity~ // bg2 strref #63217
+@333056 = ~Out-of-combat Movement Speed~
+@333057 = ~Out-of-combat Casting Speed~
+@333060 = ~Enable Out-of-combat Haste~
+@333061 = ~Enable Out-of-combat Haste
 
 This ability controls whether movement speed is increased for party members outside of combat. Click on the ability to turn it ON.~
-@333062 = ~Enable Auto-haste
+@333062 = ~Enable Out-of-combat Haste
 
 This ability controls whether movement speed and casting speed are increased for party members outside of combat. Click on the ability to turn it ON.~
-@333063 = ~Enable Auto-haste
+@333063 = ~Enable Out-of-combat Haste
 
 This ability controls whether casting speed is increased for party members outside of combat. Click on the ability to turn it ON.~
-@333070 = ~Auto-haste bonuses removed~
+@333070 = ~Out-of-combat Haste bonuses removed~
 
 @335100 = ~Interval-Save~
 @335101 = ~Interval save created~
