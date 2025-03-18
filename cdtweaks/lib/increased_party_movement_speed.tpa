@@ -60,20 +60,20 @@ BEGIN
     END
 
     ACTION_IF (slot_autohaste >= 0) BEGIN
-    
-      COPY_EXISTING ~statdesc.2da~ ~override~ 
+
+      COPY_EXISTING ~statdesc.2da~ ~override~
         PATCH_IF (movement_speed) BEGIN
           SET haste_icon = 38
           REPLACE_EVALUATE ~^\([0-9]+\)\([ %TAB%]+[0-9]+[ %TAB%]+[Bb][Oo][Oo][Tt]01[Dd]\)[ %TAB%]*~ BEGIN // if 'increased movement speed' icon exists, use it instead of haste
             SET haste_icon = MATCH1 // grab icon
           END ~%MATCH1%%MATCH2%~
-        END  
+        END
         PATCH_IF (casting_speed) BEGIN
           SET imp_alac = RESOLVE_STR_REF(@333055) // bgee/sod doesn't have a label for this 'improved alacrity' icon
           REPLACE_TEXTUALLY ~^159[ %TAB%]+-1~ ~159 %imp_alac%~
-        END  
-        BUT_ONLY   
-    
+        END
+        BUT_ONLY
+
       COPY ~cdtweaks/spl/a7_wlk1.spl~ ~override~
         SAY 0x08 @333054 // add generic name for when this is viewed with e^3x
         PATCH_IF (movement_speed) BEGIN

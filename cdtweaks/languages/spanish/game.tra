@@ -300,11 +300,11 @@ Colócalo en una ranura de objeto rápido para abrirlo.~
 @115001 = ~Conjurar animales
 (Conjuración/Convocación)
 Nivel: 6
-Esfera: Convocación 
+Esfera: Convocación
 Alcance: 54 metros
 Duración: 4 turnos
 Tiempo de lanzamiento: 9
-Área de efecto: Especial 
+Área de efecto: Especial
 Tirada de salvación: Ninguna
 Este hechizo permite al lanzador invocar y controlar dos hombres oso de 20 dados de golpe. Los osos responderán a todos los caprichos del lanzador mientras dure el hechizo. Los hombres oso son más lentos que los grandes hombres lobos, pero también son más resistentes. Los hombres oso son resistentes a los ataques elementales y mágicos y se regeneran rápidamente.~
 @115002 = ~Hombre oso mayor~
@@ -318,7 +318,7 @@ Ataques por ronda: 2
 Daño: 1D12
 Tipo de daño: Cortante
 Factor de velocidad: 3
-Talento marcial: Daga 
+Talento marcial: Daga
 Tipo de arma: A una mano
 ~
 @115005 = ~Esta garra simbólica representa el control definitivo de un druida cambiaformas sobre la licantropía. Mientras la empuña, el cambiaformas se convierte en un hombre lobo mayor. Cuando se quita la garra, el cambiaformas vuelve a su forma humana. Las garras de un hombre lobo mayor cuentan como armas +3.
@@ -329,7 +329,7 @@ Tirada de salvación base: 1/1/1/2/1
 Resistencias: 40% resistencia mágica, 50% resistencia elemental, inmunidad a armas no mágicas
 Regeneración: 3 puntos de golpe por segundo
 Ataques por ronda: 3
-GAC0 base: 6 
+GAC0 base: 6
 Daño: 2D8
 Tipo de daño: Cortante
 Factor de velocidad: 3
@@ -337,7 +337,7 @@ Talento marcial: Daga
 Tipo de arma: A una mano
 ~
 @115006 = ~Cambio de forma: Hombre lobo
-Fuerza: 19 
+Fuerza: 19
 Destreza: 16
 Constitución: 15
 Clase de armadura base: 1
@@ -741,7 +741,7 @@ Esta habilidad permite al ladrón crear hechizos. Los que puede crear son los si
 // you may need to check the EEs, as oBG2 doesn't mention dual-classing in #9550 or #32540
 @237002 = ~ y son la única raza que puede tener dos clases~ // from strref #9550
 @237003 = ~Pertenecer a dos clases es una habilidad que solo poseen los humanos. ~ // from strref #10811
-@237004 = ~ si es humano~ // BG tutorial monk dialogue monktu4 - 32540 in BGEE/SoD 
+@237004 = ~ si es humano~ // BG tutorial monk dialogue monktu4 - 32540 in BGEE/SoD
 
 // translators - the next three strings are used to replace game text, so they need to be copied from the game itself
 // get @244001 and @244002 from strref 9588 in bgee/bg2ee/iwdee
@@ -871,14 +871,14 @@ Esta habilidad controla si la velocidad de lanzamiento aumenta para los miembros
 
 @408001 = ~Cuando le preguntáis por su pasado, KHALID nerviosamente os comenta que ha nacido en la nación de Calimshan. No habla mucho de sus padres, pero os dáis cuenta que su padre comerciante no tenía mucho tiempo para él, dándole más atención a sus medio hermanos. Sin la aprobación de su padre, Khalid no pudo pagar las lecciones para ser aprendiz de mago, así que se unió a la milicia esperando ganar el dinero suficiente. No da muchos detalles de como conoció a Jaheira, pero su adoración hacia ella es obvia. Cuando le preguntáis como conoció a Gorion sólo os dice que han sido amigos, y que muchos lloran su pérdida.~
 
-// translators: 418001 is strref #10232 from bgee or bg2ee without the 'equipped abilities' block. 
+// translators: 418001 is strref #10232 from bgee or bg2ee without the 'equipped abilities' block.
 // This is not used on non-EE games since they don't mention equipping effects
 @418001 = ~Este es el legado de Edwin. Tiene la piedra de su familia incrustada.
 
 Peso: 1 lb~
-// translators: 418002 is strref #50818 in obg2 with the part about 
-// 'the ring may not be removed from nalia' deleted 
+// translators: 418002 is strref #50818 in obg2 with the part about
+// 'the ring may not be removed from nalia' deleted
 // in english, this is overridden in ee.tra
 @418002 = ~Sello de De'Arnise
 
-El padre de Nalia regaló este anillo a la muchacha en cuanto esta alcanzó la mayoría de edad. Al estar vinculado a la estirpe, es imposible arrebatárselo a su dueña, y sus poderes no pueden ser utilizados por nadie más.  El anillo otorga un bonificador +2 a todas las tiradas de salvación, un bonificador +2 a la clase de armadura y un 50% de resistencia al fuego.~
+El padre de Nalia regaló este anillo a la muchacha en cuanto esta alcanzó la mayoría de edad. Al estar vinculado a la estirpe, es imposible arrebatárselo a su dueña, y sus poderes no pueden ser utilizados por nadie más. El anillo otorga un bonificador +2 a todas las tiradas de salvación, un bonificador +2 a la clase de armadura y un 50% de resistencia al fuego.~
