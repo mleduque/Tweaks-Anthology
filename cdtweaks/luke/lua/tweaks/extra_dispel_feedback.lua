@@ -9,7 +9,51 @@
 -- yes, all of this is *ugly* (and relies upon subspells being globally unique), but unfortunately there isn't currently a reliable way to track subspells... --
 -- the important thing is that it *should* take (very) little processing time (less than 200 ms on an unmodded iwdee install...) --
 
-local function GT_ExtraDispelFeedback_Subspell(parentFile, pHeader, ext, srcResRef)
+-- EFF V2.0 --
+
+function GT_ExtraDispelFeedback_Subspell_EFF(parentFile, CGameEffectBase)
+	-- initialize
+	local subSplHeader
+	local subSplResRef
+	--
+	if CGameEffectBase.m_effectId == 146 or CGameEffectBase.m_effectId == 148 or CGameEffectBase.m_effectId == 326 then -- Cast spell, cast spell at point, apply effects list
+		subSplResRef = string.upper(CGameEffectBase.m_res:get())
+		subSplHeader = EEex_Resource_Demand(subSplResRef, "spl")
+	elseif CGameEffectBase.m_effectId == 333 or (CGameEffectBase.m_effectId == 78 and (CGameEffectBase.m_dWFlags == 11 or CGameEffectBase.m_dWFlags == 12)) then -- Static charge / Disease (mold touch)
+		subSplResRef = string.upper(CGameEffectBase.m_res:get())
+		--
+		if subSplResRef == "" then
+			if string.len(CGameEffectBase.m_sourceRes:get()) <= 7 then
+				subSplResRef = CGameEffectBase.m_sourceRes:get() .. "B"
+			else
+				subSplResRef = CGameEffectBase.m_sourceRes:get()
+			end
+		end
+		--
+		subSplHeader = EEex_Resource_Demand(subSplResRef, "spl")
+	elseif CGameEffectBase.m_effectId == 177 or CGameEffectBase.m_effectId == 283 then -- Use EFF file
+		GT_ExtraDispelFeedback_Subspell_EFF(parentFile, EEex_Resource_Demand(CGameEffectBase.m_res:get(), "eff")) -- recursive call
+	end
+	--
+	if subSplHeader and subSplResRef then -- sanity check
+		if Infinity_FetchString(subSplHeader.genericName) == "" then
+			if not GT_ExtraDispelFeedback_LookUpTable[parentFile] or not GT_LuaTool_ArrayContains(GT_ExtraDispelFeedback_LookUpTable[parentFile], subSplResRef) then
+				-- initialize
+				if not GT_ExtraDispelFeedback_LookUpTable[parentFile] then
+					GT_ExtraDispelFeedback_LookUpTable[parentFile] = {}
+				end
+				--
+				table.insert(GT_ExtraDispelFeedback_LookUpTable[parentFile], subSplResRef)
+				-- check for (sub)subspells
+				GT_ExtraDispelFeedback_Subspell(parentFile, subSplHeader, "spl", subSplResRef)
+			end
+		end
+	end
+end
+
+-- SPL / ITM effects --
+
+function GT_ExtraDispelFeedback_Subspell(parentFile, pHeader, ext, srcResRef)
 	local currentAbilityAddress = EEex_UDToPtr(pHeader) + pHeader.abilityOffset
 	--
 	for i = 1, pHeader.abilityCount do
@@ -19,15 +63,15 @@ local function GT_ExtraDispelFeedback_Subspell(parentFile, pHeader, ext, srcResR
 		--
 		for j = 1, pAbility.effectCount do
 			-- initialize
-			local pHeaderSubSpl
+			local subSplHeader
 			local subSplResRef
 			--
 			local pEffect = EEex_PtrToUD(currentEffectAddress, "Item_effect_st")
 			--
 			if pEffect.effectID == 146 or pEffect.effectID == 148 or pEffect.effectID == 326 then -- Cast spell, cast spell at point, apply effects list
 				subSplResRef = string.upper(pEffect.res:get())
-				pHeaderSubSpl = EEex_Resource_Demand(subSplResRef, "spl")
-			elseif pEffect.effectID == 333 then -- Static charge
+				subSplHeader = EEex_Resource_Demand(subSplResRef, "spl")
+			elseif pEffect.effectID == 333 or (pEffect.effectID == 78 and (pEffect.dwFlags == 11 or pEffect.dwFlags == 12)) then -- Static charge / Disease (mold touch)
 				subSplResRef = string.upper(pEffect.res:get())
 				--
 				if subSplResRef == "" then
@@ -38,11 +82,13 @@ local function GT_ExtraDispelFeedback_Subspell(parentFile, pHeader, ext, srcResR
 					end
 				end
 				--
-				pHeaderSubSpl = EEex_Resource_Demand(subSplResRef, "spl")
+				subSplHeader = EEex_Resource_Demand(subSplResRef, "spl")
+			elseif pEffect.effectID == 177 or pEffect.effectID == 283 then -- Use EFF file
+				GT_ExtraDispelFeedback_Subspell_EFF(parentFile, EEex_Resource_Demand(pEffect.res:get(), "eff"))
 			end
 			--
-			if pHeaderSubSpl and subSplResRef then -- sanity check
-				if Infinity_FetchString(pHeaderSubSpl.genericName) == "" then
+			if subSplHeader and subSplResRef then -- sanity check
+				if Infinity_FetchString(subSplHeader.genericName) == "" then
 					if not GT_ExtraDispelFeedback_LookUpTable[parentFile] or not GT_LuaTool_ArrayContains(GT_ExtraDispelFeedback_LookUpTable[parentFile], subSplResRef) then
 						-- initialize
 						if not GT_ExtraDispelFeedback_LookUpTable[parentFile] then
@@ -51,7 +97,7 @@ local function GT_ExtraDispelFeedback_Subspell(parentFile, pHeader, ext, srcResR
 						--
 						table.insert(GT_ExtraDispelFeedback_LookUpTable[parentFile], subSplResRef)
 						-- check for (sub)subspells
-						GT_ExtraDispelFeedback_Subspell(parentFile, pHeaderSubSpl, "spl", subSplResRef) -- recursive call
+						GT_ExtraDispelFeedback_Subspell(parentFile, subSplHeader, "spl", subSplResRef) -- recursive call
 					end
 				end
 			end
@@ -63,7 +109,7 @@ local function GT_ExtraDispelFeedback_Subspell(parentFile, pHeader, ext, srcResR
 	end
 end
 
--- run this as soon as the game launches --
+-- run me as soon as the game launches --
 
 EEex_GameState_AddInitializedListener(function()
 	--print("***START***" .. " -> " .. os.clock()) -- for testing purposes only (requires LuaJIT)

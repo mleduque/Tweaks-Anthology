@@ -22,8 +22,8 @@ used:
 
 platform:
   obg2, specifically SoA--though it should be harmless on other bg2-based engines
- 
-version history: 
+
+version history:
   unknown
 
 */
@@ -58,7 +58,7 @@ APPEND ~ACTION.IDS~ ~337 ReallyForceSpellPointRES(S:RES*,P:Target*)~
 COPY_EXISTING ~action.ids~ ~override~
   REPLACE_TEXTUALLY ~^106 Shout(.*$~ ~106 Shout(I:ID*SHOUTIDS)~
   BUT_ONLY_IF_IT_CHANGES
-  
+
 // additional ToB triggers for SoA
 APPEND ~TRIGGER.IDS~ ~0x00A1 SpellCastOnMeRES(S:Spell*,O:Caster*)~
               UNLESS ~0x00A1 SpellCastOnMeRES(S:Spell\*,O:Caster\*)~
@@ -78,7 +78,7 @@ COPY_EXISTING ~trigger.ids~ ~override~
   BUT_ONLY_IF_IT_CHANGES
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~shoutids.ids~ THEN BEGIN
-  
+
 <<<<<<<<./inline/shoutids.ids
 90
 123 HEALME

@@ -19,7 +19,7 @@ ar4005   DE5Tres  Yuan-tiChampion1         1
 ar8002   UD6Tres  Kelly                    1
 ar3001   TG5Tres  Lysan                    0
 ar9100   EXTRES3  Alpheus                  1~
-  
+
 END
 
 ACTION_IF game_is_iwdee THEN BEGIN // iwdee uses slightly different placement for TG4/5Tres from ub's restored random drops
@@ -36,7 +36,7 @@ END
 ACTION_IF tfg_bows THEN BEGIN // add extra chest in TotFG if we're not in the wandering merchant option
 
   APPEND_OUTER ~weidu_external/cdtweaks/random/random.2da~ ~ar3601   TFGTres  Container11              0~
-  
+
 END
 
 // first, a couple of areas have random drops in non-uniquely named containers
