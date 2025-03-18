@@ -663,6 +663,8 @@ Usa opzioni di Baldur.lua:           a7_interval_ini
 
 @344000 = "Visualizza a schermo gli effetti magici che vengono dissolti [Luke (EEex)]"
 
+@345000 = "Rendi più accurata la meccanica degli incantesimi del tipo Scudo di Fuoco [Luke (EEex)]"
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
