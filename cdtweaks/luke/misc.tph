@@ -384,9 +384,11 @@ BEGIN
 END
 
 /*
-=====================================================================================================
-**APPEND_LUA_FUNCTION**
-=====================================================================================================
++----------------------------------------------------------------------------------------+
+| APPEND_LUA_FUNCTION                                                                    |
++----------------------------------------------------------------------------------------+
+| Appends the specified lua chunk to a new or existing lua file (if not already present) |
++----------------------------------------------------------------------------------------+
 */
 
 DEFINE_DIMORPHIC_FUNCTION "APPEND_LUA_FUNCTION"
@@ -397,12 +399,16 @@ STR_VAR
 BEGIN
 	<<<<<<<< .../cdtweaks-inlined/empty
 	>>>>>>>>
+	// sanity check
+	ACTION_IF (STRING_LENGTH "%destRes%" > 8) OR ("%destRes%" STRING_CONTAINS_REGEXP "^m_") BEGIN
+		FAIL "APPEND_LUA_FUNCTION: invalid ``destRes`` parameter (%destRes%)"
+	END
 	//
 	ACTION_IF !(FILE_EXISTS_IN_GAME "%destRes%.lua") BEGIN
 		COPY ".../cdtweaks-inlined/empty" "override\%destRes%.lua"
 			DELETE_BYTES 0x0 BUFFER_LENGTH
 			INSERT_BYTES 0x0 STRING_LENGTH "-- %description% --%WNL%%WNL%"
-			WRITE_ASCII 0x0 "-- %description% --%WNL%%WNL%"
+			WRITE_ASCII 0x0 "-- ***%description%*** --%WNL%%WNL%"
 		BUT_ONLY_IF_IT_CHANGES
 	END
 	//

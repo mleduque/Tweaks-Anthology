@@ -11,3 +11,5 @@ Se un attacco viene parato con successo (tiro-salvezza contro Soffio), esso non 
 @4 = "Modalità Parata (Successo)"
 
 @5 = "Controattacco"
+
+@100 = "Arma Inefficace"
