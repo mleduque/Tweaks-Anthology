@@ -1327,8 +1327,18 @@
           <li>If one creature with a fireshield up hits another, damage bounces back and forth every tick until either one of the creatures is dead or they're out of range of each other.</li>
           <li>Both ranged attacks (should you ever use a ranged weapon in close combat) and poison may trigger the retaliation damage.</li>
         </ol>
-        This component adds a workaround to prevent these issues. In particular, it makes sure only true melee attacks can trigger the retaliation damage and that the damage is only applied once per hit.
+       <p>This component adds a workaround to prevent these issues. In particular, it makes sure only true melee attacks can trigger the retaliation damage and that the damage is only applied once per hit.</p>
+
+
+      <p> <strong>More Sensible Blade Barrier</strong><br />
+        <em><abbr title="Baldur's Gate II">BGEE, BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
+      <p>
+        Due to the way the game engine works, Blade Barrier and similar spells interact very oddly with time stop effects.<br>
+        Freeze two characters in melee range, one with a Blade Barrier (or Globe of Blades, or Circle of Bones, or any mod spell that uses the same mechanics), and the spell triggers several times to no immediate effect... until stopped time wears off. Then all of those suspended triggers hit at once, for a potential massive burst of damage (this is especially noticeable if the characters are hasted).
       </p>
+      <p>
+        This component adds a workaround to prevent the aforementioned issue. In particular, it makes sure that such spells are properly "paused" during Time Stop and are triggered only once per round (regardless of Haste/Slow).
+    </p>
 
     </div>
     <div class="ribbon_rectangle_h3">
