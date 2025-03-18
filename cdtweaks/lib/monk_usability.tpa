@@ -16,8 +16,6 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 
 ACTION_IF ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~10~) OR
            (monk_staves  = 1)) THEN BEGIN // skip only if 'no helmet animations' installed AND we're only enabling helmets
-           
-  PRINT ~check: staves is %monk_staves%~           
 
   // helmets don't work on monk animation, so replace with cleric animation
   ACTION_CLEAR_ARRAY cd_new_anims
@@ -31,14 +29,12 @@ ACTION_IF ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~10~) OR
     APPEND ~animate.ids~ ~0x%anims_1% %entry%~ UNLESS ~^0x%anims_1%~
 
     ACTION_IF enhanced_edition AND !monk_staves BEGIN // can only get away with ini updates for EEs AND helmets-only
-      PRINT ~ini updates~   
 
       COPY_EXISTING ~%anims_1%.ini~ ~override~ // remove helmet animations from monk animations
         REPLACE_TEXTUALLY ~equip_helmet[ %TAB%]*=[ %TAB%]*1~ ~equip_helmet=0~
         BUT_ONLY
 
     END ELSE BEGIN
-      PRINT ~animation updates~   
 
       ACTION_IF enhanced_edition BEGIN
       
@@ -55,5 +51,45 @@ ACTION_IF ((!MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~10~) OR
     END
 
   END
+
+END
+
+ACTION_IF monk_staves BEGIN
+
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_monk_staves BEGIN MONK => 0 END
+
+  COPY_EXISTING ~kitlist.2da~ ~override~
+    COUNT_2DA_ROWS 9 rows
+    FOR (row = 0 ; row < rows ; ++row) BEGIN
+      READ_2DA_ENTRY row 8 9 class
+      PATCH_IF (IS_AN_INT class) BEGIN // in case of junk rows being caught
+        PATCH_IF (class = 20) BEGIN // class = monk
+          READ_2DA_ENTRY row 1 9 kittext
+          DEFINE_ASSOCIATIVE_ARRAY cd_monk_staves BEGIN "%kittext%" => 0 END
+        END
+      END
+    END
+    BUT_ONLY
+
+  COPY_EXISTING ~weapprof.2da~  ~override~
+    COUNT_2DA_COLS col_count
+    SET col_check = col_count - 1
+    COUNT_2DA_COLS col_count
+    PATCH_PHP_EACH cd_monk_staves AS match_name => foo BEGIN
+      FOR (column = 50; column < col_check; ++column) BEGIN
+        READ_2DA_ENTRY 0 column col_check name
+        PATCH_IF ("%name%" STRING_COMPARE_CASE "%match_name%" = 0) BEGIN
+          SET column += 1 // row with names has an empty entry for the first column
+          DEFINE_ASSOCIATIVE_ARRAY cd_monk_staves_work BEGIN ~%column%~ => ~%column%~ END
+          SET column = col_count // kill loop
+        END
+      END
+    END
+    PATCH_PHP_EACH cd_monk_staves_work AS column => foo BEGIN
+      READ_2DA_ENTRY 17 column col_count club_stars
+      SET_2DA_ENTRY  22 column col_count club_stars
+    END
+    PRETTY_PRINT_2DA
+    BUT_ONLY
 
 END
