@@ -49,7 +49,8 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
 
 ACTION_IF game_is_bg2ee OR game_is_eet BEGIN // to try and prevent staff of the magi backstab abuse
 
-  COPY_EXISTING ~staf11.itm~ ~override~
+  COPY_EXISTING ~cdgorstf.itm~ ~override~ // staff of the gorgon from SP Collection
+                ~staf11.itm~   ~override~
     READ_LONG  0x6a fx_off
     READ_SHORT 0x70 fx_num
     FOR (index = 0 ; index < fx_num ; ++index) BEGIN
@@ -59,6 +60,6 @@ ACTION_IF game_is_bg2ee OR game_is_eet BEGIN // to try and prevent staff of the 
         SET index = fx_num // kill loop
       END
     END
-    BUT_ONLY
+    BUT_ONLY IF_EXISTS
 
 END
