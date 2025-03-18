@@ -79,6 +79,10 @@ OUTER_SET party_movement_speed_value = 200
 // Set this value to 1 to enable casting spells at increased speed. Default: 0
 OUTER_SET party_casting_speed_enabled = 0
 
+// Set this value to 0 to suppress portrait icons when increased movement or casting speed is active.
+// Default: 1
+OUTER_SET party_movement_speed_display_icons = 1
+
 
 
 
