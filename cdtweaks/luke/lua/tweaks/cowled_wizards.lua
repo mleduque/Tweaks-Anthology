@@ -4,6 +4,16 @@
 +----------------------------------------+
 --]]
 
+local cdtweaks_MoreSensibleCowledWizards = {
+	["AR0020"] = true, -- City Gates
+	["AR0300"] = true, -- The Docks
+	["AR0400"] = true, -- Slums
+	["AR0500"] = true, -- Bridge District
+	["AR0700"] = true, -- Waukeen's Promenade
+	["AR0900"] = true, -- Temple District
+	["AR1000"] = true, -- Government District
+}
+
 -- set a GLOBAL var when a PC casts a wizard spell and is in Athkatla --
 
 GTCOWENF = {
@@ -35,7 +45,7 @@ GTCOWENF = {
 		--
 		local originatingSprite = context["originatingSprite"] -- CGameSprite
 		--
-		local areaCheck = EEex_Trigger_ParseConditionalString('OR(7) \n AreaCheck("AR0020") AreaCheck("AR0300") AreaCheck("AR0400") AreaCheck("AR0500") AreaCheck("AR0700") AreaCheck("AR0900") AreaCheck("AR1000")')
+		--local areaCheck = EEex_Trigger_ParseConditionalString('OR(7) \n AreaCheck("AR0020") AreaCheck("AR0300") AreaCheck("AR0400") AreaCheck("AR0500") AreaCheck("AR0700") AreaCheck("AR0900") AreaCheck("AR1000")')
 		--
 		local spellResRef = originatingSprite.m_curAction.m_string1.m_pchData:get()
 		if spellResRef == "" then
@@ -44,11 +54,9 @@ GTCOWENF = {
 		--
 		local spellHeader = EEex_Resource_Demand(spellResRef, "SPL")
 		--
-		if spellHeader.itemType == 1 and areaCheck:evalConditionalAsAIBase(originatingSprite) then -- if wizard spell and in Athkatla ...
+		if spellHeader.itemType == 1 and cdtweaks_MoreSensibleCowledWizards[originatingSprite.m_pArea.m_resref:get()] then -- if wizard spell and in Athkatla ...
 			EEex_GameState_SetGlobalInt("gt_CowledWizardsTriggered", 1)
 		end
-		--
-		areaCheck:free()
 	end,
 
 	["effectMutator"] = function(context)

@@ -901,7 +901,7 @@
       <p>Note that this makes  the Staff of the Magi (SotM) available for backstabbing. To prevent  abusing the SotM's invisibility-on-equip for multiple backstabs, one  additional change is made to the item: a successful melee attack  (including backstabbing) will prevent the wielder from re-entering  invisibility until a round has passed. </p>
       <p> <strong>Make Certain Creatures Immune to Backstab/Sneak Attack [Luke]</strong><br />
         <em><abbr title="Baldur's Gate II">BGEE, BG2</abbr>(<abbr title="Enhanced Edition">EE</abbr>), <abbr title="Baldur's Gate Trilogy">BGT</abbr>, <abbr title="Enhanced Edition Trilogy">EET</abbr>, Tutu, <abbr title="Icewind Dale: Enhanced Edition">IWDEE</abbr><abbrev>, oIWD (requires HoW or TotLM), IWD2</abbrev></em></p>
-      <p> Technically speaking, a rogue can backstab / sneak attack only <em>living creatures with discernible anatomies</em>. 
+      <p> Technically speaking, a rogue can backstab / sneak attack only <em>living creatures with discernible anatomies</em>.
         As a result, this component makes sure all those creatures that lack vital areas to attack are immune to backstabs / sneak attacks. This includes the following creatures: </p>
       <ul>
         <li><em>Undead</em></li>
@@ -1319,6 +1319,17 @@
         <em><abbr title="Baldur's Gate II">BGEE, BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
       <p>This component will clearly display in the combat log what gets dispelled (something like "Magical effect(s) removed: Bless").</p>
 
+      <p> <strong>More Sensible Fireshield</strong><br />
+        <em><abbr title="Baldur's Gate II">BGEE, BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
+      <p>
+        Due to the way the game engine works, there are a couple of issues with Fireshield-like spells (f.i. Fireshield Blue/Red, Keldorn's sword, &c.).
+        <ol>
+          <li>If one creature with a fireshield up hits another, damage bounces back and forth every tick until either one of the creatures is dead or they're out of range of each other.</li>
+          <li>Both ranged attacks (should you ever use a ranged weapon in close combat) and poison may trigger the retaliation damage.</li>
+        </ol>
+       <p>This component adds a workaround to prevent these issues. In particular, it makes sure only true melee attacks can trigger the retaliation damage and that the damage is only applied once per hit.</p>
+
+
       <p> <strong>More Sensible Blade Barrier</strong><br />
         <em><abbr title="Baldur's Gate II">BGEE, BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
       <p>
@@ -1327,7 +1338,7 @@
       </p>
       <p>
         This component adds a workaround to prevent the aforementioned issue. In particular, it makes sure that such spells are properly "paused" during Time Stop and are triggered only once per round (regardless of Haste/Slow).
-      </p>
+    </p>
 
     </div>
     <div class="ribbon_rectangle_h3">
@@ -1488,7 +1499,7 @@
       </ul>
       <p> <strong>Spellcaster Skill/Counterspell Class Talent [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p> This component aims at implementing the NWN feat Spellcraft/Counterspell. 
+      <p> This component aims at implementing the NWN feat Spellcraft/Counterspell.
         Spellcraft is used to identify spells and to perform counterspells. A successful check means that your character has identified a spell being cast by an opponent </p>
       <p> Entering counterspell mode allows a caster to prevent an enemy caster from casting spells. This is done by first identifying the spell being cast (via Spellcraft), then sacrificing a readied spell slot containing a counter to the spell being cast. </p>
       Notes:
@@ -1601,12 +1612,12 @@
       <p>This passive feat grants Halflings a +1 THAC0 bonus with throwing weapons (i.e. throwing daggers, throwing axes, throwing hammers, darts).</p>
       <p> <strong>Cleave Class Feat for Fighters [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p> This component aims at implementing the NWN feat Cleave. 
+      <p> This component aims at implementing the NWN feat Cleave.
         If the character kills an opponent, he gets a free attack against any opponent who is within melee weapon range.</p>
       <p> Use is automatic, but only available to Fighters.</p>
       <p> <strong>Sneak Attack Class Feat for Blackguards [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p> This component adds the passive feat Sneak Attack to Blackguards. 
+      <p> This component adds the passive feat Sneak Attack to Blackguards.
         Whenever the character makes a successful attack against an opponent who is incapacitated, cannot see them, or who is in combat with someone else, the character's blow delivers extra damage as if it was a STALKER of the same level (see <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/sneakatt.htm">sneakatt.2da</a>).</p>
       <p> Notes: </p>
       <ul>
@@ -1616,15 +1627,15 @@
       </ul>
       <p> <strong>Fearless Racial Feat for Halflings [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p> This component adds the passive racial feat Fearless to halflings. 
+      <p> This component adds the passive racial feat Fearless to halflings.
         This feat grants a +2 bonus on saving throws against fear spells and effects. </p>
       <p> <strong>Poison Save Class Feat for Assassins [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p> This component adds the class feat Poison Save to Assassins. 
+      <p> This component adds the class feat Poison Save to Assassins.
         This passive feat grants a +2 bonus on saving throws against poison spells and effects. </p>
       <p> <strong>Planar Turning Class Feat for Clerics/Paladins [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p> This component adds the class feat Planar Turning to Paladins and Clerics. 
+      <p> This component adds the class feat Planar Turning to Paladins and Clerics.
         This feat allows outsiders (solars, planetars, elementals, imps, mephits, demons, devils, salamanders, genies and the like) to be turned like undead.</p>
       <p> As a result, when the Turn Undead ability is activated, any extraplanar being in visual range of the priest are turned, fleeing in terror, if the priest's level is high enough. Especially high-level priests destroy these creatures instead. Evil priests gain control of these extraplanar beings instead of destroying them. </p>
       <p> <strong>Circle Kick Class Feat for Monks [Luke]</strong><br />
@@ -1681,7 +1692,7 @@
       </ul>
       <p><strong>Blind Fight Innate Feat for Berserkers [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p> This component aims at giving Berserkers the Blind Fight feat.  This feat grants the character the ability to fight well, even if blinded. As a result, whenever the character gets blinded, it does not suffer from the 4 THAC0/AC penalty. </p>
+      <p> This component aims at giving Berserkers the Blind Fight feat. This feat grants the character the ability to fight well, even if blinded. As a result, whenever the character gets blinded, it does not suffer from the 4 THAC0/AC penalty. </p>
       <ul>
         <li>Use: automatic.</li>
         <li> Unmitigated damage means that damage resistance is ignored.
@@ -1694,7 +1705,7 @@
       </ul>
       <p> <strong>Dirty Fighting Class Feat for Chaotic-Aligned Rogues [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p> This component aims at implementing the NWN feat Dirty Fighting.  The character knows brutal and effective fighting tactics. During the first attack of each round, the character can elect to perform a dirty fighting move that will deal 5% of the target's maximum health as unmitigated damage.</p>
+      <p> This component aims at implementing the NWN feat Dirty Fighting. The character knows brutal and effective fighting tactics. During the first attack of each round, the character can elect to perform a dirty fighting move that will deal 5% of the target's maximum health as unmitigated damage.</p>
       <p> <strong>Overwhelming/Devastating Critical Class Feat for Trueclass Fighters [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
       <p> This component aims at giving Trueclass Fighters the passive feats Overwhelming/Devastating Critical. </p>
@@ -1784,7 +1795,7 @@
       </table>
       <p> <strong>Self Concealment Class Feat for Monks [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p> This component aims at giving Monks the passive feat Self Concealment.  Concealment is a defensive trait that causes attacks to miss a certain percent of the time.
+      <p> This component aims at giving Monks the passive feat Self Concealment. Concealment is a defensive trait that causes attacks to miss a certain percent of the time.
         So someone attacking a target with 25% concealment will miss a quarter of the time due to the concealment.
         This is applied independently of the attack roll; both the attack roll and the concealment roll are made for each attack, and only if the attacker succeeds at both the attack is successful.
         Concealment rolls are not themselves displayed on the screen, but if the roll fails, the attacker is told the attack failed because of concealment and is told the amount of concealment. </p>
@@ -1877,7 +1888,101 @@
         <li>This feat has no effect on creatures whose Magic Resistance is 100+.</li>
         <li>The bonus is capped at 30.</li>
       </ul>
-    
+      <p> <strong>Smite Evil / Good class feat for Paladins / Blackguards [Luke]</strong><br />
+      <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em><em></em></p>
+      <p>
+        NWN-style Smite Evil / Good class feat.
+        <ul>
+          <li>A paladin may attempt to smite an evil aligned enemy with one special melee attack. The paladin adds his charisma bonus to the attack roll and adds 1 extra point of damage per class level.</li>
+          <li>A blackguard may attempt to smite a good aligned enemy with one special melee attack. The blackguard adds his charisma bonus to the attack roll and adds 1 extra point of damage per class level.</li>
+        </ul>
+      </p>
+      Notes:
+      <ul>
+        <li>Use: selected (available from level 1, +1 use per day per 5 levels).</li>
+        <li>You cannot smite with your fists. The same holds for ranged weapons and magically created weapons.</li>
+        <li>In case of dual-wielding, the character will always smite with the main hand weapon.</li>
+        <li>On-hit effects of the weapon (if any) apply as normal.</li>
+        <li>
+          Here is how the thac0 bonus scales with charisma:
+          <table>
+            <tbody>
+              <tr>
+                <th> Charisma </th>
+                <th> Modifier </th>
+              </tr>
+              <tr>
+                <td> 0 </td>
+                <td> -20 </td>
+              </tr>
+              <tr>
+                <td> 1 </td>
+                <td> -6 </td>
+              </tr>
+              <tr>
+                <td> 2 </td>
+                <td> -4 </td>
+              </tr>
+              <tr>
+                <td> 3 </td>
+                <td> -3 </td>
+              </tr>
+              <tr>
+                <td> 4 </td>
+                <td> -2 </td>
+              </tr>
+              <tr>
+                <td> 5 </td>
+                <td> -1 </td>
+              </tr>
+              <tr>
+                <td> 6 to 15 </td>
+                <td> 0 </td>
+              </tr>
+              <tr>
+                <td> 16 </td>
+                <td> +1 </td>
+              </tr>
+              <tr>
+                <td> 17 </td>
+                <td> +2 </td>
+              </tr>
+              <tr>
+                <td> 18 </td>
+                <td> +2 </td>
+              </tr>
+              <tr>
+                <td> 19 </td>
+                <td> +3 </td>
+              </tr>
+              <tr>
+                <td> 20 </td>
+                <td> +3 </td>
+              </tr>
+              <tr>
+                <td> 21 </td>
+                <td> +4 </td>
+              </tr>
+              <tr>
+                <td> 22 </td>
+                <td> +4 </td>
+              </tr>
+              <tr>
+                <td> 23 </td>
+                <td> +4 </td>
+              </tr>
+              <tr>
+                <td> 24 </td>
+                <td> +5 </td>
+              </tr>
+              <tr>
+                <td> 25 </td>
+                <td> +5 </td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
     </div>
     <div class="ribbon_rectangle_h2"> <a id="Contact" name="Contact"></a>
       <h2> Contact Information </h2>

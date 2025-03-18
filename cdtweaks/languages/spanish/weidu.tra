@@ -25,7 +25,7 @@
 
 @16 = ~La funcionalidad de este componente ya esta incluida
          o sustituida por uno de tus mods ya instalados.~
-         
+
 @18 = ~Este componente esta desactualizado.~
 
 @21 = ~Requiere el componente 'Cambiar el Cap de Puntos de Experiencia: Quita el tope de nivel'.~
@@ -178,7 +178,7 @@ Los mensajes de desinstalacion anteriores son normales y esperados.
 
 @110000 = ~Descubrir el mapa de las ciudades cuando se entre a un area~
 
-@110100 = ~No revelar el mapa de la ciudad al entrar en un area~ 
+@110100 = ~No revelar el mapa de la ciudad al entrar en un area~
 
 @111000 = ~Agregar notas al mapa~
 
@@ -234,7 +234,7 @@ Los mensajes de desinstalacion anteriores son normales y esperados.
 
 @125500 = ~Mover PNJs a ubicaciones convenientes: Mover Tiax a Beregost~
 
-@125600 = ~Mover PNJs a ubicaciones convenientes: Mover Viconia a camino al sur de Beregost~ 
+@125600 = ~Mover PNJs a ubicaciones convenientes: Mover Viconia a camino al sur de Beregost~
 
 @126000 = ~Ajuste de reputacion con bardos~
 
@@ -255,7 +255,7 @@ Los mensajes de desinstalacion anteriores son normales y esperados.
 
 @134000 = ~Hacer que la esfera planar fortificada este disponible para todas las clases~
 
-@134100 = ~Hacer que la fortaleza de'Arnise este disponible para todas las clases~ 
+@134100 = ~Hacer que la fortaleza de'Arnise este disponible para todas las clases~
 
 @134200 = ~Hacer que las fortalezas del Templo esten disponibles para todas las clases~
 
@@ -445,7 +445,7 @@ Los mensajes de desinstalacion anteriores son normales y esperados.
 // @257000 = ~BGT: Additional Experience Cap While in BG~
 // @257100 = ~BGT: Additional Experience Cap While in SoA~
 
-@258000 = ~Alterar la tabla de hechizos divinos basada en la sabiduria~ 
+@258000 = ~Alterar la tabla de hechizos divinos basada en la sabiduria~
 @258001 = ~Usar la tabla PnP/PsT~
 @258100 = ~Usar la tabla BG/BG2/IWD~
 

@@ -165,8 +165,8 @@ EEex_Sprite_AddQuickListsCheckedListener(function(sprite, resref, changeAmount)
 		return
 	end
 
-	-- nuke current action
-	curAction.m_actionID = 0
+	-- recast as ``ForceSpell()`` (so as to prevent spell disruption)
+	curAction.m_actionID = 113
 
 	local spellHeader = EEex_Resource_Demand(resref, "SPL")
 	local spellLevelMemListArray = sprite.m_memorizedSpellsInnate
@@ -194,14 +194,6 @@ EEex_Sprite_AddQuickListsCheckedListener(function(sprite, resref, changeAmount)
 		spriteAux[resToAux[resref]] = curAction.m_acteeID.m_Instance
 		-- initialize the attack frame counter
 		sprite.m_attackFrame = 0
-		-- recast the ability as "ForceSpell()"
-		local targetSprite = EEex_GameObject_Get(curAction.m_acteeID.m_Instance)
-		targetSprite:applyEffect({
-			["effectID"] = 146, -- Cast spell
-			["res"] = resref,
-			["sourceID"] = sprite.m_id,
-			["sourceTarget"] = targetSprite.m_id,
-		})
 	else
 		sprite:applyEffect({
 			["effectID"] = 139, -- Display string
@@ -349,8 +341,10 @@ EEex_Action_AddSpriteStartedActionListener(function(sprite, action)
 	--
 	if sprite:getLocalInt("gtArcherCalledShot") == 1 then
 		if not (action.m_actionID == 113 and resToAux[action.m_string1.m_pchData:get()]) then
-			if spriteAux[resToAux[action.m_string1.m_pchData:get()]] ~= nil then
-				spriteAux[resToAux[action.m_string1.m_pchData:get()]] = nil
+			for _, aux in pairs(resToAux) do
+				if spriteAux[aux] ~= nil then
+					spriteAux[aux] = nil
+				end
 			end
 		end
 	end
@@ -360,7 +354,7 @@ end)
 
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- Sanity check
-	if not EEex_GameObject_IsSprite(sprite) then
+	if not EEex_GameObject_IsSprite(sprite) or Infinity_GetCurrentScreenName() == 'CHARGEN' then
 		return
 	end
 	-- internal function that grants the ability
