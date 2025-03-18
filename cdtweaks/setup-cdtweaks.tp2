@@ -5,32 +5,32 @@ AUTO_EVAL_STRINGS
 ALWAYS
 
   ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @27 END // DLC Merger check
-  
+
   ACTION_IF !COMPONENT_NUMBER BEGIN
-  
+
     INCLUDE ~cdtweaks/lib/comp_0.tpa~
-  
+
   END ELSE BEGIN
 
     ACTION_IF !VARIABLE_IS_SET cd_tweaks_batch_install BEGIN // if we're not in batch mode, set mode = 0 (easier than !var_is_set checks)
       OUTER_SET cd_tweaks_batch_install = 0
     END
-    
+
     ACTION_IF !VARIABLE_IS_SET cd_tweaks_always THEN BEGIN // check to make this happen only once per install
-    
+
       INCLUDE ~cdtweaks/lib/always_batch.tpa~ // defines install macro
       OUTER_SET cd_tweaks_always = 1
-      
+
       ACTION_IF !cd_tweaks_batch_install THEN BEGIN // don't bother setting vars or converting tra files in batch mode
         INCLUDE ~cdtweaks/lib/always.tpa~
       END
-      
-    END  
-    
+
+    END
+
     LAM cd_tweaks_install
-    
-  END  
-  
+
+  END
+
 END
 
 VERSION ~v16~
@@ -277,7 +277,7 @@ LABEL ~cd_tweaks_remove_portrait_icons~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @10000 DESIGNATED 100
-GROUP @11 
+GROUP @11
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwdee iwd how totlm iwd-in-bg2 iwd2 pst pstee~ @25
 REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwdification/setup-iwdification.tp2~ ~20~ @16
 LABEL ~cd_tweaks_drab_commoners~
@@ -314,7 +314,7 @@ BEGIN @12000 DESIGNATED 120 DEPRECATED @18
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @13000 DESIGNATED 130
-GROUP @11 
+GROUP @11
 LABEL ~cd_tweaks_force_all_dialogue_to_pause~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -340,7 +340,7 @@ LABEL ~cd_tweaks_fix_boo_squeak~
 
 BEGIN @15002 DESIGNATED 150
 //SUBCOMPONENT @15000
-GROUP @11 
+GROUP @11
 REQUIRE_PREDICATE GAME_IS ~bgee eet bg2ee~ @25
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -692,7 +692,7 @@ LABEL ~cd_tweaks_hide_vfx_from_invisible_enemies~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @101000 DESIGNATED 1010
-GROUP @13 
+GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 LABEL ~cd_tweaks_more_interjections~
 
@@ -1010,7 +1010,7 @@ GROUP @13
 REQUIRE_PREDICATE GAME_IS ~bgee tutu tutu_totsc eet bgt bg2ee soa tob iwd-in-bg2 ca iwdee~ @25
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~artisanskitpack.tp2~ ~5100~ @24
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 2040 @24 // Changes to Shapeshift Spells
-REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40600 @24 // Revised Druid Shapeshifting 
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 40600 @24 // Revised Druid Shapeshifting
 LABEL ~cd_tweaks_weimer_shapeshifter_rebalancing~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1227,7 +1227,7 @@ LABEL ~cd_tweaks_tob_imoen_dialogue_fix~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @121000 DESIGNATED 1210
-GROUP @13 
+GROUP @13
 REQUIRE_PREDICATE NOT GAME_IS ~bg1 totsc iwd how totlm iwd2 pst pstee~ @25
 LABEL ~cd_tweaks_use_bg_walking_speeds~
 
@@ -1284,7 +1284,7 @@ SUBCOMPONENT @122500
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @25
 LABEL ~cd_tweaks_cromwell_forge_time_24~
-  
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -1495,8 +1495,8 @@ BEGIN @133000 DESIGNATED 1330
 GROUP @13
 REQUIRE_PREDICATE GAME_IS ~soa tob tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
 LABEL ~cd_tweaks_I_am_a_servant_of_the_Secret_Fire_wielder_of_the_flame_of_Anor_You_cannot_pass_The_dark_fire_will_not_avail_you_flame_of_Udun_Go_back_to_the_Shadow_You_cannot_pass~
-  
-// 1340 series is reserved for the individual stronghold components, but moved to be near the other stronghold components  
+
+// 1340 series is reserved for the individual stronghold components, but moved to be near the other stronghold components
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1619,7 +1619,7 @@ LABEL ~cd_tweaks_2h_katanas~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @203500 DESIGNATED 2035
-GROUP @9 
+GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 LABEL ~cd_tweaks_2h_axes~
 
@@ -1706,7 +1706,7 @@ REQUIRE_PREDICATE NOT GAME_IS ~bgee bg1 totsc tutu tutu_totsc iwdee iwd how totl
 SUBCOMPONENT @209000 // change xp cap
 LABEL ~cd_tweaks_cap_xp_at_l30~
 
-/* 
+/*
 neat idea inspired by similar components in EET, but unworkable for dual-classes
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1935,7 +1935,7 @@ LABEL ~cd_tweaks_shopkeeper_id_hybrid~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @220000 DESIGNATED 2200
-GROUP @9 
+GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~iwd2 pst pstee~ @25
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 81010 @24 // Wider Access to Grand Mastery
 REQUIRE_PREDICATE !MOD_IS_INSTALLED ~dw_talents/dw_talents.tp2~ 81011 @24 // Wider Access to Grand Mastery
@@ -1979,7 +1979,7 @@ LABEL ~cd_tweaks_grandmastery_bonus_bg2~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @222000 DESIGNATED 2220
-GROUP @9 
+GROUP @9
 REQUIRE_PREDICATE NOT GAME_IS ~pst pstee~ @25
 LABEL ~cd_tweaks_0_weight_created_weapons~
 
@@ -2250,7 +2250,7 @@ LABEL ~cd_tweaks_druid_spell_progression_cleric_unnerfed_cleric_level~
 
 // why is this here separately? Because WeiDU doesn't handle a pile of
 // subcomponents with different REQUIRE_PREDICATEs very well.
-// this allows this component to be installed for BG/IWD. 
+// this allows this component to be installed for BG/IWD.
 
 BEGIN @229200 DESIGNATED 2297
 GROUP @9
@@ -2413,7 +2413,7 @@ LABEL ~cd_tweaks_remove_class_racial_restrictions~
 /////                                                            \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-  
+
 BEGIN @238000 DESIGNATED 2380
 GROUP @9
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~clsrcreq.2da~ @25 // EE/TobEx required
@@ -2681,7 +2681,7 @@ LABEL ~cd_tweaks_druid_multis_loosen_equipment_restrictions~
 /////                                                            \\\\\
 ///// Tighten Equipment Restrictions for Druid Multis            \\\\\
 /////                                                            \\\\\
- 
+
 BEGIN @243100 DESIGNATED 2431
 GROUP @9
 SUBCOMPONENT @243001
@@ -3405,7 +3405,7 @@ LABEL ~cd_tweaks_increase_scroll_stacks_120~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-BEGIN @500000 DESIGNATED 3115 DEPRECATED @18 // already covered by gem/jewelry 
+BEGIN @500000 DESIGNATED 3115 DEPRECATED @18 // already covered by gem/jewelry
 LABEL ~cd_tweaks_increase_pelt_stacks_infnite~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -4110,7 +4110,7 @@ LABEL ~cd_tweaks_death_cam~
 
 BEGIN @331000 DESIGNATED 3310
 GROUP @4
-REQUIRE_PREDICATE GAME_IS ~soa tob iwd2 pstee bg1 totsc iwd how totlm tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25   
+REQUIRE_PREDICATE GAME_IS ~soa tob iwd2 pstee bg1 totsc iwd how totlm tutu tutu_totsc bgt ca iwd-in-bg2 bgee bg2ee eet iwdee~ @25
 LABEL ~cd_tweaks_new_game_disable_party_ai~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

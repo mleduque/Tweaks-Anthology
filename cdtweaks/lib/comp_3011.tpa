@@ -21,7 +21,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
     COPY_EXISTING ~%file%~ ~override~
       LPF ~max_hp_creatures~ END // contains rest of patch
       BUT_ONLY
-      
+
   END
 
-END  
+END
