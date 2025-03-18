@@ -452,6 +452,11 @@ The uninstall messages above are normal and expected.
 @255200 = ~Generic mage multi-class, enable all kits for single-class~
 
 @256000 = ~Allow Monks to Wear Helmets~
+@256001 = ~Expand Usable Monk Equipment~
+
+@256100 = ~Allow Monks to Use Staves~
+
+@256200 = ~Allow Monks to Wear Helmets and Use Staves~
 
 // these components were abandoned due to bugs with dual-classes
 // @257000 = ~BGT: Additional Experience Cap While in BG~

@@ -2797,15 +2797,40 @@ LABEL ~cd_tweaks_faster_dearnise_keep_timer~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                            \\\\\
-///// Allow Monks to Wear Helmets                                \\\\\
+///// Expanded monk equipment                                    \\\\\
 /////                                                            \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+/////                                                            \\\\\
+///// allow helmets                                              \\\\\
+/////                                                            \\\\\
+
 BEGIN @256000 DESIGNATED 2560
 GROUP @9
+SUBCOMPONENT @256001
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet bgee iwdee tutu tutu_totsc~ @25
 LABEL ~cd_tweaks_allow_monks_to_wear_helmets~
+
+/////                                                            \\\\\
+///// use staves                                                 \\\\\
+/////                                                            \\\\\
+
+BEGIN @256100 DESIGNATED 2561
+GROUP @9
+SUBCOMPONENT @256001
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet bgee iwdee tutu tutu_totsc~ @25
+LABEL ~cd_tweaks_allow_monks_to_use_staves~
+
+/////                                                            \\\\\
+///// helmets & staves                                           \\\\\
+/////                                                            \\\\\
+
+BEGIN @256200 DESIGNATED 2562
+GROUP @9
+SUBCOMPONENT @256001
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet bgee iwdee tutu tutu_totsc~ @25
+LABEL ~cd_tweaks_allow_monks_to_use_helmets_and_staves~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
