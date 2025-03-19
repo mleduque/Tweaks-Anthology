@@ -24,7 +24,7 @@ BEGIN
 			WRITE_LONG UNIDENTIFIED_DESC RESOLVE_STR_REF (@1)
 			WRITE_LONG DESC "-1"
 			WRITE_LONG NAME2 "-1"
-			WRITE_LONG 0x18 (BIT14 BOR BIT25) // ignore dead/wild magic, castable when silenced
+			WRITE_LONG 0x18 (BIT14 BOR BIT25 BOR BIT9 BOR BIT10) // ignore dead/wild magic, castable when silenced, break sanctuary/invisibility
 			WRITE_SHORT 0x1C 4 // type: innate
 			WRITE_LONG 0x34 1 // level
 			WRITE_ASCII 0x3A "%DEST_RES%B" #8 // icon

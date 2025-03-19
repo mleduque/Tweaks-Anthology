@@ -97,10 +97,11 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 	--
 	local targetActiveStats = EEex_Sprite_GetActiveStats(targetSprite)
 	-- you cannot parry weapons with bare hands (only other bare hands)
-	local equipment = targetSprite.m_equipment
-	local targetWeapon = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
+	local targetEquipment = targetSprite.m_equipment -- CGameSpriteEquipment
+	local targetWeapon = targetEquipment.m_items:get(targetEquipment.m_selectedWeapon) -- CItem
 	local targetWeaponHeader = targetWeapon.pRes.pHeader -- Item_Header_st
 	--
+	local attackingEquipment = attackingSprite.m_equipment -- CGameSpriteEquipment
 	local attackingWeaponHeader = attackingWeapon.pRes.pHeader -- Item_Header_st
 	-- get # attacks
 	local targetNumberOfAttacks
@@ -110,16 +111,16 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 		targetNumberOfAttacks = Infinity_RandomNumber(1, 2) == 1 and math.ceil(cdtweaks_ParryMode_AttacksPerRound[EEex_Sprite_GetStat(targetSprite, stats["NUMBEROFATTACKS"]) + 1]) or math.floor(cdtweaks_ParryMode_AttacksPerRound[EEex_Sprite_GetStat(targetSprite, stats["NUMBEROFATTACKS"]) + 1])
 	end
 	--
-	targetSprite:setStoredScriptingTarget("GT_ParryModeTarget", attackingSprite)
-	local conditionalString = EEex_Trigger_ParseConditionalString('OR(2) \n !Allegiance(Myself,GOODCUTOFF) InWeaponRange(EEex_Target("GT_ParryModeTarget") \n OR(2) \n !Allegiance(Myself,EVILCUTOFF) Range(EEex_Target("GT_ParryModeTarget"),4)') -- we intentionally let the AI cheat. In so doing, it can enter the mode without worrying about being in weapon range...
+	--targetSprite:setStoredScriptingTarget("GT_ParryModeTarget", attackingSprite)
+	--local conditionalString = EEex_Trigger_ParseConditionalString('OR(2) \n !Allegiance(Myself,GOODCUTOFF) InWeaponRange(EEex_Target("GT_ParryModeTarget") \n OR(2) \n !Allegiance(Myself,EVILCUTOFF) Range(EEex_Target("GT_ParryModeTarget"),4)') -- we intentionally let the AI cheat. In so doing, it can enter the mode without worrying about being in weapon range...
 	--
 	if targetSprite:getLocalInt("gtParryMode") == 1 then -- parry mode ON
 		if targetSprite.m_curAction.m_actionID == 0 and targetSprite.m_nSequence == 7 then -- idle/ready (in particular, you cannot parry while performing a riposte attack)
 			if EEex_BAnd(targetActiveStats.m_generalState, state["CD_STATE_NOTVALID"]) == 0 then -- incapacitated creatures cannot parry
 				if EEex_Sprite_GetStat(targetSprite, stats["GT_NUMBER_OF_ATTACKS_PARRIED"]) < targetNumberOfAttacks then -- you can parry at most X number of attacks per round, where X is the number of attacks of the parrying creature
 					if attackingWeaponAbility.type == 1 and attackingWeaponAbility.range <= 2 then -- only melee attacks can be parried
-						if attackingWeaponHeader.itemType == 28 or targetWeaponHeader.itemType ~= 28 then -- bare hands can only parry bare hands
-							if conditionalString:evalConditionalAsAIBase(targetSprite) then
+						if targetEquipment.m_selectedWeapon ~= 10 or attackingEquipment.m_selectedWeapon == 10 then -- bare hands can only parry bare hands
+							--if conditionalString:evalConditionalAsAIBase(targetSprite) then
 								if targetActiveStats.m_nSaveVSBreath - tonumber(dexmod[string.format("%s", targetActiveStats.m_nDEX)]["MISSILE"]) <= targetSprite.m_saveVSBreathRoll then
 									-- increment stats["GT_NUMBER_OF_ATTACKS_PARRIED"] by 1; reset to 0 after one round
 									local effectCodes = {
@@ -155,7 +156,7 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 									-- block base weapon damage + on-hit effects (if any)
 									toReturn = true
 								end
-							end
+							--end
 						end
 					end
 				end
@@ -163,7 +164,7 @@ EEex_Sprite_AddBlockWeaponHitListener(function(args)
 		end
 	end
 	--
-	conditionalString:free()
+	--conditionalString:free()
 	--
 	return toReturn
 end)
