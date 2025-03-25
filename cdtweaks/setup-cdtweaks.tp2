@@ -686,6 +686,34 @@ LABEL ~cd_tweaks_hide_vfx_from_invisible_enemies~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// Static PsT character portraits                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Visualize health and status changes              \\\\\
+/////                                                  \\\\\
+
+BEGIN @27001 DESIGNATED 270
+GROUP @11
+SUBCOMPONENT @27000
+REQUIRE_PREDICATE GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_static_pst_npc_portraits_status~
+
+/////                                                  \\\\\
+///// Don't visualize health and status changes        \\\\\
+/////                                                  \\\\\
+
+BEGIN @27100 DESIGNATED 271
+GROUP @11
+SUBCOMPONENT @27000
+REQUIRE_PREDICATE GAME_IS ~pst pstee~ @25
+LABEL ~cd_tweaks_static_pst_npc_portraits_no_status~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// More Interjections                               \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
