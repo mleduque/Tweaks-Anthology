@@ -889,3 +889,5 @@ Use Baldur.lua options: a7_interval_ini
 @629000 = "Spell Penetration Class Feat for Spellcasters [Luke (EEex)]"
 
 @630000 = "Smite Evil / Good Class Feat for Paladins / Blackguards [Luke (EEex)]"
+
+@631000 = "Woodland Stride Class Feat for Druids [Luke (EEex)]"
