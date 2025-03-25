@@ -17,7 +17,7 @@ local GT_ImmunitiesVia403_Definitions = {
 	--
 	[5] = { ["opcode"] = {24, 0}, ["string"] = {"Panic", "Morale Failure: Panic", "*flees in terror*"}, ["icon"] = {36}, ["vfx"] = {"CDHORROR"}, ["extra"] = {23, 54, 106} }, -- panic
 	--
-	[6] = { ["opcode"] = {25, -1}, ["string"] = {"Poison", "Poisoned"}, ["icon"] = {6}, ["vfx"] = {}, ["extra"] = {} }, -- poison
+	[6] = { ["opcode"] = {25, -1}, ["string"] = {"Poison", "Poisoned"}, ["icon"] = {6, 101}, ["vfx"] = {}, ["extra"] = {} }, -- poison
 	--
 	[7] = { ["opcode"] = {38, -1}, ["string"] = {"Silence", "Silenced", "Bard Song Silenced"}, ["icon"] = {34}, ["vfx"] = {}, ["extra"] = {} }, -- silence
 	--
