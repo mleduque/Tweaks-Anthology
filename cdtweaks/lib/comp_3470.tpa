@@ -1,7 +1,7 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
 /////                                                            \\\\\////\\\\////
-///// Extra Dispel Feedback                                                  \\\\\
+///// Dynamic FPS change                                                     \\\\\
 /////                                                            \\\\\////\\\\////
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
@@ -9,9 +9,6 @@
 WITH_SCOPE BEGIN
   INCLUDE "cdtweaks\luke\misc.tph"
   //
-  INCLUDE "cdtweaks\lib\extra_dispel_feedback.tph"
-  //
-  WITH_TRA "cdtweaks\languages\english\extra_dispel_feedback.tra" "cdtweaks\languages\%LANGUAGE%\extra_dispel_feedback.tra" BEGIN
-    LAF "EXTRA_DISPEL_FEEDBACK" END
-  END
+  INCLUDE "cdtweaks\lib\dynamic_fps_change.tph"
+  LAF "DYNAMIC_FPS_CHANGE" END
 END
