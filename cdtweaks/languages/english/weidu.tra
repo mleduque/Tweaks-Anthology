@@ -145,6 +145,10 @@ The uninstall messages above are normal and expected.
 
 @26000 = "Hide VFX from invisible enemies [Luke, EEex]"
 
+@27000 = ~Static PsT character portraits~
+@27001 = ~Visualize health and status changes~
+@27100 = ~Don't visualize health and status changes~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
