@@ -192,15 +192,24 @@ ACTION_IF enhanced_edition BEGIN // bgee, eet
 END
 
 COPY ~cdtweaks/spl/cdbreak1.spl~ ~override/cdbrak2.spl~ // armor
+  PATCH_IF enhanced_edition BEGIN 
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 2 parameter1 = 6 parameter2 = 136 duration = 1 STR_VAR resource = cdbrak2 END
+  END   
   SET msg = RESOLVE_STR_REF(@106001)
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = msg END
 
 COPY_EXISTING ~cdbrak2.spl~ ~override/cdbrak7.spl~  // helm
+  PATCH_IF enhanced_edition BEGIN 
+    LPF ALTER_EFFECT INT_VAR match_opcode = 318 STR_VAR match_resource = cdbrak2 resource = EVAL ~%DEST_RES%~ END
+  END   
   SET msg = RESOLVE_STR_REF(@106003)
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = msg END
   LPF ALTER_EFFECT INT_VAR match_opcode = 143 parameter1 = 6 STR_VAR resource = ~cddelhlm~ END
 
 COPY_EXISTING ~cdbrak2.spl~ ~override/cdbrak12.spl~  // shield
+  PATCH_IF enhanced_edition BEGIN 
+    LPF ALTER_EFFECT INT_VAR match_opcode = 318 STR_VAR match_resource = cdbrak2 resource = EVAL ~%DEST_RES%~ END
+  END   
   SET msg = RESOLVE_STR_REF(@106002)
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = msg END
   LPF ALTER_EFFECT INT_VAR match_opcode = 143 parameter1 = 9 STR_VAR resource = ~misc57~ END

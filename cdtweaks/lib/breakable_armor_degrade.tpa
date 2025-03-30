@@ -62,6 +62,9 @@ ACTION_PHP_EACH cd_breakable_armor AS params => quantity BEGIN
       END ELSE BEGIN
 
         COPY_EXISTING ~cdbrak2.spl~ ~override/%params_2%%ac%.spl~
+          PATCH_IF enhanced_edition BEGIN 
+            LPF ALTER_EFFECT INT_VAR match_opcode = 318 STR_VAR match_resource = cdbrak2 resource = EVAL ~%DEST_RES%~ END
+          END   
           LPF ALTER_EFFECT INT_VAR match_opcode = 143 STR_VAR resource = EVAL ~%params_2%%ac%~ END
           LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = msg_degrade_spl END
           DEFINE_ASSOCIATIVE_ARRAY cd_break_spells BEGIN ~%params_2%%ac%~ => 0 END
