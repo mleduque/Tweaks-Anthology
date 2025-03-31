@@ -70,7 +70,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local spriteFlags = sprite.m_baseStats.m_flags
 	-- since ``EEex_Opcode_AddListsResolvedListener`` is running after the effect lists have been evaluated, ``m_bonusStats`` has already been added to ``m_derivedStats`` by the engine
 	local spriteLevel1 = sprite.m_derivedStats.m_nLevel1
-	local spriteKitStr = GT_Resource_IDSToSymbol["kit"][sprite.m_derivedStats.m_nKit]
+	local spriteKitStr = EEex_Resource_KitIDSToSymbol(sprite.m_derivedStats.m_nKit)
 	--
 	local gainAbility = spriteClassStr == "PALADIN" and spriteKitStr == "Blackguard" and EEex_IsBitUnset(spriteFlags, 0x9)
 	-- One use per 5 levels (starting from level 1)
@@ -221,24 +221,14 @@ function %BLACKGUARD_SMITE_GOOD%(CGameEffect, CGameSprite)
 	local thac0 = sourceActiveStats.m_nTHAC0 -- base thac0 (STAT 7)
 	local thac0BonusRight = sourceActiveStats.m_THAC0BonusRight -- this should include the bonus from the weapon + str + wspecial.2da
 	local meleeTHAC0Bonus = sourceActiveStats.m_nMeleeTHAC0Bonus -- op284 (STAT 166)
-	--
-	local damageTypeLookUpTable = {
-		[0] = {0x0, targetActiveStats.m_nACCrushingMod}, -- none (crushing)
-		[1] = {0x10, targetActiveStats.m_nACPiercingMod}, -- piercing
-		[2] = {0x0, targetActiveStats.m_nACCrushingMod}, -- crushing
-		[3] = {0x100, targetActiveStats.m_nACSlashingMod}, -- slashing
-		[4] = {0x80, targetActiveStats.m_nACMissileMod}, -- missile
-		[5] = {0x800, targetActiveStats.m_nACCrushingMod}, -- non-lethal
-		[6] = {targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistCrushing and 0x0 or 0x10, targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistCrushing and targetActiveStats.m_nACCrushingMod or targetActiveStats.m_nACPiercingMod}, -- piercing/crushing (better)
-		[7] = {targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistSlashing and 0x100 or 0x10, targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistSlashing and targetActiveStats.m_nACSlashingMod or targetActiveStats.m_nACPiercingMod}, -- piercing/slashing (better)
-		[8] = {targetActiveStats.m_nResistCrushing > targetActiveStats.m_nResistSlashing and 0x0 or 0x100, targetActiveStats.m_nResistCrushing > targetActiveStats.m_nResistSlashing and targetActiveStats.m_nACCrushingMod or targetActiveStats.m_nACSlashingMod}, -- slashing/crushing (worse)
-	}
 	-- collect on-hit effects (if any)
 	local equipment = sourceSprite.m_equipment -- CGameSpriteEquipment
 	local selectedWeapon = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
 	local selectedWeaponResRef = selectedWeapon.pRes.resref:get()
 	local selectedWeaponHeader = selectedWeapon.pRes.pHeader -- Item_Header_st
 	local selectedWeaponAbility = EEex_Resource_GetItemAbility(selectedWeaponHeader, equipment.m_selectedWeaponAbility) -- Item_ability_st
+	--
+	local op12DamageType, ACModifier = GT_Utility_DamageTypeConverter(selectedWeaponAbility.damageType, targetActiveStats)
 	--
 	local onHitEffects = {}
 	do
@@ -286,7 +276,7 @@ function %BLACKGUARD_SMITE_GOOD%(CGameEffect, CGameSprite)
 				modifier = 0
 			elseif roll == 1 then -- automatic miss (critical failure)
 				modifier = 0
-			elseif roll + modifier >= thac0 - (targetActiveStats.m_nArmorClass + damageTypeLookUpTable[selectedWeaponAbility.damageType][2]) then
+			elseif roll + modifier >= thac0 - (targetActiveStats.m_nArmorClass + ACModifier) then
 				success = true
 			end
 			--
@@ -308,113 +298,110 @@ function %BLACKGUARD_SMITE_GOOD%(CGameEffect, CGameSprite)
 				local meleeDamageBonus = sourceActiveStats.m_nMeleeDamageBonus -- op285 (STAT 167)
 				--
 				local modifier = strBonus + strExtraBonus + damageBonus + damageBonusRight + meleeDamageBonus + sourceActiveStats.m_nLevel1
-				--
-				if damageTypeLookUpTable[selectedWeaponAbility.damageType][1] then -- sanity check
-					-- damage type ``NONE`` requires extra care
-					local mode = 0 -- normal
-					if selectedWeaponAbility.damageType == 0 and selectedWeaponAbility.damageDiceCount > 0 then
-						mode = 1 -- set HP to value
+				-- damage type ``NONE`` requires extra care
+				local mode = 0 -- normal
+				if selectedWeaponAbility.damageType == 0 and selectedWeaponAbility.damageDiceCount > 0 then
+					mode = 1 -- set HP to value
+				end
+				-- op12 (weapon damage)
+				EEex_GameObject_ApplyEffect(CGameSprite,
+				{
+					["effectID"] = 0xC, -- Damage (12)
+					["dwFlags"] = op12DamageType * 0x10000 + mode,
+					["effectAmount"] = (selectedWeaponAbility.damageDiceCount == 0 and selectedWeaponAbility.damageDice == 0 and selectedWeaponAbility.damageDiceBonus == 0) and 0 or (selectedWeaponAbility.damageDiceBonus + modifier),
+					["numDice"] = selectedWeaponAbility.damageDiceCount,
+					["diceSize"] = selectedWeaponAbility.damageDice,
+					["sourceID"] = CGameEffect.m_sourceId,
+					["sourceTarget"] = CGameEffect.m_sourceTarget,
+				})
+				-- apply on-hit effects (if any)
+				for _, v in ipairs(onHitEffects) do
+					local array = {}
+					--
+					if v["targetType"] == 1 or v["targetType"] == 9 then -- self / original caster
+						table.insert(array, sourceSprite)
+					elseif v["targetType"] == 2 then -- projectile target
+						table.insert(array, CGameSprite)
+					elseif v["targetType"] == 3 or (v["targetType"] == 6 and sourceSprite.m_typeAI.m_EnemyAlly == 2) then -- party
+						for i = 0, 5 do
+							local partyMember = EEex_Sprite_GetInPortrait(i) -- CGameSprite
+							if partyMember and EEex_BAnd(partyMember:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+								table.insert(array, partyMember)
+							end
+						end
+					elseif v["targetType"] == 4 then -- everyone
+						local everyone = EEex_Area_GetAllOfTypeInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, GT_AI_ObjectType["ANYONE"], 0x7FFF, false, nil, nil)
+						--
+						for _, itrSprite in ipairs(everyone) do
+							if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+								table.insert(array, itrSprite)
+							end
+						end
+					elseif v["targetType"] == 5 then -- everyone but party
+						local everyone = EEex_Area_GetAllOfTypeInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, GT_AI_ObjectType["ANYONE"], 0x7FFF, false, nil, nil)
+						--
+						for _, itrSprite in ipairs(everyone) do
+							if itrSprite.m_typeAI.m_EnemyAlly ~= 2 then
+								if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+									table.insert(array, itrSprite)
+								end
+							end
+						end
+					elseif v["targetType"] == 6 then -- caster group
+						local casterGroup = EEex_Area_GetAllOfTypeStringInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, string.format("[0.0.0.0.%d]", sourceSprite.m_typeAI.m_Specifics), 0x7FFF, false, nil, nil)
+						--
+						for _, itrSprite in ipairs(casterGroup) do
+							if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+								table.insert(array, itrSprite)
+							end
+						end
+					elseif v["targetType"] == 7 then -- target group
+						local targetGroup = EEex_Area_GetAllOfTypeStringInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, string.format("[0.0.0.0.%d]", CGameSprite.m_typeAI.m_Specifics), 0x7FFF, false, nil, nil)
+						--
+						for _, itrSprite in ipairs(targetGroup) do
+							if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+								table.insert(array, itrSprite)
+							end
+						end
+					elseif v["targetType"] == 8 then -- everyone but self
+						local everyone = EEex_Area_GetAllOfTypeInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, GT_AI_ObjectType["ANYONE"], 0x7FFF, false, nil, nil)
+						--
+						for _, itrSprite in ipairs(everyone) do
+							if itrSprite.m_id ~= sourceSprite.m_id then
+								if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
+									table.insert(array, itrSprite)
+								end
+							end
+						end
 					end
-					-- op12 (weapon damage)
-					EEex_GameObject_ApplyEffect(CGameSprite,
-					{
-						["effectID"] = 0xC, -- Damage (12)
-						["dwFlags"] = damageTypeLookUpTable[selectedWeaponAbility.damageType][1] * 0x10000 + mode,
-						["effectAmount"] = (selectedWeaponAbility.damageDiceCount == 0 and selectedWeaponAbility.damageDice == 0 and selectedWeaponAbility.damageDiceBonus == 0) and 0 or (selectedWeaponAbility.damageDiceBonus + modifier),
-						["numDice"] = selectedWeaponAbility.damageDiceCount,
-						["diceSize"] = selectedWeaponAbility.damageDice,
-						["sourceID"] = CGameEffect.m_sourceId,
-						["sourceTarget"] = CGameEffect.m_sourceTarget,
-					})
-					-- apply on-hit effects (if any)
-					for _, v in ipairs(onHitEffects) do
-						local array = {}
-						--
-						if v["targetType"] == 1 or v["targetType"] == 9 then -- self / original caster
-							table.insert(array, sourceSprite)
-						elseif v["targetType"] == 2 then -- projectile target
-							table.insert(array, CGameSprite)
-						elseif v["targetType"] == 3 or (v["targetType"] == 6 and sourceSprite.m_typeAI.m_EnemyAlly == 2) then -- party
-							for i = 0, 5 do
-								local partyMember = EEex_Sprite_GetInPortrait(i) -- CGameSprite
-								if partyMember and EEex_BAnd(partyMember:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-									table.insert(array, partyMember)
-								end
-							end
-						elseif v["targetType"] == 4 then -- everyone
-							local everyone = EEex_Area_GetAllOfTypeInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, GT_AI_ObjectType["ANYONE"], 0x7FFF, false, nil, nil)
+					--
+					for _, object in ipairs(array) do
+						EEex_GameObject_ApplyEffect(object,
+						{
+							["effectID"] = v["effectID"],
+							["spellLevel"] = v["spellLevel"],
+							["effectAmount"] = v["effectAmount"],
+							["dwFlags"] = v["dwFlags"],
+							["durationType"] = v["durationType"],
+							["m_flags"] = v["m_flags"],
+							["duration"] = v["duration"],
+							["probabilityUpper"] = v["probabilityUpper"],
+							["probabilityLower"] = v["probabilityLower"],
+							["res"] = v["res"],
+							["numDice"] = v["numDice"],
+							["diceSize"] = v["diceSize"],
+							["savingThrow"] = v["savingThrow"],
+							["saveMod"] = v["saveMod"],
+							["special"] = v["special"],
 							--
-							for _, itrSprite in ipairs(everyone) do
-								if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-									table.insert(array, itrSprite)
-								end
-							end
-						elseif v["targetType"] == 5 then -- everyone but party
-							local everyone = EEex_Area_GetAllOfTypeInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, GT_AI_ObjectType["ANYONE"], 0x7FFF, false, nil, nil)
+							["m_school"] = selectedWeaponAbility.school,
+							["m_secondaryType"] = selectedWeaponAbility.secondaryType,
 							--
-							for _, itrSprite in ipairs(everyone) do
-								if itrSprite.m_typeAI.m_EnemyAlly ~= 2 then
-									if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-										table.insert(array, itrSprite)
-									end
-								end
-							end
-						elseif v["targetType"] == 6 then -- caster group
-							local casterGroup = EEex_Area_GetAllOfTypeStringInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, string.format("[0.0.0.0.%d]", sourceSprite.m_typeAI.m_Specifics), 0x7FFF, false, nil, nil)
-							--
-							for _, itrSprite in ipairs(casterGroup) do
-								if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-									table.insert(array, itrSprite)
-								end
-							end
-						elseif v["targetType"] == 7 then -- target group
-							local targetGroup = EEex_Area_GetAllOfTypeStringInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, string.format("[0.0.0.0.%d]", CGameSprite.m_typeAI.m_Specifics), 0x7FFF, false, nil, nil)
-							--
-							for _, itrSprite in ipairs(targetGroup) do
-								if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-									table.insert(array, itrSprite)
-								end
-							end
-						elseif v["targetType"] == 8 then -- everyone but self
-							local everyone = EEex_Area_GetAllOfTypeInRange(sourceSprite.m_pArea, sourceSprite.m_pos.x, sourceSprite.m_pos.y, GT_AI_ObjectType["ANYONE"], 0x7FFF, false, nil, nil)
-							--
-							for _, itrSprite in ipairs(everyone) do
-								if itrSprite.m_id ~= sourceSprite.m_id then
-									if EEex_BAnd(itrSprite:getActiveStats().m_generalState, 0x800) == 0 then -- skip if STATE_DEAD
-										table.insert(array, itrSprite)
-									end
-								end
-							end
-						end
-						--
-						for _, object in ipairs(array) do
-							EEex_GameObject_ApplyEffect(object,
-							{
-								["effectID"] = v["effectID"],
-								["spellLevel"] = v["spellLevel"],
-								["effectAmount"] = v["effectAmount"],
-								["dwFlags"] = v["dwFlags"],
-								["durationType"] = v["durationType"],
-								["m_flags"] = v["m_flags"],
-								["duration"] = v["duration"],
-								["probabilityUpper"] = v["probabilityUpper"],
-								["probabilityLower"] = v["probabilityLower"],
-								["res"] = v["res"],
-								["numDice"] = v["numDice"],
-								["diceSize"] = v["diceSize"],
-								["savingThrow"] = v["savingThrow"],
-								["saveMod"] = v["saveMod"],
-								["special"] = v["special"],
-								--
-								["m_school"] = selectedWeaponAbility.school,
-								["m_secondaryType"] = selectedWeaponAbility.secondaryType,
-								--
-								["m_sourceRes"] = selectedWeaponResRef,
-								["m_sourceType"] = 2,
-								["sourceID"] = CGameEffect.m_sourceId,
-								["sourceTarget"] = CGameEffect.m_sourceTarget,
-							})
-						end
+							["m_sourceRes"] = selectedWeaponResRef,
+							["m_sourceType"] = 2,
+							["sourceID"] = CGameEffect.m_sourceId,
+							["sourceTarget"] = CGameEffect.m_sourceTarget,
+						})
 					end
 				end
 			else

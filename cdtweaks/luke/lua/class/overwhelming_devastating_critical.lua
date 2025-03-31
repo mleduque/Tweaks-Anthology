@@ -14,9 +14,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- internal function that applies the actual feat
 	local apply = function(mainHandResRef)
 		-- Update tracking var
-		sprite:setLocalString("gtTrueFighterCriticalMainHand", mainHandResRef)
-		-- Mark the creature as 'feat applied'
-		sprite:setLocalInt("gtTrueFighterCritical", 1)
+		sprite:setLocalString("gtTrueFighterCritical", mainHandResRef)
 		--
 		sprite:applyEffect({
 			["effectID"] = 321, -- Remove effects by resource
@@ -50,25 +48,25 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	--
 	local spriteClassStr = GT_Resource_IDSToSymbol["class"][sprite.m_typeAI.m_Class]
 	-- since ``EEex_Opcode_AddListsResolvedListener`` is running after the effect lists have been evaluated, ``m_bonusStats`` has already been added to ``m_derivedStats`` by the engine
-	local spriteKitStr = sprite.m_derivedStats.m_nKit == 0 and "TRUECLASS" or GT_Resource_IDSToSymbol["kit"][sprite.m_derivedStats.m_nKit]
+	local spriteKitStr = sprite.m_derivedStats.m_nKit == 0 and "TRUECLASS" or EEex_Resource_KitIDSToSymbol(sprite.m_derivedStats.m_nKit)
 	--
 	local grandmastery = EEex_Trigger_ParseConditionalString(string.format("ProficiencyGT(Myself,%d,4)", selectedWeaponProficiencyType))
 	--
 	local applyAbility = spriteClassStr == "FIGHTER" and (spriteKitStr == "TRUECLASS" or spriteKitStr == "MAGESCHOOL_GENERALIST") and grandmastery:evalConditionalAsAIBase(sprite)
 	--
-	if sprite:getLocalInt("gtTrueFighterCritical") == 0 then
+	if sprite:getLocalString("gtTrueFighterCritical") == "" then
 		if applyAbility then
 			apply(selectedWeaponResRef)
 		end
 	else
 		if applyAbility then
 			-- Check if weapon resref has changed since the last application
-			if selectedWeaponResRef ~= sprite:getLocalString("gtTrueFighterCriticalMainHand") then
+			if selectedWeaponResRef ~= sprite:getLocalString("gtTrueFighterCritical") then
 				apply(selectedWeaponResRef)
 			end
 		else
 			-- Mark the creature as 'feat removed'
-			sprite:setLocalInt("gtTrueFighterCritical", 0)
+			sprite:setLocalString("gtTrueFighterCritical", "")
 			--
 			sprite:applyEffect({
 				["effectID"] = 321, -- Remove effects by resource
@@ -91,59 +89,60 @@ function %TRUECLASS_FIGHTER_CRITICAL%(CGameEffect, CGameSprite)
 	local selectedWeapon = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
 	local selectedWeaponHeader = selectedWeapon.pRes.pHeader -- Item_Header_st
 	local selectedWeaponAbility = EEex_Resource_GetItemAbility(selectedWeaponHeader, equipment.m_selectedWeaponAbility) -- Item_ability_st
-	--
+	--[[
+	if sourceSprite.m_leftAttack == 1 then -- if off-hand attack
+		local items = sourceSprite.m_equipment.m_items -- Array<CItem*,39>
+		local offHand = items:get(9) -- CItem
+		--
+		if offHand then -- sanity check
+			local pHeader = offHand.pRes.pHeader -- Item_Header_st
+			--
+			if EEex_Resource_ItemCategoryIDSToSymbol(pHeader.itemType) ~= "SHIELD" then -- if not shield, then overwrite item ability...
+				selectedWeaponAbility = EEex_Resource_GetItemAbility(pHeader, 0) -- Item_ability_st
+			end
+		end
+	end
+	--]]
 	if CGameEffect.m_effectAmount == 1 then
 		-- Overwhelming Critical
 		local immunityToDamage = EEex_Trigger_ParseConditionalString("EEex_IsImmuneToOpcode(Myself,12)")
 		--
 		local targetActiveStats = EEex_Sprite_GetActiveStats(CGameSprite)
 		--
-		local itmAbilityDamageTypeToIDS = {
-			[0] = 0x0, -- none (crushing)
-			[1] = 0x10, -- piercing
-			[2] = 0x0, -- crushing
-			[3] = 0x100, -- slashing
-			[4] = 0x80, -- missile
-			[5] = 0x800, -- non-lethal
-			[6] = targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistCrushing and 0x0 or 0x10, -- piercing/crushing (better)
-			[7] = targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistSlashing and 0x100 or 0x10, -- piercing/slashing (better)
-			[8] = targetActiveStats.m_nResistCrushing > targetActiveStats.m_nResistSlashing and 0x0 or 0x100, -- slashing/crushing (worse)
-		}
+		local op12DamageType, ACModifier = GT_Utility_DamageTypeConverter(selectedWeaponAbility.damageType, targetActiveStats)
 		--
-		if itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType] then -- sanity check
-			if not immunityToDamage:evalConditionalAsAIBase(CGameSprite) then
-				EEex_GameObject_ApplyEffect(sourceSprite,
-				{
-					["effectID"] = 139, -- Display string
-					["effectAmount"] = %feedback_strref_overwhelming_crit_hit%,
-					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-					["m_sourceType"] = CGameEffect.m_sourceType,
-					["sourceID"] = sourceSprite.m_id,
-					["sourceTarget"] = sourceSprite.m_id,
-				})
-				--
-				EEex_GameObject_ApplyEffect(CGameSprite,
-				{
-					["effectID"] = 12, -- Damage
-					["dwFlags"] = itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000, -- mode: normal
-					["numDice"] = 2,
-					["diceSize"] = 6,
-					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-					["m_sourceType"] = CGameEffect.m_sourceType,
-					["sourceID"] = CGameEffect.m_sourceId,
-					["sourceTarget"] = CGameEffect.m_sourceTarget,
-				})
-			else
-				EEex_GameObject_ApplyEffect(CGameSprite,
-				{
-					["effectID"] = 139, -- Display string
-					["effectAmount"] = %feedback_strref_overwhelming_crit_immune%,
-					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-					["m_sourceType"] = CGameEffect.m_sourceType,
-					["sourceID"] = CGameEffect.m_sourceId,
-					["sourceTarget"] = CGameEffect.m_sourceTarget,
-				})
-			end
+		if not immunityToDamage:evalConditionalAsAIBase(CGameSprite) then
+			EEex_GameObject_ApplyEffect(sourceSprite,
+			{
+				["effectID"] = 139, -- Display string
+				["effectAmount"] = %feedback_strref_overwhelming_crit_hit%,
+				["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
+				["m_sourceType"] = CGameEffect.m_sourceType,
+				["sourceID"] = sourceSprite.m_id,
+				["sourceTarget"] = sourceSprite.m_id,
+			})
+			--
+			EEex_GameObject_ApplyEffect(CGameSprite,
+			{
+				["effectID"] = 12, -- Damage
+				["dwFlags"] = op12DamageType * 0x10000, -- mode: normal
+				["numDice"] = 2,
+				["diceSize"] = 6,
+				["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
+				["m_sourceType"] = CGameEffect.m_sourceType,
+				["sourceID"] = CGameEffect.m_sourceId,
+				["sourceTarget"] = CGameEffect.m_sourceTarget,
+			})
+		else
+			EEex_GameObject_ApplyEffect(CGameSprite,
+			{
+				["effectID"] = 139, -- Display string
+				["effectAmount"] = %feedback_strref_overwhelming_crit_immune%,
+				["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
+				["m_sourceType"] = CGameEffect.m_sourceType,
+				["sourceID"] = CGameEffect.m_sourceId,
+				["sourceTarget"] = CGameEffect.m_sourceTarget,
+			})
 		end
 		--
 		immunityToDamage:free()

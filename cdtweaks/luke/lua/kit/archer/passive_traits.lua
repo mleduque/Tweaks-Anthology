@@ -15,8 +15,6 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local apply = function(bonus)
 		-- Update tracking var
 		sprite:setLocalInt("gtArcherKitBonus", bonus)
-		-- Mark the creature as 'bonus applied'
-		sprite:setLocalInt("gtRevisedArcher", 1)
 		--
 		sprite:applyEffect({
 			["effectID"] = 321, -- Remove effects by resource
@@ -48,13 +46,13 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	--
 	local spriteClassStr = GT_Resource_IDSToSymbol["class"][sprite.m_typeAI.m_Class]
 	--
-	local selectedWeaponTypeStr = GT_Resource_IDSToSymbol["itemcat"][selectedWeaponHeader.itemType]
+	local selectedWeaponTypeStr = EEex_Resource_ItemCategoryIDSToSymbol(selectedWeaponHeader.itemType)
 	--
 	local spriteFlags = sprite.m_baseStats.m_flags
 	-- since ``EEex_Opcode_AddListsResolvedListener`` is running after the effect lists have been evaluated, ``m_bonusStats`` has already been added to ``m_derivedStats`` by the engine
 	local spriteLevel1 = sprite.m_derivedStats.m_nLevel1
 	local spriteLevel2 = sprite.m_derivedStats.m_nLevel2
-	local spriteKitStr = GT_Resource_IDSToSymbol["kit"][sprite.m_derivedStats.m_nKit]
+	local spriteKitStr = EEex_Resource_KitIDSToSymbol(sprite.m_derivedStats.m_nKit)
 	--
 	local bonus = 0
 	--
@@ -80,7 +78,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		and EEex_IsBitUnset(spriteFlags, 10) -- not Fallen Ranger
 		and bonus > 0
 	--
-	if sprite:getLocalInt("gtRevisedArcher") == 0 then
+	if sprite:getLocalInt("gtArcherKitBonus") == 0 then
 		if applyAbility then
 			apply(bonus)
 		end
@@ -92,7 +90,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 			end
 		else
 			-- Mark the creature as 'bonus removed'
-			sprite:setLocalInt("gtRevisedArcher", 0)
+			sprite:setLocalInt("gtArcherKitBonus", 0)
 			--
 			sprite:applyEffect({
 				["effectID"] = 321, -- Remove effects by resource

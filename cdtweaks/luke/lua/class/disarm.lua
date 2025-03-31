@@ -30,20 +30,18 @@ function %THIEF_DISARM%(CGameEffect, CGameSprite)
 	--
 	local inventoryFull = EEex_Trigger_ParseConditionalString("InventoryFull(Myself)")
 	-- Get source's currently selected weapon
-	local sourceEquipment = sourceSprite.m_equipment
+	local sourceEquipment = sourceSprite.m_equipment -- CGameSpriteEquipment
 	local sourceSelectedWeapon = sourceEquipment.m_items:get(sourceEquipment.m_selectedWeapon) -- CItem
 	--
 	local sourceSelectedWeaponHeader = sourceSelectedWeapon.pRes.pHeader -- Item_Header_st
 	-- Get target's currently selected weapon
-	local targetEquipment = CGameSprite.m_equipment
+	local targetEquipment = CGameSprite.m_equipment -- CGameSpriteEquipment
 	local targetSelectedWeapon = targetEquipment.m_items:get(targetEquipment.m_selectedWeapon) -- CItem
 	-- Get launcher if needed
 	local targetSelectedWeapon = CGameSprite:getLauncher(targetSelectedWeapon:getAbility(targetEquipment.m_selectedWeaponAbility)) or targetSelectedWeapon -- CItem
 	--
 	local targetSelectedWeaponResRef = targetSelectedWeapon.pRes.resref:get()
 	local targetSelectedWeaponHeader = targetSelectedWeapon.pRes.pHeader -- Item_Header_st
-	--
-	local targetActiveStats = EEex_Sprite_GetActiveStats(CGameSprite)
 	-- MAIN --
 	-- Check if inventory is full
 	if not inventoryFull:evalConditionalAsAIBase(sourceSprite) then
@@ -57,65 +55,86 @@ function %THIEF_DISARM%(CGameEffect, CGameSprite)
 					local sourceAnimationType = EEex_CastUD(sourceSelectedWeaponHeader.animationType, "CResRef"):get()
 					local targetAnimationType = EEex_CastUD(targetSelectedWeaponHeader.animationType, "CResRef"):get()
 					-- sanity check (only darts are supposed to have a null animation)
-					if (targetAnimationType ~= "") or (targetSelectedWeaponHeader.itemType == 24) then
-						-- set ``savebonus``
-						local savebonus = 0
+					if (targetAnimationType ~= "") or (EEex_Resource_ItemCategoryIDSToSymbol(targetSelectedWeaponHeader.itemType) == "DART") then
+						-- Fetch components of check
+						local roll = Infinity_RandomNumber(1, 20) -- 1d20
 						--
+						local targetActiveStats = EEex_Sprite_GetActiveStats(CGameSprite)
+						--
+						local sourceActiveStats = EEex_Sprite_GetActiveStats(sourceSprite)
+						--
+						local weaponSizeModifier = 0
 						local sourceWeaponSize = cdtweaks_Disarm_CheckWeaponSize(sourceAnimationType)
 						local targetWeaponSize = cdtweaks_Disarm_CheckWeaponSize(targetAnimationType)
 						--
 						if (sourceWeaponSize == "small" and targetWeaponSize == "medium") or (sourceWeaponSize == "medium" and targetWeaponSize == "large") then
-							savebonus = 2
+							weaponSizeModifier = -2
 						elseif (sourceWeaponSize == "medium" and targetWeaponSize == "small") or (sourceWeaponSize == "large" and targetWeaponSize == "medium") then
-							savebonus = -2
+							weaponSizeModifier = 2
 						elseif sourceWeaponSize == "small" and targetWeaponSize == "large" then
-							savebonus = 4
+							weaponSizeModifier = -4
 						elseif sourceWeaponSize == "large" and targetWeaponSize == "small" then
-							savebonus = -4
+							weaponSizeModifier = 4
 						end
 						--
-						local targetSaveVSBreath = targetActiveStats.m_nSaveVSBreath
-						local adjustedRoll = CGameSprite.m_saveVSBreathRoll + savebonus
+						local thac0 = sourceActiveStats.m_nTHAC0 -- base thac0 (STAT 7)
+						local thac0BonusRight = sourceActiveStats.m_THAC0BonusRight -- this should include the bonus from the weapon + str + wspecial.2da
+						local meleeTHAC0Bonus = sourceActiveStats.m_nMeleeTHAC0Bonus -- op284 (STAT 166)
+						-- op120
+						sourceSprite:setStoredScriptingTarget("GT_ScriptingTarget_Disarm", CGameSprite)
+						local weaponEffectiveVs = EEex_Trigger_ParseConditionalString('WeaponEffectiveVs(EEex_Target("GT_ScriptingTarget_Disarm"),MAINHAND)')
+						-- mainhand weapon ability
+						local sourceSelectedWeaponAbility = EEex_Resource_GetItemAbility(sourceSelectedWeaponHeader, sourceEquipment.m_selectedWeaponAbility) -- Item_ability_st
 						--
-						if adjustedRoll >= targetSaveVSBreath then
-							CGameSprite:applyEffect({
-								["effectID"] = 139, -- display string
-								["effectAmount"] = %feedback_strref_resisted%,
-								["sourceID"] = CGameEffect.m_sourceId,
-								["sourceTarget"] = CGameEffect.m_sourceTarget,
-							})
-						else
-							CGameSprite:applyEffect({
-								["effectID"] = 139, -- display string
-								["effectAmount"] = %feedback_strref_hit%,
-								["sourceID"] = CGameEffect.m_sourceId,
-								["sourceTarget"] = CGameEffect.m_sourceTarget,
-							})
+						local op12DamageType, ACModifier = GT_Utility_DamageTypeConverter(sourceSelectedWeaponAbility.damageType, targetActiveStats)
+						--
+						if weaponEffectiveVs:evalConditionalAsAIBase(sourceSprite) then
+							-- compute attack roll (simplified for the time being... it doesn't consider attack of opportunity, invisibility, luck, op178, op301, op362, &c.)
+							local success = false
+							local modifier = thac0BonusRight + meleeTHAC0Bonus + weaponSizeModifier - 6
 							--
-							sourceSprite:applyEffect({
-								["effectID"] = 122, -- create inventory item
-								["durationType"] = 1,
-								["effectAmount"] = targetSelectedWeapon.m_useCount1,
-								["m_effectAmount2"] = targetSelectedWeapon.m_useCount2,
-								["m_effectAmount3"] = targetSelectedWeapon.m_useCount3,
-								["res"] = targetSelectedWeaponResRef,
-								["sourceID"] = sourceSprite.m_id,
-								["sourceTarget"] = sourceSprite.m_id,
-							})
-							-- restore ``CItem`` flags
-							do
-								local sourceItems = sourceEquipment.m_items -- Array<CItem*,39>
-								for i = 18, 33 do -- inventory slots
-									local item = sourceItems:get(i) -- CItem
-									if item then
-										local resref = item.pRes.resref:get()
-										if resref == targetSelectedWeaponResRef then
-											if item.m_flags == 0 then
-												if item.m_useCount1 == targetSelectedWeapon.m_useCount1 then
-													if item.m_useCount2 == targetSelectedWeapon.m_useCount2 then
-														if item.m_useCount3 == targetSelectedWeapon.m_useCount3 then
-															item.m_flags = targetSelectedWeapon.m_flags
-															break
+							if roll == 20 then -- automatic hit
+								success = true
+								modifier = 0
+							elseif roll == 1 then -- automatic miss (critical failure)
+								modifier = 0
+							elseif roll + modifier >= thac0 - (targetActiveStats.m_nArmorClass + ACModifier) then
+								success = true
+							end
+							--
+							if success then
+								-- display feedback message
+								GT_Utility_DisplaySpriteMessage(sourceSprite,
+									string.format("%s : %d + %d = %d : %s",
+										Infinity_FetchString(%feedback_strref_disarm%), roll, modifier, roll + modifier, Infinity_FetchString(%feedback_strref_hit%)),
+									0xBED7D7, 0xBED7D7
+								)
+								--
+								sourceSprite:applyEffect({
+									["effectID"] = 122, -- create inventory item
+									["durationType"] = 1,
+									["effectAmount"] = targetSelectedWeapon.m_useCount1,
+									["m_effectAmount2"] = targetSelectedWeapon.m_useCount2,
+									["m_effectAmount3"] = targetSelectedWeapon.m_useCount3,
+									["res"] = targetSelectedWeaponResRef,
+									["sourceID"] = sourceSprite.m_id,
+									["sourceTarget"] = sourceSprite.m_id,
+								})
+								-- restore ``CItem`` flags
+								do
+									local sourceItems = sourceEquipment.m_items -- Array<CItem*,39>
+									for i = 18, 33 do -- inventory slots
+										local item = sourceItems:get(i) -- CItem
+										if item then
+											local resref = item.pRes.resref:get()
+											if resref == targetSelectedWeaponResRef then
+												if item.m_flags == 0 then
+													if item.m_useCount1 == targetSelectedWeapon.m_useCount1 then
+														if item.m_useCount2 == targetSelectedWeapon.m_useCount2 then
+															if item.m_useCount3 == targetSelectedWeapon.m_useCount3 then
+																item.m_flags = targetSelectedWeapon.m_flags
+																break
+															end
 														end
 													end
 												end
@@ -123,30 +142,47 @@ function %THIEF_DISARM%(CGameEffect, CGameSprite)
 										end
 									end
 								end
+								--
+								CGameSprite:applyEffect({
+									["effectID"] = 112, -- remove item
+									["res"] = targetSelectedWeaponResRef,
+									["sourceID"] = CGameEffect.m_sourceId,
+									["sourceTarget"] = CGameEffect.m_sourceTarget,
+								})
+								-- make sure to unequip ammo (apparently, if you disarm a launcher, the corresponding ammo is still equipped)
+								do
+									local targetItems = CGameSprite.m_equipment.m_items -- Array<CItem*,39>
+									for i = 11, 13 do -- ammo slots
+										local item = targetItems:get(i) -- CItem
+										if item then
+											local resref = item.pRes.resref:get()
+											--
+											local responseString = EEex_Action_ParseResponseString(string.format('XEquipItem("%s",Myself,%d,UNEQUIP)', resref, i))
+											responseString:executeResponseAsAIBaseInstantly(CGameSprite)
+											--
+											responseString:free()
+										end
+									end
+								end
+							else
+								-- display feedback message
+								GT_Utility_DisplaySpriteMessage(sourceSprite,
+									string.format("%s : %d + %d = %d : %s",
+										Infinity_FetchString(%feedback_strref_disarm%), roll, modifier, roll + modifier, Infinity_FetchString(%feedback_strref_miss%)),
+									0xBED7D7, 0xBED7D7
+								)
 							end
-							--
-							CGameSprite:applyEffect({
-								["effectID"] = 112, -- remove item
-								["res"] = targetSelectedWeaponResRef,
+						else
+							EEex_GameObject_ApplyEffect(CGameSprite,
+							{
+								["effectID"] = 139, -- Display string
+								["effectAmount"] = %feedback_strref_weapon_ineffective%,
 								["sourceID"] = CGameEffect.m_sourceId,
 								["sourceTarget"] = CGameEffect.m_sourceTarget,
 							})
-							-- make sure to unequip ammo (apparently, if you disarm a launcher, the corresponding ammo is still equipped)
-							do
-								local targetItems = CGameSprite.m_equipment.m_items -- Array<CItem*,39>
-								for i = 11, 13 do -- ammo slots
-									local item = targetItems:get(i) -- CItem
-									if item then
-										local resref = item.pRes.resref:get()
-										--
-										local responseString = EEex_Action_ParseResponseString(string.format('XEquipItem("%s",Myself,%d,UNEQUIP)', resref, i))
-										responseString:executeResponseAsAIBaseInstantly(CGameSprite)
-										--
-										responseString:free()
-									end
-								end
-							end
 						end
+						--
+						weaponEffectiveVs:free()
 					else
 						CGameSprite:applyEffect({
 							["effectID"] = 139, -- display string

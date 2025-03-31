@@ -44,6 +44,7 @@ BEGIN
 		OUTER_SET "feedback_strref_devastating_crit_hit" = RESOLVE_STR_REF (@2)
 		OUTER_SET "feedback_strref_devastating_crit_immune" = RESOLVE_STR_REF (@3)
 		//
+		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Utility Functions / Listeners" "sourceFileSpec" = "cdtweaks\luke\lua\utility\damage_type.lua" "destRes" = "m_gtutil" END
 		LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Class/Kit Abilities" "sourceFileSpec" = "cdtweaks\luke\lua\class\overwhelming_devastating_critical.lua" "destRes" = "m_gtspcl" END
 	END
 	//

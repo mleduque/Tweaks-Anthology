@@ -34,54 +34,29 @@
 		local equipment = originatingSprite.m_equipment
 		local selectedWeapon = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
 		local selectedWeaponHeader = selectedWeapon.pRes.pHeader -- Item_Header_st
-		local selectedWeaponTypeStr = GT_Resource_IDSToSymbol["itemcat"][selectedWeaponHeader.itemType]
+		local selectedWeaponTypeStr = EEex_Resource_ItemCategoryIDSToSymbol(selectedWeaponHeader.itemType)
 		local selectedWeaponAbility = EEex_Resource_GetCItemAbility(selectedWeapon, equipment.m_selectedWeaponAbility) -- Item_ability_st
+		--
+		local op12DamageType, ACModifier = GT_Utility_DamageTypeConverter(selectedWeaponAbility.damageType, targetActiveStats)
 		-- Bow with arrows equipped || bow with unlimited ammo equipped
 		if selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW" then
 			--
 			local projectile = context["projectile"] -- CProjectile
-			--
-			local selectedLauncher = originatingSprite:getLauncher(selectedWeapon:getAbility(equipment.m_selectedWeaponAbility)) -- CItem
-			local selectedLauncherDamageBonus = 0
-			local weaponProficiencyDamageBonus = 0
-			--
-			if selectedLauncher then
-				local pHeader = selectedLauncher.pRes.pHeader -- Item_Header_st
-				--
-				local pAbility
-				for i = 1, pHeader.abilityCount do
-					pAbility = EEex_Resource_GetCItemAbility(selectedLauncher, i - 1) -- Item_ability_st
-					if pAbility.type == 0x4 then -- Launcher
-						break
-					end
-				end
-				--
-				selectedLauncherDamageBonus = pAbility.damageDiceBonus
-				--
-				local wspecial = GT_Resource_2DA["wspecial"]
-				weaponProficiencyDamageBonus = tonumber(wspecial[string.format("%s", EEex_BAnd(EEex_Sprite_GetStat(originatingSprite, pHeader.proficiencyType), 0x7))]["DAMAGE"]) -- consider only the first 3 bits
-			end
 			-- Add main op12 (launcher + wspecial + ammo)
 			do
-				local itmAbilityDamageTypeToIDS = {
-					[0] = 0x0, -- none (crushing)
-					[1] = 0x10, -- piercing
-					[2] = 0x0, -- crushing
-					[3] = 0x100, -- slashing
-					[4] = 0x80, -- missile
-					[5] = 0x800, -- non-lethal
-					[6] = targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistCrushing and 0x0 or 0x10, -- piercing/crushing (better)
-					[7] = targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistSlashing and 0x100 or 0x10, -- piercing/slashing (better)
-					[8] = targetActiveStats.m_nResistCrushing > targetActiveStats.m_nResistSlashing and 0x0 or 0x100, -- slashing/crushing (worse)
-				}
+				local damageBonus = sourceActiveStats.m_nDamageBonus -- op73
+				local damageBonusRight = sourceActiveStats.m_DamageBonusRight -- wspecial.2da
+				local missileDamageBonus = sourceActiveStats.m_nMissileDamageBonus -- op286 (STAT 168)
+				--
+				local modifier = damageBonus + damageBonusRight + missileDamageBonus
 				--
 				projectile:AddEffect(GT_Utility_DecodeEffect(
 					{
 						["effectID"] = 0xC, -- Damage
-						["effectAmount"] = (selectedWeaponAbility.damageDiceCount == 0 and selectedWeaponAbility.damageDice == 0 and selectedWeaponAbility.damageDiceBonus == 0) and 0 or (selectedLauncherDamageBonus + weaponProficiencyDamageBonus + selectedWeaponAbility.damageDiceBonus),
+						["effectAmount"] = (selectedWeaponAbility.damageDiceCount == 0 and selectedWeaponAbility.damageDice == 0 and selectedWeaponAbility.damageDiceBonus == 0) and 0 or (modifier + selectedWeaponAbility.damageDiceBonus),
 						["numDice"] = selectedWeaponAbility.damageDiceCount,
 						["diceSize"] = selectedWeaponAbility.damageDice,
-						["dwFlags"] = itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000,
+						["dwFlags"] = op12DamageType * 0x10000,
 						--
 						["sourceX"] = originatingSprite.m_pos.x,
 						["sourceY"] = originatingSprite.m_pos.y,
@@ -142,6 +117,8 @@
 				end
 			end
 			-- Add on-hit effect(s) (launcher)
+			local selectedLauncher = originatingSprite:getLauncher(selectedWeapon:getAbility(equipment.m_selectedWeaponAbility)) -- CItem
+			--
 			if selectedLauncher then
 				local pHeader = selectedLauncher.pRes.pHeader -- Item_Header_st
 				--
@@ -246,20 +223,20 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- since ``EEex_Opcode_AddListsResolvedListener`` is running after the effect lists have been evaluated, ``m_bonusStats`` has already been added to ``m_derivedStats`` by the engine
 	local spriteLevel1 = sprite.m_derivedStats.m_nLevel1
 	local spriteLevel2 = sprite.m_derivedStats.m_nLevel2
-	local spriteKitStr = GT_Resource_IDSToSymbol["kit"][sprite.m_derivedStats.m_nKit]
+	local spriteKitStr = EEex_Resource_KitIDSToSymbol(sprite.m_derivedStats.m_nKit)
 	-- Level 25+ && Archer kit
-	local applyHLA = spriteKitStr == "FERALAN"
+	local applyAbility = spriteKitStr == "FERALAN"
 		and ((spriteClassStr == "RANGER" and spriteLevel1 >= 25)
 			-- incomplete dual-class characters are not supposed to benefit from this passive feat
 			or (spriteClassStr == "CLERIC_RANGER" and (EEex_IsBitUnset(spriteFlags, 0x8) or spriteLevel1 > spriteLevel2) and spriteLevel2 >= 25))
 		and EEex_IsBitUnset(spriteFlags, 10) -- not Fallen Ranger
 	--
 	if sprite:getLocalInt("gtArcherManyshot") == 0 then
-		if applyHLA then
+		if applyAbility then
 			apply()
 		end
 	else
-		if applyHLA then
+		if applyAbility then
 			-- Do nothing
 		else
 			-- Mark the creature as 'HLA removed'

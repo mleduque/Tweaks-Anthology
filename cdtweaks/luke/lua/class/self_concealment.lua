@@ -4,7 +4,7 @@
 +---------------------------------------------------------+
 --]]
 
-local cdtweaks_MonkSelfConcealment_FeedbackStrref = {
+local cdtweaks_MonkSelfConcealment_FeedbackStrrefs = {
 	[10] = %strref_10%,
 	[20] = %strref_20%,
 	[30] = %strref_30%,
@@ -21,10 +21,8 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	end
 	-- internal function that applies the actual feat (translucency + icon)
 	local apply = function(percentage)
-		-- Mark the creature as 'feat applied'
-		sprite:setLocalInt("gtMonkSelfConcealment", 1)
 		-- Update tracking var
-		sprite:setLocalInt("gtSelfConcealmentAmount", percentage)
+		sprite:setLocalInt("gtMonkSelfConcealment", percentage)
 		--
 		local effectCodes = {
 			{["op"] = 321, ["res"] = "%MONK_SELF_CONCEALMENT%"}, -- Remove effects by resource
@@ -61,7 +59,8 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 		end
 	else
 		if applyAbility then
-			if sprite:getLocalInt("gtSelfConcealmentAmount") ~= percentage then
+			-- check if ``percentage`` has changed since the last application
+			if sprite:getLocalInt("gtMonkSelfConcealment") ~= percentage then
 				apply(percentage)
 			end
 		else
@@ -83,17 +82,15 @@ end)
 EEex_Sprite_AddBlockWeaponHitListener(function(args)
 	local targetSprite = args.targetSprite -- CGameSprite
 	--
-	if targetSprite:getLocalInt("gtMonkSelfConcealment") == 1 then
-		if math.random(100) <= targetSprite:getLocalInt("gtSelfConcealmentAmount") then -- 1d100 roll
-			-- display some feedback
-			targetSprite:applyEffect({
-				["effectID"] = 139, -- Display string
-				["effectAmount"] = cdtweaks_MonkSelfConcealment_FeedbackStrref[targetSprite:getLocalInt("gtSelfConcealmentAmount")],
-				["sourceID"] = targetSprite.m_id,
-				["sourceTarget"] = targetSprite.m_id,
-			})
-			-- block base weapon damage + on-hit effects (if any)
-			return true
-		end
+	if math.random(100) <= targetSprite:getLocalInt("gtMonkSelfConcealment") then -- 1d100 roll
+		-- display some feedback
+		targetSprite:applyEffect({
+			["effectID"] = 139, -- Display string
+			["effectAmount"] = cdtweaks_MonkSelfConcealment_FeedbackStrrefs[targetSprite:getLocalInt("gtMonkSelfConcealment")],
+			["sourceID"] = targetSprite.m_id,
+			["sourceTarget"] = targetSprite.m_id,
+		})
+		-- block base weapon damage + on-hit effects (if any)
+		return true
 	end
 end)

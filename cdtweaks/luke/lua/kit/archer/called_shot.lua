@@ -12,9 +12,9 @@ local cdtweaks_CalledShot_NoArms = {
 	{"WOLF_WORG", "ELEMENTAL_AIR", "WIZARD_EYE"}, -- CLASS.IDS
 	-- ANIMATE.IDS
 	{
-		"DOOM_GUARD", "DOOM_GUARD_LARGER",
-		"SNAKE", "DANCING_SWORD", "BLOB_MIST_CREATURE", "HAKEASHAR", "NISHRUU", "SNAKE_WATER",
-		"BOAR_ARCTIC", "BOAR_WILD", "BONEBAT", "WATER_WEIRD"
+		"DOOM_GUARD", "DOOM_GUARD_LARGER", -- 0x6000
+		"SNAKE", "DANCING_SWORD", "BLOB_MIST_CREATURE", "HAKEASHAR", "NISHRUU", "SNAKE_WATER", -- 0x7000
+		"BOAR_ARCTIC", "BOAR_WILD", "BONEBAT", "WATER_WEIRD", "GT_NWN_FALCON" -- 0xE000
 	},
 }
 
@@ -28,7 +28,7 @@ local cdtweaks_CalledShot_NoLegs = {
 	{
 		"DOOM_GUARD", "DOOM_GUARD_LARGER", -- 0x6000
 		"IMP", "SNAKE", "DANCING_SWORD", "MIST_CREATURE", "BLOB_MIST_CREATURE", "HAKEASHAR", "NISHRUU", "SNAKE_WATER", -- 0x7000
-		"LEMURE", "BONEBAT", "SHADOW_SMALL", "SHADOW_LARGE", "WATER_WEIRD" -- 0xE000
+		"LEMURE", "BONEBAT", "SHADOW_SMALL", "SHADOW_LARGE", "WATER_WEIRD", "GT_NWN_FALCON" -- 0xE000
 	},
 }
 
@@ -39,17 +39,6 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 		-- do nothing (AoE missile!)
 	else
 		local sourceSprite = EEex_GameObject_Get(CGameEffect.m_sourceId) -- CGameSprite
-		local sourceActiveStats = EEex_Sprite_GetActiveStats(sourceSprite)
-		-- Get level
-		local sourceLevel = sourceActiveStats.m_nLevel1
-		if sourceSprite.m_typeAI.m_Class == 18 then -- CLERIC_RANGER
-			sourceLevel = sourceActiveStats.m_nLevel2
-		end
-		--
-		local savebonus = math.floor((sourceLevel - 1) / 4) -- +1 every 4 levels, starting at 0
-		if savebonus > 7 then
-			savebonus = 7 -- cap at 7
-		end
 		--
 		local targetGeneralStr = GT_Resource_IDSToSymbol["general"][CGameSprite.m_typeAI.m_General]
 		local targetRaceStr = GT_Resource_IDSToSymbol["race"][CGameSprite.m_typeAI.m_Race]
@@ -57,96 +46,157 @@ function %ARCHER_CALLED_SHOT%(CGameEffect, CGameSprite)
 		local targetAnimateStr = GT_Resource_IDSToSymbol["animate"][CGameSprite.m_animation.m_animation.m_animationID]
 		--
 		local targetIDS = {targetGeneralStr, targetRaceStr, targetClassStr, targetAnimateStr}
+		-- Fetch components of check
+		local roll = Infinity_RandomNumber(1, 20) -- 1d20
 		--
-		if CGameEffect.m_effectAmount == 1 then
-			-- Called Shot (Arms): -2 thac0 penalty
-			local found = false
+		local targetActiveStats = EEex_Sprite_GetActiveStats(CGameSprite) -- CDerivedStats
+		--
+		local sourceActiveStats = EEex_Sprite_GetActiveStats(sourceSprite) -- CDerivedStats
+		--
+		local thac0 = sourceActiveStats.m_nTHAC0 -- base thac0 (STAT 7)
+		local thac0BonusRight = sourceActiveStats.m_THAC0BonusRight -- this should include the bonus from the weapon + dex + wspecial.2da
+		local missileTHAC0Bonus = sourceActiveStats.m_nMissileTHAC0Bonus -- op167 (STAT 72)
+		-- op120
+		sourceSprite:setStoredScriptingTarget("GT_ScriptingTarget_CalledShot", CGameSprite)
+		local weaponEffectiveVs = EEex_Trigger_ParseConditionalString('WeaponEffectiveVs(EEex_Target("GT_ScriptingTarget_CalledShot"),MAINHAND)')
+		-- mainhand weapon
+		local equipment = sourceSprite.m_equipment -- CGameSpriteEquipment
+		local selectedWeapon = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
+		local selectedWeaponHeader = selectedWeapon.pRes.pHeader -- Item_Header_st
+		local selectedWeaponAbility = EEex_Resource_GetItemAbility(selectedWeaponHeader, equipment.m_selectedWeaponAbility) -- Item_ability_st
+		--
+		local op12DamageType, ACModifier = GT_Utility_DamageTypeConverter(selectedWeaponAbility.damageType, targetActiveStats)
+		--
+		if weaponEffectiveVs:evalConditionalAsAIBase(sourceSprite) then
+			-- compute attack roll (simplified for the time being... it doesn't consider attack of opportunity, invisibility, luck, op178, op301, op362, &c.)
+			local success = false
+			local modifier = thac0BonusRight + missileTHAC0Bonus - 4
 			--
-			do
-				for index, symbolList in ipairs(cdtweaks_CalledShot_NoArms) do
-					for _, symbol in ipairs(symbolList) do
-						if targetIDS[index] == symbol then
-							found = true
-							break
+			if roll == 20 then -- automatic hit
+				success = true
+				modifier = 0
+			elseif roll == 1 then -- automatic miss (critical failure)
+				modifier = 0
+			elseif roll + modifier >= thac0 - (targetActiveStats.m_nArmorClass + ACModifier) then
+				success = true
+			end
+			--
+			if success then
+				-- display feedback message
+				GT_Utility_DisplaySpriteMessage(sourceSprite,
+					string.format("%s : %d + %d = %d : %s",
+						CGameEffect.m_effectAmount == 1 and Infinity_FetchString(%feedback_strref_called_shot_arms%) or Infinity_FetchString(%feedback_strref_called_shot_legs%), roll, modifier, roll + modifier, Infinity_FetchString(%feedback_strref_hit%)),
+					0xBED7D7, 0xBED7D7
+				)
+				--
+				if CGameEffect.m_effectAmount == 1 then
+					-- Called Shot (Arms): -2 thac0 penalty
+					local found = false
+					--
+					do
+						for index, symbolList in ipairs(cdtweaks_CalledShot_NoArms) do
+							for _, symbol in ipairs(symbolList) do
+								if targetIDS[index] == symbol then
+									found = true
+									break
+								end
+							end
 						end
 					end
-				end
-			end
-			--
-			if not found then
-				local effectCodes = {
-					{["op"] = 54, ["p1"] = -2, ["dur"] = 24}, -- base thac0 bonus
-					{["op"] = 139, ["p1"] = %feedback_strref_thac0_mod%} -- feedback string
-				}
-				--
-				for _, attributes in ipairs(effectCodes) do
-					CGameSprite:applyEffect({
-						["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
-						["effectAmount"] = attributes["p1"] or 0,
-						["duration"] = attributes["dur"] or 0,
-						["savingThrow"] = 0x2, -- save vs. breath
-						["saveMod"] = -1 * savebonus,
-						["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-						["m_sourceType"] = CGameEffect.m_sourceType,
-						["sourceID"] = CGameEffect.m_sourceId,
-						["sourceTarget"] = CGameEffect.m_sourceTarget,
-					})
-				end
-			else
-				CGameSprite:applyEffect({
-					["effectID"] = 139, -- display string
-					["effectAmount"] = %feedback_strref_immune%,
-					["sourceID"] = CGameEffect.m_sourceId,
-					["sourceTarget"] = CGameEffect.m_sourceTarget,
-				})
-			end
-		elseif CGameEffect.m_effectAmount == 2 then
-			-- Called Shot (Legs): -2 dex penalty, 20% movement rate penalty
-			local found = false
-			--
-			do
-				for index, symbolList in ipairs(cdtweaks_CalledShot_NoLegs) do
-					for _, symbol in ipairs(symbolList) do
-						if targetIDS[index] == symbol then
-							found = true
-							break
+					--
+					if not found then
+						local effectCodes = {
+							{["op"] = 54, ["p1"] = -2, ["dur"] = 24}, -- base thac0 bonus
+							{["op"] = 139, ["p1"] = %feedback_strref_thac0_mod%} -- feedback string
+						}
+						--
+						for _, attributes in ipairs(effectCodes) do
+							CGameSprite:applyEffect({
+								["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
+								["effectAmount"] = attributes["p1"] or 0,
+								["duration"] = attributes["dur"] or 0,
+								--["savingThrow"] = 0x2, -- save vs. breath
+								--["saveMod"] = -1 * savebonus,
+								["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
+								["m_sourceType"] = CGameEffect.m_sourceType,
+								["sourceID"] = CGameEffect.m_sourceId,
+								["sourceTarget"] = CGameEffect.m_sourceTarget,
+							})
+						end
+					else
+						CGameSprite:applyEffect({
+							["effectID"] = 139, -- display string
+							["effectAmount"] = %feedback_strref_immune%,
+							["sourceID"] = CGameEffect.m_sourceId,
+							["sourceTarget"] = CGameEffect.m_sourceTarget,
+						})
+					end
+				elseif CGameEffect.m_effectAmount == 2 then
+					-- Called Shot (Legs): -2 dex penalty, 20% movement rate penalty
+					local found = false
+					--
+					do
+						for index, symbolList in ipairs(cdtweaks_CalledShot_NoLegs) do
+							for _, symbol in ipairs(symbolList) do
+								if targetIDS[index] == symbol then
+									found = true
+									break
+								end
+							end
 						end
 					end
-				end
-			end
-			--
-			if not found then
-				local targetDEX = CGameSprite:getActiveStats().m_nDEX
-				--
-				local effectCodes = {
-					{["op"] = 15, ["p1"] = (targetDEX <= 1) and 0 or ((targetDEX > 2) and -2 or -1), ["dur"] = 24}, -- dex bonus
-					{["op"] = 176, ["p1"] = 80, ["p2"] = 5, ["dur"] = 24} -- movement rate bonus (mode: multiply %)
-					{["op"] = 139, ["p1"] = %feedback_strref_dex_mod%} -- feedback string
-				}
-				--
-				for _, attributes in ipairs(effectCodes) do
-					CGameSprite:applyEffect({
-						["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
-						["effectAmount"] = attributes["p1"] or 0,
-						["dwFlags"] = attributes["p2"] or 0,
-						["duration"] = attributes["dur"] or 0,
-						["savingThrow"] = 0x2, -- save vs. breath
-						["saveMod"] = -1 * savebonus,
-						["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-						["m_sourceType"] = CGameEffect.m_sourceType,
-						["sourceID"] = CGameEffect.m_sourceId,
-						["sourceTarget"] = CGameEffect.m_sourceTarget,
-					})
+					--
+					if not found then
+						local targetDEX = CGameSprite:getActiveStats().m_nDEX
+						--
+						local effectCodes = {
+							{["op"] = 15, ["p1"] = (targetDEX <= 1) and 0 or ((targetDEX > 2) and -2 or -1), ["dur"] = 24}, -- dex bonus
+							{["op"] = 176, ["p1"] = 80, ["p2"] = 5, ["dur"] = 24} -- movement rate bonus (mode: multiply %)
+							{["op"] = 139, ["p1"] = %feedback_strref_dex_mod%} -- feedback string
+						}
+						--
+						for _, attributes in ipairs(effectCodes) do
+							CGameSprite:applyEffect({
+								["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
+								["effectAmount"] = attributes["p1"] or 0,
+								["dwFlags"] = attributes["p2"] or 0,
+								["duration"] = attributes["dur"] or 0,
+								--["savingThrow"] = 0x2, -- save vs. breath
+								--["saveMod"] = -1 * savebonus,
+								["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
+								["m_sourceType"] = CGameEffect.m_sourceType,
+								["sourceID"] = CGameEffect.m_sourceId,
+								["sourceTarget"] = CGameEffect.m_sourceTarget,
+							})
+						end
+					else
+						CGameSprite:applyEffect({
+							["effectID"] = 139, -- display string
+							["effectAmount"] = %feedback_strref_immune%,
+							["sourceID"] = CGameEffect.m_sourceId,
+							["sourceTarget"] = CGameEffect.m_sourceTarget,
+						})
+					end
 				end
 			else
-				CGameSprite:applyEffect({
-					["effectID"] = 139, -- display string
-					["effectAmount"] = %feedback_strref_immune%,
-					["sourceID"] = CGameEffect.m_sourceId,
-					["sourceTarget"] = CGameEffect.m_sourceTarget,
-				})
+				-- display feedback message
+				GT_Utility_DisplaySpriteMessage(sourceSprite,
+					string.format("%s : %d + %d = %d : %s",
+						CGameEffect.m_effectAmount == 1 and Infinity_FetchString(%feedback_strref_called_shot_arms%) or Infinity_FetchString(%feedback_strref_called_shot_legs%), roll, modifier, roll + modifier, Infinity_FetchString(%feedback_strref_miss%)),
+					0xBED7D7, 0xBED7D7
+				)
 			end
+		else
+			EEex_GameObject_ApplyEffect(CGameSprite,
+			{
+				["effectID"] = 139, -- Display string
+				["effectAmount"] = %feedback_strref_weapon_ineffective%,
+				["sourceID"] = CGameEffect.m_sourceId,
+				["sourceTarget"] = CGameEffect.m_sourceTarget,
+			})
 		end
+		--
+		weaponEffectiveVs:free()
 	end
 end
 
@@ -187,7 +237,7 @@ EEex_Sprite_AddQuickListsCheckedListener(function(sprite, resref, changeAmount)
 	local equipment = sprite.m_equipment
 	local selectedWeapon = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
 	local selectedWeaponHeader = selectedWeapon.pRes.pHeader -- Item_Header_st
-	local selectedWeaponTypeStr = GT_Resource_IDSToSymbol["itemcat"][selectedWeaponHeader.itemType]
+	local selectedWeaponTypeStr = EEex_Resource_ItemCategoryIDSToSymbol(selectedWeaponHeader.itemType)
 	-- Bow with arrows equipped || bow with unlimited ammo equipped
 	if selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW" then
 		-- store target id
@@ -222,7 +272,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local equipment = sprite.m_equipment
 	local selectedWeapon = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
 	local selectedWeaponHeader = selectedWeapon.pRes.pHeader -- Item_Header_st
-	local selectedWeaponTypeStr = GT_Resource_IDSToSymbol["itemcat"][selectedWeaponHeader.itemType]
+	local selectedWeaponTypeStr = EEex_Resource_ItemCategoryIDSToSymbol(selectedWeaponHeader.itemType)
 	--
 	if sprite:getLocalInt("gtArcherCalledShot") == 1 then
 		if selectedWeaponTypeStr == "ARROW" or selectedWeaponTypeStr == "BOW" then
@@ -385,7 +435,7 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	-- since ``EEex_Opcode_AddListsResolvedListener`` is running after the effect lists have been evaluated, ``m_bonusStats`` has already been added to ``m_derivedStats`` by the engine
 	local spriteLevel1 = sprite.m_derivedStats.m_nLevel1
 	local spriteLevel2 = sprite.m_derivedStats.m_nLevel2
-	local spriteKitStr = GT_Resource_IDSToSymbol["kit"][sprite.m_derivedStats.m_nKit]
+	local spriteKitStr = EEex_Resource_KitIDSToSymbol(sprite.m_derivedStats.m_nKit)
 	--
 	local gainAbility = spriteKitStr == "FERALAN"
 		and (spriteClassStr == "RANGER"

@@ -102,6 +102,7 @@ BEGIN
 	END
 	//
 	LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "AI-related stuff" "sourceFileSpec" = "cdtweaks\luke\lua\ai\object_type.lua" "destRes" = "m_gt#ai" END
+	LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Utility Functions / Listeners" "sourceFileSpec" = "cdtweaks\luke\lua\utility\damage_type.lua" "destRes" = "m_gtutil" END
 	LAF "APPEND_LUA_FUNCTION" STR_VAR "description" = "Utility Functions / Listeners" "sourceFileSpec" = "cdtweaks\luke\lua\utility\display_sprite_message.lua" "destRes" = "m_gtutil" END
 	//
 	WITH_SCOPE BEGIN

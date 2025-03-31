@@ -38,3 +38,6 @@ Un Colpo Mirato contro le gambe riduce la velocità di movimento dell'avversario
 @300 = "Il personaggio non può utilizzare questa abilità mentre sta scoccando frecce con effetto ad area"
 
 //@400 = "Non soggetto agli effetti di Colpo Mirato"
+@400 = "Colpito"
+@401 = "Mancato"
+@402 = "Arma Inefficace"
