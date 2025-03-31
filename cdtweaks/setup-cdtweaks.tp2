@@ -5511,3 +5511,17 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
 REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
 REQUIRE_PREDICATE FILE_EXISTS ~cdtweaks/languages/%LANGUAGE%/woodland_stride.tra~ @7
 LABEL ~cd_tweaks_nwn_woodland_stride~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////                                                            \\\\\////\\\\////
+///// Bane of Enemies Class Feat for Rangers                                 \\\\\
+/////                                                            \\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\////\\\\////
+
+BEGIN @632000 DESIGNATED 6320
+GROUP @30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @25
+REQUIRE_PREDICATE MOD_IS_INSTALLED "EEex.tp2" 0 @29
+LABEL ~cd_tweaks_nwn_bane_of_enemies~

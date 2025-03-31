@@ -1463,14 +1463,15 @@
     <div class="section">
       <p> Components in this category are inspired from <a href="https://nwn.beamdog.com/">NWN</a> and are aimed at providing new class/kit abilities. All components in this section require EEex and work on BGEE, BG2EE, IWDEE, and EET. </p>
       <p> <strong>Disarm class feat for Rogues [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
+        <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
       <p> This component aims at implementing the NWN feat Disarm.</p>
-      <p> The character can attempt to disarm an opponent in melee combat. Attempting a disarm applies a -6 penalty to the character's attack roll, and the combatant with the larger weapon gains a +2 bonus per size category of difference. A successful hit deals normal damage, and if the opponent fails a Save vs. Breath, then the weapon flies from the opponent's hands.</p>
+      <p>The character can attempt to disarm an opponent in melee combat. Attempting a disarm applies a -6 penalty to the character's attack roll, and the combatant with the larger weapon gains a +2 bonus per size category of difference. If the hit is successful, then the weapon flies from the opponent's hands.</p>
       <p> Notes: </p>
       <ul>
         <li>Use: selected, unlimited uses per day. Only available to Rogues (starting from level 1).</li>
         <li>When the weapon flies from the opponent's hands, the attacker automatically picks it up (provided its Inventory is not full).</li>
         <li>This feat cannot be used while wielding a ranged weapon.</li>
+        <li>The Disarm blow itself deals no damage and applies no on-hit effects (if any).</li>
         <li> As far as weapon sizes are concerned:
           <ul>
             <li>Small: unarmed fists, clubs, maces, slings, darts, daggers, short swords.</li>
@@ -1491,21 +1492,21 @@
         <li>Not all creatures can be disarmed. Natural weapons cannot be disarmed, nor can cursed / magically created weapons.</li>
       </ul>
       <p> <strong>Knockdown class feat for Fighters and Monks [Luke]</strong><br />
-        <em><abbr title="Enhanced Edition">EEex</abbr></em></p>
-      <p> A character with this feat can attempt to knock his opponents to the ground. The defender makes a Save vs. Death. If failed, the defender is knocked to a prone position.</p>
+        <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
+      <p>A character with this feat can attempt to knock his melee opponents to the ground. The character makes a special attack roll at -4, and if successful, the defender is knocked to a prone position.</p>
       <p> Notes: </p>
       <ul>
         <li>Use: selected, unlimited uses per day. Only available to Fighters and Monks (starting from level 1).</li>
         <li>The prone state lasts for one round.</li>
         <li>This feat cannot be used while wielding a ranged weapon.</li>
-        <li>The Knockdown blow itself automatically hits (no attack roll is required), but deals no damage and applies no on-hit effects (if any).</li>
+        <li>The Knockdown blow itself deals no damage and applies no on-hit effects (if any).</li>
         <li> A character can only make a knockdown attempt on opponents that are one size category larger than himself, or smaller.
           <ul>
             <li>As a rule of thumb, look at the defender's circle size: if smaller, equal or just a little bit bigger than the one of the attacker, then it is fine; otherwise, the creature is too large to be knocked down.</li>
             <li> On top of it:
               <ul>
-                <li>if the attacker is larger than the defender, the saving throw penalty is -4 (i.e., it's easier to succeed).</li>
-                <li>Conversely, the saving throw penalty is +4 (i.e., it's harder to succeed).</li>
+                <li>if the attacker is larger than the defender, the attacker adds a +4 bonus to its roll (i.e., it's easier to succeed).</li>
+                <li>Conversely, the attacker adds a -4 penalty to its roll (i.e., it's harder to succeed).</li>
               </ul>
             </li>
           </ul>
@@ -1664,7 +1665,7 @@
       <p> This component aims at making sure the Archer is really the epitome of skill with the <em>bow</em>.
         As a result, after installing it, its abilities modify as follows: </p>
       <ul>
-        <li> <code>+1</code> to hit and damage rolls with <em>bows</em> every 3 levels </li>
+        <li> <code>+1</code> to hit and damage rolls with <em>bows</em> only every 3 levels </li>
         <li> May achieve Grand Mastery (5 slots) in <em>longbows</em> and <em>shortbows</em>
           <ul>
             <li>May only Specialize (2 slots) in crossbows</li>
@@ -1676,24 +1677,19 @@
             <li>When wielding a <em>bow</em>, the Archer negates the <code>-8</code> thac0 penalty for using ranged weapons in close combat</li>
           </ul>
         </li>
-        <li> New passive HLA: Manyshot
+        <li> New passive trait: Manyshot
           <ul>
             <li>Starting from level 25, the Archer may shoot two arrows at a time</li>
           </ul>
         </li>
       </ul>
       <p> This component also reworks the Called Shot ability. Here is the revised description: </p>
-      <p>CALLED SHOT: Grants the ability to make a potentially disabling attack against an opponent's arms or legs. A successful called shot against the legs reduces the opponent's movement rate by 20% and gives them a -2 cumulative penalty to their dexterity. A successful called shot against the arms applies a cumulative -2 penalty to the creature's attack rolls.</p>
+      <p>CALLED SHOT: Grants the ability to make a potentially disabling attack against an opponent's arms or legs. Called shots are made at a -4 penalty. A successful called shot against the legs reduces the opponent's movement rate by 20% and gives them a -2 cumulative penalty to their dexterity. A successful called shot against the arms applies a cumulative -2 penalty to the creature's attack rolls.</p>
       <p> So to sum up, its core features are now all built around the <em>bow</em> (instead of any missile weapon). </p>
       <p> Notes about Called Shot: </p>
       <ul>
-        <li>Use: selected (unlimited uses per day).</li>
-        <li> Successful called shots last four rounds.
-          <ul>
-            <li>The target must fail a Save vs. Breath in order to be affected.</li>
-            <li>The save penalty decreases by 1 for every 4 levels of the Archer (capped at -7 at level 29).</li>
-          </ul>
-        </li>
+        <li>Use: selected (unlimited uses per day, available from level 1).</li>
+        <li>Successful called shots last four rounds.</li>
         <li>Called Shot (Legs) cannot drop Dexterity below 1.</li>
         <li>Called shots deal no damage and apply no on-hit effects (if any).</li>
         <li>Creatures without arms (f.i. slimes, beholders, wolves, spiders, ...) or legs (f.i. wyverns, imps, snakes, salamanders, ...) are unaffected by effects from Called Shot.</li>
@@ -1709,18 +1705,21 @@
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
       <p> This component aims at giving Berserkers the Blind Fight feat. This feat grants the character the ability to fight well, even if blinded. As a result, whenever the character gets blinded, it does not suffer from the 4 THAC0/AC penalty. </p>
       <ul>
-        <li>Use: automatic.</li>
+        <li>Use: automatic (available from level 1).</li>
+        <li>This feat can only negate the melee THAC0 penalty. If the character is wielding a ranged weapon, only the AC penalty will be negated.</li>
+      </ul>
+      <p> <strong>Dirty Fighting Class Feat for Chaotic-Aligned Rogues [Luke]</strong><br />
+        <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
+      <p> This component aims at implementing the NWN feat Dirty Fighting. The character knows brutal and effective fighting tactics. During the first attack of each round, the character can elect to perform a dirty fighting move that will deal 5% of the target's maximum health as unmitigated damage.</p>
+      <ul>
+        <li>Use: automatic (available from level 1).</li>
         <li> Unmitigated damage means that damage resistance is ignored.
           <ul>
             <li>However, if the target's damage resistance is 100+, then it will be completely immune to the dirty fighting move.</li>
           </ul>
         </li>
         <li>The rogue must wield a melee weapon usable by single-class thieves in order to perform a dirty fighting move.</li>
-        <li>This feat can only negate the melee THAC0 penalty. If the character is wielding a ranged weapon, only the AC penalty will be negated.</li>
       </ul>
-      <p> <strong>Dirty Fighting Class Feat for Chaotic-Aligned Rogues [Luke]</strong><br />
-        <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
-      <p> This component aims at implementing the NWN feat Dirty Fighting. The character knows brutal and effective fighting tactics. During the first attack of each round, the character can elect to perform a dirty fighting move that will deal 5% of the target's maximum health as unmitigated damage.</p>
       <p> <strong>Overwhelming/Devastating Critical Class Feat for Trueclass Fighters [Luke]</strong><br />
         <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em></p>
       <p> This component aims at giving Trueclass Fighters the passive feats Overwhelming/Devastating Critical. </p>
@@ -1730,7 +1729,7 @@
         <li>Use: automatic, but only available to Trueclass Fighters.</li>
         <li>Creatures who are immune to critical hits are not affected by these feats.</li>
         <li>Only the mainhand weapon can trigger these feats (in case of dual-wielding).</li>
-        <li> Devastating Critical: the saving throw penalty scales with either Strength (melee weapons) or Dexterity (ranged weapons). In particular:</li>
+        <li>Devastating Critical: the saving throw penalty scales with either Strength (melee weapons) or Dexterity (ranged weapons). In particular:</li>
       </ul>
       <table>
         <tbody>
@@ -1844,7 +1843,7 @@
           </ul>
         </li>
         <li>If the parrying character gets hit while performing a riposte attack, the riposte attack will be canceled.</li>
-        <li> The higher Dexterity, the easier is to parry an incoming attack.
+        <li>The higher Dexterity, the easier is to parry an incoming attack.
           <ul>
             <li>See the MISSILE column of <a href="https://gibberlings3.github.io/iesdp/files/2da/2da_bgee/dexmod.htm">dexmod.2da</a> to get an idea about how the saving throw bonus scales with Dexterity.</li>
           </ul>
@@ -2004,6 +2003,13 @@
       <p>
         The character is immune to the grease, web, and entangle effects.<br />
         Use is automatic, but limited to Druids (starting from level 2).
+      </p>
+
+      <p> <strong>Bane of Enemies Class Feat for Rangers [Luke]</strong><br />
+      <em>BGEE, <abbr title="Baldur's Gate II">BG2</abbr>EE, IWDEE, EET (requires <abbr title="ToB Extender">EEex</abbr>)</em><em></em></p>
+      <p>
+        Any weapon the character wields against its favored enemy is treated as a bane weapon for that creature type (+2 to hit and an additional +2d6 damage).<br />
+        Use is automatic, but limited to Rangers (level 21+).
       </p>
 
     </div>
