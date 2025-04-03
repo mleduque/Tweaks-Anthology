@@ -15,7 +15,7 @@ BEGIN
 	//
 	WITH_SCOPE BEGIN
 		ACTION_TO_LOWER "DRUID_WOODLAND_STRIDE"
-		COPY "cdtweaks\luke\bam\class\woodland_stride.bam" "override\%DRUID_WOODLAND_STRIDE%d.bam"
+		COPY "cdtweaks\luke\bam\class\woodland_stride.bam" "override\%DRUID_WOODLAND_STRIDE%d.bam" // courtesy of zenblack
 	END
 	//
 	WITH_SCOPE BEGIN

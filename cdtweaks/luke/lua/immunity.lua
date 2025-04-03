@@ -91,6 +91,25 @@ local GT_ImmunitiesVia403_Definitions = {
 
 -- Check effect --
 
+local function GT_ImmunitiesVia403_InstantEffect(CGameEffectBase)
+	if CGameEffectBase.m_effectId == 139 then -- Display string
+		return true
+	elseif CGameEffectBase.m_effectId == 12 then -- Damage
+		-- skip if hp drain
+		if not (EEex_IsBitSet(CGameEffectBase.m_special, 0x0) or EEex_IsBitSet(CGameEffectBase.m_special, 0x1) or EEex_IsBitSet(CGameEffectBase.m_special, 0x3) or EEex_IsBitSet(CGameEffectBase.m_special, 0x4)) then
+			return true
+		end
+	elseif CGameEffectBase.m_effectId == 177 or CGameEffectBase.m_effectId == 283 then -- Use EFF file
+		-- NB.: In a recursive function, if the innermost call returns ``true``, it does not automatically cause the outermost function to return ``true``. We need to explicitly propagate the true value back up the call stack
+		local result = GT_ImmunitiesVia403_InstantEffect(EEex_Resource_Demand(CGameEffectBase.m_res:get(), "eff")) -- recursive call
+		if result then
+			return true
+		end
+	end
+	--
+	return false
+end
+
 local function GT_ImmunitiesVia403_CheckEffect(CGameEffectBase, table, language, displaySubtitles, stored_duration, parent_duration, bit)
 	if stored_duration == -1 and parent_duration == -1 then
 		if CGameEffectBase.m_effectId == table["opcode"][1] then
@@ -239,21 +258,11 @@ function GTIMMUNE(op403CGameEffect, CGameEffect, CGameSprite)
 						end
 					end
 				end
-				--
-				if CGameEffect.m_effectId == 139 then -- Display string
-					-- change timing mode to instantaneous delay (so that it can properly be blocked if needed)
+				-- instantaneous effects: change timing mode to instantaneous delay (so that they can properly be blocked if needed)
+				if GT_ImmunitiesVia403_InstantEffect(CGameEffect) then
 					if CGameEffect.m_durationType == 0 or CGameEffect.m_durationType == 1 or CGameEffect.m_durationType == 9 or CGameEffect.m_durationType == 10 then
 						CGameEffect.m_durationType = 4
 						CGameEffect.m_duration = 0
-					end
-				elseif CGameEffect.m_effectId == 12 then -- Damage
-					-- change timing mode to instantaneous delay (so that it can properly be blocked if needed)
-					if CGameEffect.m_durationType == 0 or CGameEffect.m_durationType == 1 or CGameEffect.m_durationType == 9 or CGameEffect.m_durationType == 10 then
-						-- skip if hp drain
-						if not (EEex_IsBitSet(CGameEffect.m_special, 0x0) or EEex_IsBitSet(CGameEffect.m_special, 0x1) or EEex_IsBitSet(CGameEffect.m_special, 0x3) or EEex_IsBitSet(CGameEffect.m_special, 0x4)) then
-							CGameEffect.m_durationType = 4
-							CGameEffect.m_duration = 0
-						end
 					end
 				end
 			end

@@ -2,15 +2,19 @@
 
 @1 = "Buttare a Terra
 
-Un personaggio con questo talento puÚ tentare di far cadere a terra i suoi avversari. Il difensore effettua un tiro-salvezza contro Morte. Se fallisce, il difensore viene buttato a terra."
+Un personaggio con questo talento pu√≤ tentare di far cadere a terra i suoi avversari. Il personaggio effettua uno speciale attacco in mischia con una penalit√† pari a -4. Se colpito, l'avversario viene buttato a terra."
 
 @50 = "Steso a Terra"
 
-//@100 = "Il bersaglio selezionato Ë fuori portata"
-@101 = "Il bersaglio selezionato Ë gi‡ a terra"
-@102 = "Il bersaglio selezionato Ë troppo grande"
-@103 = "Questo talento non puÚ essere usato mentre si brandisce un'arma a distanza"
+//@100 = "Il bersaglio selezionato √® fuori portata"
+@101 = "Il bersaglio selezionato √® gi√† a terra"
+@102 = "Il bersaglio selezionato √® troppo grande"
+@103 = "Questo talento non pu√≤ essere usato mentre si brandisce un'arma a distanza"
 
-@104 = "La creatura selezionata non puÚ essere buttata a terra"
+@104 = "La creatura selezionata non pu√≤ essere buttata a terra"
 
 //@105 = "Non soggetto agli effetti di Buttare a Terra"
+
+@105 = "Colpito"
+@106 = "Mancato"
+@107 = "Arma Inefficace"

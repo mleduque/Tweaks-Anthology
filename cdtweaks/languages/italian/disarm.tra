@@ -2,12 +2,13 @@
 
 @1 = "Disarmare
 
-Il personaggio può tentare di disarmare un avversario durante un combattimento in mischia. Il combattente con l'arma più grande ottiene un bonus di +2 per ogni categoria di taglia di differenza. Se l'avversario fallisce un tiro-salvezza contro Soffio, l'arma gli vola via dalle mani."
+Il personaggio può tentare di disarmare un avversario con uno speciale attacco in mischia. Disarmare applica una penalità di -6 ai tiri per colpire del personaggio e il combattente con l'arma più grande ottiene un bonus di +2 per ogni categoria di taglia di differenza. In caso di successo, l'arma vola via dalle mani dell'avversario."
 
 //@100 = "Il bersaglio selezionato è fuori portata"
 @101 = "Disarmare Annullato: Inventario pieno"
-@102 = "Disarmare: Resistito"
-@103 = "Disarmare: Colpito"
+@102 = "Colpito"
+@103 = "Mancato"
 @104 = "Questa abilità non può essere usata mentre si brandisce un'arma a distanza"
 @105 = "La creatura selezionata non può essere disarmata"
 //@106 = "Non soggetto agli effetti di Disarmare"
+@106 = "Arma Inefficace"

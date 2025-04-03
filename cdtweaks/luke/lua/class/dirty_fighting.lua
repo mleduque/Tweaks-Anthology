@@ -109,56 +109,45 @@ function %THIEF_DIRTY_FIGHTING%(CGameEffect, CGameSprite)
 		[0x80] = targetActiveStats.m_nResistMissile, -- missile
 		[0x800] = targetActiveStats.m_nResistCrushing, -- non-lethal
 	}
-	local itmAbilityDamageTypeToIDS = {
-		[0] = 0x0, -- none (crushing)
-		[1] = 0x10, -- piercing
-		[2] = 0x0, -- crushing
-		[3] = 0x100, -- slashing
-		[4] = 0x80, -- missile
-		[5] = 0x800, -- non-lethal
-		[6] = targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistCrushing and 0x0 or 0x10, -- piercing/crushing (better)
-		[7] = targetActiveStats.m_nResistPiercing > targetActiveStats.m_nResistSlashing and 0x100 or 0x10, -- piercing/slashing (better)
-		[8] = targetActiveStats.m_nResistCrushing > targetActiveStats.m_nResistSlashing and 0x0 or 0x100, -- slashing/crushing (worse)
-	}
+	--
+	local op12DamageType, ACModifier = GT_Utility_DamageTypeConverter(selectedWeaponAbility.damageType, targetActiveStats)
 	--
 	if sourceAux["gt_ThiefDirtyFighting_FirstAttack"] then
 		if isUsableBySingleClassThief then
-			if itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType] then -- sanity check
-				if resistDamageTypeTable[itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType]] < 100 and not immunityToDamage:evalConditionalAsAIBase(CGameSprite) then
-					-- 5% unmitigated damage
-					EEex_GameObject_ApplyEffect(CGameSprite,
-					{
-						["effectID"] = 0xC, -- Damage
-						["dwFlags"] = itmAbilityDamageTypeToIDS[selectedWeaponAbility.damageType] * 0x10000 + 3, -- mode: reduce by percentage
-						--["numDice"] = 1,
-						--["diceSize"] = 4,
-						["effectAmount"] = 5,
-						["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-						["m_sourceType"] = CGameEffect.m_sourceType,
-						["sourceID"] = CGameEffect.m_sourceId,
-						["sourceTarget"] = CGameEffect.m_sourceTarget,
-					})
-					-- the percentage mode of op12 does not provide feedback, so we have to manually display it...
-					EEex_GameObject_ApplyEffect(CGameSprite,
-					{
-						["effectID"] = 139, -- Display string
-						["effectAmount"] = %feedback_strref_hit%,
-						["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-						["m_sourceType"] = CGameEffect.m_sourceType,
-						["sourceID"] = CGameEffect.m_sourceId,
-						["sourceTarget"] = CGameEffect.m_sourceTarget,
-					})
-				else
-					EEex_GameObject_ApplyEffect(CGameSprite,
-					{
-						["effectID"] = 139, -- Immunity to resource and message
-						["effectAmount"] = %feedback_strref_immune%,
-						["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
-						["m_sourceType"] = CGameEffect.m_sourceType,
-						["sourceID"] = CGameEffect.m_sourceId,
-						["sourceTarget"] = CGameEffect.m_sourceTarget,
-					})
-				end
+			if resistDamageTypeTable[op12DamageType] < 100 and not immunityToDamage:evalConditionalAsAIBase(CGameSprite) then
+				-- 5% unmitigated damage
+				EEex_GameObject_ApplyEffect(CGameSprite,
+				{
+					["effectID"] = 0xC, -- Damage
+					["dwFlags"] = op12DamageType * 0x10000 + 3, -- mode: reduce by percentage
+					--["numDice"] = 1,
+					--["diceSize"] = 4,
+					["effectAmount"] = 5,
+					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
+					["m_sourceType"] = CGameEffect.m_sourceType,
+					["sourceID"] = CGameEffect.m_sourceId,
+					["sourceTarget"] = CGameEffect.m_sourceTarget,
+				})
+				-- the percentage mode of op12 does not provide feedback, so we have to manually display it...
+				EEex_GameObject_ApplyEffect(CGameSprite,
+				{
+					["effectID"] = 139, -- Display string
+					["effectAmount"] = %feedback_strref_hit%,
+					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
+					["m_sourceType"] = CGameEffect.m_sourceType,
+					["sourceID"] = CGameEffect.m_sourceId,
+					["sourceTarget"] = CGameEffect.m_sourceTarget,
+				})
+			else
+				EEex_GameObject_ApplyEffect(CGameSprite,
+				{
+					["effectID"] = 139, -- Immunity to resource and message
+					["effectAmount"] = %feedback_strref_immune%,
+					["m_sourceRes"] = CGameEffect.m_sourceRes:get(),
+					["m_sourceType"] = CGameEffect.m_sourceType,
+					["sourceID"] = CGameEffect.m_sourceId,
+					["sourceTarget"] = CGameEffect.m_sourceTarget,
+				})
 			end
 		end
 	end

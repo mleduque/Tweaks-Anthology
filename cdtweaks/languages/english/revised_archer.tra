@@ -38,3 +38,6 @@ A successful called shot against the legs reduces the opponent's movement rate b
 @300 = "The character cannot use this ability while shooting AoE missiles"
 
 //@400 = "Unaffected by effects from Called Shot"
+@400 = "Hit"
+@401 = "Miss"
+@402 = "Weapon Ineffective"

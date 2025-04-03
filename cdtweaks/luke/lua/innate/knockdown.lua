@@ -50,33 +50,93 @@ function %INNATE_KNOCKDOWN%(CGameEffect, CGameSprite)
 	--
 	if not found then
 		if (sourcePersonalSpace - targetPersonalSpace) >= -1 then
-			-- set ``savebonus``
-			local savebonus = 0
+			-- Fetch components of check
+			local roll = Infinity_RandomNumber(1, 20) -- 1d20
+			--
+			local targetActiveStats = EEex_Sprite_GetActiveStats(CGameSprite)
+			--
+			local sourceActiveStats = EEex_Sprite_GetActiveStats(sourceSprite)
+			--
+			local creatureSizeModifier = 0
 			if (sourcePersonalSpace - targetPersonalSpace) > 0 then
-				savebonus = -4
+				creatureSizeModifier = 4
 			elseif (sourcePersonalSpace - targetPersonalSpace) < 0 then
-				savebonus = 4
+				creatureSizeModifier = -4
 			end
 			--
-			local effectCodes = {
-				{["op"] = 39, ["p2"] = 1, ["spec"] = %feedback_icon%, ["stype"] = EEex_BOr(0x800000, 0x4)}, -- sleep (do not wake upon taking damage)
-				{["op"] = 206, ["res"] = "%INNATE_KNOCKDOWN%B", ["p1"] = %feedback_strref_already_prone%, ["stype"] = 0x4}, -- protection from spell
-			}
+			local thac0 = sourceActiveStats.m_nTHAC0 -- base thac0 (STAT 7)
+			local thac0BonusRight = sourceActiveStats.m_THAC0BonusRight -- this should include the bonus from the weapon + str + wspecial.2da
+			local meleeTHAC0Bonus = sourceActiveStats.m_nMeleeTHAC0Bonus -- op284 (STAT 166)
+			-- op120
+			sourceSprite:setStoredScriptingTarget("GT_ScriptingTarget_Knockdown", CGameSprite)
+			local weaponEffectiveVs = EEex_Trigger_ParseConditionalString('WeaponEffectiveVs(EEex_Target("GT_ScriptingTarget_Knockdown"),MAINHAND)')
+			-- mainhand weapon
+			local equipment = sourceSprite.m_equipment -- CGameSpriteEquipment
+			local selectedWeapon = equipment.m_items:get(equipment.m_selectedWeapon) -- CItem
+			local selectedWeaponHeader = selectedWeapon.pRes.pHeader -- Item_Header_st
+			local selectedWeaponAbility = EEex_Resource_GetItemAbility(selectedWeaponHeader, equipment.m_selectedWeaponAbility) -- Item_ability_st
 			--
-			for _, attributes in ipairs(effectCodes) do
-				CGameSprite:applyEffect({
-					["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
-					["effectAmount"] = attributes["p1"] or 0,
-					["dwFlags"] = attributes["p2"] or 0,
-					["duration"] = 6,
-					["savingThrow"] = attributes["stype"] or 0, -- save vs. death / bypass op101 (in case of op39)
-					["saveMod"] = savebonus,
-					["m_sourceRes"] = "%INNATE_KNOCKDOWN%B",
-					["m_sourceType"] = 1,
+			local op12DamageType, ACModifier = GT_Utility_DamageTypeConverter(selectedWeaponAbility.damageType, targetActiveStats)
+			--
+			if weaponEffectiveVs:evalConditionalAsAIBase(sourceSprite) then
+				-- compute attack roll (simplified for the time being... it doesn't consider attack of opportunity, invisibility, luck, op178, op301, op362, &c.)
+				local success = false
+				local modifier = thac0BonusRight + meleeTHAC0Bonus + creatureSizeModifier - 4
+				--
+				if roll == 20 then -- automatic hit
+					success = true
+					modifier = 0
+				elseif roll == 1 then -- automatic miss (critical failure)
+					modifier = 0
+				elseif roll + modifier >= thac0 - (targetActiveStats.m_nArmorClass + ACModifier) then
+					success = true
+				end
+				--
+				if success then
+					-- display feedback message
+					GT_Utility_DisplaySpriteMessage(sourceSprite,
+						string.format("%s : %d + %d = %d : %s",
+							Infinity_FetchString(%feedback_strref_knockdown%), roll, modifier, roll + modifier, Infinity_FetchString(%feedback_strref_hit%)),
+						0xBED7D7, 0xBED7D7
+					)
+					--
+					local effectCodes = {
+						{["op"] = 39, ["p2"] = 1, ["spec"] = %feedback_icon%}, -- sleep (do not wake upon taking damage)
+						{["op"] = 206, ["res"] = "%INNATE_KNOCKDOWN%B", ["p1"] = %feedback_strref_already_prone%}, -- protection from spell
+					}
+					--
+					for _, attributes in ipairs(effectCodes) do
+						CGameSprite:applyEffect({
+							["effectID"] = attributes["op"] or EEex_Error("opcode number not specified"),
+							["effectAmount"] = attributes["p1"] or 0,
+							["dwFlags"] = attributes["p2"] or 0,
+							["duration"] = 6,
+							["savingThrow"] = 0x800000, -- bypass op101 (in case of op39)
+							["m_sourceRes"] = "%INNATE_KNOCKDOWN%B",
+							["m_sourceType"] = 1,
+							["sourceID"] = CGameEffect.m_sourceId,
+							["sourceTarget"] = CGameEffect.m_sourceTarget,
+						})
+					end
+				else
+					-- display feedback message
+					GT_Utility_DisplaySpriteMessage(sourceSprite,
+						string.format("%s : %d + %d = %d : %s",
+							Infinity_FetchString(%feedback_strref_knockdown%), roll, modifier, roll + modifier, Infinity_FetchString(%feedback_strref_miss%)),
+						0xBED7D7, 0xBED7D7
+					)
+				end
+			else
+				EEex_GameObject_ApplyEffect(CGameSprite,
+				{
+					["effectID"] = 139, -- Display string
+					["effectAmount"] = %feedback_strref_weapon_ineffective%,
 					["sourceID"] = CGameEffect.m_sourceId,
 					["sourceTarget"] = CGameEffect.m_sourceTarget,
 				})
 			end
+			--
+			weaponEffectiveVs:free()
 		else
 			CGameSprite:applyEffect({
 				["effectID"] = 139, -- display string
